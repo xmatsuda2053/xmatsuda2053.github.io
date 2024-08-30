@@ -1,0 +1,25 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 30px 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: row;
+  gap: 0px;
+  grid-template-areas:
+    "header-area"
+    "tab-area"
+    "contents-area";
+  height: 100vh;
+
+  .header-area {
+    grid-area: "header-area";
+  }
+
+  .tab-area {
+    grid-area: "tab-area";
+  }
+
+  .contents-area {
+    grid-area: "contents-area";
+  }
+}

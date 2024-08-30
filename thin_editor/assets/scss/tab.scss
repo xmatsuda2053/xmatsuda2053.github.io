@@ -1,0 +1,37 @@
+$base-color: #7aa5d2;
+$sub-color: #fffffb;
+
+.component {
+  &.tab {
+    .tab-selector-root {
+      display: flex;
+
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 30px;
+        border-right: 1px solid $base-color;
+        background-color: $sub-color;
+        font-size: 0.9rem;
+        transition: 0.2s ease-in;
+
+        span {
+          margin-right: 4px;
+        }
+
+        &.active {
+          color: $sub-color;
+          background-color: $base-color;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: $sub-color;
+          background-color: $base-color;
+        }
+      }
+    }
+  }
+}

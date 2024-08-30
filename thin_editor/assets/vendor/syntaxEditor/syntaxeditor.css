@@ -1,0 +1,176 @@
+/* ---------------------------------------- */
+/* - Color                                  */
+/* ---------------------------------------- */
+
+/* Dark Theme */
+.se-theme-dark {
+  background-color: #1f1f1f;
+
+  /* 行番号　*/
+  .se-code-line-number-area {
+    color: #fffffb;
+  }
+
+  /* ハイライトエリア */
+  .se-code-syntax-area {
+    color: #fffffb;
+  }
+
+  /* インジケータ */
+  .se-code-editor-area {
+    caret-color: #fffffb;
+  }
+
+  /* 囲み文字（"'`）*/
+  .se-pattern-emphasis {
+    color: #ce9178;
+  }
+
+  /* 括弧 */
+  .se-pattern-brackets {
+    color: #1e6ff8;
+  }
+
+  /* 変数宣言 */
+  .se-pattern-var-type {
+    color: #3e87ae;
+  }
+
+  /* 予約語 */
+  .se-pattern-reserve {
+    color: #bb86c0;
+  }
+
+  /* その他　*/
+  .se-pattern-other {
+    color: #d0dc90;
+  }
+
+  /* コメント */
+  .se-pattern-comment {
+    color: #027902;
+  }
+}
+
+/* Light Theme */
+.se-theme-light {
+  background-color: #fffffb;
+
+  /* 行番号　*/
+  .se-code-line-number-area {
+    color: #1f1f1f;
+  }
+
+  /* ハイライトエリア */
+  .se-code-syntax-area {
+    color: #1f1f1f;
+  }
+
+  /* インジケータ */
+  .se-code-editor-area {
+    caret-color: #1f1f1f;
+  }
+
+  /* 囲み文字（"'`）*/
+  .se-pattern-emphasis {
+    color: #d34107;
+  }
+
+  /* 括弧 */
+  .se-pattern-brackets {
+    color: #0246bb;
+  }
+
+  /* 変数宣言 */
+  .se-pattern-var-type {
+    color: #04a3f8;
+  }
+
+  /* 予約語 */
+  .se-pattern-reserve {
+    color: #e30cf7;
+  }
+
+  /* その他　*/
+  .se-pattern-other {
+    color: #ff8c00;
+  }
+
+  /* コメント */
+  .se-pattern-comment {
+    color: #03b303;
+  }
+}
+
+/* ---------------------------------------- */
+/* - Editor Root Element                    */
+/* ---------------------------------------- */
+.se-code-root {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* ---------------------------------------- */
+/* - Line Number Area                       */
+/* ---------------------------------------- */
+.se-code-line-number-area {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  overflow-y: hidden;
+  border-right: 1px solid #8f8f8f;
+  padding: 5px;
+  text-align: right;
+  line-height: 1.3rem;
+}
+
+.se-code-line-number-area::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------------------------------------- */
+/* - Syntax Hightlight Area                 */
+/* - Code Editor Area                       */
+/* ---------------------------------------- */
+.se-code-syntax-area,
+.se-code-editor-area {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  padding: 5px;
+  line-height: 1.3rem;
+  letter-spacing: 0.1rem;
+}
+
+.se-code-syntax-area::-webkit-scrollbar {
+  display: none;
+}
+
+.se-code-editor-area {
+  background-color: transparent;
+  color: transparent;
+  resize: none;
+  overflow: auto;
+  outline: none;
+}
+
+/* ---------------------------------------- */
+/* - Scroll Bar                             */
+/* ---------------------------------------- */
+.se-code-editor-area::-webkit-scrollbar {
+  width: 12px;
+  background-color: #eaeaea;
+  border: none;
+}
+
+.se-code-editor-area::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px 10px#707070;
+  border: solid 4px transparent;
+}

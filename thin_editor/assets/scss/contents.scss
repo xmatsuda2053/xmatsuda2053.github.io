@@ -1,0 +1,65 @@
+.contents-area {
+  > .component {
+    border-top: 1px solid #7aa5d2;
+    height: 100%;
+    width: 100%;
+
+    &.hidden {
+      display: none;
+    }
+
+    .float-button {
+      z-index: calc(infinity);
+      position: fixed;
+
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 50%;
+
+      background-color: #fffffb;
+      color: #146fd2;
+
+      font-size: 1.8rem;
+      transition: 0.2s ease-in;
+
+      &.file-open-button {
+        right: 20px;
+        bottom: 80px;
+      }
+      &.exec-button {
+        right: 20px;
+        bottom: 20px;
+      }
+    }
+
+    .float-button:hover {
+      background-color: #146fd2;
+      color: #fffffb;
+    }
+
+    .float-button:active {
+      font-size: 1.6rem;
+    }
+
+    &.editor {
+      font-size: 0.9rem;
+      .hidden {
+        display: none;
+      }
+    }
+
+    &.result {
+      #result-area {
+        height: 100%;
+        padding: 0.5rem 1rem;
+        background-color: #1f1f1f;
+        color: #fffffb;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

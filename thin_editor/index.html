@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThinEditor</title>
+    <link rel="stylesheet" href="assets/vendor/destyle/destyle.css" />
+    <link rel="stylesheet" href="assets/vendor/icomoon/style.css" />
+    <link rel="stylesheet" href="assets/vendor/syntaxEditor/syntaxeditor.css" />
+    <link rel="stylesheet" href="assets/css/grid.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/tab.css" />
+    <link rel="stylesheet" href="assets/css/contents.css" />
+    <link rel="stylesheet" href="assets/css/drawer.css" />
+  </head>
+  <body>
+    <!--Grid Layout Root-->
+    <div class="container">
+      <!--Header Area-->
+      <div class="header-area">
+        <div class="component header">
+          <button id="drawer-open">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+      </div>
+      <!--Tab Area-->
+      <div class="tab-area">
+        <div class="component tab">
+          <ul class="tab-selector-root">
+            <li data-target="content01">
+              <span class="icon-embed"></span>JavaScript
+            </li>
+            <li data-target="content02">
+              <span class="icon-html-five"></span>Result
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--Contents Area-->
+      <div class="contents-area">
+        <!-- Editor Contents -->
+        <div class="component contents editor" id="content01">
+          <!--Editor-->
+          <div id="main-editor"></div>
+          <!--Exec Button-->
+          <button class="float-button exec-button">
+            <span class="icon-play"></span>
+          </button>
+          <!--File Open Button-->
+          <button class="float-button file-open-button">
+            <span class="icon-open"></span>
+          </button>
+          <div class="hidden">
+            <input type="file" accept=".js" id="file-input" />
+          </div>
+        </div>
+        <!-- Result Contents -->
+        <div class="component contents result" id="content02">
+          <!--Result-->
+          <div id="result-area"></div>
+        </div>
+      </div>
+    </div>
+    <!--Drawer-->
+    <div class="component drawer" id="drawer">
+      <button id="drawer-close">
+        <span class="icon-cross"></span>
+      </button>
+      <div class="box-parent">
+        <p class="box-title">Thin Editor</p>
+        <div class="box-child">
+          <p>version 1.0.0</p>
+          <p>Copyright 2024 k.m. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/vendor/syntaxEditor/syntaxeditor.js"></script>
+</html>
