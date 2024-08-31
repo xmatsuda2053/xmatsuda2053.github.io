@@ -3,9 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title>
+    <title>Entrance</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #fffffb;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+      .card {
+        height: 150px;
+        border: 1px solid #1f1f1f;
+        background-color: #fffffb;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+        padding: 1rem;
+      }
+      .card:hover {
+        cursor: pointer;
+        transform: translateY(-3px);
+        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+          0 3px 6px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s;
+      }
+      .card:active {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+        transform: translateY(0px);
+      }
+      .card > h2 {
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+      .card > article {
+        margin: 1rem 0 0 0;
+        font-size: 0.9rem;
+      }
+    </style>
   </head>
   <body>
-    Test Page
+    <div class="container">
+      <a href="./thin_editor/index.html" class="card">
+        <h2>ThinEditor</h2>
+        <article>
+          ブラウザ上でJavaScriptを実行できる最小機能のエディタです。
+        </article>
+      </a>
+      <a href="#" class="card">
+        <h2>Coming Soon...</h2>
+        <article></article>
+      </a>
+      <a href="#" class="card">
+        <h2>Coming Soon...</h2>
+        <article></article>
+      </a>
+      <a href="#" class="card">
+        <h2>Coming Soon...</h2>
+        <article></article>
+      </a>
+      <a href="#" class="card">
+        <h2>Coming Soon...</h2>
+        <article></article>
+      </a>
+    </div>
   </body>
 </html>
