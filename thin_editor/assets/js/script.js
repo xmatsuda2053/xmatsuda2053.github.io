@@ -59,16 +59,16 @@ const contentsInit = () => {
     e.addEventListener("click", () => {
       try {
         const id = "result-area";
-        const before = /document\.write\((.*?)\);/g;
-        const after = "thinEditorCodeStr += $1;";
+        const before = /document\.write\((.*?)\)/g;
+        const after = "thinEditorCodeStr += $1";
 
         let strCode = "";
         strCode += "let thinEditorCodeStr = '';\n";
         strCode += editor.getCodeText().replaceAll(before, after);
         strCode += `\ndocument.getElementById("${id}").innerHTML = thinEditorCodeStr;`;
 
-        Function(strCode)();
         tabResult.click();
+        Function(strCode)();
       } catch (e) {
         const msg = `<span style="color: #ff0000;">プログラムが間違っています<span><br />`;
         result.insertAdjacentHTML("beforeend", msg);
