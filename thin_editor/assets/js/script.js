@@ -59,13 +59,15 @@ const contentsInit = () => {
     e.addEventListener("click", () => {
       try {
         const id = "result-area";
-        const before = /document\.write\(([^"]+)\);/g;
+        const before = /document\.write\((.*?)\);/g;
         const after = "thinEditorCodeStr += $1;";
 
         let strCode = "";
         strCode += "let thinEditorCodeStr = '';\n";
         strCode += editor.getCodeText().replaceAll(before, after);
         strCode += `\ndocument.getElementById("${id}").innerHTML = thinEditorCodeStr;`;
+
+        console.log(strCode);
 
         Function(strCode)();
         tabResult.click();
