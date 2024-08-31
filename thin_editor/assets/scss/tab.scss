@@ -3,14 +3,18 @@ $sub-color: #fffffb;
 
 .component {
   &.tab {
+    border-bottom: 1px solid #7aa5d2;
+
     .tab-selector-root {
       display: flex;
+      overflow-x: scroll;
 
       li {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 130px;
+        min-width: 130px;
         height: 30px;
         border-right: 1px solid $base-color;
         background-color: $sub-color;
@@ -32,6 +36,9 @@ $sub-color: #fffffb;
           background-color: $base-color;
         }
       }
+    }
+    .tab-selector-root::-webkit-scrollbar {
+      display: none;
     }
   }
 }

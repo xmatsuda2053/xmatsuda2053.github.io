@@ -1,11 +1,16 @@
+.component.tab {
+  border-bottom: 1px solid #7aa5d2;
+}
 .component.tab .tab-selector-root {
   display: flex;
+  overflow-x: scroll;
 }
 .component.tab .tab-selector-root li {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 130px;
+  min-width: 130px;
   height: 30px;
   border-right: 1px solid #7aa5d2;
   background-color: #fffffb;
@@ -23,4 +28,7 @@
   cursor: pointer;
   color: #fffffb;
   background-color: #7aa5d2;
+}
+.component.tab .tab-selector-root::-webkit-scrollbar {
+  display: none;
 }/*# sourceMappingURL=tab.css.map */
