@@ -98,7 +98,7 @@ HTMLElement.prototype.syntaxEditor = function (config) {
      * @type {RegExp}
      */
     const regExpReserve =
-      /\b(await|break|case|catch|continue|default|delete|do|else|export|extends|false|finally|for|function|if|import|in|instanceof|new|null|return|super|switch|this|throw|true|try|typeof|void|while|with|yield)\b/g;
+      /\b(await|break|case|catch|continue|default|delete|do|else|export|extends|false|finally|for|forEach|function|if|import|in|instanceof|new|null|return|super|switch|this|throw|true|try|typeof|void|while|with|yield)\b/g;
 
     /**
      * その他文言のハイライト定義
