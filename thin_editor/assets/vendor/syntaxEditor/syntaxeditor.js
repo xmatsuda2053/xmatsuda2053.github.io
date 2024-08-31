@@ -131,6 +131,10 @@ HTMLElement.prototype.syntaxEditor = function (config) {
       .replace(/\"(.*?)\"/g, `<span class="se-pattern-emphasis">"$1"</span>`)
       .replace(/\'(.*?)\'/g, `<span class="se-pattern-emphasis">'$1'</span>`)
       .replace(/\`(.*?)\`/g, '<span class="se-pattern-emphasis">`$1`</span>')
+      .replace(
+        /\$&lbrace;(.*?)&rbrace;/g,
+        '<span class="se-pattern-reserve">$$&lbrace;$1&rbrace;</span>'
+      )
       .replace(regExpBrackets, '<span class="se-pattern-brackets">$1</span>')
       .replace(regExpVarType, '<span class="se-pattern-var-type">$1</span>')
       .replace(regExpReserve, '<span class="se-pattern-reserve">$1</span>')
