@@ -1,9 +1,27 @@
 .contents-area > .component {
+  position: relative;
   height: 100%;
   width: 100%;
 }
 .contents-area > .component.hidden {
   display: none;
+}
+.contents-area > .component > .scroll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.contents-area > .component > .scroll::-webkit-scrollbar {
+  width: 12px;
+  background-color: #eaeaea;
+  border: none;
+}
+.contents-area > .component > .scroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px 10px #707070;
+  border: solid 4px transparent;
 }
 .contents-area > .component .float-button {
   z-index: calc(infinity);
@@ -41,9 +59,9 @@
   display: none;
 }
 .contents-area > .component.result #result-area {
-  height: 100%;
   padding: 0.5rem 1rem;
   background-color: #1f1f1f;
   color: #fffffb;
   font-size: 0.9rem;
+  overflow-y: auto;
 }/*# sourceMappingURL=contents.css.map */
