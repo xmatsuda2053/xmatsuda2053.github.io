@@ -11,8 +11,8 @@ const contents = Object.values(document.querySelectorAll(".contents"));
 const fileInput = document.getElementById("file-input");
 
 // フロートボタン
-const execButton = document.querySelector(".exec-button");
-const fileOpenButton = document.querySelector(".file-open-button");
+const execButtons = document.querySelectorAll(".exec-button");
+const codeOpenButton = document.querySelector(".code-open-button");
 
 // 結果
 const result = document.getElementById("result-area");
@@ -55,30 +55,30 @@ const contentsInit = () => {
   contents.forEach((v) => v.classList.add("hidden"));
   contents[0].classList.remove("hidden");
 
-  execButton.addEventListener("click", () => {
-    try {
-      const id = "result-area";
-      const before = /document\.write\(([^"]+)\);/g;
-      const after = "thinEditorCodeStr += $1;";
+  execButtons.forEach((e) => {
+    e.addEventListener("click", () => {
+      try {
+        const id = "result-area";
+        const before = /document\.write\(([^"]+)\);/g;
+        const after = "thinEditorCodeStr += $1;";
 
-      let strCode = "";
-      strCode += "let thinEditorCodeStr = '';\n";
-      strCode += editor.getCodeText().replaceAll(before, after);
-      strCode += `\ndocument.getElementById("${id}").innerHTML = thinEditorCodeStr;`;
+        let strCode = "";
+        strCode += "let thinEditorCodeStr = '';\n";
+        strCode += editor.getCodeText().replaceAll(before, after);
+        strCode += `\ndocument.getElementById("${id}").innerHTML = thinEditorCodeStr;`;
 
-      console.log(strCode);
-
-      Function(strCode)();
-      tabResult.click();
-    } catch (e) {
-      const msg = `<span style="color: #ff0000;">プログラムが間違っています<span><br />`;
-      result.insertAdjacentHTML("beforeend", msg);
-      result.insertAdjacentHTML("beforeend", "<br />");
-      result.insertAdjacentHTML("beforeend", e);
-    }
+        Function(strCode)();
+        tabResult.click();
+      } catch (e) {
+        const msg = `<span style="color: #ff0000;">プログラムが間違っています<span><br />`;
+        result.insertAdjacentHTML("beforeend", msg);
+        result.insertAdjacentHTML("beforeend", "<br />");
+        result.insertAdjacentHTML("beforeend", e);
+      }
+    });
   });
 
-  fileOpenButton.addEventListener("click", () => {
+  codeOpenButton.addEventListener("click", () => {
     fileInput.click();
   });
 };
