@@ -67,8 +67,6 @@ const contentsInit = () => {
         strCode += editor.getCodeText().replaceAll(before, after);
         strCode += `\ndocument.getElementById("${id}").innerHTML = thinEditorCodeStr;`;
 
-        console.log(strCode);
-
         Function(strCode)();
         tabResult.click();
       } catch (e) {
