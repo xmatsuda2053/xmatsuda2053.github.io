@@ -9,16 +9,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 130px;
-  min-width: 130px;
   height: 30px;
   border-right: 1px solid #7aa5d2;
   background-color: #fffffb;
   font-size: 0.9rem;
   transition: 0.2s ease-in;
-}
-.component.tab .tab-selector-root li span {
-  margin-right: 4px;
 }
 .component.tab .tab-selector-root li.active {
   color: #fffffb;
@@ -28,6 +23,13 @@
   cursor: pointer;
   color: #fffffb;
   background-color: #7aa5d2;
+}
+.component.tab .tab-selector-root .tab-item {
+  width: 130px;
+  min-width: 130px;
+}
+.component.tab .tab-selector-root .tab-item span:first-letter {
+  margin-right: 0.2rem;
 }
 .component.tab .tab-selector-root::-webkit-scrollbar {
   display: none;

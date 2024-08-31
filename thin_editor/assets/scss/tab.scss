@@ -13,17 +13,11 @@ $sub-color: #fffffb;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 130px;
-        min-width: 130px;
         height: 30px;
         border-right: 1px solid $base-color;
         background-color: $sub-color;
         font-size: 0.9rem;
         transition: 0.2s ease-in;
-
-        span {
-          margin-right: 4px;
-        }
 
         &.active {
           color: $sub-color;
@@ -34,6 +28,14 @@ $sub-color: #fffffb;
           cursor: pointer;
           color: $sub-color;
           background-color: $base-color;
+        }
+      }
+
+      .tab-item {
+        width: 130px;
+        min-width: 130px;
+        span:first-letter {
+          margin-right: 0.2rem;
         }
       }
     }

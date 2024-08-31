@@ -1,18 +1,19 @@
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?zglfqi');
-  src:  url('fonts/icomoon.eot?zglfqi#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?zglfqi') format('truetype'),
-    url('fonts/icomoon.woff?zglfqi') format('woff'),
-    url('fonts/icomoon.svg?zglfqi#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("fonts/icomoon.eot?4ai7fq");
+  src: url("fonts/icomoon.eot?4ai7fq#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?4ai7fq") format("truetype"),
+    url("fonts/icomoon.woff?4ai7fq") format("woff"),
+    url("fonts/icomoon.svg?4ai7fq#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -28,8 +29,17 @@
 .icon-open:before {
   content: "\e930";
 }
+.icon-database:before {
+  content: "\e964";
+}
+.icon-bin:before {
+  content: "\e9ac";
+}
 .icon-menu:before {
   content: "\e9bd";
+}
+.icon-plus:before {
+  content: "\ea0a";
 }
 .icon-cross:before {
   content: "\ea0f";
