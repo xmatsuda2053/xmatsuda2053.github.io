@@ -127,6 +127,11 @@ window.addEventListener("load", function () {
   editor.syntaxEditor({
     theme: "dark",
   });
-  editor.setCodeText('document.write("Hello JavaScript.");');
+  let template = "";
+  template += 'const msg = "Hello JavaScript";\n';
+  template += "for (i = 0; i <= 10; i++) {\n";
+  template += "  document.write(`${msg}_${i}<br />`);\n";
+  template += "}\n";
+  editor.setCodeText(template);
   editor.ApplyTextChange();
 });
