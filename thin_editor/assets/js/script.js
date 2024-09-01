@@ -1,5 +1,5 @@
 // タブ
-const tabs = Object.values(document.querySelectorAll(".tab-selector-root>li"));
+let tabs;
 let tabCode;
 let tabResult;
 
@@ -7,7 +7,7 @@ let tabResult;
 const editor = document.getElementById("main-editor");
 
 // コンテンツ
-const contents = Object.values(document.querySelectorAll(".contents"));
+let contents;
 const fileInput = document.getElementById("file-input");
 
 // フロートボタン
@@ -25,50 +25,62 @@ const drawer = document.getElementById("drawer");
 // ------------------------------------------------------------
 // - Tab
 // ------------------------------------------------------------
-const tabInit = () => {
-  tabs.forEach((e) => {
-    e.addEventListener("click", () => {
-      if (e.classList.contains("active")) return;
+const updateTabs = () => {
+  tabs = Object.values(document.querySelectorAll(".tab-selector-root>li"));
+};
 
-      tabs.forEach((v) => v.classList.remove("active"));
-      e.classList.add("active");
+const addTabClickEvent = (e) => {
+  e.addEventListener("click", () => {
+    if (e.classList.contains("active")) return;
 
-      contents.forEach((v) => {
-        v.classList.add("hidden");
-        if (v.id == e.dataset.target) {
-          v.classList.remove("hidden");
-        }
-      });
+    tabs.forEach((v) => v.classList.remove("active"));
+    e.classList.add("active");
+
+    contents.forEach((v) => {
+      v.classList.add("hidden");
+      if (v.id == e.dataset.target) {
+        v.classList.remove("hidden");
+      }
     });
   });
+};
 
+const tabInit = () => {
+  updateTabs();
+  tabs.forEach((e) => addTabClickEvent(e));
   tabCode = tabs[0];
   tabResult = tabs[1];
-
   tabCode.click();
 };
 
 // ------------------------------------------------------------
 // - Contents
 // ------------------------------------------------------------
+updateContents = () => {
+  contents = contents = Object.values(document.querySelectorAll(".contents"));
+};
+
 const contentsInit = () => {
+  updateContents();
+
   contents.forEach((v) => v.classList.add("hidden"));
   contents[0].classList.remove("hidden");
 
   execButtons.forEach((e) => {
     e.addEventListener("click", () => {
       try {
-        const id = "result-area";
-        const before = /document\.write\((.*?)\)/g;
-        const after = "thinEditorCodeStr += $1";
+        let strCode = editor.getCodeText();
+        let funcCode = "";
 
-        let strCode = "";
-        strCode += "let thinEditorCodeStr = '';\n";
-        strCode += editor.getCodeText().replaceAll(before, after);
-        strCode += `\ndocument.getElementById("${id}").innerHTML = thinEditorCodeStr;`;
+        funcCode += "let teCodeStr = '';\n";
+        funcCode += strCode.replaceAll(
+          /document\.write\((.*?)\)/g,
+          "teCodeStr += $1"
+        );
+        funcCode += `\ndocument.getElementById("result-area").innerHTML = teCodeStr;`;
 
         tabResult.click();
-        Function(strCode)();
+        Function(funcCode)();
       } catch (e) {
         const msg = `<span style="color: #ff0000;">プログラムが間違っています<span><br />`;
         result.insertAdjacentHTML("beforeend", msg);
@@ -81,20 +93,20 @@ const contentsInit = () => {
   codeOpenButton.addEventListener("click", () => {
     fileInput.click();
   });
-};
 
-fileInput.addEventListener("change", function () {
-  const file = fileInput.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function () {
-    editor.setCodeText(reader.result);
-    editor.ApplyTextChange();
-    result.innerHTML = "";
-  };
-  reader.readAsText(file);
-  fileInput.value = "";
-});
+  fileInput.addEventListener("change", function () {
+    const file = fileInput.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function () {
+      editor.setCodeText(reader.result);
+      editor.ApplyTextChange();
+      result.innerHTML = "";
+    };
+    reader.readAsText(file);
+    fileInput.value = "";
+  });
+};
 
 // ------------------------------------------------------------
 // - Drawer
@@ -106,15 +118,15 @@ const drawerInit = () => {
       drawerClose.click();
     }
   });
+
+  drawerOpen.addEventListener("click", () => {
+    drawer.classList.add("show");
+  });
+
+  drawerClose.addEventListener("click", () => {
+    drawer.classList.remove("show");
+  });
 };
-
-drawerOpen.addEventListener("click", () => {
-  drawer.classList.add("show");
-});
-
-drawerClose.addEventListener("click", () => {
-  drawer.classList.remove("show");
-});
 
 // ------------------------------------------------------------
 // - Window Load
@@ -122,8 +134,8 @@ drawerClose.addEventListener("click", () => {
 
 window.addEventListener("load", function () {
   drawerInit();
-  tabInit();
   contentsInit();
+  tabInit();
   editor.syntaxEditor({
     theme: "dark",
   });
