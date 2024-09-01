@@ -122,7 +122,9 @@ const contentsInit = () => {
       editor.ApplyTextChange();
       result.innerHTML = "";
       tabCode.children[0].textContent = file.name;
-    } catch (e) {}
+    } catch (e) {
+      alert("Sorry. It's impossible with your device.");
+    }
   });
 
   saveButton.addEventListener("click", async () => {
@@ -133,7 +135,9 @@ const contentsInit = () => {
       const writable = await fileHandle.createWritable();
       await writable.write(editor.getCodeText());
       await writable.close();
-    } catch (e) {}
+    } catch (e) {
+      alert("Sorry. It's impossible with your device.");
+    }
   });
 
   if (isSmartphone()) {
