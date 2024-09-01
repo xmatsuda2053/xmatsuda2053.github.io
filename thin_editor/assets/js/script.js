@@ -135,6 +135,7 @@ const contentsInit = () => {
       const writable = await fileHandle.createWritable();
       await writable.write(editor.getCodeText());
       await writable.close();
+      tabCode.children[0].textContent = file.name;
     } catch (e) {
       alert("Sorry. It's impossible with your device.");
     }
