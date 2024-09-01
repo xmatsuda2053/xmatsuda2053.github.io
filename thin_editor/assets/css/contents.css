@@ -40,11 +40,11 @@
 .contents-area > .component .float-button.hidden {
   display: none;
 }
-.contents-area > .component .float-button.code-open-button {
+.contents-area > .component .float-button.save-button {
   right: 20px;
   bottom: 140px;
 }
-.contents-area > .component .float-button.save-button {
+.contents-area > .component .float-button.code-open-button {
   right: 20px;
   bottom: 80px;
 }
