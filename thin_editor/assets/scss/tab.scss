@@ -1,9 +1,9 @@
-$base-color: #7aa5d2;
-$sub-color: #fffffb;
+@use "_color" as color;
 
 .component {
   &.tab {
-    border-bottom: 1px solid #7aa5d2;
+    background-color: color.$main-bg;
+    border-bottom: 1px solid color.$sub-theme;
 
     .tab-selector-root {
       display: flex;
@@ -14,20 +14,20 @@ $sub-color: #fffffb;
         justify-content: center;
         align-items: center;
         height: 30px;
-        border-right: 1px solid $base-color;
-        background-color: $sub-color;
+        border-right: 1px solid color.$sub-theme;
+        background-color: color.$main-bg;
         font-size: 0.9rem;
         transition: 0.2s ease-in;
 
         &.active {
-          color: $sub-color;
-          background-color: $base-color;
+          color: color.$font;
+          background-color: color.$sub-theme;
         }
 
         &:hover {
           cursor: pointer;
-          color: $sub-color;
-          background-color: $base-color;
+          color: color.$font;
+          background-color: color.$sub-theme;
         }
       }
 

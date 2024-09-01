@@ -1,5 +1,7 @@
+@use "_color" as color;
 .component {
   &.header {
+    background-color: color.$main-bg;
     #drawer-open {
       margin-left: 1px;
       line-height: 40px;
