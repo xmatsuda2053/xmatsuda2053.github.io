@@ -1,12 +1,16 @@
+@use "_color" as color;
+
 .component {
+  $drawer-width: 350px;
+
   &.drawer {
     position: fixed;
-    left: -350px;
+    left: $drawer-width * -1;
     top: 0;
-    width: 350px;
+    width: $drawer-width;
     height: 100%;
     padding: 1rem 0.5rem 0.5rem 0.5rem;
-    background-color: #f0f0f0;
+    background-color: color.$main-bg;
     transition: left 0.5s ease-in-out;
 
     &.show {
@@ -15,7 +19,7 @@
 
     #drawer-close {
       position: relative;
-      left: 300px;
+      left: $drawer-width - 50;
     }
 
     > .box-parent {
@@ -26,8 +30,8 @@
       .box-child {
         padding: 0.5rem;
         border-radius: 0.5rem;
-        background-color: #505153;
-        color: #fffffb;
+        background-color: color.$sub-bg;
+        color: color.$font;
         font-size: 0.8rem;
         line-height: 1.2rem;
       }
