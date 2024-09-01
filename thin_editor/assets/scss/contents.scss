@@ -48,6 +48,10 @@
       font-size: 1.8rem;
       transition: 0.2s ease-in;
 
+      &.hidden {
+        display: none;
+      }
+
       &.code-open-button {
         right: 20px;
         bottom: 140px;

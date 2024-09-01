@@ -37,6 +37,9 @@
   font-size: 1.8rem;
   transition: 0.2s ease-in;
 }
+.contents-area > .component .float-button.hidden {
+  display: none;
+}
 .contents-area > .component .float-button.code-open-button {
   right: 20px;
   bottom: 140px;

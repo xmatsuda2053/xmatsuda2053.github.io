@@ -26,6 +26,13 @@ const drawerOpen = document.getElementById("drawer-open");
 const drawerClose = document.getElementById("drawer-close");
 const drawer = document.getElementById("drawer");
 
+const isSmartphone = () => {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return /iphone|ipod|android.*mobile|windows.*phone|blackberry.*mobile/.test(
+    userAgent
+  );
+};
+
 // ------------------------------------------------------------
 // - Tab
 // ------------------------------------------------------------
@@ -128,6 +135,11 @@ const contentsInit = () => {
       await writable.close();
     } catch (e) {}
   });
+
+  if (isSmartphone()) {
+    codeOpenButton.classList.add("hidden");
+    saveButton.classList.add("hidden");
+  }
 };
 
 // ------------------------------------------------------------
