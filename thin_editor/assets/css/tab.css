@@ -26,8 +26,9 @@
   background-color: #7aa5d2;
 }
 .component.tab .tab-selector-root .tab-item {
-  width: 130px;
   min-width: 130px;
+  min-width: 130px;
+  padding: 0 1rem;
 }
 .component.tab .tab-selector-root .tab-item span:first-letter {
   margin-right: 0.2rem;

@@ -32,8 +32,9 @@
       }
 
       .tab-item {
-        width: 130px;
         min-width: 130px;
+        min-width: 130px;
+        padding: 0 1rem;
         span:first-letter {
           margin-right: 0.2rem;
         }

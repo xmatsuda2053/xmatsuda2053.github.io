@@ -10,9 +10,13 @@ const editor = document.getElementById("main-editor");
 let contents;
 const fileInput = document.getElementById("file-input");
 
+// ファイル操作
+let fileHandle = null;
+
 // フロートボタン
 const execButtons = document.querySelectorAll(".exec-button");
 const codeOpenButton = document.querySelector(".code-open-button");
+const saveButton = document.querySelector(".save-button");
 
 // 結果
 const result = document.getElementById("result-area");
@@ -90,21 +94,39 @@ const contentsInit = () => {
     });
   });
 
-  codeOpenButton.addEventListener("click", () => {
-    fileInput.click();
-  });
+  const fileOption = {
+    types: [
+      {
+        description: "JavaScriptファイル",
+        accept: {
+          "text/javascript": [".js"],
+        },
+      },
+    ],
+    excludeAcceptAllOption: true,
+  };
 
-  fileInput.addEventListener("change", function () {
-    const file = fileInput.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function () {
-      editor.setCodeText(reader.result);
+  codeOpenButton.addEventListener("click", async () => {
+    try {
+      [fileHandle] = await window.showOpenFilePicker(fileOption);
+      const file = await fileHandle.getFile();
+      const fileText = await file.text();
+      editor.setCodeText(fileText);
       editor.ApplyTextChange();
       result.innerHTML = "";
-    };
-    reader.readAsText(file);
-    fileInput.value = "";
+      tabCode.children[0].textContent = file.name;
+    } catch (e) {}
+  });
+
+  saveButton.addEventListener("click", async () => {
+    try {
+      if (fileHandle == null) {
+        fileHandle = await window.showSaveFilePicker(fileOption);
+      }
+      const writable = await fileHandle.createWritable();
+      await writable.write(editor.getCodeText());
+      await writable.close();
+    } catch (e) {}
   });
 };
 
