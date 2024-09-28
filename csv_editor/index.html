@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/vendor/destyle/destyle.css" />
+    <link rel="stylesheet" href="assets/vendor/icomoon/style.css" />
+    <link rel="stylesheet" href="assets/css/grid.css" />
+    <link rel="stylesheet" href="assets/css/search.css" />
+    <link rel="stylesheet" href="assets/css/editor.css" />
+    <link rel="stylesheet" href="assets/css/float.css" />
+    <title>CSV Edtor</title>
+  </head>
+  <body>
+    <div class="float-buttons">
+      <ul>
+        <li><button class="icon-open"></button></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="search_area">
+        <div class="component search">
+          <span class="icon-search"></span>
+          <input
+            type="text"
+            id="$searchText"
+            class="searchText"
+            placeholder="search..."
+          />
+        </div>
+      </div>
+      <div class="editor_area">
+        <div class="component editor">
+          <div class="scroll">
+            <table id="$editTable"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="assets/js/script.js"></script>
+</html>
