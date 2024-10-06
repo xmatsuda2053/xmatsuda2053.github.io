@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhiteborD</title>
+    <link rel="stylesheet" href="assets/css/destyle.css" />
+    <link rel="stylesheet" href="assets/css/post-it.css" />
+    <link rel="stylesheet" href="assets/css/svg.css" />
+  </head>
+  <body>
+    <!--icon start-->
+    <svg
+      aria-hidden="true"
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <defs>
+        <!--clear-->
+        <symbol id="icon-archive" viewBox="0 0 32 32">
+          <path
+            d="M26 2h-20l-6 6v21c0 0.552 0.448 1 1 1h30c0.552 0 1-0.448 1-1v-21l-6-6zM16 26l-10-8h6v-6h8v6h6l-10 8zM4.828 6l2-2h18.343l2 2h-22.343z"
+          ></path>
+        </symbol>
+        <!--plus-->
+        <symbol id="icon-plus" viewBox="0 0 32 32">
+          <path
+            d="M31 12h-11v-11c0-0.552-0.448-1-1-1h-6c-0.552 0-1 0.448-1 1v11h-11c-0.552 0-1 0.448-1 1v6c0 0.552 0.448 1 1 1h11v11c0 0.552 0.448 1 1 1h6c0.552 0 1-0.448 1-1v-11h11c0.552 0 1-0.448 1-1v-6c0-0.552-0.448-1-1-1z"
+          ></path>
+        </symbol>
+        <!--open-->
+        <symbol id="icon-open" viewBox="0 0 32 32">
+          <path d="M26 30l6-16h-26l-6 16zM4 12l-4 18v-26h9l4 4h13v4z"></path>
+        </symbol>
+        <!--save-->
+        <symbol id="icon-save" viewBox="0 0 32 32">
+          <path
+            d="M28 0h-28v32h32v-28l-4-4zM16 4h4v8h-4v-8zM28 28h-24v-24h2v10h18v-10h2.343l1.657 1.657v22.343z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
+    <!--icon end-->
+    <div id="main-page" class="container">
+      <!--menu start-->
+      <div class="control-area" id="control">
+        <ul class="button-list">
+          <li id="folder-open">
+            <svg class="icon icon-open">
+              <use xlink:href="#icon-open"></use>
+            </svg>
+          </li>
+          <li id="all-save">
+            <svg class="icon icon-save">
+              <use xlink:href="#icon-save"></use>
+            </svg>
+          </li>
+        </ul>
+      </div>
+      <div class="add-area" id="add"></div>
+      <!--menu end-->
+      <!--whitebord start-->
+      <div class="whitebord-area" id="whitebord">
+        <div id="message" class="message-box fade-in-up hidden"></div>
+      </div>
+      <!--whitebord end-->
+    </div>
+  </body>
+  <script src="assets/js/script.js"></script>
+</html>
