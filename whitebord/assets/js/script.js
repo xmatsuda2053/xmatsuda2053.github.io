@@ -321,6 +321,36 @@ function clickAllSave() {
   });
 }
 
+function keuupSearch() {
+  const searchText = document.getElementById("search-text");
+  const searchCancel = document.getElementById("search-cancel");
+
+  searchText.addEventListener("keyup", () => {
+    const kws = searchText.value.toLowerCase().split(",");
+    for (let postIt of document.getElementsByClassName("post-it-root")) {
+      postIt.style.display = "";
+      const text = getSearchText(getTaskData(postIt));
+      if (kws.find((v) => text.indexOf(v) === -1) !== undefined) {
+        postIt.style.display = "none";
+      }
+    }
+  });
+
+  searchCancel.addEventListener("click", () => {
+    searchText.value = "";
+    for (let postIt of document.getElementsByClassName("post-it-root")) {
+      postIt.style.display = "";
+    }
+  });
+
+  function getSearchText(object) {
+    const title = object.title;
+    const descrption = object.descrption;
+    const dueDate = object.dueDate.replace(/-/g, "/");
+    return `${title}${descrption}${dueDate}`;
+  }
+}
+
 function showMessage(message) {
   const messageBox = document.getElementById("message");
   messageBox.classList.remove("hidden");
@@ -332,7 +362,7 @@ function showMessage(message) {
   }
 }
 
-async function saveItem(handle, element) {
+function getTaskData(element) {
   const postIt = JSON.parse(template);
   postIt.id = element.id;
   postIt.top = element.dataset.top;
@@ -343,7 +373,11 @@ async function saveItem(handle, element) {
     element.getElementsByClassName("descrption-text")[0].value;
   postIt.dueDate = element.getElementsByClassName("date-text")[0].value;
 
-  const jsonStr = JSON.stringify(postIt);
+  return postIt;
+}
+
+async function saveItem(handle, element) {
+  const jsonStr = JSON.stringify(getTaskData(element));
   const fileHandle = await handle.getFileHandle(`${element.id}.json`, {
     create: true,
   });
@@ -369,5 +403,6 @@ function getUniqueStr() {
 window.addEventListener("DOMContentLoaded", () => {
   clickOpenFolder();
   clickAllSave();
+  keuupSearch();
   clickAddPostIt();
 });

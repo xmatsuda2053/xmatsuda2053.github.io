@@ -49,12 +49,12 @@
 
 .container {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 200px 1fr 1fr;
   grid-template-rows: 60px 1fr;
   grid-auto-columns: 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
-  grid-template-areas: "control-area add-area" "whitebord-area whitebord-area";
+  grid-template-areas: "control-area search-area add-area" "whitebord-area whitebord-area whitebord-area";
   height: 100vh;
 }
 .container .button-list {
@@ -66,7 +66,7 @@
   border: 3px solid #686d76;
   border-radius: 0.5rem;
   align-content: center;
-  margin: 0 0.3rem;
+  margin: 0 0.1rem;
 }
 .container .button-list li .icon {
   margin: 0 auto;
@@ -82,13 +82,49 @@
   background-color: #686d76;
 }
 .container .control-area#control {
-  padding: 10px 0;
+  padding: 10px 5px;
   line-height: 40px;
 }
 .container .control-area#control .button-list li {
   background-color: #4379f2;
   color: #fffffb;
   font-size: 1.5rem;
+}
+.container .search-area {
+  grid-area: search-area;
+  background-color: #686d76;
+}
+.container .search-area#search {
+  padding: 10px 0;
+  position: relative;
+}
+.container .search-area#search .icon-search {
+  position: absolute;
+  top: 15px;
+  left: 0.5rem;
+  height: 30px;
+  font-size: 1.2rem;
+  color: #555555;
+}
+.container .search-area#search .icon-cancel {
+  position: absolute;
+  top: 15px;
+  right: 0.5rem;
+  height: 30px;
+  font-size: 1.2rem;
+  color: #555555;
+  cursor: pointer;
+}
+.container .search-area#search .icon-cancel:hover {
+  color: #000000;
+}
+.container .search-area#search #search-text {
+  width: 100%;
+  border-radius: 0.5rem;
+  line-height: 40px;
+  padding: 0 2.5rem;
+  background-color: #fffffb;
+  outline: none;
 }
 .container .add-area {
   grid-area: add-area;

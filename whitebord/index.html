@@ -40,6 +40,19 @@
             d="M28 0h-28v32h32v-28l-4-4zM16 4h4v8h-4v-8zM28 28h-24v-24h2v10h18v-10h2.343l1.657 1.657v22.343z"
           ></path>
         </symbol>
+        <!--search-->
+        <symbol id="icon-search" viewBox="0 0 32 32">
+          <path
+            d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"
+          ></path>
+        </symbol>
+        <!--cancel-->
+        <symbol id="icon-cancel" viewBox="0 0 32 32">
+          <path
+            d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"
+          ></path>
+          <path d="M21 8l-5 5-5-5-3 3 5 5-5 5 3 3 5-5 5 5 3-3-5-5 5-5z"></path>
+        </symbol>
       </defs>
     </svg>
     <!--icon end-->
@@ -58,6 +71,15 @@
             </svg>
           </li>
         </ul>
+      </div>
+      <div class="search-area" id="search">
+        <svg class="icon icon-search">
+          <use xlink:href="#icon-search"></use>
+        </svg>
+        <svg class="icon icon-cancel" id="search-cancel">
+          <use xlink:href="#icon-cancel"></use>
+        </svg>
+        <input type="text" id="search-text" placeholder="Search..." />
       </div>
       <div class="add-area" id="add"></div>
       <!--menu end-->
