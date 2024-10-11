@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mmd editor</title>
+    <link rel="stylesheet" href="assets/css/destyle.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/svg.css" />
+    <link rel="stylesheet" href="assets/vendor/syntaxeditor.css" />
+  </head>
+  <body>
+    <svg
+      aria-hidden="true"
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <defs>
+        <symbol id="icon-open" viewBox="0 0 32 32">
+          <path d="M26 30l6-16h-26l-6 16zM4 12l-4 18v-26h9l4 4h13v4z"></path>
+        </symbol>
+        <symbol id="icon-save" viewBox="0 0 32 32">
+          <path
+            d="M28 0h-28v32h32v-28l-4-4zM16 4h4v8h-4v-8zM28 28h-24v-24h2v10h18v-10h2.343l1.657 1.657v22.343z"
+          ></path>
+        </symbol>
+        <symbol id="icon-download" viewBox="0 0 32 32">
+          <path
+            d="M16 18l8-8h-6v-8h-4v8h-6zM23.273 14.727l-2.242 2.242 8.128 3.031-13.158 4.907-13.158-4.907 8.127-3.031-2.242-2.242-8.727 3.273v8l16 6 16-6v-8z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
+    <div class="container">
+      <div class="header-area">
+        <ul class="button-list">
+          <li id="open">
+            <svg class="icon icon-open">
+              <use xlink:href="#icon-open"></use>
+            </svg>
+          </li>
+          <li id="save">
+            <svg class="icon icon-save">
+              <use xlink:href="#icon-save"></use>
+            </svg>
+          </li>
+          <li id="download">
+            <svg class="icon icon-download">
+              <use xlink:href="#icon-download"></use>
+            </svg>
+          </li>
+        </ul>
+      </div>
+      <div class="contents-area">
+        <div id="editor" style="width: 20%"></div>
+        <div id="resizeHandler"></div>
+        <div id="result" style="width: 70%"></div>
+      </div>
+    </div>
+  </body>
+  <script src="assets/vendor/syntaxeditor.js"></script>
+  <script src="assets/vendor/mermaid.js"></script>
+  <script src="assets/js/script.js"></script>
+</html>
