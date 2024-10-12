@@ -31,32 +31,113 @@
             d="M16 18l8-8h-6v-8h-4v8h-6zM23.273 14.727l-2.242 2.242 8.128 3.031-13.158 4.907-13.158-4.907 8.127-3.031-2.242-2.242-8.727 3.273v8l16 6 16-6v-8z"
           ></path>
         </symbol>
+        <symbol id="icon-books" viewBox="0 0 36 32">
+          <path
+            d="M7 4h-6c-0.55 0-1 0.45-1 1v22c0 0.55 0.45 1 1 1h6c0.55 0 1-0.45 1-1v-22c0-0.55-0.45-1-1-1zM6 10h-4v-2h4v2z"
+          ></path>
+          <path
+            d="M17 4h-6c-0.55 0-1 0.45-1 1v22c0 0.55 0.45 1 1 1h6c0.55 0 1-0.45 1-1v-22c0-0.55-0.45-1-1-1zM16 10h-4v-2h4v2z"
+          ></path>
+          <path
+            d="M23.909 5.546l-5.358 2.7c-0.491 0.247-0.691 0.852-0.443 1.343l8.999 17.861c0.247 0.491 0.852 0.691 1.343 0.443l5.358-2.7c0.491-0.247 0.691-0.852 0.443-1.343l-8.999-17.861c-0.247-0.491-0.852-0.691-1.343-0.443z"
+          ></path>
+        </symbol>
       </defs>
     </svg>
     <div class="container">
-      <div class="header-area">
+      <div id="header" class="header-area"></div>
+      <div class="menu-area">
         <ul class="button-list">
           <li id="open">
             <svg class="icon icon-open">
               <use xlink:href="#icon-open"></use>
             </svg>
+            <div class="tag">ファイルを開く</div>
           </li>
           <li id="save">
             <svg class="icon icon-save">
               <use xlink:href="#icon-save"></use>
             </svg>
+            <div class="tag">ファイルを保存</div>
           </li>
           <li id="download">
             <svg class="icon icon-download">
               <use xlink:href="#icon-download"></use>
             </svg>
+            <div class="tag">ダウンロード</div>
+          </li>
+          <li id="sample">
+            <svg class="icon icon-books">
+              <use xlink:href="#icon-books"></use>
+            </svg>
+            <div class="tag">テンプレート</div>
           </li>
         </ul>
       </div>
       <div class="contents-area">
         <div id="editor" style="width: 20%"></div>
         <div id="resizeHandler"></div>
-        <div id="result" style="width: 70%"></div>
+        <div id="result" style="width: 70%">
+          <div id="svg-area"></div>
+        </div>
+      </div>
+    </div>
+    <!--メッセージ-->
+    <div id="message" class="message-box fade-in-up none"></div>
+    <!--サンプル-->
+    <div id="sample-window" class="sub-window hidden">
+      <div id="sample-form" class="form-area">
+        <div id="sample-group" class="group">
+          <input type="radio" id="s1" value="s1" name="sample-type" checked />
+          <label for="s1">SequenceDiagram</label>
+          <input type="radio" id="s2" value="s2" name="sample-type" />
+          <label for="s2">Flowchart </label>
+          <input type="radio" id="s3" value="s3" name="sample-type" />
+          <label for="s3">Gantt</label>
+          <input type="radio" id="s4" value="s4" name="sample-type" />
+          <label for="s4">Pie</label>
+          <input type="radio" id="s5" value="s5" name="sample-type" />
+          <label for="s5">Mindmap</label>
+        </div>
+        <div id="sample-group" class="group">
+          <input type="radio" id="s6" value="s6" name="sample-type" />
+          <label for="s6">Timeline</label>
+          <input type="radio" id="s7" value="s7" name="sample-type" />
+          <label for="s7">StateDiagram</label>
+          <input type="radio" id="s8" value="s8" name="sample-type" />
+          <label for="s8">ErDiagram</label>
+        </div>
+        <div id="sample-footer" class="footer">
+          <button id="sample-exec" class="exec-button">Append</button>
+          <button id="sample-cancel" class="cancel-button">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!--ダウンロード-->
+    <div id="download-config-window" class="sub-window hidden">
+      <div id="download-config-form" class="form-area">
+        <div id="type-group" class="group">
+          <span class="group-title">ファイル形式</span>
+          <input type="radio" id="png" value="png" name="dl-type" checked />
+          <label for="png">PNG</label>
+          <input type="radio" id="webp" value="webp" name="dl-type" />
+          <label for="webp">WEBP</label>
+          <input type="radio" id="svg" value="svg" name="dl-type" />
+          <label for="svg">SVG</label>
+        </div>
+        <div id="quality-group" class="group">
+          <span class="group-title">画質設定</span>
+          <input type="radio" id="high" value="high" name="quality" />
+          <label for="high">High</label>
+          <input type="radio" id="mid" value="mid" name="quality" checked />
+          <label for="mid">Middle</label>
+          <input type="radio" id="low" value="low" name="quality" />
+          <label for="low">Low</label>
+        </div>
+        <div id="download-footer" class="footer">
+          <button id="download-exec" class="exec-button">Download</button>
+          <button id="download-cancel" class="cancel-button">Cancel</button>
+        </div>
       </div>
     </div>
   </body>

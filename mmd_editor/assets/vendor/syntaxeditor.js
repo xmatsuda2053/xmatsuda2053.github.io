@@ -96,14 +96,14 @@ HTMLElement.prototype.syntaxEditor = function (config) {
      * @type {RegExp}
      */
     const regExpVarType =
-      /\b(sequenceDiagram|flowchart|classDiagram|stateDiagram|erDiagram|journey|gantt|pie|quadrantChart|requirementDiagram|mindmap|timeline)\b/g;
+      /\b(sequenceDiagram|flowchart|classDiagram|stateDiagram|erDiagram|journey|gantt|pie|quadrantChart|requirementDiagram|mindmap|timeline)\b/gi;
 
     /**
      * 予約語のハイライト定義
      * @constant
      * @type {RegExp}
      */
-    const regExpReserve = /\b(TD|TB|BT|RL|LR)\b/g;
+    const regExpReserve = /\b(TD|TB|BT|RL|LR|as)\b/gi;
 
     /**
      * その他文言のハイライト定義
@@ -111,18 +111,28 @@ HTMLElement.prototype.syntaxEditor = function (config) {
      * @type {RegExp}
      */
     const regExpOther =
-      /\b(box|round_box|stadium|subroutine|cylindrical|circle|asymmetric|rhombus|hexagon|parallelogram|parallelogram_alt|trapezoid|trapezoid_alt|double_circle|participant|actor)\b/g;
+      /\b(box|round_box|stadium|subroutine|cylindrical|circle|asymmetric|rhombus|hexagon|parallelogram|parallelogram_alt|trapezoid|trapezoid_alt|double_circle|participant|actor)\b/gi;
 
     /**
      * redハイライト定義
      * @constant
      * @type {RegExp}
      */
-    const regRed = /\b(destroy)\b/g;
+    const regRed = /\b(destroy)\b/gi;
 
     // ハイライト用のクラスを設定
     const arr = seCodeEditor.value
       .replaceAll(" ", "&nbsp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll("{", "&lbrace;")
+      .replaceAll("}", "&rbrace;")
+      .replaceAll("(", "&lpar;")
+      .replaceAll(")", "&rpar;")
+      .replaceAll("[", "&lbrack;")
+      .replaceAll("]", "&rbrack;")
+      .replaceAll("/", "&#47;")
+      .replaceAll("*", "&#42;")
       .replace(/\"(.*?)\"/g, `<span class="se-pattern-emphasis">"$1"</span>`)
       .replace(/\'(.*?)\'/g, `<span class="se-pattern-emphasis">'$1'</span>`)
       .replace(/\`(.*?)\`/g, '<span class="se-pattern-emphasis">`$1`</span>')
