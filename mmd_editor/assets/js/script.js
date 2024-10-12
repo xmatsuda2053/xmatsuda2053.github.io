@@ -263,74 +263,74 @@ function initClickSampleShow() {
 
       function getSequenceDiagramSample() {
         return `sequenceDiagram
-    Alice->>Bob: Hello Bob, how are you ?
-    Bob->>Alice: Fine, thank you. And you?
-    create participant Carl
-    Alice->>Carl: Hi Carl!
-    create actor D as Donald
-    Carl->>D: Hi!
-    destroy Carl
-    Alice-xCarl: We are too many
-    destroy Bob
-    Bob->>Alice: I agree`;
+  Alice->>Bob: Hello Bob, how are you ?
+  Bob->>Alice: Fine, thank you. And you?
+  create participant Carl
+  Alice->>Carl: Hi Carl!
+  create actor D as Donald
+  Carl->>D: Hi!
+  destroy Carl
+  Alice-xCarl: We are too many
+  destroy Bob
+  Bob->>Alice: I agree`;
       }
 
       function getFlowchart() {
         return `flowchart TD
-    A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{Let me think}
-    C -->|One| D[Laptop]
-    C -->|Two| E[iPhone]
-    C -->|Three| F[fa:fa-car Car]`;
+  A[Christmas] -->|Get money| B(Go shopping)
+  B --> C{Let me think}
+  C -->|One| D[Laptop]
+  C -->|Two| E[iPhone]
+  C -->|Three| F[fa:fa-car Car]`;
       }
 
       function getGantt() {
         return `gantt
-    title A Gantt Diagram
-    dateFormat YYYY-MM-DD
-    section Section
-        A task          :a1, 2014-01-01, 30d
-        Another task    :after a1, 20d
-    section Another
-        Task in Another :2014-01-12, 12d
-        another task    :24d`;
+  title A Gantt Diagram
+  dateFormat YYYY-MM-DD
+  section Section
+      A task          :a1, 2014-01-01, 30d
+      Another task    :after a1, 20d
+  section Another
+      Task in Another :2014-01-12, 12d
+      another task    :24d`;
       }
 
       function getPie() {
         return `pie title Pets adopted by volunteers
-    "Dogs" : 386
-    "Cats" : 85
-    "Rats" : 15`;
+  "Dogs" : 386
+  "Cats" : 85
+  "Rats" : 15`;
       }
 
       function getMindmap() {
         return `mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid`;
+root((mindmap))
+  Origins
+    Long history
+    ::icon(fa fa-book)
+    Popularisation
+      British popular psychology author Tony Buzan
+  Research
+    On effectiveness<br/>and features
+    On Automatic creation
+      Uses
+          Creative techniques
+          Strategic planning
+          Argument mapping
+  Tools
+    Pen and paper
+    Mermaid`;
       }
 
       function getTimeline() {
         return `timeline
-    title History of Social Media Platform
-    2002 : LinkedIn
-    2004 : Facebook
-         : Google
-    2005 : Youtube
-    2006 : Twitter`;
+  title History of Social Media Platform
+  2002 : LinkedIn
+  2004 : Facebook
+       : Google
+  2005 : Youtube
+  2006 : Twitter`;
       }
 
       function getStateDiagram() {
@@ -338,13 +338,13 @@ function initClickSampleShow() {
 title: Simple sample
 ---
 stateDiagram-v2
-    [*] --> Still
-    Still --> [*]
+  [*] --> Still
+  Still --> [*]
 
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]`;
+  Still --> Moving
+  Moving --> Still
+  Moving --> Crash
+  Crash --> [*]`;
       }
 
       function getErDiagram() {
@@ -352,9 +352,9 @@ stateDiagram-v2
 title: Order example
 ---
 erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ LINE-ITEM : contains
-    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses`;
+  CUSTOMER ||--o{ ORDER : places
+  ORDER ||--|{ LINE-ITEM : contains
+  CUSTOMER }|..|{ DELIVERY-ADDRESS : uses`;
       }
     });
   }
