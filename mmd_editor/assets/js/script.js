@@ -41,16 +41,61 @@ window.addEventListener("DOMContentLoaded", () => {
   initDragResizeHandler();
 });
 
+function formatFileData(file) {
+  const div = createDiv();
+  const name = createName(file.name);
+  const date = createDate(file.lastModified);
+
+  div.appendChild(name);
+  div.appendChild(date);
+
+  return div;
+
+  function createDiv() {
+    const element = document.createElement("div");
+    return element;
+  }
+
+  function createName(name) {
+    const element = document.createElement("span");
+    element.classList.add("file-nama");
+    element.textContent = name;
+    return element;
+  }
+
+  function createDate(lastModified) {
+    const element = document.createElement("span");
+    element.classList.add("file-date");
+    element.textContent = formatDate(lastModified);
+    return element;
+
+    function formatDate(lastModified) {
+      const date = new Date(lastModified);
+      const yyyy = date.getFullYear();
+      const MM = String(date.getMonth() + 1).padStart(2, "0");
+      const dd = String(date.getDate()).padStart(2, "0");
+      const hh = String(date.getHours()).padStart(2, "0");
+      const mm = String(date.getMinutes()).padStart(2, "0");
+      const ss = String(date.getSeconds()).padStart(2, "0");
+
+      return `${yyyy}/${MM}/${dd} ${hh}:${mm}:${ss}`;
+    }
+  }
+}
+
 function initFileOpen() {
   fileOpen.addEventListener("click", async () => {
     try {
       [fileHandle] = await window.showOpenFilePicker(fileOption);
       const file = await fileHandle.getFile();
       const fileText = await file.text();
+
       editor.setCodeText(fileText);
       editor.ApplyTextChange();
       renderMermaid();
-      header.innerText = file.name;
+
+      header.innerHTML = "";
+      header.appendChild(formatFileData(file));
     } catch (e) {}
   });
 }
@@ -61,11 +106,16 @@ function initFileSave() {
       if (fileHandle == null) {
         fileHandle = await window.showSaveFilePicker(fileOption);
       }
-      const file = await fileHandle.getFile();
+
       const writable = await fileHandle.createWritable();
       await writable.write(editor.getCodeText());
       await writable.close();
-      header.innerText = file.name;
+
+      const file = await fileHandle.getFile();
+
+      header.innerHTML = "";
+      header.appendChild(formatFileData(file));
+
       showMessage(`${file.name} saved.`);
     } catch (e) {}
   });

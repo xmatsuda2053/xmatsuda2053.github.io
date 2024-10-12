@@ -13,10 +13,15 @@
   background-color: #505153;
   color: #fffffb;
   border-bottom: 1px solid #333333;
-  font-size: 0.8rem;
   line-height: 30px;
   padding-left: 0.5rem;
-  font-weight: bold;
+}
+.container .header-area .file-nama {
+  font-size: 0.9rem;
+}
+.container .header-area .file-date {
+  margin-left: 1rem;
+  font-size: 0.7rem;
 }
 .container .menu-area {
   grid-area: menu-area;
@@ -28,7 +33,7 @@
   border-left: 3px solid #505153;
   width: 50px;
   padding: 5px 0;
-  color: #fffffb;
+  color: #d7d7d7;
   cursor: pointer;
 }
 .container .menu-area .button-list li .tag {
