@@ -1,0 +1,77 @@
+@use "../../foundation/color";
+
+.box-settings--root {
+  padding: 1rem 2rem;
+  color: color.$color-active;
+  font-size: 0.9rem;
+
+  .box-settings--section {
+    padding: 0.5rem 1rem;
+    line-height: 1.5rem;
+    border: 1px solid color.$border-color-deactive;
+
+    &:hover {
+      border: 1px solid color.$border-color-active;
+    }
+
+    h2 {
+      .settings-class--min {
+        color: color.$color-deactive;
+      }
+    }
+
+    .settings-class--description {
+      color: color.$color-deactive;
+      margin-bottom: 5px;
+    }
+
+    .settings-item--min {
+      display: flex;
+      margin-bottom: 5px;
+
+      .settings-icon--pencil {
+        display: none;
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-left: 5px;
+        color: color.$color-deactive;
+
+        .icon {
+          height: 1.2rem;
+          width: 1.2rem;
+        }
+      }
+
+      input {
+        outline: none;
+        width: 300px;
+        padding: 0 5px;
+        background-color: color.$grid-bgColor-3;
+
+        &:focus ~ .settings-icon--pencil {
+          display: block;
+        }
+      }
+    }
+
+    &#setting_section-groupName {
+      label {
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+
+      $colors: color.$color1, color.$color2, color.$color3, color.$color4,
+        color.$color5, color.$color6, color.$color7, color.$color8,
+        color.$color9, color.$color10;
+
+      @each $color in $colors {
+        $num: index($colors, $color);
+        #label_color#{$num} {
+          background-color: $color;
+        }
+      }
+    }
+  }
+}

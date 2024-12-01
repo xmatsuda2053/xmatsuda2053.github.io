@@ -1,0 +1,23 @@
+@use "../foundation/color";
+
+#box_drawer--left {
+  $drawer-width: 400px;
+
+  position: fixed;
+  z-index: calc(infinity);
+  left: $drawer-width * -1;
+  top: 0;
+
+  width: $drawer-width;
+  height: 100%;
+  padding: 1rem 1.5rem;
+
+  color: color.$color-active;
+  background-color: color.$grid-bgColor-2;
+
+  transition: left 0.5s ease-in-out;
+
+  &.show {
+    left: 0;
+  }
+}

@@ -1,0 +1,45 @@
+@use "../../foundation/color";
+
+.box-colorpicker--root {
+  &.hidden {
+    display: none;
+  }
+
+  button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+
+    border-bottom-left-radius: 0.5rem;
+
+    .icon {
+      display: none;
+      width: 25px;
+      height: 25px;
+      color: color.$grid-bgColor-1;
+    }
+
+    &:hover {
+      .icon {
+        display: block;
+      }
+    }
+
+    $colors: color.$color1, color.$color2, color.$color3, color.$color4,
+      color.$color5, color.$color6, color.$color7, color.$color8, color.$color9,
+      color.$color10;
+
+    @each $color in $colors {
+      $num: index($colors, $color);
+      &#cp_btn--color#{$num} {
+        background-color: $color;
+      }
+    }
+  }
+}

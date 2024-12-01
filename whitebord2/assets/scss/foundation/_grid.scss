@@ -1,0 +1,48 @@
+@use "./color";
+
+/* Grid */
+/* ============================================ */
+
+.container {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  grid-template-rows: 40px 1fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "grid-area--headerL grid-area--header grid-area--headerR"
+    "grid-area--controlL grid-area--main grid-area--controlR";
+
+  height: 100vh;
+
+  .grid-area--headerL {
+    grid-area: grid-area--headerL;
+    background-color: color.$grid-bgColor-3;
+  }
+
+  .grid-area--header {
+    grid-area: grid-area--header;
+    background-color: color.$grid-bgColor-3;
+  }
+
+  .grid-area--headerR {
+    grid-area: grid-area--headerR;
+    background-color: color.$grid-bgColor-3;
+  }
+
+  .grid-area--controlL {
+    grid-area: grid-area--controlL;
+    background-color: color.$grid-bgColor-2;
+  }
+
+  .grid-area--main {
+    grid-area: grid-area--main;
+    background-color: color.$grid-bgColor-1;
+  }
+
+  .grid-area--controlR {
+    grid-area: grid-area--controlR;
+    background-color: color.$grid-bgColor-1;
+  }
+}

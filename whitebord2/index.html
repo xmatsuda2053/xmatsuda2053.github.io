@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticker</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!--Header Left-->
+      <div class="grid-area--headerL">
+        <div class="box-menu--hamburger">
+          <button class="drawer-close--not" id="btn_menu--hamburger">
+            <svg class="icon drawer-close--not" id="btn_menu--hamburger">
+              <use xlink:href="#icon-menu"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="drawer-close--not" id="box_drawer--left">
+          <h2>Sticky Notes</h2>
+        </div>
+      </div>
+      <!--Header Center-->
+      <div class="grid-area--header">
+        <div class="box-search--root">
+          <!--検索アイコン-->
+          <svg class="icon" id="icon_search--l">
+            <use xlink:href="#icon-search"></use>
+          </svg>
+          <!--検索キャンセルボタン-->
+          <svg class="icon" id="btn_cancel--r">
+            <use xlink:href="#icon-circle-x"></use>
+          </svg>
+          <!--検索条件-->
+          <input type="text" id="text_search--cond" placeholder="search..." />
+        </div>
+      </div>
+      <!--Header Right-->
+      <div class="grid-area--headerR"></div>
+      <!--Contetns Left-->
+      <div class="grid-area--controlL">
+        <div class="box-menu--root">
+          <!--Sticker-->
+          <button
+            class="menu-btn--svg has-item--tooltip active"
+            id="btn-change--sticker"
+          >
+            <svg class="icon">
+              <use xlink:href="#icon-sticker"></use>
+            </svg>
+            <div class="tooltip-text--r">ポストイット</div>
+          </button>
+          <!--List-->
+          <button class="menu-btn--svg has-item--tooltip" id="btn-change--list">
+            <svg class="icon">
+              <use xlink:href="#icon-table"></use>
+            </svg>
+            <div class="tooltip-text--r">リスト表示</div>
+          </button>
+          <!--Setting-->
+          <button
+            class="menu-btn--svg has-item--tooltip"
+            id="btn-change--settings"
+          >
+            <svg class="icon">
+              <use xlink:href="#icon-settings"></use>
+            </svg>
+            <div class="tooltip-text--r">設定画面</div>
+          </button>
+        </div>
+      </div>
+      <!--Contents Center-->
+      <div class="grid-area--main" id="grid_area--main"></div>
+      <!--Contetns Right-->
+      <div class="grid-area--controlR">
+        <div class="box-colorpicker--root" id="box_colorpicker--root"></div>
+      </div>
+    </div>
+    <!--Start Page-->
+    <div class="modal-area--root" id="modal_filer-open">
+      <div class="box-filer--open">
+        <button id="btn_dir--open">
+          <svg class="icon" id="btn-icon-normal">
+            <use xlink:href="#icon-folder"></use>
+          </svg>
+          <svg class="icon" id="btn-icon-open">
+            <use xlink:href="#icon-folder-open"></use>
+          </svg>
+          <span>Folder Open</span>
+        </button>
+      </div>
+    </div>
+  </body>
+  <svg
+    aria-hidden="true"
+    style="position: absolute; width: 0; height: 0; overflow: hidden"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <defs>
+      <symbol
+        id="icon-sticker"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M6 4h12a2 2 0 0 1 2 2v7h-5a2 2 0 0 0 -2 2v5h-7a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2z"
+        />
+        <path
+          d="M20 13v.172a2 2 0 0 1 -.586 1.414l-4.828 4.828a2 2 0 0 1 -1.414 .586h-.172"
+        />
+      </symbol>
+      <symbol
+        id="icon-table"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z"
+        />
+        <path d="M3 10h18" />
+        <path d="M10 3v18" />
+      </symbol>
+      <symbol
+        id="icon-settings"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+        />
+        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+      </symbol>
+      <symbol
+        id="icon-search"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+        <path d="M21 21l-6 -6" />
+      </symbol>
+      <symbol
+        id="icon-circle-x"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+        <path d="M10 10l4 4m0 -4l-4 4" />
+      </symbol>
+      <symbol
+        id="icon-pencil-plus"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+        <path d="M13.5 6.5l4 4" />
+        <path d="M16 19h6" />
+        <path d="M19 16v6" />
+      </symbol>
+      <symbol
+        id="icon-pencil"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+        <path d="M13.5 6.5l4 4" />
+      </symbol>
+      <symbol
+        id="icon-menu"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 6l16 0" />
+        <path d="M4 12l16 0" />
+        <path d="M4 18l16 0" />
+      </symbol>
+      <symbol
+        id="icon-folder"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"
+        />
+      </symbol>
+      <symbol
+        id="icon-folder-open"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M5 19l2.757 -7.351a1 1 0 0 1 .936 -.649h12.307a1 1 0 0 1 .986 1.164l-.996 5.211a2 2 0 0 1 -1.964 1.625h-14.026a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2"
+        />
+      </symbol>
+      <symbol
+        id="icon-filled-square"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        stroke="currentColor"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M19 2h-14a3 3 0 0 0 -3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3 -3v-14a3 3 0 0 0 -3 -3z"
+          fill="currentColor"
+        />
+      </symbol>
+      <symbol id="icon-square-check" viewBox="0 0 24 24" fill="currentColor">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005 .195v12.666c0 1.96 -1.537 3.56 -3.472 3.662l-.195 .005h-12.666a3.667 3.667 0 0 1 -3.662 -3.472l-.005 -.195v-12.666c0 -1.96 1.537 -3.56 3.472 -3.662l.195 -.005h12.666zm-2.626 7.293a1 1 0 0 0 -1.414 0l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.32 1.497l2 2l.094 .083a1 1 0 0 0 1.32 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z"
+        />
+      </symbol>
+      <symbol
+        id="icon-download"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+        <path d="M7 11l5 5l5 -5" />
+        <path d="M12 4l0 12" />
+      </symbol>
+      <symbol
+        id="icon-outline-thumb-up"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3"
+        />
+      </symbol>
+    </defs>
+  </svg>
+  <script src="assets/js/script.js"></script>
+</html>

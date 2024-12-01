@@ -1,0 +1,31 @@
+@use "../../foundation/color";
+
+.box-menu--root {
+  .menu-btn--svg {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 45px;
+
+    color: color.$color-deactive;
+    border-left: 2px solid color.$grid-bgColor-2;
+
+    &.active {
+      color: color.$color-active;
+      border-color: color.$color-active;
+    }
+
+    &:hover {
+      color: color.$color-active;
+    }
+
+    .icon {
+      width: 30px;
+      height: 40px;
+    }
+  }
+}

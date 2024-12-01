@@ -1,0 +1,177 @@
+@use "../foundation/color";
+
+.item-sticker--root {
+  cursor: move;
+  position: absolute;
+  width: 302px;
+  height: 202px;
+  border: 1px solid transparent;
+  border-bottom-left-radius: 0.8rem;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 1fr 30px;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sticker-grid--header"
+    "sticker-grid--contents"
+    "sticker-grid--footer";
+
+  &.hidden {
+    display: none;
+  }
+
+  &.active {
+    border: 1px solid color.$sticker-border-color-active;
+  }
+
+  .sticker-grid--header {
+    grid-area: sticker-grid--header;
+    position: relative;
+    padding: 5px;
+
+    .sticker-input--title {
+      outline: none;
+      line-height: 30px;
+      width: 250px;
+      font-weight: bold;
+
+      &:focus {
+        background-color: color.$sticker-color-input-active;
+      }
+    }
+
+    .icon-outline-thumb-up {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 30px;
+      height: 30px;
+      padding: 2px;
+      color: color.$grid-bgColor-2;
+      border: 2px solid color.$grid-bgColor-2;
+      border-radius: 50%;
+    }
+  }
+
+  .sticker-grid--contents {
+    grid-area: sticker-grid--contents;
+    padding: 5px;
+
+    .sticker-input--memo {
+      outline: none;
+      resize: none;
+      line-height: 20px;
+      width: 100%;
+      height: 100%;
+
+      &:focus {
+        background-color: color.$sticker-color-input-active;
+      }
+
+      &::-webkit-scrollbar {
+        width: 12px;
+        background-color: #eaeaea;
+        border: none;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        box-shadow: inset 0 0 10px 10px #707070;
+        border: solid 4px transparent;
+      }
+    }
+  }
+
+  .sticker-grid--footer {
+    grid-area: sticker-grid--footer;
+    position: relative;
+
+    .sticker-input--data {
+      outline: none;
+      margin-left: 0.5rem;
+      line-height: 30px;
+      font-size: 0.8rem;
+    }
+
+    .sticker-icon--archive {
+      position: absolute;
+      top: 5px;
+      right: 30px;
+      width: 20px;
+      height: 20px;
+
+      transition: all 0.2s 0s ease-in-out;
+    }
+
+    .sticker-input--checkbox {
+      cursor: pointer;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+      border: 2px solid color.$sticker-color-icon-deactive;
+      border-radius: 0.25rem;
+
+      transition: all 0.2s 0s ease-in-out;
+
+      &:before {
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        transform: rotate(50deg);
+        width: 6px;
+        height: 11px;
+        border-right: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        content: "";
+      }
+
+      &:hover {
+        border-color: color.$sticker-color-icon-active;
+        background-color: color.$sticker-bgColor-icon-hover;
+      }
+
+      &:checked {
+        border-color: color.$sticker-color-icon-active;
+        &:before {
+          border-color: color.$sticker-color-icon-active;
+        }
+      }
+    }
+
+    .icon {
+      color: color.$sticker-color-icon-deactive;
+      cursor: pointer;
+
+      &:hover {
+        color: color.$sticker-color-icon-active;
+      }
+    }
+  }
+
+  $colors: color.$color1, color.$color2, color.$color3, color.$color4,
+    color.$color5, color.$color6, color.$color7, color.$color8, color.$color9,
+    color.$color10;
+
+  @each $color in $colors {
+    $num: index($colors, $color);
+    &.color#{$num} {
+      background-color: $color;
+    }
+  }
+
+  .item-show--completion {
+    display: none;
+  }
+
+  &.sticker-state--completion {
+    .item-show--completion {
+      display: block;
+    }
+  }
+}

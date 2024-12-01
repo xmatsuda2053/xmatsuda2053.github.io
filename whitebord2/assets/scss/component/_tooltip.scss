@@ -1,0 +1,42 @@
+@use "../foundation/color";
+
+.has-item--tooltip {
+  .tooltip-text--l {
+    display: none;
+    position: absolute;
+    left: -185px;
+    z-index: 99;
+
+    text-align: left;
+    width: 180px;
+
+    background-color: color.$tooltip-bg-color;
+    color: color.$tooltip-font-color;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .tooltip-text--r {
+    display: none;
+    position: absolute;
+    left: 45px;
+    z-index: 99;
+
+    text-align: left;
+    width: 180px;
+
+    background-color: color.$tooltip-bg-color;
+    color: color.$tooltip-font-color;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  &:hover {
+    .tooltip-text--l {
+      display: block;
+    }
+    .tooltip-text--r {
+      display: block;
+    }
+  }
+}
