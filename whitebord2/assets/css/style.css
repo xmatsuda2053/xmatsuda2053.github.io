@@ -758,6 +758,28 @@ body {
   width: 100%;
 }
 
+.box-table--root {
+  padding: 1rem 2rem;
+}
+.box-table--root table {
+  width: 100%;
+}
+.box-table--root table thead {
+  background-color: #006bff;
+  color: #fffffb;
+  text-align: center;
+}
+.box-table--root table thead tr td {
+  padding: 0.5rem 0;
+  letter-spacing: 1px;
+}
+.box-table--root table thead tr td:first-child {
+  border-top-left-radius: 0.3rem;
+}
+.box-table--root table thead tr td:last-child {
+  border-top-right-radius: 0.3rem;
+}
+
 .box-settings--root {
   padding: 1rem 2rem;
   color: #fffffb;
