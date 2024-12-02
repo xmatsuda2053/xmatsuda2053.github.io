@@ -19,6 +19,49 @@
         </div>
         <div class="drawer-close--not" id="box_drawer--left">
           <h2>Sticky Notes</h2>
+          <div class="cmd-doc--box">
+            <h3>検索パターン</h2>
+            <div class="cmd-doc--contents">
+              <p class="cmd-doc--pattern">{text}</p>
+              <p class="cmd-doc--text">
+                {text} を タイトル or メモ に含むデータを表示する。<br />
+                カンマ区切りで AND検索 となる。
+              </p>
+              <p class="cmd-doc--example">
+                ex. "連絡,電話" = 両方の文字を含むデータを表示
+              </p>
+            </div>
+            <div class="cmd-doc--contents">
+              <p class="cmd-doc--pattern">
+                <span class="cmd-doc--cmd">#before:</span>{yyyyMMdd}
+              </p>
+              <p class="cmd-doc--text">
+                期限日が {yyyyMMdd} 以降のデータを表示する。
+              </p>
+              <p class="cmd-doc--example">
+                ex. #before: = 期限日 ≧ 2024/12/02 のデータを表示
+              </p>
+            </div>
+            <div class="cmd-doc--contents">
+              <p class="cmd-doc--pattern">
+                <span class="cmd-doc--cmd">#after:</span>{yyyyMMdd}
+              </p>
+              <p class="cmd-doc--text">
+                期限日が {yyyyMMdd} 以前のデータを表示する。
+              </p>
+              <p class="cmd-doc--example">
+                ex. #after:20241202 = 期限日 ≦ 2024/12/02 のデータを表示
+              </p>
+            </div>
+            <div class="cmd-doc--contents">
+              <p class="cmd-doc--pattern">
+                <span class="cmd-doc--cmd">#today</span>
+              </p>
+              <p class="cmd-doc--text">
+                期限日が 当日日付 の データを表示する。
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <!--Header Center-->
@@ -49,14 +92,14 @@
             <svg class="icon">
               <use xlink:href="#icon-sticker"></use>
             </svg>
-            <div class="tooltip-text--r">ポストイット</div>
+            <div class="tooltip-text--r">Sticker Notes</div>
           </button>
           <!--List-->
-          <button class="menu-btn--svg has-item--tooltip" id="btn-change--list">
+          <button class="menu-btn--svg has-item--tooltip" id="btn-change--table">
             <svg class="icon">
               <use xlink:href="#icon-table"></use>
             </svg>
-            <div class="tooltip-text--r">リスト表示</div>
+            <div class="tooltip-text--r">Table Viewer</div>
           </button>
           <!--Setting-->
           <button
@@ -66,7 +109,7 @@
             <svg class="icon">
               <use xlink:href="#icon-settings"></use>
             </svg>
-            <div class="tooltip-text--r">設定画面</div>
+            <div class="tooltip-text--r">Setting</div>
           </button>
         </div>
       </div>

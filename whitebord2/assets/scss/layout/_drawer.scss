@@ -1,7 +1,7 @@
 @use "../foundation/color";
 
 #box_drawer--left {
-  $drawer-width: 400px;
+  $drawer-width: 600px;
 
   position: fixed;
   z-index: calc(infinity);
@@ -19,5 +19,41 @@
 
   &.show {
     left: 0;
+  }
+
+  .cmd-doc--box {
+    font-size: 0.9rem;
+    line-height: 25px;
+    border: 1px solid color.$border-color-normal;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+
+    .cmd-doc--contents {
+      padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
+      border-left: 5px solid color.$border-color-active;
+
+      .cmd-doc--pattern {
+        background-color: color.$grid-bgColor-3;
+        padding-left: 5px;
+        .cmd-doc--cmd {
+          color: color.$color-cmd;
+        }
+      }
+
+      .cmd-doc--text {
+        color: color.$color-deactive;
+        padding-left: 10px;
+      }
+
+      .cmd-doc--example {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: color.$color-deactive;
+        padding-left: 10px;
+        margin-left: 10px;
+        border-left: 5px solid color.$border-color-active;
+      }
+    }
   }
 }

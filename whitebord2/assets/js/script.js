@@ -51,6 +51,14 @@ class Component {
     elm.textContent = text;
     return elm;
   }
+
+  /**
+   * 本日の日付を返す。
+   * @returns yyyymmdd
+   */
+  static getToday() {
+    return new Date().toLocaleDateString("sv-SE").replaceAll("-", "");
+  }
 }
 
 /**
@@ -975,12 +983,17 @@ const initSearch = () => {
     let beforeDate = 99999999;
 
     text.split(",").forEach((kw) => {
-      if (kw.startsWith("after:")) {
+      if (kw.startsWith("#after:")) {
         isDataRange = true;
-        afterDate = kw.replaceAll("after:", "");
-      } else if (kw.startsWith("before:")) {
+        afterDate = kw.replaceAll("#after:", "");
+      } else if (kw.startsWith("#before:")) {
         isDataRange = true;
-        beforeDate = kw.replaceAll("before:", "");
+        beforeDate = kw.replaceAll("#before:", "");
+      } else if (kw.startsWith("#today")) {
+        const today = Component.getToday();
+        isDataRange = true;
+        afterDate = today;
+        beforeDate = today;
       } else {
         //empty
       }
@@ -1021,7 +1034,7 @@ const initSearch = () => {
 // ============================================
 const initMenu = () => {
   const btnChangeSticker = document.getElementById("btn-change--sticker");
-  const btnChangeList = document.getElementById("btn-change--list");
+  const btnChangeTable = document.getElementById("btn-change--table");
   const btnChangeSettings = document.getElementById("btn-change--settings");
   const boxColorpickerRoot = document.getElementById("box_colorpicker--root");
 
@@ -1038,7 +1051,7 @@ const initMenu = () => {
    */
   const removeClassActiveAll = () => {
     btnChangeSticker.classList.remove("active");
-    btnChangeList.classList.remove("active");
+    btnChangeTable.classList.remove("active");
     btnChangeSettings.classList.remove("active");
   };
 
@@ -1062,9 +1075,9 @@ const initMenu = () => {
   /**
    * 一覧画面を表示
    */
-  btnChangeList.addEventListener("click", () => {
+  btnChangeTable.addEventListener("click", () => {
     removeClassActiveAll();
-    btnChangeList.classList.add("active");
+    btnChangeTable.classList.add("active");
 
     clearMainArea();
     ContentsOnDisplay = CONTENTS_LIST;
