@@ -44,7 +44,8 @@
       }
     }
 
-    .icon-outline-thumb-up {
+    .icon-header--completion,
+    .icon-header--deadline {
       position: absolute;
       top: 5px;
       right: 5px;
@@ -54,6 +55,38 @@
       color: color.$grid-bgColor-2;
       border: 2px solid color.$grid-bgColor-2;
       border-radius: 50%;
+    }
+
+    .icon-header--deadline {
+      color: color.$color-alert;
+      border-color: color.$color-alert;
+      background-color: color.$color-active;
+      display: none;
+    }
+
+    .item-show--completion {
+      display: none;
+    }
+  }
+
+  // 期限日超過
+  &.duedate-over--deadline {
+    .icon-header--deadline {
+      display: block;
+    }
+  }
+
+  // 完了
+  &.sticker-state--completion {
+    .item-show--completion {
+      display: block;
+    }
+
+    // 完了の場合、期限日超過は無視
+    &.duedate-over--deadline {
+      .icon-header--deadline {
+        display: none;
+      }
     }
   }
 
@@ -164,16 +197,6 @@
     $num: index($colors, $color);
     &.color#{$num} {
       background-color: $color;
-    }
-  }
-
-  .item-show--completion {
-    display: none;
-  }
-
-  &.sticker-state--completion {
-    .item-show--completion {
-      display: block;
     }
   }
 }

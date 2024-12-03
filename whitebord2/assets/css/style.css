@@ -493,7 +493,8 @@ body {
 .item-sticker--root .sticker-grid--header .sticker-input--title:focus {
   background-color: rgba(255, 255, 255, 0.3);
 }
-.item-sticker--root .sticker-grid--header .icon-outline-thumb-up {
+.item-sticker--root .sticker-grid--header .icon-header--completion,
+.item-sticker--root .sticker-grid--header .icon-header--deadline {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -503,6 +504,24 @@ body {
   color: #3c3c3c;
   border: 2px solid #3c3c3c;
   border-radius: 50%;
+}
+.item-sticker--root .sticker-grid--header .icon-header--deadline {
+  color: #ff4545;
+  border-color: #ff4545;
+  background-color: #fffffb;
+  display: none;
+}
+.item-sticker--root .sticker-grid--header .item-show--completion {
+  display: none;
+}
+.item-sticker--root.duedate-over--deadline .icon-header--deadline {
+  display: block;
+}
+.item-sticker--root.sticker-state--completion .item-show--completion {
+  display: block;
+}
+.item-sticker--root.sticker-state--completion.duedate-over--deadline .icon-header--deadline {
+  display: none;
 }
 .item-sticker--root .sticker-grid--contents {
   grid-area: sticker-grid--contents;
@@ -616,12 +635,6 @@ body {
 }
 .item-sticker--root.color10 {
   background-color: #b17457;
-}
-.item-sticker--root .item-show--completion {
-  display: none;
-}
-.item-sticker--root.sticker-state--completion .item-show--completion {
-  display: block;
 }
 
 .box-menu--hamburger #btn_menu--hamburger {

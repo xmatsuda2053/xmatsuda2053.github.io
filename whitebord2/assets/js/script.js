@@ -205,13 +205,13 @@ class ColorPicker {
       elm.appendChild(Component.createIcon("icon-pencil-plus"));
       elm.appendChild(Component.createTooltip(data.name, "tooltip-text--l"));
 
-      elm.addEventListener("click", () => {
+      elm.addEventListener("click", async () => {
         const root = document.getElementById("box_whitebord--root");
         const sticker = document.createElement("div");
         sticker.sticker(root, null);
         sticker.setColor(data.color);
         root.appendChild(sticker);
-        sticker.save();
+        await sticker.save();
       });
       return elm;
     }
@@ -496,7 +496,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   oneSelft.appendChild(createFooter());
 
   oneSelft.id = data.id;
-  oneSelft.dataset.duedate = data.dueDate.replaceAll("-", "");
+  setDueDate(data.dueDate);
   oneSelft.dataset.top = data.top;
   oneSelft.dataset.left = data.left;
   oneSelft.dataset.color = data.color;
@@ -504,6 +504,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
 
   oneSelft.style.top = data.top + "px";
   oneSelft.style.left = data.left + "px";
+
   oneSelft.style.zIndex = mathStickerZindex(oneSelft.dataset.duedate);
 
   // *****************************
@@ -522,6 +523,9 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     if (isMoveDisable(e)) {
       return;
     }
+
+    // ドラッグ中の要素を最前面に移動
+    oneSelft.style.zIndex = 999999999;
 
     pos3 = e.clientX;
     pos4 = e.clientY;
@@ -564,7 +568,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
    * ドラッグ移動を終了
    * @param {event} e
    */
-  oneSelft.onpointerup = (e) => {
+  oneSelft.onpointerup = async (e) => {
     if (isMoveDisable(e)) {
       return;
     }
@@ -573,8 +577,17 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     oneSelft.releasePointerCapture(e.pointerId);
 
     oneSelft.classList.remove("active");
+    oneSelft.style.zIndex = mathStickerZindex(oneSelft.dataset.duedate);
 
-    save();
+    await save();
+  };
+
+  /**
+   * ドラッグ操作機能を削除
+   */
+  oneSelft.removeDragEvents = () => {
+    oneSelft.onpointerdown = "";
+    oneSelft.onpointerup = "";
   };
 
   // *****************************
@@ -586,12 +599,29 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   //========================================
   /**
    * 付箋のzIndexを日付を元に計算する。
-   * @param {string} dueDate
+   * @param {string} date
    * @returns zIndex
    */
-  function mathStickerZindex(dueDate) {
-    if (dueDate === "") dueDate = 0;
-    return 99999999 - dueDate;
+  function mathStickerZindex(due) {
+    if (due === "") due = 0;
+    return 99999999 - due;
+  }
+
+  /**
+   * データセットに期限日を設定する。
+   * 期限日超過の場合、deadlineクラスを追加する。
+   * @param {string} date
+   */
+  function setDueDate(date) {
+    oneSelft.dataset.duedate = date.replaceAll("-", "");
+    if (oneSelft.dataset.duedate === "") {
+      return;
+    }
+
+    oneSelft.classList.remove("duedate-over--deadline");
+    if (oneSelft.dataset.duedate <= Component.getToday()) {
+      oneSelft.classList.add("duedate-over--deadline");
+    }
   }
 
   /**
@@ -687,23 +717,26 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   /**
    * 入力内容を保存する
    */
-  function save() {
+  async function save() {
     const data = getInputData();
     const filename = `${data.id}.json`;
     const jsonStr = JSON.stringify(data);
-    filer.saveText(filename, jsonStr);
+    await filer.saveText(filename, jsonStr);
   }
 
   /**
    * 入力内容をアーカイブする
    */
-  function archive() {
+  async function archive() {
+    oneSelft.removeDragEvents();
+
     const data = getInputData();
+    oneSelft.remove();
+
     const filename = `${data.id}.json`;
     const jsonStr = JSON.stringify(data);
-    filer.saveTextArchive(filename, jsonStr);
-    filer.saveText(filename, "");
-    oneSelft.remove();
+    await filer.saveTextArchive(filename, jsonStr);
+    await filer.saveText(filename, "");
   }
 
   /**
@@ -715,9 +748,13 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     elmHeader.classList.add("sticker-grid--header");
     elmHeader.appendChild(createTitleInput());
 
-    const icon = Component.createIcon("icon-outline-thumb-up");
-    icon.classList.add("icon-outline-thumb-up", "item-show--completion");
-    elmHeader.appendChild(icon);
+    const icon1 = Component.createIcon("icon-outline-thumb-up");
+    icon1.classList.add("icon-header--completion", "item-show--completion");
+    elmHeader.appendChild(icon1);
+
+    const icon2 = Component.createIcon("icon-outline-flag");
+    icon2.classList.add("icon-header--deadline");
+    elmHeader.appendChild(icon2);
 
     return elmHeader;
 
@@ -789,8 +826,8 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     /**
      * アーカイブ保存
      */
-    iconArchive.addEventListener("click", () => {
-      archive();
+    iconArchive.addEventListener("click", async () => {
+      await archive();
     });
 
     return elmFooter;
@@ -808,10 +845,10 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
       );
       elmDurDateInput.value = data.dueDate;
 
-      elmDurDateInput.addEventListener("change", () => {
-        oneSelft.dataset.duedate = elmDurDateInput.value.replaceAll("-", "");
+      elmDurDateInput.addEventListener("change", async () => {
+        setDueDate(elmDurDateInput.value);
         oneSelft.style.zIndex = mathStickerZindex(oneSelft.dataset.duedate);
-        save();
+        await save();
       });
       return elmDurDateInput;
     }
@@ -829,8 +866,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
       );
       elmCBInput.checked = data.completion === "true";
 
-      elmCBInput.addEventListener("change", () => {
-        console.log(elmCBInput.checked);
+      elmCBInput.addEventListener("change", async () => {
         oneSelft.dataset.completion = elmCBInput.checked;
 
         if (elmCBInput.checked) {
@@ -839,7 +875,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
           oneSelft.classList.remove("sticker-state--completion");
         }
 
-        save();
+        await save();
       });
       return elmCBInput;
     }
@@ -867,8 +903,8 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   /**
    * 保存する。
    */
-  oneSelft.save = () => {
-    save();
+  oneSelft.save = async () => {
+    await save();
   };
 
   /**
