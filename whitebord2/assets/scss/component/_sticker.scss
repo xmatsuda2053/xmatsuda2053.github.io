@@ -109,13 +109,13 @@
       &::-webkit-scrollbar {
         width: 4px;
         border-radius: 4px;
-        background-color: #eaeaea;
+        background-color: color.$scrollbar-bgColor;
         border: none;
       }
 
       &::-webkit-scrollbar-thumb {
         border-radius: 8px;
-        box-shadow: inset 0 0 10px 10px #707070;
+        box-shadow: inset 0 0 10px 10px color.$scrollbar-border-color;
         border: solid 1px transparent;
       }
     }

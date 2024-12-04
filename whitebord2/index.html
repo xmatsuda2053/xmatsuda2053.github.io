@@ -22,22 +22,20 @@
           <h2>Sticky Notes</h2>
           <div class="document-box">
             <h3>検索パターン</h3>
+            <p class="box-description">Space区切り で AND検索</p>
             <div class="document-contents">
               <p class="document-pattern">{text}</p>
               <p class="document-description">
-                {text} を タイトル or メモ に含むデータを表示する。<br />
-                SPACE区切りで AND検索 となる。
+                タイトル or メモ に {text} を 含む付箋を表示する。<br />
               </p>
-              <p class="document-example">
-                ex. "連絡 電話" = 両方の文字を含むデータを表示
-              </p>
+              <p class="document-example">ex. "連絡"</p>
             </div>
             <div class="document-contents">
               <p class="document-pattern">
                 <span class="document-cmd">#before:</span>{yyyyMMdd}
               </p>
               <p class="document-description">
-                期限日が {yyyyMMdd} 以降のデータを表示する。
+                期限日が {yyyyMMdd} 以降の付箋を表示する。
               </p>
               <p class="document-example">ex. #before:2024/12/02</p>
             </div>
@@ -46,7 +44,7 @@
                 <span class="document-cmd">#after:</span>{yyyyMMdd}
               </p>
               <p class="document-description">
-                期限日が {yyyyMMdd} 以前のデータを表示する。
+                期限日が {yyyyMMdd} 以前の付箋を表示する。
               </p>
               <p class="document-example">ex. #after:20241202</p>
             </div>
@@ -55,7 +53,15 @@
                 <span class="document-cmd">#today</span>
               </p>
               <p class="document-description">
-                期限日が 当日日付 の データを表示する。
+                期限日 が 当日日付 の付箋を表示する。
+              </p>
+            </div>
+            <div class="document-contents">
+              <p class="document-pattern">
+                <span class="document-cmd">#alert</span>
+              </p>
+              <p class="document-description">
+                アラート発生中 の 付箋を表示する。
               </p>
             </div>
           </div>
@@ -91,12 +97,12 @@
             </svg>
             <div class="tooltip-text--r">Sticker Notes</div>
           </button>
-          <!--List-->
+          <!--Archive-->
           <button class="menu-btn--svg has-tooltip" id="btn-change--table">
             <svg class="icon">
               <use xlink:href="#icon-table"></use>
             </svg>
-            <div class="tooltip-text--r">Table Viewer</div>
+            <div class="tooltip-text--r">Archive Viewer</div>
           </button>
           <!--Setting-->
           <button class="menu-btn--svg has-tooltip" id="btn-change--settings">

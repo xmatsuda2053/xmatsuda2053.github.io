@@ -394,6 +394,69 @@ class Settings {
 }
 
 /**
+ * 検索文字列をパースする
+ */
+class SearchParam {
+  texts;
+  afterDate;
+  beforeDate;
+
+  isAfter;
+  isBefore;
+  isToday;
+  isAlert;
+
+  /**
+   * コンストラクタ
+   * @param {string} inputText
+   */
+  constructor(inputText) {
+    this.texts = [];
+
+    this.isAfter = false;
+    this.afterDate = null;
+
+    this.isBefore = false;
+    this.beforeDate = null;
+
+    this.isToday = false;
+    this.isAlert = false;
+
+    inputText.split(" ").forEach((kw) => {
+      if (kw.startsWith("#after:")) {
+        this.isAfter = true;
+        this.afterDate = kw.replaceAll("#after:", "");
+        if (isNaN(this.afterDate)) {
+          this.afterDate = 0;
+        }
+        return;
+      }
+
+      if (kw.startsWith("#before:")) {
+        this.isBefore = true;
+        this.beforeDate = kw.replaceAll("#before:", "");
+        if (isNaN(this.beforeDate)) {
+          this.beforeDate = 99999999;
+        }
+        return;
+      }
+
+      if (kw.startsWith("#today")) {
+        this.isToday = true;
+        return;
+      }
+
+      if (kw.startsWith("#alert")) {
+        this.isAlert = true;
+        return;
+      }
+
+      this.texts.push(kw);
+    });
+  }
+}
+
+/**
  * ホワイトボードクラス
  */
 class Whitebord {
@@ -441,25 +504,23 @@ class Whitebord {
   }
 
   /**
-   * 指定された文字でフィルタをかける。
-   * @param {string} text
+   * 指定された検索条件でフィルタをかける。
+   * @param {SearchParam} param
    */
-  filterText(text) {
+  filter(param) {
     const stickers = this.root.getElementsByClassName("sticker");
     for (let sticker of stickers) {
-      sticker.textFilter(text);
+      sticker.filter(param);
     }
   }
 
   /**
-   * 指定された日付範囲でフィルタをかける。
-   * @param {string} afterDate 開始日付
-   * @param {string} beforeDate 終了日付
+   * フィルタを解除する。
    */
-  filterDataRange(afterDate, beforeDate) {
+  clearFilter() {
     const stickers = this.root.getElementsByClassName("sticker");
     for (let sticker of stickers) {
-      sticker.filterDataRange(afterDate, beforeDate);
+      sticker.classList.remove("hidden");
     }
   }
 }
@@ -908,35 +969,63 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   };
 
   /**
-   * テキストフィルタをかける。
-   * @param {string} text
+   * フィルタをかける
+   * @param {SearchParam} param
    */
-  oneSelft.textFilter = (text) => {
-    oneSelft.classList.remove("hidden");
-
-    const kws = text.toLowerCase().split(" ");
+  oneSelft.filter = (param) => {
     const data = getInputData();
-    const target = `${data.title} ${data.descrption}`.toLowerCase();
-
-    if (kws.find((v) => target.indexOf(v) === -1) !== undefined) {
-      oneSelft.classList.add("hidden");
-    }
-  };
-
-  /**
-   * 指定された日付範囲でフィルタをかける。
-   * @param {string} afterDate より後
-   * @param {string} beforeDate より前
-   */
-  oneSelft.filterDataRange = (afterDate, beforeDate) => {
-    oneSelft.classList.add("hidden");
+    const inputText = `${data.title} ${data.descrption}`.toLowerCase();
     const dueDate = getInputData().dueDate.replaceAll("-", "");
 
-    if (!isNaN(afterDate) && !isNaN(beforeDate) && dueDate !== "") {
-      if (afterDate <= dueDate && beforeDate >= dueDate) {
-        oneSelft.classList.remove("hidden");
+    let flag = true;
+
+    oneSelft.classList.add("hidden");
+
+    // 以降
+    if (param.isAfter) {
+      flag = false;
+      if (dueDate !== "" && param.afterDate <= dueDate) {
+        flag = true;
       }
     }
+    if (!flag) return;
+
+    // 以前
+    if (param.isAfter) {
+      flag = false;
+      if (dueDate !== "" && param.beforeDate >= dueDate) {
+        flag = true;
+      }
+    }
+    if (!flag) return;
+
+    // 当日
+    if (param.isToday) {
+      flag = false;
+      if (dueDate !== "" && dueDate === Component.getToday()) {
+        flag = true;
+      }
+    }
+    if (!flag) return;
+
+    // アラート
+    if (param.isAlert) {
+      flag = false;
+      if (oneSelft.classList.contains("deadline")) {
+        flag = true;
+      }
+    }
+    if (!flag) return;
+
+    // テキスト検索
+    if (param.texts.length !== 0) {
+      if (param.texts.find((v) => inputText.indexOf(v) === -1) !== undefined) {
+        flag = false;
+      }
+    }
+    if (!flag) return;
+
+    oneSelft.classList.remove("hidden");
   };
 };
 
@@ -1013,35 +1102,11 @@ const initSearch = () => {
    */
   textSearchCond.addEventListener("change", () => {
     const text = textSearchCond.value.toLowerCase();
-
-    let isDataRange = false;
-    let afterDate = 0;
-    let beforeDate = 99999999;
-
-    text.split(" ").forEach((kw) => {
-      if (kw.startsWith("#after:")) {
-        isDataRange = true;
-        afterDate = kw.replaceAll("#after:", "");
-      } else if (kw.startsWith("#before:")) {
-        isDataRange = true;
-        beforeDate = kw.replaceAll("#before:", "");
-      } else if (kw.startsWith("#today")) {
-        const today = Component.getToday();
-        isDataRange = true;
-        afterDate = today;
-        beforeDate = today;
-      } else {
-        //empty
-      }
-    });
+    const searchParam = new SearchParam(text);
 
     switch (ContentsOnDisplay) {
       case CONTENTS_STICKER:
-        if (isDataRange) {
-          whitebord.filterDataRange(afterDate, beforeDate);
-        } else {
-          whitebord.filterText(text);
-        }
+        whitebord.filter(searchParam);
         break;
       default:
         break;
@@ -1053,7 +1118,9 @@ const initSearch = () => {
    */
   textSearchCond.addEventListener("keyup", () => {
     const text = textSearchCond.value;
-    if (text === "") whitebord.filterText("");
+    if (text === "") {
+      whitebord.clearFilter();
+    }
   });
 
   /**
@@ -1061,7 +1128,7 @@ const initSearch = () => {
    */
   btnCancelR.addEventListener("click", () => {
     textSearchCond.value = "";
-    whitebord.filterText("");
+    whitebord.clearFilter();
   });
 };
 
