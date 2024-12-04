@@ -1000,7 +1000,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     if (!flag) return;
 
     // 以前
-    if (param.isAfter) {
+    if (param.isBefore) {
       flag = false;
       if (dueDate !== "" && param.beforeDate >= dueDate) {
         flag = true;
