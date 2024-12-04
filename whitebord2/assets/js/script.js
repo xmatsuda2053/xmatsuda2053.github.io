@@ -796,7 +796,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   /**
    * 入力内容をアーカイブする
    */
-  async function archive() {
+  function archive() {
     oneSelft.onpointerdown = "";
     oneSelft.onpointerup = "";
 
@@ -805,8 +805,8 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
 
     const filename = `${data.id}.json`;
     const jsonStr = JSON.stringify(data);
-    await filer.saveTextArchive(filename, jsonStr);
-    await filer.saveText(filename, "");
+    filer.saveTextArchive(filename, jsonStr);
+    filer.saveText(filename, "");
   }
 
   /**
