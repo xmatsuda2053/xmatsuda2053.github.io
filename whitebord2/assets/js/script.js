@@ -1156,6 +1156,7 @@ const initSearch = () => {
 const initMenu = () => {
   const btnChangeSticker = document.getElementById("btn-change--sticker");
   const btnChangeSettings = document.getElementById("btn-change--settings");
+  const btnRunRefresh = document.getElementById("btn-run--refresh");
   const boxColorpickerRoot = document.getElementById("box_colorpicker--root");
   const searchBox = document.getElementById("search-box");
 
@@ -1212,6 +1213,14 @@ const initMenu = () => {
 
     // 検索欄を非表示にする。
     searchBox.classList.add("hidden");
+  });
+
+  /**
+   * 画面リフレッシュ
+   */
+  btnRunRefresh.addEventListener("click", () => {
+    const e = new Event("click");
+    btnChangeSticker.dispatchEvent(e);
   });
 };
 
