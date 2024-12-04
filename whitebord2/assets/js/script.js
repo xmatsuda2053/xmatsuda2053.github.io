@@ -400,17 +400,20 @@ class SearchParam {
   texts;
   afterDate;
   beforeDate;
+  tag;
 
   isAfter;
   isBefore;
   isToday;
   isAlert;
+  hasTag;
 
   /**
    * コンストラクタ
    * @param {string} inputText
+   * @param {array} cp
    */
-  constructor(inputText) {
+  constructor(inputText, cp) {
     this.texts = [];
 
     this.isAfter = false;
@@ -421,6 +424,9 @@ class SearchParam {
 
     this.isToday = false;
     this.isAlert = false;
+
+    this.hasTag = false;
+    this.tag = "";
 
     inputText.split(" ").forEach((kw) => {
       if (kw.startsWith("#after:")) {
@@ -448,6 +454,16 @@ class SearchParam {
 
       if (kw.startsWith("#alert")) {
         this.isAlert = true;
+        return;
+      }
+
+      if (kw.startsWith("#tag:")) {
+        this.tag = kw.replaceAll("#tag:", "");
+        const result = cp.find((f) => f.name === this.tag);
+        if (result) {
+          this.isTag = true;
+          this.tag = result.color;
+        }
         return;
       }
 
@@ -643,14 +659,6 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     await save();
   };
 
-  /**
-   * ドラッグ操作機能を削除
-   */
-  oneSelft.removeDragEvents = () => {
-    oneSelft.onpointerdown = "";
-    oneSelft.onpointerup = "";
-  };
-
   // *****************************
   // 状態の変化を監視
   // *****************************
@@ -789,7 +797,8 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
    * 入力内容をアーカイブする
    */
   async function archive() {
-    oneSelft.removeDragEvents();
+    oneSelft.onpointerdown = "";
+    oneSelft.onpointerup = "";
 
     const data = getInputData();
     oneSelft.remove();
@@ -1017,6 +1026,15 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     }
     if (!flag) return;
 
+    // タグ
+    if (param.isTag) {
+      flag = false;
+      if (oneSelft.dataset.color === param.tag) {
+        flag = true;
+      }
+    }
+    if (!flag) return;
+
     // テキスト検索
     if (param.texts.length !== 0) {
       if (param.texts.find((v) => inputText.indexOf(v) === -1) !== undefined) {
@@ -1102,7 +1120,7 @@ const initSearch = () => {
    */
   textSearchCond.addEventListener("change", () => {
     const text = textSearchCond.value.toLowerCase();
-    const searchParam = new SearchParam(text);
+    const searchParam = new SearchParam(text, settings.settingData.colorPicker);
 
     switch (ContentsOnDisplay) {
       case CONTENTS_STICKER:
@@ -1137,9 +1155,9 @@ const initSearch = () => {
 // ============================================
 const initMenu = () => {
   const btnChangeSticker = document.getElementById("btn-change--sticker");
-  const btnChangeTable = document.getElementById("btn-change--table");
   const btnChangeSettings = document.getElementById("btn-change--settings");
   const boxColorpickerRoot = document.getElementById("box_colorpicker--root");
+  const searchBox = document.getElementById("search-box");
 
   /**
    * メイン画面を初期化する。
@@ -1154,7 +1172,6 @@ const initMenu = () => {
    */
   const removeClassActiveAll = () => {
     btnChangeSticker.classList.remove("active");
-    btnChangeTable.classList.remove("active");
     btnChangeSettings.classList.remove("active");
   };
 
@@ -1173,20 +1190,9 @@ const initMenu = () => {
     // カラーピッカーを再設定する。
     boxColorpickerRoot.classList.remove("hidden");
     colorPicker.init("box_colorpicker--root");
-  });
 
-  /**
-   * 一覧画面を表示
-   */
-  btnChangeTable.addEventListener("click", () => {
-    removeClassActiveAll();
-    btnChangeTable.classList.add("active");
-
-    clearMainArea();
-    ContentsOnDisplay = CONTENTS_LIST;
-
-    // カラーピッカーを非表示にする。
-    boxColorpickerRoot.classList.add("hidden");
+    // 検索欄表示
+    searchBox.classList.remove("hidden");
   });
 
   /**
@@ -1203,6 +1209,9 @@ const initMenu = () => {
 
     // カラーピッカーを非表示にする。
     boxColorpickerRoot.classList.add("hidden");
+
+    // 検索欄を非表示にする。
+    searchBox.classList.add("hidden");
   });
 };
 

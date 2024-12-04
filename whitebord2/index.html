@@ -64,12 +64,21 @@
                 アラート発生中 の 付箋を表示する。
               </p>
             </div>
+            <div class="document-contents">
+              <p class="document-pattern">
+                <span class="document-cmd">#tag:</span>{name}
+              </p>
+              <p class="document-description">
+                タグ名 {name} に該当する付箋を表示する。
+              </p>
+              <p class="document-example">ex. #tag:分類1</p>
+            </div>
           </div>
         </div>
       </div>
       <!--Header Center-->
       <div class="grid-header--center">
-        <div class="search">
+        <div class="search" id="search-box">
           <!--検索アイコン-->
           <svg class="icon" id="icon_search">
             <use xlink:href="#icon-search"></use>
@@ -97,13 +106,6 @@
             </svg>
             <div class="tooltip-text--r">Sticker Notes</div>
           </button>
-          <!--Archive-->
-          <button class="menu-btn--svg has-tooltip" id="btn-change--table">
-            <svg class="icon">
-              <use xlink:href="#icon-table"></use>
-            </svg>
-            <div class="tooltip-text--r">Archive Viewer</div>
-          </button>
           <!--Setting-->
           <button class="menu-btn--svg has-tooltip" id="btn-change--settings">
             <svg class="icon">
@@ -114,32 +116,7 @@
         </div>
       </div>
       <!--Contents Center-->
-      <div class="grid-main" id="grid_area--main">
-        <!--
-        <div class="table-archive">
-          <table>
-            <thead>
-              <tr>
-                <td>タイトル</td>
-                <td>内容</td>
-                <td>期限日</td>
-                <td>分類</td>
-                <td>状態</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>テストタイトル</td>
-                <td>テストメモ内容</td>
-                <td>2024-12-02</td>
-                <td>分類1</td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        -->
-      </div>
+      <div class="grid-main" id="grid_area--main"></div>
       <!--Contetns Right-->
       <div class="grid-control--right">
         <div class="colorpicker" id="box_colorpicker--root"></div>

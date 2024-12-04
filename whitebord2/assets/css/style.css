@@ -662,6 +662,9 @@ body {
   line-height: 26px;
   text-align: center;
 }
+.search.hidden {
+  display: none;
+}
 .search .icon {
   position: absolute;
   top: 11px;
@@ -769,28 +772,6 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
-}
-
-.table-archive {
-  padding: 1rem 2rem;
-}
-.table-archive table {
-  width: 100%;
-}
-.table-archive table thead {
-  background-color: #006bff;
-  color: #fffffb;
-  text-align: center;
-}
-.table-archive table thead tr td {
-  padding: 0.5rem 0;
-  letter-spacing: 1px;
-}
-.table-archive table thead tr td:first-child {
-  border-top-left-radius: 0.3rem;
-}
-.table-archive table thead tr td:last-child {
-  border-top-right-radius: 0.3rem;
 }
 
 .settings {
