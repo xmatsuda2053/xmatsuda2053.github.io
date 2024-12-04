@@ -1,6 +1,6 @@
 @use "../foundation/color";
 
-.item-sticker--root {
+.sticker {
   cursor: move;
   position: absolute;
   width: 302px;
@@ -64,13 +64,13 @@
       display: none;
     }
 
-    .item-show--completion {
+    .show {
       display: none;
     }
   }
 
   // 期限日超過
-  &.duedate-over--deadline {
+  &.deadline {
     .icon-header--deadline {
       display: block;
     }
@@ -78,12 +78,12 @@
 
   // 完了
   &.sticker-state--completion {
-    .item-show--completion {
+    .show {
       display: block;
     }
 
     // 完了の場合、期限日超過は無視
-    &.duedate-over--deadline {
+    &.deadline {
       .icon-header--deadline {
         display: none;
       }
@@ -125,7 +125,7 @@
     grid-area: sticker-grid--footer;
     position: relative;
 
-    .sticker-input--data {
+    .sticker-input--date {
       outline: none;
       margin-left: 0.5rem;
       line-height: 30px;

@@ -201,12 +201,12 @@ class ColorPicker {
     function createBtn(data) {
       const elm = document.createElement("button");
       elm.id = `cp_btn--${data.color}`;
-      elm.classList.add("has-item--tooltip");
+      elm.classList.add("has-tooltip");
       elm.appendChild(Component.createIcon("icon-pencil-plus"));
       elm.appendChild(Component.createTooltip(data.name, "tooltip-text--l"));
 
       elm.addEventListener("click", async () => {
-        const root = document.getElementById("box_whitebord--root");
+        const root = document.getElementById("whitebord_root");
         const sticker = document.createElement("div");
         sticker.sticker(root, null);
         sticker.setColor(data.color);
@@ -285,8 +285,8 @@ class Settings {
     // 保存イベントを追加
     const items = target.getElementsByClassName("settings-param--saveTarget");
     for (let item of items) {
-      item.addEventListener("blur", () => {
-        this.save();
+      item.addEventListener("change", async () => {
+        await this.save();
       });
     }
 
@@ -297,7 +297,7 @@ class Settings {
      */
     function initColorPicker(colorPickerData) {
       const elm = document.createElement("div");
-      elm.classList.add("box-settings--root");
+      elm.classList.add("settings");
       elm.appendChild(createSection());
       return elm;
 
@@ -307,8 +307,8 @@ class Settings {
        */
       function createSection() {
         const elm = document.createElement("div");
-        elm.id = "setting_section-groupName";
-        elm.classList.add("box-settings--section");
+        elm.classList.add("setting-groupName");
+        elm.classList.add("settings-section");
         elm.appendChild(createTitle());
         elm.appendChild(createDescription());
         colorPickerData.forEach((data) => {
@@ -324,7 +324,7 @@ class Settings {
           const elm = document.createElement("h2");
           elm.appendChild(createTitleText());
           elm.appendChild(document.createTextNode("\u00A0"));
-          elm.appendChild(document.createTextNode("グループ名"));
+          elm.appendChild(document.createTextNode("タグ名"));
           return elm;
 
           /**
@@ -333,7 +333,7 @@ class Settings {
            */
           function createTitleText() {
             const elm = document.createElement("span");
-            elm.classList.add("settings-class--min");
+            elm.classList.add("settings-class");
             elm.textContent = "Setting:";
             return elm;
           }
@@ -345,7 +345,7 @@ class Settings {
          */
         function createDescription() {
           const elm = document.createElement("p");
-          elm.classList.add("settings-class--description");
+          elm.classList.add("settings--description");
           elm.textContent = "付箋の色に任意の名前を付けます。";
           return elm;
         }
@@ -357,7 +357,7 @@ class Settings {
          */
         function createItem(data) {
           const elm = document.createElement("p");
-          elm.classList.add("settings-item--min");
+          elm.classList.add("settings-item");
           elm.appendChild(createLabel());
           elm.appendChild(createInput());
           elm.appendChild(createIcon());
@@ -426,8 +426,8 @@ class Whitebord {
     // 描画範囲を新規作成
     target.innerHTML = "";
     this.root = document.createElement("div");
-    this.root.classList.add("box-whitebord--root");
-    this.root.id = "box_whitebord--root";
+    this.root.classList.add("whitebord");
+    this.root.id = "whitebord_root";
 
     // 作成済みの付箋を描画
     const items = await this.filer.readAllFileText(".json");
@@ -445,7 +445,7 @@ class Whitebord {
    * @param {string} text
    */
   filterText(text) {
-    const stickers = this.root.getElementsByClassName("item-sticker--root");
+    const stickers = this.root.getElementsByClassName("sticker");
     for (let sticker of stickers) {
       sticker.textFilter(text);
     }
@@ -457,7 +457,7 @@ class Whitebord {
    * @param {string} beforeDate 終了日付
    */
   filterDataRange(afterDate, beforeDate) {
-    const stickers = this.root.getElementsByClassName("item-sticker--root");
+    const stickers = this.root.getElementsByClassName("sticker");
     for (let sticker of stickers) {
       sticker.filterDataRange(afterDate, beforeDate);
     }
@@ -483,7 +483,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   // *****************************
   // 付箋オブジェクトを作成
   // *****************************
-  oneSelft.classList.add("item-sticker--root");
+  oneSelft.classList.add("sticker");
   if (data.color !== "") {
     oneSelft.classList.add(data.color);
   }
@@ -618,9 +618,9 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
       return;
     }
 
-    oneSelft.classList.remove("duedate-over--deadline");
+    oneSelft.classList.remove("deadline");
     if (oneSelft.dataset.duedate <= Component.getToday()) {
-      oneSelft.classList.add("duedate-over--deadline");
+      oneSelft.classList.add("deadline");
     }
   }
 
@@ -705,7 +705,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     data.id = oneSelft.id;
     data.title = getValue("sticker-input--title");
     data.descrption = getValue("sticker-input--memo");
-    data.dueDate = getValue("sticker-input--data");
+    data.dueDate = getValue("sticker-input--date");
     data.top = oneSelft.dataset.top;
     data.left = oneSelft.dataset.left;
     data.color = oneSelft.dataset.color;
@@ -749,7 +749,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     elmHeader.appendChild(createTitleInput());
 
     const icon1 = Component.createIcon("icon-outline-thumb-up");
-    icon1.classList.add("icon-header--completion", "item-show--completion");
+    icon1.classList.add("icon-header--completion", "show");
     elmHeader.appendChild(icon1);
 
     const icon2 = Component.createIcon("icon-outline-flag");
@@ -840,7 +840,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
       const elmDurDateInput = document.createElement("input");
       elmDurDateInput.type = "date";
       elmDurDateInput.classList.add(
-        "sticker-input--data",
+        "sticker-input--date",
         "sticker-control--unmove"
       );
       elmDurDateInput.value = data.dueDate;
@@ -914,7 +914,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   oneSelft.textFilter = (text) => {
     oneSelft.classList.remove("hidden");
 
-    const kws = text.toLowerCase().split(",");
+    const kws = text.toLowerCase().split(" ");
     const data = getInputData();
     const target = `${data.title} ${data.descrption}`.toLowerCase();
 
@@ -953,7 +953,7 @@ const colorPicker = new ColorPicker(settings);
 // ============================================
 const initStartPage = () => {
   const modalFilerOpen = document.getElementById("modal_filer-open");
-  const btnFolderOpen = document.getElementById("btn_dir--open");
+  const btnFolderOpen = document.getElementById("btn_open");
 
   /**
    * ルートフォルダを開き、画面を初期化する。
@@ -981,8 +981,8 @@ const initStartPage = () => {
 // Drawer
 // ============================================
 const initDrawer = () => {
-  const btnHamburger = document.getElementById("btn_menu--hamburger");
-  const boxDrawer = document.getElementById("box_drawer--left");
+  const btnHamburger = document.getElementById("btn_hamburger");
+  const boxDrawer = document.getElementById("drawer_left");
 
   /**
    * ドロワー画面を閉じる
@@ -1005,7 +1005,7 @@ const initDrawer = () => {
 // Search
 // ============================================
 const initSearch = () => {
-  const btnCancelR = document.getElementById("btn_cancel--r");
+  const btnCancelR = document.getElementById("btn_cancel");
   const textSearchCond = document.getElementById("text_search--cond");
 
   /**
@@ -1018,7 +1018,7 @@ const initSearch = () => {
     let afterDate = 0;
     let beforeDate = 99999999;
 
-    text.split(",").forEach((kw) => {
+    text.split(" ").forEach((kw) => {
       if (kw.startsWith("#after:")) {
         isDataRange = true;
         afterDate = kw.replaceAll("#after:", "");

@@ -10,55 +10,51 @@
   <body>
     <div class="container">
       <!--Header Left-->
-      <div class="grid-area--headerL">
-        <div class="box-menu--hamburger">
-          <button class="drawer-close--not" id="btn_menu--hamburger">
-            <svg class="icon drawer-close--not" id="btn_menu--hamburger">
+      <div class="grid-header--left">
+        <div class="hamburger">
+          <button class="drawer-close--not" id="btn_hamburger">
+            <svg class="icon drawer-close--not">
               <use xlink:href="#icon-menu"></use>
             </svg>
           </button>
         </div>
-        <div class="drawer-close--not" id="box_drawer--left">
+        <div class="drawer-close--not" id="drawer_left">
           <h2>Sticky Notes</h2>
-          <div class="cmd-doc--box">
+          <div class="document-box">
             <h3>検索パターン</h3>
-            <div class="cmd-doc--contents">
-              <p class="cmd-doc--pattern">{text}</p>
-              <p class="cmd-doc--text">
+            <div class="document-contents">
+              <p class="document-pattern">{text}</p>
+              <p class="document-description">
                 {text} を タイトル or メモ に含むデータを表示する。<br />
-                カンマ区切りで AND検索 となる。
+                SPACE区切りで AND検索 となる。
               </p>
-              <p class="cmd-doc--example">
-                ex. "連絡,電話" = 両方の文字を含むデータを表示
+              <p class="document-example">
+                ex. "連絡 電話" = 両方の文字を含むデータを表示
               </p>
             </div>
-            <div class="cmd-doc--contents">
-              <p class="cmd-doc--pattern">
-                <span class="cmd-doc--cmd">#before:</span>{yyyyMMdd}
+            <div class="document-contents">
+              <p class="document-pattern">
+                <span class="document-cmd">#before:</span>{yyyyMMdd}
               </p>
-              <p class="cmd-doc--text">
+              <p class="document-description">
                 期限日が {yyyyMMdd} 以降のデータを表示する。
               </p>
-              <p class="cmd-doc--example">
-                ex. #before: = 期限日 ≧ 2024/12/02 のデータを表示
-              </p>
+              <p class="document-example">ex. #before:2024/12/02</p>
             </div>
-            <div class="cmd-doc--contents">
-              <p class="cmd-doc--pattern">
-                <span class="cmd-doc--cmd">#after:</span>{yyyyMMdd}
+            <div class="document-contents">
+              <p class="document-pattern">
+                <span class="document-cmd">#after:</span>{yyyyMMdd}
               </p>
-              <p class="cmd-doc--text">
+              <p class="document-description">
                 期限日が {yyyyMMdd} 以前のデータを表示する。
               </p>
-              <p class="cmd-doc--example">
-                ex. #after:20241202 = 期限日 ≦ 2024/12/02 のデータを表示
-              </p>
+              <p class="document-example">ex. #after:20241202</p>
             </div>
-            <div class="cmd-doc--contents">
-              <p class="cmd-doc--pattern">
-                <span class="cmd-doc--cmd">#today</span>
+            <div class="document-contents">
+              <p class="document-pattern">
+                <span class="document-cmd">#today</span>
               </p>
-              <p class="cmd-doc--text">
+              <p class="document-description">
                 期限日が 当日日付 の データを表示する。
               </p>
             </div>
@@ -66,14 +62,14 @@
         </div>
       </div>
       <!--Header Center-->
-      <div class="grid-area--header">
-        <div class="box-search--root">
+      <div class="grid-header--center">
+        <div class="search">
           <!--検索アイコン-->
-          <svg class="icon" id="icon_search--l">
+          <svg class="icon" id="icon_search">
             <use xlink:href="#icon-search"></use>
           </svg>
           <!--検索キャンセルボタン-->
-          <svg class="icon" id="btn_cancel--r">
+          <svg class="icon" id="btn_cancel">
             <use xlink:href="#icon-circle-x"></use>
           </svg>
           <!--検索条件-->
@@ -81,13 +77,13 @@
         </div>
       </div>
       <!--Header Right-->
-      <div class="grid-area--headerR"></div>
+      <div class="grid-header--right"></div>
       <!--Contetns Left-->
-      <div class="grid-area--controlL">
-        <div class="box-menu--root">
+      <div class="grid-control--left">
+        <div class="menu">
           <!--Sticker-->
           <button
-            class="menu-btn--svg has-item--tooltip active"
+            class="menu-btn--svg has-tooltip active"
             id="btn-change--sticker"
           >
             <svg class="icon">
@@ -96,20 +92,14 @@
             <div class="tooltip-text--r">Sticker Notes</div>
           </button>
           <!--List-->
-          <button
-            class="menu-btn--svg has-item--tooltip"
-            id="btn-change--table"
-          >
+          <button class="menu-btn--svg has-tooltip" id="btn-change--table">
             <svg class="icon">
               <use xlink:href="#icon-table"></use>
             </svg>
             <div class="tooltip-text--r">Table Viewer</div>
           </button>
           <!--Setting-->
-          <button
-            class="menu-btn--svg has-item--tooltip"
-            id="btn-change--settings"
-          >
+          <button class="menu-btn--svg has-tooltip" id="btn-change--settings">
             <svg class="icon">
               <use xlink:href="#icon-settings"></use>
             </svg>
@@ -118,9 +108,9 @@
         </div>
       </div>
       <!--Contents Center-->
-      <div class="grid-area--main" id="grid_area--main">
+      <div class="grid-main" id="grid_area--main">
         <!--
-        <div class="box-table--root">
+        <div class="table-archive">
           <table>
             <thead>
               <tr>
@@ -145,14 +135,14 @@
         -->
       </div>
       <!--Contetns Right-->
-      <div class="grid-area--controlR">
-        <div class="box-colorpicker--root" id="box_colorpicker--root"></div>
+      <div class="grid-control--right">
+        <div class="colorpicker" id="box_colorpicker--root"></div>
       </div>
     </div>
     <!--Start Page-->
-    <div class="modal-area--root" id="modal_filer-open">
-      <div class="box-filer--open">
-        <button id="btn_dir--open">
+    <div class="modal" id="modal_filer-open">
+      <div class="filer">
+        <button id="btn_open">
           <svg class="icon" id="btn-icon-normal">
             <use xlink:href="#icon-folder"></use>
           </svg>

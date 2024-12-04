@@ -11,38 +11,38 @@
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "grid-area--headerL grid-area--header grid-area--headerR"
-    "grid-area--controlL grid-area--main grid-area--controlR";
+    "grid-header--left grid-header--center grid-header--right"
+    "grid-control--left grid-main grid-control--right";
 
   height: 100vh;
 
-  .grid-area--headerL {
-    grid-area: grid-area--headerL;
+  .grid-header--left {
+    grid-area: grid-header--left;
     background-color: color.$grid-bgColor-3;
   }
 
-  .grid-area--header {
-    grid-area: grid-area--header;
+  .grid-header--center {
+    grid-area: grid-header--center;
     background-color: color.$grid-bgColor-3;
   }
 
-  .grid-area--headerR {
-    grid-area: grid-area--headerR;
+  .grid-header--right {
+    grid-area: grid-header--right;
     background-color: color.$grid-bgColor-3;
   }
 
-  .grid-area--controlL {
-    grid-area: grid-area--controlL;
+  .grid-control--left {
+    grid-area: grid-control--left;
     background-color: color.$grid-bgColor-2;
   }
 
-  .grid-area--main {
-    grid-area: grid-area--main;
+  .grid-main {
+    grid-area: grid-main;
     background-color: color.$grid-bgColor-1;
   }
 
-  .grid-area--controlR {
-    grid-area: grid-area--controlR;
+  .grid-control--right {
+    grid-area: grid-control--right;
     background-color: color.$grid-bgColor-1;
   }
 }

@@ -1,6 +1,6 @@
 @use "../foundation/color";
 
-.modal-area--root {
+.modal {
   &.hidden {
     display: none;
   }
@@ -20,14 +20,14 @@
 
   background-color: color.$modal-bgColor;
 
-  .box-filer--open {
+  .filer {
     $btn-size: 50px;
 
     border-radius: 0.5rem;
     background-color: color.$btn-bgColor-deactive;
     color: color.$color-deactive;
 
-    #btn_dir--open {
+    #btn_open {
       display: flex;
       line-height: $btn-size;
       padding: 1rem 2rem;
@@ -48,7 +48,7 @@
       background-color: color.$btn-bgColor-active;
       color: color.$color-active;
 
-      #btn_dir--open {
+      #btn_open {
         .icon {
           &#btn-icon-normal {
             display: none;

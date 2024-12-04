@@ -1,11 +1,11 @@
 @use "../../foundation/color";
 
-.box-settings--root {
+.settings {
   padding: 1rem 2rem;
   color: color.$color-active;
   font-size: 0.9rem;
 
-  .box-settings--section {
+  .settings-section {
     padding: 0.5rem 1rem;
     line-height: 1.5rem;
     border: 1px solid color.$border-color-deactive;
@@ -15,17 +15,17 @@
     }
 
     h2 {
-      .settings-class--min {
+      .settings-class {
         color: color.$color-deactive;
       }
     }
 
-    .settings-class--description {
+    .settings--description {
       color: color.$color-deactive;
       margin-bottom: 5px;
     }
 
-    .settings-item--min {
+    .settings-item {
       display: flex;
       margin-bottom: 5px;
 
@@ -54,7 +54,7 @@
       }
     }
 
-    &#setting_section-groupName {
+    &.setting-groupName {
       label {
         display: block;
         width: 1.5rem;

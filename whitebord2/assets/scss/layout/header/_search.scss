@@ -1,6 +1,6 @@
 @use "../../foundation/color";
 
-.box-search--root {
+.search {
   position: relative;
   width: 30%;
   height: 40px;
@@ -17,11 +17,11 @@
     height: 20px;
     color: color.$color-deactive;
 
-    &#icon_search--l {
+    &#icon_search {
       left: 5px;
     }
 
-    &#btn_cancel--r {
+    &#btn_cancel {
       right: 5px;
 
       &:hover {
