@@ -796,7 +796,7 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
   /**
    * 入力内容をアーカイブする
    */
-  function archive() {
+  async function archive() {
     oneSelft.onpointerdown = "";
     oneSelft.onpointerup = "";
 
@@ -805,8 +805,8 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
 
     const filename = `${data.id}.json`;
     const jsonStr = JSON.stringify(data);
-    filer.saveTextArchive(filename, jsonStr);
-    filer.saveText(filename, "");
+    await filer.saveTextArchive(filename, jsonStr);
+    await filer.saveText(filename, "");
   }
 
   /**
@@ -884,23 +884,30 @@ HTMLElement.prototype.sticker = function (myRoot, data) {
     const elmFooter = document.createElement("div");
     elmFooter.classList.add("sticker-grid--footer");
     elmFooter.appendChild(createDurDateInput());
+    elmFooter.appendChild(createArchiveButton());
     elmFooter.appendChild(createCheckBox());
 
-    const iconArchive = Component.createIcon("icon-download");
-    iconArchive.classList.add(
-      "sticker-icon--archive",
-      "sticker-control--unmove"
-    );
-    elmFooter.appendChild(iconArchive);
+    return elmFooter;
 
     /**
-     * アーカイブ保存
+     * アーカイブボタンを作成する。
+     * @returns
      */
-    iconArchive.addEventListener("click", async () => {
-      await archive();
-    });
+    function createArchiveButton() {
+      const elm = document.createElement("button");
+      elm.classList.add("sticker-btn--archive", "sticker-control--unmove");
+      elm.appendChild(Component.createIcon("icon-download"));
 
-    return elmFooter;
+      /**
+       * アーカイブ保存
+       */
+      elm.addEventListener("click", async () => {
+        console.log("test");
+        await archive();
+      });
+
+      return elm;
+    }
 
     /**
      * 期限日入力欄を作成

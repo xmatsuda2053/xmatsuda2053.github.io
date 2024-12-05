@@ -132,14 +132,30 @@
       font-size: 0.8rem;
     }
 
-    .sticker-icon--archive {
+    .sticker-btn--archive {
       position: absolute;
-      top: 5px;
+      top: 2px;
       right: 30px;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       transition: all 0.2s 0s ease-in-out;
+
+      color: color.$sticker-color-icon-deactive;
+      cursor: pointer;
+
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover {
+        color: color.$sticker-color-icon-active;
+      }
     }
 
     .sticker-input--checkbox {
@@ -176,15 +192,6 @@
         &:before {
           border-color: color.$sticker-color-icon-active;
         }
-      }
-    }
-
-    .icon {
-      color: color.$sticker-color-icon-deactive;
-      cursor: pointer;
-
-      &:hover {
-        color: color.$sticker-color-icon-active;
       }
     }
   }

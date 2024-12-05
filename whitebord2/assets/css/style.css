@@ -424,6 +424,10 @@ body {
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
+  pointer-events: none;
+}
+.icon use {
+  pointer-events: none;
 }
 
 .has-tooltip .tooltip-text--l {
@@ -559,13 +563,25 @@ body {
   line-height: 30px;
   font-size: 0.8rem;
 }
-.sticker .sticker-grid--footer .sticker-icon--archive {
+.sticker .sticker-grid--footer .sticker-btn--archive {
   position: absolute;
-  top: 5px;
+  top: 2px;
   right: 30px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s 0s ease-in-out;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.sticker .sticker-grid--footer .sticker-btn--archive .icon {
   width: 20px;
   height: 20px;
-  transition: all 0.2s 0s ease-in-out;
+}
+.sticker .sticker-grid--footer .sticker-btn--archive:hover {
+  color: rgba(0, 0, 0, 0.8);
 }
 .sticker .sticker-grid--footer .sticker-input--checkbox {
   cursor: pointer;
@@ -598,13 +614,6 @@ body {
 }
 .sticker .sticker-grid--footer .sticker-input--checkbox:checked:before {
   border-color: rgba(0, 0, 0, 0.8);
-}
-.sticker .sticker-grid--footer .icon {
-  color: rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-}
-.sticker .sticker-grid--footer .icon:hover {
-  color: rgba(0, 0, 0, 0.8);
 }
 .sticker.color1 {
   background-color: #65d6db;
@@ -694,7 +703,6 @@ body {
 }
 
 .menu .menu-btn--svg {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
