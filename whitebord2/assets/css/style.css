@@ -919,6 +919,18 @@ body {
   color: #fffffb;
   background-color: #3c3c3c;
   transition: left 0.5s ease-in-out;
+  overflow-y: scroll;
+}
+#drawer_left::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 4px;
+  background-color: #eaeaea;
+  border: none;
+}
+#drawer_left::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px 10px #707070;
+  border: solid 1px transparent;
 }
 #drawer_left.show {
   left: 0;

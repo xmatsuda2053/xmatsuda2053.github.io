@@ -35,7 +35,7 @@
                 <span class="document-cmd">#after:</span>{yyyyMMdd}
               </p>
               <p class="document-description">
-                期限日が {yyyyMMdd} 以降の付箋を表示する。
+                {yyyyMMdd} より後に期限を迎える付箋を表示する。
               </p>
               <p class="document-example">ex. #after:20241202</p>
             </div>
@@ -44,16 +44,25 @@
                 <span class="document-cmd">#before:</span>{yyyyMMdd}
               </p>
               <p class="document-description">
-                期限日が {yyyyMMdd} 以前の付箋を表示する。
+                {yyyyMMdd} より前に期限を迎える付箋を表示する。
               </p>
               <p class="document-example">ex. #before:20241202</p>
+            </div>
+            <div class="document-contents">
+              <p class="document-pattern">
+                <span class="document-cmd">#range:</span>{yyyyMMdd}-{yyyyMMdd}
+              </p>
+              <p class="document-description">
+                {yyyymmdd} の範囲内で期限を迎える付箋を表示する。
+              </p>
+              <p class="document-example">ex. #range:20241201-20241205</p>
             </div>
             <div class="document-contents">
               <p class="document-pattern">
                 <span class="document-cmd">#today</span>
               </p>
               <p class="document-description">
-                期限日 が 当日日付 の付箋を表示する。
+                当日に期限を迎える付箋を表示する。
               </p>
             </div>
             <div class="document-contents">
@@ -61,7 +70,7 @@
                 <span class="document-cmd">#alert</span>
               </p>
               <p class="document-description">
-                アラート発生中 の 付箋を表示する。
+                アラート発生中の付箋を表示する。
               </p>
             </div>
             <div class="document-contents">
@@ -69,7 +78,7 @@
                 <span class="document-cmd">#tag:</span>{name}
               </p>
               <p class="document-description">
-                タグ名 {name} に該当する付箋を表示する。
+                {name} タグが付けられた付箋を表示する。
               </p>
               <p class="document-example">ex. #tag:分類1</p>
             </div>

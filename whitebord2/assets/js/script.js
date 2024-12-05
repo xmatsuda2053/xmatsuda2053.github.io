@@ -447,6 +447,19 @@ class SearchParam {
         return;
       }
 
+      if (kw.startsWith("#range:")) {
+        this.isAfter = true;
+        this.isBefore = true;
+
+        const str = kw.replaceAll("#range:", "").split("-");
+        if (str.length !== 2) return;
+
+        this.afterDate = str[0];
+        this.beforeDate = str[1];
+
+        return;
+      }
+
       if (kw.startsWith("#today")) {
         this.isToday = true;
         return;
