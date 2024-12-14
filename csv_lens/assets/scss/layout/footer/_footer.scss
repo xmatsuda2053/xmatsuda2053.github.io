@@ -1,0 +1,25 @@
+@use "../../foundation/color";
+
+.box-footer {
+  display: flex;
+  font-size: 0.8rem;
+  padding: 0 0.25rem;
+  color: color.$font-color-active;
+
+  .footer-item {
+    display: flex;
+    margin-right: 15px;
+
+    .icon {
+      margin-top: 4px;
+      margin-right: 3px;
+      width: 17px;
+      height: 17px;
+    }
+
+    span {
+      line-height: 22px;
+      margin-top: 3px;
+    }
+  }
+}

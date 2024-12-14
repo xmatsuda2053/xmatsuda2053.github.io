@@ -1,0 +1,90 @@
+@use "../../foundation/color";
+
+#drawer_left {
+  $drawer-width: 300px;
+
+  position: fixed;
+  z-index: calc(infinity);
+  left: $drawer-width * -1;
+  top: 0;
+
+  width: $drawer-width;
+  height: 100%;
+
+  color: color.$font-color-active;
+  background-color: color.$bg-color-drawer;
+
+  transition: left 0.5s ease-in-out;
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+    background-color: color.$scrollbar-bg-color;
+    border: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px 10px color.$scrollbar-border-color;
+    border: solid 1px transparent;
+  }
+
+  &.show {
+    left: 0;
+  }
+
+  .drwaer-control {
+    border-bottom: 1px solid color.$border-color-active;
+
+    button {
+      width: 30px;
+      height: 30px;
+      padding: 2px;
+
+      &:hover {
+        color: color.$font-color-active;
+      }
+
+      icon {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+
+  .list-file--csv {
+    .btn-fileopen {
+      cursor: pointer;
+      display: flex;
+      width: 100%;
+      height: 30px;
+      padding: 5px 5px;
+
+      border-bottom: 1px solid color.$border-color-active;
+
+      &:hover {
+        background-color: color.$bg-color-drawer-hover;
+      }
+
+      .icon {
+        height: 18px;
+        width: 18px;
+        margin-top: 1px;
+        margin-right: 5px;
+      }
+
+      .text-filename {
+        font-size: 0.8rem;
+        line-height: 20px;
+        width: 100%;
+
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@use "../../foundation/color";
+
+.box-csv {
+  #table_csv {
+    &.filter-on {
+      tbody {
+        tr {
+          display: none;
+
+          &.visible {
+            display: table-row;
+          }
+        }
+      }
+    }
+  }
+
+  table {
+    table-layout: auto;
+    width: 100%;
+    font-size: 0.9rem;
+
+    thead {
+      position: sticky;
+      top: 0;
+      left: 0;
+      background-color: color.$viewer-header-bg-color;
+      color: color.$font-color-active;
+
+      tr {
+        th {
+          padding: 0.5rem 0.25rem;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &:hover {
+          background-color: color.$viewer-tr-hover-bg-color;
+        }
+
+        td {
+          cursor: pointer;
+          vertical-align: middle;
+          padding: 0.25rem;
+          border-bottom: 1px solid color.$viewer-border-color;
+
+          &:not(:first-child) {
+            border-left: 1px solid color.$viewer-border-color;
+          }
+
+          &:hover {
+            color: color.$font-color-active;
+            background-color: color.$viewer-td-hover-bg-color;
+          }
+
+          ul {
+            @for $i from 1 through 10 {
+              li.cell-list--#{$i} {
+                padding-left: ($i - 1) * 0.9rem;
+
+                &::before {
+                  content: "\02517";
+                }
+              }
+            }
+          }
+
+          a {
+            text-decoration: underline;
+            color: color.$font-color-link;
+          }
+        }
+      }
+    }
+  }
+}
