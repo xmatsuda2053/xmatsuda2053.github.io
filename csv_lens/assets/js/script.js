@@ -384,6 +384,7 @@ const refreshDrawerFileList = (fileList) => {
     const btn = createButton(fileName);
     btn.addEventListener("click", () => {
       createTable(fileName);
+      clear();
     });
     target.appendChild(btn);
   });
@@ -431,8 +432,25 @@ const setSearchCount = (count) => {
 // ============================================
 // Seerch
 // ============================================
+const FILTER_CLASS_NAME = "filter-on";
+
+/**
+ * フィルタをクリアする
+ */
+const clear = () => {
+  const tableCsv = document.getElementById("table_csv");
+  tableCsv.classList.remove(FILTER_CLASS_NAME);
+  const visibleTrs = tableCsv.getElementsByClassName("visible");
+  for (let tr of visibleTrs) {
+    tr.classList.remove("visible");
+  }
+  setSearchCount(0);
+
+  const textSearch = document.getElementById("text_search");
+  textSearch.value = "";
+};
+
 const initSearch = () => {
-  const FILTER_CLASS_NAME = "filter-on";
   const textSearch = document.getElementById("text_search");
   const btnSearchCancel = document.getElementById("btn_search--cancel");
 
@@ -443,19 +461,6 @@ const initSearch = () => {
    */
   const normalizeText = (str) => {
     return str.toLowerCase().replaceAll("　", " ");
-  };
-
-  /**
-   * フィルタをクリアする
-   */
-  const clear = () => {
-    const tableCsv = document.getElementById("table_csv");
-    tableCsv.classList.remove(FILTER_CLASS_NAME);
-    const visibleTrs = tableCsv.getElementsByClassName("visible");
-    for (let tr of visibleTrs) {
-      tr.classList.remove("visible");
-    }
-    setSearchCount(0);
   };
 
   /**
