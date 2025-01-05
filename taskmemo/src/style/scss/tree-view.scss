@@ -1,0 +1,133 @@
+@use "foundation/destyle";
+@use "foundation/font";
+@use "foundation/svg";
+@use "foundation/color";
+
+.menu-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: none;
+  background-color: transparent;
+
+  .menu {
+    position: absolute;
+    z-index: 100000;
+    border: 1px solid color.$treeview-menu-border-color;
+
+    background-color: color.$treeview-menu-bg-color;
+    border-radius: 0.25rem;
+    box-shadow: 0px 3px 3px 0px color.$treeview-menu-shodow-color;
+
+    width: fit-content;
+    padding: 0.2rem;
+
+    button {
+      display: block;
+      line-height: 1.5rem;
+      padding: 0 1.5rem;
+      padding-left: 0.75rem;
+      width: 100%;
+
+      &:hover {
+        background-color: color.$treeview-menu-btn-bg-color-hover;
+        border-radius: 0.25rem;
+        color: color.$treeview-menu-btn-font-color-hover;
+      }
+    }
+
+    hr {
+      margin: 0.25rem 0;
+      height: 1px;
+      background-color: color.$treeview-menu-hr-color;
+      border: none;
+    }
+  }
+}
+
+.treeview {
+  width: 100%;
+  padding-bottom: 50px;
+  height: 100%;
+  line-height: 1.2rem;
+
+  p,
+  summary {
+    width: 100%;
+    &:hover {
+      color: color.$treeview-font-color-hover;
+      text-decoration: underline;
+    }
+
+    span {
+      display: inline-block;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  p {
+    cursor: pointer;
+    position: relative;
+    margin-left: 1rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -1.05rem;
+      top: 0.2rem;
+      width: 1.1em;
+      height: 1.1em;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'  width='24'  height='24'  viewBox='0 0 24 24'  fill='none'  stroke='currentColor'  stroke-width='2'  stroke-linecap='round'  stroke-linejoin='round'  class='icon icon-tabler icons-tabler-outline icon-tabler-sticker-2'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M6 4h12a2 2 0 0 1 2 2v7h-5a2 2 0 0 0 -2 2v5h-7a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2z' /%3E%3Cpath d='M20 13v.172a2 2 0 0 1 -.586 1.414l-4.828 4.828a2 2 0 0 1 -1.414 .586h-.172' /%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  details {
+    cursor: pointer;
+    margin-left: 1rem;
+
+    summary {
+      list-style: none;
+
+      position: relative;
+      outline: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -1rem;
+        top: 0.35rem;
+
+        width: 8px;
+        height: 8px;
+        border-top: solid 2px color.$treeview-icon-color;
+        border-right: solid 2px color.$treeview-icon-color;
+        transform: rotate(45deg);
+
+        transition: transform 0.2s;
+      }
+    }
+
+    &[open] {
+      > summary {
+        &::before {
+          transform: rotate(135deg);
+          left: -0.9rem;
+          top: 0.15rem;
+        }
+      }
+    }
+  }
+}
