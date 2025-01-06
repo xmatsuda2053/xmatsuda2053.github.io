@@ -57,9 +57,11 @@
   p,
   summary {
     width: 100%;
-    &:hover {
-      color: color.$treeview-font-color-hover;
-      text-decoration: underline;
+    span {
+      &:hover {
+        color: color.$treeview-font-color-hover;
+        text-decoration: underline;
+      }
     }
 
     span {

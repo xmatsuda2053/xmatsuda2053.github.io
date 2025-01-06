@@ -446,8 +446,8 @@ svg.icon use {
 .treeview summary {
   width: 100%;
 }
-.treeview p:hover,
-.treeview summary:hover {
+.treeview p span:hover,
+.treeview summary span:hover {
   color: #0078d4;
   text-decoration: underline;
 }
