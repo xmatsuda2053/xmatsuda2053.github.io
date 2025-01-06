@@ -53,13 +53,13 @@ export function TreeView() {
             this.#addTask(item.name, item.id);
           } else {
             const elm = this.#addGroup(item.name, item.id);
-            this.#removeIdTarget();
-            elm.id = "target";
           }
 
           // 子要素がある場合は再帰的に処理を行う
           if (item.childlen !== null) {
             item.childlen.forEach((child) => {
+              this.#removeIdTarget();
+              elm.id = "target";
               addTreeViewFromData(child);
             });
           }
