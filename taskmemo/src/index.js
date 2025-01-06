@@ -37,6 +37,17 @@ const addTreeView = () => {
       elm.dataset.name = event.target.value;
     };
 
+    // 進捗変更時の処理
+    const taskStatusChangeHander = (percent) => {
+      if (percent === "100") {
+        elm.classList.add("task-finish");
+      } else {
+        if (elm.classList.contains("task-finish")) {
+          elm.classList.remove("task-finish");
+        }
+      }
+    };
+
     // 変更内容の保存処理
     const saveFile = async () => {
       const fileName = `${elm.dataset.id}.json`;
@@ -68,6 +79,7 @@ const addTreeView = () => {
     taskContents.id = "taskContentsRoot";
     taskContents.setFileManager(fileManager);
     taskContents.setTitleChangeHandler(titleChangeHandler);
+    taskContents.setStatusChangeHandler(taskStatusChangeHander);
     taskContents.readTaskData(elm.dataset.id);
 
     // タスク履歴の表示

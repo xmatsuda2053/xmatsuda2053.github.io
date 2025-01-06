@@ -449,12 +449,14 @@ svg.icon use {
 .treeview p span:hover,
 .treeview summary span:hover {
   color: #0078d4;
-  text-decoration: underline;
 }
 .treeview p#selected-task span,
 .treeview summary#selected-task span {
   color: #0078d4;
-  text-decoration: underline;
+}
+.treeview p.task-finish span,
+.treeview summary.task-finish span {
+  text-decoration: line-through;
 }
 .treeview p span,
 .treeview summary span {
@@ -463,6 +465,10 @@ svg.icon use {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.treeview p span.task-finish,
+.treeview summary span.task-finish {
+  text-decoration: line-through;
 }
 .treeview p {
   cursor: pointer;

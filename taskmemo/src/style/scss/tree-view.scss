@@ -60,13 +60,17 @@
     span {
       &:hover {
         color: color.$treeview-font-color-hover;
-        text-decoration: underline;
       }
     }
     &#selected-task {
       span {
         color: color.$treeview-font-color-hover;
-        text-decoration: underline;
+      }
+    }
+
+    &.task-finish {
+      span {
+        text-decoration: line-through;
       }
     }
 
@@ -76,6 +80,10 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      &.task-finish {
+        text-decoration: line-through;
+      }
     }
   }
 

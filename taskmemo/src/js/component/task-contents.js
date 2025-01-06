@@ -88,6 +88,7 @@ export function TaskContents() {
         $("memo").value = taskData.memo || "";
 
         this.#setPriority();
+        this.taskStatusChangeHander($("status").value);
         this.#adjustTextAreaRows($("folderpath"));
         this.#adjustTextAreaRows($("memo"));
       });
@@ -384,12 +385,20 @@ export function TaskContents() {
           lbl.classList.add("last");
         }
 
+        input.addEventListener("change", (e) => {
+          this.taskStatusChangeHander(e.target.value);
+        });
+
         div.appendChild(lbl);
         div.appendChild(input);
       });
       box.appendChild(div);
 
       return box;
+    }
+
+    setStatusChangeHandler(handler) {
+      this.taskStatusChangeHander = handler;
     }
 
     /**
