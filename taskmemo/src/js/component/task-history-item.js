@@ -32,8 +32,8 @@ export function TaskHistoryItem() {
         return form.elements[name];
       };
 
-      $("historyDate").value = historyData.date;
-      $("historyText").value = historyData.text;
+      $("historyDate").value = historyData.date || this.#getToday();
+      $("historyText").value = historyData.text || "";
 
       this.#adjustTextAreaRows($("historyText"));
     }
@@ -126,22 +126,25 @@ export function TaskHistoryItem() {
     }
 
     #createDate() {
-      const date = new Date();
-      const y = date.getFullYear();
-      const m = String(date.getMonth() + 1).padStart(2, "0");
-      const d = String(date.getDate()).padStart(2, "0");
-
       const input = document.createElement("input");
       input.type = "date";
       input.id = "historyDate";
       input.name = "historyDate";
-      input.value = `${y}-${m}-${d}`;
+      input.value = this.#getToday();
 
       const div = document.createElement("div");
       div.classList.add("date");
       div.appendChild(input);
 
       return div;
+    }
+
+    #getToday() {
+      const date = new Date();
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
     }
 
     #createTrashButton() {

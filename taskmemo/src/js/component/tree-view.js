@@ -241,11 +241,11 @@ export function TreeView() {
      * タスクを追加する
      * @param {string} name
      * @param {string} id
-     * @param {boolean} isClick
+     * @param {boolean} isAdd
      * @returns タグ
      * @private
      */
-    #addTask(name, id, isClick = true) {
+    #addTask(name, id, isAdd = true) {
       const task = document.createElement("p");
       task.dataset.id = id;
       task.dataset.name = name;
@@ -259,22 +259,26 @@ export function TreeView() {
 
       task.addEventListener("click", () => {
         this.taskClickHandler(task);
-
-        const removeTarget = this.shadowRoot.getElementById("selected-task");
-        if (removeTarget !== null) {
-          removeTarget.id = "";
-        }
-        task.id = "selected-task";
+        this.#selectedTask(task);
       });
 
       const target = this.#getTarget();
       target.appendChild(task);
 
-      if (isClick) {
+      if (isAdd) {
         this.taskClickHandler(task);
+        this.#selectedTask(task);
       }
 
       return task;
+    }
+
+    #selectedTask(task) {
+      const removeTarget = this.shadowRoot.getElementById("selected-task");
+      if (removeTarget !== null) {
+        removeTarget.id = "";
+      }
+      task.id = "selected-task";
     }
 
     /**
