@@ -37,26 +37,7 @@ const addTreeView = () => {
       elm.dataset.name = event.target.value;
     };
 
-    // タスク内容の表示
-    const contents = document.getElementById("contents");
-    const taskContents = document.createElement("task-contents");
-    contents.innerHTML = "";
-    contents.appendChild(taskContents);
-
-    taskContents.setFileManager(fileManager);
-    taskContents.setTitleChangeHandler(titleChangeHandler);
-    taskContents.readTaskData(elm.dataset.id);
-
-    // タスク履歴の表示
-    const history = document.getElementById("history");
-    const taskHistory = document.createElement("task-history");
-    history.innerHTML = "";
-    history.appendChild(taskHistory);
-
-    taskHistory.setFileManager(fileManager);
-    taskHistory.readTaskHistoryData(elm.dataset.id);
-
-    // 変更内容保存
+    // 変更内容の保存処理
     const saveFile = async () => {
       const fileName = `${elm.dataset.id}.json`;
       const taskData = taskContents.getFormInputData();
@@ -67,13 +48,41 @@ const addTreeView = () => {
       );
     };
 
-    taskContents.addEventListener("formChangeEvent", async (e) => {
-      await saveFile();
-    });
+    // 既存のイベントを削除（予期せぬ上書き防止）
+    const oldTaskContetns = document.getElementById("taskContentsRoot");
+    const oldTaskHistory = document.getElementById("taskHistoryRoot");
 
-    taskHistory.addEventListener("formChangeEvent", async (e) => {
-      await saveFile();
-    });
+    if (oldTaskContetns !== null) {
+      oldTaskContetns.removeEventListener("formChangeEvent", saveFile);
+    }
+    if (oldTaskHistory !== null) {
+      oldTaskHistory.removeEventListener("formChangeEvent", saveFile);
+    }
+
+    // タスク内容の表示
+    const contents = document.getElementById("contents");
+    const taskContents = document.createElement("task-contents");
+    contents.innerHTML = "";
+    contents.appendChild(taskContents);
+
+    taskContents.id = "taskContentsRoot";
+    taskContents.setFileManager(fileManager);
+    taskContents.setTitleChangeHandler(titleChangeHandler);
+    taskContents.readTaskData(elm.dataset.id);
+
+    // タスク履歴の表示
+    const history = document.getElementById("history");
+    const taskHistory = document.createElement("task-history");
+    history.innerHTML = "";
+    history.appendChild(taskHistory);
+
+    taskHistory.id = "taskHistoryRoot";
+    taskHistory.setFileManager(fileManager);
+    taskHistory.readTaskHistoryData(elm.dataset.id);
+
+    // 変更内容保存
+    taskContents.addEventListener("formChangeEvent", saveFile);
+    taskHistory.addEventListener("formChangeEvent", saveFile);
   };
 
   const treeviewArea = document.getElementById("treeview");
