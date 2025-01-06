@@ -115,7 +115,7 @@ export function TaskHistoryItem() {
       textarea.id = "historyText";
       textarea.name = "historyText";
 
-      textarea.addEventListener("keyup", () => {
+      textarea.addEventListener("keyup", (e) => {
         e.preventDefault();
         this.#adjustTextAreaRows(textarea);
       });
