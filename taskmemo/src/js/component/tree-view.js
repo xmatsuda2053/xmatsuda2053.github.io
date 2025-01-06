@@ -276,7 +276,14 @@ export function TreeView() {
 
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        this.#addGroup("新規グループ", this.#getUniqueId());
+        const group = this.#addGroup("新規グループ", this.#getUniqueId());
+
+        this.#hiddenMenu();
+
+        this.#removeIdTarget();
+        group.id = "target";
+        this.#changeGroupName();
+        this.#removeIdTarget();
       });
 
       return btn;
@@ -318,22 +325,26 @@ export function TreeView() {
       btn.innerText = "グループ名変更";
 
       btn.addEventListener("click", (e) => {
-        const target = this.#getTarget();
-        if (target.tagName !== "DETAILS") {
-          return;
-        }
-
-        const span = target.children[0].children[0];
-        const name = target.dataset.name;
-
-        const inputText = prompt("グループ名変更", name);
-        if (inputText !== null) {
-          target.dataset.name = inputText;
-          span.innerText = inputText;
-        }
+        this.#changeGroupName();
       });
 
       return btn;
+    }
+
+    #changeGroupName() {
+      const target = this.#getTarget();
+      if (target.tagName !== "DETAILS") {
+        return;
+      }
+
+      const span = target.children[0].children[0];
+      const name = target.dataset.name;
+
+      const inputText = prompt("グループ名変更", name);
+      if (inputText !== null) {
+        target.dataset.name = inputText;
+        span.innerText = inputText;
+      }
     }
 
     /**
@@ -359,15 +370,21 @@ export function TreeView() {
      */
     #createMenuContainer(menu) {
       const container = document.createElement("div");
+      container.id = "menu-container";
       container.classList.add("menu-container");
       container.appendChild(menu);
 
       container.addEventListener("click", (e) => {
         e.preventDefault();
-        container.style.display = "none";
+        this.#hiddenMenu();
       });
 
       return container;
+    }
+
+    #hiddenMenu() {
+      const container = this.shadowRoot.getElementById("menu-container");
+      container.style.display = "none";
     }
 
     /**
