@@ -50,17 +50,18 @@ export function TreeView() {
          */
         const addTreeViewFromData = (item) => {
           if (item.type === "task") {
-            this.#addTask(item.name, item.id);
+            this.#addTask(item.name, item.id, false);
           } else {
-            const elm = this.#addGroup(item.name, item.id);
+            const group = this.#addGroup(item.name, item.id);
             // 子要素がある場合は再帰的に処理を行う
             if (item.childlen !== null) {
               item.childlen.forEach((child) => {
                 this.#removeIdTarget();
-                elm.id = "target";
+                group.id = "target";
                 addTreeViewFromData(child);
               });
             }
+            group.open = false;
           }
         };
 
@@ -240,10 +241,11 @@ export function TreeView() {
      * タスクを追加する
      * @param {string} name
      * @param {string} id
+     * @param {boolean} isClick
      * @returns タグ
      * @private
      */
-    #addTask(name, id) {
+    #addTask(name, id, isClick = true) {
       const task = document.createElement("p");
       task.dataset.id = id;
       task.dataset.name = name;
@@ -261,7 +263,10 @@ export function TreeView() {
 
       const target = this.#getTarget();
       target.appendChild(task);
-      this.taskClickHandler(task);
+
+      if (isClick) {
+        this.taskClickHandler(task);
+      }
 
       return task;
     }
