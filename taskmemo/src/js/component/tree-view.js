@@ -256,7 +256,9 @@ export function TreeView() {
 
       task.appendChild(span);
 
-      task.addEventListener("click", () => {
+      task.addEventListener("click", (e) => {
+        e.preventDefault();
+
         this.taskClickHandler(task);
         this.#selectedTask(task);
       });
@@ -337,6 +339,7 @@ export function TreeView() {
       btn.innerText = "グループ名変更";
 
       btn.addEventListener("click", (e) => {
+        e.preventDefault();
         this.#changeGroupName();
       });
 

@@ -92,6 +92,8 @@ export function TaskHistoryItem() {
       form.appendChild(item);
 
       form.addEventListener("change", async (e) => {
+        e.preventDefault();
+
         // カスタムイベントで変更を外部に伝播
         const event = new CustomEvent("formChangeEvent", {
           detail: { message: "Task Change." },
@@ -114,6 +116,7 @@ export function TaskHistoryItem() {
       textarea.name = "historyText";
 
       textarea.addEventListener("keyup", () => {
+        e.preventDefault();
         this.#adjustTextAreaRows(textarea);
       });
 
@@ -151,8 +154,12 @@ export function TaskHistoryItem() {
       const btn = Utils.svgBtn("trash");
       btn.classList.add("trash-button");
 
-      btn.addEventListener("click", () => {
-        this.remove();
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const result = confirm("履歴を削除しますか");
+        if (result) {
+          this.remove();
+        }
       });
 
       return btn;

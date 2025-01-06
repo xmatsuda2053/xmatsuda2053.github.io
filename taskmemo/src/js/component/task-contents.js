@@ -101,6 +101,8 @@ export function TaskContents() {
        * @private
        */
       form.addEventListener("change", async (e) => {
+        e.preventDefault();
+
         // カスタムイベントで変更を外部に伝播
         const event = new CustomEvent("formChangeEvent", {
           detail: { message: "Task Change." },
@@ -304,7 +306,9 @@ export function TaskContents() {
       textarea.placeholder = placeholder;
       textarea.spellcheck = false;
 
-      textarea.addEventListener("keyup", () => {
+      textarea.addEventListener("keyup", (e) => {
+        e.preventDefault();
+
         this.#adjustTextAreaRows(textarea);
       });
 
@@ -327,6 +331,7 @@ export function TaskContents() {
       input.classList.add("large");
 
       input.addEventListener("change", (e) => {
+        e.preventDefault();
         this.titleChangeHandler(e);
       });
 
@@ -386,6 +391,7 @@ export function TaskContents() {
         }
 
         input.addEventListener("change", (e) => {
+          e.preventDefault();
           this.taskStatusChangeHander(e.target.value);
         });
 
@@ -461,7 +467,8 @@ export function TaskContents() {
       box.appendChild(this.#createUrgency()); // 緊急度
       box.appendChild(this.#createPriorityResult());
 
-      box.addEventListener("change", () => {
+      box.addEventListener("change", (e) => {
+        e.preventDefault();
         this.#setPriority();
       });
 

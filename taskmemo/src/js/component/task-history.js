@@ -98,7 +98,8 @@ export function TaskHistory() {
       const btn = Utils.svgBtn("plus");
       btn.classList.add("float-button");
 
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         const item = document.createElement("task-history-item");
         this.shadowRoot.appendChild(item);
       });
