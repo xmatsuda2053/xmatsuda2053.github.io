@@ -259,6 +259,12 @@ export function TreeView() {
 
       task.addEventListener("click", () => {
         this.taskClickHandler(task);
+
+        const removeTarget = this.shadowRoot.getElementById("selected-task");
+        if (removeTarget !== null) {
+          removeTarget.id = "";
+        }
+        task.id = "selected-task";
       });
 
       const target = this.#getTarget();

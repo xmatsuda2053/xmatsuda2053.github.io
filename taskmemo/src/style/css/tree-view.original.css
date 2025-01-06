@@ -451,6 +451,11 @@ svg.icon use {
   color: #0078d4;
   text-decoration: underline;
 }
+.treeview p#selected-task span,
+.treeview summary#selected-task span {
+  color: #0078d4;
+  text-decoration: underline;
+}
 .treeview p span,
 .treeview summary span {
   display: inline-block;
