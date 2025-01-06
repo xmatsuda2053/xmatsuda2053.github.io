@@ -34,6 +34,8 @@ export function TaskHistoryItem() {
 
       $("historyDate").value = historyData.date;
       $("historyText").value = historyData.text;
+
+      this.#adjustTextAreaRows($("historyText"));
     }
 
     /**
@@ -104,12 +106,23 @@ export function TaskHistoryItem() {
 
     #createMemo() {
       const textarea = document.createElement("textarea");
-      textarea.rows = 5;
+      textarea.rows = 3;
+      textarea.dataset.rows = 3;
       textarea.placeholder = "作業履歴を入力";
       textarea.spellcheck = false;
       textarea.id = "historyText";
       textarea.name = "historyText";
+
+      textarea.addEventListener("keyup", () => {
+        this.#adjustTextAreaRows(textarea);
+      });
+
       return textarea;
+    }
+
+    #adjustTextAreaRows(target) {
+      const rows = target.dataset.rows;
+      target.rows = Math.max(target.value.split("\n").length + 1, rows);
     }
 
     #createDate() {

@@ -70,22 +70,26 @@ export function TaskContents() {
 
         const taskData = JSON.parse(data).taskData;
 
-        $("title").value = taskData.title;
-        $("duedate").value = taskData.dueDate;
-        $("dev").value = taskData.dev;
-        $("manager").value = taskData.manager;
+        $("title").value = taskData.title || "";
+        $("duedate").value = taskData.dueDate || "";
+        $("dev").value = taskData.dev || "";
+        $("manager").value = taskData.manager || "";
         checkeRadio("urgency", taskData.urgency);
         checkeRadio("importance", taskData.importance);
         checkeRadio("status", taskData.status);
-        $("tel").value = taskData.tel;
-        $("folderpath").value = taskData.folderpath;
-        $("url").value = taskData.url;
-        $("option1").value = taskData.option1;
-        $("option2").value = taskData.option2;
-        $("option3").value = taskData.option3;
-        $("memo").value = taskData.memo;
+        $("tel").value = taskData.tel || "";
+        $("folderpath").value = taskData.folderpath || "";
+        $("url").value = taskData.url || "";
+        $("option1").value = taskData.option1 || "";
+        $("option2").value = taskData.option2 || "";
+        $("option3").value = taskData.option3 || "";
+        $("option4").value = taskData.option4 || "";
+        $("option5").value = taskData.option5 || "";
+        $("memo").value = taskData.memo || "";
 
         this.#setPriority();
+        this.#adjustTextAreaRows($("folderpath"));
+        this.#adjustTextAreaRows($("memo"));
       });
 
       /**
@@ -130,6 +134,8 @@ export function TaskContents() {
         option1: $("option1").value,
         option2: $("option2").value,
         option3: $("option3").value,
+        option4: $("option4").value,
+        option5: $("option5").value,
         memo: $("memo").value,
       };
 
@@ -152,6 +158,8 @@ export function TaskContents() {
       const option1 = this.#createOptionalItem("任意項目1", "option1");
       const option2 = this.#createOptionalItem("任意項目2", "option2");
       const option3 = this.#createOptionalItem("任意項目3", "option3");
+      const option4 = this.#createOptionalItem("任意項目4", "option4");
+      const option5 = this.#createOptionalItem("任意項目5", "option5");
       const memo = this.#createFreeMemo();
       const priprity = this.#createTaskPriority();
 
@@ -167,6 +175,8 @@ export function TaskContents() {
       form.appendChild(option1);
       form.appendChild(option2);
       form.appendChild(option3);
+      form.appendChild(option4);
+      form.appendChild(option5);
       form.appendChild(memo);
 
       this.shadowRoot.appendChild(form);
@@ -190,25 +200,25 @@ export function TaskContents() {
         case 43:
         case 34:
         case 33:
-          result = "問題・課題のタスク";
+          result = "優先順位１";
           break;
         case 42:
         case 41:
         case 32:
         case 31:
-          result = "質の高いタスク";
+          result = "優先順位２";
           break;
         case 24:
         case 23:
         case 14:
         case 13:
-          result = "見せかけのタスク";
+          result = "優先順位３";
           break;
         case 22:
         case 21:
         case 12:
         case 11:
-          result = "無駄なタスク";
+          result = "優先順位４";
           break;
         default:
           break;
@@ -289,9 +299,20 @@ export function TaskContents() {
       const textarea = document.createElement("textarea");
       textarea.id = id;
       textarea.rows = rows;
+      textarea.dataset.rows = rows;
       textarea.placeholder = placeholder;
       textarea.spellcheck = false;
+
+      textarea.addEventListener("keyup", () => {
+        this.#adjustTextAreaRows(textarea);
+      });
+
       return textarea;
+    }
+
+    #adjustTextAreaRows(target) {
+      const rows = target.dataset.rows;
+      target.rows = Math.max(target.value.split("\n").length + 1, rows);
     }
 
     /**
