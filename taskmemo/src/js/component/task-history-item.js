@@ -32,7 +32,11 @@ export function TaskHistoryItem() {
         return form.elements[name];
       };
 
-      $("historyDate").value = historyData.date || this.#getToday();
+      if (historyData.date && historyData.date.length === 10) {
+        historyData.date = `${historyData.date}T09:00`;
+      }
+
+      $("historyDate").value = historyData.date || this.#getTodayTime();
       $("historyText").value = historyData.text || "";
 
       this.#adjustTextAreaRows($("historyText"));
@@ -130,10 +134,10 @@ export function TaskHistoryItem() {
 
     #createDate() {
       const input = document.createElement("input");
-      input.type = "date";
+      input.type = "datetime-local";
       input.id = "historyDate";
       input.name = "historyDate";
-      input.value = this.#getToday();
+      input.value = this.#getTodayTime();
 
       const div = document.createElement("div");
       div.classList.add("date");
@@ -142,12 +146,14 @@ export function TaskHistoryItem() {
       return div;
     }
 
-    #getToday() {
+    #getTodayTime() {
       const date = new Date();
-      const y = date.getFullYear();
-      const m = String(date.getMonth() + 1).padStart(2, "0");
-      const d = String(date.getDate()).padStart(2, "0");
-      return `${y}-${m}-${d}`;
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
 
     #createTrashButton() {
