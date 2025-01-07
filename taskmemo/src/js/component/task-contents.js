@@ -91,6 +91,7 @@ export function TaskContents() {
         this.taskStatusChangeHander($("status").value);
         this.#adjustTextAreaRows($("folderpath"));
         this.#adjustTextAreaRows($("memo"));
+        this.#updateDeadline();
       });
 
       /**
@@ -254,6 +255,12 @@ export function TaskContents() {
       return div;
     }
 
+    #createInnerBox() {
+      const div = document.createElement("div");
+      div.classList.add("inner-box");
+      return div;
+    }
+
     /**
      * ラベルを作成
      * @param {string} id ターゲットID
@@ -266,6 +273,7 @@ export function TaskContents() {
       const lbl = document.createElement("label");
       lbl.htmlFor = id;
       lbl.innerText = lblText;
+      lbl.classList.add("item-name");
       return lbl;
     }
 
@@ -358,11 +366,63 @@ export function TaskContents() {
      * @memberof TaskContents
      */
     #createDueDate() {
-      const input = this.#createInput("date", "duedate", "duedate");
       const box = this.#createBox("期限日", true);
-      box.appendChild(input);
+      const innerBox1 = this.#createInnerBox();
+      const innerbox2 = this.#createInnerBox();
+      const input = this.#createInput("date", "duedate", "duedate");
+      const deadline = this.#createInput("text", "deadline", "deadline", "");
+      deadline.classList.add("ex-small");
+      deadline.readOnly = true;
+
+      input.addEventListener("change", () => {
+        this.#updateDeadline();
+      });
+
+      innerBox1.appendChild(input);
+      innerbox2.appendChild(deadline);
+
+      box.appendChild(innerBox1);
+      box.appendChild(innerbox2);
 
       return box;
+    }
+
+    /**
+     * 残日数を更新
+     */
+    #updateDeadline() {
+      const parseDate = (dateString) => {
+        var parts = dateString.split("-");
+        return new Date(parts[0], parts[1] - 1, parts[2]);
+      };
+      const getToday = () => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth()).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return new Date(year, month, day);
+      };
+
+      const form = this.shadowRoot.getElementById("task-form");
+      const input = form.elements["duedate"];
+      const deadline = form.elements["deadline"];
+
+      if (input.value === "") {
+        deadline.value = "";
+        return;
+      }
+
+      const inputData = parseDate(input.value);
+      const today = getToday();
+      const dayCount = Math.floor((inputData - today) / 86400000);
+
+      if (dayCount >= 0) {
+        deadline.value = `あと ${dayCount} 日`;
+        deadline.style.color = "#000000";
+      } else {
+        deadline.value = `${parseInt(dayCount) * -1} 日 超過`;
+        deadline.style.color = "#FF0000";
+      }
     }
 
     /**
@@ -439,10 +499,8 @@ export function TaskContents() {
         },
       ];
       managerArr.forEach((v) => {
-        const div = document.createElement("div");
-        div.classList.add("inner-box");
+        const div = this.#createInnerBox();
         const lbl = this.#createLabel(v.id, v.text);
-        lbl.classList.add("item-name");
         const input = this.#createInput(v.type, v.id, v.id, v.placeholder);
         input.classList.add(v.size);
 
@@ -506,11 +564,8 @@ export function TaskContents() {
         radioButton.appendChild(input);
       });
 
-      const innerBox = document.createElement("div");
-      innerBox.classList.add("inner-box");
-
+      const innerBox = this.#createInnerBox();
       const itemName = this.#createLabel("", "緊急度");
-      itemName.classList.add("item-name");
 
       innerBox.appendChild(itemName);
       innerBox.appendChild(radioButton);
@@ -552,11 +607,8 @@ export function TaskContents() {
         radioButton.appendChild(input);
       });
 
-      const innerBox = document.createElement("div");
-      innerBox.classList.add("inner-box");
-
+      const innerBox = this.#createInnerBox();
       const itemName = this.#createLabel("", "重要度");
-      itemName.classList.add("item-name");
 
       innerBox.appendChild(itemName);
       innerBox.appendChild(radioButton);
@@ -571,14 +623,11 @@ export function TaskContents() {
      * @memberof TaskContents
      */
     #createPriorityResult() {
-      const innerBox = document.createElement("div");
-      innerBox.classList.add("inner-box");
-
+      const innerBox = this.#createInnerBox();
       const itemName = this.#createLabel("priority", "判定結果");
-      itemName.classList.add("item-name");
 
       const input = this.#createInput("text", "priority", "priority", "");
-      input.classList.add("large");
+      input.classList.add("ex-small");
       input.readOnly = true;
 
       innerBox.appendChild(itemName);
@@ -650,8 +699,8 @@ export function TaskContents() {
      * @memberof TaskContents
      */
     #createFreeMemo() {
-      const box = this.#createBox("メモ");
-      const textarea = this.#createTextarea("memo", 10, "メモ");
+      const box = this.#createBox("自由記述");
+      const textarea = this.#createTextarea("memo", 10, "その他の補足情報");
       textarea.classList.add("large");
 
       box.appendChild(textarea);
