@@ -22,9 +22,42 @@ const addSearch = () => {
 };
 
 /**
+ * 変更内容を保存
+ */
+const saveFile = async () => {
+  const taskContents = document.getElementById("taskContentsRoot");
+  const taskHistory = document.getElementById("taskHistoryRoot");
+
+  const fileName = `${taskContents.dataset.id}.json`;
+  const taskData = taskContents.getFormInputData();
+  const historyData = taskHistory.getHistoryData();
+  await fileManager.saveFile(
+    fileName,
+    JSON.stringify({ taskData, historyData })
+  );
+};
+
+/**
+ * 入力内容変更時のイベントを削除
+ */
+const removeFormChangeEvent = () => {
+  const oldTaskContetns = document.getElementById("taskContentsRoot");
+  const oldTaskHistory = document.getElementById("taskHistoryRoot");
+
+  if (oldTaskContetns !== null) {
+    oldTaskContetns.removeEventListener("formChangeEvent", saveFile);
+    oldTaskContetns.remove();
+  }
+  if (oldTaskHistory !== null) {
+    oldTaskHistory.removeEventListener("formChangeEvent", saveFile);
+    oldTaskHistory.remove();
+  }
+};
+
+/**
  * TreeViewにアイテムを追加する。
  */
-const addTreeView = () => {
+const addTreeView = async () => {
   /**
    * TreeViewのアイテムをクリックした際の処理
    * @param {Element} elm
@@ -48,35 +81,18 @@ const addTreeView = () => {
       }
     };
 
-    // 変更内容の保存処理
-    const saveFile = async () => {
-      const fileName = `${elm.dataset.id}.json`;
-      const taskData = taskContents.getFormInputData();
-      const historyData = taskHistory.getHistoryData();
-      await fileManager.saveFile(
-        fileName,
-        JSON.stringify({ taskData, historyData })
-      );
-    };
-
     // 既存のイベントを削除（予期せぬ上書き防止）
-    const oldTaskContetns = document.getElementById("taskContentsRoot");
-    const oldTaskHistory = document.getElementById("taskHistoryRoot");
-
-    if (oldTaskContetns !== null) {
-      oldTaskContetns.removeEventListener("formChangeEvent", saveFile);
-    }
-    if (oldTaskHistory !== null) {
-      oldTaskHistory.removeEventListener("formChangeEvent", saveFile);
-    }
+    removeFormChangeEvent();
 
     // タスク内容の表示
     const contents = document.getElementById("contents");
     const taskContents = document.createElement("task-contents");
+
     contents.innerHTML = "";
     contents.appendChild(taskContents);
 
     taskContents.id = "taskContentsRoot";
+    taskContents.dataset.id = elm.dataset.id;
     taskContents.setFileManager(fileManager);
     taskContents.setTitleChangeHandler(titleChangeHandler);
     taskContents.setStatusChangeHandler(taskStatusChangeHander);
@@ -85,6 +101,7 @@ const addTreeView = () => {
     // タスク履歴の表示
     const history = document.getElementById("history");
     const taskHistory = document.createElement("task-history");
+
     history.innerHTML = "";
     history.appendChild(taskHistory);
 
@@ -100,6 +117,7 @@ const addTreeView = () => {
   const treeviewArea = document.getElementById("treeview");
   const treeView = document.createElement("tree-view");
   treeView.classList.add("item");
+  treeView.id = "tree-view-item";
 
   // ファイルマネージャーを設定
   treeView.setFileManager(fileManager);
@@ -108,8 +126,12 @@ const addTreeView = () => {
   treeView.setTaskClickHandler(taskClickHandler);
 
   // ツリービューにアイテムを追加
-  treeView.readTreeData();
+  await treeView.readTreeData();
   treeviewArea.appendChild(treeView);
+
+  // 画面初期表示を空の状態にする
+  removeFormChangeEvent();
+  treeView.removeSelectedTask();
 };
 
 /**
@@ -134,7 +156,7 @@ const addBtnFolderOpen = () => {
     fileManager = new FileManager();
     if (await fileManager.openDirectory()) {
       addSearch();
-      addTreeView();
+      await addTreeView();
       btn.remove();
     }
   });

@@ -272,12 +272,22 @@ export function TreeView() {
       return task;
     }
 
+    /**
+     * タスク選択状態
+     */
     #selectedTask(task) {
+      this.removeSelectedTask();
+      task.id = "selected-task";
+    }
+
+    /**
+     * タスク選択状態を解除
+     */
+    removeSelectedTask() {
       const removeTarget = this.shadowRoot.getElementById("selected-task");
       if (removeTarget !== null) {
         removeTarget.id = "";
       }
-      task.id = "selected-task";
     }
 
     /**
