@@ -457,6 +457,7 @@ svg.icon use {
 }
 .treeview p.task-finish span,
 .treeview summary.task-finish span {
+  color: #8f8f8f;
   text-decoration: line-through;
 }
 .treeview p span,
