@@ -31,6 +31,10 @@ const saveFile = async () => {
   const fileName = `${taskContents.dataset.id}.json`;
   const taskData = taskContents.getFormInputData();
   const historyData = taskHistory.getHistoryData();
+
+  if (!taskData) return;
+  if (!historyData) return;
+
   await fileManager.saveFile(
     fileName,
     JSON.stringify({ taskData, historyData })

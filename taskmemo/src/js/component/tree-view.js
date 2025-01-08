@@ -50,7 +50,10 @@ export function TreeView() {
          */
         const addTreeViewFromData = (item) => {
           if (item.type === "task") {
-            this.#addTask(item.name, item.id);
+            const task = this.#addTask(item.name, item.id);
+            if (item.cls.length !== 0) {
+              task.classList.add.apply(task.classList, item.cls);
+            }
           } else {
             const group = this.#addGroup(item.name, item.id);
             // 子要素がある場合は再帰的に処理を行う
@@ -105,10 +108,12 @@ export function TreeView() {
           const elements = [];
 
           nodes.forEach((node) => {
+            const cls = Array.from(node.classList);
             const dataItem = {
               id: node.dataset.id || null,
               name: node.dataset.name || null,
               type: node.dataset.type || null,
+              cls: cls || null,
               childlen: null,
             };
 
@@ -231,7 +236,7 @@ export function TreeView() {
 
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        this.#addTask("新規タスク", this.#getUniqueId());
+        this.#addTask("新規タスク", this.#getUniqueId(), true);
       });
 
       return btn;
@@ -241,10 +246,11 @@ export function TreeView() {
      * タスクを追加する
      * @param {string} name
      * @param {string} id
+     * @param {boolean} isAdd
      * @returns タグ
      * @private
      */
-    #addTask(name, id) {
+    #addTask(name, id, isAdd = false) {
       const task = document.createElement("p");
       task.dataset.id = id;
       task.dataset.name = name;
@@ -266,7 +272,9 @@ export function TreeView() {
       const target = this.#getTarget();
       target.appendChild(task);
 
-      this.taskClickHandler(task);
+      if (isAdd) {
+        this.taskClickHandler(task);
+      }
       this.#selectedTask(task);
 
       return task;
