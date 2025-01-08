@@ -86,6 +86,7 @@ export function TaskContents() {
         $("option4").value = taskData.option4 || "";
         $("option5").value = taskData.option5 || "";
         $("memo").value = taskData.memo || "";
+        $("freenotes").value = taskData.freenotes || "";
 
         this.#setPriority();
         this.taskStatusChangeHander($("status").value);
@@ -141,6 +142,7 @@ export function TaskContents() {
         option4: $("option4").value,
         option5: $("option5").value,
         memo: $("memo").value,
+        freenotes: $("freenotes").value,
       };
 
       return formData;
@@ -164,8 +166,9 @@ export function TaskContents() {
       const option3 = this.#createOptionalItem("任意項目3", "option3");
       const option4 = this.#createOptionalItem("任意項目4", "option4");
       const option5 = this.#createOptionalItem("任意項目5", "option5");
-      const memo = this.#createFreeMemo();
+      const memo = this.#createMemo();
       const priprity = this.#createTaskPriority();
+      const freeNotes = this.#createFreeNotes();
 
       const form = document.createElement("form");
       form.id = "task-form";
@@ -174,6 +177,7 @@ export function TaskContents() {
       form.appendChild(manager);
       form.appendChild(priprity);
       form.appendChild(status);
+      form.appendChild(memo);
       form.appendChild(folderPath);
       form.appendChild(url);
       form.appendChild(option1);
@@ -181,7 +185,7 @@ export function TaskContents() {
       form.appendChild(option3);
       form.appendChild(option4);
       form.appendChild(option5);
-      form.appendChild(memo);
+      form.appendChild(freeNotes);
 
       this.shadowRoot.appendChild(form);
     }
@@ -693,14 +697,33 @@ export function TaskContents() {
     }
 
     /**
-     * 自由記述の入力欄を作成
+     * タスク概要の入力欄を作成
      * @returns {HTMLFieldSetElement} メモ
      * @private
      * @memberof TaskContents
      */
-    #createFreeMemo() {
-      const box = this.#createBox("自由記述");
-      const textarea = this.#createTextarea("memo", 10, "その他の補足情報");
+    #createMemo() {
+      const box = this.#createBox("概要説明");
+      const textarea = this.#createTextarea(
+        "memo",
+        10,
+        "タスクに関する概要説明"
+      );
+      textarea.classList.add("large");
+
+      box.appendChild(textarea);
+      return box;
+    }
+
+    /**
+     * 作業メモの入力欄を作成
+     * @returns {HTMLFieldSetElement} メモ
+     * @private
+     * @memberof TaskContents
+     */
+    #createFreeNotes() {
+      const box = this.#createBox("作業メモ");
+      const textarea = this.#createTextarea("freenotes", 10, "自由記述");
       textarea.classList.add("large");
 
       box.appendChild(textarea);
