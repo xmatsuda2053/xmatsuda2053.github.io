@@ -32,8 +32,9 @@ const saveFile = async () => {
   const taskData = taskContents.getFormInputData();
   const historyData = taskHistory.getHistoryData();
 
-  if (!taskData) return;
-  if (!historyData) return;
+  if (taskData.title === "") {
+    return;
+  }
 
   await fileManager.saveFile(
     fileName,
@@ -70,8 +71,15 @@ const addTreeView = async () => {
     // タイトル変更時の処理
     const titleChangeHandler = (event) => {
       const text = elm.getElementsByClassName("name-text")[0];
-      text.innerText = event.target.value;
-      elm.dataset.name = event.target.value;
+      const name = event.target.value;
+
+      if (name !== "") {
+        text.innerText = name;
+        elm.dataset.name = name;
+      } else {
+        text.innerText = "empty";
+        elm.dataset.name = "empty";
+      }
     };
 
     // 進捗変更時の処理
