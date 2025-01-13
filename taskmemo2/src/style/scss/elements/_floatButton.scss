@@ -1,0 +1,27 @@
+@use "../common/color";
+
+.float-button {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+
+  z-index: 1000;
+
+  padding: 0.5rem;
+  border-radius: 50%;
+
+  color: color.$float-button-font-color;
+  background-color: color.$float-button-bg-color;
+  border: 1px solid color.$float-button-border-color;
+  box-shadow: 0px 3px 3px 0px color.$float-button-shodow-color;
+
+  &:hover {
+    color: color.$float-button-font-color-hover;
+    background-color: color.$float-button-bg-color-hover;
+    border-color: color.$float-button-border-color-hover;
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+}

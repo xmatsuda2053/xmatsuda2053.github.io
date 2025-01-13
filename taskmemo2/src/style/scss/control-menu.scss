@@ -1,0 +1,26 @@
+@use "./common/destyle";
+@use "./common/svg";
+@use "./common/color";
+@use "./common/font";
+
+#container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  button {
+    border-radius: 0.25rem;
+    color: color.$Controll-icon-color-deactive;
+    margin-right: 0.25rem;
+
+    &:hover {
+      color: color.$Controll-icon-color-active;
+    }
+
+    .icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+}

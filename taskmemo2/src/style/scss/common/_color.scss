@@ -1,0 +1,70 @@
+//--------------------
+//- Grid
+//--------------------
+$grid-header-bg-color: #3c3c3c;
+$grid-control-bg-color: #fffffb;
+$grid-tree-bg-color: #fffffb;
+$grid-task-bg-color: #d4f1ef;
+$grid-history-bg-color: #d4f1ef;
+
+//--------------------
+//- Float Button
+//--------------------
+$float-button-bg-color: #0a3981;
+$float-button-font-color: #fffffb;
+$float-button-border-color: #0a3981;
+$float-button-bg-color-hover: #fffff8;
+$float-button-font-color-hover: #0a3981;
+$float-button-border-color-hover: #0a3981;
+$float-button-shodow-color: rgba(0, 0, 0, 0.1);
+
+//--------------------
+//- Controll
+//--------------------
+$Controll-icon-border-color-deactive: #fffffb;
+$Controll-icon-border-color-active: #5f5f5f;
+$Controll-icon-color-deactive: #8f8f8f;
+$Controll-icon-color-active: #3f3f3f;
+
+//--------------------
+//- TreeView
+//--------------------
+$treeview-icon-color: #2f2f2f;
+$treeview-font-color-hover: #0078d4;
+$treeview-font-color-finish: #8f8f8f;
+$treeview-font-color-over-deadline: #ff0000;
+$treeview-menu-border-color: #8f8f8f;
+$treeview-menu-bg-color: #fffff8;
+$treeview-menu-shodow-color: rgba(0, 0, 0, 0.1);
+$treeview-menu-btn-bg-color-hover: #0078d4;
+$treeview-menu-btn-font-color-hover: #fffffb;
+$treeview-menu-hr-color: #afafaf;
+
+//--------------------
+//- Form
+//--------------------
+$form-item-bg-color: #fffff8;
+$form-item-border-color: #6f6f6f;
+$form-item-read-only-bg-color: #dfdfdf;
+$form-item-requied-bg-color: #fb4141;
+$form-item-requied-font-color: #fffffb;
+$form-item-icon-color-deactive: #8f8f8f;
+$form-item-icon-color-active: #3f3f3f;
+$form-item-icon-color-hover: #ff0000;
+
+//- DueDate
+//--------------------
+$form-item-duedate-deadline-reach: #ff0000;
+
+//- radio
+//--------------------
+$form-item-radio-bg-color-checked: #0a5eb0;
+$form-item-radio-font-color-checked: #fffffb;
+
+//- textarea
+//--------------------
+$form-item-textarea-bg-color-hover: #efefef;
+
+//- History Item
+//--------------------
+$history-item-border-color: #8f8f8f;

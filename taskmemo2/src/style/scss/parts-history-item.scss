@@ -1,0 +1,80 @@
+@use "./common/destyle";
+@use "./common/svg";
+@use "./common/color";
+@use "./common/font";
+
+#container {
+  position: relative;
+  padding: 0.35rem;
+  padding-right: 2rem;
+  padding-bottom: 1.5rem;
+  background-color: color.$form-item-bg-color;
+  border: 1px solid color.$history-item-border-color;
+  border-radius: 0.25rem;
+
+  #textarea {
+    outline: none;
+    width: 100%;
+    background-color: color.$form-item-bg-color;
+    border-radius: 0.25rem;
+    line-height: 15px;
+    padding: 5px;
+    margin-bottom: 0.35rem;
+    resize: none;
+    overflow-y: hidden;
+
+    &:hover,
+    &:focus {
+      background-color: color.$form-item-textarea-bg-color-hover;
+    }
+  }
+
+  .date-box {
+    position: absolute;
+    bottom: 0.25rem;
+    right: 2rem;
+    #datetime {
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+    }
+  }
+
+  #move-item {
+    cursor: move;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    color: color.$form-item-icon-color-deactive;
+    border-left: 1px solid color.$history-item-border-color;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+
+    .icon {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+
+    &:hover {
+      color: color.$form-item-icon-color-active;
+      background-color: #fff6b3;
+    }
+  }
+
+  #trash-item {
+    position: absolute;
+    bottom: 0.25rem;
+    left: 0.35rem;
+    color: color.$form-item-icon-color-deactive;
+
+    .icon {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+
+    &:hover {
+      color: color.$form-item-icon-color-hover;
+    }
+  }
+}

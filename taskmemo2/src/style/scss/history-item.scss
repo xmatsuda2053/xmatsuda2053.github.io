@@ -1,0 +1,13 @@
+@use "./common/destyle";
+@use "./common/svg";
+@use "./common/color";
+@use "./common/font";
+@use "./elements/floatButton";
+
+.wrap-item {
+  padding-bottom: 0.75rem;
+
+  &.dragging {
+    opacity: 0.5;
+  }
+}

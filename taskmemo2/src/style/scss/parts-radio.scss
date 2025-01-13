@@ -1,0 +1,43 @@
+@use "./common/destyle";
+@use "./common/color";
+@use "./common/font";
+@use "./elements/filedset";
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  label {
+    flex: 1;
+    line-height: 1.9rem;
+    text-align: center;
+    background-color: color.$form-item-bg-color;
+    border: 1px solid color.$form-item-border-color;
+    border-right: none;
+
+    &.first {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    &.last {
+      border-right: 1px solid color.$form-item-border-color;
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+
+    &:has(+ input:checked) {
+      background-color: color.$form-item-radio-bg-color-checked;
+      color: color.$form-item-radio-font-color-checked;
+    }
+
+    &:hover {
+      background-color: color.$form-item-radio-bg-color-checked;
+      color: color.$form-item-radio-font-color-checked;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@use "./common/destyle";
+@use "./common/color";
+@use "./common/font";
+@use "./elements/filedset";
+
+.wrap-item {
+  display: inline-block;
+  margin-right: 0.5rem;
+}

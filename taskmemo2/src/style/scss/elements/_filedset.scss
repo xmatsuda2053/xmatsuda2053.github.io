@@ -1,0 +1,23 @@
+@use "../common//color";
+
+fieldset {
+  legend {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+
+    &.isRequired {
+      &:after {
+        content: "必須";
+        margin-left: 0.25rem;
+        border-radius: 0.25rem;
+        background-color: color.$form-item-requied-bg-color;
+        color: color.$form-item-requied-font-color;
+        font-size: 0.6rem;
+        padding: 0.1rem 0.25rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "liveSassCompile.settings.includeItems": [
+    "taskmemo2/src/style/scss/*/*.scss"
+  ],
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".original.css",
+      "savePath": "~/../css"
+    },
+    {
+      "format": "compressed",
+      "extensionName": ".css",
+      "savePath": "~/../css"
+    }
+  ],
+  "liveSassCompile.settings.autoprefix": [],
+  "liveSassCompile.settings.generateMap": false
+}

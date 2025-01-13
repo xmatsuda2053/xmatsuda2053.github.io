@@ -1,0 +1,51 @@
+@use "./common/destyle";
+@use "./common/svg";
+@use "./common/color";
+@use "./common/font";
+@use "./elements/floatButton";
+
+#container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 300px 1fr 1fr;
+  grid-template-rows: 30px 30px 1fr;
+  gap: 0em 0em;
+  grid-template-areas:
+    "grid-header grid-header grid-header"
+    "grid-control grid-task grid-history"
+    "grid-tree grid-task grid-history";
+  height: 100vh;
+
+  #grid-header {
+    grid-area: grid-header;
+    background-color: color.$grid-header-bg-color;
+  }
+  #grid-control {
+    grid-area: grid-control;
+    background-color: color.$grid-control-bg-color;
+    padding: 0 0.5rem;
+  }
+  #grid-tree {
+    grid-area: grid-tree;
+    background-color: color.$grid-tree-bg-color;
+    padding: 0.5rem;
+  }
+  #grid-task {
+    grid-area: grid-task;
+    background-color: color.$grid-task-bg-color;
+    padding: 1rem;
+  }
+  #grid-history {
+    grid-area: grid-history;
+    background-color: color.$grid-history-bg-color;
+    padding: 1rem;
+  }
+  .scroll {
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

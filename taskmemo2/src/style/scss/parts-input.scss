@@ -1,0 +1,17 @@
+@use "./common/destyle";
+@use "./common/color";
+@use "./common/font";
+@use "./elements/filedset";
+
+input[type="text"] {
+  outline: none;
+  background-color: color.$form-item-bg-color;
+  border: 1px solid color.$form-item-border-color;
+  border-radius: 0.25rem;
+  line-height: 1.5rem;
+  padding: 0.1rem 0.25rem;
+
+  &:read-only {
+    background-color: color.$form-item-read-only-bg-color;
+  }
+}

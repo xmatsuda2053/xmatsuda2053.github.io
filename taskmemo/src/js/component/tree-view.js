@@ -1,5 +1,5 @@
 import { Utils } from "../com/utils";
-import styles from "../../style/css/tree-view.css";
+import cssTreeView from "../../style/css/tree-view.css";
 
 export function TreeView() {
   /**
@@ -12,7 +12,7 @@ export function TreeView() {
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
-      this.shadowRoot.adoptedStyleSheets = Utils.createStyle(styles);
+      this.shadowRoot.adoptedStyleSheets = Utils.createStyle(cssTreeView);
       this.#addContextMenu();
       this.#addTreeView();
     }

@@ -1,0 +1,168 @@
+@use "./common/destyle";
+@use "./common/color";
+@use "./common/font";
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 3rem;
+
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+
+  text-decoration-skip-ink: none;
+
+  summary,
+  p {
+    &:hover {
+      color: color.$treeview-font-color-hover;
+      text-decoration: underline;
+    }
+  }
+
+  // グループ
+  details {
+    cursor: pointer;
+    width: 100%;
+
+    summary {
+      list-style: none;
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      position: relative;
+      padding-left: 1.15em;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0.35rem;
+        left: 0;
+
+        width: 8px;
+        height: 8px;
+        border-top: solid 2px #000000;
+        border-right: solid 2px #000000;
+        transform: rotate(45deg);
+
+        transition: transform 0.2s;
+      }
+    }
+
+    &[open] {
+      > summary {
+        &::before {
+          transform: rotate(135deg);
+          top: 0.22rem;
+          left: 0.18rem;
+        }
+      }
+    }
+
+    // ネストされたアイテム
+    details,
+    p {
+      margin-left: 1rem;
+    }
+  }
+
+  // タスク
+  p {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+    position: relative;
+    padding-left: 1.15em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.16rem;
+      left: 0;
+      width: 1.1rem;
+      height: 1.1rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
+    &.selected {
+      color: color.$treeview-font-color-hover;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    &.over-deadline {
+      color: color.$treeview-font-color-over-deadline;
+    }
+
+    &.task-finished {
+      color: color.$treeview-font-color-finish;
+      text-decoration: line-through;
+    }
+  }
+}
+
+// コンテキストメニュー
+#context-menu-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: none;
+  background-color: transparent;
+
+  #context-menu {
+    position: absolute;
+    z-index: 100000;
+
+    font-size: 1rem;
+
+    border: 1px solid color.$treeview-menu-border-color;
+    border-radius: 0.25rem;
+    background-color: color.$treeview-menu-bg-color;
+    box-shadow: 0px 3px 3px 0px color.$treeview-menu-shodow-color;
+
+    width: fit-content;
+    padding: 0.2rem;
+
+    button {
+      display: block;
+      line-height: 1.5rem;
+      padding: 0.1rem 0.5rem;
+      padding-right: 1rem;
+      width: 100%;
+
+      .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.5rem;
+      }
+
+      &:hover {
+        background-color: color.$treeview-menu-btn-bg-color-hover;
+        border-radius: 0.25rem;
+        color: color.$treeview-menu-btn-font-color-hover;
+      }
+    }
+
+    hr {
+      margin: 0.25rem 0;
+      height: 1px;
+      background-color: color.$treeview-menu-hr-color;
+      border: none;
+    }
+  }
+}
