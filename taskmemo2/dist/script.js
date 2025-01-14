@@ -2880,7 +2880,12 @@ function PartsHistoryItem() {
      * @param {string} value
      */
     set text(value) {
-      this.shadowRoot.getElementById("textarea").value = value;
+      const textarea = this.shadowRoot.getElementById("textarea");
+      textarea.value = value;
+      textarea.style.height = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.adjustTextareaHeight(
+        textarea,
+        DEFAULT_ROWS
+      );
     }
 
     //--------------------------------------------

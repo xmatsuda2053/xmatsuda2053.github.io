@@ -128,7 +128,12 @@ export function PartsHistoryItem() {
      * @param {string} value
      */
     set text(value) {
-      this.shadowRoot.getElementById("textarea").value = value;
+      const textarea = this.shadowRoot.getElementById("textarea");
+      textarea.value = value;
+      textarea.style.height = Utils.adjustTextareaHeight(
+        textarea,
+        DEFAULT_ROWS
+      );
     }
 
     //--------------------------------------------
