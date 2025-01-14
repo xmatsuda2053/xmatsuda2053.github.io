@@ -205,4 +205,31 @@ export class Utils {
     const adjustHeight = lineHeight * rows + paddingHeight;
     return `${adjustHeight}px`;
   }
+
+  /**
+   * 与えられた日付文字列と当日の日付との差を日数で計算する。
+   * @param {string} dataString - yyyy-mm-dd形式の日付文字列。
+   * @returns {number} - 当日からの残り日数。
+   */
+  static calculateDateDifference(dataString) {
+    /**
+     * ミリ秒を1日単位に変換する定数
+     */
+    const MS_PER_DAY = 86400000;
+
+    // 空の場合は処理対象外
+    if (!dataString || dataString === "") {
+      return 0;
+    }
+    // 入力された日付をパース
+    const data = this.parseDate(dataString);
+    // 本日の日付を取得してフォーマット
+    const today = this.parseDate(
+      this.formatDate(new Date(), "{yyyy}-{MM}-{dd}")
+    );
+    // 残り日数を計算
+    const dayCount = Math.floor((data - today) / MS_PER_DAY);
+
+    return dayCount;
+  }
 }

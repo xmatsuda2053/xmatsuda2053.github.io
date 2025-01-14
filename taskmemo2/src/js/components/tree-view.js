@@ -214,17 +214,22 @@ export function TreeView() {
      * タスク要素を作成する
      * @param {string} name タスクの名前
      * @param {string} id タスクのID
+     * @param {string} duedate 期限日
      * @param {string[]} classList タスクに追加するクラスリスト
      * @returns {HTMLParagraphElement} 作成されたタスク要素
      * @private
      */
-    #createTask(name, id, classList = []) {
+    #createTask(name, id, duedate = "", classList = []) {
       const task = document.createElement("p");
       task.innerText = name;
       task.dataset.id = id;
       task.dataset.name = name;
+      task.dataset.duedate = duedate;
       task.dataset.type = "task";
       task.classList.add(...classList);
+
+      if (duedate !== duedate) {
+      }
 
       // タスクを開く処理
       task.addEventListener("click", (e) => {
@@ -298,6 +303,21 @@ export function TreeView() {
     }
 
     /**
+     * タスクに期日が到来している場合、deadlineクラスを追加
+     * @param {HTMLElement} target
+     */
+    setDeadline(target) {
+      const dateString = target.dataset.duedate;
+      console.log(dateString);
+      const dayCount = Utils.calculateDateDifference(dateString);
+      if (dayCount < 3) {
+        target.classList.add("over-deadline");
+      } else {
+        target.classList.remove("over-deadline");
+      }
+    }
+
+    /**
      * Jsonデータを元にTreeViewに項目を追加する
      * @param {HTMLElement} root 追加先のルート要素
      * @param {object} data 追加するデータ
@@ -306,7 +326,13 @@ export function TreeView() {
      */
     #addTreeViewItems(root, data) {
       if (data.type === "task") {
-        const task = this.#createTask(data.name, data.id, data.cls || []);
+        const task = this.#createTask(
+          data.name,
+          data.id,
+          data.duedate,
+          data.cls || []
+        );
+        this.setDeadline(task);
         root.appendChild(task);
         task.addEventListener("click", () => {
           this.clickTaskEventHandler(data.id, task); // タスクを開く
@@ -358,6 +384,7 @@ export function TreeView() {
           id: node.dataset.id || null,
           name: node.dataset.name || null,
           type: node.dataset.type || null,
+          duedate: node.dataset.duedate || null,
           cls: Array.from(node.classList) || [], // クラスリストを配列として保存
           children: null, // プロパティ名のスペルを修正
         };

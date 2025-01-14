@@ -216,6 +216,33 @@ class Utils {
     const adjustHeight = lineHeight * rows + paddingHeight;
     return `${adjustHeight}px`;
   }
+
+  /**
+   * 与えられた日付文字列と当日の日付との差を日数で計算する。
+   * @param {string} dataString - yyyy-mm-dd形式の日付文字列。
+   * @returns {number} - 当日からの残り日数。
+   */
+  static calculateDateDifference(dataString) {
+    /**
+     * ミリ秒を1日単位に変換する定数
+     */
+    const MS_PER_DAY = 86400000;
+
+    // 空の場合は処理対象外
+    if (!dataString || dataString === "") {
+      return 0;
+    }
+    // 入力された日付をパース
+    const data = this.parseDate(dataString);
+    // 本日の日付を取得してフォーマット
+    const today = this.parseDate(
+      this.formatDate(new Date(), "{yyyy}-{MM}-{dd}")
+    );
+    // 残り日数を計算
+    const dayCount = Math.floor((data - today) / MS_PER_DAY);
+
+    return dayCount;
+  }
 }
 
 
@@ -822,17 +849,22 @@ function TreeView() {
      * タスク要素を作成する
      * @param {string} name タスクの名前
      * @param {string} id タスクのID
+     * @param {string} duedate 期限日
      * @param {string[]} classList タスクに追加するクラスリスト
      * @returns {HTMLParagraphElement} 作成されたタスク要素
      * @private
      */
-    #createTask(name, id, classList = []) {
+    #createTask(name, id, duedate = "", classList = []) {
       const task = document.createElement("p");
       task.innerText = name;
       task.dataset.id = id;
       task.dataset.name = name;
+      task.dataset.duedate = duedate;
       task.dataset.type = "task";
       task.classList.add(...classList);
+
+      if (duedate !== duedate) {
+      }
 
       // タスクを開く処理
       task.addEventListener("click", (e) => {
@@ -906,6 +938,21 @@ function TreeView() {
     }
 
     /**
+     * タスクに期日が到来している場合、deadlineクラスを追加
+     * @param {HTMLElement} target
+     */
+    setDeadline(target) {
+      const dateString = target.dataset.duedate;
+      console.log(dateString);
+      const dayCount = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calculateDateDifference(dateString);
+      if (dayCount < 3) {
+        target.classList.add("over-deadline");
+      } else {
+        target.classList.remove("over-deadline");
+      }
+    }
+
+    /**
      * Jsonデータを元にTreeViewに項目を追加する
      * @param {HTMLElement} root 追加先のルート要素
      * @param {object} data 追加するデータ
@@ -914,7 +961,13 @@ function TreeView() {
      */
     #addTreeViewItems(root, data) {
       if (data.type === "task") {
-        const task = this.#createTask(data.name, data.id, data.cls || []);
+        const task = this.#createTask(
+          data.name,
+          data.id,
+          data.duedate,
+          data.cls || []
+        );
+        this.setDeadline(task);
         root.appendChild(task);
         task.addEventListener("click", () => {
           this.clickTaskEventHandler(data.id, task); // タスクを開く
@@ -966,6 +1019,7 @@ function TreeView() {
           id: node.dataset.id || null,
           name: node.dataset.name || null,
           type: node.dataset.type || null,
+          duedate: node.dataset.duedate || null,
           cls: Array.from(node.classList) || [], // クラスリストを配列として保存
           children: null, // プロパティ名のスペルを修正
         };
@@ -1227,8 +1281,9 @@ function TaskItem() {
     registerChangeDeadlineHandler(handler) {
       const duedate = this.shadowRoot.getElementById("due-date");
       duedate.addEventListener("changeTaskItem", () => {
-        handler(duedate.dayCount);
+        handler(duedate.value);
       });
+      this.changeDeadlineHandler = handler;
     }
 
     /**
@@ -1661,11 +1716,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * ミリ秒を1日単位に変換する定数
- */
-const MS_PER_DAY = 86400000;
-
-/**
  * PartsDueDate コンポーネントを作成しカスタム要素として定義する
  */
 function PartsDueDate() {
@@ -1798,23 +1848,7 @@ function PartsDueDate() {
      */
     get dayCount() {
       const date = this.shadowRoot.getElementById("due-date");
-
-      // 入力されている日付が空でないことを確認
-      if (date.value === "") {
-        return 0;
-      }
-
-      // 入力された日付をパース
-      const duedate = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.parseDate(date.value);
-      // 本日の日付を取得してフォーマット
-      const today = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.parseDate(
-        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.formatDate(new Date(), "{yyyy}-{MM}-{dd}")
-      );
-      // 残り日数を計算
-      const dayCount = Math.floor((duedate - today) / MS_PER_DAY);
-
-      // 残り日数または超過日数を計算
-      return dayCount;
+      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calculateDateDifference(date.value);
     }
 
     /**
@@ -3227,6 +3261,8 @@ const createEmptyTaskAndHistory = (id, btn) => {
   const taskItem = document.createElement("task-item");
   const historyItem = document.createElement("history-item");
 
+  const treeView = document.getElementById("tree-view-root");
+
   // 既存の画面をクリア
   gridTask.innerHTML = "";
   gridHistory.innerHTML = "";
@@ -3250,14 +3286,11 @@ const createEmptyTaskAndHistory = (id, btn) => {
 
   /**
    * 期限日のdeadline変更時、タスクボタンに結果を反映する
-   * @param {number} dayCount
+   * @param {string} duedateString
    */
-  const changeDeadlineHandler = (dayCount) => {
-    if (dayCount >= 0) {
-      btn.classList.remove("over-deadline");
-    } else {
-      btn.classList.add("over-deadline");
-    }
+  const changeDeadlineHandler = (duedateString) => {
+    btn.dataset.duedate = duedateString;
+    treeView.setDeadline(btn);
   };
   taskItem.registerChangeDeadlineHandler(changeDeadlineHandler);
 

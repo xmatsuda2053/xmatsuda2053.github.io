@@ -203,8 +203,9 @@ export function TaskItem() {
     registerChangeDeadlineHandler(handler) {
       const duedate = this.shadowRoot.getElementById("due-date");
       duedate.addEventListener("changeTaskItem", () => {
-        handler(duedate.dayCount);
+        handler(duedate.value);
       });
+      this.changeDeadlineHandler = handler;
     }
 
     /**

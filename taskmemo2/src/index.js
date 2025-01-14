@@ -90,6 +90,8 @@ const createEmptyTaskAndHistory = (id, btn) => {
   const taskItem = document.createElement("task-item");
   const historyItem = document.createElement("history-item");
 
+  const treeView = document.getElementById("tree-view-root");
+
   // 既存の画面をクリア
   gridTask.innerHTML = "";
   gridHistory.innerHTML = "";
@@ -113,14 +115,11 @@ const createEmptyTaskAndHistory = (id, btn) => {
 
   /**
    * 期限日のdeadline変更時、タスクボタンに結果を反映する
-   * @param {number} dayCount
+   * @param {string} duedateString
    */
-  const changeDeadlineHandler = (dayCount) => {
-    if (dayCount >= 0) {
-      btn.classList.remove("over-deadline");
-    } else {
-      btn.classList.add("over-deadline");
-    }
+  const changeDeadlineHandler = (duedateString) => {
+    btn.dataset.duedate = duedateString;
+    treeView.setDeadline(btn);
   };
   taskItem.registerChangeDeadlineHandler(changeDeadlineHandler);
 

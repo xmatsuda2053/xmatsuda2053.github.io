@@ -9,11 +9,6 @@ import { Utils } from "../common/utils";
 import style from "../../style/css/parts-due-date.css";
 
 /**
- * ミリ秒を1日単位に変換する定数
- */
-const MS_PER_DAY = 86400000;
-
-/**
  * PartsDueDate コンポーネントを作成しカスタム要素として定義する
  */
 export function PartsDueDate() {
@@ -146,23 +141,7 @@ export function PartsDueDate() {
      */
     get dayCount() {
       const date = this.shadowRoot.getElementById("due-date");
-
-      // 入力されている日付が空でないことを確認
-      if (date.value === "") {
-        return 0;
-      }
-
-      // 入力された日付をパース
-      const duedate = Utils.parseDate(date.value);
-      // 本日の日付を取得してフォーマット
-      const today = Utils.parseDate(
-        Utils.formatDate(new Date(), "{yyyy}-{MM}-{dd}")
-      );
-      // 残り日数を計算
-      const dayCount = Math.floor((duedate - today) / MS_PER_DAY);
-
-      // 残り日数または超過日数を計算
-      return dayCount;
+      return Utils.calculateDateDifference(date.value);
     }
 
     /**
