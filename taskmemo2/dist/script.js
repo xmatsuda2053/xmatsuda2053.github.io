@@ -381,72 +381,19 @@ function ControlMenu() {
         _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
       const container = document.createElement("div");
-      const svgIconMenu = this.#createMenu();
-      const svgIconSearch = this.#createSearch();
       const svgIconTreeOpen = this.#createTreeOpen();
       const svgIconTreeClose = this.#createTreeClose();
-      const btnMenu = this.#createMenuButton();
-      const btnSearch = this.#createSearchButton();
       const btnTreeOpen = this.#createTreeOpenButton();
       const btnTreeClose = this.#createTreeCloseButton();
 
       container.id = "container";
-      container.appendChild(svgIconMenu);
-      container.appendChild(svgIconSearch);
       container.appendChild(svgIconTreeOpen);
       container.appendChild(svgIconTreeClose);
-      container.appendChild(btnMenu);
-      container.appendChild(btnSearch);
       container.appendChild(btnTreeOpen);
       container.appendChild(btnTreeClose);
 
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(container);
-    }
-
-    /**
-     * "menu"アイコンのSVGを作成する
-     * @returns {SVGElement} "menu"アイコンを含む生成されたSVG要素
-     */
-    #createMenu() {
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("menu", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M4 6l16 0" },
-        { path: "M4 12l16 0" },
-        { path: "M4 18l16 0" },
-      ]);
-    }
-
-    /**
-     * "menu"ボタンを作成する
-     * @returns {HTMLButtonElement} 生成された"menu"ボタン
-     */
-    #createMenuButton() {
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("menu");
-      btn.id = "menu";
-      return btn;
-    }
-
-    /**
-     * "search"アイコンのSVGを作成する
-     * @returns {SVGElement} "search"アイコンを含む生成されたSVG要素
-     */
-    #createSearch() {
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("search", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" },
-        { path: "M21 21l-6 -6" },
-      ]);
-    }
-
-    /**
-     * "search"ボタンを作成する
-     * @returns {HTMLButtonElement} 生成された"search"ボタン
-     */
-    #createSearchButton() {
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("search");
-      btn.id = "search";
-      return btn;
     }
 
     /**
@@ -482,8 +429,8 @@ function ControlMenu() {
     #createTreeClose() {
       return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-close", [
         { path: "M0 0h24v24H0z" },
-        { path: "M12 1v6l3 -3m-6 0l3 3" },
-        { path: "M12 23v-6l3 3m-6 0l3 -3" },
+        { path: "M12 2v6l3 -3m-6 0l3 3" },
+        { path: "M12 22v-6l3 3m-6 0l3 -3" },
         { path: "M4 12l1 0" },
         { path: "M9 12l1 0" },
         { path: "M14 12l1 0" },
