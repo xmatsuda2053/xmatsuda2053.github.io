@@ -129,13 +129,12 @@ class Utils {
    * @returns {Date} - 変換されたDateオブジェクト。
    */
   static parseDate = (dateString) => {
-    // "-"で日付を分割し、配列として取得
-    const parts = dateString.split("-");
-
-    // 年、月、日が正しく分割されたかを確認
-    if (parts.length !== 3) {
+    // 日付であるか判定
+    if (!this.isValidDate(dateString)) {
       throw new Error("日付文字列の形式が正しくありません。");
     }
+    // "-"で日付を分割し、配列として取得
+    const parts = dateString.split("-");
 
     // 配列の要素を数値に変換
     const year = parseInt(parts[0], 10);
@@ -144,6 +143,30 @@ class Utils {
 
     // Dateオブジェクトを作成して返す
     return new Date(year, month, day);
+  };
+
+  /**
+   * 与えられた文字列がyyyy-mm-dd形式の日付かどうかを判定する
+   *
+   * @param {string} dateString - 判定する文字列。
+   * @returns {boolean} - 有効な日付形式かどうか。
+   */
+  static isValidDate = (dateString) => {
+    // 正規表現によるフォーマットのチェック
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(dateString)) {
+      return false;
+    }
+
+    // Dateオブジェクトを使用して実際の有効性を確認
+    const date = new Date(dateString);
+    const timestamp = date.getTime();
+    if (typeof timestamp !== "number" || Number.isNaN(timestamp)) {
+      return false;
+    }
+
+    // 入力された文字列が有効な日付か確認
+    return date.toISOString().startsWith(dateString);
   };
 
   /**
@@ -229,7 +252,7 @@ class Utils {
     const MS_PER_DAY = 86400000;
 
     // 空の場合は処理対象外
-    if (!dataString || dataString === "") {
+    if (!this.isValidDate(dataString)) {
       return 0;
     }
     // 入力された日付をパース
