@@ -7,6 +7,7 @@ export class FileManager {
    */
   constructor() {
     this.directoryHandler = null;
+    this.writeLock = Promise.resolve(); // 初期化時のロック
   }
 
   /**
@@ -26,27 +27,31 @@ export class FileManager {
   }
 
   /**
-   * ファイルに書き込む
-   * @param {string} fileName 保存するファイルの名前
-   * @param {string} content ファイルに書き込む内容
-   * @throws {Error} ディレクトリが開かれていない場合、またはファイル保存に失敗した場合
+   * ファイルを読み込む
+   * @param {string} fileName 読み込むファイルの名前
+   * @returns {Promise<string|null>} ファイルの内容。ファイルが存在しない場合はnull
+   * @throws {Error} ディレクトリが開かれていない場合、またはファイル読み込みに失敗した場合
    */
   async writeFile(fileName, content) {
     if (!this.directoryHandler) {
       throw new Error("ディレクトリがまだ開かれていません。");
     }
-    try {
-      // ファイルハンドルを取得または作成し、ファイルに書き込む
-      const fileHandle = await this.directoryHandler.getFileHandle(fileName, {
-        create: true,
-      });
-      const writable = await fileHandle.createWritable();
-      await writable.write(content);
-      await writable.close();
-    } catch (err) {
-      console.error("ファイルを保存するのに失敗しました:", err);
-      throw err;
-    }
+    // ロック取得とリリースの処理（書き込みの一貫性を担保）
+    this.writeLock = this.writeLock.then(async () => {
+      try {
+        const fileHandle = await this.directoryHandler.getFileHandle(fileName, {
+          create: true,
+        });
+        const writable = await fileHandle.createWritable();
+        await writable.write(content);
+        await writable.close();
+      } catch (err) {
+        console.error("ファイルを保存するのに失敗しました:", err);
+        throw err;
+      }
+    });
+
+    return this.writeLock; // プロミスを返す
   }
 
   /**

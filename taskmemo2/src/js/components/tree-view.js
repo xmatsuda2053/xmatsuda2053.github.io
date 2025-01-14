@@ -308,7 +308,6 @@ export function TreeView() {
      */
     setDeadline(target) {
       const dateString = target.dataset.duedate;
-      console.log(dateString);
       const dayCount = Utils.calculateDateDifference(dateString);
       if (dayCount < 3) {
         target.classList.add("over-deadline");
