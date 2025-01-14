@@ -380,6 +380,12 @@ export function TreeView() {
       const elements = [];
 
       nodes.forEach((node) => {
+        // 選択中の場合、一時的にクラスを解除
+        const hasSelected = node.classList.contains("selected");
+        if (hasSelected) {
+          node.classList.remove("selected");
+        }
+
         const dataItem = {
           id: node.dataset.id || null,
           name: node.dataset.name || null,
@@ -388,6 +394,11 @@ export function TreeView() {
           cls: Array.from(node.classList) || [], // クラスリストを配列として保存
           children: null, // プロパティ名のスペルを修正
         };
+
+        // 改めて選択中のクラスを付与
+        if (hasSelected) {
+          node.classList.add("selected");
+        }
 
         // DETAILS タグの場合、子要素を再帰的に取得
         if (node.tagName === "DETAILS") {
