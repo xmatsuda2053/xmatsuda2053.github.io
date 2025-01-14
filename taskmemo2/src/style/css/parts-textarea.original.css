@@ -404,4 +404,5 @@ textarea {
   padding: 5px;
   resize: none;
   overflow-y: hidden;
+  word-break: break-all;
 }
