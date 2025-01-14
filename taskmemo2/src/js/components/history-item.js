@@ -116,6 +116,7 @@ export function HistoryItem() {
         e.preventDefault();
         e.stopPropagation();
         this.#addEmptyParts();
+        this.dispatchEvent(Utils.getCustomEvent("addHistory"));
       });
       return btn;
     }

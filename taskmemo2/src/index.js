@@ -212,6 +212,19 @@ const clickTaskEventHandler = async (id, btn) => {
 
   taskItem.enableCustomEvent();
   historyItem.enableCustomEvent();
+
+  /**
+   * 履歴追加時、最下部に自動スクロールする
+   */
+  const autoScroll = () => {
+    const gridHistory = document.getElementById("grid-history");
+    const bottom = gridHistory.scrollHeight - gridHistory.clientHeight;
+    gridHistory.scrollTo({ top: bottom, behavior: "smooth" });
+  };
+  historyItem.addEventListener("addHistory", () => {
+    autoScroll();
+  });
+  autoScroll();
 };
 
 //--------------------------------------------------
