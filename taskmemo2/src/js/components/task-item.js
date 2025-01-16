@@ -189,7 +189,7 @@ export function TaskItem() {
      * タイトル変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    registerChangeTitleHandler(handler) {
+    setChangeTitleHandler(handler) {
       const title = this.shadowRoot.getElementById("title");
       title.addEventListener("changeTaskItem", () => {
         handler(title.value);
@@ -200,7 +200,7 @@ export function TaskItem() {
      * Deadline変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    registerChangeDeadlineHandler(handler) {
+    setChangeDueDateHandler(handler) {
       const duedate = this.shadowRoot.getElementById("due-date");
       duedate.addEventListener("changeTaskItem", () => {
         handler(duedate.value);
@@ -212,7 +212,7 @@ export function TaskItem() {
      * 進捗率変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    registerChangeStatusHandler(handler) {
+    setChangeStatusHandler(handler) {
       const status = this.shadowRoot.getElementById("status");
       status.addEventListener("changeTaskItem", () => {
         handler(status.value);

@@ -2,6 +2,7 @@
  * 共通関数
  */
 import { Utils } from "./js/common/utils";
+import { SvgIcon } from "./js/common/svgIcon";
 import { FileManager } from "./js/common/file-manager";
 
 /**
@@ -26,7 +27,120 @@ import indexCss from "./style/css/index.css";
 /**
  * ファイルマネージャー用のインスタンス変数
  */
-let fileManager;
+const fileManager = new FileManager();
+
+/**
+ * アプリケーションのルートクラス
+ */
+const container = document.getElementById("container");
+
+/**
+ * Header領域
+ */
+const gridHeader = Utils.createDiv("grid-header", []);
+
+/**
+ * TreeView用のControl領域
+ */
+const gridControl = Utils.createDiv("grid-control", []);
+
+/**
+ * TreeView領域
+ */
+const gridTreeView = Utils.createDiv("grid-tree", ["scroll"]);
+
+/**
+ * Task領域
+ */
+const gridTask = Utils.createDiv("grid-task", ["scroll"]);
+
+/**
+ * History領域
+ */
+const gridHistory = Utils.createDiv("grid-history", ["scroll"]);
+
+//--------------------------------------------------
+// 定数
+//--------------------------------------------------
+/**
+ * TreeViewの内容を保存するJSONファイル名
+ */
+const TREE_VIEW_FILE_NAME = "tree.json";
+
+//--------------------------------------------------
+// 初期表示
+//--------------------------------------------------
+
+/**
+ * 画面初期表示
+ * @returns {void}
+ */
+const init = () => {
+  // WebComponentsをロードする
+  ControlMenu();
+  TreeView();
+  TaskItem();
+  PartsInput();
+  PartsDueDate();
+  PartsStaff();
+  PartsRadio();
+  PartsTextarea();
+  HistoryItem();
+  PartsHistoryItem();
+
+  // CSSを適用する
+  document.adoptedStyleSheets = Utils.createStyleSheetWithFilename(indexCss);
+
+  // 初期表示項目を設定する。
+  addGridArea();
+  addFolderOpenButton();
+};
+
+/**
+ * `addGridArea` 関数は指定されたコンテナにグリッドエリアを追加する
+ */
+const addGridArea = () => {
+  container.innerHTML = "";
+  container.appendChild(gridHeader);
+  container.appendChild(gridControl);
+  container.appendChild(gridTreeView);
+  container.appendChild(gridTask);
+  container.appendChild(gridHistory);
+};
+
+/**
+ * フォルダを開くボタンをコンテナ要素に追加する関数
+ */
+const addFolderOpenButton = () => {
+  // フォルダを開くSVGアイコンを作成する
+  const svgFolderIcon = Utils.createSvg("folder", SvgIcon.folderPaths());
+
+  // フォルダを開くボタンを作成する
+  const folderOpenButton = Utils.createSvgButton("folder");
+  folderOpenButton.id = "folder-open-button";
+  folderOpenButton.classList.add("float-button");
+
+  // ボタンのクリックイベントを設定する
+  folderOpenButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    try {
+      if (await fileManager.selectDirectory()) {
+        // ディレクトリが選択された場合
+        addControl();
+        addTreeView();
+        folderOpenButton.remove();
+      }
+    } catch (error) {
+      console.error("ディレクトリの選択に失敗しました", error);
+    }
+  });
+
+  // アイコンとボタンをコンテナ要素に追加する
+  container.appendChild(svgFolderIcon);
+  container.appendChild(folderOpenButton);
+};
 
 //--------------------------------------------------
 // Control
@@ -36,258 +150,257 @@ let fileManager;
  * @returns {void}
  */
 const addControl = () => {
-  const gridControl = document.getElementById("grid-control");
-  const control = document.createElement("control-menu");
+  const control = Utils.createElm("control-menu", "control-menu-root");
   gridControl.innerHTML = "";
   gridControl.appendChild(control);
-  control.id = "control-menu-root";
 };
 
 //--------------------------------------------------
 // TreeView
 //--------------------------------------------------
 /**
- * TreeViewを画面に新規追加する
- * @returns {void}
+ * ファイルからツリーデータを非同期に読み込む。
+ * @returns {Promise<string|null>} 取得したツリーデータの文字列、または取得に失敗した場合は null。
+ */
+const loadTreeViewData = async () => {
+  try {
+    const str = await fileManager.loadFile(TREE_VIEW_FILE_NAME);
+    return str;
+  } catch (error) {
+    console.error("ツリーデータの読み込みに失敗しました:", error);
+    return null;
+  }
+};
+
+/**
+ * TreeViewの内容を保存する
+ */
+const saveTreeView = async () => {
+  const treeView = document.getElementById("tree-view-root");
+  try {
+    await fileManager.writeFile(
+      TREE_VIEW_FILE_NAME,
+      JSON.stringify(treeView.getTreeViewData())
+    );
+  } catch (writeError) {
+    console.error("ツリーデータの保存に失敗しました:", writeError);
+  }
+};
+
+/**
+ * TreeViewを画面に新規追加する。
+ * @returns {Promise<void>}
  */
 const addTreeView = async () => {
-  // 空のツリービューを追加する
-  const gridTreeView = document.getElementById("grid-tree");
-  const treeView = document.createElement("tree-view");
-  gridTreeView.innerHTML = "";
-  gridTreeView.appendChild(treeView);
-  treeView.id = "tree-view-root";
+  try {
+    gridTreeView.innerHTML = ""; // 初期化する
 
-  treeView.registerAddTaskHandler(AddTaskEventHandler); //タスク追加用のイベントを登録
-  treeView.registerClickTaskHandler(clickTaskEventHandler); //タスククリック時のイベントを追加
+    // 空のTreeViewを追加する
+    const treeView = Utils.createElm("tree-view", "tree-view-root");
+    gridTreeView.appendChild(treeView);
 
-  // TreeViewコンテンツのデータを取得し描画する
-  await fileManager.loadFile("tree.json").then((jsonStr) => {
-    // TreeViewを描画
-    if (jsonStr) {
-      treeView.renderTreeView(jsonStr);
-    }
-  });
+    // TreeViewに各種イベントを登録する
+    treeView.setAddTaskHandler(addTaskEventHandler); // タスク追加用のイベントを登録する
+    treeView.setClickTaskHandler(clickTaskEventHandler); // タスククリック時のイベントを追加する
 
-  // TreeViewにアイテムを追加した場合、内容を保存する
-  treeView.addEventListener("addItem", async () => {
-    await fileManager.writeFile(
-      "tree.json",
-      JSON.stringify(treeView.getTreeViewData())
-    );
-  });
+    // TreeViewの内容を描画する
+    treeView.renderTreeView(await loadTreeViewData());
+
+    // TreeViewにアイテムを追加した場合、内容を保存する
+    treeView.addEventListener("addItem", async () => {
+      await saveTreeView();
+    });
+  } catch (error) {
+    console.error("TreeViewの初期化中にエラーが発生しました:", error);
+  }
 };
 
 /**
- * 空のTaskItemとHistoryItemを作成
- * @param {string} id
- * @param {string} name タスク名
- * @param {HTMLElement} element タスクボタン
- */
-const createEmptyTaskAndHistory = (id, btn) => {
-  const gridTask = document.getElementById("grid-task");
-  const gridHistory = document.getElementById("grid-history");
-  const taskItem = document.createElement("task-item");
-  const historyItem = document.createElement("history-item");
-
-  const treeView = document.getElementById("tree-view-root");
-
-  // 既存の画面をクリア
-  gridTask.innerHTML = "";
-  gridHistory.innerHTML = "";
-
-  // 識別用のIDをセット
-  taskItem.dataset.id = id;
-  historyItem.dataset.id = id;
-
-  taskItem.id = "task-item";
-  historyItem.id = "history-item";
-
-  /**
-   * タイトル変更時、タスクボタンにタイトルを反映する
-   * @param {string} changeName
-   */
-  const changeTitleHandler = (changeName) => {
-    btn.innerText = changeName;
-    btn.dataset.name = changeName;
-  };
-  taskItem.registerChangeTitleHandler(changeTitleHandler);
-
-  /**
-   * 期限日のdeadline変更時、タスクボタンに結果を反映する
-   * @param {string} duedateString
-   */
-  const changeDeadlineHandler = (duedateString) => {
-    btn.dataset.duedate = duedateString;
-    treeView.setDeadline(btn);
-  };
-  taskItem.registerChangeDeadlineHandler(changeDeadlineHandler);
-
-  /**
-   * 作業完了時（進捗100%）、タスクボタンに結果を反映する
-   */
-  const changeStatusHandler = (status) => {
-    if (status < 100) {
-      btn.classList.remove("task-finished");
-    } else {
-      btn.classList.add("task-finished");
-    }
-  };
-  taskItem.registerChangeStatusHandler(changeStatusHandler);
-
-  // 変更内容の保存処理
-  /**
-   * タスク・履歴データを保存する
-   */
-  const saveData = async () => {
-    // TreeViewを保存
-    const treeView = document.getElementById("tree-view-root");
-    await fileManager.writeFile(
-      "tree.json",
-      JSON.stringify(treeView.getTreeViewData())
-    );
-
-    // タスクと履歴を保存
-    const data = {
-      taskData: taskItem.getTaskData(),
-      historyData: historyItem.getHistoryData(),
-    };
-    await fileManager.writeFile(`${id}.json`, JSON.stringify(data));
-  };
-
-  // タスク変更時の処理
-  taskItem.addEventListener("changeTask", async () => {
-    await saveData();
-  });
-
-  // 履歴変更時の処理
-  historyItem.addEventListener("changeHistory", async () => {
-    await saveData();
-  });
-
-  // 新規画面を描画
-  gridTask.appendChild(taskItem);
-  gridHistory.appendChild(historyItem);
-  saveData();
-};
-
-/**
- * タスク追加イベント
- * @param {string} id
- * @param {string} name タスク名
- * @param {HTMLElement} btn タスクボタン
- */
-const AddTaskEventHandler = (id, name, btn) => {
-  // 空のアイテムを準備
-  createEmptyTaskAndHistory(id, btn);
-  const taskItem = document.getElementById("task-item");
-  const historyItem = document.getElementById("history-item");
-
-  // タスク名を画面に設定
-  taskItem.setTitle(name);
-
-  // 入力内容変更時のイベントを有効化
-  taskItem.enableCustomEvent();
-  historyItem.enableCustomEvent();
-};
-
-/**
- * タスククリックイベント
- * @param {string} id
- * @param {HTMLElement} btn タスクボタン
- */
-const clickTaskEventHandler = async (id, btn) => {
-  // 空のアイテムを準備
-  createEmptyTaskAndHistory(id, btn);
-  const taskItem = document.getElementById("task-item");
-  const historyItem = document.getElementById("history-item");
-
-  // JSONデータを取得し画面描画
-  const jsonStr = await fileManager.loadFile(`${id}.json`);
-  const data = JSON.parse(jsonStr);
-
-  taskItem.renderTaskItem(data.taskData);
-  historyItem.renderHistoryItem(data.historyData);
-
-  taskItem.enableCustomEvent();
-  historyItem.enableCustomEvent();
-
-  /**
-   * 履歴追加時、最下部に自動スクロールする
-   */
-  const autoScroll = () => {
-    const gridHistory = document.getElementById("grid-history");
-    const bottom = gridHistory.scrollHeight - gridHistory.clientHeight;
-    gridHistory.scrollTo({ top: bottom, behavior: "smooth" });
-  };
-  historyItem.addEventListener("addHistory", () => {
-    autoScroll();
-  });
-  autoScroll();
-};
-
-//--------------------------------------------------
-// 初期表示
-//--------------------------------------------------
-
-/**
- * レイアウトを定義するGridおよびCSSをDOMに追加する
+ * タスクと履歴を新規追加するイベントハンドラ
+ * @param {Object} conf - タスクアイテムのオブジェクト。
+ * @param {string} conf.id - アイテムのID。
+ * @param {string} conf.name - アイテムの名前。
+ * @param {string} conf.task - アイテム用のボタン。
  * @returns {void}
  */
-const init = () => {
-  /**
-   * 指定されたIDおよびクラスリストを持つ新しいdiv要素を作成する
-   * @param {string} id - 新しいdiv要素に割り当てるID
-   * @param {string[]} classList - 新しいdiv要素に追加するクラスの配列
-   * @returns {HTMLDivElement} 新しく作成されたdiv要素
-   */
-  const createGrid = (id, classList) => {
-    const div = document.createElement("div");
-    div.id = id;
-    div.classList.add(...classList);
-    return div;
-  };
+const addTaskEventHandler = (conf) => {
+  const { id, name } = conf;
 
-  // CSSおよびGridを画面に適用する
-  document.adoptedStyleSheets = Utils.createStyleSheetWithFilename(indexCss);
+  // 空のアイテムを準備
+  const taskItem = createEmptyTask(conf);
+  const historyItem = createEmptyHistory(conf);
 
-  const container = document.getElementById("container");
-  container.innerHTML = "";
-  container.appendChild(createGrid("grid-header", []));
-  container.appendChild(createGrid("grid-control", []));
-  container.appendChild(createGrid("grid-tree", ["scroll"]));
-  container.appendChild(createGrid("grid-task", ["scroll"]));
-  container.appendChild(createGrid("grid-history", ["scroll"]));
+  // 作成したアイテムを画面に追加
+  gridTask.innerHTML = "";
+  gridHistory.innerHTML = "";
+  gridTask.appendChild(taskItem);
+  gridTask.appendChild(historyItem);
 
-  // フォルダを開くボタンを追加する
-  const svgIcon = Utils.createSvg("folder", [
-    {
-      path: "M0 0h24v24H0z",
-    },
-    {
-      path: "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2",
-    },
-  ]);
+  // 作成したアイテムをファイルに保存する
+  saveTreeView();
+  saveTaskAndHistoryData(id);
 
-  const folderOpenButton = Utils.createSvgButton("folder");
-  folderOpenButton.id = "folder-open-button";
-  folderOpenButton.classList.add("float-button");
+  // タスク名を設定し、変更イベントの発行を許可する。
+  taskItem.setTitle(name);
+  taskItem.enableCustomEvent();
 
-  container.appendChild(svgIcon);
-  container.appendChild(folderOpenButton);
+  // 履歴の変更イベントの発行を許可する。
+  historyItem.enableCustomEvent();
+};
 
-  // フォルダを開くイベントを追加する
-  folderOpenButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+/**
+ * タスククリック時にタスクと履歴を開くイベントハンドラ
+ * @param {Object} conf - タスクアイテムのオブジェクト。
+ * @param {string} conf.id - アイテムのID。
+ * @returns {void}
+ */
+const clickTaskEventHandler = async (conf) => {
+  // 空のアイテムを準備
+  const taskItem = createEmptyTask(conf);
+  const historyItem = createEmptyHistory(conf);
 
-    fileManager = new FileManager();
-    if (await fileManager.selectDirectory()) {
-      folderOpenButton.remove();
-      addControl();
-      addTreeView();
-    }
+  // 作成したアイテムを画面に追加
+  gridTask.innerHTML = "";
+  gridHistory.innerHTML = "";
+  gridTask.appendChild(taskItem);
+  gridTask.appendChild(historyItem);
+
+  // JSONデータを取得し画面描画
+  const { id } = conf;
+
+  try {
+    const jsonStr = await fileManager.loadFile(`${id}.json`);
+    const data = JSON.parse(jsonStr);
+
+    taskItem.renderTaskItem(data.taskData);
+    historyItem.renderHistoryItem(data.historyData);
+
+    taskItem.enableCustomEvent();
+    historyItem.enableCustomEvent();
+
+    // 読み込み時に履歴最下部までスクロール
+    historyItem.addEventListener("addHistory", () => {
+      autoScroll();
+    });
+    autoScroll();
+  } catch (error) {
+    console.error("データの読込中にエラーが発生しました:", id, error);
+  }
+};
+
+/**
+ * 履歴の最下部までスクロールする
+ */
+const autoScroll = () => {
+  const bottom = gridHistory.scrollHeight - gridHistory.clientHeight;
+  gridHistory.scrollTo({ top: bottom, behavior: "smooth" });
+};
+
+/**
+ * 空のタスクアイテムを作成する関数
+ * @param {Object} conf - 入力項目のオブジェクト～
+ * @param {string} conf.id - アイテムの識別用ID～
+ * @param {HTMLElement} conf.task - タスクボタンの要素～
+ * @returns {HTMLElement} - 作成されたタスクアイテム
+ */
+const createEmptyTask = (conf) => {
+  const taskItem = Utils.createElm("task-item", "task-item");
+  const { id, task } = conf;
+
+  // 識別用のIDをセットする
+  taskItem.dataset.id = id;
+
+  // イベント登録する
+  taskItem.setChangeTitleHandler(createChangeTitleEventHandler(task));
+  taskItem.setChangeDueDateHandler(createChangeDueDateEventHandler(task));
+  taskItem.setChangeStatusHandler(createChangeStatusEventHandler(task));
+
+  // タスクの内容が変更された場合、ファイルに保存する
+  taskItem.addEventListener("changeTask", () => {
+    saveTreeView();
+    saveTaskAndHistoryData(id);
   });
+
+  return taskItem;
+};
+
+/**
+ * 空の履歴アイテムを作成する関数
+ * @param {Object} conf - 入力項目のオブジェクト～
+ * @param {string} conf.id - アイテムの識別用ID～
+ * @param {HTMLElement} conf.task - タスクボタンの要素～
+ * @returns {HTMLElement} - 作成されたタスクアイテム
+ */
+const createEmptyHistory = (conf) => {
+  const historyItem = Utils.createElm("history-item", "history-item");
+  const { id } = conf;
+
+  // 識別用のIDをセットする。
+  historyItem.dataset.id = id;
+
+  // 履歴の内容が変更された場合、ファイルに保存する
+  historyItem.addEventListener("changeHistory", () => {
+    saveTreeView();
+    saveTaskAndHistoryData(id);
+  });
+
+  return historyItem;
+};
+
+/**
+ * タイトル変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された名前を設定するイベントハンドラ。
+ */
+const createChangeTitleEventHandler = (task) => {
+  return (newName) => {
+    task.innerText = newName; // ボタンのテキストを変更する
+    task.dataset.name = newName; // ボタンのデータ属性を変更する
+  };
+};
+
+/**
+ * 期限日変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された期限日を設定するイベントハンドラ。
+ */
+const createChangeDueDateEventHandler = (task) => {
+  return (newDuedateString) => {
+    task.dataset.duedate = newDuedateString;
+  };
+};
+
+/**
+ * 進捗率変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された進捗率を設定するイベントハンドラ。
+ */
+const createChangeStatusEventHandler = (task) => {
+  return (newStatus) => {
+    task.classList.remove("task-finished");
+    if (parseInt(newStatus) === 100) {
+      task.classList.add("task-finished");
+    }
+  };
+};
+
+/**
+ * タスクデータと履歴データを保存する関数
+ * @param {string} id - 保存するデータのファイル名の一部となるID～
+ * @returns {void}
+ */
+const saveTaskAndHistoryData = async (id) => {
+  try {
+    await fileManager.writeFile(
+      `${id}.json`,
+      JSON.stringify({
+        taskData: document.getElementById("task-item").getTaskData(),
+        historyData: document.getElementById("history-item").getHistoryData(),
+      })
+    );
+  } catch (error) {
+    console.error("データの保存中にエラーが発生しました:", id, error);
+  }
 };
 
 /**
@@ -295,19 +408,5 @@ const init = () => {
  * @returns {void}
  */
 window.addEventListener("load", () => {
-  // WebComponentsを読み込み
-  ControlMenu();
-  TreeView();
-  TaskItem();
-  PartsInput();
-  PartsDueDate();
-  PartsStaff();
-  PartsRadio();
-  PartsTextarea();
-
-  HistoryItem();
-  PartsHistoryItem();
-
-  // 画面初期表示
   init();
 });

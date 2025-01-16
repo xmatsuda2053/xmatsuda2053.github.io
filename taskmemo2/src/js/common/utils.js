@@ -1,13 +1,40 @@
 export class Utils {
   /**
-   * 指定されたファイル名を使用して新しいCSSスタイルシートを作成する
-   * @param {string} filepath - CSSスタイルシートのファイルパス
-   * @returns {CSSStyleSheet[]} 作成されたCSSスタイルシートの配列
+   * 指定されたファイル名を使用して新しいCSSスタイルシートを作成する。
+   * @param {string} filepath - CSSスタイルシートのファイルパス。
+   * @returns {CSSStyleSheet[]} 作成されたCSSスタイルシートの配列。
    */
   static createStyleSheetWithFilename = (filepath) => {
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(filepath);
     return [styleSheet];
+  };
+
+  /**
+   * 指定されたIDおよびクラスリストを持つ新しいdiv要素を作成する。
+   * @param {string} id - 新しいdiv要素に割り当てるID。
+   * @param {string[]} classList - 新しいdiv要素に追加するクラスの配列。
+   * @returns {HTMLDivElement} 新しく作成されたdiv要素。
+   */
+  static createDiv = (id, classList) => {
+    const div = document.createElement("div");
+    div.id = id;
+    div.classList.add(...classList);
+    return div;
+  };
+
+  /**
+   * 指定されたタグ名とオプションのIDでHTML要素を作成する。
+   * @param {string} tagName - 作成する要素のタグ名。
+   * @param {string} [id=""] - オプションの要素ID。
+   * @returns {HTMLElement} 生成されたHTML要素。
+   */
+  static createElm = (tagName, id = "") => {
+    const elm = document.createElement(tagName);
+    if (id !== "") {
+      elm.id = id;
+    }
+    return elm;
   };
 
   /**
@@ -234,7 +261,7 @@ export class Utils {
    * @param {string} dataString - yyyy-mm-dd形式の日付文字列。
    * @returns {number} - 当日からの残り日数。
    */
-  static calculateDateDifference(dataString) {
+  static calcDateDiffToday(dataString) {
     /**
      * ミリ秒を1日単位に変換する定数
      */

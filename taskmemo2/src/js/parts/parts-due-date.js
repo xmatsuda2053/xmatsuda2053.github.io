@@ -141,7 +141,7 @@ export function PartsDueDate() {
      */
     get dayCount() {
       const date = this.shadowRoot.getElementById("due-date");
-      return Utils.calculateDateDifference(date.value);
+      return Utils.calcDateDiffToday(date.value);
     }
 
     /**

@@ -21,8 +21,7 @@ export class FileManager {
       });
       return true;
     } catch (err) {
-      console.error("ディレクトリを開くのに失敗しました:", err);
-      return false;
+      throw err;
     }
   }
 
@@ -46,7 +45,6 @@ export class FileManager {
         await writable.write(content);
         await writable.close();
       } catch (err) {
-        console.error("ファイルを保存するのに失敗しました:", err);
         throw err;
       }
     });
@@ -76,7 +74,6 @@ export class FileManager {
       if (err.name === "NotFoundError") {
         return null;
       } else {
-        console.error("ファイルを読むのに失敗しました:", err);
         throw err;
       }
     }

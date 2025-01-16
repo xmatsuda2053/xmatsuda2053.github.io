@@ -11,14 +11,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 class Utils {
   /**
-   * 指定されたファイル名を使用して新しいCSSスタイルシートを作成する
-   * @param {string} filepath - CSSスタイルシートのファイルパス
-   * @returns {CSSStyleSheet[]} 作成されたCSSスタイルシートの配列
+   * 指定されたファイル名を使用して新しいCSSスタイルシートを作成する。
+   * @param {string} filepath - CSSスタイルシートのファイルパス。
+   * @returns {CSSStyleSheet[]} 作成されたCSSスタイルシートの配列。
    */
   static createStyleSheetWithFilename = (filepath) => {
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(filepath);
     return [styleSheet];
+  };
+
+  /**
+   * 指定されたIDおよびクラスリストを持つ新しいdiv要素を作成する。
+   * @param {string} id - 新しいdiv要素に割り当てるID。
+   * @param {string[]} classList - 新しいdiv要素に追加するクラスの配列。
+   * @returns {HTMLDivElement} 新しく作成されたdiv要素。
+   */
+  static createDiv = (id, classList) => {
+    const div = document.createElement("div");
+    div.id = id;
+    div.classList.add(...classList);
+    return div;
+  };
+
+  /**
+   * 指定されたタグ名とオプションのIDでHTML要素を作成する。
+   * @param {string} tagName - 作成する要素のタグ名。
+   * @param {string} [id=""] - オプションの要素ID。
+   * @returns {HTMLElement} 生成されたHTML要素。
+   */
+  static createElm = (tagName, id = "") => {
+    const elm = document.createElement(tagName);
+    if (id !== "") {
+      elm.id = id;
+    }
+    return elm;
   };
 
   /**
@@ -245,7 +272,7 @@ class Utils {
    * @param {string} dataString - yyyy-mm-dd形式の日付文字列。
    * @returns {number} - 当日からの残り日数。
    */
-  static calculateDateDifference(dataString) {
+  static calcDateDiffToday(dataString) {
     /**
      * ミリ秒を1日単位に変換する定数
      */
@@ -275,6 +302,89 @@ class Utils {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SvgIcon: () => (/* binding */ SvgIcon)
+/* harmony export */ });
+/**
+ * SVGアイコン
+ */
+class SvgIcon {
+  /**
+   * フォルダSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static folderPaths = () => {
+    return [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2",
+      },
+    ];
+  };
+
+  /**
+   * ファイル追加SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static filePlustPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M14 3v4a1 1 0 0 0 1 1h4" },
+      {
+        path: "M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z",
+      },
+      { path: "M12 11l0 6" },
+      { path: "M9 14l6 0" },
+    ];
+  };
+
+  /**
+   * フォルダ追加SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static folderPlusPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5",
+      },
+      {
+        path: "M16 19h6",
+      },
+      { path: "M19 16v6" },
+    ];
+  };
+
+  /**
+   * テーブルと書き込みSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static tablerWritingPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z",
+      },
+      {
+        path: "M16 7h4",
+      },
+      { path: "M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3" },
+    ];
+  };
+}
+
+
+/***/ }),
+/* 3 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   FileManager: () => (/* binding */ FileManager)
 /* harmony export */ });
 /**
@@ -300,8 +410,7 @@ class FileManager {
       });
       return true;
     } catch (err) {
-      console.error("ディレクトリを開くのに失敗しました:", err);
-      return false;
+      throw err;
     }
   }
 
@@ -325,7 +434,6 @@ class FileManager {
         await writable.write(content);
         await writable.close();
       } catch (err) {
-        console.error("ファイルを保存するのに失敗しました:", err);
         throw err;
       }
     });
@@ -355,7 +463,6 @@ class FileManager {
       if (err.name === "NotFoundError") {
         return null;
       } else {
-        console.error("ファイルを読むのに失敗しました:", err);
         throw err;
       }
     }
@@ -364,7 +471,7 @@ class FileManager {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -372,7 +479,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ControlMenu: () => (/* binding */ ControlMenu)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
 /**
  * 共通関数
  */
@@ -477,16 +584,16 @@ function ControlMenu() {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -499,7 +606,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ ((module) => {
 
 
@@ -509,7 +616,7 @@ module.exports = function (i) {
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ ((module) => {
 
 
@@ -599,7 +706,7 @@ module.exports = function (cssWithMappingToString) {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -607,16 +714,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TreeView: () => (/* binding */ TreeView)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_tree_view_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
+/* harmony import */ var _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _style_css_tree_view_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
 /**
  * 共通関数
  */
+
 
 
 /**
  * tree-viewコンポーネント用のCSS
  */
 
+
+/**
+ * TreeViewの基点
+ */
+const treeViewRoot = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("div", "root");
+
+/**
+ * メニュー起動時の背景要素（メニューを閉じるイベント起動用）
+ */
+const contextMenuContainer = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("div", "context-menu-container");
+
+/**
+ * メニュー本体
+ */
+const contextMenu = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("div", "context-menu");
 
 /**
  * TreeView コンポーネントを作成しカスタム要素として定義する
@@ -636,218 +760,193 @@ function TreeView() {
 
       this.attachShadow({ mode: "open" });
       this.shadowRoot.adoptedStyleSheets =
-        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_tree_view_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
+        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_tree_view_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       this.shadowRoot.innerHTML = "";
-      this.#addEmptyTreeView();
-      this.#addMenu();
-    }
-
-    /**
-     * 空のTreeViewを作成する
-     * @return {void}
-     */
-    #addEmptyTreeView() {
-      const treeViewRoot = document.createElement("div");
-      treeViewRoot.id = "root";
-
       this.shadowRoot.appendChild(treeViewRoot);
+
+      this.#addEmptyMenu();
+      this.#attachAddTaskButtonToMenu();
+      this.#attachBorderToMenu();
+      this.#attachAddGroupButtonToMenu();
+      this.#attachChangeGroupNameButtonToMenu();
     }
 
+    //--------------------------------------------------
+    //- メニューのベース
+    //--------------------------------------------------
+
     /**
-     * TreeViewのコンテキストメニューを追加する
+     * 空のコンテキストメニューを追加する。
      * @return {void}
      */
-    #addMenu() {
-      // SVGアイコンを作成する
-      const svgIconFilePlus = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("file-plus", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M14 3v4a1 1 0 0 0 1 1h4" },
-        {
-          path: "M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z",
-        },
-        { path: "M12 11l0 6" },
-        { path: "M9 14l6 0" },
-      ]);
-
-      const svgIconFolderPlus = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("folder-plus", [
-        { path: "M0 0h24v24H0z" },
-        {
-          path: "M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5",
-        },
-        {
-          path: "M16 19h6",
-        },
-        { path: "M19 16v6" },
-      ]);
-
-      const svgIconTablerWriting = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tabler-writing", [
-        { path: "M0 0h24v24H0z" },
-        {
-          path: "M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z",
-        },
-        {
-          path: "M16 7h4",
-        },
-        { path: "M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3" },
-      ]);
-
-      // メニューを作成する
-      const container = document.createElement("div");
-      container.id = "context-menu-container";
-
-      const menu = document.createElement("div");
-      menu.id = "context-menu";
-
-      const btnAddTask = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("file-plus");
-      btnAddTask.appendChild(document.createTextNode("新しいタスク"));
-      btnAddTask.id = "btn-add-task";
-
-      const btnAddGroup = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("folder-plus");
-      btnAddGroup.appendChild(document.createTextNode("新しいグループ"));
-      btnAddGroup.id = "btn-add-group";
-
-      const btnChangeGroupName = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tabler-writing");
-      btnChangeGroupName.appendChild(
-        document.createTextNode("グループ名を変更")
-      );
-      btnChangeGroupName.id = "btn-change-group-name";
-
-      const hr = document.createElement("hr");
-
-      menu.appendChild(btnAddTask);
-      menu.appendChild(hr);
-      menu.appendChild(btnAddGroup);
-      menu.appendChild(btnChangeGroupName);
-
-      container.appendChild(menu);
-      container.appendChild(svgIconFilePlus);
-      container.appendChild(svgIconFolderPlus);
-      container.appendChild(svgIconTablerWriting);
-
-      this.shadowRoot.appendChild(container);
+    #addEmptyMenu() {
+      contextMenuContainer.appendChild(contextMenu);
+      this.shadowRoot.appendChild(contextMenuContainer);
 
       /**
-       * 右クリックメニューを開く
+       * メニューを開く処理を追加
        * @return {void}
        */
       this.shadowRoot.addEventListener("contextmenu", (e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        this.elmEditTarget = e.target.closest("details");
-        if (!this.elmEditTarget) {
-          this.elmEditTarget = this.shadowRoot.getElementById("root");
+        // メニューを開いた際の対象を取得
+        this.editTarget = e.target.closest("details");
+
+        if (this.editTarget) {
+          // グループ上でメニューを開いた場合、グループを開く
+          this.editTarget.open = true;
         } else {
-          this.elmEditTarget.open = true;
+          // グループ以外の場合は、TreeViewの基点を取得
+          this.editTarget = treeViewRoot;
         }
 
-        container.style.display = "block";
-        menu.style.left = `${e.pageX + 10}px`;
-        menu.style.top = `${e.pageY - 20}px`;
+        // メニューを開く
+        contextMenuContainer.style.display = "block";
+        contextMenu.style.left = `${e.pageX + 10}px`;
+        contextMenu.style.top = `${e.pageY - 20}px`;
       });
 
       /**
-       * 右クリックメニューを閉じる
+       * メニューを閉じる処理を追加
        * @return {void}
        */
-      container.addEventListener("click", (e) => {
+      contextMenuContainer.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        container.style.display = "none";
-        this.elmEditTarget = "";
-      });
-
-      /**
-       * 新しいタスクを追加する処理
-       * @return {void}
-       */
-      btnAddTask.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const name = prompt("タスク名設定", "新規タスク");
-        if (name) {
-          const id = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getUniqueId();
-          const task = this.#createTask(name, id);
-          this.elmEditTarget.appendChild(task);
-          this.addTaskEventHandler(id, name, task);
-          this.#setSelected(task);
-          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
-        }
-
-        container.click();
-      });
-
-      /**
-       * 新しいグループを追加する処理
-       * @return {void}
-       */
-      btnAddGroup.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const name = prompt("グループ名設定", "新規グループ");
-        if (name) {
-          const id = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getUniqueId();
-          const group = this.#createGroup(name, id);
-          this.elmEditTarget.appendChild(group);
-          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
-        }
-
-        container.click();
-      });
-
-      /**
-       * グループ名を変更する処理
-       * @return {void}
-       */
-      btnChangeGroupName.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (this.elmEditTarget.tagName === "DETAILS") {
-          const summary = this.elmEditTarget.children[0];
-          const inputText = prompt("グループ名変更", summary.innerText);
-          if (inputText !== null) {
-            this.elmEditTarget.dataset.name = inputText;
-            summary.innerText = inputText;
-            this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
-          }
-        }
-
-        container.click();
+        contextMenuContainer.style.display = "none";
+        this.editTarget = "";
       });
     }
 
     /**
-     * タスク要素を作成する
-     * @param {string} name タスクの名前
-     * @param {string} id タスクのID
-     * @param {string} duedate 期限日
-     * @param {string[]} classList タスクに追加するクラスリスト
-     * @returns {HTMLParagraphElement} 作成されたタスク要素
-     * @private
+     * メニューを閉じる。
+     * @return {void}
      */
-    #createTask(name, id, duedate = "", classList = []) {
-      const task = document.createElement("p");
+    #closeMenu() {
+      contextMenuContainer.click();
+    }
+
+    /**
+     * メニューに境界線を追加する。
+     * @return {void}
+     */
+    #attachBorderToMenu() {
+      contextMenu.appendChild(document.createElement("hr"));
+    }
+
+    //--------------------------------------------------
+    //- タスク追加
+    //--------------------------------------------------
+
+    /**
+     * メニューにタスクを新規追加するボタンを追加する。
+     * @return {void}
+     */
+    #attachAddTaskButtonToMenu() {
+      const iconName = "file-plus";
+
+      // SVGアイコンを作成する
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(iconName, _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.filePlustPaths());
+
+      // タスク追加ボタンを作成する
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(iconName);
+      btn.appendChild(document.createTextNode("新しいタスク"));
+      btn.id = "btn-add-task";
+
+      // メニューにボタンを追加する
+      contextMenuContainer.appendChild(icon);
+      contextMenu.appendChild(btn);
+
+      /**
+       * 新しいタスクを追加する処理を追加
+       * @return {void}
+       */
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const name = prompt("タスク名設定", "新規タスク");
+
+        if (name) {
+          // IDを採番し、新規にタスクを作成する
+          const id = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getUniqueId();
+          const task = this.#createTask({ name, id });
+
+          // 作成したタスクをTreeViewに追加する
+          this.editTarget.appendChild(task);
+
+          // 対象のタスクを選択状態にする
+          this.#setSelected(task);
+
+          // タスク追加時のイベントを起動する
+          this.addTaskEventHandler({ id, name, task });
+
+          // タスクを追加したことを外部に通知する
+          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
+        }
+
+        this.#closeMenu();
+      });
+    }
+
+    /**
+     * タスクを追加するイベントハンドラーを設定する
+     * @param {Function} handler タスク追加時に実行されるイベントハンドラー
+     * @returns {void}
+     */
+    setAddTaskHandler(handler) {
+      this.addTaskEventHandler = handler;
+    }
+
+    /**
+     * タスクを作成する関数
+     * @param {Object} conf - タスクの設定オブジェクト～
+     * @param {string} conf.id - タスクの識別用ID～
+     * @param {string} conf.name - タスク名～
+     * @param {string} [conf.duedate] - タスクの期日。省略可能～
+     * @param {Array<string>} [classList=[]] - クラスリスト（省略可能）～
+     * @returns {HTMLElement} - 作成されたタスク要素
+     */
+    #createTask(conf, classList = []) {
+      const task = document.createElement("div");
+      const { id, name, duedate } = conf;
+
+      // タスクをクリックした際のイベントを設定する
+      task.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.#setSelected(task);
+        this.clickTaskEventHandler({ id, name, task });
+      });
+
+      // 期限日属性が変更された際のイベントを設定する
+      const callback = (mutationsList) => {
+        for (let m of mutationsList) {
+          if (m.type === "attributes" && m.attributeName === "data-duedate") {
+            const dayCount = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calcDateDiffToday(task.dataset.duedate);
+            if (dayCount < 3) {
+              task.classList.add("over-deadline");
+            } else {
+              task.classList.remove("over-deadline");
+            }
+          }
+        }
+      };
+      const observer = new MutationObserver(callback);
+      observer.observe(task, {
+        attributes: true,
+        attributeFilter: ["data-duedate"],
+      });
+
+      // パラメータを設定
       task.innerText = name;
       task.dataset.id = id;
       task.dataset.name = name;
-      task.dataset.duedate = duedate;
+      task.dataset.duedate = duedate || "";
       task.dataset.type = "task";
       task.classList.add(...classList);
-
-      if (duedate !== duedate) {
-      }
-
-      // タスクを開く処理
-      task.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.#setSelected(task);
-        this.clickTaskEventHandler(id, task);
-      });
 
       return task;
     }
@@ -866,12 +965,111 @@ function TreeView() {
     }
 
     /**
-     * タスクを追加するイベントハンドラーを設定する
-     * @param {Function} handler タスク追加時に実行されるイベントハンドラー
+     * タスククリックのイベントハンドラーを設定する
+     * @param {Function} handler タスククリック時に実行されるイベントハンドラー
      * @returns {void}
      */
-    registerAddTaskHandler(handler) {
-      this.addTaskEventHandler = handler;
+    setClickTaskHandler(handler) {
+      this.clickTaskEventHandler = handler;
+    }
+
+    //--------------------------------------------------
+    //- グループ追加
+    //--------------------------------------------------
+
+    /**
+     * メニューにグループを新規追加するボタンを追加する。
+     * @return {void}
+     */
+    #attachAddGroupButtonToMenu() {
+      const iconName = "folder-plus";
+
+      // SVGアイコンを作成する
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(iconName, _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.folderPlusPaths());
+
+      // グループ追加ボタンを作成する
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(iconName);
+      btn.appendChild(document.createTextNode("新しいグループ"));
+      btn.id = "btn-add-group";
+
+      // メニューにボタンを追加する
+      contextMenuContainer.appendChild(icon);
+      contextMenu.appendChild(btn);
+
+      /**
+       * 新しいグループを追加する処理を追加
+       * @return {void}
+       */
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const name = prompt("グループ名設定", "新規グループ");
+
+        if (name) {
+          // IDを採番し、新規にグループを作成する
+          const id = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getUniqueId();
+          const group = this.#createGroup(name, id);
+
+          // 作成したグループをTreeViewに追加する
+          this.editTarget.appendChild(group);
+
+          // グループを追加したことを外部に通知する
+          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
+        }
+
+        this.#closeMenu();
+      });
+    }
+
+    //--------------------------------------------------
+    //- グループ名を変更
+    //--------------------------------------------------
+
+    /**
+     * メニューにグループ名を変更するボタンを追加する。
+     * @return {void}
+     */
+    #attachChangeGroupNameButtonToMenu() {
+      const iconName = "tabler-writing";
+
+      // SVGアイコンを作成する
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(iconName, _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.tablerWritingPaths());
+
+      // グループ名変更ボタンを作成する
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(iconName);
+      btn.appendChild(document.createTextNode("グループ名を変更"));
+      btn.id = "btn-change-group-name";
+
+      // メニューにボタンを追加する
+      contextMenuContainer.appendChild(icon);
+      contextMenu.appendChild(btn);
+
+      /**
+       * グループ名を変更する処理
+       * @return {void}
+       */
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (this.editTarget.tagName === "DETAILS") {
+          // 変更前の名称を取得し、グループ名変更画面を表示する
+          const summary = this.editTarget.children[0];
+          const inputText = prompt("グループ名変更", summary.innerText);
+
+          if (inputText !== null) {
+            // 変更後の名称を設定する
+            this.editTarget.dataset.name = inputText;
+            summary.innerText = inputText;
+
+            // グループ名を変更したことを外部に通知する
+            this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
+          }
+        }
+
+        this.#closeMenu();
+      });
     }
 
     /**
@@ -898,85 +1096,61 @@ function TreeView() {
       return details;
     }
 
+    //--------------------------------------------------
+    //- TreeViewを描画
+    //--------------------------------------------------
+
     /**
      * JSON文字列を元にTreeViewをレンダリングする
      * @param {string} jsonStr JSONデータの文字列
      * @returns {void}
      */
     renderTreeView(jsonStr) {
-      const root = this.shadowRoot.getElementById("root");
-      const treeData = JSON.parse(jsonStr);
+      if (!jsonStr) {
+        return;
+      }
 
-      treeData.forEach((data) => {
-        this.#addTreeViewItems(root, data);
+      JSON.parse(jsonStr).forEach((data) => {
+        this.#addTreeViewItems(treeViewRoot, data);
       });
     }
 
     /**
-     * タスクに期日が到来している場合、deadlineクラスを追加
-     * @param {HTMLElement} target
-     */
-    setDeadline(target) {
-      const dateString = target.dataset.duedate;
-      const dayCount = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calculateDateDifference(dateString);
-      if (dayCount < 3) {
-        target.classList.add("over-deadline");
-      } else {
-        target.classList.remove("over-deadline");
-      }
-    }
-
-    /**
-     * Jsonデータを元にTreeViewに項目を追加する
-     * @param {HTMLElement} root 追加先のルート要素
+     * Jsonデータを元にTreeViewに項目を追加する（再帰処理）
+     * @param {HTMLElement} currentRoot 追加先のルート要素
      * @param {object} data 追加するデータ
      * @returns {void}
      * @private
      */
-    #addTreeViewItems(root, data) {
+    #addTreeViewItems(currentRoot, data) {
+      const { name, id, duedate, cls } = data;
+
       if (data.type === "task") {
-        const task = this.#createTask(
-          data.name,
-          data.id,
-          data.duedate,
-          data.cls || []
-        );
-        this.setDeadline(task);
-        root.appendChild(task);
-        task.addEventListener("click", () => {
-          this.clickTaskEventHandler(data.id, task); // タスクを開く
-        });
+        // タスクを新規作成
+        const task = this.#createTask({ name, id, duedate }, cls || []);
+        currentRoot.appendChild(task);
       } else {
-        const group = this.#createGroup(data.name, data.id, data.cls || []);
-        root.appendChild(group);
-
-        // TODO: スペルミス対応（JSON修正後に消す）
+        // グループを新規作成
+        const group = this.#createGroup(name, id, cls || []);
+        currentRoot.appendChild(group);
         const array = data.children || data.childlen || [];
-
         (array || []).forEach((child) => {
           this.#addTreeViewItems(group, child);
         });
       }
     }
 
-    /**
-     * タスククリックのイベントハンドラーを設定する
-     * @param {Function} handler タスククリック時に実行されるイベントハンドラー
-     * @returns {void}
-     */
-    registerClickTaskHandler(handler) {
-      this.clickTaskEventHandler = handler;
-    }
+    //--------------------------------------------------
+    //- TreeViewのデータ取得
+    //--------------------------------------------------
 
     /**
      * ツリービューのデータを取得する
      *
-     * @returns {string} ツリーデータのJSON文字列を返す。
+     * @returns {string} ツリーデータを返す。
      */
     getTreeViewData() {
-      const root = this.shadowRoot.getElementById("root");
-      const treeData = this.#getAllElement(root.childNodes);
-      return treeData;
+      return this.#getAllElement(treeViewRoot.childNodes);
     }
 
     /**
@@ -995,13 +1169,14 @@ function TreeView() {
           node.classList.remove("selected");
         }
 
+        // データ作成
         const dataItem = {
           id: node.dataset.id || null,
           name: node.dataset.name || null,
           type: node.dataset.type || null,
           duedate: node.dataset.duedate || null,
           cls: Array.from(node.classList) || [], // クラスリストを配列として保存
-          children: null, // プロパティ名のスペルを修正
+          children: null,
         };
 
         // 改めて選択中のクラスを付与
@@ -1015,7 +1190,7 @@ function TreeView() {
         }
 
         // データをリストに追加
-        if (node.tagName === "DETAILS" || node.tagName === "P") {
+        if (node.tagName === "DETAILS" || node.tagName === "DIV") {
           elements.push(dataItem);
         }
       });
@@ -1030,29 +1205,29 @@ function TreeView() {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}#root{position:relative;width:100%;height:100%;padding-bottom:3rem;line-height:1.5rem;font-size:1.1rem;text-decoration-skip-ink:none}#root summary:hover,#root p:hover{color:#0078d4;text-decoration:underline}#root details{cursor:pointer;width:100%}#root details summary{list-style:none;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;padding-left:1.15em}#root details summary::-webkit-details-marker{display:none}#root details summary::before{content:"";position:absolute;top:.35rem;left:0;width:8px;height:8px;border-top:solid 2px #000;border-right:solid 2px #000;transform:rotate(45deg);transition:transform .2s}#root details[open]>summary::before{transform:rotate(135deg);top:.22rem;left:.18rem}#root details details,#root details p{margin-left:1rem}#root p{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;position:relative;padding-left:1.15em}#root p::before{content:"";position:absolute;top:.16rem;left:0;width:1.1rem;height:1.1rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}#root p.selected{color:#0078d4;font-weight:bold;text-decoration:underline}#root p.over-deadline{color:red}#root p.task-finished{color:#8f8f8f;text-decoration:line-through}#context-menu-container{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0)}#context-menu-container #context-menu{position:absolute;z-index:100000;font-size:1rem;border:1px solid #8f8f8f;border-radius:.25rem;background-color:#fffff8;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1);width:fit-content;padding:.2rem}#context-menu-container #context-menu button{display:block;line-height:1.5rem;padding:.1rem .5rem;padding-right:1rem;width:100%}#context-menu-container #context-menu button .icon{width:1.5rem;height:1.5rem;margin-right:.5rem}#context-menu-container #context-menu button:hover{background-color:#0078d4;border-radius:.25rem;color:#fffffb}#context-menu-container #context-menu hr{margin:.25rem 0;height:1px;background-color:#afafaf;border:none}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}#root{position:relative;width:100%;height:100%;padding-bottom:3rem;line-height:1.5rem;font-size:1.1rem;text-decoration-skip-ink:none}#root summary:hover,#root div:hover{color:#0078d4;text-decoration:underline}#root details{cursor:pointer;width:100%}#root details summary{list-style:none;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;padding-left:1.15em}#root details summary::-webkit-details-marker{display:none}#root details summary::before{content:"";position:absolute;top:.35rem;left:0;width:8px;height:8px;border-top:solid 2px #000;border-right:solid 2px #000;transform:rotate(45deg);transition:transform .2s}#root details[open]>summary::before{transform:rotate(135deg);top:.22rem;left:.18rem}#root details details,#root details div{margin-left:1rem}#root div{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;position:relative;padding-left:1.15em}#root div::before{content:"";position:absolute;top:.16rem;left:0;width:1.1rem;height:1.1rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}#root div.selected{color:#0078d4;font-weight:bold;text-decoration:underline}#root div.over-deadline{color:red}#root div.task-finished{color:#8f8f8f;text-decoration:line-through}#context-menu-container{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0)}#context-menu-container #context-menu{position:absolute;z-index:100000;font-size:1rem;border:1px solid #8f8f8f;border-radius:.25rem;background-color:#fffff8;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1);width:fit-content;padding:.2rem}#context-menu-container #context-menu button{display:block;line-height:1.5rem;padding:.1rem .5rem;padding-right:1rem;width:100%}#context-menu-container #context-menu button .icon{width:1.5rem;height:1.5rem;margin-right:.5rem}#context-menu-container #context-menu button:hover{background-color:#0078d4;border-radius:.25rem;color:#fffffb}#context-menu-container #context-menu hr{margin:.25rem 0;height:1px;background-color:#afafaf;border:none}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1060,7 +1235,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TaskItem: () => (/* binding */ TaskItem)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_task_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _style_css_task_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
 /**
  * 共通関数
  */
@@ -1252,7 +1427,7 @@ function TaskItem() {
      * タイトル変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    registerChangeTitleHandler(handler) {
+    setChangeTitleHandler(handler) {
       const title = this.shadowRoot.getElementById("title");
       title.addEventListener("changeTaskItem", () => {
         handler(title.value);
@@ -1263,7 +1438,7 @@ function TaskItem() {
      * Deadline変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    registerChangeDeadlineHandler(handler) {
+    setChangeDueDateHandler(handler) {
       const duedate = this.shadowRoot.getElementById("due-date");
       duedate.addEventListener("changeTaskItem", () => {
         handler(duedate.value);
@@ -1275,7 +1450,7 @@ function TaskItem() {
      * 進捗率変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    registerChangeStatusHandler(handler) {
+    setChangeStatusHandler(handler) {
       const status = this.shadowRoot.getElementById("status");
       status.addEventListener("changeTaskItem", () => {
         handler(status.value);
@@ -1492,16 +1667,16 @@ function TaskItem() {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -1514,7 +1689,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1522,7 +1697,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsInput: () => (/* binding */ PartsInput)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_input_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
+/* harmony import */ var _style_css_parts_input_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 /**
  * 共通関数
  */
@@ -1659,16 +1834,16 @@ function PartsInput() {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -1681,7 +1856,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1689,7 +1864,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsDueDate: () => (/* binding */ PartsDueDate)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_due_date_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
+/* harmony import */ var _style_css_parts_due_date_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
 /**
  * 共通関数
  */
@@ -1833,7 +2008,7 @@ function PartsDueDate() {
      */
     get dayCount() {
       const date = this.shadowRoot.getElementById("due-date");
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calculateDateDifference(date.value);
+      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calcDateDiffToday(date.value);
     }
 
     /**
@@ -1868,16 +2043,16 @@ function PartsDueDate() {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -1890,7 +2065,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1898,7 +2073,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsStaff: () => (/* binding */ PartsStaff)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_staff_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* harmony import */ var _style_css_parts_staff_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17);
 /**
  * 共通関数
  */
@@ -2093,16 +2268,16 @@ function PartsStaff() {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -2115,7 +2290,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2123,7 +2298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsRadio: () => (/* binding */ PartsRadio)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_radio_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
+/* harmony import */ var _style_css_parts_radio_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
 /**
  * 共通関数
  */
@@ -2282,16 +2457,16 @@ function PartsRadio() {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -2304,7 +2479,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2312,7 +2487,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsTextarea: () => (/* binding */ PartsTextarea)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_textarea_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+/* harmony import */ var _style_css_parts_textarea_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
 /**
  * 共通関数
  */
@@ -2489,16 +2664,16 @@ function PartsTextarea() {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -2511,7 +2686,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2519,7 +2694,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   HistoryItem: () => (/* binding */ HistoryItem)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_history_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(22);
+/* harmony import */ var _style_css_history_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
 /**
  * 共通関数
  */
@@ -2739,16 +2914,16 @@ function HistoryItem() {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -2761,7 +2936,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2769,7 +2944,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsHistoryItem: () => (/* binding */ PartsHistoryItem)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_history_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(24);
+/* harmony import */ var _style_css_parts_history_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(25);
 /**
  * 共通関数
  */
@@ -3025,16 +3200,16 @@ function PartsHistoryItem() {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -3047,16 +3222,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License |
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -3142,21 +3317,23 @@ var __webpack_exports__ = {};
 (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _js_common_file_manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var _js_components_control_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _js_components_tree_view__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
-/* harmony import */ var _js_components_task_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
-/* harmony import */ var _js_parts_parts_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(11);
-/* harmony import */ var _js_parts_parts_due_date__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(13);
-/* harmony import */ var _js_parts_parts_staff__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15);
-/* harmony import */ var _js_parts_parts_radio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(17);
-/* harmony import */ var _js_parts_parts_textarea__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(19);
-/* harmony import */ var _js_components_history_item__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(21);
-/* harmony import */ var _js_parts_parts_history_item__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(23);
-/* harmony import */ var _style_css_index_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(25);
+/* harmony import */ var _js_common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _js_common_file_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _js_components_control_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var _js_components_tree_view__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
+/* harmony import */ var _js_components_task_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10);
+/* harmony import */ var _js_parts_parts_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12);
+/* harmony import */ var _js_parts_parts_due_date__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(14);
+/* harmony import */ var _js_parts_parts_staff__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16);
+/* harmony import */ var _js_parts_parts_radio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(18);
+/* harmony import */ var _js_parts_parts_textarea__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(20);
+/* harmony import */ var _js_components_history_item__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(22);
+/* harmony import */ var _js_parts_parts_history_item__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(24);
+/* harmony import */ var _style_css_index_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(26);
 /**
  * 共通関数
  */
+
 
 
 
@@ -3182,7 +3359,120 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * ファイルマネージャー用のインスタンス変数
  */
-let fileManager;
+const fileManager = new _js_common_file_manager__WEBPACK_IMPORTED_MODULE_2__.FileManager();
+
+/**
+ * アプリケーションのルートクラス
+ */
+const container = document.getElementById("container");
+
+/**
+ * Header領域
+ */
+const gridHeader = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-header", []);
+
+/**
+ * TreeView用のControl領域
+ */
+const gridControl = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-control", []);
+
+/**
+ * TreeView領域
+ */
+const gridTreeView = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-tree", ["scroll"]);
+
+/**
+ * Task領域
+ */
+const gridTask = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-task", ["scroll"]);
+
+/**
+ * History領域
+ */
+const gridHistory = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-history", ["scroll"]);
+
+//--------------------------------------------------
+// 定数
+//--------------------------------------------------
+/**
+ * TreeViewの内容を保存するJSONファイル名
+ */
+const TREE_VIEW_FILE_NAME = "tree.json";
+
+//--------------------------------------------------
+// 初期表示
+//--------------------------------------------------
+
+/**
+ * 画面初期表示
+ * @returns {void}
+ */
+const init = () => {
+  // WebComponentsをロードする
+  (0,_js_components_control_menu__WEBPACK_IMPORTED_MODULE_3__.ControlMenu)();
+  (0,_js_components_tree_view__WEBPACK_IMPORTED_MODULE_4__.TreeView)();
+  (0,_js_components_task_item__WEBPACK_IMPORTED_MODULE_5__.TaskItem)();
+  (0,_js_parts_parts_input__WEBPACK_IMPORTED_MODULE_6__.PartsInput)();
+  (0,_js_parts_parts_due_date__WEBPACK_IMPORTED_MODULE_7__.PartsDueDate)();
+  (0,_js_parts_parts_staff__WEBPACK_IMPORTED_MODULE_8__.PartsStaff)();
+  (0,_js_parts_parts_radio__WEBPACK_IMPORTED_MODULE_9__.PartsRadio)();
+  (0,_js_parts_parts_textarea__WEBPACK_IMPORTED_MODULE_10__.PartsTextarea)();
+  (0,_js_components_history_item__WEBPACK_IMPORTED_MODULE_11__.HistoryItem)();
+  (0,_js_parts_parts_history_item__WEBPACK_IMPORTED_MODULE_12__.PartsHistoryItem)();
+
+  // CSSを適用する
+  document.adoptedStyleSheets = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_index_css__WEBPACK_IMPORTED_MODULE_13__["default"]);
+
+  // 初期表示項目を設定する。
+  addGridArea();
+  addFolderOpenButton();
+};
+
+/**
+ * `addGridArea` 関数は指定されたコンテナにグリッドエリアを追加する
+ */
+const addGridArea = () => {
+  container.innerHTML = "";
+  container.appendChild(gridHeader);
+  container.appendChild(gridControl);
+  container.appendChild(gridTreeView);
+  container.appendChild(gridTask);
+  container.appendChild(gridHistory);
+};
+
+/**
+ * フォルダを開くボタンをコンテナ要素に追加する関数
+ */
+const addFolderOpenButton = () => {
+  // フォルダを開くSVGアイコンを作成する
+  const svgFolderIcon = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("folder", _js_common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.folderPaths());
+
+  // フォルダを開くボタンを作成する
+  const folderOpenButton = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("folder");
+  folderOpenButton.id = "folder-open-button";
+  folderOpenButton.classList.add("float-button");
+
+  // ボタンのクリックイベントを設定する
+  folderOpenButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    try {
+      if (await fileManager.selectDirectory()) {
+        // ディレクトリが選択された場合
+        addControl();
+        addTreeView();
+        folderOpenButton.remove();
+      }
+    } catch (error) {
+      console.error("ディレクトリの選択に失敗しました", error);
+    }
+  });
+
+  // アイコンとボタンをコンテナ要素に追加する
+  container.appendChild(svgFolderIcon);
+  container.appendChild(folderOpenButton);
+};
 
 //--------------------------------------------------
 // Control
@@ -3192,258 +3482,257 @@ let fileManager;
  * @returns {void}
  */
 const addControl = () => {
-  const gridControl = document.getElementById("grid-control");
-  const control = document.createElement("control-menu");
+  const control = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("control-menu", "control-menu-root");
   gridControl.innerHTML = "";
   gridControl.appendChild(control);
-  control.id = "control-menu-root";
 };
 
 //--------------------------------------------------
 // TreeView
 //--------------------------------------------------
 /**
- * TreeViewを画面に新規追加する
- * @returns {void}
+ * ファイルからツリーデータを非同期に読み込む。
+ * @returns {Promise<string|null>} 取得したツリーデータの文字列、または取得に失敗した場合は null。
+ */
+const loadTreeViewData = async () => {
+  try {
+    const str = await fileManager.loadFile(TREE_VIEW_FILE_NAME);
+    return str;
+  } catch (error) {
+    console.error("ツリーデータの読み込みに失敗しました:", error);
+    return null;
+  }
+};
+
+/**
+ * TreeViewの内容を保存する
+ */
+const saveTreeView = async () => {
+  const treeView = document.getElementById("tree-view-root");
+  try {
+    await fileManager.writeFile(
+      TREE_VIEW_FILE_NAME,
+      JSON.stringify(treeView.getTreeViewData())
+    );
+  } catch (writeError) {
+    console.error("ツリーデータの保存に失敗しました:", writeError);
+  }
+};
+
+/**
+ * TreeViewを画面に新規追加する。
+ * @returns {Promise<void>}
  */
 const addTreeView = async () => {
-  // 空のツリービューを追加する
-  const gridTreeView = document.getElementById("grid-tree");
-  const treeView = document.createElement("tree-view");
-  gridTreeView.innerHTML = "";
-  gridTreeView.appendChild(treeView);
-  treeView.id = "tree-view-root";
+  try {
+    gridTreeView.innerHTML = ""; // 初期化する
 
-  treeView.registerAddTaskHandler(AddTaskEventHandler); //タスク追加用のイベントを登録
-  treeView.registerClickTaskHandler(clickTaskEventHandler); //タスククリック時のイベントを追加
+    // 空のTreeViewを追加する
+    const treeView = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("tree-view", "tree-view-root");
+    gridTreeView.appendChild(treeView);
 
-  // TreeViewコンテンツのデータを取得し描画する
-  await fileManager.loadFile("tree.json").then((jsonStr) => {
-    // TreeViewを描画
-    if (jsonStr) {
-      treeView.renderTreeView(jsonStr);
-    }
-  });
+    // TreeViewに各種イベントを登録する
+    treeView.setAddTaskHandler(addTaskEventHandler); // タスク追加用のイベントを登録する
+    treeView.setClickTaskHandler(clickTaskEventHandler); // タスククリック時のイベントを追加する
 
-  // TreeViewにアイテムを追加した場合、内容を保存する
-  treeView.addEventListener("addItem", async () => {
-    await fileManager.writeFile(
-      "tree.json",
-      JSON.stringify(treeView.getTreeViewData())
-    );
-  });
+    // TreeViewの内容を描画する
+    treeView.renderTreeView(await loadTreeViewData());
+
+    // TreeViewにアイテムを追加した場合、内容を保存する
+    treeView.addEventListener("addItem", async () => {
+      await saveTreeView();
+    });
+  } catch (error) {
+    console.error("TreeViewの初期化中にエラーが発生しました:", error);
+  }
 };
 
 /**
- * 空のTaskItemとHistoryItemを作成
- * @param {string} id
- * @param {string} name タスク名
- * @param {HTMLElement} element タスクボタン
- */
-const createEmptyTaskAndHistory = (id, btn) => {
-  const gridTask = document.getElementById("grid-task");
-  const gridHistory = document.getElementById("grid-history");
-  const taskItem = document.createElement("task-item");
-  const historyItem = document.createElement("history-item");
-
-  const treeView = document.getElementById("tree-view-root");
-
-  // 既存の画面をクリア
-  gridTask.innerHTML = "";
-  gridHistory.innerHTML = "";
-
-  // 識別用のIDをセット
-  taskItem.dataset.id = id;
-  historyItem.dataset.id = id;
-
-  taskItem.id = "task-item";
-  historyItem.id = "history-item";
-
-  /**
-   * タイトル変更時、タスクボタンにタイトルを反映する
-   * @param {string} changeName
-   */
-  const changeTitleHandler = (changeName) => {
-    btn.innerText = changeName;
-    btn.dataset.name = changeName;
-  };
-  taskItem.registerChangeTitleHandler(changeTitleHandler);
-
-  /**
-   * 期限日のdeadline変更時、タスクボタンに結果を反映する
-   * @param {string} duedateString
-   */
-  const changeDeadlineHandler = (duedateString) => {
-    btn.dataset.duedate = duedateString;
-    treeView.setDeadline(btn);
-  };
-  taskItem.registerChangeDeadlineHandler(changeDeadlineHandler);
-
-  /**
-   * 作業完了時（進捗100%）、タスクボタンに結果を反映する
-   */
-  const changeStatusHandler = (status) => {
-    if (status < 100) {
-      btn.classList.remove("task-finished");
-    } else {
-      btn.classList.add("task-finished");
-    }
-  };
-  taskItem.registerChangeStatusHandler(changeStatusHandler);
-
-  // 変更内容の保存処理
-  /**
-   * タスク・履歴データを保存する
-   */
-  const saveData = async () => {
-    // TreeViewを保存
-    const treeView = document.getElementById("tree-view-root");
-    await fileManager.writeFile(
-      "tree.json",
-      JSON.stringify(treeView.getTreeViewData())
-    );
-
-    // タスクと履歴を保存
-    const data = {
-      taskData: taskItem.getTaskData(),
-      historyData: historyItem.getHistoryData(),
-    };
-    await fileManager.writeFile(`${id}.json`, JSON.stringify(data));
-  };
-
-  // タスク変更時の処理
-  taskItem.addEventListener("changeTask", async () => {
-    await saveData();
-  });
-
-  // 履歴変更時の処理
-  historyItem.addEventListener("changeHistory", async () => {
-    await saveData();
-  });
-
-  // 新規画面を描画
-  gridTask.appendChild(taskItem);
-  gridHistory.appendChild(historyItem);
-  saveData();
-};
-
-/**
- * タスク追加イベント
- * @param {string} id
- * @param {string} name タスク名
- * @param {HTMLElement} btn タスクボタン
- */
-const AddTaskEventHandler = (id, name, btn) => {
-  // 空のアイテムを準備
-  createEmptyTaskAndHistory(id, btn);
-  const taskItem = document.getElementById("task-item");
-  const historyItem = document.getElementById("history-item");
-
-  // タスク名を画面に設定
-  taskItem.setTitle(name);
-
-  // 入力内容変更時のイベントを有効化
-  taskItem.enableCustomEvent();
-  historyItem.enableCustomEvent();
-};
-
-/**
- * タスククリックイベント
- * @param {string} id
- * @param {HTMLElement} btn タスクボタン
- */
-const clickTaskEventHandler = async (id, btn) => {
-  // 空のアイテムを準備
-  createEmptyTaskAndHistory(id, btn);
-  const taskItem = document.getElementById("task-item");
-  const historyItem = document.getElementById("history-item");
-
-  // JSONデータを取得し画面描画
-  const jsonStr = await fileManager.loadFile(`${id}.json`);
-  const data = JSON.parse(jsonStr);
-
-  taskItem.renderTaskItem(data.taskData);
-  historyItem.renderHistoryItem(data.historyData);
-
-  taskItem.enableCustomEvent();
-  historyItem.enableCustomEvent();
-
-  /**
-   * 履歴追加時、最下部に自動スクロールする
-   */
-  const autoScroll = () => {
-    const gridHistory = document.getElementById("grid-history");
-    const bottom = gridHistory.scrollHeight - gridHistory.clientHeight;
-    gridHistory.scrollTo({ top: bottom, behavior: "smooth" });
-  };
-  historyItem.addEventListener("addHistory", () => {
-    autoScroll();
-  });
-  autoScroll();
-};
-
-//--------------------------------------------------
-// 初期表示
-//--------------------------------------------------
-
-/**
- * レイアウトを定義するGridおよびCSSをDOMに追加する
+ * タスクと履歴を新規追加するイベントハンドラ
+ * @param {Object} conf - タスクアイテムのオブジェクト。
+ * @param {string} conf.id - アイテムのID。
+ * @param {string} conf.name - アイテムの名前。
+ * @param {string} conf.task - アイテム用のボタン。
  * @returns {void}
  */
-const init = () => {
-  /**
-   * 指定されたIDおよびクラスリストを持つ新しいdiv要素を作成する
-   * @param {string} id - 新しいdiv要素に割り当てるID
-   * @param {string[]} classList - 新しいdiv要素に追加するクラスの配列
-   * @returns {HTMLDivElement} 新しく作成されたdiv要素
-   */
-  const createGrid = (id, classList) => {
-    const div = document.createElement("div");
-    div.id = id;
-    div.classList.add(...classList);
-    return div;
-  };
+const addTaskEventHandler = (conf) => {
+  const { id, name } = conf;
 
-  // CSSおよびGridを画面に適用する
-  document.adoptedStyleSheets = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_index_css__WEBPACK_IMPORTED_MODULE_12__["default"]);
+  // 空のアイテムを準備
+  const taskItem = createEmptyTask(conf);
+  const historyItem = createEmptyHistory(conf);
 
-  const container = document.getElementById("container");
-  container.innerHTML = "";
-  container.appendChild(createGrid("grid-header", []));
-  container.appendChild(createGrid("grid-control", []));
-  container.appendChild(createGrid("grid-tree", ["scroll"]));
-  container.appendChild(createGrid("grid-task", ["scroll"]));
-  container.appendChild(createGrid("grid-history", ["scroll"]));
+  // 作成したアイテムを画面に追加
+  gridTask.innerHTML = "";
+  gridHistory.innerHTML = "";
+  gridTask.appendChild(taskItem);
+  gridTask.appendChild(historyItem);
 
-  // フォルダを開くボタンを追加する
-  const svgIcon = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("folder", [
-    {
-      path: "M0 0h24v24H0z",
-    },
-    {
-      path: "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2",
-    },
-  ]);
+  // 作成したアイテムをファイルに保存する
+  saveTreeView();
+  saveTaskAndHistoryData(id);
 
-  const folderOpenButton = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("folder");
-  folderOpenButton.id = "folder-open-button";
-  folderOpenButton.classList.add("float-button");
+  // タスク名を設定し、変更イベントの発行を許可する。
+  taskItem.setTitle(name);
+  taskItem.enableCustomEvent();
 
-  container.appendChild(svgIcon);
-  container.appendChild(folderOpenButton);
+  // 履歴の変更イベントの発行を許可する。
+  historyItem.enableCustomEvent();
+};
 
-  // フォルダを開くイベントを追加する
-  folderOpenButton.addEventListener("click", async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+/**
+ * タスククリック時にタスクと履歴を開くイベントハンドラ
+ * @param {Object} conf - タスクアイテムのオブジェクト。
+ * @param {string} conf.id - アイテムのID。
+ * @returns {void}
+ */
+const clickTaskEventHandler = async (conf) => {
+  // 空のアイテムを準備
+  const taskItem = createEmptyTask(conf);
+  const historyItem = createEmptyHistory(conf);
 
-    fileManager = new _js_common_file_manager__WEBPACK_IMPORTED_MODULE_1__.FileManager();
-    if (await fileManager.selectDirectory()) {
-      folderOpenButton.remove();
-      addControl();
-      addTreeView();
-    }
+  // 作成したアイテムを画面に追加
+  gridTask.innerHTML = "";
+  gridHistory.innerHTML = "";
+  gridTask.appendChild(taskItem);
+  gridTask.appendChild(historyItem);
+
+  // JSONデータを取得し画面描画
+  const { id } = conf;
+
+  try {
+    const jsonStr = await fileManager.loadFile(`${id}.json`);
+    const data = JSON.parse(jsonStr);
+
+    taskItem.renderTaskItem(data.taskData);
+    historyItem.renderHistoryItem(data.historyData);
+
+    taskItem.enableCustomEvent();
+    historyItem.enableCustomEvent();
+
+    // 読み込み時に履歴最下部までスクロール
+    historyItem.addEventListener("addHistory", () => {
+      autoScroll();
+    });
+    autoScroll();
+  } catch (error) {
+    console.error("データの読込中にエラーが発生しました:", id, error);
+  }
+};
+
+/**
+ * 履歴の最下部までスクロールする
+ */
+const autoScroll = () => {
+  const bottom = gridHistory.scrollHeight - gridHistory.clientHeight;
+  gridHistory.scrollTo({ top: bottom, behavior: "smooth" });
+};
+
+/**
+ * 空のタスクアイテムを作成する関数
+ * @param {Object} conf - 入力項目のオブジェクト～
+ * @param {string} conf.id - アイテムの識別用ID～
+ * @param {HTMLElement} conf.task - タスクボタンの要素～
+ * @returns {HTMLElement} - 作成されたタスクアイテム
+ */
+const createEmptyTask = (conf) => {
+  const taskItem = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("task-item", "task-item");
+  const { id, task } = conf;
+
+  // 識別用のIDをセットする
+  taskItem.dataset.id = id;
+
+  // イベント登録する
+  taskItem.setChangeTitleHandler(createChangeTitleEventHandler(task));
+  taskItem.setChangeDueDateHandler(createChangeDueDateEventHandler(task));
+  taskItem.setChangeStatusHandler(createChangeStatusEventHandler(task));
+
+  // タスクの内容が変更された場合、ファイルに保存する
+  taskItem.addEventListener("changeTask", () => {
+    saveTreeView();
+    saveTaskAndHistoryData(id);
   });
+
+  return taskItem;
+};
+
+/**
+ * 空の履歴アイテムを作成する関数
+ * @param {Object} conf - 入力項目のオブジェクト～
+ * @param {string} conf.id - アイテムの識別用ID～
+ * @param {HTMLElement} conf.task - タスクボタンの要素～
+ * @returns {HTMLElement} - 作成されたタスクアイテム
+ */
+const createEmptyHistory = (conf) => {
+  const historyItem = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("history-item", "history-item");
+  const { id } = conf;
+
+  // 識別用のIDをセットする。
+  historyItem.dataset.id = id;
+
+  // 履歴の内容が変更された場合、ファイルに保存する
+  historyItem.addEventListener("changeHistory", () => {
+    saveTreeView();
+    saveTaskAndHistoryData(id);
+  });
+
+  return historyItem;
+};
+
+/**
+ * タイトル変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された名前を設定するイベントハンドラ。
+ */
+const createChangeTitleEventHandler = (task) => {
+  return (newName) => {
+    task.innerText = newName; // ボタンのテキストを変更する
+    task.dataset.name = newName; // ボタンのデータ属性を変更する
+  };
+};
+
+/**
+ * 期限日変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された期限日を設定するイベントハンドラ。
+ */
+const createChangeDueDateEventHandler = (task) => {
+  return (newDuedateString) => {
+    task.dataset.duedate = newDuedateString;
+  };
+};
+
+/**
+ * 進捗率変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された進捗率を設定するイベントハンドラ。
+ */
+const createChangeStatusEventHandler = (task) => {
+  return (newStatus) => {
+    task.classList.remove("task-finished");
+    if (parseInt(newStatus) === 100) {
+      task.classList.add("task-finished");
+    }
+  };
+};
+
+/**
+ * タスクデータと履歴データを保存する関数
+ * @param {string} id - 保存するデータのファイル名の一部となるID～
+ * @returns {void}
+ */
+const saveTaskAndHistoryData = async (id) => {
+  try {
+    await fileManager.writeFile(
+      `${id}.json`,
+      JSON.stringify({
+        taskData: document.getElementById("task-item").getTaskData(),
+        historyData: document.getElementById("history-item").getHistoryData(),
+      })
+    );
+  } catch (error) {
+    console.error("データの保存中にエラーが発生しました:", id, error);
+  }
 };
 
 /**
@@ -3451,20 +3740,6 @@ const init = () => {
  * @returns {void}
  */
 window.addEventListener("load", () => {
-  // WebComponentsを読み込み
-  (0,_js_components_control_menu__WEBPACK_IMPORTED_MODULE_2__.ControlMenu)();
-  (0,_js_components_tree_view__WEBPACK_IMPORTED_MODULE_3__.TreeView)();
-  (0,_js_components_task_item__WEBPACK_IMPORTED_MODULE_4__.TaskItem)();
-  (0,_js_parts_parts_input__WEBPACK_IMPORTED_MODULE_5__.PartsInput)();
-  (0,_js_parts_parts_due_date__WEBPACK_IMPORTED_MODULE_6__.PartsDueDate)();
-  (0,_js_parts_parts_staff__WEBPACK_IMPORTED_MODULE_7__.PartsStaff)();
-  (0,_js_parts_parts_radio__WEBPACK_IMPORTED_MODULE_8__.PartsRadio)();
-  (0,_js_parts_parts_textarea__WEBPACK_IMPORTED_MODULE_9__.PartsTextarea)();
-
-  (0,_js_components_history_item__WEBPACK_IMPORTED_MODULE_10__.HistoryItem)();
-  (0,_js_parts_parts_history_item__WEBPACK_IMPORTED_MODULE_11__.PartsHistoryItem)();
-
-  // 画面初期表示
   init();
 });
 

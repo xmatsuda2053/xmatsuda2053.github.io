@@ -387,7 +387,7 @@ th {
   text-decoration-skip-ink: none;
 }
 #root summary:hover,
-#root p:hover {
+#root div:hover {
   color: #0078d4;
   text-decoration: underline;
 }
@@ -425,10 +425,10 @@ th {
   left: 0.18rem;
 }
 #root details details,
-#root details p {
+#root details div {
   margin-left: 1rem;
 }
-#root p {
+#root div {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -437,7 +437,7 @@ th {
   position: relative;
   padding-left: 1.15em;
 }
-#root p::before {
+#root div::before {
   content: "";
   position: absolute;
   top: 0.16rem;
@@ -449,15 +449,15 @@ th {
   background-size: contain;
   background-position: center;
 }
-#root p.selected {
+#root div.selected {
   color: #0078d4;
   font-weight: bold;
   text-decoration: underline;
 }
-#root p.over-deadline {
+#root div.over-deadline {
   color: #ff0000;
 }
-#root p.task-finished {
+#root div.task-finished {
   color: #8f8f8f;
   text-decoration: line-through;
 }

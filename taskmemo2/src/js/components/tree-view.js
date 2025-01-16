@@ -2,11 +2,27 @@
  * 共通関数
  */
 import { Utils } from "../common/utils";
+import { SvgIcon } from "../common/svgIcon";
 
 /**
  * tree-viewコンポーネント用のCSS
  */
 import style from "../../style/css/tree-view.css";
+
+/**
+ * TreeViewの基点
+ */
+const treeViewRoot = Utils.createElm("div", "root");
+
+/**
+ * メニュー起動時の背景要素（メニューを閉じるイベント起動用）
+ */
+const contextMenuContainer = Utils.createElm("div", "context-menu-container");
+
+/**
+ * メニュー本体
+ */
+const contextMenu = Utils.createElm("div", "context-menu");
 
 /**
  * TreeView コンポーネントを作成しカスタム要素として定義する
@@ -29,215 +45,190 @@ export function TreeView() {
         Utils.createStyleSheetWithFilename(style);
 
       this.shadowRoot.innerHTML = "";
-      this.#addEmptyTreeView();
-      this.#addMenu();
-    }
-
-    /**
-     * 空のTreeViewを作成する
-     * @return {void}
-     */
-    #addEmptyTreeView() {
-      const treeViewRoot = document.createElement("div");
-      treeViewRoot.id = "root";
-
       this.shadowRoot.appendChild(treeViewRoot);
+
+      this.#addEmptyMenu();
+      this.#attachAddTaskButtonToMenu();
+      this.#attachBorderToMenu();
+      this.#attachAddGroupButtonToMenu();
+      this.#attachChangeGroupNameButtonToMenu();
     }
 
+    //--------------------------------------------------
+    //- メニューのベース
+    //--------------------------------------------------
+
     /**
-     * TreeViewのコンテキストメニューを追加する
+     * 空のコンテキストメニューを追加する。
      * @return {void}
      */
-    #addMenu() {
-      // SVGアイコンを作成する
-      const svgIconFilePlus = Utils.createSvg("file-plus", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M14 3v4a1 1 0 0 0 1 1h4" },
-        {
-          path: "M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z",
-        },
-        { path: "M12 11l0 6" },
-        { path: "M9 14l6 0" },
-      ]);
-
-      const svgIconFolderPlus = Utils.createSvg("folder-plus", [
-        { path: "M0 0h24v24H0z" },
-        {
-          path: "M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5",
-        },
-        {
-          path: "M16 19h6",
-        },
-        { path: "M19 16v6" },
-      ]);
-
-      const svgIconTablerWriting = Utils.createSvg("tabler-writing", [
-        { path: "M0 0h24v24H0z" },
-        {
-          path: "M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z",
-        },
-        {
-          path: "M16 7h4",
-        },
-        { path: "M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3" },
-      ]);
-
-      // メニューを作成する
-      const container = document.createElement("div");
-      container.id = "context-menu-container";
-
-      const menu = document.createElement("div");
-      menu.id = "context-menu";
-
-      const btnAddTask = Utils.createSvgButton("file-plus");
-      btnAddTask.appendChild(document.createTextNode("新しいタスク"));
-      btnAddTask.id = "btn-add-task";
-
-      const btnAddGroup = Utils.createSvgButton("folder-plus");
-      btnAddGroup.appendChild(document.createTextNode("新しいグループ"));
-      btnAddGroup.id = "btn-add-group";
-
-      const btnChangeGroupName = Utils.createSvgButton("tabler-writing");
-      btnChangeGroupName.appendChild(
-        document.createTextNode("グループ名を変更")
-      );
-      btnChangeGroupName.id = "btn-change-group-name";
-
-      const hr = document.createElement("hr");
-
-      menu.appendChild(btnAddTask);
-      menu.appendChild(hr);
-      menu.appendChild(btnAddGroup);
-      menu.appendChild(btnChangeGroupName);
-
-      container.appendChild(menu);
-      container.appendChild(svgIconFilePlus);
-      container.appendChild(svgIconFolderPlus);
-      container.appendChild(svgIconTablerWriting);
-
-      this.shadowRoot.appendChild(container);
+    #addEmptyMenu() {
+      contextMenuContainer.appendChild(contextMenu);
+      this.shadowRoot.appendChild(contextMenuContainer);
 
       /**
-       * 右クリックメニューを開く
+       * メニューを開く処理を追加
        * @return {void}
        */
       this.shadowRoot.addEventListener("contextmenu", (e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        this.elmEditTarget = e.target.closest("details");
-        if (!this.elmEditTarget) {
-          this.elmEditTarget = this.shadowRoot.getElementById("root");
+        // メニューを開いた際の対象を取得
+        this.editTarget = e.target.closest("details");
+
+        if (this.editTarget) {
+          // グループ上でメニューを開いた場合、グループを開く
+          this.editTarget.open = true;
         } else {
-          this.elmEditTarget.open = true;
+          // グループ以外の場合は、TreeViewの基点を取得
+          this.editTarget = treeViewRoot;
         }
 
-        container.style.display = "block";
-        menu.style.left = `${e.pageX + 10}px`;
-        menu.style.top = `${e.pageY - 20}px`;
+        // メニューを開く
+        contextMenuContainer.style.display = "block";
+        contextMenu.style.left = `${e.pageX + 10}px`;
+        contextMenu.style.top = `${e.pageY - 20}px`;
       });
 
       /**
-       * 右クリックメニューを閉じる
+       * メニューを閉じる処理を追加
        * @return {void}
        */
-      container.addEventListener("click", (e) => {
+      contextMenuContainer.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        container.style.display = "none";
-        this.elmEditTarget = "";
-      });
-
-      /**
-       * 新しいタスクを追加する処理
-       * @return {void}
-       */
-      btnAddTask.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const name = prompt("タスク名設定", "新規タスク");
-        if (name) {
-          const id = Utils.getUniqueId();
-          const task = this.#createTask(name, id);
-          this.elmEditTarget.appendChild(task);
-          this.addTaskEventHandler(id, name, task);
-          this.#setSelected(task);
-          this.dispatchEvent(Utils.getCustomEvent("addItem"));
-        }
-
-        container.click();
-      });
-
-      /**
-       * 新しいグループを追加する処理
-       * @return {void}
-       */
-      btnAddGroup.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const name = prompt("グループ名設定", "新規グループ");
-        if (name) {
-          const id = Utils.getUniqueId();
-          const group = this.#createGroup(name, id);
-          this.elmEditTarget.appendChild(group);
-          this.dispatchEvent(Utils.getCustomEvent("addItem"));
-        }
-
-        container.click();
-      });
-
-      /**
-       * グループ名を変更する処理
-       * @return {void}
-       */
-      btnChangeGroupName.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (this.elmEditTarget.tagName === "DETAILS") {
-          const summary = this.elmEditTarget.children[0];
-          const inputText = prompt("グループ名変更", summary.innerText);
-          if (inputText !== null) {
-            this.elmEditTarget.dataset.name = inputText;
-            summary.innerText = inputText;
-            this.dispatchEvent(Utils.getCustomEvent("addItem"));
-          }
-        }
-
-        container.click();
+        contextMenuContainer.style.display = "none";
+        this.editTarget = "";
       });
     }
 
     /**
-     * タスク要素を作成する
-     * @param {string} name タスクの名前
-     * @param {string} id タスクのID
-     * @param {string} duedate 期限日
-     * @param {string[]} classList タスクに追加するクラスリスト
-     * @returns {HTMLParagraphElement} 作成されたタスク要素
-     * @private
+     * メニューを閉じる。
+     * @return {void}
      */
-    #createTask(name, id, duedate = "", classList = []) {
-      const task = document.createElement("p");
+    #closeMenu() {
+      contextMenuContainer.click();
+    }
+
+    /**
+     * メニューに境界線を追加する。
+     * @return {void}
+     */
+    #attachBorderToMenu() {
+      contextMenu.appendChild(document.createElement("hr"));
+    }
+
+    //--------------------------------------------------
+    //- タスク追加
+    //--------------------------------------------------
+
+    /**
+     * メニューにタスクを新規追加するボタンを追加する。
+     * @return {void}
+     */
+    #attachAddTaskButtonToMenu() {
+      const iconName = "file-plus";
+
+      // SVGアイコンを作成する
+      const icon = Utils.createSvg(iconName, SvgIcon.filePlustPaths());
+
+      // タスク追加ボタンを作成する
+      const btn = Utils.createSvgButton(iconName);
+      btn.appendChild(document.createTextNode("新しいタスク"));
+      btn.id = "btn-add-task";
+
+      // メニューにボタンを追加する
+      contextMenuContainer.appendChild(icon);
+      contextMenu.appendChild(btn);
+
+      /**
+       * 新しいタスクを追加する処理を追加
+       * @return {void}
+       */
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const name = prompt("タスク名設定", "新規タスク");
+
+        if (name) {
+          // IDを採番し、新規にタスクを作成する
+          const id = Utils.getUniqueId();
+          const task = this.#createTask({ name, id });
+
+          // 作成したタスクをTreeViewに追加する
+          this.editTarget.appendChild(task);
+
+          // 対象のタスクを選択状態にする
+          this.#setSelected(task);
+
+          // タスク追加時のイベントを起動する
+          this.addTaskEventHandler({ id, name, task });
+
+          // タスクを追加したことを外部に通知する
+          this.dispatchEvent(Utils.getCustomEvent("addItem"));
+        }
+
+        this.#closeMenu();
+      });
+    }
+
+    /**
+     * タスクを追加するイベントハンドラーを設定する
+     * @param {Function} handler タスク追加時に実行されるイベントハンドラー
+     * @returns {void}
+     */
+    setAddTaskHandler(handler) {
+      this.addTaskEventHandler = handler;
+    }
+
+    /**
+     * タスクを作成する関数
+     * @param {Object} conf - タスクの設定オブジェクト～
+     * @param {string} conf.id - タスクの識別用ID～
+     * @param {string} conf.name - タスク名～
+     * @param {string} [conf.duedate] - タスクの期日。省略可能～
+     * @param {Array<string>} [classList=[]] - クラスリスト（省略可能）～
+     * @returns {HTMLElement} - 作成されたタスク要素
+     */
+    #createTask(conf, classList = []) {
+      const task = document.createElement("div");
+      const { id, name, duedate } = conf;
+
+      // タスクをクリックした際のイベントを設定する
+      task.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.#setSelected(task);
+        this.clickTaskEventHandler({ id, name, task });
+      });
+
+      // 期限日属性が変更された際のイベントを設定する
+      const callback = (mutationsList) => {
+        for (let m of mutationsList) {
+          if (m.type === "attributes" && m.attributeName === "data-duedate") {
+            const dayCount = Utils.calcDateDiffToday(task.dataset.duedate);
+            if (dayCount < 3) {
+              task.classList.add("over-deadline");
+            } else {
+              task.classList.remove("over-deadline");
+            }
+          }
+        }
+      };
+      const observer = new MutationObserver(callback);
+      observer.observe(task, {
+        attributes: true,
+        attributeFilter: ["data-duedate"],
+      });
+
+      // パラメータを設定
       task.innerText = name;
       task.dataset.id = id;
       task.dataset.name = name;
-      task.dataset.duedate = duedate;
+      task.dataset.duedate = duedate || "";
       task.dataset.type = "task";
       task.classList.add(...classList);
-
-      if (duedate !== duedate) {
-      }
-
-      // タスクを開く処理
-      task.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.#setSelected(task);
-        this.clickTaskEventHandler(id, task);
-      });
 
       return task;
     }
@@ -256,12 +247,111 @@ export function TreeView() {
     }
 
     /**
-     * タスクを追加するイベントハンドラーを設定する
-     * @param {Function} handler タスク追加時に実行されるイベントハンドラー
+     * タスククリックのイベントハンドラーを設定する
+     * @param {Function} handler タスククリック時に実行されるイベントハンドラー
      * @returns {void}
      */
-    registerAddTaskHandler(handler) {
-      this.addTaskEventHandler = handler;
+    setClickTaskHandler(handler) {
+      this.clickTaskEventHandler = handler;
+    }
+
+    //--------------------------------------------------
+    //- グループ追加
+    //--------------------------------------------------
+
+    /**
+     * メニューにグループを新規追加するボタンを追加する。
+     * @return {void}
+     */
+    #attachAddGroupButtonToMenu() {
+      const iconName = "folder-plus";
+
+      // SVGアイコンを作成する
+      const icon = Utils.createSvg(iconName, SvgIcon.folderPlusPaths());
+
+      // グループ追加ボタンを作成する
+      const btn = Utils.createSvgButton(iconName);
+      btn.appendChild(document.createTextNode("新しいグループ"));
+      btn.id = "btn-add-group";
+
+      // メニューにボタンを追加する
+      contextMenuContainer.appendChild(icon);
+      contextMenu.appendChild(btn);
+
+      /**
+       * 新しいグループを追加する処理を追加
+       * @return {void}
+       */
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const name = prompt("グループ名設定", "新規グループ");
+
+        if (name) {
+          // IDを採番し、新規にグループを作成する
+          const id = Utils.getUniqueId();
+          const group = this.#createGroup(name, id);
+
+          // 作成したグループをTreeViewに追加する
+          this.editTarget.appendChild(group);
+
+          // グループを追加したことを外部に通知する
+          this.dispatchEvent(Utils.getCustomEvent("addItem"));
+        }
+
+        this.#closeMenu();
+      });
+    }
+
+    //--------------------------------------------------
+    //- グループ名を変更
+    //--------------------------------------------------
+
+    /**
+     * メニューにグループ名を変更するボタンを追加する。
+     * @return {void}
+     */
+    #attachChangeGroupNameButtonToMenu() {
+      const iconName = "tabler-writing";
+
+      // SVGアイコンを作成する
+      const icon = Utils.createSvg(iconName, SvgIcon.tablerWritingPaths());
+
+      // グループ名変更ボタンを作成する
+      const btn = Utils.createSvgButton(iconName);
+      btn.appendChild(document.createTextNode("グループ名を変更"));
+      btn.id = "btn-change-group-name";
+
+      // メニューにボタンを追加する
+      contextMenuContainer.appendChild(icon);
+      contextMenu.appendChild(btn);
+
+      /**
+       * グループ名を変更する処理
+       * @return {void}
+       */
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (this.editTarget.tagName === "DETAILS") {
+          // 変更前の名称を取得し、グループ名変更画面を表示する
+          const summary = this.editTarget.children[0];
+          const inputText = prompt("グループ名変更", summary.innerText);
+
+          if (inputText !== null) {
+            // 変更後の名称を設定する
+            this.editTarget.dataset.name = inputText;
+            summary.innerText = inputText;
+
+            // グループ名を変更したことを外部に通知する
+            this.dispatchEvent(Utils.getCustomEvent("addItem"));
+          }
+        }
+
+        this.#closeMenu();
+      });
     }
 
     /**
@@ -288,85 +378,61 @@ export function TreeView() {
       return details;
     }
 
+    //--------------------------------------------------
+    //- TreeViewを描画
+    //--------------------------------------------------
+
     /**
      * JSON文字列を元にTreeViewをレンダリングする
      * @param {string} jsonStr JSONデータの文字列
      * @returns {void}
      */
     renderTreeView(jsonStr) {
-      const root = this.shadowRoot.getElementById("root");
-      const treeData = JSON.parse(jsonStr);
+      if (!jsonStr) {
+        return;
+      }
 
-      treeData.forEach((data) => {
-        this.#addTreeViewItems(root, data);
+      JSON.parse(jsonStr).forEach((data) => {
+        this.#addTreeViewItems(treeViewRoot, data);
       });
     }
 
     /**
-     * タスクに期日が到来している場合、deadlineクラスを追加
-     * @param {HTMLElement} target
-     */
-    setDeadline(target) {
-      const dateString = target.dataset.duedate;
-      const dayCount = Utils.calculateDateDifference(dateString);
-      if (dayCount < 3) {
-        target.classList.add("over-deadline");
-      } else {
-        target.classList.remove("over-deadline");
-      }
-    }
-
-    /**
-     * Jsonデータを元にTreeViewに項目を追加する
-     * @param {HTMLElement} root 追加先のルート要素
+     * Jsonデータを元にTreeViewに項目を追加する（再帰処理）
+     * @param {HTMLElement} currentRoot 追加先のルート要素
      * @param {object} data 追加するデータ
      * @returns {void}
      * @private
      */
-    #addTreeViewItems(root, data) {
+    #addTreeViewItems(currentRoot, data) {
+      const { name, id, duedate, cls } = data;
+
       if (data.type === "task") {
-        const task = this.#createTask(
-          data.name,
-          data.id,
-          data.duedate,
-          data.cls || []
-        );
-        this.setDeadline(task);
-        root.appendChild(task);
-        task.addEventListener("click", () => {
-          this.clickTaskEventHandler(data.id, task); // タスクを開く
-        });
+        // タスクを新規作成
+        const task = this.#createTask({ name, id, duedate }, cls || []);
+        currentRoot.appendChild(task);
       } else {
-        const group = this.#createGroup(data.name, data.id, data.cls || []);
-        root.appendChild(group);
-
-        // TODO: スペルミス対応（JSON修正後に消す）
+        // グループを新規作成
+        const group = this.#createGroup(name, id, cls || []);
+        currentRoot.appendChild(group);
         const array = data.children || data.childlen || [];
-
         (array || []).forEach((child) => {
           this.#addTreeViewItems(group, child);
         });
       }
     }
 
-    /**
-     * タスククリックのイベントハンドラーを設定する
-     * @param {Function} handler タスククリック時に実行されるイベントハンドラー
-     * @returns {void}
-     */
-    registerClickTaskHandler(handler) {
-      this.clickTaskEventHandler = handler;
-    }
+    //--------------------------------------------------
+    //- TreeViewのデータ取得
+    //--------------------------------------------------
 
     /**
      * ツリービューのデータを取得する
      *
-     * @returns {string} ツリーデータのJSON文字列を返す。
+     * @returns {string} ツリーデータを返す。
      */
     getTreeViewData() {
-      const root = this.shadowRoot.getElementById("root");
-      const treeData = this.#getAllElement(root.childNodes);
-      return treeData;
+      return this.#getAllElement(treeViewRoot.childNodes);
     }
 
     /**
@@ -385,13 +451,14 @@ export function TreeView() {
           node.classList.remove("selected");
         }
 
+        // データ作成
         const dataItem = {
           id: node.dataset.id || null,
           name: node.dataset.name || null,
           type: node.dataset.type || null,
           duedate: node.dataset.duedate || null,
           cls: Array.from(node.classList) || [], // クラスリストを配列として保存
-          children: null, // プロパティ名のスペルを修正
+          children: null,
         };
 
         // 改めて選択中のクラスを付与
@@ -405,7 +472,7 @@ export function TreeView() {
         }
 
         // データをリストに追加
-        if (node.tagName === "DETAILS" || node.tagName === "P") {
+        if (node.tagName === "DETAILS" || node.tagName === "DIV") {
           elements.push(dataItem);
         }
       });
