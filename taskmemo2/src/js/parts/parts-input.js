@@ -103,6 +103,13 @@ export function PartsInput() {
     }
 
     /**
+     * 読み取り専用であることを設定する
+     */
+    isReadOnly() {
+      this.shadowRoot.getElementById("input").readOnly = true;
+    }
+
+    /**
      * Inputに値を設定する
      * @param {string} value 設定値
      * @return {void}

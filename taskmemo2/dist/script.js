@@ -1309,6 +1309,7 @@ function TaskItem() {
      */
     #addEmptyForm() {
       const form = document.createElement("form");
+      const id = this.#createIdViewer();
       const title = this.#createTitleInput();
       const dueDate = this.#createDueDate();
       const staff = this.#createStaff();
@@ -1324,6 +1325,7 @@ function TaskItem() {
       const option5 = this.#createOptionInput("option5", "任意項目５");
       const freenotes = this.#createFreeNotes();
 
+      form.append(id); // 表示専用
       form.appendChild(title); // タイトル
       form.appendChild(dueDate); // 期限日
       form.appendChild(staff); // 担当者
@@ -1347,7 +1349,7 @@ function TaskItem() {
      * 入力内容の変更を検知するイベントを有効化する
      */
     enableCustomEvent() {
-      const form = this.shadowRoot.getElementById("task-form");
+      const form = this.#getElementById("task-form");
       form.addEventListener("changeTaskItem", () => {
         this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("changeTask"));
       });
@@ -1427,6 +1429,29 @@ function TaskItem() {
     }
 
     //------------------------------
+    //- ID
+    //------------------------------
+    #createIdViewer() {
+      const id = document.createElement("parts-input");
+      id.title = "ID";
+      id.value = "";
+      id.isReadOnly();
+      id.inputWidth = "100%";
+
+      id.id = "id";
+
+      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.wrapElementInItemDiv(id);
+    }
+
+    /**
+     * IDフィールドに値を設定する
+     * @param {string} value 設定値
+     */
+    setId(value) {
+      this.#getElementById("id").value = value;
+    }
+
+    //------------------------------
     //- タイトル
     //------------------------------
     /**
@@ -1452,7 +1477,7 @@ function TaskItem() {
      * @param {string} name 設定値
      */
     setTitle(name) {
-      this.shadowRoot.getElementById("title").value = name;
+      this.#getElementById("title").value = name;
     }
 
     /**
@@ -1460,7 +1485,7 @@ function TaskItem() {
      * @param {function} handler
      */
     setTitleChangeHandler(handler) {
-      const title = this.shadowRoot.getElementById("title");
+      const title = this.#getElementById("title");
       title.addEventListener("changeTaskItem", () => {
         handler(title.value);
       });
@@ -1471,7 +1496,7 @@ function TaskItem() {
      * @param {function} handler
      */
     setDueDateChangeHandler(handler) {
-      const duedate = this.shadowRoot.getElementById("due-date");
+      const duedate = this.#getElementById("due-date");
       duedate.addEventListener("changeTaskItem", () => {
         handler(duedate.value);
       });
@@ -1482,7 +1507,7 @@ function TaskItem() {
      * @param {function} handler
      */
     setPriorityChangeHandler(handler) {
-      const priority = this.shadowRoot.getElementById("priority");
+      const priority = this.#getElementById("priority");
       priority.addEventListener("changeTaskItem", () => {
         handler(priority.value);
       });
@@ -1493,7 +1518,7 @@ function TaskItem() {
      * @param {function} handler
      */
     setStatusChangeHandler(handler) {
-      const status = this.shadowRoot.getElementById("status");
+      const status = this.#getElementById("status");
       status.addEventListener("changeTaskItem", () => {
         handler(status.value);
       });
@@ -1596,8 +1621,8 @@ function TaskItem() {
      * タスク終了の場合、期限日にその旨を設定する
      */
     #setDueDateFinishStatus() {
-      const status = this.shadowRoot.getElementById("status");
-      const dueDate = this.shadowRoot.getElementById("due-date");
+      const status = this.#getElementById("status");
+      const dueDate = this.#getElementById("due-date");
 
       if (status.value === "100") {
         dueDate.isFinish = true;
@@ -1842,6 +1867,13 @@ function PartsInput() {
      */
     isRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
+    }
+
+    /**
+     * 読み取り専用であることを設定する
+     */
+    isReadOnly() {
+      this.shadowRoot.getElementById("input").readOnly = true;
     }
 
     /**
@@ -3614,7 +3646,8 @@ const addTaskEventHandler = (conf) => {
   saveTreeView();
   saveTaskAndHistoryData(id);
 
-  // タスク名を設定し、変更イベントの発行を許可する。
+  // タスクID,タイトルを設定し、変更イベントの発行を許可する。
+  taskItem.setId(id);
   taskItem.setTitle(name);
   taskItem.enableCustomEvent();
 
@@ -3646,6 +3679,7 @@ const clickTaskEventHandler = async (conf) => {
     const jsonStr = await fileManager.loadFile(`${id}.json`);
     const data = JSON.parse(jsonStr);
 
+    taskItem.setId(id);
     taskItem.renderTaskItem(data.taskData);
     historyItem.renderHistoryItem(data.historyData);
 

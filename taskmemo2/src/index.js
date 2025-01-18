@@ -240,7 +240,8 @@ const addTaskEventHandler = (conf) => {
   saveTreeView();
   saveTaskAndHistoryData(id);
 
-  // タスク名を設定し、変更イベントの発行を許可する。
+  // タスクID,タイトルを設定し、変更イベントの発行を許可する。
+  taskItem.setId(id);
   taskItem.setTitle(name);
   taskItem.enableCustomEvent();
 
@@ -272,6 +273,7 @@ const clickTaskEventHandler = async (conf) => {
     const jsonStr = await fileManager.loadFile(`${id}.json`);
     const data = JSON.parse(jsonStr);
 
+    taskItem.setId(id);
     taskItem.renderTaskItem(data.taskData);
     historyItem.renderHistoryItem(data.historyData);
 
