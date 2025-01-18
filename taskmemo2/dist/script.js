@@ -622,6 +622,10 @@ function ControlMenu() {
       this.shadowRoot.appendChild(container);
     }
 
+    //--------------------------------------------------
+    //- TreeViewをすべて開く
+    //--------------------------------------------------
+
     /**
      * "tree-open"ボタンを作成する
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
@@ -629,8 +633,24 @@ function ControlMenu() {
     #createTreeOpenButton() {
       const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-open");
       btn.id = "tree-open";
+      btn.addEventListener("click", () => {
+        this.treeOpenClickHandler();
+      });
       return btn;
     }
+
+    /**
+     * ツリービューを開くボタンのクリックイベントハンドラを設定する
+     *
+     * @param {function} handler - クリックイベント時に実行される関数
+     */
+    setTreeOpenClickEventHandler(handler) {
+      this.treeOpenClickHandler = handler;
+    }
+
+    //--------------------------------------------------
+    //- TreeViewをすべて閉じる
+    //--------------------------------------------------
 
     /**
      * "tree-close"ボタンを作成する
@@ -639,7 +659,19 @@ function ControlMenu() {
     #createTreeCloseButton() {
       const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-close");
       btn.id = "tree-close";
+      btn.addEventListener("click", () => {
+        this.treeCloseClickHandler();
+      });
       return btn;
+    }
+
+    /**
+     * ツリービューを閉じるボタンのクリックイベントハンドラを設定する
+     *
+     * @param {function} handler - クリックイベント時に実行される関数
+     */
+    setTreeCloseClickEventHandler(handler) {
+      this.treeCloseClickHandler = handler;
     }
   }
   // カスタム要素 "ControlMenu" を定義する
@@ -1263,6 +1295,30 @@ function TreeView() {
       });
 
       return elements;
+    }
+
+    //--------------------------------------------------
+    //- TreeViewを操作
+    //--------------------------------------------------
+
+    /**
+     * ツリービュー内のすべてのグループを開く
+     */
+    openTreeViewAll() {
+      const groups = treeViewRoot.getElementsByTagName("details");
+      for (let group of groups) {
+        group.open = true;
+      }
+    }
+
+    /**
+     * ツリービュー内のすべてのグループを閉じる
+     */
+    closeTreeViewAll() {
+      const groups = treeViewRoot.getElementsByTagName("details");
+      for (let group of groups) {
+        group.open = false;
+      }
     }
   }
 
@@ -3615,8 +3671,25 @@ const addFolderOpenButton = () => {
  */
 const addControl = () => {
   const control = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("control-menu", "control-menu-root");
+  control.setTreeOpenClickEventHandler(treeOpenOpenClickEventHandler);
+  control.setTreeCloseClickEventHandler(treeCloseClickEventHandler);
+
   gridControl.innerHTML = "";
   gridControl.appendChild(control);
+};
+
+/**
+ * ツリービューをすべて開くクリックイベントハンドラ
+ */
+const treeOpenOpenClickEventHandler = () => {
+  document.getElementById("tree-view-root").openTreeViewAll();
+};
+
+/**
+ * ツリービューをすべて閉じるクリックイベントハンドラ
+ */
+const treeCloseClickEventHandler = () => {
+  document.getElementById("tree-view-root").closeTreeViewAll();
 };
 
 //--------------------------------------------------

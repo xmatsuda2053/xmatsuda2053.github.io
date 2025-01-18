@@ -482,6 +482,30 @@ export function TreeView() {
 
       return elements;
     }
+
+    //--------------------------------------------------
+    //- TreeViewを操作
+    //--------------------------------------------------
+
+    /**
+     * ツリービュー内のすべてのグループを開く
+     */
+    openTreeViewAll() {
+      const groups = treeViewRoot.getElementsByTagName("details");
+      for (let group of groups) {
+        group.open = true;
+      }
+    }
+
+    /**
+     * ツリービュー内のすべてのグループを閉じる
+     */
+    closeTreeViewAll() {
+      const groups = treeViewRoot.getElementsByTagName("details");
+      for (let group of groups) {
+        group.open = false;
+      }
+    }
   }
 
   // カスタム要素 "tree-view" を定義する

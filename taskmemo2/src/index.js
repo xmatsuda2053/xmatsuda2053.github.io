@@ -151,8 +151,25 @@ const addFolderOpenButton = () => {
  */
 const addControl = () => {
   const control = Utils.createElm("control-menu", "control-menu-root");
+  control.setTreeOpenClickEventHandler(treeOpenOpenClickEventHandler);
+  control.setTreeCloseClickEventHandler(treeCloseClickEventHandler);
+
   gridControl.innerHTML = "";
   gridControl.appendChild(control);
+};
+
+/**
+ * ツリービューをすべて開くクリックイベントハンドラ
+ */
+const treeOpenOpenClickEventHandler = () => {
+  document.getElementById("tree-view-root").openTreeViewAll();
+};
+
+/**
+ * ツリービューをすべて閉じるクリックイベントハンドラ
+ */
+const treeCloseClickEventHandler = () => {
+  document.getElementById("tree-view-root").closeTreeViewAll();
 };
 
 //--------------------------------------------------

@@ -48,6 +48,10 @@ export function ControlMenu() {
       this.shadowRoot.appendChild(container);
     }
 
+    //--------------------------------------------------
+    //- TreeViewをすべて開く
+    //--------------------------------------------------
+
     /**
      * "tree-open"ボタンを作成する
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
@@ -55,8 +59,24 @@ export function ControlMenu() {
     #createTreeOpenButton() {
       const btn = Utils.createSvgButton("tree-open");
       btn.id = "tree-open";
+      btn.addEventListener("click", () => {
+        this.treeOpenClickHandler();
+      });
       return btn;
     }
+
+    /**
+     * ツリービューを開くボタンのクリックイベントハンドラを設定する
+     *
+     * @param {function} handler - クリックイベント時に実行される関数
+     */
+    setTreeOpenClickEventHandler(handler) {
+      this.treeOpenClickHandler = handler;
+    }
+
+    //--------------------------------------------------
+    //- TreeViewをすべて閉じる
+    //--------------------------------------------------
 
     /**
      * "tree-close"ボタンを作成する
@@ -65,7 +85,19 @@ export function ControlMenu() {
     #createTreeCloseButton() {
       const btn = Utils.createSvgButton("tree-close");
       btn.id = "tree-close";
+      btn.addEventListener("click", () => {
+        this.treeCloseClickHandler();
+      });
       return btn;
+    }
+
+    /**
+     * ツリービューを閉じるボタンのクリックイベントハンドラを設定する
+     *
+     * @param {function} handler - クリックイベント時に実行される関数
+     */
+    setTreeCloseClickEventHandler(handler) {
+      this.treeCloseClickHandler = handler;
     }
   }
   // カスタム要素 "ControlMenu" を定義する
