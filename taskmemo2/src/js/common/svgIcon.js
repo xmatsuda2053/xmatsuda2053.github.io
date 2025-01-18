@@ -100,4 +100,36 @@ export class SvgIcon {
       },
     ];
   };
+
+  /**
+   * treeを開くSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static treeOpen = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 18l3 3l3 -3" },
+      { path: "M15 6l3 -3l3 3" },
+    ];
+  };
+
+  /**
+   * treeを閉じるSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static treeClose = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 7l3 3l3 -3" },
+      { path: "M15 17l3 -3l3 3" },
+    ];
+  };
 }

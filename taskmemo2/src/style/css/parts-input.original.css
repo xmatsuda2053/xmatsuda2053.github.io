@@ -378,6 +378,29 @@ th {
   font-family: monospace;
 }
 
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+svg.icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+svg.icon use {
+  pointer-events: none;
+}
+
+fieldset {
+  position: relative;
+}
 fieldset legend {
   margin-bottom: 0.3rem;
   font-weight: bold;
@@ -405,4 +428,23 @@ input[type=text] {
 }
 input[type=text]:read-only {
   background-color: #dfdfdf;
+}
+input[type=text].copyable {
+  cursor: pointer;
+}
+
+#tooltip {
+  position: absolute;
+  top: -1.6rem;
+  right: 0;
+  padding: 0 6px;
+  line-height: 1.3rem;
+  border-radius: 0.25rem;
+  background-color: #2f2f2f;
+  color: #fffff8;
+  display: none;
+}
+
+input[type=text]:hover + #tooltip {
+  display: block;
 }

@@ -14,4 +14,30 @@ input[type="text"] {
   &:read-only {
     background-color: color.$form-item-read-only-bg-color;
   }
+
+  &.copyable {
+    cursor: pointer;
+  }
+}
+
+#tooltip {
+  position: absolute;
+  top: -1.6rem;
+  right: 0;
+
+  padding: 0 6px;
+  line-height: 1.3rem;
+  border-radius: 0.25rem;
+  background-color: color.$form-item-tooltip-bg-color;
+  color: color.$form-item-tooltip-font-color;
+
+  display: none;
+}
+
+input[type="text"] {
+  &:hover {
+    + #tooltip {
+      display: block;
+    }
+  }
 }

@@ -2,6 +2,7 @@
  * 共通関数
  */
 import { Utils } from "../common/utils";
+import { SvgIcon } from "../common/svgIcon";
 
 /**
  * ControlMenuコンポーネント用のCSS
@@ -29,8 +30,11 @@ export function ControlMenu() {
         Utils.createStyleSheetWithFilename(style);
 
       const container = document.createElement("div");
-      const svgIconTreeOpen = this.#createTreeOpen();
-      const svgIconTreeClose = this.#createTreeClose();
+      const svgIconTreeOpen = Utils.createSvg("tree-open", SvgIcon.treeOpen());
+      const svgIconTreeClose = Utils.createSvg(
+        "tree-close",
+        SvgIcon.treeClose()
+      );
       const btnTreeOpen = this.#createTreeOpenButton();
       const btnTreeClose = this.#createTreeCloseButton();
 
@@ -45,22 +49,6 @@ export function ControlMenu() {
     }
 
     /**
-     * "tree-open"アイコンのSVGを作成する
-     * @returns {SVGElement} "tree-open"アイコンを含む生成されたSVG要素
-     */
-    #createTreeOpen() {
-      return Utils.createSvg("tree-open", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M12 8v-6l3 3m-6 0l3 -3" },
-        { path: "M12 16v6l3 -3m-6 0l3 3" },
-        { path: "M4 12l1 0" },
-        { path: "M9 12l1 0" },
-        { path: "M14 12l1 0" },
-        { path: "M19 12l1 0" },
-      ]);
-    }
-
-    /**
      * "tree-open"ボタンを作成する
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
      */
@@ -68,22 +56,6 @@ export function ControlMenu() {
       const btn = Utils.createSvgButton("tree-open");
       btn.id = "tree-open";
       return btn;
-    }
-
-    /**
-     * "tree-close"アイコンのSVGを作成する
-     * @returns {SVGElement} "tree-close"アイコンを含む生成されたSVG要素
-     */
-    #createTreeClose() {
-      return Utils.createSvg("tree-close", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M12 2v6l3 -3m-6 0l3 3" },
-        { path: "M12 22v-6l3 3m-6 0l3 -3" },
-        { path: "M4 12l1 0" },
-        { path: "M9 12l1 0" },
-        { path: "M14 12l1 0" },
-        { path: "M19 12l1 0" },
-      ]);
     }
 
     /**

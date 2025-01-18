@@ -2,6 +2,7 @@
  * 共通関数
  */
 import { Utils } from "../common/utils";
+import { SvgIcon } from "../common/svgIcon";
 
 /**
  * parts-inputコンポーネント用のCSS
@@ -106,7 +107,26 @@ export function PartsInput() {
      * 読み取り専用であることを設定する
      */
     isReadOnly() {
-      this.shadowRoot.getElementById("input").readOnly = true;
+      const input = this.shadowRoot.getElementById("input");
+      input.readOnly = true;
+      input.classList.add("copyable");
+
+      input.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(input.value).then();
+      });
+
+      const container = this.shadowRoot.getElementById("container");
+      const tooltip = Utils.createElm("div", "tooltip");
+      const icon = Utils.createSvg("copy", SvgIcon.copyPaths());
+      const btn = Utils.createSvgButton("copy");
+
+      tooltip.appendChild(icon);
+      tooltip.appendChild(btn);
+      tooltip.appendChild(document.createTextNode("copy"));
+
+      container.appendChild(tooltip);
     }
 
     /**

@@ -163,7 +163,7 @@ export function TaskItem() {
     //------------------------------
     #createIdViewer() {
       const id = document.createElement("parts-input");
-      id.title = "ID";
+      id.title = "管理番号";
       id.value = "";
       id.isReadOnly();
       id.inputWidth = "100%";

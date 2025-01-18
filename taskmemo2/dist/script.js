@@ -418,6 +418,55 @@ class SvgIcon {
       { path: "M5 12l14 0" },
     ];
   };
+
+  /**
+   * コピーSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static copyPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z",
+      },
+      {
+        path: "M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1",
+      },
+    ];
+  };
+
+  /**
+   * treeを開くSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static treeOpen = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 18l3 3l3 -3" },
+      { path: "M15 6l3 -3l3 3" },
+    ];
+  };
+
+  /**
+   * treeを閉じるSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static treeClose = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 7l3 3l3 -3" },
+      { path: "M15 17l3 -3l3 3" },
+    ];
+  };
 }
 
 
@@ -521,10 +570,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ControlMenu: () => (/* binding */ ControlMenu)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
+/* harmony import */ var _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
 /**
  * 共通関数
  */
+
 
 
 /**
@@ -550,11 +601,14 @@ function ControlMenu() {
 
       this.attachShadow({ mode: "open" });
       this.shadowRoot.adoptedStyleSheets =
-        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
+        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
-      const svgIconTreeOpen = this.#createTreeOpen();
-      const svgIconTreeClose = this.#createTreeClose();
+      const svgIconTreeOpen = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-open", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeOpen());
+      const svgIconTreeClose = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(
+        "tree-close",
+        _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeClose()
+      );
       const btnTreeOpen = this.#createTreeOpenButton();
       const btnTreeClose = this.#createTreeCloseButton();
 
@@ -569,22 +623,6 @@ function ControlMenu() {
     }
 
     /**
-     * "tree-open"アイコンのSVGを作成する
-     * @returns {SVGElement} "tree-open"アイコンを含む生成されたSVG要素
-     */
-    #createTreeOpen() {
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-open", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M12 8v-6l3 3m-6 0l3 -3" },
-        { path: "M12 16v6l3 -3m-6 0l3 3" },
-        { path: "M4 12l1 0" },
-        { path: "M9 12l1 0" },
-        { path: "M14 12l1 0" },
-        { path: "M19 12l1 0" },
-      ]);
-    }
-
-    /**
      * "tree-open"ボタンを作成する
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
      */
@@ -592,22 +630,6 @@ function ControlMenu() {
       const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-open");
       btn.id = "tree-open";
       return btn;
-    }
-
-    /**
-     * "tree-close"アイコンのSVGを作成する
-     * @returns {SVGElement} "tree-close"アイコンを含む生成されたSVG要素
-     */
-    #createTreeClose() {
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-close", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M12 2v6l3 -3m-6 0l3 3" },
-        { path: "M12 22v-6l3 3m-6 0l3 -3" },
-        { path: "M4 12l1 0" },
-        { path: "M9 12l1 0" },
-        { path: "M14 12l1 0" },
-        { path: "M19 12l1 0" },
-      ]);
     }
 
     /**
@@ -1446,7 +1468,7 @@ function TaskItem() {
     //------------------------------
     #createIdViewer() {
       const id = document.createElement("parts-input");
-      id.title = "ID";
+      id.title = "管理番号";
       id.value = "";
       id.isReadOnly();
       id.inputWidth = "100%";
@@ -1777,10 +1799,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsInput: () => (/* binding */ PartsInput)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_input_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _style_css_parts_input_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
 /**
  * 共通関数
  */
+
 
 
 /**
@@ -1806,7 +1830,7 @@ function PartsInput() {
 
       this.attachShadow({ mode: "open" });
       this.shadowRoot.adoptedStyleSheets =
-        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_parts_input_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
+        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_parts_input_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const fieldset = this.#creteFiledSet();
       const legend = this.#createLegend();
@@ -1886,7 +1910,26 @@ function PartsInput() {
      * 読み取り専用であることを設定する
      */
     isReadOnly() {
-      this.shadowRoot.getElementById("input").readOnly = true;
+      const input = this.shadowRoot.getElementById("input");
+      input.readOnly = true;
+      input.classList.add("copyable");
+
+      input.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(input.value).then();
+      });
+
+      const container = this.shadowRoot.getElementById("container");
+      const tooltip = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("div", "tooltip");
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("copy", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.copyPaths());
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("copy");
+
+      tooltip.appendChild(icon);
+      tooltip.appendChild(btn);
+      tooltip.appendChild(document.createTextNode("copy"));
+
+      container.appendChild(tooltip);
     }
 
     /**
@@ -1937,7 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}input[type=text]{outline:none;background-color:#fffff8;border:1px solid #6f6f6f;border-radius:.25rem;line-height:1.5rem;padding:.1rem .25rem}input[type=text]:read-only{background-color:#dfdfdf}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}fieldset{position:relative}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}input[type=text]{outline:none;background-color:#fffff8;border:1px solid #6f6f6f;border-radius:.25rem;line-height:1.5rem;padding:.1rem .25rem}input[type=text]:read-only{background-color:#dfdfdf}input[type=text].copyable{cursor:pointer}#tooltip{position:absolute;top:-1.6rem;right:0;padding:0 6px;line-height:1.3rem;border-radius:.25rem;background-color:#2f2f2f;color:#fffff8;display:none}input[type=text]:hover+#tooltip{display:block}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2146,7 +2189,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}input[type=date]{outline:none;background-color:#fffff8;border:1px solid #6f6f6f;border-radius:.25rem;line-height:1.5rem;padding:.1rem .25rem}#deadline{margin-left:.15rem}#deadline.reach{color:red;font-weight:bold}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}fieldset{position:relative}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}input[type=date]{outline:none;background-color:#fffff8;border:1px solid #6f6f6f;border-radius:.25rem;line-height:1.5rem;padding:.1rem .25rem}#deadline{margin-left:.15rem}#deadline.reach{color:red;font-weight:bold}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2371,7 +2414,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}.wrap-item{display:inline-block;margin-right:.5rem}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}fieldset{position:relative}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}.wrap-item{display:inline-block;margin-right:.5rem}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2560,7 +2603,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}input[type=radio]{display:none}.radio-buttons{display:flex;justify-content:space-between}.radio-buttons label{flex:1;line-height:1.9rem;text-align:center;background-color:#fffff8;border:1px solid #6f6f6f;border-right:none}.radio-buttons label.first{border-top-left-radius:.25rem;border-bottom-left-radius:.25rem}.radio-buttons label.last{border-right:1px solid #6f6f6f;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}.radio-buttons label:has(+input:checked){background-color:#0a5eb0;color:#fffffb}.radio-buttons label:hover{background-color:#0a5eb0;color:#fffffb}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}fieldset{position:relative}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}input[type=radio]{display:none}.radio-buttons{display:flex;justify-content:space-between}.radio-buttons label{flex:1;line-height:1.9rem;text-align:center;background-color:#fffff8;border:1px solid #6f6f6f;border-right:none}.radio-buttons label.first{border-top-left-radius:.25rem;border-bottom-left-radius:.25rem}.radio-buttons label.last{border-right:1px solid #6f6f6f;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}.radio-buttons label:has(+input:checked){background-color:#0a5eb0;color:#fffffb}.radio-buttons label:hover{background-color:#0a5eb0;color:#fffffb}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2767,7 +2810,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}textarea{outline:none;background-color:#fffff8;border:1px solid #6f6f6f;border-radius:.25rem;line-height:15px;padding:5px;resize:none;overflow-y:hidden;word-break:break-all}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}fieldset{position:relative}fieldset legend{margin-bottom:.3rem;font-weight:bold;letter-spacing:1px;display:flex;align-items:center}fieldset legend.isRequired:after{content:"必須";margin-left:.25rem;border-radius:.25rem;background-color:#fb4141;color:#fffffb;font-size:.6rem;padding:.1rem .25rem}textarea{outline:none;background-color:#fffff8;border:1px solid #6f6f6f;border-radius:.25rem;line-height:15px;padding:5px;resize:none;overflow-y:hidden;word-break:break-all}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
