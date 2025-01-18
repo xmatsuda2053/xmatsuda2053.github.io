@@ -234,7 +234,7 @@ const addTaskEventHandler = (conf) => {
   gridTask.innerHTML = "";
   gridHistory.innerHTML = "";
   gridTask.appendChild(taskItem);
-  gridTask.appendChild(historyItem);
+  gridHistory.appendChild(historyItem);
 
   // 作成したアイテムをファイルに保存する
   saveTreeView();
@@ -263,7 +263,7 @@ const clickTaskEventHandler = async (conf) => {
   gridTask.innerHTML = "";
   gridHistory.innerHTML = "";
   gridTask.appendChild(taskItem);
-  gridTask.appendChild(historyItem);
+  gridHistory.appendChild(historyItem);
 
   // JSONデータを取得し画面描画
   const { id } = conf;
