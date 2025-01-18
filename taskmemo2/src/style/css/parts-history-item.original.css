@@ -421,12 +421,12 @@ svg.icon use {
 #container #textarea:hover, #container #textarea:focus {
   background-color: #efefef;
 }
-#container .date-box {
+#container .footer-right-box {
   position: absolute;
   bottom: 0.25rem;
   right: 2rem;
 }
-#container .date-box #datetime {
+#container .footer-right-box #datetime {
   font-size: 0.9rem;
   line-height: 1.2rem;
 }

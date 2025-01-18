@@ -35,15 +35,18 @@ export function PartsHistoryItem() {
 
       const container = document.createElement("div");
       const text = this.#createTextarea();
-      const input = this.#createDateTime();
+      const footerRightBox = this.#createFooterRightBox();
+      const dateInput = this.#createDateTime();
       const svgIconGripVertical = this.#createSvgIconGripVertical();
       const moveBtn = this.#createMoveItemButton();
       const svgIconTrash = this.#createSvgIconTrash();
       const trashBtn = this.#createTrashButton();
 
+      footerRightBox.appendChild(dateInput);
+
       container.id = "container";
       container.appendChild(text);
-      container.appendChild(input);
+      container.appendChild(footerRightBox);
       container.appendChild(svgIconGripVertical);
       container.appendChild(moveBtn);
       container.appendChild(svgIconTrash);
@@ -137,6 +140,19 @@ export function PartsHistoryItem() {
     }
 
     //--------------------------------------------
+    // フッターボタン群
+    //--------------------------------------------
+    /**
+     * フッターに配置する操作用ボタンのセット
+     * @returns {HTMLElement}
+     */
+    #createFooterRightBox() {
+      const div = document.createElement("div");
+      div.classList.add("footer-right-box");
+      return div;
+    }
+
+    //--------------------------------------------
     // 日付入力
     //--------------------------------------------
     /**
@@ -144,18 +160,13 @@ export function PartsHistoryItem() {
      * @returns {HTMLElement}
      */
     #createDateTime() {
-      const div = document.createElement("div");
       const input = document.createElement("input");
-
-      div.classList.add("date-box");
 
       input.id = "datetime";
       input.type = "datetime-local";
       input.value = Utils.formatDate(new Date(), "{yyyy}-{MM}-{dd}T{HH}:{mm}");
 
-      div.appendChild(input);
-
-      return div;
+      return input;
     }
 
     /**
