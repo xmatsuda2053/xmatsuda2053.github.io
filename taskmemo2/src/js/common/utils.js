@@ -282,4 +282,33 @@ export class Utils {
 
     return dayCount;
   }
+
+  /**
+   * 特定のデータ属性変更イベントハンドラを設定する
+   *
+   * @param {HTMLElement} target - 監視対象の要素
+   * @param {string} dataName - 監視するデータ属性名
+   * @param {function} handler - 属性変更時に呼び出されるコールバック関数
+   */
+  static setDatasetChangeHandler(target, dataName, handler) {
+    /**
+     * ミューテーションリストを処理するコールバック関数
+     * @param {MutationRecord[]} mutationsList - 監視対象の変化リスト
+     */
+    const callback = (mutationsList) => {
+      for (let m of mutationsList) {
+        // 属性の変更で、変更された属性名が指定されたデータ属性名と一致する場合に処理を行う
+        if (m.type === "attributes" && m.attributeName === dataName) {
+          handler();
+        }
+      }
+    };
+
+    const observer = new MutationObserver(callback);
+    // 監視対象の要素にオブザーバを設定し、指定されたデータ属性の変更のみを監視する
+    observer.observe(target, {
+      attributes: true,
+      attributeFilter: [dataName],
+    });
+  }
 }

@@ -203,7 +203,7 @@ export function TreeView() {
         this.clickTaskEventHandler({ id, name, task });
       });
 
-      // 期限日属性が変更された際のイベントを設定する
+      // 期限日属性が変更された際の処理を設定する
       this.#setDueDateChangeHandler(task);
 
       // パラメータを設定
@@ -223,28 +223,13 @@ export function TreeView() {
      * @param {HTMLElement} task - 期日を持つタスク要素
      */
     #setDueDateChangeHandler(task) {
-      /**
-       * ミューテーションリストを処理するコールバック関数
-       * @param {MutationRecord[]} mutationsList - 監視対象の変化リスト
-       */
-      const callback = (mutationsList) => {
-        for (let m of mutationsList) {
-          if (m.type === "attributes" && m.attributeName === "data-duedate") {
-            // 期日までの日数を計算する
-            const dayCount = Utils.calcDateDiffToday(task.dataset.duedate);
-            if (dayCount < 3) {
-              task.classList.add("over-deadline");
-            } else {
-              task.classList.remove("over-deadline");
-            }
-          }
+      Utils.setDatasetChangeHandler(task, "data-duedate", () => {
+        const dayCount = Utils.calcDateDiffToday(task.dataset.duedate);
+        if (dayCount < 3) {
+          task.classList.add("over-deadline");
+        } else {
+          task.classList.remove("over-deadline");
         }
-      };
-      const observer = new MutationObserver(callback);
-      // 監視対象のタスクにオブザーバを設定し、属性変更のみを監視する
-      observer.observe(task, {
-        attributes: true,
-        attributeFilter: ["data-duedate"],
       });
     }
 

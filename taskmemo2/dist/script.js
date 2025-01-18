@@ -293,6 +293,35 @@ class Utils {
 
     return dayCount;
   }
+
+  /**
+   * 特定のデータ属性変更イベントハンドラを設定する
+   *
+   * @param {HTMLElement} target - 監視対象の要素
+   * @param {string} dataName - 監視するデータ属性名
+   * @param {function} handler - 属性変更時に呼び出されるコールバック関数
+   */
+  static setDatasetChangeHandler(target, dataName, handler) {
+    /**
+     * ミューテーションリストを処理するコールバック関数
+     * @param {MutationRecord[]} mutationsList - 監視対象の変化リスト
+     */
+    const callback = (mutationsList) => {
+      for (let m of mutationsList) {
+        // 属性の変更で、変更された属性名が指定されたデータ属性名と一致する場合に処理を行う
+        if (m.type === "attributes" && m.attributeName === dataName) {
+          handler();
+        }
+      }
+    };
+
+    const observer = new MutationObserver(callback);
+    // 監視対象の要素にオブザーバを設定し、指定されたデータ属性の変更のみを監視する
+    observer.observe(target, {
+      attributes: true,
+      attributeFilter: [dataName],
+    });
+  }
 }
 
 
@@ -921,8 +950,8 @@ function TreeView() {
         this.clickTaskEventHandler({ id, name, task });
       });
 
-      // 期限日属性が変更された際のイベントを設定する
-      this.#setChangeDueDateEventHandler(task);
+      // 期限日属性が変更された際の処理を設定する
+      this.#setDueDateChangeHandler(task);
 
       // パラメータを設定
       task.innerText = name;
@@ -935,23 +964,19 @@ function TreeView() {
       return task;
     }
 
-    #setChangeDueDateEventHandler(task) {
-      const callback = (mutationsList) => {
-        for (let m of mutationsList) {
-          if (m.type === "attributes" && m.attributeName === "data-duedate") {
-            const dayCount = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calcDateDiffToday(task.dataset.duedate);
-            if (dayCount < 3) {
-              task.classList.add("over-deadline");
-            } else {
-              task.classList.remove("over-deadline");
-            }
-          }
+    /**
+     * タスクの期日変更イベントハンドラを設定する
+     *
+     * @param {HTMLElement} task - 期日を持つタスク要素
+     */
+    #setDueDateChangeHandler(task) {
+      _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.setDatasetChangeHandler(task, "data-duedate", () => {
+        const dayCount = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.calcDateDiffToday(task.dataset.duedate);
+        if (dayCount < 3) {
+          task.classList.add("over-deadline");
+        } else {
+          task.classList.remove("over-deadline");
         }
-      };
-      const observer = new MutationObserver(callback);
-      observer.observe(task, {
-        attributes: true,
-        attributeFilter: ["data-duedate"],
       });
     }
 
