@@ -15,6 +15,16 @@ import style from "../../style/css/parts-history-item.css";
 const DEFAULT_ROWS = 3;
 
 /**
+ * マークの種類
+ */
+const marks = [
+  { name: "flag", path: SvgIcon.flagFillPaths() },
+  { name: "star", path: SvgIcon.starFillPaths() },
+  { name: "flame", path: SvgIcon.flameFillPaths() },
+  { name: "pin", path: SvgIcon.pinFillPaths() },
+];
+
+/**
  * PartsHistoryItem コンポーネントを作成しカスタム要素として定義する
  */
 export function PartsHistoryItem() {
@@ -35,19 +45,20 @@ export function PartsHistoryItem() {
         Utils.createStyleSheetWithFilename(style);
 
       const container = document.createElement("div");
+
       const text = this.#createTextarea();
-      const footerRightBox = this.#createFooterRightBox();
       const dateInput = this.#createDateTime();
       const moveBtn = this.#createMoveItemButton();
       const trashBtn = this.#createTrashButton();
 
-      footerRightBox.appendChild(dateInput);
-
       container.id = "container";
       container.appendChild(text);
-      container.appendChild(footerRightBox);
+      container.appendChild(dateInput);
       container.appendChild(moveBtn);
       container.appendChild(trashBtn);
+      marks.forEach((mark) => {
+        container.appendChild(this.#createMakButton(mark));
+      });
 
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(container);
@@ -137,19 +148,6 @@ export function PartsHistoryItem() {
     }
 
     //--------------------------------------------
-    // フッターボタン群
-    //--------------------------------------------
-    /**
-     * フッターに配置する操作用ボタンのセット
-     * @returns {HTMLElement}
-     */
-    #createFooterRightBox() {
-      const div = document.createElement("div");
-      div.classList.add("footer-right-box");
-      return div;
-    }
-
-    //--------------------------------------------
     // 日付入力
     //--------------------------------------------
     /**
@@ -226,6 +224,67 @@ export function PartsHistoryItem() {
       });
 
       return btn;
+    }
+
+    //--------------------------------------------
+    // マーカー
+    //--------------------------------------------
+    /**
+     * アイコン付きのボタンを作成する
+     *
+     * @param {Object} mark - アイコンとボタンの設定オブジェクト
+     * @param {string} mark.name - アイコンとボタンの名前
+     * @param {string} mark.path - アイコンのパス
+     * @returns {HTMLElement} 作成されたボタン要素
+     * @private
+     */
+    #createMakButton(mark) {
+      const { name, path } = mark;
+      const icon = Utils.createSvg(name, path);
+      const btn = Utils.createSvgButton(name, icon);
+      btn.id = `${name}-item`;
+      btn.dataset.mark = "false";
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // 現在のデータ属性 "mark" を取得し、true/false を切り替える
+        const mark = btn.dataset.mark === "true";
+        btn.dataset.mark = !mark;
+        this.dispatchEvent(Utils.getCustomEvent("changeHistoryItem"));
+      });
+
+      return btn;
+    }
+
+    /**
+     * マークされたアイテムの配列を取得する
+     *
+     * @returns {Array<Object>} マークされたアイテムの配列
+     */
+    get marks() {
+      // marks 配列内の各要素に対して map メソッドを適用する
+      // 各要素はオブジェクトで、そのキーはマークの名前、値は該当する要素となる
+      return marks.map((m) => ({
+        // mark.name をキーとして、対応する要素を shadowRoot から取得し、data-markの値を設定する。
+        [m.name]:
+          this.shadowRoot.getElementById(`${m.name}-item`).dataset.mark ||
+          false,
+      }));
+    }
+
+    /**
+     * マークされたアイテムの配列を設定する
+     *
+     * @param {Array<Object>} newMarks - 新しいマークされたアイテムの配列
+     */
+    set marks(newMarks) {
+      if (newMarks) {
+        newMarks.forEach((m) => {
+          const key = Object.keys(m)[0];
+          const target = this.shadowRoot.getElementById(`${key}-item`);
+          target.dataset.mark = m[key] || false;
+        });
+      }
     }
   }
   // カスタム要素 "PartsHistoryItem" を定義する

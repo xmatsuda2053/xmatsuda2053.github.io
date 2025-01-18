@@ -30,14 +30,12 @@
     }
   }
 
-  .footer-right-box {
+  #datetime {
     position: absolute;
     bottom: 0.25rem;
     right: 2rem;
-    #datetime {
-      font-size: 0.9rem;
-      line-height: 1.2rem;
-    }
+    font-size: 0.9rem;
+    line-height: 1.2rem;
   }
 
   #move-item {
@@ -75,7 +73,42 @@
     }
 
     &:hover {
-      color: color.$form-item-icon-color-hover;
+      color: color.$history-item-icon-color-trash;
     }
+  }
+
+  @mixin mark-style($left, $color) {
+    position: absolute;
+    left: $left;
+    bottom: 0.25rem;
+    color: color.$form-item-icon-color-deactive;
+    .icon {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+
+    &:hover {
+      color: $color;
+    }
+
+    &[data-mark="true"] {
+      color: $color;
+    }
+  }
+
+  #flag-item {
+    @include mark-style(5rem, color.$history-item-icon-color-flag);
+  }
+
+  #star-item {
+    @include mark-style(6.5rem, color.$history-item-icon-color-star);
+  }
+
+  #flame-item {
+    @include mark-style(8rem, color.$history-item-icon-color-flame);
+  }
+
+  #pin-item {
+    @include mark-style(9.5rem, color.$history-item-icon-color-pin);
   }
 }

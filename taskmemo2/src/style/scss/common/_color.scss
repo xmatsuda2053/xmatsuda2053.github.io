@@ -48,9 +48,8 @@ $form-item-border-color: #6f6f6f;
 $form-item-read-only-bg-color: #dfdfdf;
 $form-item-requied-bg-color: #fb4141;
 $form-item-requied-font-color: #fffffb;
-$form-item-icon-color-deactive: #8f8f8f;
+$form-item-icon-color-deactive: #afafaf;
 $form-item-icon-color-active: #3f3f3f;
-$form-item-icon-color-hover: #ff0000;
 $form-item-tooltip-bg-color: #2f2f2f;
 $form-item-tooltip-font-color: #fffff8;
 
@@ -70,3 +69,8 @@ $form-item-textarea-bg-color-hover: #efefef;
 //- History Item
 //--------------------
 $history-item-border-color: #8f8f8f;
+$history-item-icon-color-trash: #ff0000;
+$history-item-icon-color-flag: #16c47f;
+$history-item-icon-color-star: #fcc737;
+$history-item-icon-color-flame: #ff4545;
+$history-item-icon-color-pin: #006bff;

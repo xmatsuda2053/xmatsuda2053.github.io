@@ -502,6 +502,66 @@ class SvgIcon {
       { path: "M15 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
     ];
   };
+
+  /**
+   * フラッグSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static flagFillPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M19 4a1 1 0 0 1 .993 .883l.007 .117v9a1 1 0 0 1 -.883 .993l-.117 .007h-13v6a1 1 0 0 1 -.883 .993l-.117 .007a1 1 0 0 1 -.993 -.883l-.007 -.117v-16a1 1 0 0 1 .883 -.993l.117 -.007h14z",
+        isFill: true,
+      },
+    ];
+  };
+
+  /**
+   * 炎SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static flameFillPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M10 2c0 -.88 1.056 -1.331 1.692 -.722c1.958 1.876 3.096 5.995 1.75 9.12l-.08 .174l.012 .003c.625 .133 1.203 -.43 2.303 -2.173l.14 -.224a1 1 0 0 1 1.582 -.153c1.334 1.435 2.601 4.377 2.601 6.27c0 4.265 -3.591 7.705 -8 7.705s-8 -3.44 -8 -7.706c0 -2.252 1.022 -4.716 2.632 -6.301l.605 -.589c.241 -.236 .434 -.43 .618 -.624c1.43 -1.512 2.145 -2.924 2.145 -4.78",
+        isFill: true,
+      },
+    ];
+  };
+
+  /**
+   * 星SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static starFillPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z",
+        isFill: true,
+      },
+    ];
+  };
+
+  /**
+   * ピンSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static pinFillPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z",
+        isFill: true,
+      },
+    ];
+  };
 }
 
 
@@ -2975,7 +3035,8 @@ function HistoryItem() {
       for (const item of items) {
         const text = item.text;
         const date = item.date;
-        result.push({ text: text, date: date });
+        const marks = item.marks;
+        result.push({ text: text, date: date, marks: marks });
       }
 
       return result;
@@ -2991,6 +3052,7 @@ function HistoryItem() {
         const piece = this.#addEmptyParts();
         piece.text = item.text;
         piece.date = item.date;
+        piece.marks = item.marks;
       });
     }
 
@@ -3162,6 +3224,16 @@ __webpack_require__.r(__webpack_exports__);
 const DEFAULT_ROWS = 3;
 
 /**
+ * マークの種類
+ */
+const marks = [
+  { name: "flag", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.flagFillPaths() },
+  { name: "star", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.starFillPaths() },
+  { name: "flame", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.flameFillPaths() },
+  { name: "pin", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.pinFillPaths() },
+];
+
+/**
  * PartsHistoryItem コンポーネントを作成しカスタム要素として定義する
  */
 function PartsHistoryItem() {
@@ -3182,19 +3254,20 @@ function PartsHistoryItem() {
         _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_parts_history_item_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
+
       const text = this.#createTextarea();
-      const footerRightBox = this.#createFooterRightBox();
       const dateInput = this.#createDateTime();
       const moveBtn = this.#createMoveItemButton();
       const trashBtn = this.#createTrashButton();
 
-      footerRightBox.appendChild(dateInput);
-
       container.id = "container";
       container.appendChild(text);
-      container.appendChild(footerRightBox);
+      container.appendChild(dateInput);
       container.appendChild(moveBtn);
       container.appendChild(trashBtn);
+      marks.forEach((mark) => {
+        container.appendChild(this.#createMakButton(mark));
+      });
 
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(container);
@@ -3284,19 +3357,6 @@ function PartsHistoryItem() {
     }
 
     //--------------------------------------------
-    // フッターボタン群
-    //--------------------------------------------
-    /**
-     * フッターに配置する操作用ボタンのセット
-     * @returns {HTMLElement}
-     */
-    #createFooterRightBox() {
-      const div = document.createElement("div");
-      div.classList.add("footer-right-box");
-      return div;
-    }
-
-    //--------------------------------------------
     // 日付入力
     //--------------------------------------------
     /**
@@ -3374,6 +3434,67 @@ function PartsHistoryItem() {
 
       return btn;
     }
+
+    //--------------------------------------------
+    // マーカー
+    //--------------------------------------------
+    /**
+     * アイコン付きのボタンを作成する
+     *
+     * @param {Object} mark - アイコンとボタンの設定オブジェクト
+     * @param {string} mark.name - アイコンとボタンの名前
+     * @param {string} mark.path - アイコンのパス
+     * @returns {HTMLElement} 作成されたボタン要素
+     * @private
+     */
+    #createMakButton(mark) {
+      const { name, path } = mark;
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(name, path);
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(name, icon);
+      btn.id = `${name}-item`;
+      btn.dataset.mark = "false";
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // 現在のデータ属性 "mark" を取得し、true/false を切り替える
+        const mark = btn.dataset.mark === "true";
+        btn.dataset.mark = !mark;
+        this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("changeHistoryItem"));
+      });
+
+      return btn;
+    }
+
+    /**
+     * マークされたアイテムの配列を取得する
+     *
+     * @returns {Array<Object>} マークされたアイテムの配列
+     */
+    get marks() {
+      // marks 配列内の各要素に対して map メソッドを適用する
+      // 各要素はオブジェクトで、そのキーはマークの名前、値は該当する要素となる
+      return marks.map((m) => ({
+        // mark.name をキーとして、対応する要素を shadowRoot から取得し、data-markの値を設定する。
+        [m.name]:
+          this.shadowRoot.getElementById(`${m.name}-item`).dataset.mark ||
+          false,
+      }));
+    }
+
+    /**
+     * マークされたアイテムの配列を設定する
+     *
+     * @param {Array<Object>} newMarks - 新しいマークされたアイテムの配列
+     */
+    set marks(newMarks) {
+      if (newMarks) {
+        newMarks.forEach((m) => {
+          const key = Object.keys(m)[0];
+          const target = this.shadowRoot.getElementById(`${key}-item`);
+          target.dataset.mark = m[key] || false;
+        });
+      }
+    }
   }
   // カスタム要素 "PartsHistoryItem" を定義する
   customElements.define("parts-history-item", PartsHistoryItem);
@@ -3397,7 +3518,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}#container{position:relative;padding:.35rem;padding-right:2rem;padding-bottom:1.5rem;background-color:#fffff8;border:1px solid #8f8f8f;border-radius:.25rem}#container #textarea{outline:none;width:100%;background-color:#fffff8;border-radius:.25rem;line-height:15px;padding:5px;margin-bottom:.35rem;resize:none;overflow-y:hidden;word-break:break-all}#container #textarea:hover,#container #textarea:focus{background-color:#efefef}#container .footer-right-box{position:absolute;bottom:.25rem;right:2rem}#container .footer-right-box #datetime{font-size:.9rem;line-height:1.2rem}#container #move-item{cursor:move;position:absolute;right:0;top:0;bottom:0;color:#8f8f8f;border-left:1px solid #8f8f8f;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}#container #move-item .icon{height:1.25rem;width:1.25rem}#container #move-item:hover{color:#3f3f3f;background-color:#fff6b3}#container #trash-item{position:absolute;bottom:.25rem;left:.35rem;color:#8f8f8f}#container #trash-item .icon{height:1.25rem;width:1.25rem}#container #trash-item:hover{color:red}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}#container{position:relative;padding:.35rem;padding-right:2rem;padding-bottom:1.5rem;background-color:#fffff8;border:1px solid #8f8f8f;border-radius:.25rem}#container #textarea{outline:none;width:100%;background-color:#fffff8;border-radius:.25rem;line-height:15px;padding:5px;margin-bottom:.35rem;resize:none;overflow-y:hidden;word-break:break-all}#container #textarea:hover,#container #textarea:focus{background-color:#efefef}#container #datetime{position:absolute;bottom:.25rem;right:2rem;font-size:.9rem;line-height:1.2rem}#container #move-item{cursor:move;position:absolute;right:0;top:0;bottom:0;color:#afafaf;border-left:1px solid #8f8f8f;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}#container #move-item .icon{height:1.25rem;width:1.25rem}#container #move-item:hover{color:#3f3f3f;background-color:#fff6b3}#container #trash-item{position:absolute;bottom:.25rem;left:.35rem;color:#afafaf}#container #trash-item .icon{height:1.25rem;width:1.25rem}#container #trash-item:hover{color:red}#container #flag-item{position:absolute;left:5rem;bottom:.25rem;color:#afafaf}#container #flag-item .icon{height:1.25rem;width:1.25rem}#container #flag-item:hover{color:#16c47f}#container #flag-item[data-mark=true]{color:#16c47f}#container #star-item{position:absolute;left:6.5rem;bottom:.25rem;color:#afafaf}#container #star-item .icon{height:1.25rem;width:1.25rem}#container #star-item:hover{color:#fcc737}#container #star-item[data-mark=true]{color:#fcc737}#container #flame-item{position:absolute;left:8rem;bottom:.25rem;color:#afafaf}#container #flame-item .icon{height:1.25rem;width:1.25rem}#container #flame-item:hover{color:#ff4545}#container #flame-item[data-mark=true]{color:#ff4545}#container #pin-item{position:absolute;left:9.5rem;bottom:.25rem;color:#afafaf}#container #pin-item .icon{height:1.25rem;width:1.25rem}#container #pin-item:hover{color:#006bff}#container #pin-item[data-mark=true]{color:#006bff}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

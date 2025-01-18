@@ -67,7 +67,8 @@ export function HistoryItem() {
       for (const item of items) {
         const text = item.text;
         const date = item.date;
-        result.push({ text: text, date: date });
+        const marks = item.marks;
+        result.push({ text: text, date: date, marks: marks });
       }
 
       return result;
@@ -83,6 +84,7 @@ export function HistoryItem() {
         const piece = this.#addEmptyParts();
         piece.text = item.text;
         piece.date = item.date;
+        piece.marks = item.marks;
       });
     }
 
