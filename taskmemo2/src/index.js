@@ -313,6 +313,7 @@ const createEmptyTask = (conf) => {
   // イベント登録する
   taskItem.setTitleChangeHandler(createTitleChangeEventHandler(task));
   taskItem.setDueDateChangeHandler(createDueDateChangeEventHandler(task));
+  taskItem.setPriorityChangeHandler(createPriorityChangeEventHandler(task));
   taskItem.setStatusChangeHandler(createStatusChangeEventHandler(task));
 
   // タスクの内容が変更された場合、ファイルに保存する
@@ -367,6 +368,17 @@ const createTitleChangeEventHandler = (task) => {
 const createDueDateChangeEventHandler = (task) => {
   return (newDuedateString) => {
     task.dataset.duedate = newDuedateString;
+  };
+};
+
+/**
+ * 優先度変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された優先度を設定するイベントハンドラ。
+ */
+const createPriorityChangeEventHandler = (task) => {
+  return (newPriority) => {
+    task.dataset.priority = newPriority;
   };
 };
 

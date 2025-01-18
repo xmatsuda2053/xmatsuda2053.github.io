@@ -194,7 +194,7 @@ export function TreeView() {
      */
     #createTask(conf) {
       const task = document.createElement("div");
-      const { id, name, duedate, status } = conf;
+      const { id, name, duedate, status, priority } = conf;
 
       // タスクをクリックした際のイベントを設定する
       task.addEventListener("click", (e) => {
@@ -215,6 +215,7 @@ export function TreeView() {
       task.dataset.name = name;
       task.dataset.type = "task";
       task.dataset.duedate = duedate || "";
+      task.dataset.priority = priority || "";
       task.dataset.status = status || "";
 
       return task;
@@ -420,8 +421,6 @@ export function TreeView() {
      * @private
      */
     #addTreeViewItems(currentRoot, data) {
-      const { name, id, duedate, status } = data;
-
       if (data.type === "task") {
         // タスクを新規作成
         const task = this.#createTask(data);
@@ -467,6 +466,7 @@ export function TreeView() {
           dataItem.name = node.dataset.name || null;
           dataItem.type = node.dataset.type || null;
           dataItem.duedate = node.dataset.duedate || null;
+          dataItem.priority = node.dataset.priority || null;
           dataItem.status = node.dataset.status || null;
           elements.push(dataItem);
         } else if (node.tagName === "DETAILS") {

@@ -208,6 +208,17 @@ export function TaskItem() {
     }
 
     /**
+     * 優先度変更時に実行する処理を登録する。
+     * @param {function} handler
+     */
+    setPriorityChangeHandler(handler) {
+      const priority = this.shadowRoot.getElementById("priority");
+      priority.addEventListener("changeTaskItem", () => {
+        handler(priority.value);
+      });
+    }
+
+    /**
      * 進捗率変更時に実行する処理を登録する。
      * @param {function} handler
      */

@@ -941,7 +941,7 @@ function TreeView() {
      */
     #createTask(conf) {
       const task = document.createElement("div");
-      const { id, name, duedate, status } = conf;
+      const { id, name, duedate, status, priority } = conf;
 
       // タスクをクリックした際のイベントを設定する
       task.addEventListener("click", (e) => {
@@ -962,6 +962,7 @@ function TreeView() {
       task.dataset.name = name;
       task.dataset.type = "task";
       task.dataset.duedate = duedate || "";
+      task.dataset.priority = priority || "";
       task.dataset.status = status || "";
 
       return task;
@@ -1118,8 +1119,9 @@ function TreeView() {
 
     /**
      * グループ要素を作成する
-     * @param {string} name グループの名前
-     * @param {string} id グループのID
+     * @param {Object} conf - グループの設定オブジェクト
+     * @param {string} conf.name - グループの名前
+     * @param {string} conf.id - グループのID
      * @returns {HTMLElement} 作成されたグループ要素
      * @private
      */
@@ -1166,8 +1168,6 @@ function TreeView() {
      * @private
      */
     #addTreeViewItems(currentRoot, data) {
-      const { name, id, duedate, status } = data;
-
       if (data.type === "task") {
         // タスクを新規作成
         const task = this.#createTask(data);
@@ -1213,6 +1213,7 @@ function TreeView() {
           dataItem.name = node.dataset.name || null;
           dataItem.type = node.dataset.type || null;
           dataItem.duedate = node.dataset.duedate || null;
+          dataItem.priority = node.dataset.priority || null;
           dataItem.status = node.dataset.status || null;
           elements.push(dataItem);
         } else if (node.tagName === "DETAILS") {
@@ -1473,6 +1474,17 @@ function TaskItem() {
       const duedate = this.shadowRoot.getElementById("due-date");
       duedate.addEventListener("changeTaskItem", () => {
         handler(duedate.value);
+      });
+    }
+
+    /**
+     * 優先度変更時に実行する処理を登録する。
+     * @param {function} handler
+     */
+    setPriorityChangeHandler(handler) {
+      const priority = this.shadowRoot.getElementById("priority");
+      priority.addEventListener("changeTaskItem", () => {
+        handler(priority.value);
       });
     }
 
@@ -3675,6 +3687,7 @@ const createEmptyTask = (conf) => {
   // イベント登録する
   taskItem.setTitleChangeHandler(createTitleChangeEventHandler(task));
   taskItem.setDueDateChangeHandler(createDueDateChangeEventHandler(task));
+  taskItem.setPriorityChangeHandler(createPriorityChangeEventHandler(task));
   taskItem.setStatusChangeHandler(createStatusChangeEventHandler(task));
 
   // タスクの内容が変更された場合、ファイルに保存する
@@ -3729,6 +3742,17 @@ const createTitleChangeEventHandler = (task) => {
 const createDueDateChangeEventHandler = (task) => {
   return (newDuedateString) => {
     task.dataset.duedate = newDuedateString;
+  };
+};
+
+/**
+ * 優先度変更時のTreeView操作イベントハンドラを作成する。
+ * @param {HTMLElement} task - 対象のタスクボタン。
+ * @returns {Function} 変更された優先度を設定するイベントハンドラ。
+ */
+const createPriorityChangeEventHandler = (task) => {
+  return (newPriority) => {
+    task.dataset.priority = newPriority;
   };
 };
 
