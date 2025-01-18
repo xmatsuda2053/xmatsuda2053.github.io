@@ -311,9 +311,9 @@ const createEmptyTask = (conf) => {
   taskItem.dataset.id = id;
 
   // イベント登録する
-  taskItem.setChangeTitleHandler(createChangeTitleEventHandler(task));
-  taskItem.setChangeDueDateHandler(createChangeDueDateEventHandler(task));
-  taskItem.setChangeStatusHandler(createChangeStatusEventHandler(task));
+  taskItem.setTitleChangeHandler(createTitleChangeEventHandler(task));
+  taskItem.setDueDateChangeHandler(createDueDateChangeEventHandler(task));
+  taskItem.setStatusChangeHandler(createStatusChangeEventHandler(task));
 
   // タスクの内容が変更された場合、ファイルに保存する
   taskItem.addEventListener("changeTask", () => {
@@ -352,7 +352,7 @@ const createEmptyHistory = (conf) => {
  * @param {HTMLElement} task - 対象のタスクボタン。
  * @returns {Function} 変更された名前を設定するイベントハンドラ。
  */
-const createChangeTitleEventHandler = (task) => {
+const createTitleChangeEventHandler = (task) => {
   return (newName) => {
     task.innerText = newName; // ボタンのテキストを変更する
     task.dataset.name = newName; // ボタンのデータ属性を変更する
@@ -364,7 +364,7 @@ const createChangeTitleEventHandler = (task) => {
  * @param {HTMLElement} task - 対象のタスクボタン。
  * @returns {Function} 変更された期限日を設定するイベントハンドラ。
  */
-const createChangeDueDateEventHandler = (task) => {
+const createDueDateChangeEventHandler = (task) => {
   return (newDuedateString) => {
     task.dataset.duedate = newDuedateString;
   };
@@ -375,12 +375,9 @@ const createChangeDueDateEventHandler = (task) => {
  * @param {HTMLElement} task - 対象のタスクボタン。
  * @returns {Function} 変更された進捗率を設定するイベントハンドラ。
  */
-const createChangeStatusEventHandler = (task) => {
+const createStatusChangeEventHandler = (task) => {
   return (newStatus) => {
-    task.classList.remove("task-finished");
-    if (parseInt(newStatus) === 100) {
-      task.classList.add("task-finished");
-    }
+    task.dataset.status = newStatus;
   };
 };
 

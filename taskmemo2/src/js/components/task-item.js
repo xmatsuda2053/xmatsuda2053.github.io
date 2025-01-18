@@ -189,7 +189,7 @@ export function TaskItem() {
      * タイトル変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    setChangeTitleHandler(handler) {
+    setTitleChangeHandler(handler) {
       const title = this.shadowRoot.getElementById("title");
       title.addEventListener("changeTaskItem", () => {
         handler(title.value);
@@ -197,22 +197,21 @@ export function TaskItem() {
     }
 
     /**
-     * Deadline変更時に実行する処理を登録する。
+     * 期限日変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    setChangeDueDateHandler(handler) {
+    setDueDateChangeHandler(handler) {
       const duedate = this.shadowRoot.getElementById("due-date");
       duedate.addEventListener("changeTaskItem", () => {
         handler(duedate.value);
       });
-      this.changeDeadlineHandler = handler;
     }
 
     /**
      * 進捗率変更時に実行する処理を登録する。
      * @param {function} handler
      */
-    setChangeStatusHandler(handler) {
+    setStatusChangeHandler(handler) {
       const status = this.shadowRoot.getElementById("status");
       status.addEventListener("changeTaskItem", () => {
         handler(status.value);

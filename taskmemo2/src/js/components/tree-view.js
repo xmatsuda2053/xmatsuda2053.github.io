@@ -189,12 +189,12 @@ export function TreeView() {
      * @param {string} conf.id - タスクの識別用ID～
      * @param {string} conf.name - タスク名～
      * @param {string} [conf.duedate] - タスクの期日。省略可能～
-     * @param {Array<string>} [classList=[]] - クラスリスト（省略可能）～
+     * @param {string} [conf.status] - タスクの進捗率。省略可能～
      * @returns {HTMLElement} - 作成されたタスク要素
      */
-    #createTask(conf, classList = []) {
+    #createTask(conf) {
       const task = document.createElement("div");
-      const { id, name, duedate } = conf;
+      const { id, name, duedate, status } = conf;
 
       // タスクをクリックした際のイベントを設定する
       task.addEventListener("click", (e) => {
@@ -206,13 +206,16 @@ export function TreeView() {
       // 期限日属性が変更された際の処理を設定する
       this.#setDueDateChangeHandler(task);
 
+      // 進捗率が変更された際の処理を設定する
+      this.#setStatusChangeHandler(task);
+
       // パラメータを設定
       task.innerText = name;
       task.dataset.id = id;
       task.dataset.name = name;
-      task.dataset.duedate = duedate || "";
       task.dataset.type = "task";
-      task.classList.add(...classList);
+      task.dataset.duedate = duedate || "";
+      task.dataset.status = status || "";
 
       return task;
     }
@@ -224,11 +227,23 @@ export function TreeView() {
      */
     #setDueDateChangeHandler(task) {
       Utils.setDatasetChangeHandler(task, "data-duedate", () => {
-        const dayCount = Utils.calcDateDiffToday(task.dataset.duedate);
-        if (dayCount < 3) {
+        task.classList.remove("over-deadline");
+        if (Utils.calcDateDiffToday(task.dataset.duedate) < 3) {
           task.classList.add("over-deadline");
-        } else {
-          task.classList.remove("over-deadline");
+        }
+      });
+    }
+
+    /**
+     * タスクの進捗率変更イベントハンドラを設定する
+     *
+     * @param {HTMLElement} task - 進捗率を持つタスク要素
+     */
+    #setStatusChangeHandler(task) {
+      Utils.setDatasetChangeHandler(task, "data-status", () => {
+        task.classList.remove("task-finished");
+        if (parseInt(task.dataset.status) === 100) {
+          task.classList.add("task-finished");
         }
       });
     }
@@ -291,7 +306,7 @@ export function TreeView() {
         if (name) {
           // IDを採番し、新規にグループを作成する
           const id = Utils.getUniqueId();
-          const group = this.#createGroup(name, id);
+          const group = this.#createGroup({ name, id });
 
           // 作成したグループをTreeViewに追加する
           this.editTarget.appendChild(group);
@@ -356,20 +371,20 @@ export function TreeView() {
 
     /**
      * グループ要素を作成する
-     * @param {string} name グループの名前
-     * @param {string} id グループのID
-     * @param {string[]} classList グループに追加するクラスリスト
+     * @param {Object} conf - グループの設定オブジェクト
+     * @param {string} conf.name - グループの名前
+     * @param {string} conf.id - グループのID
      * @returns {HTMLElement} 作成されたグループ要素
      * @private
      */
-    #createGroup(name, id, classList = []) {
+    #createGroup(conf) {
+      const { name, id } = conf;
       const details = document.createElement("details");
       const summary = document.createElement("summary");
 
       details.dataset.id = id;
       details.dataset.name = name;
       details.dataset.type = "group";
-      details.classList.add(...classList);
 
       summary.innerText = name;
 
@@ -405,15 +420,15 @@ export function TreeView() {
      * @private
      */
     #addTreeViewItems(currentRoot, data) {
-      const { name, id, duedate, cls } = data;
+      const { name, id, duedate, status } = data;
 
       if (data.type === "task") {
         // タスクを新規作成
-        const task = this.#createTask({ name, id, duedate }, cls || []);
+        const task = this.#createTask(data);
         currentRoot.appendChild(task);
       } else {
         // グループを新規作成
-        const group = this.#createGroup(name, id, cls || []);
+        const group = this.#createGroup(data);
         currentRoot.appendChild(group);
         const array = data.children || data.childlen || [];
         (array || []).forEach((child) => {
@@ -445,35 +460,23 @@ export function TreeView() {
       const elements = [];
 
       nodes.forEach((node) => {
-        // 選択中の場合、一時的にクラスを解除
-        const hasSelected = node.classList.contains("selected");
-        if (hasSelected) {
-          node.classList.remove("selected");
-        }
-
-        // データ作成
-        const dataItem = {
-          id: node.dataset.id || null,
-          name: node.dataset.name || null,
-          type: node.dataset.type || null,
-          duedate: node.dataset.duedate || null,
-          cls: Array.from(node.classList) || [], // クラスリストを配列として保存
-          children: null,
-        };
-
-        // 改めて選択中のクラスを付与
-        if (hasSelected) {
-          node.classList.add("selected");
-        }
-
-        // DETAILS タグの場合、子要素を再帰的に取得
-        if (node.tagName === "DETAILS") {
-          dataItem.children = this.#getAllElement(node.childNodes);
-        }
-
-        // データをリストに追加
-        if (node.tagName === "DETAILS" || node.tagName === "DIV") {
+        const dataItem = {};
+        if (node.tagName === "DIV") {
+          // タスク
+          dataItem.id = node.dataset.id || null;
+          dataItem.name = node.dataset.name || null;
+          dataItem.type = node.dataset.type || null;
+          dataItem.duedate = node.dataset.duedate || null;
+          dataItem.status = node.dataset.status || null;
           elements.push(dataItem);
+        } else if (node.tagName === "DETAILS") {
+          // グループ
+          dataItem.id = node.dataset.id || null;
+          dataItem.name = node.dataset.name || null;
+          dataItem.children = this.#getAllElement(node.childNodes);
+          elements.push(dataItem);
+        } else {
+          // 対象外
         }
       });
 
