@@ -922,6 +922,20 @@ function TreeView() {
       });
 
       // 期限日属性が変更された際のイベントを設定する
+      this.#setChangeDueDateEventHandler(task);
+
+      // パラメータを設定
+      task.innerText = name;
+      task.dataset.id = id;
+      task.dataset.name = name;
+      task.dataset.duedate = duedate || "";
+      task.dataset.type = "task";
+      task.classList.add(...classList);
+
+      return task;
+    }
+
+    #setChangeDueDateEventHandler(task) {
       const callback = (mutationsList) => {
         for (let m of mutationsList) {
           if (m.type === "attributes" && m.attributeName === "data-duedate") {
@@ -939,16 +953,6 @@ function TreeView() {
         attributes: true,
         attributeFilter: ["data-duedate"],
       });
-
-      // パラメータを設定
-      task.innerText = name;
-      task.dataset.id = id;
-      task.dataset.name = name;
-      task.dataset.duedate = duedate || "";
-      task.dataset.type = "task";
-      task.classList.add(...classList);
-
-      return task;
     }
 
     /**
