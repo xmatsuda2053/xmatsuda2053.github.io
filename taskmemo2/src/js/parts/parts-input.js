@@ -120,9 +120,8 @@ export function PartsInput() {
       const container = this.shadowRoot.getElementById("container");
       const tooltip = Utils.createElm("div", "tooltip");
       const icon = Utils.createSvg("copy", SvgIcon.copyPaths());
-      const btn = Utils.createSvgButton("copy");
+      const btn = Utils.createSvgButton("copy", icon);
 
-      tooltip.appendChild(icon);
       tooltip.appendChild(btn);
       tooltip.appendChild(document.createTextNode("copy"));
 

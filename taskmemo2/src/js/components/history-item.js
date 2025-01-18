@@ -35,12 +35,10 @@ export function HistoryItem() {
         Utils.createStyleSheetWithFilename(style);
 
       const container = document.createElement("div");
-      const svgIcon = Utils.createSvg("plus", SvgIcon.plusPaths());
       const addButton = this.#createAddPartsHistoryItemButton();
 
-      container.appendChild(svgIcon);
-      container.appendChild(addButton);
       container.id = "container";
+      container.appendChild(addButton);
 
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(container);
@@ -89,24 +87,13 @@ export function HistoryItem() {
     }
 
     /**
-     * プラス記号のSVGアイコンを作成する
-     * @returns {SVGElement} プラスアイコンを含む生成されたSVG要素
-     */
-    #createSvgIconPlus() {
-      return Utils.createSvg("plus", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M12 5l0 14" },
-        { path: "M5 12l14 0" },
-      ]);
-    }
-
-    /**
      * 履歴アイテム追加用のボタンを作成する
      *
      * @returns {HTMLButtonElement} 生成された履歴アイテム追加用のボタン
      */
     #createAddPartsHistoryItemButton() {
-      const btn = Utils.createSvgButton("plus");
+      const icon = Utils.createSvg("plus", SvgIcon.plusPaths());
+      const btn = Utils.createSvgButton("plus", icon);
       btn.id = "add-parts-history-item";
       btn.classList.add("float-button");
 

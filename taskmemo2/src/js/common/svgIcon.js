@@ -132,4 +132,37 @@ export class SvgIcon {
       { path: "M15 17l3 -3l3 3" },
     ];
   };
+
+  /**
+   * ゴミ箱SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static trashPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M4 7l16 0" },
+      { path: "M10 11l0 6" },
+      { path: "M14 11l0 6" },
+      { path: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" },
+      { path: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" },
+    ];
+  };
+
+  /**
+   * 掴むSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static gripVerticalPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M9 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M9 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M9 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M15 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M15 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M15 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+    ];
+  };
 }

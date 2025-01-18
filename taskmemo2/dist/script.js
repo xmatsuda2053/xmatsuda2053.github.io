@@ -105,9 +105,10 @@ class Utils {
   /**
    * SVGアイコンを含むボタンを生成する
    * @param {string} iconName アイコンの名前
+   * @param {HTMLElement} icon SVGアイコン
    * @returns {HTMLButtonElement} SVGアイコンを含むボタン要素
    */
-  static createSvgButton = (iconName) => {
+  static createSvgButton = (iconName, icon) => {
     const svgNS = "http://www.w3.org/2000/svg";
     const xlinkNS = "http://www.w3.org/1999/xlink";
 
@@ -123,6 +124,7 @@ class Utils {
     // ボタン要素を作成し、SVG要素を追加する
     const button = document.createElement("button");
     button.appendChild(svg);
+    button.appendChild(icon);
 
     return button;
   };
@@ -467,6 +469,39 @@ class SvgIcon {
       { path: "M15 17l3 -3l3 3" },
     ];
   };
+
+  /**
+   * ゴミ箱SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static trashPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M4 7l16 0" },
+      { path: "M10 11l0 6" },
+      { path: "M14 11l0 6" },
+      { path: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" },
+      { path: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" },
+    ];
+  };
+
+  /**
+   * 掴むSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static gripVerticalPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M9 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M9 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M9 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M15 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M15 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+      { path: "M15 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
+    ];
+  };
 }
 
 
@@ -604,17 +639,10 @@ function ControlMenu() {
         _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
-      const svgIconTreeOpen = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-open", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeOpen());
-      const svgIconTreeClose = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(
-        "tree-close",
-        _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeClose()
-      );
       const btnTreeOpen = this.#createTreeOpenButton();
       const btnTreeClose = this.#createTreeCloseButton();
 
       container.id = "container";
-      container.appendChild(svgIconTreeOpen);
-      container.appendChild(svgIconTreeClose);
       container.appendChild(btnTreeOpen);
       container.appendChild(btnTreeClose);
 
@@ -631,11 +659,15 @@ function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
      */
     #createTreeOpenButton() {
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-open");
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-open", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeOpen());
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-open", icon);
+
       btn.id = "tree-open";
+
       btn.addEventListener("click", () => {
         this.treeOpenClickHandler();
       });
+
       return btn;
     }
 
@@ -657,11 +689,15 @@ function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-close"ボタン
      */
     #createTreeCloseButton() {
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-close");
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-close", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeClose());
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-close", icon);
+
       btn.id = "tree-close";
+
       btn.addEventListener("click", () => {
         this.treeCloseClickHandler();
       });
+
       return btn;
     }
 
@@ -942,18 +978,13 @@ function TreeView() {
      * @return {void}
      */
     #attachAddTaskButtonToMenu() {
-      const iconName = "file-plus";
-
-      // SVGアイコンを作成する
-      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(iconName, _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.filePlustPaths());
-
       // タスク追加ボタンを作成する
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(iconName);
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("file-plus", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.filePlustPaths());
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("file-plus", icon);
       btn.appendChild(document.createTextNode("新しいタスク"));
       btn.id = "btn-add-task";
 
       // メニューにボタンを追加する
-      contextMenuContainer.appendChild(icon);
       contextMenu.appendChild(btn);
 
       /**
@@ -1094,18 +1125,13 @@ function TreeView() {
      * @return {void}
      */
     #attachAddGroupButtonToMenu() {
-      const iconName = "folder-plus";
-
-      // SVGアイコンを作成する
-      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(iconName, _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.folderPlusPaths());
-
       // グループ追加ボタンを作成する
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(iconName);
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("folder-plus", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.folderPlusPaths());
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("folder-plus", icon);
       btn.appendChild(document.createTextNode("新しいグループ"));
       btn.id = "btn-add-group";
 
       // メニューにボタンを追加する
-      contextMenuContainer.appendChild(icon);
       contextMenu.appendChild(btn);
 
       /**
@@ -1143,18 +1169,17 @@ function TreeView() {
      * @return {void}
      */
     #attachChangeGroupNameButtonToMenu() {
-      const iconName = "tabler-writing";
-
-      // SVGアイコンを作成する
-      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(iconName, _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.tablerWritingPaths());
-
       // グループ名変更ボタンを作成する
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(iconName);
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(
+        "tabler-writing",
+        _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.tablerWritingPaths()
+      );
+
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tabler-writing", icon);
       btn.appendChild(document.createTextNode("グループ名を変更"));
       btn.id = "btn-change-group-name";
 
       // メニューにボタンを追加する
-      contextMenuContainer.appendChild(icon);
       contextMenu.appendChild(btn);
 
       /**
@@ -1344,7 +1369,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}#root{position:relative;width:100%;height:100%;padding-bottom:3rem;line-height:1.5rem;font-size:1.1rem;text-decoration-skip-ink:none}#root summary:hover,#root div:hover{color:#0078d4;text-decoration:underline}#root details{cursor:pointer;width:100%}#root details summary{list-style:none;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;padding-left:1.15em}#root details summary::-webkit-details-marker{display:none}#root details summary::before{content:"";position:absolute;top:.35rem;left:0;width:8px;height:8px;border-top:solid 2px #000;border-right:solid 2px #000;transform:rotate(45deg);transition:transform .2s}#root details[open]>summary::before{transform:rotate(135deg);top:.22rem;left:.18rem}#root details details,#root details div{margin-left:1rem}#root div{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;position:relative;padding-left:1.15em}#root div::before{content:"";position:absolute;top:.16rem;left:0;width:1.1rem;height:1.1rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}#root div.selected{color:#0078d4;font-weight:bold;text-decoration:underline}#root div.over-deadline{color:red}#root div.task-finished{color:#8f8f8f;text-decoration:line-through}#context-menu-container{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0)}#context-menu-container #context-menu{position:absolute;z-index:100000;font-size:1rem;border:1px solid #8f8f8f;border-radius:.25rem;background-color:#fffff8;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1);width:fit-content;padding:.2rem}#context-menu-container #context-menu button{display:block;line-height:1.5rem;padding:.1rem .5rem;padding-right:1rem;width:100%}#context-menu-container #context-menu button .icon{width:1.5rem;height:1.5rem;margin-right:.5rem}#context-menu-container #context-menu button:hover{background-color:#0078d4;border-radius:.25rem;color:#fffffb}#context-menu-container #context-menu hr{margin:.25rem 0;height:1px;background-color:#afafaf;border:none}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}#root{position:relative;width:100%;height:100%;padding-bottom:3rem;line-height:1.5rem;font-size:1.1rem;text-decoration-skip-ink:none}#root summary:hover,#root div:hover{color:#0078d4;text-decoration:underline}#root details{cursor:pointer;width:100%}#root details summary{list-style:none;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;padding-left:1.15em}#root details summary::-webkit-details-marker{display:none}#root details summary::before{content:"";position:absolute;top:.35rem;left:0;width:8px;height:8px;border-top:solid 2px #000;border-right:solid 2px #000;transform:rotate(45deg);transition:transform .2s}#root details[open]>summary::before{transform:rotate(135deg);top:.22rem;left:.18rem}#root details details,#root details div{margin-left:1rem}#root div{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;position:relative;padding-left:1.15em}#root div::before{content:"";position:absolute;top:.16rem;left:0;width:1.1rem;height:1.1rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}#root div.selected{color:#0078d4;font-weight:bold;text-decoration:underline}#root div.over-deadline{color:red}#root div.task-finished{color:#8f8f8f;text-decoration:line-through}#context-menu-container{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0)}#context-menu-container #context-menu{position:absolute;z-index:100000;font-size:1rem;border:1px solid #8f8f8f;border-radius:.25rem;background-color:#fffff8;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1);width:fit-content;padding:.2rem}#context-menu-container #context-menu button{display:block;line-height:1.5rem;padding:.1rem .5rem;padding-right:1rem;width:100%}#context-menu-container #context-menu button .icon{display:inline-block;width:1.5rem;height:1.5rem;margin-right:.5rem}#context-menu-container #context-menu button:hover{background-color:#0078d4;border-radius:.25rem;color:#fffffb}#context-menu-container #context-menu hr{margin:.25rem 0;height:1px;background-color:#afafaf;border:none}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1979,9 +2004,8 @@ function PartsInput() {
       const container = this.shadowRoot.getElementById("container");
       const tooltip = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("div", "tooltip");
       const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("copy", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.copyPaths());
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("copy");
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("copy", icon);
 
-      tooltip.appendChild(icon);
       tooltip.appendChild(btn);
       tooltip.appendChild(document.createTextNode("copy"));
 
@@ -2919,12 +2943,10 @@ function HistoryItem() {
         _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_history_item_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
-      const svgIcon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("plus", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.plusPaths());
       const addButton = this.#createAddPartsHistoryItemButton();
 
-      container.appendChild(svgIcon);
-      container.appendChild(addButton);
       container.id = "container";
+      container.appendChild(addButton);
 
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(container);
@@ -2973,24 +2995,13 @@ function HistoryItem() {
     }
 
     /**
-     * プラス記号のSVGアイコンを作成する
-     * @returns {SVGElement} プラスアイコンを含む生成されたSVG要素
-     */
-    #createSvgIconPlus() {
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("plus", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M12 5l0 14" },
-        { path: "M5 12l14 0" },
-      ]);
-    }
-
-    /**
      * 履歴アイテム追加用のボタンを作成する
      *
      * @returns {HTMLButtonElement} 生成された履歴アイテム追加用のボタン
      */
     #createAddPartsHistoryItemButton() {
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("plus");
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("plus", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.plusPaths());
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("plus", icon);
       btn.id = "add-parts-history-item";
       btn.classList.add("float-button");
 
@@ -3132,10 +3143,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PartsHistoryItem: () => (/* binding */ PartsHistoryItem)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_parts_history_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(25);
+/* harmony import */ var _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _style_css_parts_history_item_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(25);
 /**
  * 共通関数
  */
+
 
 
 /**
@@ -3166,15 +3179,13 @@ function PartsHistoryItem() {
 
       this.attachShadow({ mode: "open" });
       this.shadowRoot.adoptedStyleSheets =
-        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_parts_history_item_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
+        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_parts_history_item_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
       const text = this.#createTextarea();
       const footerRightBox = this.#createFooterRightBox();
       const dateInput = this.#createDateTime();
-      const svgIconGripVertical = this.#createSvgIconGripVertical();
       const moveBtn = this.#createMoveItemButton();
-      const svgIconTrash = this.#createSvgIconTrash();
       const trashBtn = this.#createTrashButton();
 
       footerRightBox.appendChild(dateInput);
@@ -3182,9 +3193,7 @@ function PartsHistoryItem() {
       container.id = "container";
       container.appendChild(text);
       container.appendChild(footerRightBox);
-      container.appendChild(svgIconGripVertical);
       container.appendChild(moveBtn);
-      container.appendChild(svgIconTrash);
       container.appendChild(trashBtn);
 
       this.shadowRoot.innerHTML = "";
@@ -3325,29 +3334,18 @@ function PartsHistoryItem() {
     //--------------------------------------------
 
     /**
-     * gripのSVGアイコンを作成する
-     * @returns {SVGElement} gripを含む生成されたSVG要素
-     */
-    #createSvgIconGripVertical() {
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("grip-vertical", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M9 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M9 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M9 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M15 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M15 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M15 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-      ]);
-    }
-
-    /**
      * 履歴移動用のボタンを作成する
      *
      * @returns {HTMLButtonElement} 生成された履歴移動用のボタン
      */
     #createMoveItemButton() {
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("grip-vertical");
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(
+        "grip-vertical",
+        _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.gripVerticalPaths()
+      );
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("grip-vertical", icon);
       btn.id = "move-item";
+
       return btn;
     }
 
@@ -3356,29 +3354,13 @@ function PartsHistoryItem() {
     //--------------------------------------------
 
     /**
-     * SVGアイコン追加
-     * @private
-     * @returns {void}
-     * @memberof TaskHistory
-     */
-    #createSvgIconTrash() {
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("trash", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M4 7l16 0" },
-        { path: "M10 11l0 6" },
-        { path: "M14 11l0 6" },
-        { path: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" },
-        { path: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" },
-      ]);
-    }
-
-    /**
      * 履歴削除用のボタンを作成する
      *
      * @returns {HTMLButtonElement} 生成された履歴削除用のボタン
      */
     #createTrashButton() {
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("trash");
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("trash", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.trashPaths());
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("trash", icon);
       btn.id = "trash-item";
 
       btn.addEventListener("click", (e) => {
@@ -3643,11 +3625,10 @@ const addGridArea = () => {
  * フォルダを開くボタンをコンテナ要素に追加する関数
  */
 const addFolderOpenButton = () => {
-  // フォルダを開くSVGアイコンを作成する
-  const svgFolderIcon = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("folder", _js_common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.folderPaths());
-
   // フォルダを開くボタンを作成する
-  const folderOpenButton = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("folder");
+  const icon = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("folder", _js_common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.folderPaths());
+  const folderOpenButton = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("folder", icon);
+
   folderOpenButton.id = "folder-open-button";
   folderOpenButton.classList.add("float-button");
 
@@ -3669,7 +3650,6 @@ const addFolderOpenButton = () => {
   });
 
   // アイコンとボタンをコンテナ要素に追加する
-  container.appendChild(svgFolderIcon);
   container.appendChild(folderOpenButton);
 };
 

@@ -2,6 +2,7 @@
  * 共通関数
  */
 import { Utils } from "../common/utils";
+import { SvgIcon } from "../common/svgIcon";
 
 /**
  * PartsHistoryItemコンポーネント用のCSS
@@ -37,9 +38,7 @@ export function PartsHistoryItem() {
       const text = this.#createTextarea();
       const footerRightBox = this.#createFooterRightBox();
       const dateInput = this.#createDateTime();
-      const svgIconGripVertical = this.#createSvgIconGripVertical();
       const moveBtn = this.#createMoveItemButton();
-      const svgIconTrash = this.#createSvgIconTrash();
       const trashBtn = this.#createTrashButton();
 
       footerRightBox.appendChild(dateInput);
@@ -47,9 +46,7 @@ export function PartsHistoryItem() {
       container.id = "container";
       container.appendChild(text);
       container.appendChild(footerRightBox);
-      container.appendChild(svgIconGripVertical);
       container.appendChild(moveBtn);
-      container.appendChild(svgIconTrash);
       container.appendChild(trashBtn);
 
       this.shadowRoot.innerHTML = "";
@@ -190,29 +187,18 @@ export function PartsHistoryItem() {
     //--------------------------------------------
 
     /**
-     * gripのSVGアイコンを作成する
-     * @returns {SVGElement} gripを含む生成されたSVG要素
-     */
-    #createSvgIconGripVertical() {
-      return Utils.createSvg("grip-vertical", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M9 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M9 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M9 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M15 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M15 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-        { path: "M15 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" },
-      ]);
-    }
-
-    /**
      * 履歴移動用のボタンを作成する
      *
      * @returns {HTMLButtonElement} 生成された履歴移動用のボタン
      */
     #createMoveItemButton() {
-      const btn = Utils.createSvgButton("grip-vertical");
+      const icon = Utils.createSvg(
+        "grip-vertical",
+        SvgIcon.gripVerticalPaths()
+      );
+      const btn = Utils.createSvgButton("grip-vertical", icon);
       btn.id = "move-item";
+
       return btn;
     }
 
@@ -221,29 +207,13 @@ export function PartsHistoryItem() {
     //--------------------------------------------
 
     /**
-     * SVGアイコン追加
-     * @private
-     * @returns {void}
-     * @memberof TaskHistory
-     */
-    #createSvgIconTrash() {
-      return Utils.createSvg("trash", [
-        { path: "M0 0h24v24H0z" },
-        { path: "M4 7l16 0" },
-        { path: "M10 11l0 6" },
-        { path: "M14 11l0 6" },
-        { path: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" },
-        { path: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" },
-      ]);
-    }
-
-    /**
      * 履歴削除用のボタンを作成する
      *
      * @returns {HTMLButtonElement} 生成された履歴削除用のボタン
      */
     #createTrashButton() {
-      const btn = Utils.createSvgButton("trash");
+      const icon = Utils.createSvg("trash", SvgIcon.trashPaths());
+      const btn = Utils.createSvgButton("trash", icon);
       btn.id = "trash-item";
 
       btn.addEventListener("click", (e) => {

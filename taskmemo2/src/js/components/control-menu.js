@@ -30,17 +30,10 @@ export function ControlMenu() {
         Utils.createStyleSheetWithFilename(style);
 
       const container = document.createElement("div");
-      const svgIconTreeOpen = Utils.createSvg("tree-open", SvgIcon.treeOpen());
-      const svgIconTreeClose = Utils.createSvg(
-        "tree-close",
-        SvgIcon.treeClose()
-      );
       const btnTreeOpen = this.#createTreeOpenButton();
       const btnTreeClose = this.#createTreeCloseButton();
 
       container.id = "container";
-      container.appendChild(svgIconTreeOpen);
-      container.appendChild(svgIconTreeClose);
       container.appendChild(btnTreeOpen);
       container.appendChild(btnTreeClose);
 
@@ -57,11 +50,15 @@ export function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
      */
     #createTreeOpenButton() {
-      const btn = Utils.createSvgButton("tree-open");
+      const icon = Utils.createSvg("tree-open", SvgIcon.treeOpen());
+      const btn = Utils.createSvgButton("tree-open", icon);
+
       btn.id = "tree-open";
+
       btn.addEventListener("click", () => {
         this.treeOpenClickHandler();
       });
+
       return btn;
     }
 
@@ -83,11 +80,15 @@ export function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-close"ボタン
      */
     #createTreeCloseButton() {
-      const btn = Utils.createSvgButton("tree-close");
+      const icon = Utils.createSvg("tree-close", SvgIcon.treeClose());
+      const btn = Utils.createSvgButton("tree-close", icon);
+
       btn.id = "tree-close";
+
       btn.addEventListener("click", () => {
         this.treeCloseClickHandler();
       });
+
       return btn;
     }
 

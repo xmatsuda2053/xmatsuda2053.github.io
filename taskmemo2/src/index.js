@@ -112,11 +112,10 @@ const addGridArea = () => {
  * フォルダを開くボタンをコンテナ要素に追加する関数
  */
 const addFolderOpenButton = () => {
-  // フォルダを開くSVGアイコンを作成する
-  const svgFolderIcon = Utils.createSvg("folder", SvgIcon.folderPaths());
-
   // フォルダを開くボタンを作成する
-  const folderOpenButton = Utils.createSvgButton("folder");
+  const icon = Utils.createSvg("folder", SvgIcon.folderPaths());
+  const folderOpenButton = Utils.createSvgButton("folder", icon);
+
   folderOpenButton.id = "folder-open-button";
   folderOpenButton.classList.add("float-button");
 
@@ -138,7 +137,6 @@ const addFolderOpenButton = () => {
   });
 
   // アイコンとボタンをコンテナ要素に追加する
-  container.appendChild(svgFolderIcon);
   container.appendChild(folderOpenButton);
 };
 

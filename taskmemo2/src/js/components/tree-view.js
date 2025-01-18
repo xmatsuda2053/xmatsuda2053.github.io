@@ -128,18 +128,13 @@ export function TreeView() {
      * @return {void}
      */
     #attachAddTaskButtonToMenu() {
-      const iconName = "file-plus";
-
-      // SVGアイコンを作成する
-      const icon = Utils.createSvg(iconName, SvgIcon.filePlustPaths());
-
       // タスク追加ボタンを作成する
-      const btn = Utils.createSvgButton(iconName);
+      const icon = Utils.createSvg("file-plus", SvgIcon.filePlustPaths());
+      const btn = Utils.createSvgButton("file-plus", icon);
       btn.appendChild(document.createTextNode("新しいタスク"));
       btn.id = "btn-add-task";
 
       // メニューにボタンを追加する
-      contextMenuContainer.appendChild(icon);
       contextMenu.appendChild(btn);
 
       /**
@@ -280,18 +275,13 @@ export function TreeView() {
      * @return {void}
      */
     #attachAddGroupButtonToMenu() {
-      const iconName = "folder-plus";
-
-      // SVGアイコンを作成する
-      const icon = Utils.createSvg(iconName, SvgIcon.folderPlusPaths());
-
       // グループ追加ボタンを作成する
-      const btn = Utils.createSvgButton(iconName);
+      const icon = Utils.createSvg("folder-plus", SvgIcon.folderPlusPaths());
+      const btn = Utils.createSvgButton("folder-plus", icon);
       btn.appendChild(document.createTextNode("新しいグループ"));
       btn.id = "btn-add-group";
 
       // メニューにボタンを追加する
-      contextMenuContainer.appendChild(icon);
       contextMenu.appendChild(btn);
 
       /**
@@ -329,18 +319,17 @@ export function TreeView() {
      * @return {void}
      */
     #attachChangeGroupNameButtonToMenu() {
-      const iconName = "tabler-writing";
-
-      // SVGアイコンを作成する
-      const icon = Utils.createSvg(iconName, SvgIcon.tablerWritingPaths());
-
       // グループ名変更ボタンを作成する
-      const btn = Utils.createSvgButton(iconName);
+      const icon = Utils.createSvg(
+        "tabler-writing",
+        SvgIcon.tablerWritingPaths()
+      );
+
+      const btn = Utils.createSvgButton("tabler-writing", icon);
       btn.appendChild(document.createTextNode("グループ名を変更"));
       btn.id = "btn-change-group-name";
 
       // メニューにボタンを追加する
-      contextMenuContainer.appendChild(icon);
       contextMenu.appendChild(btn);
 
       /**

@@ -94,9 +94,10 @@ export class Utils {
   /**
    * SVGアイコンを含むボタンを生成する
    * @param {string} iconName アイコンの名前
+   * @param {HTMLElement} icon SVGアイコン
    * @returns {HTMLButtonElement} SVGアイコンを含むボタン要素
    */
-  static createSvgButton = (iconName) => {
+  static createSvgButton = (iconName, icon) => {
     const svgNS = "http://www.w3.org/2000/svg";
     const xlinkNS = "http://www.w3.org/1999/xlink";
 
@@ -112,6 +113,7 @@ export class Utils {
     // ボタン要素を作成し、SVG要素を追加する
     const button = document.createElement("button");
     button.appendChild(svg);
+    button.appendChild(icon);
 
     return button;
   };
