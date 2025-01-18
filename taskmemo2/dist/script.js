@@ -405,6 +405,19 @@ class SvgIcon {
       { path: "M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3" },
     ];
   };
+
+  /**
+   * プラスSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static plusPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 5l0 14" },
+      { path: "M5 12l14 0" },
+    ];
+  };
 }
 
 
@@ -2768,10 +2781,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   HistoryItem: () => (/* binding */ HistoryItem)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_css_history_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
+/* harmony import */ var _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _style_css_history_item_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23);
 /**
  * 共通関数
  */
+
 
 
 /**
@@ -2802,10 +2817,10 @@ function HistoryItem() {
 
       this.attachShadow({ mode: "open" });
       this.shadowRoot.adoptedStyleSheets =
-        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_history_item_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
+        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_history_item_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
-      const svgIcon = this.#createSvgIconPlus();
+      const svgIcon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("plus", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.plusPaths());
       const addButton = this.#createAddPartsHistoryItemButton();
 
       container.appendChild(svgIcon);

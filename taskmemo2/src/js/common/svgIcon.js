@@ -70,4 +70,17 @@ export class SvgIcon {
       { path: "M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3" },
     ];
   };
+
+  /**
+   * プラスSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static plusPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 5l0 14" },
+      { path: "M5 12l14 0" },
+    ];
+  };
 }

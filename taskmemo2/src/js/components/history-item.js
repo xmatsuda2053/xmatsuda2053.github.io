@@ -2,6 +2,7 @@
  * 共通関数
  */
 import { Utils } from "../common/utils";
+import { SvgIcon } from "../common/svgIcon";
 
 /**
  * HistoryItemコンポーネント用のCSS
@@ -34,7 +35,7 @@ export function HistoryItem() {
         Utils.createStyleSheetWithFilename(style);
 
       const container = document.createElement("div");
-      const svgIcon = this.#createSvgIconPlus();
+      const svgIcon = Utils.createSvg("plus", SvgIcon.plusPaths());
       const addButton = this.#createAddPartsHistoryItemButton();
 
       container.appendChild(svgIcon);
