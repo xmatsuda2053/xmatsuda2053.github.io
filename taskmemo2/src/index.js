@@ -149,11 +149,27 @@ const addFolderOpenButton = () => {
  */
 const addControl = () => {
   const control = Utils.createElm("control-menu", "control-menu-root");
+  control.setAddNewTaksClickEventHandler(addNewTaskClickEventHandler);
+  control.setAddNewGroupClickEventHandler(addNewGroupClickEventHandler);
   control.setTreeOpenClickEventHandler(treeOpenOpenClickEventHandler);
   control.setTreeCloseClickEventHandler(treeCloseClickEventHandler);
 
   gridControl.innerHTML = "";
   gridControl.appendChild(control);
+};
+
+/**
+ * タスクを追加するクリックイベントハンドラ
+ */
+const addNewTaskClickEventHandler = () => {
+  document.getElementById("tree-view-root").addNewTask();
+};
+
+/**
+ * グループを追加するクリックイベントハンドラ
+ */
+const addNewGroupClickEventHandler = () => {
+  document.getElementById("tree-view-root").addNewGroup();
 };
 
 /**

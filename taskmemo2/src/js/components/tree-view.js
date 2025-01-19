@@ -149,29 +149,34 @@ export function TreeView() {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-
-        const name = prompt("タスク名設定", "新規タスク");
-
-        if (name) {
-          // IDを採番し、新規にタスクを作成する
-          const id = Utils.getUniqueId();
-          const task = this.#createTask({ name, id });
-
-          // 作成したタスクをTreeViewに追加する
-          this.editTarget.appendChild(task);
-
-          // 対象のタスクを選択状態にする
-          this.#setSelected(task);
-
-          // タスク追加時のイベントを起動する
-          this.addTaskEventHandler({ id, name, task });
-
-          // タスクを追加したことを外部に通知する
-          this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
-        }
-
+        this.#addNewTask();
         this.#closeMenu();
       });
+    }
+
+    /**
+     * 新規タスクを追加する
+     */
+    #addNewTask() {
+      const name = prompt("タスク名設定", "新規タスク");
+
+      if (name) {
+        // IDを採番し、新規にタスクを作成する
+        const id = Utils.getUniqueId();
+        const task = this.#createTask({ name, id });
+
+        // 作成したタスクをTreeViewに追加する
+        this.editTarget.appendChild(task);
+
+        // 対象のタスクを選択状態にする
+        this.#setSelected(task);
+
+        // タスク追加時のイベントを起動する
+        this.addTaskEventHandler({ id, name, task });
+
+        // タスクを追加したことを外部に通知する
+        this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
+      }
     }
 
     /**
@@ -299,23 +304,28 @@ export function TreeView() {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-
-        const name = prompt("グループ名設定", "新規グループ");
-
-        if (name) {
-          // IDを採番し、新規にグループを作成する
-          const id = Utils.getUniqueId();
-          const group = this.#createGroup({ name, id });
-
-          // 作成したグループをTreeViewに追加する
-          this.editTarget.appendChild(group);
-
-          // グループを追加したことを外部に通知する
-          this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
-        }
-
+        this.#addNewGroup();
         this.#closeMenu();
       });
+    }
+
+    /**
+     * 新規グループを追加する
+     */
+    #addNewGroup() {
+      const name = prompt("グループ名設定", "新規グループ");
+
+      if (name) {
+        // IDを採番し、新規にグループを作成する
+        const id = Utils.getUniqueId();
+        const group = this.#createGroup({ name, id });
+
+        // 作成したグループをTreeViewに追加する
+        this.editTarget.appendChild(group);
+
+        // グループを追加したことを外部に通知する
+        this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
+      }
     }
 
     /**
@@ -560,6 +570,22 @@ export function TreeView() {
     //--------------------------------------------------
     //- TreeViewを操作
     //--------------------------------------------------
+
+    /**
+     * 新規タスクを追加する（コンポーネント外からの操作用）
+     */
+    addNewTask() {
+      this.editTarget = treeViewRoot;
+      this.#addNewTask();
+    }
+
+    /**
+     * 新規グループを追加する（コンポーネント外からの操作用）
+     */
+    addNewGroup() {
+      this.editTarget = treeViewRoot;
+      this.#addNewGroup();
+    }
 
     /**
      * ツリービュー内のすべてのグループを開く

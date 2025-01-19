@@ -225,4 +225,41 @@ export class SvgIcon {
       },
     ];
   };
+
+  /**
+   * クリップボード追加のパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static clipbordPlusPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2",
+      },
+      {
+        path: "M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z",
+      },
+      {
+        path: "M10 14h4",
+      },
+      {
+        path: "M12 12v4",
+      },
+    ];
+  };
+
+  /**
+   * カテゴリー追加のパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static categoryPlusPaths = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M4 4h6v6h-6zm10 0h6v6h-6zm-10 10h6v6h-6zm10 3h6m-3 -3v6",
+      },
+    ];
+  };
 }
