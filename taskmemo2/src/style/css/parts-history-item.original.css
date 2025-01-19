@@ -423,8 +423,8 @@ svg.icon use {
 }
 #container #datetime {
   position: absolute;
-  bottom: 0.25rem;
-  right: 2rem;
+  bottom: 0.1rem;
+  right: 3.5rem;
   font-size: 0.9rem;
   line-height: 1.2rem;
 }
@@ -450,7 +450,7 @@ svg.icon use {
 #container #trash-item {
   position: absolute;
   bottom: 0.25rem;
-  left: 0.35rem;
+  right: 1.75rem;
   color: #afafaf;
 }
 #container #trash-item .icon {
@@ -462,7 +462,7 @@ svg.icon use {
 }
 #container #flag-item {
   position: absolute;
-  left: 5rem;
+  left: 0.35rem;
   bottom: 0.25rem;
   color: #afafaf;
 }
@@ -478,7 +478,7 @@ svg.icon use {
 }
 #container #star-item {
   position: absolute;
-  left: 6.5rem;
+  left: 1.85rem;
   bottom: 0.25rem;
   color: #afafaf;
 }
@@ -494,7 +494,7 @@ svg.icon use {
 }
 #container #flame-item {
   position: absolute;
-  left: 8rem;
+  left: 3.35rem;
   bottom: 0.25rem;
   color: #afafaf;
 }
@@ -510,7 +510,7 @@ svg.icon use {
 }
 #container #pin-item {
   position: absolute;
-  left: 9.5rem;
+  left: 4.85rem;
   bottom: 0.25rem;
   color: #afafaf;
 }

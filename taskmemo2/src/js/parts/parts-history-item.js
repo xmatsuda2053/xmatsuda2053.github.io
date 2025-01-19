@@ -257,6 +257,22 @@ export function PartsHistoryItem() {
     }
 
     /**
+     * 指定されたIDのリストからいずれかがマークされているかを確認する
+     *
+     * @param {Array<string>} markIdList - チェックする要素のIDのリスト。
+     * @returns {boolean} - いずれかの要素がマークされている場合は true、そうでない場合は false。
+     */
+    isMarked(markIdList) {
+      for (const id of markIdList) {
+        const btn = this.shadowRoot.getElementById(id);
+        if (btn && btn.dataset.mark === "true") {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    /**
      * マークされたアイテムの配列を取得する
      *
      * @returns {Array<Object>} マークされたアイテムの配列

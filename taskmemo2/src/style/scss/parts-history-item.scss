@@ -32,8 +32,8 @@
 
   #datetime {
     position: absolute;
-    bottom: 0.25rem;
-    right: 2rem;
+    bottom: 0.1rem;
+    right: 3.5rem;
     font-size: 0.9rem;
     line-height: 1.2rem;
   }
@@ -57,14 +57,14 @@
 
     &:hover {
       color: color.$form-item-icon-color-active;
-      background-color: #fff6b3;
+      background-color: color.$history-item-move-button-bg-color;
     }
   }
 
   #trash-item {
     position: absolute;
     bottom: 0.25rem;
-    left: 0.35rem;
+    right: 1.75rem;
     color: color.$form-item-icon-color-deactive;
 
     .icon {
@@ -97,18 +97,18 @@
   }
 
   #flag-item {
-    @include mark-style(5rem, color.$history-item-icon-color-flag);
+    @include mark-style(0.35rem, color.$history-item-icon-color-flag);
   }
 
   #star-item {
-    @include mark-style(6.5rem, color.$history-item-icon-color-star);
+    @include mark-style(1.85rem, color.$history-item-icon-color-star);
   }
 
   #flame-item {
-    @include mark-style(8rem, color.$history-item-icon-color-flame);
+    @include mark-style(3.35rem, color.$history-item-icon-color-flame);
   }
 
   #pin-item {
-    @include mark-style(9.5rem, color.$history-item-icon-color-pin);
+    @include mark-style(4.85rem, color.$history-item-icon-color-pin);
   }
 }

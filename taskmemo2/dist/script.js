@@ -753,7 +753,7 @@ function ControlMenu() {
     }
 
     /**
-     * 新しいボタンを作成します。
+     * 新しいボタンを作成する
      *
      * @param {string} iconName - アイコンの名前。
      * @param {Array} paths - アイコンのパスの配列。
@@ -3262,9 +3262,11 @@ function HistoryItem() {
         _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_history_item_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
+      const menu = this.#createMenuList();
       const addButton = this.#createAddPartsHistoryItemButton();
 
       container.id = "container";
+      container.appendChild(menu);
       container.appendChild(addButton);
 
       this.shadowRoot.innerHTML = "";
@@ -3316,6 +3318,76 @@ function HistoryItem() {
     }
 
     /**
+     * メニューリストを作成する
+     *
+     * @returns {HTMLElement} - メニューコンテナ要素。
+     */
+    #createMenuList() {
+      const div = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("div", "menu-container");
+
+      const marks = [
+        { name: "flag", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.flagFillPaths() },
+        { name: "star", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.starFillPaths() },
+        { name: "flame", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.flameFillPaths() },
+        { name: "pin", path: _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.pinFillPaths() },
+      ];
+
+      marks.forEach((mark) => {
+        div.appendChild(this.#createMarkButton(mark));
+      });
+
+      return div;
+    }
+
+    /**
+     * アイコン付きのボタンを作成する
+     *
+     * @param {Object} mark - アイコンとボタンの設定オブジェクト
+     * @param {string} mark.name - アイコンとボタンの名前
+     * @param {string} mark.path - アイコンのパス
+     * @returns {HTMLElement} 作成されたボタン要素
+     * @private
+     */
+    #createMarkButton(mark) {
+      const { name, path } = mark;
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(name, path);
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(name, icon);
+      btn.id = `${name}-item`;
+      btn.classList.add("mark-button");
+      btn.dataset.mark = "false";
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // 現在のデータ属性 "mark" を取得し、true/false を切り替える
+        const mark = btn.dataset.mark === "true";
+        btn.dataset.mark = !mark;
+
+        // マーク済みのIDを取得する
+        const menuContainer = this.shadowRoot.getElementById("menu-container");
+        const marks = menuContainer.getElementsByClassName("mark-button");
+        const markIdList = [];
+        for (let mark of marks) {
+          if (mark.dataset.mark === "true") {
+            markIdList.push(mark.id);
+          }
+        }
+
+        // マーク済みのアイテムのみ表示
+        const container = this.shadowRoot.getElementById("container");
+        const parts = container.getElementsByClassName("parts");
+        for (let part of parts) {
+          const item = part.getElementsByClassName("history-item")[0];
+          part.style.display = "block";
+          if (markIdList.length !== 0 && !item.isMarked(markIdList)) {
+            part.style.display = "none";
+          }
+        }
+      });
+
+      return btn;
+    }
+
+    /**
      * 履歴アイテム追加用のボタンを作成する
      *
      * @returns {HTMLButtonElement} 生成された履歴アイテム追加用のボタン
@@ -3346,6 +3418,7 @@ function HistoryItem() {
       const container = this.shadowRoot.getElementById("container");
       const piece = document.createElement("parts-history-item");
       piece.id = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getUniqueId();
+      piece.classList.add("history-item");
 
       const wrapPiece = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.wrapElementInItemDiv(piece);
       wrapPiece.classList.add("parts");
@@ -3450,7 +3523,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}.float-button{position:absolute;right:1rem;bottom:1rem;z-index:1000;padding:.5rem;border-radius:50%;color:#fffffb;background-color:#0a3981;border:1px solid #0a3981;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1)}.float-button:hover{color:#0a3981;background-color:#fffff8;border-color:#0a3981}.float-button .icon{font-size:2rem}.wrap-item{padding-bottom:.75rem}.wrap-item.dragging{opacity:.5}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}.float-button{position:absolute;right:1rem;bottom:1rem;z-index:1000;padding:.5rem;border-radius:50%;color:#fffffb;background-color:#0a3981;border:1px solid #0a3981;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1)}.float-button:hover{color:#0a3981;background-color:#fffff8;border-color:#0a3981}.float-button .icon{font-size:2rem}.wrap-item{padding-bottom:.75rem}.wrap-item.dragging{opacity:.5}#menu-container{background-color:#fffff8;border:1px solid #8f8f8f;border-radius:.25rem;padding:.35rem;margin-bottom:.75rem}#menu-container #flag-item{margin-right:.3rem;color:#afafaf}#menu-container #flag-item .icon{height:1.25rem;width:1.25rem}#menu-container #flag-item:hover{color:#16c47f}#menu-container #flag-item[data-mark=true]{color:#16c47f}#menu-container #star-item{margin-right:.3rem;color:#afafaf}#menu-container #star-item .icon{height:1.25rem;width:1.25rem}#menu-container #star-item:hover{color:#fcc737}#menu-container #star-item[data-mark=true]{color:#fcc737}#menu-container #flame-item{margin-right:.3rem;color:#afafaf}#menu-container #flame-item .icon{height:1.25rem;width:1.25rem}#menu-container #flame-item:hover{color:#ff4545}#menu-container #flame-item[data-mark=true]{color:#ff4545}#menu-container #pin-item{margin-right:.3rem;color:#afafaf}#menu-container #pin-item .icon{height:1.25rem;width:1.25rem}#menu-container #pin-item:hover{color:#006bff}#menu-container #pin-item[data-mark=true]{color:#006bff}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3725,6 +3798,22 @@ function PartsHistoryItem() {
     }
 
     /**
+     * 指定されたIDのリストからいずれかがマークされているかを確認する
+     *
+     * @param {Array<string>} markIdList - チェックする要素のIDのリスト。
+     * @returns {boolean} - いずれかの要素がマークされている場合は true、そうでない場合は false。
+     */
+    isMarked(markIdList) {
+      for (const id of markIdList) {
+        const btn = this.shadowRoot.getElementById(id);
+        if (btn && btn.dataset.mark === "true") {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    /**
      * マークされたアイテムの配列を取得する
      *
      * @returns {Array<Object>} マークされたアイテムの配列
@@ -3777,7 +3866,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}#container{position:relative;padding:.35rem;padding-right:2rem;padding-bottom:1.5rem;background-color:#fffff8;border:1px solid #8f8f8f;border-radius:.25rem}#container #textarea{outline:none;width:100%;background-color:#fffff8;border-radius:.25rem;line-height:15px;padding:5px;margin-bottom:.35rem;resize:none;overflow-y:hidden;word-break:break-all}#container #textarea:hover,#container #textarea:focus{background-color:#efefef}#container #datetime{position:absolute;bottom:.25rem;right:2rem;font-size:.9rem;line-height:1.2rem}#container #move-item{cursor:move;position:absolute;right:0;top:0;bottom:0;color:#afafaf;border-left:1px solid #8f8f8f;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}#container #move-item .icon{height:1.25rem;width:1.25rem}#container #move-item:hover{color:#3f3f3f;background-color:#fff6b3}#container #trash-item{position:absolute;bottom:.25rem;left:.35rem;color:#afafaf}#container #trash-item .icon{height:1.25rem;width:1.25rem}#container #trash-item:hover{color:red}#container #flag-item{position:absolute;left:5rem;bottom:.25rem;color:#afafaf}#container #flag-item .icon{height:1.25rem;width:1.25rem}#container #flag-item:hover{color:#16c47f}#container #flag-item[data-mark=true]{color:#16c47f}#container #star-item{position:absolute;left:6.5rem;bottom:.25rem;color:#afafaf}#container #star-item .icon{height:1.25rem;width:1.25rem}#container #star-item:hover{color:#fcc737}#container #star-item[data-mark=true]{color:#fcc737}#container #flame-item{position:absolute;left:8rem;bottom:.25rem;color:#afafaf}#container #flame-item .icon{height:1.25rem;width:1.25rem}#container #flame-item:hover{color:#ff4545}#container #flame-item[data-mark=true]{color:#ff4545}#container #pin-item{position:absolute;left:9.5rem;bottom:.25rem;color:#afafaf}#container #pin-item .icon{height:1.25rem;width:1.25rem}#container #pin-item:hover{color:#006bff}#container #pin-item[data-mark=true]{color:#006bff}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}#container{position:relative;padding:.35rem;padding-right:2rem;padding-bottom:1.5rem;background-color:#fffff8;border:1px solid #8f8f8f;border-radius:.25rem}#container #textarea{outline:none;width:100%;background-color:#fffff8;border-radius:.25rem;line-height:15px;padding:5px;margin-bottom:.35rem;resize:none;overflow-y:hidden;word-break:break-all}#container #textarea:hover,#container #textarea:focus{background-color:#efefef}#container #datetime{position:absolute;bottom:.1rem;right:3.5rem;font-size:.9rem;line-height:1.2rem}#container #move-item{cursor:move;position:absolute;right:0;top:0;bottom:0;color:#afafaf;border-left:1px solid #8f8f8f;border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}#container #move-item .icon{height:1.25rem;width:1.25rem}#container #move-item:hover{color:#3f3f3f;background-color:#fff6b3}#container #trash-item{position:absolute;bottom:.25rem;right:1.75rem;color:#afafaf}#container #trash-item .icon{height:1.25rem;width:1.25rem}#container #trash-item:hover{color:red}#container #flag-item{position:absolute;left:.35rem;bottom:.25rem;color:#afafaf}#container #flag-item .icon{height:1.25rem;width:1.25rem}#container #flag-item:hover{color:#16c47f}#container #flag-item[data-mark=true]{color:#16c47f}#container #star-item{position:absolute;left:1.85rem;bottom:.25rem;color:#afafaf}#container #star-item .icon{height:1.25rem;width:1.25rem}#container #star-item:hover{color:#fcc737}#container #star-item[data-mark=true]{color:#fcc737}#container #flame-item{position:absolute;left:3.35rem;bottom:.25rem;color:#afafaf}#container #flame-item .icon{height:1.25rem;width:1.25rem}#container #flame-item:hover{color:#ff4545}#container #flame-item[data-mark=true]{color:#ff4545}#container #pin-item{position:absolute;left:4.85rem;bottom:.25rem;color:#afafaf}#container #pin-item .icon{height:1.25rem;width:1.25rem}#container #pin-item:hover{color:#006bff}#container #pin-item[data-mark=true]{color:#006bff}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
