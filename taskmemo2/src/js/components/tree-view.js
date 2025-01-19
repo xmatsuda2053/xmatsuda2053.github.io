@@ -25,6 +25,11 @@ const contextMenuContainer = Utils.createElm("div", "context-menu-container");
 const contextMenu = Utils.createElm("div", "context-menu");
 
 /**
+ * ドラッグ操作中の要素
+ */
+let draggedElement;
+
+/**
  * TreeView コンポーネントを作成しカスタム要素として定義する
  */
 export function TreeView() {
@@ -162,7 +167,7 @@ export function TreeView() {
           this.addTaskEventHandler({ id, name, task });
 
           // タスクを追加したことを外部に通知する
-          this.dispatchEvent(Utils.getCustomEvent("addItem"));
+          this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
         }
 
         this.#closeMenu();
@@ -212,6 +217,9 @@ export function TreeView() {
       task.dataset.duedate = duedate || "";
       task.dataset.priority = priority || "";
       task.dataset.status = status || "";
+
+      // Drag&Drop
+      this.#addDragEventListeners(task);
 
       return task;
     }
@@ -303,11 +311,38 @@ export function TreeView() {
           this.editTarget.appendChild(group);
 
           // グループを追加したことを外部に通知する
-          this.dispatchEvent(Utils.getCustomEvent("addItem"));
+          this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
         }
 
         this.#closeMenu();
       });
+    }
+
+    /**
+     * グループ要素を作成する
+     * @param {Object} conf - グループの設定オブジェクト
+     * @param {string} conf.name - グループの名前
+     * @param {string} conf.id - グループのID
+     * @returns {HTMLElement} 作成されたグループ要素
+     * @private
+     */
+    #createGroup(conf) {
+      const { name, id } = conf;
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+
+      details.dataset.id = id;
+      details.dataset.name = name;
+      details.dataset.type = "group";
+
+      summary.innerText = name;
+
+      details.appendChild(summary);
+
+      // Drag&Drop
+      this.#addDragEventListeners(details);
+
+      return details;
     }
 
     //--------------------------------------------------
@@ -351,36 +386,12 @@ export function TreeView() {
             summary.innerText = inputText;
 
             // グループ名を変更したことを外部に通知する
-            this.dispatchEvent(Utils.getCustomEvent("addItem"));
+            this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
           }
         }
 
         this.#closeMenu();
       });
-    }
-
-    /**
-     * グループ要素を作成する
-     * @param {Object} conf - グループの設定オブジェクト
-     * @param {string} conf.name - グループの名前
-     * @param {string} conf.id - グループのID
-     * @returns {HTMLElement} 作成されたグループ要素
-     * @private
-     */
-    #createGroup(conf) {
-      const { name, id } = conf;
-      const details = document.createElement("details");
-      const summary = document.createElement("summary");
-
-      details.dataset.id = id;
-      details.dataset.name = name;
-      details.dataset.type = "group";
-
-      summary.innerText = name;
-
-      details.appendChild(summary);
-
-      return details;
     }
 
     //--------------------------------------------------
@@ -470,6 +481,80 @@ export function TreeView() {
       });
 
       return elements;
+    }
+
+    //--------------------------------------------------
+    //- Drag&Drop
+    //--------------------------------------------------
+
+    /**
+     * ドラッグイベントリスナーを追加
+     * @param {HTMLElement} element ドラッグイベントリスナーを追加する要素
+     */
+    #addDragEventListeners(element) {
+      element.setAttribute("draggable", true);
+      element.addEventListener("dragstart", this.#handleDragStart);
+      element.addEventListener("dragover", this.#handleDragOver);
+      element.addEventListener("dragend", this.#handleDragEnd);
+    }
+
+    /**
+     * ドラッグ操作開始
+     * @param {Event} e
+     */
+    #handleDragStart(e) {
+      draggedElement = e.target;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/html", e.target.innerHTML);
+      e.target.classList.add("dragging");
+    }
+
+    /**
+     * ドラッグ中
+     * @param {Event} e
+     */
+    #handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+
+      // ターゲット要素を設定
+      const target = e.target;
+      if (!target || target === draggedElement) {
+        return;
+      }
+
+      // ターゲット要素の親がdetailsの場合、detailsを開く
+      if (target.parentNode.tagName === "DETAILS") {
+        target.parentNode.open = true;
+      }
+
+      // draggedElement が target の中に含まれていないことを確認
+      if (draggedElement.contains(target)) {
+        return;
+      }
+
+      // ターゲット要素の位置とサイズを取得
+      const rect = target.getBoundingClientRect();
+
+      // マウス位置がターゲットのどの位置に来ているかを計算
+      const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
+
+      // 要素の挿入位置を決定
+      if (nowPosition > 0.5) {
+        target.parentNode.insertBefore(draggedElement, target.nextSibling);
+      } else {
+        target.parentNode.insertBefore(draggedElement, target);
+      }
+    }
+
+    /**
+     * ドラッグ終了
+     * @param {Event} e
+     */
+    #handleDragEnd(e) {
+      e.target.classList.remove("dragging");
+      draggedElement = null;
+      this.dispatchEvent(Utils.getCustomEvent("editTreeViewItem"));
     }
 
     //--------------------------------------------------

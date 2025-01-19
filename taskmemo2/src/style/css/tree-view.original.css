@@ -411,6 +411,40 @@ svg.icon use {
   color: #0078d4;
   text-decoration: underline;
 }
+#root div {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.15em;
+}
+#root div::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0.16rem;
+  left: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+#root div.selected {
+  color: #0078d4;
+  font-weight: bold;
+  text-decoration: underline;
+}
+#root div.over-deadline {
+  color: #ff0000;
+}
+#root div.task-finished {
+  color: #8f8f8f;
+  text-decoration: line-through;
+}
 #root details {
   cursor: pointer;
   width: 100%;
@@ -444,42 +478,14 @@ svg.icon use {
   top: 0.22rem;
   left: 0.18rem;
 }
-#root details details,
+#root details details {
+  padding-left: 1rem;
+}
 #root details div {
-  margin-left: 1rem;
+  padding-left: 2.25rem;
 }
-#root div {
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: pointer;
-  position: relative;
-  padding-left: 1.15em;
-}
-#root div::before {
-  content: "";
-  position: absolute;
-  top: 0.16rem;
-  left: 0;
-  width: 1.1rem;
-  height: 1.1rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-#root div.selected {
-  color: #0078d4;
-  font-weight: bold;
-  text-decoration: underline;
-}
-#root div.over-deadline {
-  color: #ff0000;
-}
-#root div.task-finished {
-  color: #8f8f8f;
-  text-decoration: line-through;
+#root details div::before {
+  left: 0.95rem;
 }
 
 #context-menu-container {
@@ -525,4 +531,8 @@ svg.icon use {
   height: 1px;
   background-color: #afafaf;
   border: none;
+}
+
+.dragging {
+  opacity: 0.5;
 }

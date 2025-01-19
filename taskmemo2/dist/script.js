@@ -935,6 +935,11 @@ const contextMenuContainer = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.cr
 const contextMenu = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("div", "context-menu");
 
 /**
+ * ドラッグ操作中の要素
+ */
+let draggedElement;
+
+/**
  * TreeView コンポーネントを作成しカスタム要素として定義する
  */
 function TreeView() {
@@ -1072,7 +1077,7 @@ function TreeView() {
           this.addTaskEventHandler({ id, name, task });
 
           // タスクを追加したことを外部に通知する
-          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
+          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("editTreeViewItem"));
         }
 
         this.#closeMenu();
@@ -1122,6 +1127,9 @@ function TreeView() {
       task.dataset.duedate = duedate || "";
       task.dataset.priority = priority || "";
       task.dataset.status = status || "";
+
+      // Drag&Drop
+      this.#addDragEventListeners(task);
 
       return task;
     }
@@ -1213,11 +1221,38 @@ function TreeView() {
           this.editTarget.appendChild(group);
 
           // グループを追加したことを外部に通知する
-          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
+          this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("editTreeViewItem"));
         }
 
         this.#closeMenu();
       });
+    }
+
+    /**
+     * グループ要素を作成する
+     * @param {Object} conf - グループの設定オブジェクト
+     * @param {string} conf.name - グループの名前
+     * @param {string} conf.id - グループのID
+     * @returns {HTMLElement} 作成されたグループ要素
+     * @private
+     */
+    #createGroup(conf) {
+      const { name, id } = conf;
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+
+      details.dataset.id = id;
+      details.dataset.name = name;
+      details.dataset.type = "group";
+
+      summary.innerText = name;
+
+      details.appendChild(summary);
+
+      // Drag&Drop
+      this.#addDragEventListeners(details);
+
+      return details;
     }
 
     //--------------------------------------------------
@@ -1261,36 +1296,12 @@ function TreeView() {
             summary.innerText = inputText;
 
             // グループ名を変更したことを外部に通知する
-            this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("addItem"));
+            this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("editTreeViewItem"));
           }
         }
 
         this.#closeMenu();
       });
-    }
-
-    /**
-     * グループ要素を作成する
-     * @param {Object} conf - グループの設定オブジェクト
-     * @param {string} conf.name - グループの名前
-     * @param {string} conf.id - グループのID
-     * @returns {HTMLElement} 作成されたグループ要素
-     * @private
-     */
-    #createGroup(conf) {
-      const { name, id } = conf;
-      const details = document.createElement("details");
-      const summary = document.createElement("summary");
-
-      details.dataset.id = id;
-      details.dataset.name = name;
-      details.dataset.type = "group";
-
-      summary.innerText = name;
-
-      details.appendChild(summary);
-
-      return details;
     }
 
     //--------------------------------------------------
@@ -1383,6 +1394,80 @@ function TreeView() {
     }
 
     //--------------------------------------------------
+    //- Drag&Drop
+    //--------------------------------------------------
+
+    /**
+     * ドラッグイベントリスナーを追加
+     * @param {HTMLElement} element ドラッグイベントリスナーを追加する要素
+     */
+    #addDragEventListeners(element) {
+      element.setAttribute("draggable", true);
+      element.addEventListener("dragstart", this.#handleDragStart);
+      element.addEventListener("dragover", this.#handleDragOver);
+      element.addEventListener("dragend", this.#handleDragEnd);
+    }
+
+    /**
+     * ドラッグ操作開始
+     * @param {Event} e
+     */
+    #handleDragStart(e) {
+      draggedElement = e.target;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/html", e.target.innerHTML);
+      e.target.classList.add("dragging");
+    }
+
+    /**
+     * ドラッグ中
+     * @param {Event} e
+     */
+    #handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+
+      // ターゲット要素を設定
+      const target = e.target;
+      if (!target || target === draggedElement) {
+        return;
+      }
+
+      // ターゲット要素の親がdetailsの場合、detailsを開く
+      if (target.parentNode.tagName === "DETAILS") {
+        target.parentNode.open = true;
+      }
+
+      // draggedElement が target の中に含まれていないことを確認
+      if (draggedElement.contains(target)) {
+        return;
+      }
+
+      // ターゲット要素の位置とサイズを取得
+      const rect = target.getBoundingClientRect();
+
+      // マウス位置がターゲットのどの位置に来ているかを計算
+      const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
+
+      // 要素の挿入位置を決定
+      if (nowPosition > 0.5) {
+        target.parentNode.insertBefore(draggedElement, target.nextSibling);
+      } else {
+        target.parentNode.insertBefore(draggedElement, target);
+      }
+    }
+
+    /**
+     * ドラッグ終了
+     * @param {Event} e
+     */
+    #handleDragEnd(e) {
+      e.target.classList.remove("dragging");
+      draggedElement = null;
+      this.dispatchEvent(_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.getCustomEvent("editTreeViewItem"));
+    }
+
+    //--------------------------------------------------
     //- TreeViewを操作
     //--------------------------------------------------
 
@@ -1429,7 +1514,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}#root{position:relative;width:100%;height:100%;padding-bottom:3rem;line-height:1.5rem;font-size:1.1rem;text-decoration-skip-ink:none}#root summary:hover,#root div:hover{color:#0078d4;text-decoration:underline}#root details{cursor:pointer;width:100%}#root details summary{list-style:none;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;padding-left:1.15em}#root details summary::-webkit-details-marker{display:none}#root details summary::before{content:"";position:absolute;top:.35rem;left:0;width:8px;height:8px;border-top:solid 2px #000;border-right:solid 2px #000;transform:rotate(45deg);transition:transform .2s}#root details[open]>summary::before{transform:rotate(135deg);top:.22rem;left:.18rem}#root details details,#root details div{margin-left:1rem}#root div{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;position:relative;padding-left:1.15em}#root div::before{content:"";position:absolute;top:.16rem;left:0;width:1.1rem;height:1.1rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}#root div.selected{color:#0078d4;font-weight:bold;text-decoration:underline}#root div.over-deadline{color:red}#root div.task-finished{color:#8f8f8f;text-decoration:line-through}#context-menu-container{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0)}#context-menu-container #context-menu{position:absolute;z-index:100000;font-size:1rem;border:1px solid #8f8f8f;border-radius:.25rem;background-color:#fffff8;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1);width:fit-content;padding:.2rem}#context-menu-container #context-menu button{display:block;line-height:1.5rem;padding:.1rem .5rem;padding-right:1rem;width:100%}#context-menu-container #context-menu button .icon{display:inline-block;width:1.5rem;height:1.5rem;margin-right:.5rem}#context-menu-container #context-menu button:hover{background-color:#0078d4;border-radius:.25rem;color:#fffffb}#context-menu-container #context-menu hr{margin:.25rem 0;height:1px;background-color:#afafaf;border:none}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}*{font-family:monospace}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}#root{position:relative;width:100%;height:100%;padding-bottom:3rem;line-height:1.5rem;font-size:1.1rem;text-decoration-skip-ink:none}#root summary:hover,#root div:hover{color:#0078d4;text-decoration:underline}#root div{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;position:relative;padding-left:1.15em}#root div::before{content:"";display:inline-block;position:absolute;top:.16rem;left:0;width:1.1rem;height:1.1rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2' /%3E%3Cpath d='M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z' /%3E%3Cpath d='M9 12h6' /%3E%3Cpath d='M9 16h6' /%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;background-position:center}#root div.selected{color:#0078d4;font-weight:bold;text-decoration:underline}#root div.over-deadline{color:red}#root div.task-finished{color:#8f8f8f;text-decoration:line-through}#root details{cursor:pointer;width:100%}#root details summary{list-style:none;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;padding-left:1.15em}#root details summary::-webkit-details-marker{display:none}#root details summary::before{content:"";position:absolute;top:.35rem;left:0;width:8px;height:8px;border-top:solid 2px #000;border-right:solid 2px #000;transform:rotate(45deg);transition:transform .2s}#root details[open]>summary::before{transform:rotate(135deg);top:.22rem;left:.18rem}#root details details{padding-left:1rem}#root details div{padding-left:2.25rem}#root details div::before{left:.95rem}#context-menu-container{position:absolute;top:0;bottom:0;left:0;right:0;display:none;background-color:rgba(0,0,0,0)}#context-menu-container #context-menu{position:absolute;z-index:100000;font-size:1rem;border:1px solid #8f8f8f;border-radius:.25rem;background-color:#fffff8;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1);width:fit-content;padding:.2rem}#context-menu-container #context-menu button{display:block;line-height:1.5rem;padding:.1rem .5rem;padding-right:1rem;width:100%}#context-menu-container #context-menu button .icon{display:inline-block;width:1.5rem;height:1.5rem;margin-right:.5rem}#context-menu-container #context-menu button:hover{background-color:#0078d4;border-radius:.25rem;color:#fffffb}#context-menu-container #context-menu hr{margin:.25rem 0;height:1px;background-color:#afafaf;border:none}.dragging{opacity:.5}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3856,7 +3941,7 @@ const addTreeView = async () => {
     treeView.renderTreeView(await loadTreeViewData());
 
     // TreeViewにアイテムを追加した場合、内容を保存する
-    treeView.addEventListener("addItem", async () => {
+    treeView.addEventListener("editTreeViewItem", async () => {
       await saveTreeView();
     });
   } catch (error) {

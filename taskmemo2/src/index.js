@@ -222,7 +222,7 @@ const addTreeView = async () => {
     treeView.renderTreeView(await loadTreeViewData());
 
     // TreeViewにアイテムを追加した場合、内容を保存する
-    treeView.addEventListener("addItem", async () => {
+    treeView.addEventListener("editTreeViewItem", async () => {
       await saveTreeView();
     });
   } catch (error) {
