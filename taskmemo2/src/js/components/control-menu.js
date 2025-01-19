@@ -47,7 +47,7 @@ export function ControlMenu() {
     }
 
     /**
-     * 新しいボタンを作成します。
+     * 新しいボタンを作成する
      *
      * @param {string} iconName - アイコンの名前。
      * @param {Array} paths - アイコンのパスの配列。
