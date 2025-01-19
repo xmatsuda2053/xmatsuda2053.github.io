@@ -30,6 +30,7 @@ export function ControlMenu() {
         Utils.createStyleSheetWithFilename(style);
 
       const container = document.createElement("div");
+
       const btnAddNewTask = this.#createAddNewTaksButton();
       const btnAddNewGroup = this.#createAddNewGroupButton();
       const btnTreeOpen = this.#createTreeOpenButton();
@@ -45,6 +46,20 @@ export function ControlMenu() {
       this.shadowRoot.appendChild(container);
     }
 
+    /**
+     * 新しいボタンを作成します。
+     *
+     * @param {string} iconName - アイコンの名前。
+     * @param {Array} paths - アイコンのパスの配列。
+     * @returns {HTMLElement} - 作成されたボタン要素。
+     */
+    #createNewButton(iconName, paths) {
+      const icon = Utils.createSvg(iconName, paths);
+      const btn = Utils.createSvgButton(iconName, icon);
+      btn.id = `btn-${iconName}`;
+      return btn;
+    }
+
     //--------------------------------------------------
     //- タスクを追加
     //--------------------------------------------------
@@ -54,18 +69,13 @@ export function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"clipbord-plus"ボタン
      */
     #createAddNewTaksButton() {
-      const icon = Utils.createSvg(
+      const btn = this.#createNewButton(
         "clipbord-plus",
         SvgIcon.clipbordPlusPaths()
       );
-      const btn = Utils.createSvgButton("clipbord-plus", icon);
-
-      btn.id = "btn-clipbord-plus";
-
       btn.addEventListener("click", () => {
         this.addNewTaksClickHandler();
       });
-
       return btn;
     }
 
@@ -87,18 +97,13 @@ export function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"category-plus"ボタン
      */
     #createAddNewGroupButton() {
-      const icon = Utils.createSvg(
+      const btn = this.#createNewButton(
         "category-plus",
         SvgIcon.categoryPlusPaths()
       );
-      const btn = Utils.createSvgButton("category-plus", icon);
-
-      btn.id = "btn-category-plus";
-
       btn.addEventListener("click", () => {
         this.addNewGroupClickHandler();
       });
-
       return btn;
     }
 
@@ -120,15 +125,10 @@ export function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
      */
     #createTreeOpenButton() {
-      const icon = Utils.createSvg("tree-open", SvgIcon.treeOpen());
-      const btn = Utils.createSvgButton("tree-open", icon);
-
-      btn.id = "btn-tree-open";
-
+      const btn = this.#createNewButton("tree-open", SvgIcon.treeOpen());
       btn.addEventListener("click", () => {
         this.treeOpenClickHandler();
       });
-
       return btn;
     }
 
@@ -150,15 +150,10 @@ export function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-close"ボタン
      */
     #createTreeCloseButton() {
-      const icon = Utils.createSvg("tree-close", SvgIcon.treeClose());
-      const btn = Utils.createSvgButton("tree-close", icon);
-
-      btn.id = "btn-tree-close";
-
+      const btn = this.#createNewButton("tree-close", SvgIcon.treeClose());
       btn.addEventListener("click", () => {
         this.treeCloseClickHandler();
       });
-
       return btn;
     }
 

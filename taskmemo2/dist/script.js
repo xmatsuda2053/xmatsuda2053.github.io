@@ -736,6 +736,7 @@ function ControlMenu() {
         _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
+
       const btnAddNewTask = this.#createAddNewTaksButton();
       const btnAddNewGroup = this.#createAddNewGroupButton();
       const btnTreeOpen = this.#createTreeOpenButton();
@@ -751,6 +752,20 @@ function ControlMenu() {
       this.shadowRoot.appendChild(container);
     }
 
+    /**
+     * 新しいボタンを作成します。
+     *
+     * @param {string} iconName - アイコンの名前。
+     * @param {Array} paths - アイコンのパスの配列。
+     * @returns {HTMLElement} - 作成されたボタン要素。
+     */
+    #createNewButton(iconName, paths) {
+      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(iconName, paths);
+      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton(iconName, icon);
+      btn.id = `btn-${iconName}`;
+      return btn;
+    }
+
     //--------------------------------------------------
     //- タスクを追加
     //--------------------------------------------------
@@ -760,18 +775,13 @@ function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"clipbord-plus"ボタン
      */
     #createAddNewTaksButton() {
-      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(
+      const btn = this.#createNewButton(
         "clipbord-plus",
         _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.clipbordPlusPaths()
       );
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("clipbord-plus", icon);
-
-      btn.id = "btn-clipbord-plus";
-
       btn.addEventListener("click", () => {
         this.addNewTaksClickHandler();
       });
-
       return btn;
     }
 
@@ -793,18 +803,13 @@ function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"category-plus"ボタン
      */
     #createAddNewGroupButton() {
-      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg(
+      const btn = this.#createNewButton(
         "category-plus",
         _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.categoryPlusPaths()
       );
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("category-plus", icon);
-
-      btn.id = "btn-category-plus";
-
       btn.addEventListener("click", () => {
         this.addNewGroupClickHandler();
       });
-
       return btn;
     }
 
@@ -826,15 +831,10 @@ function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-open"ボタン
      */
     #createTreeOpenButton() {
-      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-open", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeOpen());
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-open", icon);
-
-      btn.id = "btn-tree-open";
-
+      const btn = this.#createNewButton("tree-open", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeOpen());
       btn.addEventListener("click", () => {
         this.treeOpenClickHandler();
       });
-
       return btn;
     }
 
@@ -856,15 +856,10 @@ function ControlMenu() {
      * @returns {HTMLButtonElement} 生成された"tree-close"ボタン
      */
     #createTreeCloseButton() {
-      const icon = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvg("tree-close", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeClose());
-      const btn = _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createSvgButton("tree-close", icon);
-
-      btn.id = "btn-tree-close";
-
+      const btn = this.#createNewButton("tree-close", _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__.SvgIcon.treeClose());
       btn.addEventListener("click", () => {
         this.treeCloseClickHandler();
       });
-
       return btn;
     }
 
