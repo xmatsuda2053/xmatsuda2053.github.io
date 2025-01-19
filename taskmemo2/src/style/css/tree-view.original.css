@@ -433,11 +433,6 @@ svg.icon use {
   background-size: contain;
   background-position: center;
 }
-#root div.selected {
-  color: #0078d4;
-  font-weight: bold;
-  text-decoration: underline;
-}
 #root div.over-deadline {
   color: #ff0000;
 }
@@ -531,6 +526,12 @@ svg.icon use {
   height: 1px;
   background-color: #afafaf;
   border: none;
+}
+
+.selected {
+  color: #0078d4;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .dragging {

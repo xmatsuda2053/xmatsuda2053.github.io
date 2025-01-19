@@ -47,12 +47,6 @@
       background-position: center;
     }
 
-    &.selected {
-      color: color.$treeview-font-color-hover;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
     &.over-deadline {
       color: color.$treeview-font-color-over-deadline;
     }
@@ -174,6 +168,12 @@
       border: none;
     }
   }
+}
+
+.selected {
+  color: color.$treeview-font-color-hover;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .dragging {

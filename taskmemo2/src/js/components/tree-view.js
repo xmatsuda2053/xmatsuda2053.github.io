@@ -258,16 +258,25 @@ export function TreeView() {
     }
 
     /**
-     * タスクボタンに選択中を示すクラスを設定
+     * 選択中を示すクラスを設定
      * @param {HTMLElement} task
      */
-    #setSelected(task) {
+    #setSelected(target) {
       const root = this.shadowRoot.getElementById("root");
-      const beforeTasks = root.getElementsByClassName("selected");
-      if (beforeTasks.length !== 0) {
-        beforeTasks[0].classList.remove("selected");
+      const items = root.getElementsByClassName("selected");
+      for (let item of items) {
+        if (item.tagName === target.tagName) {
+          item.classList.remove("selected");
+        }
       }
-      task.classList.add("selected");
+      target.classList.add("selected");
+
+      if (target.tagName === "DIV") {
+        const details = target.closest("details");
+        if (details) {
+          this.#setSelected(details.querySelector("summary"));
+        }
+      }
     }
 
     /**
@@ -346,6 +355,9 @@ export function TreeView() {
       details.dataset.type = "group";
 
       summary.innerText = name;
+      summary.addEventListener("click", () => {
+        this.#setSelected(summary);
+      });
 
       details.appendChild(summary);
 
