@@ -1276,22 +1276,34 @@ function TreeView() {
 
     /**
      * 選択中を示すクラスを設定
-     * @param {HTMLElement} task
+     * @param {HTMLElement} target - 選択対象の要素
      */
     #setSelected(target) {
       const root = this.shadowRoot.getElementById("root");
-      const items = root.getElementsByClassName("selected");
-      for (let item of items) {
-        if (item.tagName === target.tagName) {
-          item.classList.remove("selected");
-        }
-      }
+      this.#clearSelected(root, target.tagName);
+
       target.classList.add("selected");
 
       if (target.tagName === "DIV") {
         const details = target.closest("details");
         if (details) {
           this.#setSelected(details.querySelector("summary"));
+        } else {
+          this.#clearSelected(root, "SUMMARY");
+        }
+      }
+    }
+
+    /**
+     * 指定されたタグ名を持つすべての選択クラスをクリア
+     * @param {HTMLElement} root - 親要素
+     * @param {string} tagName - クリア対象のタグ名
+     */
+    #clearSelected(root, tagName) {
+      const items = root.getElementsByClassName("selected");
+      for (let item of items) {
+        if (item.tagName === tagName.toUpperCase()) {
+          item.classList.remove("selected");
         }
       }
     }
@@ -1375,7 +1387,9 @@ function TreeView() {
       summary.addEventListener("click", () => {
         this.#setSelected(summary);
       });
+      this.#setSelected(summary);
 
+      details.open = true;
       details.appendChild(summary);
 
       // Drag&Drop
@@ -1450,6 +1464,10 @@ function TreeView() {
       JSON.parse(jsonStr).forEach((data) => {
         this.#addTreeViewItems(treeViewRoot, data);
       });
+
+      this.#clearSelected(treeViewRoot, "div");
+      this.#clearSelected(treeViewRoot, "summary");
+      this.closeTreeViewAll();
     }
 
     /**
@@ -1601,10 +1619,26 @@ function TreeView() {
     //--------------------------------------------------
 
     /**
+     * 指定されたタグを持つ選択されたアイテムを取得します。
+     *
+     * @returns {Element} - 選択されたアイテムが属するdetails、または見つからない場合は `treeViewRoot`。
+     */
+    #getAddTarget() {
+      const root = this.shadowRoot.getElementById("root");
+      const items = root.getElementsByClassName("selected");
+      for (let item of items) {
+        if (item.tagName === "SUMMARY") {
+          return item.closest("details");
+        }
+      }
+      return treeViewRoot;
+    }
+
+    /**
      * 新規タスクを追加する（コンポーネント外からの操作用）
      */
     addNewTask() {
-      this.editTarget = treeViewRoot;
+      this.editTarget = this.#getAddTarget();
       this.#addNewTask();
     }
 
@@ -1612,7 +1646,7 @@ function TreeView() {
      * 新規グループを追加する（コンポーネント外からの操作用）
      */
     addNewGroup() {
-      this.editTarget = treeViewRoot;
+      this.editTarget = this.#getAddTarget();
       this.#addNewGroup();
     }
 
