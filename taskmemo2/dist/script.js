@@ -699,11 +699,11 @@ class FileManager {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ControlMenu: () => (/* binding */ ControlMenu)
+/* harmony export */   TreeControlMenu: () => (/* binding */ TreeControlMenu)
 /* harmony export */ });
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var _style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+/* harmony import */ var _style_css_tree_control_menu_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
 /**
  * 共通関数
  */
@@ -711,19 +711,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * ControlMenuコンポーネント用のCSS
+ * TreeControlMenuコンポーネント用のCSS
  */
 
 
 /**
- * ControlMenu コンポーネントを作成しカスタム要素として定義する
+ * TreeControlMenu コンポーネントを作成しカスタム要素として定義する
  */
-function ControlMenu() {
+function TreeControlMenu() {
   /**
-   * ControlMenu コンポーネントのカスタム要素のクラス
+   * TreeControlMenu コンポーネントのカスタム要素のクラス
    * @extends {HTMLElement}
    */
-  class ControlMenu extends HTMLElement {
+  class TreeControlMenu extends HTMLElement {
     /**
      * コンストラクタ
      * @return {void}
@@ -733,7 +733,7 @@ function ControlMenu() {
 
       this.attachShadow({ mode: "open" });
       this.shadowRoot.adoptedStyleSheets =
-        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_control_menu_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
+        _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createStyleSheetWithFilename(_style_css_tree_control_menu_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
       const container = document.createElement("div");
 
@@ -872,8 +872,8 @@ function ControlMenu() {
       this.treeCloseClickHandler = handler;
     }
   }
-  // カスタム要素 "ControlMenu" を定義する
-  customElements.define("control-menu", ControlMenu);
+  // カスタム要素 "TreeControlMenu" を定義する
+  customElements.define("tree-control-menu", TreeControlMenu);
 }
 
 
@@ -3940,7 +3940,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}.float-button{position:absolute;right:1rem;bottom:1rem;z-index:1000;padding:.5rem;border-radius:50%;color:#fffffb;background-color:#0a3981;border:1px solid #0a3981;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1)}.float-button:hover{color:#0a3981;background-color:#fffff8;border-color:#0a3981}.float-button .icon{font-size:2rem}#container{display:grid;grid-auto-columns:1fr;grid-auto-rows:1fr;grid-template-columns:300px 1fr 1fr;grid-template-rows:30px 30px 1fr;gap:0em 0em;grid-template-areas:"grid-header grid-header grid-header" "grid-control grid-task grid-history" "grid-tree grid-task grid-history";height:100vh}#container #grid-header{grid-area:grid-header;background-color:#3c3c3c}#container #grid-control{grid-area:grid-control;background-color:#fffffb;padding:0 .5rem}#container #grid-tree{grid-area:grid-tree;background-color:#fffffb;padding:.5rem}#container #grid-task{grid-area:grid-task;background-color:#d4f1ef;padding:1rem}#container #grid-history{grid-area:grid-history;background-color:#d4f1ef;padding:1rem;padding-bottom:8rem}#container .scroll{overflow-y:scroll}#container .scroll::-webkit-scrollbar{display:none}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */*,::before,::after{box-sizing:border-box;border-style:solid;border-width:0;min-width:0}html{line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0}main{display:block}p,table,blockquote,address,pre,iframe,form,figure,dl{margin:0}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}ul,ol{margin:0;padding:0;list-style:none}dt{font-weight:bold}dd{margin-left:0}hr{box-sizing:content-box;height:0;overflow:visible;border-top-width:1px;margin:0;clear:both;color:inherit}pre{font-family:monospace,monospace;font-size:inherit}address{font-style:inherit}a{background-color:rgba(0,0,0,0);text-decoration:none;color:inherit}abbr[title]{text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:inherit}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg,img,embed,object,iframe{vertical-align:bottom}button,input,optgroup,select,textarea{-webkit-appearance:none;appearance:none;vertical-align:middle;color:inherit;font:inherit;background:rgba(0,0,0,0);padding:0;margin:0;border-radius:0;text-align:inherit;text-transform:inherit}button,[type=button],[type=reset],[type=submit]{cursor:pointer}button:disabled,[type=button]:disabled,[type=reset]:disabled,[type=submit]:disabled{cursor:default}:-moz-focusring{outline:auto}select:disabled{opacity:inherit}option{padding:0}fieldset{margin:0;padding:0;min-width:0}legend{padding:0}progress{vertical-align:baseline}textarea{overflow:auto}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}[type=number]{-moz-appearance:textfield;appearance:textfiled}label[for]{cursor:pointer}details{display:block}summary{display:list-item}[contenteditable]:focus{outline:auto}table{border-color:inherit;border-collapse:collapse}caption{text-align:left}td,th{vertical-align:top;padding:0}th{text-align:left;font-weight:bold}.svg{position:absolute;width:0;height:0;overflow:hidden}svg.icon{display:block;width:1em;height:1em;stroke-width:0;stroke:currentColor;fill:currentColor;pointer-events:none}svg.icon use{pointer-events:none}*{font-family:monospace}.float-button{position:absolute;right:1rem;bottom:1rem;z-index:1000;padding:.5rem;border-radius:50%;color:#fffffb;background-color:#0a3981;border:1px solid #0a3981;box-shadow:0px 3px 3px 0px rgba(0,0,0,.1)}.float-button:hover{color:#0a3981;background-color:#fffff8;border-color:#0a3981}.float-button .icon{font-size:2rem}#container{display:grid;grid-auto-columns:1fr;grid-auto-rows:1fr;grid-template-columns:300px 1fr 1fr;grid-template-rows:30px 30px 1fr;gap:0em 0em;grid-template-areas:"grid-tree-control grid-task-control grid-history-control" "grid-tree grid-task grid-history" "grid-tree grid-task grid-history";height:100vh}#container #grid-tree-control{grid-area:grid-tree-control;background-color:#fffffb;padding:0 .5rem}#container #grid-task-control{grid-area:grid-task-control;background-color:#d4f1ef;padding:0 .5rem}#container #grid-history-control{grid-area:grid-history-control;background-color:#d4f1ef;padding:0 .5rem}#container #grid-tree{grid-area:grid-tree;background-color:#fffffb;padding:.5rem}#container #grid-task{grid-area:grid-task;background-color:#d4f1ef;padding:1rem}#container #grid-history{grid-area:grid-history;background-color:#d4f1ef;padding:1rem;padding-bottom:8rem}#container .scroll{overflow-y:scroll}#container .scroll::-webkit-scrollbar{display:none}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4021,7 +4021,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_common_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _js_common_svgIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* harmony import */ var _js_common_file_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _js_components_control_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var _js_components_tree_control_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
 /* harmony import */ var _js_components_tree_view__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
 /* harmony import */ var _js_components_task_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10);
 /* harmony import */ var _js_parts_parts_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12);
@@ -4069,14 +4069,19 @@ const fileManager = new _js_common_file_manager__WEBPACK_IMPORTED_MODULE_2__.Fil
 const container = document.getElementById("container");
 
 /**
- * Header領域
- */
-const gridHeader = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-header", []);
-
-/**
  * TreeView用のControl領域
  */
-const gridControl = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-control", []);
+const gridTreeControl = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-tree-control", []);
+
+/**
+ * Task用のControl領域
+ */
+const gridTaskControl = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-task-control", []);
+
+/**
+ * HistoryHistory用のControl領域
+ */
+const gridHistoryControl = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createDiv("grid-history-control", []);
 
 /**
  * TreeView領域
@@ -4111,7 +4116,7 @@ const TREE_VIEW_FILE_NAME = "tree.json";
  */
 const init = () => {
   // WebComponentsをロードする
-  (0,_js_components_control_menu__WEBPACK_IMPORTED_MODULE_3__.ControlMenu)();
+  (0,_js_components_tree_control_menu__WEBPACK_IMPORTED_MODULE_3__.TreeControlMenu)();
   (0,_js_components_tree_view__WEBPACK_IMPORTED_MODULE_4__.TreeView)();
   (0,_js_components_task_item__WEBPACK_IMPORTED_MODULE_5__.TaskItem)();
   (0,_js_parts_parts_input__WEBPACK_IMPORTED_MODULE_6__.PartsInput)();
@@ -4135,8 +4140,9 @@ const init = () => {
  */
 const addGridArea = () => {
   container.innerHTML = "";
-  container.appendChild(gridHeader);
-  container.appendChild(gridControl);
+  container.appendChild(gridTreeControl);
+  container.appendChild(gridTaskControl);
+  container.appendChild(gridHistoryControl);
   container.appendChild(gridTreeView);
   container.appendChild(gridTask);
   container.appendChild(gridHistory);
@@ -4175,21 +4181,24 @@ const addFolderOpenButton = () => {
 };
 
 //--------------------------------------------------
-// Control
+// TreeViewのControl
 //--------------------------------------------------
 /**
  * Controlを画面に新規追加する
  * @returns {void}
  */
 const addControl = () => {
-  const control = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm("control-menu", "control-menu-root");
+  const control = _js_common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.createElm(
+    "tree-control-menu",
+    "tree-control-menu-root"
+  );
   control.setAddNewTaksClickEventHandler(addNewTaskClickEventHandler);
   control.setAddNewGroupClickEventHandler(addNewGroupClickEventHandler);
   control.setTreeOpenClickEventHandler(treeOpenOpenClickEventHandler);
   control.setTreeCloseClickEventHandler(treeCloseClickEventHandler);
 
-  gridControl.innerHTML = "";
-  gridControl.appendChild(control);
+  gridTreeControl.innerHTML = "";
+  gridTreeControl.appendChild(control);
 };
 
 /**

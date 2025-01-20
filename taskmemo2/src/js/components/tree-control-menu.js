@@ -5,19 +5,19 @@ import { Utils } from "../common/utils";
 import { SvgIcon } from "../common/svgIcon";
 
 /**
- * ControlMenuコンポーネント用のCSS
+ * TreeControlMenuコンポーネント用のCSS
  */
-import style from "../../style/css/control-menu.css";
+import style from "../../style/css/tree-control-menu.css";
 
 /**
- * ControlMenu コンポーネントを作成しカスタム要素として定義する
+ * TreeControlMenu コンポーネントを作成しカスタム要素として定義する
  */
-export function ControlMenu() {
+export function TreeControlMenu() {
   /**
-   * ControlMenu コンポーネントのカスタム要素のクラス
+   * TreeControlMenu コンポーネントのカスタム要素のクラス
    * @extends {HTMLElement}
    */
-  class ControlMenu extends HTMLElement {
+  class TreeControlMenu extends HTMLElement {
     /**
      * コンストラクタ
      * @return {void}
@@ -166,6 +166,6 @@ export function ControlMenu() {
       this.treeCloseClickHandler = handler;
     }
   }
-  // カスタム要素 "ControlMenu" を定義する
-  customElements.define("control-menu", ControlMenu);
+  // カスタム要素 "TreeControlMenu" を定義する
+  customElements.define("tree-control-menu", TreeControlMenu);
 }

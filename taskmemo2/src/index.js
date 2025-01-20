@@ -8,7 +8,7 @@ import { FileManager } from "./js/common/file-manager";
 /**
  * Web Components
  */
-import { ControlMenu } from "./js/components/control-menu";
+import { TreeControlMenu } from "./js/components/tree-control-menu";
 import { TreeView } from "./js/components/tree-view";
 import { TaskItem } from "./js/components/task-item";
 import { PartsInput } from "./js/parts/parts-input";
@@ -35,14 +35,19 @@ const fileManager = new FileManager();
 const container = document.getElementById("container");
 
 /**
- * Header領域
- */
-const gridHeader = Utils.createDiv("grid-header", []);
-
-/**
  * TreeView用のControl領域
  */
-const gridControl = Utils.createDiv("grid-control", []);
+const gridTreeControl = Utils.createDiv("grid-tree-control", []);
+
+/**
+ * Task用のControl領域
+ */
+const gridTaskControl = Utils.createDiv("grid-task-control", []);
+
+/**
+ * HistoryHistory用のControl領域
+ */
+const gridHistoryControl = Utils.createDiv("grid-history-control", []);
 
 /**
  * TreeView領域
@@ -77,7 +82,7 @@ const TREE_VIEW_FILE_NAME = "tree.json";
  */
 const init = () => {
   // WebComponentsをロードする
-  ControlMenu();
+  TreeControlMenu();
   TreeView();
   TaskItem();
   PartsInput();
@@ -101,8 +106,9 @@ const init = () => {
  */
 const addGridArea = () => {
   container.innerHTML = "";
-  container.appendChild(gridHeader);
-  container.appendChild(gridControl);
+  container.appendChild(gridTreeControl);
+  container.appendChild(gridTaskControl);
+  container.appendChild(gridHistoryControl);
   container.appendChild(gridTreeView);
   container.appendChild(gridTask);
   container.appendChild(gridHistory);
@@ -141,21 +147,24 @@ const addFolderOpenButton = () => {
 };
 
 //--------------------------------------------------
-// Control
+// TreeViewのControl
 //--------------------------------------------------
 /**
  * Controlを画面に新規追加する
  * @returns {void}
  */
 const addControl = () => {
-  const control = Utils.createElm("control-menu", "control-menu-root");
+  const control = Utils.createElm(
+    "tree-control-menu",
+    "tree-control-menu-root"
+  );
   control.setAddNewTaksClickEventHandler(addNewTaskClickEventHandler);
   control.setAddNewGroupClickEventHandler(addNewGroupClickEventHandler);
   control.setTreeOpenClickEventHandler(treeOpenOpenClickEventHandler);
   control.setTreeCloseClickEventHandler(treeCloseClickEventHandler);
 
-  gridControl.innerHTML = "";
-  gridControl.appendChild(control);
+  gridTreeControl.innerHTML = "";
+  gridTreeControl.appendChild(control);
 };
 
 /**

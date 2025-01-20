@@ -12,18 +12,24 @@
   grid-template-rows: 30px 30px 1fr;
   gap: 0em 0em;
   grid-template-areas:
-    "grid-header grid-header grid-header"
-    "grid-control grid-task grid-history"
+    "grid-tree-control grid-task-control grid-history-control"
+    "grid-tree grid-task grid-history"
     "grid-tree grid-task grid-history";
   height: 100vh;
 
-  #grid-header {
-    grid-area: grid-header;
-    background-color: color.$grid-header-bg-color;
+  #grid-tree-control {
+    grid-area: grid-tree-control;
+    background-color: color.$grid-tree-bg-color;
+    padding: 0 0.5rem;
   }
-  #grid-control {
-    grid-area: grid-control;
-    background-color: color.$grid-control-bg-color;
+  #grid-task-control {
+    grid-area: grid-task-control;
+    background-color: color.$grid-task-bg-color;
+    padding: 0 0.5rem;
+  }
+  #grid-history-control {
+    grid-area: grid-history-control;
+    background-color: color.$grid-history-bg-color;
     padding: 0 0.5rem;
   }
   #grid-tree {

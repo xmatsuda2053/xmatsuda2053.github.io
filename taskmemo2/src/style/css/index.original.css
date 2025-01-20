@@ -425,16 +425,22 @@ svg.icon use {
   grid-template-columns: 300px 1fr 1fr;
   grid-template-rows: 30px 30px 1fr;
   gap: 0em 0em;
-  grid-template-areas: "grid-header grid-header grid-header" "grid-control grid-task grid-history" "grid-tree grid-task grid-history";
+  grid-template-areas: "grid-tree-control grid-task-control grid-history-control" "grid-tree grid-task grid-history" "grid-tree grid-task grid-history";
   height: 100vh;
 }
-#container #grid-header {
-  grid-area: grid-header;
-  background-color: #3c3c3c;
-}
-#container #grid-control {
-  grid-area: grid-control;
+#container #grid-tree-control {
+  grid-area: grid-tree-control;
   background-color: #fffffb;
+  padding: 0 0.5rem;
+}
+#container #grid-task-control {
+  grid-area: grid-task-control;
+  background-color: #d4f1ef;
+  padding: 0 0.5rem;
+}
+#container #grid-history-control {
+  grid-area: grid-history-control;
+  background-color: #d4f1ef;
   padding: 0 0.5rem;
 }
 #container #grid-tree {
