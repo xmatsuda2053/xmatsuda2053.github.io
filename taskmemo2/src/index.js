@@ -9,6 +9,7 @@ import { FileManager } from "./js/common/file-manager";
  * Web Components
  */
 import { TreeControlMenu } from "./js/components/tree-control-menu";
+import { HistoryControlMenu } from "./js/components/history-control-menu";
 import { TreeView } from "./js/components/tree-view";
 import { TaskItem } from "./js/components/task-item";
 import { PartsInput } from "./js/parts/parts-input";
@@ -83,6 +84,7 @@ const TREE_VIEW_FILE_NAME = "tree.json";
 const init = () => {
   // WebComponentsをロードする
   TreeControlMenu();
+  HistoryControlMenu();
   TreeView();
   TaskItem();
   PartsInput();
@@ -133,8 +135,9 @@ const addFolderOpenButton = () => {
     try {
       if (await fileManager.selectDirectory()) {
         // ディレクトリが選択された場合
-        addControl();
+        addTreeControl();
         addTreeView();
+        addHIstoryControl();
         folderOpenButton.remove();
       }
     } catch (error) {
@@ -150,10 +153,10 @@ const addFolderOpenButton = () => {
 // TreeViewのControl
 //--------------------------------------------------
 /**
- * Controlを画面に新規追加する
+ * TreeControlを画面に新規追加する
  * @returns {void}
  */
-const addControl = () => {
+const addTreeControl = () => {
   const control = Utils.createElm(
     "tree-control-menu",
     "tree-control-menu-root"
@@ -193,6 +196,28 @@ const treeOpenOpenClickEventHandler = () => {
  */
 const treeCloseClickEventHandler = () => {
   document.getElementById("tree-view-root").closeTreeViewAll();
+};
+
+//--------------------------------------------------
+// HistoryのControl
+//--------------------------------------------------
+/**
+ * HistoryControlを画面に新規追加する
+ * @returns {void}
+ */
+const addHIstoryControl = () => {
+  const control = Utils.createElm(
+    "history-control-menu",
+    "history-control-menu-root"
+  );
+
+  control.setFilterHandler((conf) => {
+    const historyItem = document.getElementById("history-item");
+    historyItem.filterItem(conf);
+  });
+
+  gridHistoryControl.innerHTML = "";
+  gridHistoryControl.appendChild(control);
 };
 
 //--------------------------------------------------

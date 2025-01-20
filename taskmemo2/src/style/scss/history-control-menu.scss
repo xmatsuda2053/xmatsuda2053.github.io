@@ -1,0 +1,41 @@
+@use "./common/destyle";
+@use "./common/svg";
+@use "./common/color";
+@use "./common/font";
+
+#menu-container {
+  padding: 0.5rem 0;
+
+  @mixin mark-style($left, $color) {
+    margin-right: 0.25rem;
+    color: color.$form-item-icon-color-deactive;
+    .icon {
+      height: 18px;
+      width: 18px;
+    }
+
+    &:hover {
+      color: $color;
+    }
+
+    &[data-mark="true"] {
+      color: $color;
+    }
+  }
+
+  #flag-item {
+    @include mark-style(5rem, color.$history-item-icon-color-flag);
+  }
+
+  #star-item {
+    @include mark-style(6.5rem, color.$history-item-icon-color-star);
+  }
+
+  #flame-item {
+    @include mark-style(8rem, color.$history-item-icon-color-flame);
+  }
+
+  #pin-item {
+    @include mark-style(9.5rem, color.$history-item-icon-color-pin);
+  }
+}
