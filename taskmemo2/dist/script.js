@@ -1575,11 +1575,6 @@ function TreeView() {
         return;
       }
 
-      // ターゲット要素の親がdetailsの場合、detailsを開く
-      if (target.parentNode.tagName === "DETAILS") {
-        target.parentNode.open = true;
-      }
-
       // draggedElement が target の中に含まれていないことを確認
       if (draggedElement.contains(target)) {
         return;
@@ -1591,12 +1586,119 @@ function TreeView() {
       // マウス位置がターゲットのどの位置に来ているかを計算
       const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
 
+      // ------------------------------
       // 要素の挿入位置を決定
-      if (nowPosition > 0.5) {
-        target.parentNode.insertBefore(draggedElement, target.nextSibling);
+      // ------------------------------
+
+      /**
+       * 要素がDIVであるか判定する。
+       * @param {HTMLElement} elm 判定対象
+       * @returns {boolean} 判定結果
+       */
+      const isDiv = (elm) => elm.tagName === "DIV";
+
+      /**
+       * マウスターゲットが要素から見て上半分にあるか否か判定する。
+       * @param {number} pos マウス位置
+       * @returns {boolean} 判定結果
+       */
+      const isBefore = (pos) => pos <= 0.5;
+
+      /**
+       * ドラッグ中の要素を指定要素の前に挿入する。
+       *  @param {HTMLElement} elm 挿入基点となる要素
+       * @returns
+       */
+      const insertBefore = (elm) =>
+        elm.insertAdjacentElement("beforebegin", draggedElement);
+
+      /**
+       * ドラッグ中の要素を指定要素の後ろに挿入する。
+       * @param {*} elm
+       * @returns
+       */
+      const insertAfter = (elm) =>
+        elm.insertAdjacentElement("afterend", draggedElement);
+
+      if (isDiv(target)) {
+        // タスク要素を起点とする場合
+        if (isBefore(nowPosition)) {
+          insertBefore(target); // 前に追加
+        } else {
+          insertAfter(target); // 後ろに追加
+        }
       } else {
-        target.parentNode.insertBefore(draggedElement, target);
+        // グループ要素を起点とする場合
+        if (isBefore(nowPosition)) {
+          if (!isDiv(draggedElement)) {
+            insertBefore(target.parentNode); // 前に追加
+          }
+        } else {
+          if (nowPosition >= 0.75) {
+            insertAfter(target.parentNode); // 後ろに追加
+          } else {
+            target.parentNode.insertBefore(draggedElement, target.nextSibling); // 子要素として追加
+          }
+        }
       }
+
+      /*
+      if (isDiv(target)) {
+        if (nowPosition > 0.5) {
+          target.insertAdjacentElement("afterend", draggedElement);
+        } else {
+          target.insertAdjacentElement("beforebegin", draggedElement);
+        }
+      } else {
+        if (nowPosition > 0.5) {
+          if (nowPosition >= 0.8) {
+            target.parentNode.insertAdjacentElement("afterend", draggedElement);
+          } else {
+            target.parentNode.insertBefore(draggedElement, target.nextSibling);
+          }
+        } else {
+          if (!isDiv(draggedElement)) {
+            target.parentNode.insertAdjacentElement(
+              "beforebegin",
+              draggedElement
+            );
+          }
+        }
+      }
+        */
+
+      /*
+      if (draggedElement.tagName === "DIV") {
+        if (target.tagName === "DIV") {
+          if (nowPosition > 0.5) {
+            target.insertAdjacentElement("afterend", draggedElement);
+          } else {
+            target.insertAdjacentElement("beforebegin", draggedElement);
+          }
+        } else {
+          if (nowPosition > 0.5) {
+            target.parentNode.insertBefore(draggedElement, target.nextSibling);
+          }
+        }
+      } else {
+        if (target.tagName === "DIV") {
+          if (nowPosition > 0.5) {
+            target.insertAdjacentElement("afterend", draggedElement);
+          } else {
+            target.insertAdjacentElement("beforebegin", draggedElement);
+          }
+        } else {
+          if (nowPosition > 0.5) {
+            target.parentNode.insertBefore(draggedElement, target.nextSibling);
+          } else {
+            target.parentNode.insertAdjacentElement(
+              "beforebegin",
+              draggedElement
+            );
+          }
+        }
+      }
+        */
     }
 
     /**
