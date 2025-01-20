@@ -1620,6 +1620,7 @@ function TreeView() {
       const insertAfter = (elm) =>
         elm.insertAdjacentElement("afterend", draggedElement);
 
+      // 要素の位置を決定する
       if (isDiv(target)) {
         // タスク要素を起点とする場合
         if (isBefore(nowPosition)) {
@@ -1634,71 +1635,13 @@ function TreeView() {
             insertBefore(target.parentNode); // 前に追加
           }
         } else {
-          if (nowPosition >= 0.75) {
+          if (nowPosition >= 0.8) {
             insertAfter(target.parentNode); // 後ろに追加
           } else {
             target.parentNode.insertBefore(draggedElement, target.nextSibling); // 子要素として追加
           }
         }
       }
-
-      /*
-      if (isDiv(target)) {
-        if (nowPosition > 0.5) {
-          target.insertAdjacentElement("afterend", draggedElement);
-        } else {
-          target.insertAdjacentElement("beforebegin", draggedElement);
-        }
-      } else {
-        if (nowPosition > 0.5) {
-          if (nowPosition >= 0.8) {
-            target.parentNode.insertAdjacentElement("afterend", draggedElement);
-          } else {
-            target.parentNode.insertBefore(draggedElement, target.nextSibling);
-          }
-        } else {
-          if (!isDiv(draggedElement)) {
-            target.parentNode.insertAdjacentElement(
-              "beforebegin",
-              draggedElement
-            );
-          }
-        }
-      }
-        */
-
-      /*
-      if (draggedElement.tagName === "DIV") {
-        if (target.tagName === "DIV") {
-          if (nowPosition > 0.5) {
-            target.insertAdjacentElement("afterend", draggedElement);
-          } else {
-            target.insertAdjacentElement("beforebegin", draggedElement);
-          }
-        } else {
-          if (nowPosition > 0.5) {
-            target.parentNode.insertBefore(draggedElement, target.nextSibling);
-          }
-        }
-      } else {
-        if (target.tagName === "DIV") {
-          if (nowPosition > 0.5) {
-            target.insertAdjacentElement("afterend", draggedElement);
-          } else {
-            target.insertAdjacentElement("beforebegin", draggedElement);
-          }
-        } else {
-          if (nowPosition > 0.5) {
-            target.parentNode.insertBefore(draggedElement, target.nextSibling);
-          } else {
-            target.parentNode.insertAdjacentElement(
-              "beforebegin",
-              draggedElement
-            );
-          }
-        }
-      }
-        */
     }
 
     /**
