@@ -262,4 +262,38 @@ export class SvgIcon {
       },
     ];
   };
+
+  /**
+   * 上方向の二重矢印のパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static chevronsUpPath = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7 11l5 -5l5 5",
+      },
+      {
+        path: "M7 17l5 -5l5 5",
+      },
+    ];
+  };
+
+  /**
+   * 下方向の二重矢印のパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static chevronsDownPath = () => {
+    return [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7 7l5 5l5 -5",
+      },
+      {
+        path: "M7 13l5 5l5 -5",
+      },
+    ];
+  };
 }

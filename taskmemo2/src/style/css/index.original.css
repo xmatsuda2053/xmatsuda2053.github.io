@@ -457,7 +457,7 @@ svg.icon use {
   grid-area: grid-history;
   background-color: #d4f1ef;
   padding: 1rem;
-  padding-bottom: 8rem;
+  padding-bottom: 12rem;
 }
 #container .scroll {
   overflow-y: scroll;

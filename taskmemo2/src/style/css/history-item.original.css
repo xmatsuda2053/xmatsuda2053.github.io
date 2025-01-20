@@ -424,3 +424,15 @@ svg.icon use {
 .wrap-item.dragging {
   opacity: 0.5;
 }
+
+#scroll-top-button {
+  bottom: 8rem;
+}
+
+#scroll-bottom-button {
+  bottom: 4.5rem;
+}
+
+#add-parts-history-item {
+  bottom: 1rem;
+}

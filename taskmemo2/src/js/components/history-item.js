@@ -35,9 +35,13 @@ export function HistoryItem() {
         Utils.createStyleSheetWithFilename(style);
 
       const container = document.createElement("div");
+      const scrollTopButton = this.#createScrollTopButton();
+      const scrollDownButton = this.#createScrollBottomButton();
       const addButton = this.#createAddPartsHistoryItemButton();
 
       container.id = "container";
+      container.appendChild(scrollTopButton);
+      container.appendChild(scrollDownButton);
       container.appendChild(addButton);
 
       this.shadowRoot.innerHTML = "";
@@ -127,6 +131,44 @@ export function HistoryItem() {
         this.#addEmptyParts();
         this.dispatchEvent(Utils.getCustomEvent("addHistory"));
       });
+      return btn;
+    }
+
+    /**
+     * 最上部までスクロールするボタンを作成する
+     * @returns {HTMLButtonElement} ボタン
+     */
+    #createScrollTopButton() {
+      const icon = Utils.createSvg("up", SvgIcon.chevronsUpPath());
+      const btn = Utils.createSvgButton("up", icon);
+      btn.id = "scroll-top-button";
+      btn.classList.add("float-button");
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.dispatchEvent(Utils.getCustomEvent("clickScrollTop"));
+      });
+
+      return btn;
+    }
+
+    /**
+     * 最下部までスクロールするボタンを作成する
+     * @returns {HTMLButtonElement} ボタン
+     */
+    #createScrollBottomButton() {
+      const icon = Utils.createSvg("down", SvgIcon.chevronsDownPath());
+      const btn = Utils.createSvgButton("down", icon);
+      btn.id = "scroll-bottom-button";
+      btn.classList.add("float-button");
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.dispatchEvent(Utils.getCustomEvent("clickScrollBottom"));
+      });
+
       return btn;
     }
 

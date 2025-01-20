@@ -347,18 +347,33 @@ const clickTaskEventHandler = async (conf) => {
 
     // 読み込み時に履歴最下部までスクロール
     historyItem.addEventListener("addHistory", () => {
-      autoScroll();
+      autoScrollBottom();
     });
-    autoScroll();
+    autoScrollBottom();
+
+    // 最上部、最下部のスクロールイベントを設定
+    historyItem.addEventListener("clickScrollTop", () => {
+      autoScrollTop();
+    });
+    historyItem.addEventListener("clickScrollBottom", () => {
+      autoScrollBottom();
+    });
   } catch (error) {
     console.error("データの読込中にエラーが発生しました:", id, error);
   }
 };
 
 /**
+ * 履歴の最上部までスクロールする
+ */
+const autoScrollTop = () => {
+  gridHistory.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+/**
  * 履歴の最下部までスクロールする
  */
-const autoScroll = () => {
+const autoScrollBottom = () => {
   const bottom = gridHistory.scrollHeight - gridHistory.clientHeight;
   gridHistory.scrollTo({ top: bottom, behavior: "smooth" });
 };
