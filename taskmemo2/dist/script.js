@@ -1981,11 +1981,6 @@ function TaskItem() {
       const memo = this.#createMemo();
       const folderpath = this.#createFolderPath();
       const url = this.#createURL();
-      const option1 = this.#createOptionInput("option1", "任意項目１");
-      const option2 = this.#createOptionInput("option2", "任意項目２");
-      const option3 = this.#createOptionInput("option3", "任意項目３");
-      const option4 = this.#createOptionInput("option4", "任意項目４");
-      const option5 = this.#createOptionInput("option5", "任意項目５");
       const freenotes = this.#createFreeNotes();
 
       form.append(id); // 表示専用
@@ -1997,11 +1992,6 @@ function TaskItem() {
       form.appendChild(memo); // 作業概要
       form.appendChild(folderpath); // 作業フォルダパス
       form.appendChild(url); // URL
-      form.appendChild(option1); // 任意項目１
-      form.appendChild(option2); // 任意項目２
-      form.appendChild(option3); // 任意項目３
-      form.appendChild(option4); // 任意項目４
-      form.appendChild(option5); // 任意項目５
       form.appendChild(freenotes); // 作業メモ
 
       form.id = "task-form";
@@ -2052,11 +2042,6 @@ function TaskItem() {
       this.#getElementById("memo").value = data.memo || "";
       this.#getElementById("folderpath").value = data.folderpath || "";
       this.#getElementById("url").value = data.url || "";
-      this.#getElementById("option1").value = data.option1 || "";
-      this.#getElementById("option2").value = data.option2 || "";
-      this.#getElementById("option3").value = data.option3 || "";
-      this.#getElementById("option4").value = data.option4 || "";
-      this.#getElementById("option5").value = data.option5 || "";
       this.#getElementById("freenotes").value = data.freenotes || "";
 
       this.#setDueDateFinishStatus();
@@ -2080,11 +2065,6 @@ function TaskItem() {
         memo: this.#getElementById("memo").value,
         folderpath: this.#getElementById("folderpath").value,
         url: this.#getElementById("url").value,
-        option1: this.#getElementById("option1").value,
-        option2: this.#getElementById("option2").value,
-        option3: this.#getElementById("option3").value,
-        option4: this.#getElementById("option4").value,
-        option5: this.#getElementById("option5").value,
         freenotes: this.#getElementById("freenotes").value,
       };
 
@@ -2353,26 +2333,6 @@ function TaskItem() {
     }
 
     //------------------------------
-    //- 任意項目
-    //------------------------------
-    /**
-     * 任意項目入力フィールドを作成する
-     * @param {string} id
-     * @param {string} title
-     * @returns {HTMLElementPartsInput} 任意項目入力フィールドのカスタム要素
-     * @private
-     */
-    #createOptionInput(id, title) {
-      const input = document.createElement("parts-input");
-      input.id = id;
-      input.title = title;
-      input.inputWidth = "75%";
-      input.placeholder = "任意入力";
-
-      return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.wrapElementInItemDiv(input);
-    }
-
-    //------------------------------
     //- 作業メモ
     //------------------------------
     /**
@@ -2383,7 +2343,7 @@ function TaskItem() {
     #createFreeNotes() {
       const memo = document.createElement("parts-textarea");
       memo.id = "freenotes";
-      memo.title = "作業メモ";
+      memo.title = "メモ";
       memo.textareaWidth = "100%";
       memo.textareaRows = "10";
       memo.placeholder = "自由記述欄";
