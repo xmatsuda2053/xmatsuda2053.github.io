@@ -221,7 +221,7 @@ export function TreeView() {
       task.dataset.type = "task";
       task.dataset.duedate = duedate || "";
       task.dataset.priority = priority || "";
-      task.dataset.status = status || "";
+      task.dataset.status = status || "0";
 
       // Drag&Drop
       this.#addDragEventListeners(task);

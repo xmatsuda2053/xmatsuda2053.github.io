@@ -1233,7 +1233,7 @@ function TreeView() {
       task.dataset.type = "task";
       task.dataset.duedate = duedate || "";
       task.dataset.priority = priority || "";
-      task.dataset.status = status || "";
+      task.dataset.status = status || "0";
 
       // Drag&Drop
       this.#addDragEventListeners(task);
@@ -1865,7 +1865,7 @@ function TaskItem() {
       this.#getElementById("staff").nameValue = data.staffName || "";
       this.#getElementById("staff").telValue = data.staffTel || "";
       this.#getElementById("priority").value = data.priority || "";
-      this.#getElementById("status").value = data.status || "";
+      this.#getElementById("status").value = data.status || "0";
       this.#getElementById("memo").value = data.memo || "";
       this.#getElementById("folderpath").value = data.folderpath || "";
       this.#getElementById("url").value = data.url || "";
@@ -1944,7 +1944,7 @@ function TaskItem() {
       title.title = "タイトル";
       title.value = "";
       title.placeholder = "XXXXXの作成";
-      title.isRequired();
+      title.setRequired();
       title.inputWidth = "100%";
 
       title.id = "title";
@@ -2014,7 +2014,7 @@ function TaskItem() {
      */
     #createDueDate() {
       const duedate = document.createElement("parts-due-date");
-      duedate.isRequired();
+      duedate.setRequired();
       duedate.id = "due-date";
 
       return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.wrapElementInItemDiv(duedate);
@@ -2030,7 +2030,7 @@ function TaskItem() {
      */
     #createStaff() {
       const staff = document.createElement("parts-staff");
-      staff.isRequired();
+      staff.setRequired();
       staff.id = "staff";
 
       return _common_utils__WEBPACK_IMPORTED_MODULE_0__.Utils.wrapElementInItemDiv(staff);
@@ -2048,12 +2048,13 @@ function TaskItem() {
       const priority = document.createElement("parts-radio");
       priority.id = "priority";
       priority.title = "優先度";
+      priority.setRequired();
 
       //priority.btnWidth = "3rem";
       priority.item = [
         { value: 5, text: "最低" },
         { value: 4, text: "低" },
-        { value: 3, text: "中", isChecked: true },
+        { value: 3, text: "中" },
         { value: 2, text: "高" },
         { value: 1, text: "最高" },
       ];
@@ -2347,7 +2348,7 @@ function PartsInput() {
      * 必須項目であることを設定する
      * @return {void}
      */
-    isRequired() {
+    setRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
     }
 
@@ -2589,7 +2590,7 @@ function PartsDueDate() {
      * 必須項目であることを設定する
      * @return {void}
      */
-    isRequired() {
+    setRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
     }
 
@@ -2727,7 +2728,7 @@ function PartsStaff() {
      * 必須項目であることを設定する
      * @return {void}
      */
-    isRequired() {
+    setRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
     }
 
@@ -2951,7 +2952,7 @@ function PartsRadio() {
      * 必須項目であることを設定する
      * @return {void}
      */
-    isRequired() {
+    setRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
     }
 
@@ -3012,7 +3013,11 @@ function PartsRadio() {
      */
     get value() {
       const container = this.shadowRoot.getElementById("container");
-      return container.querySelector('input[name="radio"]:checked').value;
+      const checked = container.querySelector('input[name="radio"]:checked');
+      if (!checked) {
+        return null;
+      }
+      return checked.value;
     }
 
     /**
@@ -3020,9 +3025,11 @@ function PartsRadio() {
      * @param {string} v
      */
     set value(v) {
-      if (v === "") v = this.defalutCheckedValue;
-      const rb = this.shadowRoot.getElementById(`item${v}`);
-      rb.checked = true;
+      if (v) {
+        if (v === "") v = this.defalutCheckedValue;
+        const rb = this.shadowRoot.getElementById(`item${v}`);
+        rb.checked = true;
+      }
     }
   }
   // カスタム要素 "PartsRadio" を定義する
@@ -3178,7 +3185,7 @@ function PartsTextarea() {
      * 必須項目であることを設定する
      * @return {void}
      */
-    isRequired() {
+    setRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
     }
 

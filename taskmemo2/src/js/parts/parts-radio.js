@@ -76,7 +76,7 @@ export function PartsRadio() {
      * 必須項目であることを設定する
      * @return {void}
      */
-    isRequired() {
+    setRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
     }
 
@@ -137,7 +137,11 @@ export function PartsRadio() {
      */
     get value() {
       const container = this.shadowRoot.getElementById("container");
-      return container.querySelector('input[name="radio"]:checked').value;
+      const checked = container.querySelector('input[name="radio"]:checked');
+      if (!checked) {
+        return null;
+      }
+      return checked.value;
     }
 
     /**
@@ -145,9 +149,11 @@ export function PartsRadio() {
      * @param {string} v
      */
     set value(v) {
-      if (v === "") v = this.defalutCheckedValue;
-      const rb = this.shadowRoot.getElementById(`item${v}`);
-      rb.checked = true;
+      if (v) {
+        if (v === "") v = this.defalutCheckedValue;
+        const rb = this.shadowRoot.getElementById(`item${v}`);
+        rb.checked = true;
+      }
     }
   }
   // カスタム要素 "PartsRadio" を定義する

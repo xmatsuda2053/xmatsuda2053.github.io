@@ -115,7 +115,7 @@ export function TaskItem() {
       this.#getElementById("staff").nameValue = data.staffName || "";
       this.#getElementById("staff").telValue = data.staffTel || "";
       this.#getElementById("priority").value = data.priority || "";
-      this.#getElementById("status").value = data.status || "";
+      this.#getElementById("status").value = data.status || "0";
       this.#getElementById("memo").value = data.memo || "";
       this.#getElementById("folderpath").value = data.folderpath || "";
       this.#getElementById("url").value = data.url || "";
@@ -194,7 +194,7 @@ export function TaskItem() {
       title.title = "タイトル";
       title.value = "";
       title.placeholder = "XXXXXの作成";
-      title.isRequired();
+      title.setRequired();
       title.inputWidth = "100%";
 
       title.id = "title";
@@ -264,7 +264,7 @@ export function TaskItem() {
      */
     #createDueDate() {
       const duedate = document.createElement("parts-due-date");
-      duedate.isRequired();
+      duedate.setRequired();
       duedate.id = "due-date";
 
       return Utils.wrapElementInItemDiv(duedate);
@@ -280,7 +280,7 @@ export function TaskItem() {
      */
     #createStaff() {
       const staff = document.createElement("parts-staff");
-      staff.isRequired();
+      staff.setRequired();
       staff.id = "staff";
 
       return Utils.wrapElementInItemDiv(staff);
@@ -298,12 +298,13 @@ export function TaskItem() {
       const priority = document.createElement("parts-radio");
       priority.id = "priority";
       priority.title = "優先度";
+      priority.setRequired();
 
       //priority.btnWidth = "3rem";
       priority.item = [
         { value: 5, text: "最低" },
         { value: 4, text: "低" },
-        { value: 3, text: "中", isChecked: true },
+        { value: 3, text: "中" },
         { value: 2, text: "高" },
         { value: 1, text: "最高" },
       ];

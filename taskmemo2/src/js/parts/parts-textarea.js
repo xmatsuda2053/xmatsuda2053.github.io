@@ -114,7 +114,7 @@ export function PartsTextarea() {
      * 必須項目であることを設定する
      * @return {void}
      */
-    isRequired() {
+    setRequired() {
       this.shadowRoot.getElementById("title").classList.add("isRequired");
     }
 
