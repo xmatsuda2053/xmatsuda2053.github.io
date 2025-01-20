@@ -8,7 +8,7 @@
 
   @mixin mark-style($left, $color) {
     margin-right: 0.25rem;
-    color: color.$form-item-icon-color-deactive;
+    color: color.$controll-icon-color-deactive;
     .icon {
       height: 18px;
       width: 18px;
