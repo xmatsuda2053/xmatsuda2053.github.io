@@ -19,17 +19,17 @@
 
   #grid-tree-control {
     grid-area: grid-tree-control;
-    background-color: color.$grid-tree-bg-color;
+    background-color: color.$grid-header-bg-color;
     padding: 0 0.5rem;
   }
   #grid-task-control {
     grid-area: grid-task-control;
-    background-color: color.$grid-task-bg-color;
+    background-color: color.$grid-header-bg-color;
     padding: 0 0.5rem;
   }
   #grid-history-control {
     grid-area: grid-history-control;
-    background-color: color.$grid-history-bg-color;
+    background-color: color.$grid-header-bg-color;
     padding: 0 0.5rem;
   }
   #grid-tree {

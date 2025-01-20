@@ -405,11 +405,11 @@ svg.icon use {
 }
 #container button {
   border-radius: 0.25rem;
-  color: #8f8f8f;
+  color: #7f7f7f;
   margin-right: 0.25rem;
 }
 #container button:hover {
-  color: #3f3f3f;
+  color: #fffff8;
 }
 #container button .icon {
   height: 18px;

@@ -430,17 +430,17 @@ svg.icon use {
 }
 #container #grid-tree-control {
   grid-area: grid-tree-control;
-  background-color: #fffffb;
+  background-color: #3c3c3c;
   padding: 0 0.5rem;
 }
 #container #grid-task-control {
   grid-area: grid-task-control;
-  background-color: #d4f1ef;
+  background-color: #3c3c3c;
   padding: 0 0.5rem;
 }
 #container #grid-history-control {
   grid-area: grid-history-control;
-  background-color: #d4f1ef;
+  background-color: #3c3c3c;
   padding: 0 0.5rem;
 }
 #container #grid-tree {
