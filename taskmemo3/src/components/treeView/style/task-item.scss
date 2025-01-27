@@ -1,0 +1,33 @@
+@use "../../_style/destyle";
+@use "../../_style/svg";
+@use "../../_style/font";
+
+$task-item-font-color-hover: #0078d4;
+
+.task-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.15rem 0rem;
+  text-decoration-skip-ink: none;
+
+  &:hover {
+    color: $task-item-font-color-hover;
+    text-decoration: underline;
+  }
+
+  &.menu-opened {
+    color: $task-item-font-color-hover;
+    text-decoration: underline;
+  }
+
+  .svg-icon {
+    margin-right: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .task-text {
+    padding-top: 1px;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "taskmemo3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass src/components:src/components",
+    "build": "npx webpack",
+    "inline-js": "node inline-js-in-html.js notebook3.html",
+    "build-all": "npm run sass && npm run build && npm run inline-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "prettier": "^3.4.2",
+    "sass": "^1.83.4",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
