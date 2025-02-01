@@ -161,7 +161,7 @@ export function TreeView() {
      */
     #attachAddNewTaskListener() {
       this.shadowRoot.addEventListener("clickAddNewTask", (e) => {
-        const addRoot = this.#getAddRoot(e.target);
+        const addRoot = this.#getAddRoot(e.detail.item.target);
         const item = this.#createTaskItem();
         addRoot.appendChild(item);
 
@@ -178,7 +178,7 @@ export function TreeView() {
      */
     #attachAddNewGroupListener() {
       this.shadowRoot.addEventListener("clickAddNewGroup", (e) => {
-        const addRoot = this.#getAddRoot(e.target);
+        const addRoot = this.#getAddRoot(e.detail.item.target);
         const item = this.#createGroupItem();
         addRoot.appendChild(item);
 
@@ -195,7 +195,7 @@ export function TreeView() {
      */
     #attachDeleteItemListener() {
       this.shadowRoot.addEventListener("clickDeleteItem", (e) => {
-        const target = e.target;
+        const target = e.detail.item.target;
         if (this.#deleteItem(target)) {
           this.dispatchEvent(
             EventUtils.createEvent("deleteItem", { id: target.id })

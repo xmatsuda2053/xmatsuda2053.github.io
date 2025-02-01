@@ -129,12 +129,12 @@ export function TaskMemo() {
 
       // タスクをクリックした際のイベント
       this.treeViewRoot.addEventListener("clickTaskItem", (e) => {
-        console.log(`task-memo) click task item : ${e.id}`);
+        console.log(`task-memo) click task item : ${e.detail.item.id}`);
       });
 
       // グループをクリックした際のイベント
       this.treeViewRoot.addEventListener("clickGroupItem", (e) => {
-        console.log(`group-memo) click group item : ${e.id}`);
+        console.log(`group-memo) click group item : ${e.detail.item.id}`);
       });
     }
 
