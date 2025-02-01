@@ -9,10 +9,8 @@ export class EventUtils {
    * @return {CustomEvent} - 作成されたカスタムイベント
    */
   static createEvent = (eventName, item = {}) => {
-    return new CustomEvent(eventName, {
-      detail: { item: item },
-      bubbles: true,
-      composed: true,
-    });
+    item.bubbles = true;
+    item.composed = true;
+    return new CustomEvent(eventName, item);
   };
 }

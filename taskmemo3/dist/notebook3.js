@@ -146,12 +146,12 @@ function TaskMemo() {
 
       // タスクをクリックした際のイベント
       this.treeViewRoot.addEventListener("clickTaskItem", (e) => {
-        console.log(`task-memo) click task item : ${e.detail.item.id}`);
+        console.log(`task-memo) click task item : ${e.id}`);
       });
 
       // グループをクリックした際のイベント
       this.treeViewRoot.addEventListener("clickGroupItem", (e) => {
-        console.log(`group-memo) click group item : ${e.detail.item.id}`);
+        console.log(`group-memo) click group item : ${e.id}`);
       });
     }
 
@@ -744,11 +744,9 @@ class EventUtils {
    * @return {CustomEvent} - 作成されたカスタムイベント
    */
   static createEvent = (eventName, item = {}) => {
-    return new CustomEvent(eventName, {
-      detail: { item: item },
-      bubbles: true,
-      composed: true,
-    });
+    item.bubbles = true;
+    item.composed = true;
+    return new CustomEvent(eventName, item);
   };
 }
 
@@ -1469,7 +1467,7 @@ function TreeView() {
      */
     #attachAddNewTaskListener() {
       this.shadowRoot.addEventListener("clickAddNewTask", (e) => {
-        const addRoot = this.#getAddRoot(e.detail.item.target);
+        const addRoot = this.#getAddRoot(e.target);
         const item = this.#createTaskItem();
         addRoot.appendChild(item);
 
@@ -1486,7 +1484,7 @@ function TreeView() {
      */
     #attachAddNewGroupListener() {
       this.shadowRoot.addEventListener("clickAddNewGroup", (e) => {
-        const addRoot = this.#getAddRoot(e.detail.item.target);
+        const addRoot = this.#getAddRoot(e.target);
         const item = this.#createGroupItem();
         addRoot.appendChild(item);
 
@@ -1503,7 +1501,7 @@ function TreeView() {
      */
     #attachDeleteItemListener() {
       this.shadowRoot.addEventListener("clickDeleteItem", (e) => {
-        const target = e.detail.item.target;
+        const target = e.target;
         if (this.#deleteItem(target)) {
           this.dispatchEvent(
             _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent("deleteItem", { id: target.id })
