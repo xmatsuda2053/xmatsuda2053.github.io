@@ -1315,15 +1315,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TreeView: () => (/* binding */ TreeView)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
-/* harmony import */ var _contextMenu_context_menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12);
-/* harmony import */ var _task_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(14);
-/* harmony import */ var _group_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16);
-/* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(18);
-
-
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _contextMenu_context_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
+/* harmony import */ var _task_title__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _group_title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
+/* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(18);
 
 
 
@@ -1339,6 +1335,7 @@ __webpack_require__.r(__webpack_exports__);
  * @extends {HTMLElement}
  */
 function TreeView() {
+  let draggedElement;
   class TreeView extends HTMLElement {
     // *******************************************************
     // * 初期処理
@@ -1350,16 +1347,16 @@ function TreeView() {
      */
     constructor() {
       super();
-      (0,_contextMenu_context_menu__WEBPACK_IMPORTED_MODULE_4__.ContextMenu)();
-      (0,_task_item__WEBPACK_IMPORTED_MODULE_5__.TaskItem)();
-      (0,_group_item__WEBPACK_IMPORTED_MODULE_6__.GroupItem)();
+      (0,_contextMenu_context_menu__WEBPACK_IMPORTED_MODULE_2__.ContextMenu)();
+      (0,_task_title__WEBPACK_IMPORTED_MODULE_3__.TaskTitle)();
+      (0,_group_title__WEBPACK_IMPORTED_MODULE_4__.GroupTitle)();
 
       // Shadow DOMをオープンモードでアタッチ
       this.attachShadow({ mode: "open" });
       this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_tree_view_css__WEBPACK_IMPORTED_MODULE_7__["default"]);
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__["default"]);
 
       // コンテンツの初期設定
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
@@ -1368,53 +1365,25 @@ function TreeView() {
       this.#attachContextMenuListener();
       this.#attachAddNewTaskListener();
       this.#attachAddNewGroupListener();
-      this.#attachDeleteItemListener();
 
       this.shadowRoot.appendChild(this.root);
     }
+
+    // *******************************************************
+    // * TreeViewデータ取得
+    // *******************************************************
 
     /**
      * ルート要素の子ノードを読み取り、データを取得します。
      * @returns {Array<Object>} 取得したデータの配列
      */
     getData() {
-      return this.#readElement(this.root.childNodes);
+      return "";
     }
 
-    /**
-     * 指定されたノードリストを再帰的に読み取り、要素データの配列を作成します。
-     * @private
-     * @param {NodeList} nodes - 処理対象のノードリスト
-     * @returns {Array<Object>} 読み取られた要素データの配列
-     */
-    #readElement(nodes) {
-      const elements = [];
-
-      nodes.forEach((node) => {
-        const item = {};
-
-        if (_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.tagEq(node, "task-item")) {
-          // タスク
-          item.id = node.id || null;
-          item.name = node.name || null;
-          item.type = node.type || null;
-          item.duedate = node.duedate || null;
-          item.priority = node.priority || null;
-          item.status = node.status || null;
-
-          elements.push(item);
-        } else if (_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.tagEq(node, "group-item")) {
-          // グループ
-          item.id = node.id || null;
-          item.name = node.name || null;
-          item.children = this.#readElement(node.childNodes);
-
-          elements.push(item);
-        }
-      });
-
-      return elements;
-    }
+    // *******************************************************
+    // * TreeView描画
+    // *******************************************************
 
     /**
      * JSON形式のツリービューデータを受け取り、ツリービューをレンダリングします。
@@ -1426,10 +1395,12 @@ function TreeView() {
         return;
       }
 
+      /*
       const dataList = JSON.parse(jsonStr);
       dataList.forEach((data) => {
         this.#addItemsRecursively(this.root, data);
       });
+      */
     }
 
     /**
@@ -1441,14 +1412,7 @@ function TreeView() {
      */
     #addItemsRecursively(rootItem, data) {
       if (data.type === "task") {
-        rootItem.appendChild(this.#createTaskItem(data));
       } else {
-        const groupItem = this.#createGroupItem(data);
-        rootItem.appendChild(groupItem);
-        (data.children || []).forEach((child) => {
-          this.#addItemsRecursively(groupItem, child);
-        });
-        groupItem.open = false;
       }
     }
 
@@ -1479,6 +1443,21 @@ function TreeView() {
     }
 
     /**
+     * 指定された要素が `group-item` タグを持つかどうかを確認し、持つ場合はその要素を返します。
+     * 持たない場合は、最も近い `group-item` 要素を返し、もし見つからなければルート要素を返します。
+     * @param {HTMLElement} element - 処理対象の要素
+     * @returns {HTMLElement} 指定された要素が `group-item` である場合、その要素。
+     *                        そうでない場合は最も近い `group-item` 要素、またはルート要素。
+     */
+    #getAddRoot(element) {
+      if (_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.tagEq(element, "group-item")) {
+        return element;
+      } else {
+        return element?.closest("group-item") || this.root;
+      }
+    }
+
+    /**
      * シャドウルートに `clickAddNewTask` イベントリスナーを追加します。
      * イベントが発生すると、新しいタスクアイテムを作成し、指定された親要素に追加します。
      * @returns {void}
@@ -1490,7 +1469,7 @@ function TreeView() {
         addRoot.appendChild(item);
 
         this.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent("addTaskItem", { id: item.id })
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("addTaskItem", { id: item.id })
         );
       });
     }
@@ -1507,40 +1486,9 @@ function TreeView() {
         addRoot.appendChild(item);
 
         this.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent("addGroupItem", { id: item.id })
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("addGroupItem", { id: item.id })
         );
       });
-    }
-
-    /**
-     * シャドウルートに `clickDeleteItem` イベントリスナーを追加します。
-     * イベントが発生すると、指定されたターゲットアイテムを削除し、削除された場合は `deleteItem` イベントをディスパッチします。
-     * @returns {void}
-     */
-    #attachDeleteItemListener() {
-      this.shadowRoot.addEventListener("clickDeleteItem", (e) => {
-        const target = e.detail.item.target;
-        if (this.#deleteItem(target)) {
-          this.dispatchEvent(
-            _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent("deleteItem", { id: target.id })
-          );
-        }
-      });
-    }
-
-    /**
-     * 指定された要素が `group-item` タグを持つかどうかを確認し、持つ場合はその要素を返します。
-     * 持たない場合は、最も近い `group-item` 要素を返し、もし見つからなければルート要素を返します。
-     * @param {HTMLElement} element - 処理対象の要素
-     * @returns {HTMLElement} 指定された要素が `group-item` である場合、その要素。
-     *                        そうでない場合は最も近い `group-item` 要素、またはルート要素。
-     */
-    #getAddRoot(element) {
-      if (_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.tagEq(element, "group-item")) {
-        return element;
-      } else {
-        return element?.closest("group-item") || this.root;
-      }
     }
 
     // *******************************************************
@@ -1548,54 +1496,183 @@ function TreeView() {
     // *******************************************************
 
     /**
-     * 新しい `task-item` 要素を作成し、初期化データとコンテキストメニューを設定します。
-     * @param {Object} [data={}] - タスクアイテムを初期化するためのデータ
-     * @returns {HTMLElement} 作成された `task-item` エレメント
+     * 指定した要素をドラッグ可能なdiv要素でラップします。
+     *
+     * @param {HTMLElement} element - ラップする要素。
+     * @returns {HTMLDivElement} ドラッグ可能なdiv要素を含む要素。
+     */
+    #wrapDraggableDiv(element, className) {
+      const div = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, [
+        "draggable-item",
+        className,
+      ]);
+      div.setAttribute("draggable", true);
+      div.appendChild(element);
+
+      return div;
+    }
+
+    /**
+     * タスクアイテムを作成します。
+     *
+     * @param {Object} data - タスクのデータ。
+     * @param {string} data.title - タスクのタイトル。
+     * @param {string} data.description - タスクの説明。
+     * @param {boolean} data.completed - タスクの完了状態。
+     * @returns {HTMLDivElement} 作成されたタスクアイテムを含むdiv要素。
      */
     #createTaskItem(data = {}) {
-      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("task-item");
+      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("task-title");
       item.init(data);
       item.setContextMenu(this.menu);
 
-      return item;
+      const wrapedItem = this.#wrapDraggableDiv(item, "task-item");
+      this.#addDragEventListeners(wrapedItem);
+      return wrapedItem;
     }
 
     /**
-     * 新しい `group-item` 要素を作成し、初期化データとコンテキストメニューを設定します。
-     * @param {Object} [data={}] - グループアイテムを初期化するためのデータ
-     * @returns {HTMLElement} 作成された `group-item` エレメント
+     * グループアイテムを作成します。
+     *
+     * @param {Object} data - グループのデータ。
+     * @param {string} data.title - グループのタイトル。
+     * @param {string} data.description - グループの説明。
+     * @param {boolean} data.completed - グループの完了状態。
+     * @returns {HTMLDivElement} 作成されたグループアイテムを含むdiv要素。
      */
     #createGroupItem(data = {}) {
-      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("group-item");
+      // グループタイトル要素を作成し、データを初期化
+      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("group-title");
       item.init(data);
       item.setContextMenu(this.menu);
 
-      return item;
+      // details要素を作成
+      const details = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("details");
+
+      // summary要素を作成
+      const summary = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("summary");
+      summary.addEventListener("click", () => {
+        item.open = !details.open;
+      });
+
+      // グループ内のアイテムを格納するdiv要素を作成
+      const items = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, ["group-items"]);
+
+      // タイトル要素をsummary要素に追加
+      summary.appendChild(item);
+
+      // summary要素とitems要素をdetails要素に追加
+      details.appendChild(summary);
+      details.appendChild(items);
+
+      const wrapedItem = this.#wrapDraggableDiv(details, "group-item");
+      this.#addDragEventListeners(wrapedItem);
+      return wrapedItem;
+    }
+
+    // *******************************************************
+    // * Drag&Drop
+    // *******************************************************
+
+    /**
+     * ドラッグイベントリスナーを追加
+     * @param {HTMLElement} element ドラッグイベントリスナーを追加する要素
+     */
+    #addDragEventListeners(element) {
+      element.setAttribute("draggable", true);
+      element.addEventListener("dragstart", this.#handleDragStart);
+      element.addEventListener("dragover", this.#handleDragOver);
+      element.addEventListener("dragend", this.#handleDragEnd);
     }
 
     /**
-     * 指定されたターゲット要素を削除します。
-     * ターゲットが存在しない場合や、ターゲットのIDが 'root' である場合は削除しません。
-     * ユーザーの確認を得た後、ターゲットを削除します。
-     * @param {HTMLElement} target - 削除対象の要素
-     * @returns {boolean} 削除が成功した場合は true、それ以外の場合は false
+     * ドラッグ操作開始
+     * @param {Event} e
      */
-    #deleteItem(target) {
-      if (!target || target.id === "root") {
-        return false;
+    #handleDragStart(e) {
+      draggedElement = e.target;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/html", e.target);
+      e.target.classList.add("dragging");
+    }
+    /**
+     * ドラッグ中
+     * @param {Event} e
+     */
+    #handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+
+      // ターゲット要素を設定
+      const target = e.target.closest(".draggable-item");
+      if (!target || target === draggedElement) {
+        return;
       }
 
-      const typeName = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.tagEq(target, "task-item")
-        ? "タスク"
-        : "グループ";
-
-      const confirmMessage = `${typeName}「${target.name}」を削除しますか？`;
-      if (confirm(confirmMessage)) {
-        target.remove();
-        return true;
+      // draggedElement が target の中に含まれていないことを確認
+      if (this.draggedElement && draggedElement.contains(target)) {
+        return;
       }
 
-      return false;
+      // ターゲット要素の位置とサイズを取得
+      const rect = target.getBoundingClientRect();
+
+      // マウス位置がターゲットのどの位置に来ているかを計算
+      const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
+
+      // ------------------------------
+      // 要素の挿入位置を決定
+      // ------------------------------
+
+      /**
+       * 要素がタスクであるか判定する。
+       * @param {HTMLElement} elm 判定対象
+       * @returns {boolean} 判定結果
+       */
+      const isTaskItem = (elm) => elm.classList.contains("task-item");
+
+      /**
+       * マウスターゲットが要素から見て上半分にあるか否か判定する。
+       * @param {number} pos マウス位置
+       * @returns {boolean} 判定結果
+       */
+      const isBefore = (pos) => pos <= 0.5;
+
+      /**
+       * ドラッグ中の要素を指定要素の前に挿入する。
+       *  @param {HTMLElement} elm 挿入基点となる要素
+       * @returns
+       */
+      const insertBefore = (elm) =>
+        elm.insertAdjacentElement("beforebegin", draggedElement);
+
+      /**
+       * ドラッグ中の要素を指定要素の後ろに挿入する。
+       * @param {*} elm
+       * @returns
+       */
+      const insertAfter = (elm) =>
+        elm.insertAdjacentElement("afterend", draggedElement);
+
+      // 要素の位置を決定する
+      if (isTaskItem(target)) {
+        // タスク要素を起点とする場合
+        if (isBefore(nowPosition)) {
+          insertBefore(target); // 前に追加
+        } else {
+          insertAfter(target); // 後ろに追加
+        }
+      }
+    }
+
+    /**
+     * ドラッグ終了
+     * @param {Event} e
+     */
+    #handleDragEnd(e) {
+      e.target.classList.remove("dragging");
+      draggedElement = null;
+      this.dispatchEvent(_utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("changeTreeViewItem"));
     }
   }
   customElements.define("tree-view", TreeView);
@@ -1608,55 +1685,12 @@ function TreeView() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   IdUtils: () => (/* binding */ IdUtils)
-/* harmony export */ });
-/**
- * IDユーティリティクラス
- */
-class IdUtils {
-  /**
-   * 一意のIDを生成する
-   * @returns {string} 一意のID
-   */
-  static getUniqueId = () => {
-    // ランダム文字列を生成する
-    const randomStr = Math.floor(10000 * Math.random()).toString(16);
-
-    // 日付文字列を生成
-    const date = new Date();
-    const parts = {
-      yyyy: date.getFullYear(),
-      MM: String(date.getMonth() + 1).padStart(2, "0"),
-      dd: String(date.getDate()).padStart(2, "0"),
-      HH: String(date.getHours()).padStart(2, "0"),
-      mm: String(date.getMinutes()).padStart(2, "0"),
-      ss: String(date.getSeconds()).padStart(2, "0"),
-      SSS: String(date.getMilliseconds()).padStart(3, "0"),
-    };
-
-    const format = "{yyyy}{MM}{dd}{HH}{mm}{ss}{SSS}";
-    const systemDate = format.replace(
-      /{(yyyy|MM|dd|HH|mm|ss|SSS)}/g,
-      (matched) => parts[matched.slice(1, -1)]
-    );
-
-    return `${systemDate}_${randomStr}`;
-  };
-}
-
-
-/***/ }),
-/* 12 */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ContextMenu: () => (/* binding */ ContextMenu)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
-/* harmony import */ var _style_context_menu_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _style_context_menu_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
 
 
 
@@ -1860,7 +1894,7 @@ function ContextMenu() {
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2334,18 +2368,18 @@ th {
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   TaskItem: () => (/* binding */ TaskItem)
+/* harmony export */   TaskTitle: () => (/* binding */ TaskTitle)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
-/* harmony import */ var _style_task_item_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
+/* harmony import */ var _style_task_title_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
 
 
 
@@ -2354,12 +2388,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * TaskItem コンポーネント
- * @class TaskItem
+ * TaskTitle コンポーネント
+ * @class TaskTitle
  * @extends {HTMLElement}
  */
-function TaskItem() {
-  class TaskItem extends HTMLElement {
+function TaskTitle() {
+  class TaskTitle extends HTMLElement {
     /**
      * コンストラクタ
      * @return {void}
@@ -2372,10 +2406,10 @@ function TaskItem() {
       this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_item_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_title_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
       // 空の要素を作成
-      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["task-item"]);
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["task-title"]);
 
       this.shadowRoot.appendChild(this.root);
     }
@@ -2469,7 +2503,7 @@ function TaskItem() {
       this.priority = data.priority || "";
       this.status = data.status || "0";
 
-      this.setAttribute("draggable", true);
+      this.classList.add("tree-item");
 
       this.#refreshView();
 
@@ -2535,7 +2569,50 @@ function TaskItem() {
       this.root.appendChild(text);
     }
   }
-  customElements.define("task-item", TaskItem);
+  customElements.define("task-title", TaskTitle);
+}
+
+
+/***/ }),
+/* 14 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   IdUtils: () => (/* binding */ IdUtils)
+/* harmony export */ });
+/**
+ * IDユーティリティクラス
+ */
+class IdUtils {
+  /**
+   * 一意のIDを生成する
+   * @returns {string} 一意のID
+   */
+  static getUniqueId = () => {
+    // ランダム文字列を生成する
+    const randomStr = Math.floor(10000 * Math.random()).toString(16);
+
+    // 日付文字列を生成
+    const date = new Date();
+    const parts = {
+      yyyy: date.getFullYear(),
+      MM: String(date.getMonth() + 1).padStart(2, "0"),
+      dd: String(date.getDate()).padStart(2, "0"),
+      HH: String(date.getHours()).padStart(2, "0"),
+      mm: String(date.getMinutes()).padStart(2, "0"),
+      ss: String(date.getSeconds()).padStart(2, "0"),
+      SSS: String(date.getMilliseconds()).padStart(3, "0"),
+    };
+
+    const format = "{yyyy}{MM}{dd}{HH}{mm}{ss}{SSS}";
+    const systemDate = format.replace(
+      /{(yyyy|MM|dd|HH|mm|ss|SSS)}/g,
+      (matched) => parts[matched.slice(1, -1)]
+    );
+
+    return `${systemDate}_${randomStr}`;
+  };
 }
 
 
@@ -2955,27 +3032,26 @@ th {
   font-family: monospace;
 }
 
-.task-item {
+.task-title {
   cursor: pointer;
   display: flex;
   align-items: center;
-  padding: 0.15rem 0rem;
   text-decoration-skip-ink: none;
 }
-.task-item:hover {
+.task-title:hover {
   color: #0078d4;
   text-decoration: underline;
 }
-.task-item.menu-opened {
+.task-title.menu-opened {
   color: #0078d4;
   text-decoration: underline;
 }
-.task-item .svg-icon {
+.task-title .svg-icon {
   margin-right: 0.25rem;
   height: 1rem;
   width: 1rem;
 }
-.task-item .task-text {
+.task-title .task-text {
   padding-top: 1px;
 }
 `, ""]);
@@ -2989,13 +3065,13 @@ th {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   GroupItem: () => (/* binding */ GroupItem)
+/* harmony export */   GroupTitle: () => (/* binding */ GroupTitle)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
-/* harmony import */ var _style_group_item_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(17);
+/* harmony import */ var _style_group_title_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(17);
 
 
 
@@ -3004,12 +3080,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * GroupItem コンポーネント
- * @class GroupItem
+ * GroupTitle コンポーネント
+ * @class GroupTitle
  * @extends {HTMLElement}
  */
-function GroupItem() {
-  class GroupItem extends HTMLElement {
+function GroupTitle() {
+  class GroupTitle extends HTMLElement {
     /**
      * コンストラクタ
      * @return {void}
@@ -3022,14 +3098,10 @@ function GroupItem() {
       this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_group_item_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_group_title_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
       // 空の要素を作成
-      this.summary = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("summary");
-      this.items = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-items");
-      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("details");
-      this.root.appendChild(this.summary);
-      this.root.appendChild(this.items);
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["group-title"]);
 
       this.shadowRoot.appendChild(this.root);
     }
@@ -3050,12 +3122,8 @@ function GroupItem() {
       this._name = value;
     }
 
-    /**
-     * グループの子要素ゲッター
-     * @returns {NodeList|Array} グループの子要素リスト
-     */
-    get childNodes() {
-      return this.items.childNodes || [];
+    set open(value) {
+      this.root.classList.toggle("group-opened", value);
     }
 
     /**
@@ -3068,7 +3136,7 @@ function GroupItem() {
     init(data) {
       this.id = data.id || _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__.IdUtils.getUniqueId();
       this.name = data.name || "新規グループ";
-      this.setAttribute("draggable", true);
+      this.classList.add("tree-item");
 
       this.#refreshView();
       this.#addClickEvent();
@@ -3090,30 +3158,13 @@ function GroupItem() {
           pageY: e.pageY,
         });
 
-        this.summary.classList.add("menu-opened");
+        this.root.classList.add("menu-opened");
 
         this.shadowRoot.addEventListener("closeMenu", () => {
-          this.summary.classList.remove("menu-opened");
+          this.root.classList.remove("menu-opened");
           menu.remove();
         });
       });
-    }
-
-    /**
-     * アイテムを追加する
-     * @param {HTMLElement} item
-     */
-    appendChild(item) {
-      this.items.appendChild(item);
-      this.open = true;
-    }
-
-    /**
-     * ルート要素の open プロパティを設定します。
-     * @param {boolean} value - ルート要素を開く (true) か閉じる (false) かを示すフラグ
-     */
-    set open(value) {
-      this.root.open = value;
     }
 
     /**
@@ -3124,12 +3175,12 @@ function GroupItem() {
     #refreshView() {
       // アイコン設定
       const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.chevronRightPaths);
-      this.summary.appendChild(icon);
+      this.root.appendChild(icon);
 
       // タイトル設定
       const text = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("span", null, ["group-text"]);
       text.innerText = this.name;
-      this.summary.appendChild(text);
+      this.root.appendChild(text);
     }
 
     /**
@@ -3137,7 +3188,7 @@ function GroupItem() {
      * @returns {void}
      */
     #addClickEvent() {
-      this.summary.addEventListener("click", () => {
+      this.root.addEventListener("click", () => {
         this.shadowRoot.dispatchEvent(
           _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent("clickGroupItem", {
             id: this.id,
@@ -3146,7 +3197,7 @@ function GroupItem() {
       });
     }
   }
-  customElements.define("group-item", GroupItem);
+  customElements.define("group-title", GroupTitle);
 }
 
 
@@ -3566,44 +3617,36 @@ th {
   font-family: monospace;
 }
 
-details {
-  padding-top: 0.15rem;
-}
-details summary {
-  padding-bottom: 0.15rem;
+.group-title {
   cursor: pointer;
-  list-style: none;
   display: flex;
   align-items: center;
   text-decoration-skip-ink: none;
 }
-details summary::-webkit-details-marker {
+.group-title::-webkit-details-marker {
   display: none;
 }
-details summary:hover {
+.group-title:hover {
   color: #0078d4;
   text-decoration: underline;
 }
-details summary.menu-opened {
+.group-title.menu-opened {
   color: #0078d4;
   text-decoration: underline;
 }
-details summary .svg-icon {
+.group-title .svg-icon {
   margin-right: 0.25rem;
   height: 1rem;
   width: 1rem;
   transition: transform 0.25s;
 }
-details summary .group-text {
-  padding-top: 1px;
-}
-details #group-items {
-  padding-left: 1.2rem;
-}
-details[open] summary .svg-icon {
+.group-title.group-opened .svg-icon {
   transform: rotate(90deg);
   top: 0.22rem;
   left: 0.18rem;
+}
+.group-title .group-text {
+  padding-top: 1px;
 }
 `, ""]);
 // Exports
@@ -4029,6 +4072,12 @@ th {
 #root {
   width: 100%;
   height: 100%;
+}
+#root .draggable-item {
+  padding: 0.15rem 0;
+}
+#root details summary {
+  list-style: none;
 }
 `, ""]);
 // Exports

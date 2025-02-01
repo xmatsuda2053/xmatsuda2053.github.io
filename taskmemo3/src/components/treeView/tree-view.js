@@ -1,11 +1,9 @@
 import { ElmUtils } from "../../utils/elm-utils";
-import { SvgUtils } from "../../utils/svg-utils";
-import { IdUtils } from "../../utils/id-utils";
 import { EventUtils } from "../../utils/event-utils";
 
 import { ContextMenu } from "../contextMenu/context-menu";
-import { TaskItem } from "./task-item";
-import { GroupItem } from "./group-item";
+import { TaskTitle } from "./task-title";
+import { GroupTitle } from "./group-title";
 
 import styles from "./style/tree-view.css";
 
@@ -15,6 +13,7 @@ import styles from "./style/tree-view.css";
  * @extends {HTMLElement}
  */
 export function TreeView() {
+  let draggedElement;
   class TreeView extends HTMLElement {
     // *******************************************************
     // * 初期処理
@@ -27,8 +26,8 @@ export function TreeView() {
     constructor() {
       super();
       ContextMenu();
-      TaskItem();
-      GroupItem();
+      TaskTitle();
+      GroupTitle();
 
       // Shadow DOMをオープンモードでアタッチ
       this.attachShadow({ mode: "open" });
@@ -44,53 +43,25 @@ export function TreeView() {
       this.#attachContextMenuListener();
       this.#attachAddNewTaskListener();
       this.#attachAddNewGroupListener();
-      this.#attachDeleteItemListener();
 
       this.shadowRoot.appendChild(this.root);
     }
+
+    // *******************************************************
+    // * TreeViewデータ取得
+    // *******************************************************
 
     /**
      * ルート要素の子ノードを読み取り、データを取得します。
      * @returns {Array<Object>} 取得したデータの配列
      */
     getData() {
-      return this.#readElement(this.root.childNodes);
+      return "";
     }
 
-    /**
-     * 指定されたノードリストを再帰的に読み取り、要素データの配列を作成します。
-     * @private
-     * @param {NodeList} nodes - 処理対象のノードリスト
-     * @returns {Array<Object>} 読み取られた要素データの配列
-     */
-    #readElement(nodes) {
-      const elements = [];
-
-      nodes.forEach((node) => {
-        const item = {};
-
-        if (ElmUtils.tagEq(node, "task-item")) {
-          // タスク
-          item.id = node.id || null;
-          item.name = node.name || null;
-          item.type = node.type || null;
-          item.duedate = node.duedate || null;
-          item.priority = node.priority || null;
-          item.status = node.status || null;
-
-          elements.push(item);
-        } else if (ElmUtils.tagEq(node, "group-item")) {
-          // グループ
-          item.id = node.id || null;
-          item.name = node.name || null;
-          item.children = this.#readElement(node.childNodes);
-
-          elements.push(item);
-        }
-      });
-
-      return elements;
-    }
+    // *******************************************************
+    // * TreeView描画
+    // *******************************************************
 
     /**
      * JSON形式のツリービューデータを受け取り、ツリービューをレンダリングします。
@@ -102,10 +73,12 @@ export function TreeView() {
         return;
       }
 
+      /*
       const dataList = JSON.parse(jsonStr);
       dataList.forEach((data) => {
         this.#addItemsRecursively(this.root, data);
       });
+      */
     }
 
     /**
@@ -117,14 +90,7 @@ export function TreeView() {
      */
     #addItemsRecursively(rootItem, data) {
       if (data.type === "task") {
-        rootItem.appendChild(this.#createTaskItem(data));
       } else {
-        const groupItem = this.#createGroupItem(data);
-        rootItem.appendChild(groupItem);
-        (data.children || []).forEach((child) => {
-          this.#addItemsRecursively(groupItem, child);
-        });
-        groupItem.open = false;
       }
     }
 
@@ -152,6 +118,21 @@ export function TreeView() {
 
         this.shadowRoot.addEventListener("closeMenu", closeMenuHandler);
       });
+    }
+
+    /**
+     * 指定された要素が `group-item` タグを持つかどうかを確認し、持つ場合はその要素を返します。
+     * 持たない場合は、最も近い `group-item` 要素を返し、もし見つからなければルート要素を返します。
+     * @param {HTMLElement} element - 処理対象の要素
+     * @returns {HTMLElement} 指定された要素が `group-item` である場合、その要素。
+     *                        そうでない場合は最も近い `group-item` 要素、またはルート要素。
+     */
+    #getAddRoot(element) {
+      if (ElmUtils.tagEq(element, "group-item")) {
+        return element;
+      } else {
+        return element?.closest("group-item") || this.root;
+      }
     }
 
     /**
@@ -188,90 +169,188 @@ export function TreeView() {
       });
     }
 
-    /**
-     * シャドウルートに `clickDeleteItem` イベントリスナーを追加します。
-     * イベントが発生すると、指定されたターゲットアイテムを削除し、削除された場合は `deleteItem` イベントをディスパッチします。
-     * @returns {void}
-     */
-    #attachDeleteItemListener() {
-      this.shadowRoot.addEventListener("clickDeleteItem", (e) => {
-        const target = e.detail.item.target;
-        if (this.#deleteItem(target)) {
-          this.dispatchEvent(
-            EventUtils.createEvent("deleteItem", { id: target.id })
-          );
-        }
-      });
-    }
-
-    /**
-     * 指定された要素が `group-item` タグを持つかどうかを確認し、持つ場合はその要素を返します。
-     * 持たない場合は、最も近い `group-item` 要素を返し、もし見つからなければルート要素を返します。
-     * @param {HTMLElement} element - 処理対象の要素
-     * @returns {HTMLElement} 指定された要素が `group-item` である場合、その要素。
-     *                        そうでない場合は最も近い `group-item` 要素、またはルート要素。
-     */
-    #getAddRoot(element) {
-      if (ElmUtils.tagEq(element, "group-item")) {
-        return element;
-      } else {
-        return element?.closest("group-item") || this.root;
-      }
-    }
-
     // *******************************************************
     // * TreeView操作
     // *******************************************************
 
     /**
-     * 新しい `task-item` 要素を作成し、初期化データとコンテキストメニューを設定します。
-     * @param {Object} [data={}] - タスクアイテムを初期化するためのデータ
-     * @returns {HTMLElement} 作成された `task-item` エレメント
+     * 指定した要素をドラッグ可能なdiv要素でラップします。
+     *
+     * @param {HTMLElement} element - ラップする要素。
+     * @returns {HTMLDivElement} ドラッグ可能なdiv要素を含む要素。
+     */
+    #wrapDraggableDiv(element, className) {
+      const div = ElmUtils.createElm("div", null, [
+        "draggable-item",
+        className,
+      ]);
+      div.setAttribute("draggable", true);
+      div.appendChild(element);
+
+      return div;
+    }
+
+    /**
+     * タスクアイテムを作成します。
+     *
+     * @param {Object} data - タスクのデータ。
+     * @param {string} data.title - タスクのタイトル。
+     * @param {string} data.description - タスクの説明。
+     * @param {boolean} data.completed - タスクの完了状態。
+     * @returns {HTMLDivElement} 作成されたタスクアイテムを含むdiv要素。
      */
     #createTaskItem(data = {}) {
-      const item = ElmUtils.createElm("task-item");
+      const item = ElmUtils.createElm("task-title");
       item.init(data);
       item.setContextMenu(this.menu);
 
-      return item;
+      const wrapedItem = this.#wrapDraggableDiv(item, "task-item");
+      this.#addDragEventListeners(wrapedItem);
+      return wrapedItem;
     }
 
     /**
-     * 新しい `group-item` 要素を作成し、初期化データとコンテキストメニューを設定します。
-     * @param {Object} [data={}] - グループアイテムを初期化するためのデータ
-     * @returns {HTMLElement} 作成された `group-item` エレメント
+     * グループアイテムを作成します。
+     *
+     * @param {Object} data - グループのデータ。
+     * @param {string} data.title - グループのタイトル。
+     * @param {string} data.description - グループの説明。
+     * @param {boolean} data.completed - グループの完了状態。
+     * @returns {HTMLDivElement} 作成されたグループアイテムを含むdiv要素。
      */
     #createGroupItem(data = {}) {
-      const item = ElmUtils.createElm("group-item");
+      // グループタイトル要素を作成し、データを初期化
+      const item = ElmUtils.createElm("group-title");
       item.init(data);
       item.setContextMenu(this.menu);
 
-      return item;
+      // details要素を作成
+      const details = ElmUtils.createElm("details");
+
+      // summary要素を作成
+      const summary = ElmUtils.createElm("summary");
+      summary.addEventListener("click", () => {
+        item.open = !details.open;
+      });
+
+      // グループ内のアイテムを格納するdiv要素を作成
+      const items = ElmUtils.createElm("div", null, ["group-items"]);
+
+      // タイトル要素をsummary要素に追加
+      summary.appendChild(item);
+
+      // summary要素とitems要素をdetails要素に追加
+      details.appendChild(summary);
+      details.appendChild(items);
+
+      const wrapedItem = this.#wrapDraggableDiv(details, "group-item");
+      this.#addDragEventListeners(wrapedItem);
+      return wrapedItem;
+    }
+
+    // *******************************************************
+    // * Drag&Drop
+    // *******************************************************
+
+    /**
+     * ドラッグイベントリスナーを追加
+     * @param {HTMLElement} element ドラッグイベントリスナーを追加する要素
+     */
+    #addDragEventListeners(element) {
+      element.setAttribute("draggable", true);
+      element.addEventListener("dragstart", this.#handleDragStart);
+      element.addEventListener("dragover", this.#handleDragOver);
+      element.addEventListener("dragend", this.#handleDragEnd);
     }
 
     /**
-     * 指定されたターゲット要素を削除します。
-     * ターゲットが存在しない場合や、ターゲットのIDが 'root' である場合は削除しません。
-     * ユーザーの確認を得た後、ターゲットを削除します。
-     * @param {HTMLElement} target - 削除対象の要素
-     * @returns {boolean} 削除が成功した場合は true、それ以外の場合は false
+     * ドラッグ操作開始
+     * @param {Event} e
      */
-    #deleteItem(target) {
-      if (!target || target.id === "root") {
-        return false;
+    #handleDragStart(e) {
+      draggedElement = e.target;
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/html", e.target);
+      e.target.classList.add("dragging");
+    }
+    /**
+     * ドラッグ中
+     * @param {Event} e
+     */
+    #handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+
+      // ターゲット要素を設定
+      const target = e.target.closest(".draggable-item");
+      if (!target || target === draggedElement) {
+        return;
       }
 
-      const typeName = ElmUtils.tagEq(target, "task-item")
-        ? "タスク"
-        : "グループ";
-
-      const confirmMessage = `${typeName}「${target.name}」を削除しますか？`;
-      if (confirm(confirmMessage)) {
-        target.remove();
-        return true;
+      // draggedElement が target の中に含まれていないことを確認
+      if (this.draggedElement && draggedElement.contains(target)) {
+        return;
       }
 
-      return false;
+      // ターゲット要素の位置とサイズを取得
+      const rect = target.getBoundingClientRect();
+
+      // マウス位置がターゲットのどの位置に来ているかを計算
+      const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
+
+      // ------------------------------
+      // 要素の挿入位置を決定
+      // ------------------------------
+
+      /**
+       * 要素がタスクであるか判定する。
+       * @param {HTMLElement} elm 判定対象
+       * @returns {boolean} 判定結果
+       */
+      const isTaskItem = (elm) => elm.classList.contains("task-item");
+
+      /**
+       * マウスターゲットが要素から見て上半分にあるか否か判定する。
+       * @param {number} pos マウス位置
+       * @returns {boolean} 判定結果
+       */
+      const isBefore = (pos) => pos <= 0.5;
+
+      /**
+       * ドラッグ中の要素を指定要素の前に挿入する。
+       *  @param {HTMLElement} elm 挿入基点となる要素
+       * @returns
+       */
+      const insertBefore = (elm) =>
+        elm.insertAdjacentElement("beforebegin", draggedElement);
+
+      /**
+       * ドラッグ中の要素を指定要素の後ろに挿入する。
+       * @param {*} elm
+       * @returns
+       */
+      const insertAfter = (elm) =>
+        elm.insertAdjacentElement("afterend", draggedElement);
+
+      // 要素の位置を決定する
+      if (isTaskItem(target)) {
+        // タスク要素を起点とする場合
+        if (isBefore(nowPosition)) {
+          insertBefore(target); // 前に追加
+        } else {
+          insertAfter(target); // 後ろに追加
+        }
+      }
+    }
+
+    /**
+     * ドラッグ終了
+     * @param {Event} e
+     */
+    #handleDragEnd(e) {
+      e.target.classList.remove("dragging");
+      draggedElement = null;
+      this.dispatchEvent(EventUtils.createEvent("changeTreeViewItem"));
     }
   }
   customElements.define("tree-view", TreeView);
