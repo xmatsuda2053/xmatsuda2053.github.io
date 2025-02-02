@@ -1,0 +1,24 @@
+@use "../../_style/destyle";
+@use "../../_style/svg";
+@use "../../_style/font";
+@use "../../_style/area";
+
+#container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+  gap: 0em 0em;
+  grid-template-areas: "treeview contents";
+  height: 100vh;
+
+  #treeview {
+    grid-area: treeview;
+  }
+
+  #contents {
+    grid-area: contents;
+    background-color: #d4f1ef;
+  }
+}

@@ -1,0 +1,45 @@
+@use "../../_style/destyle";
+@use "../../_style/svg";
+@use "../../_style/font";
+
+$active-color: #0078d4;
+$active-font-color: #fffff8;
+
+.group-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration-skip-ink: none;
+
+  border-radius: 0.15rem;
+  padding: 0.15rem;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover,
+  &.menu-opened {
+    background-color: $active-color;
+    color: $active-font-color;
+  }
+
+  .svg-icon {
+    margin-right: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+    transition: transform 0.25s;
+  }
+
+  &.group-opened {
+    .svg-icon {
+      transform: rotate(90deg);
+      top: 0.22rem;
+      left: 0.18rem;
+    }
+  }
+
+  .group-text {
+    padding-top: 1px;
+  }
+}
