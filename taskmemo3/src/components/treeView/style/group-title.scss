@@ -1,0 +1,45 @@
+@use "../../_style/destyle";
+@use "../../_style/svg";
+@use "../../_style/font";
+
+$group-item-font-color-hover: #0078d4;
+
+.group-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration-skip-ink: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    color: $group-item-font-color-hover;
+    text-decoration: underline;
+  }
+
+  &.menu-opened {
+    color: $group-item-font-color-hover;
+    text-decoration: underline;
+  }
+
+  .svg-icon {
+    margin-right: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+    transition: transform 0.25s;
+  }
+
+  &.group-opened {
+    .svg-icon {
+      transform: rotate(90deg);
+      top: 0.22rem;
+      left: 0.18rem;
+    }
+  }
+
+  .group-text {
+    padding-top: 1px;
+  }
+}

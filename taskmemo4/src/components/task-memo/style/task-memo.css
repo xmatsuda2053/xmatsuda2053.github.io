@@ -397,15 +397,39 @@ th {
   font-family: monospace;
 }
 
-#root {
-  width: 100%;
-  height: 100%;
+.scroll {
+  overflow-y: scroll;
 }
-#root .draggable-item {
-  padding: 0.15rem 0;
-}
-#root details summary {
-  list-style: none;
+.scroll::-webkit-scrollbar {
+  display: none;
 }
 
-/*# sourceMappingURL=tree-view.css.map */
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+#container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+  gap: 0em 0em;
+  grid-template-areas: "treeview contents";
+  height: 100vh;
+}
+#container #treeview {
+  grid-area: treeview;
+}
+#container #contents {
+  grid-area: contents;
+  background-color: #d4f1ef;
+}
+
+/*# sourceMappingURL=task-memo.css.map */

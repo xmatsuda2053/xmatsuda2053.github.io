@@ -1,20 +1,4 @@
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NoteBook3</title>
-    <link
-      rel="icon"
-      type="image/vnd.microsoft.icon"
-      href="data:image/png;base64,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"
-    />
-    <style>
-      body {
-        margin: 0;
-      }
-    </style>
-  <script>/******/ (() => { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
@@ -26,11 +10,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TaskMemo: () => (/* binding */ TaskMemo)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 /* harmony import */ var _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
-/* harmony import */ var _svgBtn_svg_btn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
-/* harmony import */ var _treeView_tree_view__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
-/* harmony import */ var _style_task_memo_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(19);
+/* harmony import */ var _style_task_memo_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var _svg_btn_svg_btn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
+/* harmony import */ var _context_menu_context_menu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(12);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(13);
+/* harmony import */ var _tree_view_tree_view__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15);
+/* harmony import */ var _tree_view_task_title__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(17);
+/* harmony import */ var _tree_view_group_title__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(21);
+// CSS
+
+
+
+
+
+
+// Componets
 
 
 
@@ -38,15 +34,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-//--------------------------------------------------
-// 定数
-//--------------------------------------------------
-/**
- * TreeViewの内容を保存するJSONファイル名
- */
-const TREE_VIEW_FILE_NAME = "tree.json";
 
 /**
  * TaskMemo コンポーネント
@@ -54,6 +41,14 @@ const TREE_VIEW_FILE_NAME = "tree.json";
  * @extends {HTMLElement}
  */
 function TaskMemo() {
+  // *******************************************************
+  // * 定数
+  // *******************************************************
+  /**
+   * TreeViewの内容を保存するJSONファイル名
+   */
+  const TREE_VIEW_FILE_NAME = "tree.json";
+
   class TaskMemo extends HTMLElement {
     // *******************************************************
     // * 初期処理
@@ -66,33 +61,32 @@ function TaskMemo() {
     constructor() {
       super();
 
+      (0,_svg_btn_svg_btn__WEBPACK_IMPORTED_MODULE_4__.SvgBtn)();
+      (0,_context_menu_context_menu__WEBPACK_IMPORTED_MODULE_5__.ContextMenu)();
+
+      (0,_tree_view_tree_view__WEBPACK_IMPORTED_MODULE_7__.TreeView)();
+      (0,_tree_view_task_title__WEBPACK_IMPORTED_MODULE_8__.TaskTitle)();
+      (0,_tree_view_group_title__WEBPACK_IMPORTED_MODULE_9__.GroupTitle)();
+
       this.fileManager = new _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__.FileManager();
-      (0,_svgBtn_svg_btn__WEBPACK_IMPORTED_MODULE_3__.SvgBtn)();
-      (0,_treeView_tree_view__WEBPACK_IMPORTED_MODULE_4__.TreeView)();
 
       // Shadow DOMをオープンモードでアタッチ
       this.attachShadow({ mode: "open" });
-      this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_memo_css__WEBPACK_IMPORTED_MODULE_5__["default"]);
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_memo_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
-      // 各種コンテンツを格納するためのGridを初期化
-      this.treeviewMenu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "treeview-menu");
+      // オブジェクトを配置
+      this.container = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "container");
+      this.treeView = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "treeview", ["scroll"]);
+      this.contents = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "contents", ["scroll"]);
 
-      this.contentsMenu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "contents-menu");
-
-      this.treeview = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "treeview", ["scroll"]);
-
-      this.contents = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "contents");
       this.contents.appendChild(this.#createFolderOpenBtnInFloatArea());
 
-      this.container = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "container");
-      this.container.appendChild(this.treeviewMenu);
-      this.container.appendChild(this.contentsMenu);
-      this.container.appendChild(this.treeview);
+      this.container.appendChild(this.treeView);
       this.container.appendChild(this.contents);
 
+      this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(this.container);
     }
 
@@ -106,7 +100,7 @@ function TaskMemo() {
      */
     #createFolderOpenBtnInFloatArea() {
       const folderOpenBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "folder-open");
-      folderOpenBtn.iconPaths = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.folderPaths;
+      folderOpenBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_1__.SvgConst.folderPaths;
       folderOpenBtn.isCircle = true;
 
       /**
@@ -143,62 +137,123 @@ function TaskMemo() {
      */
     #addEmptyTreeView() {
       this.treeViewRoot = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tree-view", "tree-view-root");
-      this.treeview.appendChild(this.treeViewRoot);
 
-      // タスクを新規追加した際のイベント
-      this.treeViewRoot.addEventListener("addTaskItem", (e) => {
-        this.#saveTreeView();
-      });
+      this.treeView.innerHTML = "";
+      this.treeView.appendChild(this.treeViewRoot);
 
-      // グループを新規追加した際のイベント
-      this.treeViewRoot.addEventListener("addGroupItem", (e) => {
-        this.#saveTreeView();
-      });
-
-      // アイテムを削除した際のイベント
-      this.treeViewRoot.addEventListener("deleteItem", (e) => {
-        this.#saveTreeView();
-      });
-
-      // タスクをクリックした際のイベント
-      this.treeViewRoot.addEventListener("clickTaskItem", (e) => {
-        console.log(`task-memo) click task item : ${e.detail.item.id}`);
-      });
-
-      // グループをクリックした際のイベント
-      this.treeViewRoot.addEventListener("clickGroupItem", (e) => {
-        console.log(`group-memo) click group item : ${e.detail.item.id}`);
-      });
+      // 各イベントを登録
+      this.#attachAddTaskEventListener();
+      this.#attachAddGroupEventListener();
+      this.#attachDeleteTreeViewItemEventListener();
+      this.#attachChangeTreeViewEventListener();
+      this.#attachClickTaskItemEventListener();
+      this.#attachClickGroupItemEventListener();
     }
 
     /**
-     * この非同期メソッドは、ツリービューデータをファイルから読み込み、
-     * 読み込んだデータを使用してツリービューをレンダリングします。
-     * 読み込みが失敗した場合、エラーメッセージをログに記録します。
-     * @returns {Promise<void>} このメソッドの処理が完了したことを示すプロミス
+     * ツリービューデータを非同期に読み込み、ツリービューにレンダリングするメソッド。
+     * ファイル読み込みに失敗した場合、エラーメッセージをコンソールに表示し、nullを返します。
+     *
+     * @returns {Promise<string|null>} - 非同期処理の完了を表すPromise。成功時はツリーデータの文字列、失敗時はnullを返す。
      */
     async #loadTreeViewData() {
       try {
-        const jsonStr = await this.fileManager.loadFile(TREE_VIEW_FILE_NAME);
-        this.treeViewRoot.render(jsonStr);
+        const str = await this.fileManager.loadFile(TREE_VIEW_FILE_NAME);
+        this.treeViewRoot.renderTreeView(str);
       } catch (error) {
         console.error("ツリーデータの読み込みに失敗しました:", error);
+        return null;
       }
     }
 
     /**
-     * この非同期メソッドは、ツリービューデータをJSON形式でファイルに保存します。
-     * ツリービューデータを取得し、ファイルに書き込みます。
-     * 保存処理が失敗した場合、エラーメッセージをログに記録します。
-     * @returns {Promise<void>} このメソッドの処理が完了したことを示すプロミス
+     * ツリービューデータを保存するメソッド。
+     * 指定されたデータをJSON形式にシリアライズし、ファイルに書き込みます。
+     *
+     * @returns {Promise<void>} - 非同期処理の完了を表すPromise。
      */
     async #saveTreeView() {
       try {
-        const jsonStr = JSON.stringify(this.treeViewRoot.getData());
-        await this.fileManager.writeFile(TREE_VIEW_FILE_NAME, jsonStr);
+        const data = this.treeViewRoot.getData();
+        await this.fileManager.writeFile(
+          TREE_VIEW_FILE_NAME,
+          JSON.stringify(data)
+        );
       } catch (writeError) {
         console.error("ツリーデータの保存に失敗しました:", writeError);
       }
+    }
+
+    /**
+     * 新規タスクの追加イベントを登録
+     */
+    #attachAddTaskEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME,
+        async (e) => {
+          await this.#saveTreeView();
+        }
+      );
+    }
+
+    /**
+     * 新規グループの追加イベントを登録
+     */
+    #attachAddGroupEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME,
+        async (e) => {
+          await this.#saveTreeView();
+        }
+      );
+    }
+
+    /**
+     * TreeViewアイテムの削除イベントを登録
+     */
+    #attachDeleteTreeViewItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.DELETE_TREEVIEW_ITEM_EVENT_NAME,
+        async (e) => {
+          await this.#saveTreeView();
+        }
+      );
+    }
+
+    /**
+     * TreeViewの変更イベントを登録
+     */
+    #attachChangeTreeViewEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CHANGE_TREEVIEW_EVENT_NAME,
+        async (e) => {
+          await this.#saveTreeView();
+        }
+      );
+    }
+
+    /**
+     * TreeViewのタスククリックイベントを登録
+     */
+    #attachClickTaskItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_TASK_EVENT_NAME,
+        (e) => {
+          console.log(`clickTaskItem:${e.detail.item.id}`);
+        }
+      );
+    }
+
+    /**
+     * TreeViewのグループクリックイベントを登録
+     */
+    #attachClickGroupItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_GROUP_EVENT_NAME,
+        (e) => {
+          console.log(`clickGruopItem:${e.detail.item.id}`);
+        }
+      );
     }
   }
   customElements.define("task-memo", TaskMemo);
@@ -284,117 +339,12 @@ class ElmUtils {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SvgUtils: () => (/* binding */ SvgUtils)
+/* harmony export */   SvgConst: () => (/* binding */ SvgConst)
 /* harmony export */ });
-/* harmony import */ var _elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-
-
 /**
- * SVG要素作成ユーティリティクラス
+ * SVG定数クラス
  */
-class SvgUtils {
-  /**
-   * SVG要素を作成するメソッド
-   *
-   * @method createSvg
-   * @param {string} name - シンボルの名前
-   * @param {Array<Object>} paths - SVGのパス情報の配列。各オブジェクトは `path` と `isFill` プロパティを持つ。
-   * @returns {SVGSVGElement} - 作成されたSVG要素
-   * @description
-   * 指定された名前とパス情報でSVG要素を作成し、返す。
-   * パスはシンボルとして `defs` に定義される。
-   */
-  static createSvg = (iconData) => {
-    const { name, paths } = iconData;
-    const svgNS = "http://www.w3.org/2000/svg";
-    const xlinkNS = "http://www.w3.org/1999/xlink";
-
-    // SVGタグを作成する
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("aria-hidden", "true");
-    svg.setAttribute("version", "1.1");
-    svg.setAttribute("xmlns", svgNS);
-    svg.setAttribute("xmlns:xlink", xlinkNS);
-    svg.classList.add("svg");
-
-    // Defsタグを作成する
-    const defs = document.createElementNS(svgNS, "defs");
-
-    // symbolタグを作成する
-    const symbol = document.createElementNS(svgNS, "symbol");
-    symbol.setAttribute("id", name);
-    symbol.setAttribute("viewBox", "0 0 24 24");
-    symbol.setAttribute("fill", "none");
-    symbol.setAttribute("stroke", "currentColor");
-    symbol.setAttribute("stroke-width", "2");
-    symbol.setAttribute("stroke-linecap", "round");
-    symbol.setAttribute("stroke-linejoin", "round");
-
-    // SVGのPathを作成し、symbolタグに追加する
-    paths.forEach((elm, index) => {
-      const path = document.createElementNS(svgNS, "path");
-      if (index === 0) {
-        path.setAttribute("stroke", "none");
-        path.setAttribute("fill", "none");
-      } else if (elm.isFill) {
-        path.setAttribute("stroke", "none");
-        path.setAttribute("fill", "currentColor");
-      }
-      path.setAttribute("d", elm.path);
-      symbol.appendChild(path);
-    });
-
-    // defsタグにsymbolタグを追加する
-    defs.appendChild(symbol);
-
-    // svgタグにdefsタグを追加する。
-    svg.appendChild(defs);
-
-    return svg;
-  };
-
-  /**
-   * SVG use 要素を作成するプライベートメソッド
-   * @param {HTMLElement} svgIcon - 設定するアイコン要素
-   * @returns {SVGElement} 作成されたSVG要素
-   * @description
-   * 指定されたSVGアイコン要素を元に、SVG use 要素を作成して返します。
-   */
-  static createSvgUse(svgIcon) {
-    const svgNS = "http://www.w3.org/2000/svg";
-    const xlinkNS = "http://www.w3.org/1999/xlink";
-
-    // SVG要素を作成し、クラスを追加する
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.classList.add("svg-icon");
-
-    // アイコンのIDを取得
-    const iconName = svgIcon.getElementsByTagName("symbol")[0].id;
-
-    // use要素を作成し、SVG要素に追加する
-    const use = document.createElementNS(svgNS, "use");
-    use.setAttributeNS(xlinkNS, "xlink:href", `#${iconName}`);
-    svg.appendChild(use);
-
-    return svg;
-  }
-
-  /**
-   * アイコンを作成する静的メソッド
-   * @param {Object} iconData - アイコンデータのオブジェクト
-   * @return {HTMLElement} - 作成されたSVG要素
-   */
-  static createIcon(iconData) {
-    const icon = this.createSvg(iconData);
-    const use = this.createSvgUse(icon);
-    const div = _elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
-
-    div.appendChild(icon);
-    div.appendChild(use);
-
-    return div;
-  }
-
+class SvgConst {
   /**
    * 静的なフォルダパスを定義するオブジェクト
    * @type {Object}
@@ -479,6 +429,55 @@ class SvgUtils {
       },
       {
         path: "M9 12l2 2l4 -4",
+      },
+    ],
+  };
+
+  /**
+   * 四角形と点のパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squareDotPaths = {
+    name: "icon-square-dot",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",
+      },
+      {
+        path: "M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",
+      },
+    ],
+  };
+
+  /**
+   * 四角形とアラートのパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squareAlertPaths = {
+    name: "icon-square-alert",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z",
+      },
+      {
+        path: "M12 8v4",
+      },
+      {
+        path: "M12 16h.01",
       },
     ],
   };
@@ -661,6 +660,561 @@ class FileManager {
 
 /***/ }),
 /* 5 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+#container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+  gap: 0em 0em;
+  grid-template-areas: "treeview contents";
+  height: 100vh;
+}
+#container #treeview {
+  grid-area: treeview;
+}
+#container #contents {
+  grid-area: contents;
+  background-color: #d4f1ef;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 6 */
+/***/ ((module) => {
+
+
+
+module.exports = function (i) {
+  return i[1];
+};
+
+/***/ }),
+/* 7 */
+/***/ ((module) => {
+
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = [];
+
+  // return the list of modules as css string
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+      content += cssWithMappingToString(item);
+      if (needLayer) {
+        content += "}";
+      }
+      if (item[2]) {
+        content += "}";
+      }
+      if (item[4]) {
+        content += "}";
+      }
+      return content;
+    }).join("");
+  };
+
+  // import a list of modules into the list
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+    var alreadyImportedModules = {};
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+      list.push(item);
+    }
+  };
+  return list;
+};
+
+/***/ }),
+/* 8 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -668,9 +1222,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SvgBtn: () => (/* binding */ SvgBtn)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _style_svg_btn_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _style_svg_btn_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
 
 
 
@@ -742,7 +1296,7 @@ function SvgBtn() {
 
 
 /***/ }),
-/* 6 */
+/* 9 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -770,16 +1324,135 @@ class EventUtils {
 
 
 /***/ }),
-/* 7 */
+/* 10 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SvgUtils: () => (/* binding */ SvgUtils)
+/* harmony export */ });
+/* harmony import */ var _elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+
+
+/**
+ * SVG要素作成ユーティリティクラス
+ */
+class SvgUtils {
+  /**
+   * SVG要素を作成するメソッド
+   *
+   * @method createSvg
+   * @param {string} name - シンボルの名前
+   * @param {Array<Object>} paths - SVGのパス情報の配列。各オブジェクトは `path` と `isFill` プロパティを持つ。
+   * @returns {SVGSVGElement} - 作成されたSVG要素
+   * @description
+   * 指定された名前とパス情報でSVG要素を作成し、返す。
+   * パスはシンボルとして `defs` に定義される。
+   */
+  static createSvg = (iconData) => {
+    const { name, paths } = iconData;
+    const svgNS = "http://www.w3.org/2000/svg";
+    const xlinkNS = "http://www.w3.org/1999/xlink";
+
+    // SVGタグを作成する
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("version", "1.1");
+    svg.setAttribute("xmlns", svgNS);
+    svg.setAttribute("xmlns:xlink", xlinkNS);
+    svg.classList.add("svg");
+
+    // Defsタグを作成する
+    const defs = document.createElementNS(svgNS, "defs");
+
+    // symbolタグを作成する
+    const symbol = document.createElementNS(svgNS, "symbol");
+    symbol.setAttribute("id", name);
+    symbol.setAttribute("viewBox", "0 0 24 24");
+    symbol.setAttribute("fill", "none");
+    symbol.setAttribute("stroke", "currentColor");
+    symbol.setAttribute("stroke-width", "2");
+    symbol.setAttribute("stroke-linecap", "round");
+    symbol.setAttribute("stroke-linejoin", "round");
+
+    // SVGのPathを作成し、symbolタグに追加する
+    paths.forEach((elm, index) => {
+      const path = document.createElementNS(svgNS, "path");
+      if (index === 0) {
+        path.setAttribute("stroke", "none");
+        path.setAttribute("fill", "none");
+      } else if (elm.isFill) {
+        path.setAttribute("stroke", "none");
+        path.setAttribute("fill", "currentColor");
+      }
+      path.setAttribute("d", elm.path);
+      symbol.appendChild(path);
+    });
+
+    // defsタグにsymbolタグを追加する
+    defs.appendChild(symbol);
+
+    // svgタグにdefsタグを追加する。
+    svg.appendChild(defs);
+
+    return svg;
+  };
+
+  /**
+   * SVG use 要素を作成するプライベートメソッド
+   * @param {HTMLElement} svgIcon - 設定するアイコン要素
+   * @returns {SVGElement} 作成されたSVG要素
+   * @description
+   * 指定されたSVGアイコン要素を元に、SVG use 要素を作成して返します。
+   */
+  static createSvgUse(svgIcon) {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const xlinkNS = "http://www.w3.org/1999/xlink";
+
+    // SVG要素を作成し、クラスを追加する
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.classList.add("svg-icon");
+
+    // アイコンのIDを取得
+    const iconName = svgIcon.getElementsByTagName("symbol")[0].id;
+
+    // use要素を作成し、SVG要素に追加する
+    const use = document.createElementNS(svgNS, "use");
+    use.setAttributeNS(xlinkNS, "xlink:href", `#${iconName}`);
+    svg.appendChild(use);
+
+    return svg;
+  }
+
+  /**
+   * アイコンを作成する静的メソッド
+   * @param {Object} iconData - アイコンデータのオブジェクト
+   * @return {HTMLElement} - 作成されたSVG要素
+   */
+  static createIcon(iconData) {
+    const icon = this.createSvg(iconData);
+    const use = this.createSvgUse(icon);
+    const div = _elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
+
+    div.appendChild(icon);
+    div.appendChild(use);
+
+    return div;
+  }
+}
+
+
+/***/ }),
+/* 11 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -1207,480 +1880,7 @@ th {
 
 
 /***/ }),
-/* 8 */
-/***/ ((module) => {
-
-
-
-module.exports = function (i) {
-  return i[1];
-};
-
-/***/ }),
-/* 9 */
-/***/ ((module) => {
-
-
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-*/
-module.exports = function (cssWithMappingToString) {
-  var list = [];
-
-  // return the list of modules as css string
-  list.toString = function toString() {
-    return this.map(function (item) {
-      var content = "";
-      var needLayer = typeof item[5] !== "undefined";
-      if (item[4]) {
-        content += "@supports (".concat(item[4], ") {");
-      }
-      if (item[2]) {
-        content += "@media ".concat(item[2], " {");
-      }
-      if (needLayer) {
-        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
-      }
-      content += cssWithMappingToString(item);
-      if (needLayer) {
-        content += "}";
-      }
-      if (item[2]) {
-        content += "}";
-      }
-      if (item[4]) {
-        content += "}";
-      }
-      return content;
-    }).join("");
-  };
-
-  // import a list of modules into the list
-  list.i = function i(modules, media, dedupe, supports, layer) {
-    if (typeof modules === "string") {
-      modules = [[null, modules, undefined]];
-    }
-    var alreadyImportedModules = {};
-    if (dedupe) {
-      for (var k = 0; k < this.length; k++) {
-        var id = this[k][0];
-        if (id != null) {
-          alreadyImportedModules[id] = true;
-        }
-      }
-    }
-    for (var _k = 0; _k < modules.length; _k++) {
-      var item = [].concat(modules[_k]);
-      if (dedupe && alreadyImportedModules[item[0]]) {
-        continue;
-      }
-      if (typeof layer !== "undefined") {
-        if (typeof item[5] === "undefined") {
-          item[5] = layer;
-        } else {
-          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
-          item[5] = layer;
-        }
-      }
-      if (media) {
-        if (!item[2]) {
-          item[2] = media;
-        } else {
-          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
-          item[2] = media;
-        }
-      }
-      if (supports) {
-        if (!item[4]) {
-          item[4] = "".concat(supports);
-        } else {
-          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
-          item[4] = supports;
-        }
-      }
-      list.push(item);
-    }
-  };
-  return list;
-};
-
-/***/ }),
-/* 10 */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   TreeView: () => (/* binding */ TreeView)
-/* harmony export */ });
-/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _contextMenu_context_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
-/* harmony import */ var _task_title__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var _group_title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
-/* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(18);
-
-
-
-
-
-
-
-
-
-/**
- * TreeView コンポーネント
- * @class TreeView
- * @extends {HTMLElement}
- */
-function TreeView() {
-  let draggedElement;
-  class TreeView extends HTMLElement {
-    // *******************************************************
-    // * 初期処理
-    // *******************************************************
-
-    /**
-     * コンストラクタ
-     * @return {void}
-     */
-    constructor() {
-      super();
-      (0,_contextMenu_context_menu__WEBPACK_IMPORTED_MODULE_2__.ContextMenu)();
-      (0,_task_title__WEBPACK_IMPORTED_MODULE_3__.TaskTitle)();
-      (0,_group_title__WEBPACK_IMPORTED_MODULE_4__.GroupTitle)();
-
-      // Shadow DOMをオープンモードでアタッチ
-      this.attachShadow({ mode: "open" });
-      this.shadowRoot.innerHTML = "";
-
-      // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__["default"]);
-
-      // コンテンツの初期設定
-      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
-
-      this.menu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("context-menu", "menu");
-      this.#attachContextMenuListener();
-      this.#attachAddNewTaskListener();
-      this.#attachAddNewGroupListener();
-
-      this.shadowRoot.appendChild(this.root);
-    }
-
-    // *******************************************************
-    // * TreeViewデータ取得
-    // *******************************************************
-
-    /**
-     * ルート要素の子ノードを読み取り、データを取得します。
-     * @returns {Array<Object>} 取得したデータの配列
-     */
-    getData() {
-      return "";
-    }
-
-    // *******************************************************
-    // * TreeView描画
-    // *******************************************************
-
-    /**
-     * JSON形式のツリービューデータを受け取り、ツリービューをレンダリングします。
-     * @param {string} jsonStr - JSON形式のツリービューデータの文字列
-     * @returns {void}
-     */
-    render(jsonStr) {
-      if (!jsonStr) {
-        return;
-      }
-
-      /*
-      const dataList = JSON.parse(jsonStr);
-      dataList.forEach((data) => {
-        this.#addItemsRecursively(this.root, data);
-      });
-      */
-    }
-
-    /**
-     * 指定されたルートアイテムに基づいてツリービューアイテムを再帰的に追加します。
-     * @private
-     * @param {HTMLElement} rootItem - 追加先のルートアイテム
-     * @param {Object} data - 追加するツリービューアイテムのデータ
-     * @returns {void}
-     */
-    #addItemsRecursively(rootItem, data) {
-      if (data.type === "task") {
-      } else {
-      }
-    }
-
-    // *******************************************************
-    // * コンテキストメニュー
-    // *******************************************************
-
-    /**
-     * シャドウルートのコンテキストメニューイベントを追加します。
-     * 右クリックでメニューを開き、`closeMenu` イベントが発生したときにメニューを削除します。
-     * @returns {void}
-     */
-    #attachContextMenuListener() {
-      this.shadowRoot.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        this.shadowRoot.appendChild(this.menu);
-        this.menu.openMenu(e);
-
-        const closeMenuHandler = () => {
-          this.menu.remove();
-          this.shadowRoot.removeEventListener("closeMenu", closeMenuHandler);
-        };
-
-        this.shadowRoot.addEventListener("closeMenu", closeMenuHandler);
-      });
-    }
-
-    /**
-     * 指定された要素が `group-item` タグを持つかどうかを確認し、持つ場合はその要素を返します。
-     * 持たない場合は、最も近い `group-item` 要素を返し、もし見つからなければルート要素を返します。
-     * @param {HTMLElement} element - 処理対象の要素
-     * @returns {HTMLElement} 指定された要素が `group-item` である場合、その要素。
-     *                        そうでない場合は最も近い `group-item` 要素、またはルート要素。
-     */
-    #getAddRoot(element) {
-      if (_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.tagEq(element, "group-item")) {
-        return element;
-      } else {
-        return element?.closest("group-item") || this.root;
-      }
-    }
-
-    /**
-     * シャドウルートに `clickAddNewTask` イベントリスナーを追加します。
-     * イベントが発生すると、新しいタスクアイテムを作成し、指定された親要素に追加します。
-     * @returns {void}
-     */
-    #attachAddNewTaskListener() {
-      this.shadowRoot.addEventListener("clickAddNewTask", (e) => {
-        const addRoot = this.#getAddRoot(e.detail.item.target);
-        const item = this.#createTaskItem();
-        addRoot.appendChild(item);
-
-        this.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("addTaskItem", { id: item.id })
-        );
-      });
-    }
-
-    /**
-     * シャドウルートに `clickAddNewGroup` イベントリスナーを追加します。
-     * イベントが発生すると、新しいグループアイテムを作成し、指定された親要素に追加します。
-     * @returns {void}
-     */
-    #attachAddNewGroupListener() {
-      this.shadowRoot.addEventListener("clickAddNewGroup", (e) => {
-        const addRoot = this.#getAddRoot(e.detail.item.target);
-        const item = this.#createGroupItem();
-        addRoot.appendChild(item);
-
-        this.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("addGroupItem", { id: item.id })
-        );
-      });
-    }
-
-    // *******************************************************
-    // * TreeView操作
-    // *******************************************************
-
-    /**
-     * 指定した要素をドラッグ可能なdiv要素でラップします。
-     *
-     * @param {HTMLElement} element - ラップする要素。
-     * @returns {HTMLDivElement} ドラッグ可能なdiv要素を含む要素。
-     */
-    #wrapDraggableDiv(element, className) {
-      const div = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, [
-        "draggable-item",
-        className,
-      ]);
-      div.setAttribute("draggable", true);
-      div.appendChild(element);
-
-      return div;
-    }
-
-    /**
-     * タスクアイテムを作成します。
-     *
-     * @param {Object} data - タスクのデータ。
-     * @param {string} data.title - タスクのタイトル。
-     * @param {string} data.description - タスクの説明。
-     * @param {boolean} data.completed - タスクの完了状態。
-     * @returns {HTMLDivElement} 作成されたタスクアイテムを含むdiv要素。
-     */
-    #createTaskItem(data = {}) {
-      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("task-title");
-      item.init(data);
-      item.setContextMenu(this.menu);
-
-      const wrapedItem = this.#wrapDraggableDiv(item, "task-item");
-      this.#addDragEventListeners(wrapedItem);
-      return wrapedItem;
-    }
-
-    /**
-     * グループアイテムを作成します。
-     *
-     * @param {Object} data - グループのデータ。
-     * @param {string} data.title - グループのタイトル。
-     * @param {string} data.description - グループの説明。
-     * @param {boolean} data.completed - グループの完了状態。
-     * @returns {HTMLDivElement} 作成されたグループアイテムを含むdiv要素。
-     */
-    #createGroupItem(data = {}) {
-      // グループタイトル要素を作成し、データを初期化
-      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("group-title");
-      item.init(data);
-      item.setContextMenu(this.menu);
-
-      // details要素を作成
-      const details = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("details");
-
-      // summary要素を作成
-      const summary = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("summary");
-      summary.addEventListener("click", () => {
-        item.open = !details.open;
-      });
-
-      // グループ内のアイテムを格納するdiv要素を作成
-      const items = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, ["group-items"]);
-
-      // タイトル要素をsummary要素に追加
-      summary.appendChild(item);
-
-      // summary要素とitems要素をdetails要素に追加
-      details.appendChild(summary);
-      details.appendChild(items);
-
-      const wrapedItem = this.#wrapDraggableDiv(details, "group-item");
-      this.#addDragEventListeners(wrapedItem);
-      return wrapedItem;
-    }
-
-    // *******************************************************
-    // * Drag&Drop
-    // *******************************************************
-
-    /**
-     * ドラッグイベントリスナーを追加
-     * @param {HTMLElement} element ドラッグイベントリスナーを追加する要素
-     */
-    #addDragEventListeners(element) {
-      element.setAttribute("draggable", true);
-      element.addEventListener("dragstart", this.#handleDragStart);
-      element.addEventListener("dragover", this.#handleDragOver);
-      element.addEventListener("dragend", this.#handleDragEnd);
-    }
-
-    /**
-     * ドラッグ操作開始
-     * @param {Event} e
-     */
-    #handleDragStart(e) {
-      draggedElement = e.target;
-      e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.setData("text/html", e.target);
-      e.target.classList.add("dragging");
-    }
-    /**
-     * ドラッグ中
-     * @param {Event} e
-     */
-    #handleDragOver(e) {
-      e.preventDefault();
-      e.dataTransfer.dropEffect = "move";
-
-      // ターゲット要素を設定
-      const target = e.target.closest(".draggable-item");
-      if (!target || target === draggedElement) {
-        return;
-      }
-
-      // draggedElement が target の中に含まれていないことを確認
-      if (this.draggedElement && draggedElement.contains(target)) {
-        return;
-      }
-
-      // ターゲット要素の位置とサイズを取得
-      const rect = target.getBoundingClientRect();
-
-      // マウス位置がターゲットのどの位置に来ているかを計算
-      const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
-
-      // ------------------------------
-      // 要素の挿入位置を決定
-      // ------------------------------
-
-      /**
-       * 要素がタスクであるか判定する。
-       * @param {HTMLElement} elm 判定対象
-       * @returns {boolean} 判定結果
-       */
-      const isTaskItem = (elm) => elm.classList.contains("task-item");
-
-      /**
-       * マウスターゲットが要素から見て上半分にあるか否か判定する。
-       * @param {number} pos マウス位置
-       * @returns {boolean} 判定結果
-       */
-      const isBefore = (pos) => pos <= 0.5;
-
-      /**
-       * ドラッグ中の要素を指定要素の前に挿入する。
-       *  @param {HTMLElement} elm 挿入基点となる要素
-       * @returns
-       */
-      const insertBefore = (elm) =>
-        elm.insertAdjacentElement("beforebegin", draggedElement);
-
-      /**
-       * ドラッグ中の要素を指定要素の後ろに挿入する。
-       * @param {*} elm
-       * @returns
-       */
-      const insertAfter = (elm) =>
-        elm.insertAdjacentElement("afterend", draggedElement);
-
-      // 要素の位置を決定する
-      if (isTaskItem(target)) {
-        // タスク要素を起点とする場合
-        if (isBefore(nowPosition)) {
-          insertBefore(target); // 前に追加
-        } else {
-          insertAfter(target); // 後ろに追加
-        }
-      }
-    }
-
-    /**
-     * ドラッグ終了
-     * @param {Event} e
-     */
-    #handleDragEnd(e) {
-      e.target.classList.remove("dragging");
-      draggedElement = null;
-      this.dispatchEvent(_utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("changeTreeViewItem"));
-    }
-  }
-  customElements.define("tree-view", TreeView);
-}
-
-
-/***/ }),
-/* 11 */
+/* 12 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1688,9 +1888,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ContextMenu: () => (/* binding */ ContextMenu)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
-/* harmony import */ var _style_context_menu_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _style_context_menu_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(14);
+
 
 
 
@@ -1716,176 +1918,99 @@ function ContextMenu() {
       this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_context_menu_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_context_menu_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
       // 空のコンテンツを作成
+      this.area = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "context-area");
+      this.area.addEventListener("click", () => {
+        this.area.classList.remove("open");
+
+        const disabledItems = this.menu.querySelectorAll(".disabled");
+        for (let item of disabledItems) {
+          item.classList.remove("disabled");
+        }
+
+        this.shadowRoot.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.CLOSE_CONTEXT_MENU)
+        );
+      });
+
       this.menu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "context-menu");
-      this.area = this.#createArea();
+
       this.area.appendChild(this.menu);
-
-      // ボタンを追加
-      this.#insertAddTaskButton();
-      this.#insertAddGroupButton();
-      this.#addBorder();
-      this.#insertDelItemButton();
-
       this.shadowRoot.appendChild(this.area);
-      this.isTask = false;
     }
 
     /**
-     * メニューを開くメソッド
-     * @param {Event} e - クリックイベント
-     * @return {void} - なし
+     * コンテキストメニューを指定された位置に開きます。
+     * @param {MouseEvent} e - コンテキストメニューを開く際のマウスイベント
      */
     openMenu(e) {
       this.area.classList.add("open");
       this.menu.style.left = `${e.pageX + 10}px`;
       this.menu.style.top = `${e.pageY - 20}px`;
-      this.target = e.target;
     }
 
     /**
-     * isTask ゲッターメソッド
-     *
-     * このメソッドは、タスクの状態を返します。
-     *
-     * @returns {boolean} タスクの状態（true または false）
+     * クリックターゲットを取得します。
+     * @returns {Element} _clickTarget - 現在のクリックターゲット要素
      */
-    get isTask() {
-      return this._isTask;
+    get clickTarget() {
+      return this._clickTarget;
     }
 
     /**
-     * isTask セッターメソッド
-     *
-     * このメソッドは、タスクの状態を設定します。
-     *
-     * @param {boolean} flag - タスクの状態を示すフラグ（true または false ）
+     * クリックターゲットを設定します。
+     * @param {Element} value - 新しいクリックターゲット要素
      */
-    set isTask(flag) {
-      this._isTask = flag;
-
-      const taskButton = this.shadowRoot.getElementById("add-new-task");
-      const groupButton = this.shadowRoot.getElementById("add-new-group");
-
-      taskButton?.classList.toggle("disabled", this._isTask);
-      groupButton?.classList.toggle("disabled", this._isTask);
+    set clickTarget(value) {
+      this._clickTarget = value;
     }
 
     /**
-     * メニュー開閉を制御するためのエリアを作成
-     * @returns {HTMLElement} - 作成されたエリア
-     */
-    #createArea() {
-      const area = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "context-area");
-      area.addEventListener("click", () => {
-        area.classList.remove("open");
-        this.shadowRoot.dispatchEvent(_utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent("closeMenu"));
-      });
-
-      return area;
-    }
-
-    /**
-     * メニューに「タスクを新規追加するボタン」を挿入する
-     * @return {void} - なし
-     */
-    #insertAddTaskButton() {
-      const id = "add-new-task";
-      const title = "新しいタスク";
-
-      const btn = this.#createButton(id, title, _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.squarePlusPaths);
-
-      /**
-       * クリックイベント
-       */
-      btn.addEventListener("click", () => {
-        if (this.isTask) return;
-        this.shadowRoot.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent("clickAddNewTask", {
-            target: this.target,
-          })
-        );
-      });
-
-      this.menu.appendChild(btn);
-    }
-
-    /**
-     * メニューに「グループを追加するボタン」を挿入する
-     * @return {void} - なし
-     */
-    #insertAddGroupButton() {
-      const id = "add-new-group";
-      const title = "新しいグループ";
-
-      const btn = this.#createButton(id, title, _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.folderPlusPaths);
-
-      /**
-       * クリックイベント
-       */
-      btn.addEventListener("click", () => {
-        if (this.isTask) return;
-        this.shadowRoot.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent("clickAddNewGroup", {
-            target: this.target,
-          })
-        );
-      });
-
-      this.menu.appendChild(btn);
-    }
-
-    /**
-     * メニューに「削除ボタン」を挿入する
-     * @return {void} - なし
-     */
-    #insertDelItemButton() {
-      const id = "del-item";
-      const title = "削除";
-
-      const btn = this.#createButton(id, title, _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.trashPaths);
-
-      /**
-       * クリックイベント
-       */
-      btn.addEventListener("click", () => {
-        this.shadowRoot.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent("clickDeleteItem", {
-            target: this.target,
-          })
-        );
-      });
-
-      this.menu.appendChild(btn);
-    }
-
-    /**
-     * ボタンを作成するメソッド
+     * ボタンを追加するメソッド
      * @param {string} id - ボタンのID
      * @param {string} title - ボタンのタイトル
      * @param {object} iconData - アイコン設定情報
-     * @return {HTMLElement} - 作成したボタン
+     * @return {void}
      */
-    #createButton(id, title, iconData) {
+    addButton(id, title, iconData) {
       const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(iconData);
 
       const text = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
       text.classList.add("button-text");
       text.innerText = title;
 
-      const btnArea = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", id, ["button-area"]);
-      btnArea.appendChild(icon);
-      btnArea.appendChild(text);
+      const btn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", id, ["button-area"]);
+      btn.appendChild(icon);
+      btn.appendChild(text);
 
-      return btnArea;
+      /**
+       * クリックイベント
+       */
+      btn.addEventListener("click", () => {
+        if (btn.classList.contains("disabled")) {
+          return;
+        }
+        this.shadowRoot.dispatchEvent(_utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(`click-${id}`));
+      });
+
+      this.menu.appendChild(btn);
+    }
+
+    /**
+     * 指定されたIDを持つボタン要素を無効化します。
+     * @param {string} id - 無効化するボタン要素のID
+     */
+    setDisabled(id) {
+      const btn = this.shadowRoot.getElementById(id);
+      btn.classList.add("disabled");
     }
 
     /**
      * 罫線を引く
      */
-    #addBorder() {
+    addBorder() {
       this.menu.appendChild(_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("hr"));
     }
   }
@@ -1894,16 +2019,64 @@ function ContextMenu() {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EventConst: () => (/* binding */ EventConst)
+/* harmony export */ });
+/**
+ * イベント定数クラス
+ */
+class EventConst {
+  /**
+   * コンテキストメニューを閉じる
+   */
+  static CLOSE_CONTEXT_MENU = "closeContextMenu";
+  /**
+   * TreeViewのタスクをクリック
+   */
+  static CLICK_TASK_EVENT_NAME = "clickTaskItem";
+
+  /**
+   * TreeViewのグループをクリック
+   */
+  static CLICK_GROUP_EVENT_NAME = "clickGruopItem";
+
+  /**
+   * 新規タスクを追加
+   */
+  static ADD_NEW_TASK_ITEM_EVENT_NAME = "addTaskItem";
+
+  /**
+   * 新規グループを追加
+   */
+  static ADD_NEW_GROUP_ITEM_EVENT_NAME = "addGroupItem";
+
+  /**
+   * TreeViewのアイテムを削除を追加
+   */
+  static DELETE_TREEVIEW_ITEM_EVENT_NAME = "deleteTreeViewItem";
+
+  /**
+   * TreeView変更イベント
+   */
+  static CHANGE_TREEVIEW_EVENT_NAME = "changeTreeView";
+}
+
+
+/***/ }),
+/* 14 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -2368,7 +2541,893 @@ th {
 
 
 /***/ }),
-/* 13 */
+/* 15 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeView: () => (/* binding */ TreeView)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
+/* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
+// CSS
+
+
+
+
+
+
+
+/**
+ * TreeView コンポーネント
+ * @class TreeView
+ * @extends {HTMLElement}
+ */
+function TreeView() {
+  /**
+   * ドラッグ中の要素
+   */
+  let draggedElement;
+
+  class TreeView extends HTMLElement {
+    // *******************************************************
+    // * 初期処理
+    // *******************************************************
+
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_tree_view_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
+
+      // コンテンツの初期設定
+      this.header = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header");
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
+
+      this.shadowRoot.appendChild(this.header);
+      this.shadowRoot.appendChild(this.root);
+
+      // コンテキストメニューを追加
+      this.#addContextMenu();
+    }
+
+    // *******************************************************
+    // * コンテキストメニュー
+    // *******************************************************
+
+    /**
+     * コンテキストメニューを初期化し、Shadow DOMに追加します。
+     * また、右クリック（コンテキストメニュー）のイベントリスナーを設定します。
+     * @private
+     */
+    #addContextMenu() {
+      this.menu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("context-menu", "menu");
+      this.shadowRoot.appendChild(this.menu);
+
+      // ボタンを追加
+      this.#insertAddTaskButton();
+      this.#insertAddGroupButton();
+      this.menu.addBorder();
+      this.#insertDeleteItemButton();
+
+      /**
+       * メニューを開く
+       * @param {MouseEvent} e - コンテキストメニューのイベントオブジェクト
+       */
+      this.shadowRoot.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.menu.openMenu(e);
+
+        const isTask = e.target.tagName.toLowerCase() === "task-title";
+        const isGroup = e.target.tagName.toLowerCase() === "group-title";
+
+        // ターゲットがタスクの場合、追加ボタンを無効
+        if (isTask) {
+          this.menu.setDisabled("add-new-task");
+          this.menu.setDisabled("add-new-group");
+        }
+
+        // ターゲットがアイテム以外の場合、削除ボタンを無効
+        if (!isTask && !isGroup) {
+          this.menu.setDisabled("delete-item");
+        }
+
+        // メニューのターゲットを設定する
+        this.menu.clickTarget = e.target;
+
+        // メニューを開いている状態を設定
+        if (isTask || isGroup) {
+          this.menu.clickTarget.menuOpen = true;
+        }
+      });
+
+      /**
+       * メニューの「closeMenu」イベントをリッスンし、メニューのクリックターゲットを更新します。
+       * @event closeMenu - メニューが閉じられたときに発生するイベント
+       */
+      this.menu.addEventListener(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CLOSE_CONTEXT_MENU, () => {
+        this.menu.clickTarget.menuOpen = false;
+        this.menu.clickTarget = null;
+      });
+    }
+
+    /**
+     * コンテキストメニューのターゲット要素を取得します。
+     * クリックされた要素が特定の条件を満たす場合、その要素に対応するターゲットを返します。
+     * デフォルトではルート要素を返します。
+     * @param {HtmlElement} target - 対象
+     * @returns {Element} - メニューを適用するターゲット要素
+     * @private
+     */
+    #getMenuTarget(target) {
+      if (target && target.tagName.toLowerCase() === "group-title") {
+        const details = target.closest("details");
+        const items = details.querySelector(".group-items");
+        return items || this.root;
+      }
+
+      return this.root;
+    }
+
+    /**
+     * 新しいタスクを追加するためのボタンを作成し、メニューに追加します。
+     * ボタンがクリックされたときのイベントリスナーを設定します。
+     * @private
+     */
+    #insertAddTaskButton() {
+      const id = "add-new-task";
+      const title = "新しいタスク";
+      this.menu.addButton(id, title, _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.squarePlusPaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const root = this.#getMenuTarget(this.menu.clickTarget);
+        root.appendChild(this.#createNewTaskItem());
+        this.#openGroup(root);
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
+     * 新しいグループを追加するためのボタンを作成し、メニューに追加します。
+     * ボタンがクリックされたときのイベントリスナーを設定します。
+     * @private
+     */
+    #insertAddGroupButton() {
+      const id = "add-new-group";
+      const title = "新しいグループ";
+      this.menu.addButton(id, title, _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.folderPlusPaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const root = this.#getMenuTarget(this.menu.clickTarget);
+        root.appendChild(this.#createNewGroupItem());
+        this.#openGroup(root);
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
+     * アイテムを削除するためのボタンを作成し、メニューに追加します。
+     * ボタンがクリックされたときのイベントリスナーを設定します。
+     * @private
+     */
+    #insertDeleteItemButton() {
+      const id = "delete-item";
+      const title = "削除";
+      this.menu.addButton(id, title, _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.trashPaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        this.#deleteItem(this.menu.clickTarget.id);
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.DELETE_TREEVIEW_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    // *******************************************************
+    // * TreeViewのデータ取得
+    // *******************************************************
+
+    /**
+     * ツリービューのデータを取得する
+     *
+     * @returns {string} ツリーデータを返す。
+     */
+    getData() {
+      /**
+       * ノードリストから全ての要素を再帰的に取得する。
+       *
+       * @param {NodeList} nodes - 処理するノードリスト。
+       * @returns {Array} 処理結果の要素リストを返す。
+       */
+      const getAllElement = (nodes) => {
+        const elements = [];
+
+        nodes.forEach((node) => {
+          const isTask = node.dataset.type === "task";
+          const isGroup = node.dataset.type === "group";
+
+          if (isTask) {
+            const task = node.querySelector("task-title");
+            const data = task.getData();
+            elements.push(data);
+          } else if (isGroup) {
+            const group = node.querySelector("group-title");
+            const items = node.querySelector(".group-items");
+            const data = group.getData();
+            data.children = getAllElement(items.childNodes);
+            elements.push(data);
+          } else {
+            // 何もしない
+          }
+        });
+
+        return elements;
+      };
+
+      return getAllElement(this.root.childNodes);
+    }
+
+    // *******************************************************
+    // * TreeViewの作成
+    // *******************************************************
+    renderTreeView(jsonStr) {
+      if (!jsonStr) {
+        return;
+      }
+
+      /**
+       * Jsonデータを元にTreeViewに項目を追加する（再帰処理）
+       * @param {HTMLElement} currentRoot 追加先のルート要素
+       * @param {object} data 追加するデータ
+       * @returns {void}
+       * @private
+       */
+      const addTreeViewItem = (root, data) => {
+        if (data.type === "task") {
+          // タスクを追加
+          const task = this.#createNewTaskItem(data);
+          root.appendChild(task);
+        } else {
+          // グループを追加
+          const group = this.#createNewGroupItem(data);
+          root.appendChild(group);
+
+          // グループの子要素を追加
+          const items = group.querySelector(".group-items");
+          const children = data.children || data.childlen || [];
+          (children || []).forEach((child) => {
+            addTreeViewItem(items, child);
+          });
+        }
+      };
+
+      JSON.parse(jsonStr).forEach((data) => {
+        addTreeViewItem(this.root, data);
+      });
+    }
+
+    // *******************************************************
+    // * TreeView要素の作成／削除
+    // *******************************************************
+
+    /**
+     * 指定されたデータを元に新しいタスクアイテムを作成し、クリックイベントを設定します。
+     * @param {Object} [data={}] - タスクアイテムの初期データ
+     * @returns {HTMLElement} item - 作成されたタスクアイテム要素
+     */
+    #createNewTaskItem(data = {}) {
+      const title = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("task-title");
+      title.init(data);
+
+      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, ["tree-item"]);
+      item.appendChild(title);
+      item.setAttribute("draggable", true);
+      item.dataset.type = "task";
+
+      this.#addDragEventListeners(item);
+
+      return item;
+    }
+
+    /**
+     * 指定されたデータを元に新しいグループアイテムを作成します。
+     * グループアイテムには、タイトル、詳細、および子アイテムのコンテナが含まれます。
+     * @param {Object} [data={}] - グループアイテムの初期データ
+     * @returns {HTMLElement} details - 作成されたグループアイテム要素
+     * @private
+     */
+    #createNewGroupItem(data = {}) {
+      const title = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("group-title");
+      title.init(data);
+
+      const details = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("details", null, ["tree-item"]);
+      const summary = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("summary", null);
+      const items = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, ["group-items"]);
+
+      details.setAttribute("draggable", true);
+      details.dataset.type = "group";
+      details.addEventListener("toggle", () => {
+        title.open = details.open;
+      });
+
+      summary.appendChild(title);
+
+      details.appendChild(summary);
+      details.appendChild(items);
+
+      this.#addDragEventListeners(details);
+
+      return details;
+    }
+
+    /**
+     * 指定された要素の最も近い`<details>`要素を開きます。
+     * @param {Element} element - `<details>`要素を検索する基点となる要素
+     * @private
+     */
+    #openGroup(element) {
+      const details = element.closest("details");
+      if (details) details.open = true;
+    }
+
+    #deleteItem(id) {
+      this.shadowRoot.getElementById(id).closest(".tree-item").remove();
+    }
+
+    // *******************************************************
+    // * TreeViewのドラッグ＆ドロップ
+    // *******************************************************
+    /**
+     * ドラッグイベントリスナーを追加
+     * @param {HTMLElement} element ドラッグイベントリスナーを追加する要素
+     */
+    #addDragEventListeners(element) {
+      element.addEventListener("dragstart", this.#handleDragStart);
+      element.addEventListener("dragover", this.#handleDragOver, true);
+      element.addEventListener("dragend", this.#handleDragEnd);
+    }
+
+    /**
+     * ドラッグ操作開始
+     * @param {Event} e
+     */
+    #handleDragStart(e) {
+      draggedElement = e.target;
+      draggedElement.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+    }
+
+    /**
+     * ドラッグ中
+     * @param {Event} e
+     */
+    #handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+
+      // タスクまたはグループのルート要素を取得
+      const target = e.target.closest(".tree-item");
+
+      // 自分自身と被っている場合
+      if (!target || target === draggedElement) {
+        return;
+      }
+
+      // draggedElement が target の中に含まれている場合
+      if (draggedElement.contains(target)) {
+        return;
+      }
+
+      // マウス位置が位置に来ているかを計算
+      const rect = target.getBoundingClientRect();
+      const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
+
+      // 要素の挿入位置を決定
+      const targetIsTask = e.target.tagName.toLowerCase() === "task-title";
+
+      if (targetIsTask) {
+        if (nowPosition > 0.5) {
+          target.insertAdjacentElement("afterend", draggedElement);
+        } else {
+          target.insertAdjacentElement("beforebegin", draggedElement);
+        }
+      } else {
+        if (nowPosition > 0.5) {
+          if (nowPosition >= 0.75) {
+            target.insertAdjacentElement("afterend", draggedElement);
+          } else {
+            // 子要素に追加
+            const items = target.querySelector(".group-items");
+            items.appendChild(draggedElement);
+          }
+        } else {
+          target.insertAdjacentElement("beforebegin", draggedElement);
+        }
+      }
+    }
+
+    /**
+     * ドラッグ終了
+     * @param {Event} e
+     */
+    #handleDragEnd(e) {
+      if (!draggedElement) return;
+      draggedElement.classList.remove("dragging");
+      draggedElement = null;
+      this.dispatchEvent(
+        _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
+    }
+  }
+  customElements.define("tree-view", TreeView);
+}
+
+
+/***/ }),
+/* 16 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+}
+#root details summary {
+  list-style: none;
+}
+#root details .group-items {
+  margin-left: 1.1rem;
+}
+#root .dragging {
+  opacity: 0.5;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 17 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2376,10 +3435,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TaskTitle: () => (/* binding */ TaskTitle)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
-/* harmony import */ var _style_task_title_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(19);
+/* harmony import */ var _style_task_title_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(20);
+
+
+
 
 
 
@@ -2406,7 +3471,7 @@ function TaskTitle() {
       this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_title_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_title_css__WEBPACK_IMPORTED_MODULE_7__["default"]);
 
       // 空の要素を作成
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["task-title"]);
@@ -2487,6 +3552,14 @@ function TaskTitle() {
     }
 
     /**
+     * メニューを開いている状態
+     * @param {bool} value - 状態
+     */
+    set menuOpen(value) {
+      this.root.classList.toggle("menu-opened", value);
+    }
+
+    /**
      * タスクを初期化するメソッド
      * @param {Object} data - タスクデータのオブジェクト
      * @param {string} data.id - タスクのID
@@ -2497,13 +3570,11 @@ function TaskTitle() {
      * @return {void} - なし
      */
     init(data) {
-      this.id = data.id || _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__.IdUtils.getUniqueId();
+      this.id = data.id || _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__.IdUtils.getUniqueId();
       this.name = data.name || "新規タスク";
       this.duedate = data.duedate || "";
       this.priority = data.priority || "";
       this.status = data.status || "0";
-
-      this.classList.add("tree-item");
 
       this.#refreshView();
 
@@ -2512,7 +3583,7 @@ function TaskTitle() {
        */
       this.root.addEventListener("click", () => {
         this.shadowRoot.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent("clickTaskItem", {
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CLICK_TASK_EVENT_NAME, {
             id: this.id,
           })
         );
@@ -2520,31 +3591,25 @@ function TaskTitle() {
     }
 
     /**
-     * コンテキストメニューを設定する
-     * @param {HTMLElement} menu コンテキストメニュー
+     * 現在のオブジェクトのデータを収集し、データアイテムとして返します。
+     * @returns {Object} dataItem - データアイテムオブジェクト
+     * @returns {string} dataItem.id - タスクのID
+     * @returns {string} dataItem.name - タスクの名前（デフォルトは "新規タスク"）
+     * @returns {string} dataItem.type - タスクのタイプ
+     * @returns {string} dataItem.duedate - タスクの期限日
+     * @returns {string} dataItem.priority - タスクの優先度
+     * @returns {number} dataItem.status - タスクのステータス（デフォルトは 0）
      */
-    setContextMenu(menu) {
-      this.shadowRoot.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+    getData() {
+      const dataItem = {};
+      dataItem.id = this.id;
+      dataItem.name = this.name || "新規タスク";
+      dataItem.type = this.type || "";
+      dataItem.duedate = this.duedate || "";
+      dataItem.priority = this.priority || "";
+      dataItem.status = this.status || 0;
 
-        this.shadowRoot.appendChild(menu);
-
-        menu.isTask = true;
-        menu.openMenu({
-          target: this,
-          pageX: e.pageX,
-          pageY: e.pageY,
-        });
-
-        this.root.classList.add("menu-opened");
-
-        this.shadowRoot.addEventListener("closeMenu", () => {
-          this.root.classList.remove("menu-opened");
-          menu.remove();
-          menu.isTask = false;
-        });
-      });
+      return dataItem;
     }
 
     /**
@@ -2555,12 +3620,25 @@ function TaskTitle() {
     #refreshView() {
       this.root.innerHTML = "";
       const isComplete = this.status === "100";
+      const isNotStarted = this.status === "0";
+      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 0;
 
       // アイコン設定
       this.root.classList.toggle("complete", isComplete);
-      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(
-        isComplete ? _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.squareCheckPaths : _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.squarePaths
-      );
+      this.root.classList.toggle("over-deadline", isOverDeadline);
+
+      let paths;
+      if (isComplete) {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squareCheckPaths; // 完了
+      } else if (isOverDeadline) {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squareAlertPaths; // 注意
+      } else if (isNotStarted) {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squarePaths; // 未着手
+      } else {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squareDotPaths; // 進行中
+      }
+
+      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(paths);
       this.root.appendChild(icon);
 
       // タスク名設定
@@ -2574,7 +3652,7 @@ function TaskTitle() {
 
 
 /***/ }),
-/* 14 */
+/* 18 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2617,16 +3695,126 @@ class IdUtils {
 
 
 /***/ }),
-/* 15 */
+/* 19 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DateUtils: () => (/* binding */ DateUtils)
+/* harmony export */ });
+/**
+ * 日付ユーティリティクラス
+ */
+class DateUtils {
+  /**
+   * 日付オブジェクトからフォーマットされた文字列を生成するヘルパー関数
+   * @param {Date} date 日付オブジェクト
+   * @param {string} format 日付フォーマット
+   * @returns {string} フォーマットされた日付文字列
+   */
+  static formatDate = (date, format = "{yyyy}{MM}{dd}{HH}{mm}{ss}{SSS}") => {
+    const parts = {
+      yyyy: date.getFullYear(),
+      MM: String(date.getMonth() + 1).padStart(2, "0"),
+      dd: String(date.getDate()).padStart(2, "0"),
+      HH: String(date.getHours()).padStart(2, "0"),
+      mm: String(date.getMinutes()).padStart(2, "0"),
+      ss: String(date.getSeconds()).padStart(2, "0"),
+      SSS: String(date.getMilliseconds()).padStart(3, "0"),
+    };
+
+    return format.replace(
+      /{(yyyy|MM|dd|HH|mm|ss|SSS)}/g,
+      (matched) => parts[matched.slice(1, -1)]
+    );
+  };
+
+  /**
+   * 日付文字列をDateオブジェクトに変換する。
+   * @param {string} dateString - "yyyy-mm-dd"形式の日付文字列。
+   * @returns {Date} - 変換されたDateオブジェクト。
+   */
+  static parseDate = (dateString) => {
+    // 日付であるか判定
+    if (!this.isValidDate(dateString)) {
+      throw new Error("日付文字列の形式が正しくありません。");
+    }
+    // "-"で日付を分割し、配列として取得
+    const parts = dateString.split("-");
+
+    // 配列の要素を数値に変換
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // 月は0-11で表現されるため-1
+    const day = parseInt(parts[2], 10);
+
+    // Dateオブジェクトを作成して返す
+    return new Date(year, month, day);
+  };
+
+  /**
+   * 与えられた文字列がyyyy-mm-dd形式の日付かどうかを判定する
+   *
+   * @param {string} dateString - 判定する文字列。
+   * @returns {boolean} - 有効な日付形式かどうか。
+   */
+  static isValidDate = (dateString) => {
+    // 正規表現によるフォーマットのチェック
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(dateString)) {
+      return false;
+    }
+
+    // Dateオブジェクトを使用して実際の有効性を確認
+    const date = new Date(dateString);
+    const timestamp = date.getTime();
+    if (typeof timestamp !== "number" || Number.isNaN(timestamp)) {
+      return false;
+    }
+
+    // 入力された文字列が有効な日付か確認
+    return date.toISOString().startsWith(dateString);
+  };
+
+  /**
+   * 与えられた日付文字列と当日の日付との差を日数で計算する。
+   * @param {string} dataString - yyyy-mm-dd形式の日付文字列。
+   * @returns {number} - 当日からの残り日数。
+   */
+  static calcDateDiffToday(dataString) {
+    /**
+     * ミリ秒を1日単位に変換する定数
+     */
+    const MS_PER_DAY = 86400000;
+
+    // 空の場合は処理対象外
+    if (!this.isValidDate(dataString)) {
+      return 0;
+    }
+    // 入力された日付をパース
+    const data = this.parseDate(dataString);
+    // 本日の日付を取得してフォーマット
+    const today = this.parseDate(
+      this.formatDate(new Date(), "{yyyy}-{MM}-{dd}")
+    );
+    // 残り日数を計算
+    const dayCount = Math.floor((data - today) / MS_PER_DAY);
+
+    return dayCount;
+  }
+}
+
+
+/***/ }),
+/* 20 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -3037,14 +4225,26 @@ th {
   display: flex;
   align-items: center;
   text-decoration-skip-ink: none;
+  border-radius: 0.15rem;
+  padding: 0.15rem;
 }
-.task-title:hover {
-  color: #0078d4;
-  text-decoration: underline;
+.task-title:hover, .task-title.menu-opened {
+  background-color: #0078d4;
+  color: #fffff8;
 }
-.task-title.menu-opened {
-  color: #0078d4;
-  text-decoration: underline;
+.task-title.over-deadline {
+  color: #f93827;
+}
+.task-title.over-deadline:hover {
+  background-color: #f93827;
+  color: #fffff8;
+}
+.task-title.complete {
+  color: #838383;
+  text-decoration: line-through;
+}
+.task-title.complete:hover {
+  background-color: #0078d4;
 }
 .task-title .svg-icon {
   margin-right: 0.25rem;
@@ -3060,7 +4260,7 @@ th {
 
 
 /***/ }),
-/* 16 */
+/* 21 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3068,10 +4268,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GroupTitle: () => (/* binding */ GroupTitle)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
-/* harmony import */ var _style_group_title_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(17);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var _style_group_title_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(22);
+
+
 
 
 
@@ -3098,12 +4302,20 @@ function GroupTitle() {
       this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_group_title_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_group_title_css__WEBPACK_IMPORTED_MODULE_6__["default"]);
 
       // 空の要素を作成
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["group-title"]);
 
       this.shadowRoot.appendChild(this.root);
+    }
+
+    /**
+     * グループの名前セッター
+     * @param {string} value - 新しい名前
+     */
+    set name(value) {
+      this._name = value;
     }
 
     /**
@@ -3115,15 +4327,19 @@ function GroupTitle() {
     }
 
     /**
-     * グループの名前セッター
-     * @param {string} value - 新しい名前
+     * グループの開閉状態を設定します。
+     * @param {boolean} value - グループを開く場合はtrue、閉じる場合はfalse
      */
-    set name(value) {
-      this._name = value;
-    }
-
     set open(value) {
       this.root.classList.toggle("group-opened", value);
+    }
+
+    /**
+     * メニューを開いている状態
+     * @param {bool} value - 状態
+     */
+    set menuOpen(value) {
+      this.root.classList.toggle("menu-opened", value);
     }
 
     /**
@@ -3134,37 +4350,35 @@ function GroupTitle() {
      * @return {void} - なし
      */
     init(data) {
-      this.id = data.id || _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__.IdUtils.getUniqueId();
+      this.id = data.id || _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__.IdUtils.getUniqueId();
       this.name = data.name || "新規グループ";
-      this.classList.add("tree-item");
 
       this.#refreshView();
-      this.#addClickEvent();
+
+      /**
+       * クリックイベントを通知
+       */
+      this.root.addEventListener("click", () => {
+        this.shadowRoot.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CLICK_GROUP_EVENT_NAME, {
+            id: this.id,
+          })
+        );
+      });
     }
 
     /**
-     * コンテキストメニューを設定する
-     * @param {HTMLElement} menu コンテキストメニュー
+     * 現在のオブジェクトのデータを収集し、データアイテムとして返します。
+     * @returns {Object} dataItem - データアイテムオブジェクト
+     * @returns {string|null} dataItem.id - グループのID（存在しない場合はnull）
+     * @returns {string} dataItem.name - グループの名前（デフォルトは "新規グループ"）
      */
-    setContextMenu(menu) {
-      this.shadowRoot.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+    getData() {
+      const dataItem = {};
+      dataItem.id = this.id || null;
+      dataItem.name = this.name || "新規グループ";
 
-        this.shadowRoot.appendChild(menu);
-        menu.openMenu({
-          target: this,
-          pageX: e.pageX,
-          pageY: e.pageY,
-        });
-
-        this.root.classList.add("menu-opened");
-
-        this.shadowRoot.addEventListener("closeMenu", () => {
-          this.root.classList.remove("menu-opened");
-          menu.remove();
-        });
-      });
+      return dataItem;
     }
 
     /**
@@ -3174,7 +4388,7 @@ function GroupTitle() {
      */
     #refreshView() {
       // アイコン設定
-      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.chevronRightPaths);
+      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.chevronRightPaths);
       this.root.appendChild(icon);
 
       // タイトル設定
@@ -3182,36 +4396,22 @@ function GroupTitle() {
       text.innerText = this.name;
       this.root.appendChild(text);
     }
-
-    /**
-     * クリックイベントを追加する。
-     * @returns {void}
-     */
-    #addClickEvent() {
-      this.root.addEventListener("click", () => {
-        this.shadowRoot.dispatchEvent(
-          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent("clickGroupItem", {
-            id: this.id,
-          })
-        );
-      });
-    }
   }
   customElements.define("group-title", GroupTitle);
 }
 
 
 /***/ }),
-/* 17 */
+/* 22 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -3622,17 +4822,15 @@ th {
   display: flex;
   align-items: center;
   text-decoration-skip-ink: none;
+  border-radius: 0.15rem;
+  padding: 0.15rem;
 }
 .group-title::-webkit-details-marker {
   display: none;
 }
-.group-title:hover {
-  color: #0078d4;
-  text-decoration: underline;
-}
-.group-title.menu-opened {
-  color: #0078d4;
-  text-decoration: underline;
+.group-title:hover, .group-title.menu-opened {
+  background-color: #0078d4;
+  color: #fffff8;
 }
 .group-title .svg-icon {
   margin-right: 0.25rem;
@@ -3647,901 +4845,6 @@ th {
 }
 .group-title .group-text {
   padding-top: 1px;
-}
-`, ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-/* 18 */
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-}
-#root .draggable-item {
-  padding: 0.15rem 0;
-}
-#root details summary {
-  list-style: none;
-}
-`, ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-/* 19 */
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  margin-top: 0.25rem;
-}
-
-#container {
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 30px 1fr;
-  gap: 0em 0em;
-  grid-template-areas: "treeview-menu contents-menu" "treeview contents";
-  height: 100vh;
-}
-#container #treeview-menu {
-  grid-area: treeview-menu;
-  background-color: cornflowerblue;
-}
-#container #contents-menu {
-  grid-area: contents-menu;
-  background-color: chartreuse;
-}
-#container #treeview {
-  grid-area: treeview;
-  padding: 0.5rem;
-}
-#container #contents {
-  grid-area: contents;
-  background-color: #d4f1ef;
 }
 `, ""]);
 // Exports
@@ -4621,18 +4924,14 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_taskMemo_task_memo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 window.addEventListener("load", () => {
-  (0,_components_taskMemo_task_memo__WEBPACK_IMPORTED_MODULE_0__.TaskMemo)();
+  (0,_components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_0__.TaskMemo)();
 });
 
 })();
 
 /******/ })()
-;</script></head>
-  <body>
-    <task-memo></task-memo>
-  </body>
-</html>
+;
