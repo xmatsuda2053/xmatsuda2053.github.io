@@ -77,7 +77,14 @@ export function ContentsGroup() {
 
       this.#addEmptyGroupItems();
 
-      this.table.header = ["ID", "名称", "優先度", "期日", "進捗率"];
+      this.table.header = [
+        "ID",
+        "ステータス",
+        "名称",
+        "優先度",
+        "期日",
+        "進捗率",
+      ];
 
       items.forEach((item) => {
         if (item.type === "task") {
@@ -85,11 +92,57 @@ export function ContentsGroup() {
           const priority = PriorityConst.text(item.priority) || "?";
 
           this.table.appendTr();
-          this.table.appendTd([item.id], ["150px"], "left");
-          this.table.appendTd([icon, item.name], [null, "500px"], "left");
-          this.table.appendTd([priority], ["50px"], "center");
-          this.table.appendTd([item.duedate || "?"], ["80px"], "center");
-          this.table.appendTd([`${item.status}%`], ["50px"], "center");
+
+          // タスクの状態クラスを設定
+          if (item.flag.isComplete) {
+            this.table.setTrClass("complete");
+          } else if (item.flag.isOverDeadline) {
+            this.table.setTrClass("over-deadline");
+          }
+
+          // ID
+          this.table.addTd();
+          this.table.setTdElment(item.id);
+          this.table.setTdWidth("150px");
+
+          // ステータス
+          this.table.addTd();
+          this.table.setTdElment(icon);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // タスク名
+          this.table.addTd();
+          this.table.setTdElment(item.name);
+          this.table.setTdClickEvent(() => {
+            this.shadowRoot.dispatchEvent(
+              EventUtils.createEvent(
+                EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+                {
+                  id: item.id,
+                  name: item.name,
+                }
+              )
+            );
+          });
+
+          // 優先度
+          this.table.addTd();
+          this.table.setTdElment(priority);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 期日
+          this.table.addTd();
+          this.table.setTdElment(item.duedate);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 進捗率
+          this.table.addTd();
+          this.table.setTdElment(`${item.status}%`);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
         }
       });
     }

@@ -70,36 +70,54 @@ export function FormTable() {
     }
 
     /**
-     * td要素を作成し、指定された要素を追加します。
-     * @param {Array<string|HTMLElement>} elms - 追加する要素の配列。文字列またはHTMLElement
-     * @param {string} align - 水平方向の配置（left|center|right）
+     * Tr要素にクラスを設定します。
+     * @param {string} className
      */
-    appendTd(elms, width, align) {
-      const rootDiv = ElmUtils.createElm("div");
-      const div = ElmUtils.createElm("div");
-      const td = ElmUtils.createElm("td");
+    setTrClass(className) {
+      this.tr.classList.add(className);
+    }
 
-      elms.forEach((elm, index) => {
-        if (typeof elm === "string") {
-          const p = ElmUtils.createElm("p");
-          p.innerText = elm;
+    /**
+     * 新しいtd要素を作成してtrに追加します。
+     */
+    addTd() {
+      this.td = ElmUtils.createElm("td");
+      this.tr.appendChild(this.td);
+    }
 
-          if (width && width[index]) {
-            p.style.width = width[index];
-          }
+    /**
+     * Td要素にエレメントを追加します。
+     * @param {element} elm
+     */
+    setTdElment(elm) {
+      if (typeof elm === "string") {
+        const div = ElmUtils.createElm("div");
+        div.innerText = elm;
+        this.td.appendChild(div);
+      } else {
+        this.td.appendChild(elm);
+      }
+    }
 
-          div.appendChild(p);
-        } else {
-          div.appendChild(elm);
-        }
-      });
+    /**
+     * Td要素の横幅を設定します。
+     * @param {string} width
+     */
+    setTdWidth(width) {
+      this.td.style = `width:${width}`;
+    }
 
-      rootDiv.appendChild(div);
-      rootDiv.classList.add("root");
-      td.appendChild(rootDiv);
-      td.classList.add(align);
+    /**
+     * Td要素の文字の位置を設定します。
+     * @param {string} align
+     */
+    setTdAlign(align) {
+      this.td.classList.add(align);
+    }
 
-      this.tr.appendChild(td);
+    setTdClickEvent(func) {
+      this.td.classList.add("clickable");
+      this.td.addEventListener("click", func);
     }
   }
   customElements.define("form-table", FormTable);

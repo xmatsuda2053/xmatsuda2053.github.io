@@ -311,6 +311,17 @@ export function TaskMemo() {
             group.refreshView();
           }
         );
+
+        // グループ内のタスクのクリックを検知
+        this.contentsGroup.addEventListener(
+          EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+          (e) => {
+            const id = e.detail.item.id;
+            const name = e.detail.item.name;
+            const task = this.treeViewRoot.getItemById(id);
+            this.#addContentsTask(id, name, task);
+          }
+        );
       } catch (error) {
         console.error("グループデータの読み込みに失敗しました:", error);
         return null;

@@ -342,6 +342,17 @@ function TaskMemo() {
             group.refreshView();
           }
         );
+
+        // グループ内のタスクのクリックを検知
+        this.contentsGroup.addEventListener(
+          _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+          (e) => {
+            const id = e.detail.item.id;
+            const name = e.detail.item.name;
+            const task = this.treeViewRoot.getItemById(id);
+            this.#addContentsTask(id, name, task);
+          }
+        );
       } catch (error) {
         console.error("グループデータの読み込みに失敗しました:", error);
         return null;
@@ -2287,6 +2298,11 @@ class EventConst {
   static CHANGE_CONTENTS_GROUP_EVENT_NAME = "changeContentsGroup";
 
   /**
+   * グループ内タスクのクリックイベント
+   */
+  static CLICK_CONTENTS_GROUP_TASK_EVENT_NAME = "clickContentsGroupTask";
+
+  /**
    * コンテンツタスク変更イベント
    */
   static CHANGE_CONTENTS_TASK_EVENT_NAME = "changeContentsTask";
@@ -3944,7 +3960,7 @@ function TaskTitle() {
       this.root.innerHTML = "";
       const isComplete = this.status === "100";
       const isNotStarted = this.status === "0";
-      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 0;
+      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 3;
 
       this._flag = {
         isComplete: isComplete,
@@ -5312,7 +5328,14 @@ function ContentsGroup() {
 
       this.#addEmptyGroupItems();
 
-      this.table.header = ["ID", "名称", "優先度", "期日", "進捗率"];
+      this.table.header = [
+        "ID",
+        "ステータス",
+        "名称",
+        "優先度",
+        "期日",
+        "進捗率",
+      ];
 
       items.forEach((item) => {
         if (item.type === "task") {
@@ -5320,11 +5343,57 @@ function ContentsGroup() {
           const priority = _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__.PriorityConst.text(item.priority) || "?";
 
           this.table.appendTr();
-          this.table.appendTd([item.id], ["150px"], "left");
-          this.table.appendTd([icon, item.name], [null, "500px"], "left");
-          this.table.appendTd([priority], ["50px"], "center");
-          this.table.appendTd([item.duedate || "?"], ["80px"], "center");
-          this.table.appendTd([`${item.status}%`], ["50px"], "center");
+
+          // タスクの状態クラスを設定
+          if (item.flag.isComplete) {
+            this.table.setTrClass("complete");
+          } else if (item.flag.isOverDeadline) {
+            this.table.setTrClass("over-deadline");
+          }
+
+          // ID
+          this.table.addTd();
+          this.table.setTdElment(item.id);
+          this.table.setTdWidth("150px");
+
+          // ステータス
+          this.table.addTd();
+          this.table.setTdElment(icon);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // タスク名
+          this.table.addTd();
+          this.table.setTdElment(item.name);
+          this.table.setTdClickEvent(() => {
+            this.shadowRoot.dispatchEvent(
+              _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(
+                _constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+                {
+                  id: item.id,
+                  name: item.name,
+                }
+              )
+            );
+          });
+
+          // 優先度
+          this.table.addTd();
+          this.table.setTdElment(priority);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 期日
+          this.table.addTd();
+          this.table.setTdElment(item.duedate);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 進捗率
+          this.table.addTd();
+          this.table.setTdElment(`${item.status}%`);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
         }
       });
     }
@@ -10131,36 +10200,54 @@ function FormTable() {
     }
 
     /**
-     * td要素を作成し、指定された要素を追加します。
-     * @param {Array<string|HTMLElement>} elms - 追加する要素の配列。文字列またはHTMLElement
-     * @param {string} align - 水平方向の配置（left|center|right）
+     * Tr要素にクラスを設定します。
+     * @param {string} className
      */
-    appendTd(elms, width, align) {
-      const rootDiv = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
-      const div = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
-      const td = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("td");
+    setTrClass(className) {
+      this.tr.classList.add(className);
+    }
 
-      elms.forEach((elm, index) => {
-        if (typeof elm === "string") {
-          const p = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
-          p.innerText = elm;
+    /**
+     * 新しいtd要素を作成してtrに追加します。
+     */
+    addTd() {
+      this.td = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("td");
+      this.tr.appendChild(this.td);
+    }
 
-          if (width && width[index]) {
-            p.style.width = width[index];
-          }
+    /**
+     * Td要素にエレメントを追加します。
+     * @param {element} elm
+     */
+    setTdElment(elm) {
+      if (typeof elm === "string") {
+        const div = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
+        div.innerText = elm;
+        this.td.appendChild(div);
+      } else {
+        this.td.appendChild(elm);
+      }
+    }
 
-          div.appendChild(p);
-        } else {
-          div.appendChild(elm);
-        }
-      });
+    /**
+     * Td要素の横幅を設定します。
+     * @param {string} width
+     */
+    setTdWidth(width) {
+      this.td.style = `width:${width}`;
+    }
 
-      rootDiv.appendChild(div);
-      rootDiv.classList.add("root");
-      td.appendChild(rootDiv);
-      td.classList.add(align);
+    /**
+     * Td要素の文字の位置を設定します。
+     * @param {string} align
+     */
+    setTdAlign(align) {
+      this.td.classList.add(align);
+    }
 
-      this.tr.appendChild(td);
+    setTdClickEvent(func) {
+      this.td.classList.add("clickable");
+      this.td.addEventListener("click", func);
     }
   }
   customElements.define("form-table", FormTable);
@@ -10584,70 +10671,68 @@ th {
 }
 
 table {
-  background-color: #fffff8;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 0.5rem;
-  border: 1px solid #6f6f6f;
+  width: 100%;
 }
 table thead tr th {
+  background-color: #211c84;
+  color: #fffffb;
+  font-weight: bold;
   text-align: center;
-  padding: 0.5rem 0.5rem;
-  border-right: 1px solid #9f9f9f;
-  border-bottom: 1px solid #9f9f9f;
-  background-color: #fff6b3;
+  padding: 0.5rem;
 }
 table thead tr th:first-child {
-  border-top-left-radius: 0.5rem;
+  border-top-left-radius: 0.25rem;
 }
 table thead tr th:last-child {
-  border-top-right-radius: 0.5rem;
-  border-right: none;
+  border-top-right-radius: 0.25rem;
 }
-table tbody tr {
-  cursor: pointer;
-}
-table tbody tr:hover {
-  background-color: #ffefc8;
+table tbody tr:nth-child(even) td {
+  background-color: #eeeeee;
 }
 table tbody tr td {
-  padding: 0.5rem 0.5rem;
-  border-right: 1px solid #9f9f9f;
-  border-bottom: 1px solid #9f9f9f;
+  background-color: #fffffb;
+  color: #00000b;
+  max-width: 300px;
+  line-height: 2rem;
+  padding: 0 0.5rem;
 }
-table tbody tr td:hover {
-  background-color: #ffd95f;
+table tbody tr td.clickable {
+  cursor: pointer;
 }
-table tbody tr td:last-child {
-  border-right: none;
-}
-table tbody tr td.left {
-  text-align: left;
+table tbody tr td.clickable:hover {
+  text-decoration: underline;
+  color: #003092;
 }
 table tbody tr td.center {
   text-align: center;
 }
+table tbody tr td.center .svg-icon {
+  vertical-align: middle;
+}
 table tbody tr td.right {
   text-align: right;
 }
-table tbody tr td div.root {
-  display: inline-block;
+table tbody tr td.right .svg-icon {
+  vertical-align: right;
 }
-table tbody tr td div.root div {
-  display: flex;
-  line-height: 1.05rem;
+table tbody tr td.left {
+  text-align: left;
 }
-table tbody tr td div.root div p {
+table tbody tr td div {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-table tbody tr td div.root div .svg-icon {
-  margin-right: 0.15rem;
+table tbody tr td .svg-icon {
+  display: inline-block;
   font-size: 1rem;
 }
-table tbody tr:last-child td {
-  border-bottom: none;
+table tbody tr.complete td {
+  color: #838383;
+  text-decoration: line-through;
+}
+table tbody tr.over-deadline td {
+  color: #f93827;
 }
 `, ""]);
 // Exports

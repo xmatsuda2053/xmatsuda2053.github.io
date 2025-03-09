@@ -2,36 +2,36 @@
 @use "../../_style/font";
 @use "../../_style/svg";
 
-$bg-color: #fffff8;
-$bg-color-header: #fff6b3;
-$bg-color-hover: #ffefc8;
-$bg-color-cell-hover: #ffd95f;
-$border-color: #6f6f6f;
-$border-inner-color: #9f9f9f;
+$h-bg-color: #211c84;
+$h-font-color: #fffffb;
+
+$d-bg-color: #fffffb;
+$d-bg-color-even: #eeeeee;
+$d-font-color: #00000b;
+$d-font-color-link: #003092;
+
+$alert-color: #f93827;
+$complete-color: #838383;
 
 table {
-  background-color: $bg-color;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 0.5rem;
-  border: 1px solid $border-color;
+  width: 100%;
 
   thead {
     tr {
       th {
+        background-color: $h-bg-color;
+        color: $h-font-color;
+
+        font-weight: bold;
         text-align: center;
-        padding: 0.5rem 0.5rem;
-        border-right: 1px solid $border-inner-color;
-        border-bottom: 1px solid $border-inner-color;
-        background-color: $bg-color-header;
+        padding: 0.5rem;
 
         &:first-child {
-          border-top-left-radius: 0.5rem;
+          border-top-left-radius: 0.25rem;
         }
 
         &:last-child {
-          border-top-right-radius: 0.5rem;
-          border-right: none;
+          border-top-right-radius: 0.25rem;
         }
       }
     }
@@ -39,61 +39,66 @@ table {
 
   tbody {
     tr {
-      cursor: pointer;
-
-      &:hover {
-        background-color: $bg-color-hover;
+      &:nth-child(even) {
+        td {
+          background-color: $d-bg-color-even;
+        }
       }
 
       td {
-        padding: 0.5rem 0.5rem;
-        border-right: 1px solid $border-inner-color;
-        border-bottom: 1px solid $border-inner-color;
+        background-color: $d-bg-color;
+        color: $d-font-color;
+        max-width: 300px;
+        line-height: 2rem;
+        padding: 0 0.5rem;
 
-        &:hover {
-          background-color: $bg-color-cell-hover;
-        }
+        &.clickable {
+          cursor: pointer;
 
-        &:last-child {
-          border-right: none;
-        }
-
-        &.left {
-          text-align: left;
+          &:hover {
+            text-decoration: underline;
+            color: $d-font-color-link;
+          }
         }
 
         &.center {
           text-align: center;
+          .svg-icon {
+            vertical-align: middle;
+          }
         }
-
         &.right {
           text-align: right;
+          .svg-icon {
+            vertical-align: right;
+          }
+        }
+        &.left {
+          text-align: left;
         }
 
-        div.root {
+        div {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .svg-icon {
           display: inline-block;
-
-          div {
-            display: flex;
-            line-height: 1.05rem;
-
-            p {
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-
-            .svg-icon {
-              margin-right: 0.15rem;
-              font-size: 1rem;
-            }
-          }
+          font-size: 1rem;
         }
       }
 
-      &:last-child {
+      &.complete {
         td {
-          border-bottom: none;
+          color: $complete-color;
+          text-decoration: line-through;
+        }
+      }
+
+      &.over-deadline {
+        td {
+          color: $alert-color;
         }
       }
     }

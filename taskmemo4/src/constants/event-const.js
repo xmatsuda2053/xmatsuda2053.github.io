@@ -47,6 +47,11 @@ export class EventConst {
   static CHANGE_CONTENTS_GROUP_EVENT_NAME = "changeContentsGroup";
 
   /**
+   * グループ内タスクのクリックイベント
+   */
+  static CLICK_CONTENTS_GROUP_TASK_EVENT_NAME = "clickContentsGroupTask";
+
+  /**
    * コンテンツタスク変更イベント
    */
   static CHANGE_CONTENTS_TASK_EVENT_NAME = "changeContentsTask";

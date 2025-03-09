@@ -398,70 +398,68 @@ th {
 }
 
 table {
-  background-color: #fffff8;
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 0.5rem;
-  border: 1px solid #6f6f6f;
+  width: 100%;
 }
 table thead tr th {
+  background-color: #211c84;
+  color: #fffffb;
+  font-weight: bold;
   text-align: center;
-  padding: 0.5rem 0.5rem;
-  border-right: 1px solid #9f9f9f;
-  border-bottom: 1px solid #9f9f9f;
-  background-color: #fff6b3;
+  padding: 0.5rem;
 }
 table thead tr th:first-child {
-  border-top-left-radius: 0.5rem;
+  border-top-left-radius: 0.25rem;
 }
 table thead tr th:last-child {
-  border-top-right-radius: 0.5rem;
-  border-right: none;
+  border-top-right-radius: 0.25rem;
 }
-table tbody tr {
-  cursor: pointer;
-}
-table tbody tr:hover {
-  background-color: #ffefc8;
+table tbody tr:nth-child(even) td {
+  background-color: #eeeeee;
 }
 table tbody tr td {
-  padding: 0.5rem 0.5rem;
-  border-right: 1px solid #9f9f9f;
-  border-bottom: 1px solid #9f9f9f;
+  background-color: #fffffb;
+  color: #00000b;
+  max-width: 300px;
+  line-height: 2rem;
+  padding: 0 0.5rem;
 }
-table tbody tr td:hover {
-  background-color: #ffd95f;
+table tbody tr td.clickable {
+  cursor: pointer;
 }
-table tbody tr td:last-child {
-  border-right: none;
-}
-table tbody tr td.left {
-  text-align: left;
+table tbody tr td.clickable:hover {
+  text-decoration: underline;
+  color: #003092;
 }
 table tbody tr td.center {
   text-align: center;
 }
+table tbody tr td.center .svg-icon {
+  vertical-align: middle;
+}
 table tbody tr td.right {
   text-align: right;
 }
-table tbody tr td div.root {
-  display: inline-block;
+table tbody tr td.right .svg-icon {
+  vertical-align: right;
 }
-table tbody tr td div.root div {
-  display: flex;
-  line-height: 1.05rem;
+table tbody tr td.left {
+  text-align: left;
 }
-table tbody tr td div.root div p {
+table tbody tr td div {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-table tbody tr td div.root div .svg-icon {
-  margin-right: 0.15rem;
+table tbody tr td .svg-icon {
+  display: inline-block;
   font-size: 1rem;
 }
-table tbody tr:last-child td {
-  border-bottom: none;
+table tbody tr.complete td {
+  color: #838383;
+  text-decoration: line-through;
+}
+table tbody tr.over-deadline td {
+  color: #f93827;
 }
 
 /*# sourceMappingURL=form-table.css.map */
