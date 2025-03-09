@@ -1,0 +1,27 @@
+@use "../../_style/destyle";
+@use "../../_style/font";
+
+$bg-color: #fffff8;
+$border-color: #6f6f6f;
+
+textarea {
+  outline: none;
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+  border-radius: 0.25rem;
+  line-height: 1.1rem;
+  padding: 0.35rem 0.25rem;
+  resize: none;
+  overflow-y: hidden;
+
+  &.borderless {
+    $borderless-bg-color-hover: #efefef;
+
+    border: none;
+
+    &:hover,
+    &:focus {
+      background-color: $borderless-bg-color-hover;
+    }
+  }
+}

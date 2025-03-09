@@ -35,4 +35,24 @@ export class EventConst {
    * TreeView変更イベント
    */
   static CHANGE_TREEVIEW_EVENT_NAME = "changeTreeView";
+
+  /**
+   * フォームアイテム変更イベント
+   */
+  static CHANGE_FORM_ITEM_EVENT_NAME = "changeFormItem";
+
+  /**
+   * コンテンツグループ変更イベント
+   */
+  static CHANGE_CONTENTS_GROUP_EVENT_NAME = "changeContentsGroup";
+
+  /**
+   * コンテンツタスク変更イベント
+   */
+  static CHANGE_CONTENTS_TASK_EVENT_NAME = "changeContentsTask";
+
+  /**
+   * 履歴コンテンツ追加イベント
+   */
+  static ADD_HISTORY_CONTENTS_EVENT_NAME = "addHistoryContents";
 }

@@ -398,6 +398,7 @@ th {
 }
 
 .circle {
+  z-index: 99999;
   color: #fffffb;
   background-color: #0a3981;
   border: 1px solid #0a3981;
@@ -412,6 +413,13 @@ th {
 }
 .circle .svg-icon {
   font-size: 1.8rem;
+}
+
+.hover {
+  color: #6f6f6f;
+}
+.hover.red:hover {
+  color: #ff0000;
 }
 
 /*# sourceMappingURL=svg-btn.css.map */

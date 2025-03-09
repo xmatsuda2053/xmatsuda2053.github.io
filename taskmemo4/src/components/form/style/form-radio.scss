@@ -1,0 +1,46 @@
+@use "../../_style/destyle";
+@use "../../_style/font";
+
+$bg-color: #fffff8;
+$border-color: #6f6f6f;
+$checked-bg-color: #0a5eb0;
+$checked-color: #fffff8;
+
+input[type="radio"] {
+  display: none;
+}
+
+#root {
+  display: flex;
+  justify-content: space-between;
+
+  label {
+    flex: 1;
+    line-height: 1.9rem;
+    text-align: center;
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+    border-right: none;
+
+    &.first {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    &.last {
+      border-right: 1px solid $border-color;
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+
+    &:has(+ input:checked) {
+      background-color: $checked-bg-color;
+      color: $checked-color;
+    }
+
+    &:hover {
+      background-color: $checked-bg-color;
+      color: $checked-color;
+    }
+  }
+}

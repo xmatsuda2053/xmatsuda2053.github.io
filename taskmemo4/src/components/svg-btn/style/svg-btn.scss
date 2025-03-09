@@ -10,7 +10,10 @@ $circle-font-color-hover: #0a3981;
 $circle-border-color-hover: #0a3981;
 $circle-shodow-color: rgba(0, 0, 0, 0.1);
 
+$hover-before-color: #6f6f6f;
+
 .circle {
+  z-index: 99999;
   color: $circle-font-color;
   background-color: $circle-bg-color;
   border: 1px solid $circle-border-color;
@@ -27,5 +30,15 @@ $circle-shodow-color: rgba(0, 0, 0, 0.1);
 
   .svg-icon {
     font-size: 1.8rem;
+  }
+}
+
+.hover {
+  color: $hover-before-color;
+
+  &.red {
+    &:hover {
+      color: #ff0000;
+    }
   }
 }

@@ -17,6 +17,15 @@ export function TreeView() {
    */
   let draggedElement;
 
+  /**
+   * 指定されたエレメント内のグループアイテムを取得する関数。
+   * 与えられたエレメント内の`.group-items`クラスを持つ要素を見つけ、返します。
+   *
+   * @param {Element} element - グループアイテムを取得するエレメント。
+   * @returns {Element} - グループアイテムを含むエレメント。
+   */
+  const getItems = (element) => element.querySelector(".group-items");
+
   class TreeView extends HTMLElement {
     // *******************************************************
     // * 初期処理
@@ -119,7 +128,7 @@ export function TreeView() {
     #getMenuTarget(target) {
       if (target && target.tagName.toLowerCase() === "group-title") {
         const details = target.closest("details");
-        const items = details.querySelector(".group-items");
+        const items = getItems(details);
         return items || this.root;
       }
 
@@ -141,11 +150,20 @@ export function TreeView() {
        * @param {Event} event - クリックイベントオブジェクト
        */
       this.menu.addEventListener(`click-${id}`, (e) => {
+        const name = prompt("新しいタスクを作成", "新規タスク");
+        if (!name) {
+          return;
+        }
+
         const root = this.#getMenuTarget(this.menu.clickTarget);
-        root.appendChild(this.#createNewTaskItem());
+        const task = this.#createNewTaskItem({ name: name });
+
+        root.appendChild(task);
+
         this.#openGroup(root);
+        const data = task.querySelector("task-title").getData();
         this.dispatchEvent(
-          EventUtils.createEvent(EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME)
+          EventUtils.createEvent(EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME, data)
         );
       });
     }
@@ -165,11 +183,20 @@ export function TreeView() {
        * @param {Event} event - クリックイベントオブジェクト
        */
       this.menu.addEventListener(`click-${id}`, (e) => {
+        const name = prompt("新しいグループを作成", "新規グループ");
+        if (!name) {
+          return;
+        }
+
         const root = this.#getMenuTarget(this.menu.clickTarget);
-        root.appendChild(this.#createNewGroupItem());
+        const group = this.#createNewGroupItem({ name: name });
+
+        root.appendChild(group);
+
         this.#openGroup(root);
+        const data = group.querySelector("group-title").getData();
         this.dispatchEvent(
-          EventUtils.createEvent(EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME)
+          EventUtils.createEvent(EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME, data)
         );
       });
     }
@@ -225,7 +252,7 @@ export function TreeView() {
             elements.push(data);
           } else if (isGroup) {
             const group = node.querySelector("group-title");
-            const items = node.querySelector(".group-items");
+            const items = getItems(node);
             const data = group.getData();
             data.children = getAllElement(items.childNodes);
             elements.push(data);
@@ -240,9 +267,46 @@ export function TreeView() {
       return getAllElement(this.root.childNodes);
     }
 
+    /**
+     * 指定されたIDに対応する要素を取得します。
+     * @param {string} id - 取得する要素のID。
+     * @returns {HTMLElement|null} - 指定されたIDに対応する要素。存在しない場合はnullを返します。
+     */
+    getItemById(id) {
+      return this.shadowRoot.getElementById(id);
+    }
+
+    /**
+     * 指定されたIDに対応するグループの項目データを取得します。
+     * @param {string} id - グループのID。
+     * @returns {Array<Object>} - 項目データの配列。
+     */
+    getGroupItemsById(id) {
+      const details = this.shadowRoot.getElementById(id).closest("details");
+      const treeItems = getItems(details).querySelectorAll(
+        "task-title,group-title"
+      );
+
+      const items = [];
+      for (let item of treeItems) {
+        const data = item.getData();
+        data.id = item.id;
+        if (data.type === "task") {
+          data.paths = item.paths;
+          data.flag = item.flag;
+        }
+        items.push(data);
+      }
+      return items;
+    }
+
     // *******************************************************
     // * TreeViewの作成
     // *******************************************************
+    /**
+     * JSON文字列を元にツリービューをレンダリングします。
+     * @param {string} jsonStr - JSON形式の文字列データ。
+     */
     renderTreeView(jsonStr) {
       if (!jsonStr) {
         return;
@@ -266,7 +330,7 @@ export function TreeView() {
           root.appendChild(group);
 
           // グループの子要素を追加
-          const items = group.querySelector(".group-items");
+          const items = getItems(group);
           const children = data.children || data.childlen || [];
           (children || []).forEach((child) => {
             addTreeViewItem(items, child);

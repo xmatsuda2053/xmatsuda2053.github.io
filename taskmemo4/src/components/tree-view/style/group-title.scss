@@ -40,6 +40,9 @@ $active-font-color: #fffff8;
   }
 
   .group-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     padding-top: 1px;
   }
 }

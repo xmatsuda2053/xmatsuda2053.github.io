@@ -40,6 +40,10 @@ export function GroupTitle() {
      */
     set name(value) {
       this._name = value;
+      this.#refreshView();
+      this.dispatchEvent(
+        EventUtils.createEvent(EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
     }
 
     /**
@@ -59,6 +63,14 @@ export function GroupTitle() {
     }
 
     /**
+     * 種類
+     * @returns {string} - 種類
+     */
+    get type() {
+      return "group";
+    }
+
+    /**
      * メニューを開いている状態
      * @param {bool} value - 状態
      */
@@ -74,7 +86,8 @@ export function GroupTitle() {
      * @return {void} - なし
      */
     init(data) {
-      this.id = data.id || IdUtils.getUniqueId();
+      const id = IdUtils.getUniqueId();
+      this.id = data.id || `g${id}`;
       this.name = data.name || "新規グループ";
 
       this.#refreshView();
@@ -86,6 +99,7 @@ export function GroupTitle() {
         this.shadowRoot.dispatchEvent(
           EventUtils.createEvent(EventConst.CLICK_GROUP_EVENT_NAME, {
             id: this.id,
+            name: this.name,
           })
         );
       });
@@ -101,8 +115,20 @@ export function GroupTitle() {
       const dataItem = {};
       dataItem.id = this.id || null;
       dataItem.name = this.name || "新規グループ";
+      dataItem.type = this.type;
 
       return dataItem;
+    }
+
+    /**
+     * タスクの表示内容を更新するメソッド
+     * @return {void} - なし
+     */
+    refreshView() {
+      this.#refreshView();
+      this.dispatchEvent(
+        EventUtils.createEvent(EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
     }
 
     /**
@@ -111,6 +137,9 @@ export function GroupTitle() {
      * @return {void} - なし
      */
     #refreshView() {
+      // 初期化
+      this.root.innerHTML = "";
+
       // アイコン設定
       const icon = SvgUtils.createIcon(SvgConst.chevronRightPaths);
       this.root.appendChild(icon);

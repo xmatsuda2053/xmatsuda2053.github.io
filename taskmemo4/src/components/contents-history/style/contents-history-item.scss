@@ -1,0 +1,33 @@
+@use "../../_style/destyle";
+@use "../../_style/svg";
+@use "../../_style/font";
+@use "../../_style/area";
+
+$bg-color: #fffff8;
+$border-color: #6f6f6f;
+
+.history-item {
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+  border-radius: 0.25rem;
+  padding: 0.35rem;
+  margin-bottom: 0.6rem;
+
+  #footer {
+    position: relative;
+    margin-top: 0.25rem;
+    height: 1rem;
+
+    #history-date {
+      position: absolute;
+      right: 1.5rem;
+      font-size: 0.75rem;
+      outline: none;
+    }
+
+    #delete-history-item {
+      position: absolute;
+      right: 0.25rem;
+    }
+  }
+}

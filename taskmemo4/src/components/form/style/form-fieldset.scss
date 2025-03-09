@@ -1,0 +1,40 @@
+@use "../../_style/destyle";
+@use "../../_style/font";
+
+$requied-bg-color: #fb4141;
+$requied-color: #fffffb;
+
+fieldset {
+  position: relative;
+  padding-bottom: 1.25rem;
+
+  legend {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+
+    &.isRequired {
+      &:after {
+        content: "必須";
+        margin-left: 0.25rem;
+        border-radius: 0.25rem;
+        background-color: $requied-bg-color;
+        color: $requied-color;
+        font-size: 0.6rem;
+        padding: 0.1rem 0.25rem;
+      }
+    }
+  }
+
+  &.nestedRoot {
+    display: flex;
+  }
+
+  &.nested {
+    margin-top: 0.25rem;
+    margin-right: 0.35rem;
+    padding-bottom: 0;
+  }
+}

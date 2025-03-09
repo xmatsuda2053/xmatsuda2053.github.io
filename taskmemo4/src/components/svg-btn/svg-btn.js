@@ -41,14 +41,14 @@ export function SvgBtn() {
 
     /**
      * アイコンを設定するセッター
-     * @param {HTMLElement} svgIcon - 設定するアイコン要素
+     * @param {HTMLElement} paths - 設定するアイコン要素
      * @returns {void}
      */
     set iconPaths(paths) {
-      const svgIcon = SvgUtils.createSvg(paths);
-      const svgUse = SvgUtils.createSvgUse(svgIcon);
-      this.button.appendChild(svgIcon);
-      this.button.appendChild(svgUse);
+      this._svgIcon = SvgUtils.createSvg(paths);
+      this._svgUse = SvgUtils.createSvgUse(this._svgIcon);
+      this.button.appendChild(this._svgIcon);
+      this.button.appendChild(this._svgUse);
     }
 
     /**
@@ -62,6 +62,22 @@ export function SvgBtn() {
       } else {
         this.button.classList.remove("circle");
       }
+    }
+
+    /**
+     * ボタンのサイズを設定するセッター
+     * @param {string} value - 設定するサイズ
+     */
+    set size(value) {
+      this._svgUse.style = `font-size: ${value}`;
+    }
+
+    /**
+     * ボタンのホバーカラーを設定するセッター
+     * @param {string} color - 設定するカラー
+     */
+    set hover(color) {
+      this.button.classList.add("hover", color);
     }
   }
   customElements.define("svg-btn", SvgBtn);

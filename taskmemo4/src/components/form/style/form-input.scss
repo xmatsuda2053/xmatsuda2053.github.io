@@ -1,0 +1,19 @@
+@use "../../_style/destyle";
+@use "../../_style/font";
+
+$bg-color: #fffff8;
+$bg-color-readonly: #dfdfdf;
+$border-color: #6f6f6f;
+
+input[type="text"] {
+  outline: none;
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+  border-radius: 0.25rem;
+  line-height: 1.5rem;
+  padding: 0.1rem 0.25rem;
+
+  &:read-only {
+    background-color: $bg-color-readonly;
+  }
+}

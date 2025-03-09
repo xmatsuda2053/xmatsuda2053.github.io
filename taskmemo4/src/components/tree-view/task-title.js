@@ -100,11 +100,27 @@ export function TaskTitle() {
     }
 
     /**
-     * タスクの種類
+     * 種類
      * @returns {string} - 種類
      */
     get type() {
       return "task";
+    }
+
+    /**
+     * アイコンパス
+     * @returns {string} - アイコンパス
+     */
+    get paths() {
+      return this._paths;
+    }
+
+    /**
+     * フラグ
+     * @returns {Object} - フラグ
+     */
+    get flag() {
+      return this._flag;
     }
 
     /**
@@ -160,12 +176,23 @@ export function TaskTitle() {
       const dataItem = {};
       dataItem.id = this.id;
       dataItem.name = this.name || "新規タスク";
-      dataItem.type = this.type || "";
+      dataItem.type = this.type;
       dataItem.duedate = this.duedate || "";
       dataItem.priority = this.priority || "";
       dataItem.status = this.status || 0;
 
       return dataItem;
+    }
+
+    /**
+     * タスクの表示内容を更新するメソッド
+     * @return {void} - なし
+     */
+    refreshView() {
+      this.#refreshView();
+      this.dispatchEvent(
+        EventUtils.createEvent(EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
     }
 
     /**
@@ -178,6 +205,12 @@ export function TaskTitle() {
       const isComplete = this.status === "100";
       const isNotStarted = this.status === "0";
       const isOverDeadline = DateUtils.calcDateDiffToday(this.duedate) < 0;
+
+      this._flag = {
+        isComplete: isComplete,
+        isNotStarted: isNotStarted,
+        isOverDeadline: isOverDeadline,
+      };
 
       // アイコン設定
       this.root.classList.toggle("complete", isComplete);
@@ -193,6 +226,8 @@ export function TaskTitle() {
       } else {
         paths = SvgConst.squareDotPaths; // 進行中
       }
+
+      this._paths = paths;
 
       const icon = SvgUtils.createIcon(paths);
       this.root.appendChild(icon);

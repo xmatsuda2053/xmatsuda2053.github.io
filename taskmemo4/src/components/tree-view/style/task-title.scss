@@ -47,6 +47,10 @@ $complete-color: #838383;
   }
 
   .task-text {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     padding-top: 1px;
   }
 }
