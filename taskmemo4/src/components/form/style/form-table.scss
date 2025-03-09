@@ -96,7 +96,7 @@ table {
         }
       }
 
-      &.over-deadline {
+      &.alert {
         td {
           color: $alert-color;
         }

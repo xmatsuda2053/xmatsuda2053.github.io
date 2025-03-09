@@ -115,6 +115,10 @@ export function FormTable() {
       this.td.classList.add(align);
     }
 
+    /**
+     * セルクリック時の処理を設定する。
+     * @param {function} func
+     */
     setTdClickEvent(func) {
       this.td.classList.add("clickable");
       this.td.addEventListener("click", func);

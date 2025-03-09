@@ -204,7 +204,7 @@ export function TaskTitle() {
       this.root.innerHTML = "";
       const isComplete = this.status === "100";
       const isNotStarted = this.status === "0";
-      const isOverDeadline = DateUtils.calcDateDiffToday(this.duedate) < 3;
+      const isOverDeadline = DateUtils.calcDateDiffToday(this.duedate) < 0;
 
       this._flag = {
         isComplete: isComplete,

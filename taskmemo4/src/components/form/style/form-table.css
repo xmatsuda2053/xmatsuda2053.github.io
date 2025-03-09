@@ -458,7 +458,7 @@ table tbody tr.complete td {
   color: #838383;
   text-decoration: line-through;
 }
-table tbody tr.over-deadline td {
+table tbody tr.alert td {
   color: #f93827;
 }
 

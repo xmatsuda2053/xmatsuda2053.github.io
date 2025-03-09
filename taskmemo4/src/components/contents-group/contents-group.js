@@ -97,7 +97,7 @@ export function ContentsGroup() {
           if (item.flag.isComplete) {
             this.table.setTrClass("complete");
           } else if (item.flag.isOverDeadline) {
-            this.table.setTrClass("over-deadline");
+            this.table.setTrClass("alert");
           }
 
           // ID

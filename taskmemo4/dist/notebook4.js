@@ -4236,7 +4236,7 @@ function TaskTitle() {
       this.root.innerHTML = "";
       const isComplete = this.status === "100";
       const isNotStarted = this.status === "0";
-      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 3;
+      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 0;
 
       this._flag = {
         isComplete: isComplete,
@@ -5624,7 +5624,7 @@ function ContentsGroup() {
           if (item.flag.isComplete) {
             this.table.setTrClass("complete");
           } else if (item.flag.isOverDeadline) {
-            this.table.setTrClass("over-deadline");
+            this.table.setTrClass("alert");
           }
 
           // ID
@@ -10521,6 +10521,10 @@ function FormTable() {
       this.td.classList.add(align);
     }
 
+    /**
+     * セルクリック時の処理を設定する。
+     * @param {function} func
+     */
     setTdClickEvent(func) {
       this.td.classList.add("clickable");
       this.td.addEventListener("click", func);
@@ -11007,7 +11011,7 @@ table tbody tr.complete td {
   color: #838383;
   text-decoration: line-through;
 }
-table tbody tr.over-deadline td {
+table tbody tr.alert td {
   color: #f93827;
 }
 `, ""]);
