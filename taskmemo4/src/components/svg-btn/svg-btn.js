@@ -29,11 +29,17 @@ export function SvgBtn() {
       // CSSを適用
       this.shadowRoot.adoptedStyleSheets = ElmUtils.createStylesheet(styles);
 
+      // フラグ初期化
+      this.isToggle = false;
+
       // 空のボタンを作成
       this.button = document.createElement("button");
       this.button.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
+        if (this.isToggle) {
+          this.button.classList.toggle("toggle-on");
+        }
         this.shadowRoot.dispatchEvent(EventUtils.createEvent("click"));
       });
       this.shadowRoot.appendChild(this.button);
@@ -73,11 +79,44 @@ export function SvgBtn() {
     }
 
     /**
-     * ボタンのホバーカラーを設定するセッター
-     * @param {string} color - 設定するカラー
+     * ボタンのカラーを設定するセッター
+     * @param {string} value - 設定するカラー
      */
-    set hover(color) {
-      this.button.classList.add("hover", color);
+    set color(value) {
+      this.button.classList.remove("red", "black");
+      this.button.classList.add(value);
+    }
+
+    /**
+     * ボタンのホバーを設定するセッター
+     * @param {bool} flag - ホバーを設定する場合は true、しない場合は false
+     */
+    set hover(flag) {
+      this.button.classList.toggle("hover", flag);
+    }
+
+    /**
+     * トグルボタンの設定を行うセッター
+     * @param {bool} flag - トグルボタンにする場合は true、しない場合は false
+     */
+    set toggle(flag) {
+      this.isToggle = flag;
+    }
+
+    /**
+     * トグルボタンの状態を取得するゲッター
+     * @returns {bool} トグルボタンがオンの場合は true、オフの場合は false
+     */
+    get toggle() {
+      return this.button.classList.contains("toggle-on");
+    }
+
+    /**
+     * トグルボタンをオンにするメソッド
+     * @returns {void}
+     */
+    toggleOn() {
+      this.button.classList.add("toggle-on");
     }
   }
   customElements.define("svg-btn", SvgBtn);

@@ -53,7 +53,173 @@ export function TreeView() {
       this.shadowRoot.appendChild(this.root);
 
       // コンテキストメニューを追加
+      this.#addHeaderMenu();
       this.#addContextMenu();
+    }
+
+    // *******************************************************
+    // * ヘッダーメニュー
+    // *******************************************************
+    #addHeaderMenu() {
+      const headerMenu = ElmUtils.createElm("div", "header-menu");
+      headerMenu.appendChild(this.#createAllOpenButton());
+      headerMenu.appendChild(this.#createAllCloseButton());
+      headerMenu.appendChild(this.#createLine());
+      headerMenu.appendChild(this.#createFilterNotStartedButton());
+      headerMenu.appendChild(this.#createFilterStartedButton());
+      headerMenu.appendChild(this.#createFilterCompletButton());
+      headerMenu.appendChild(this.#createFilterOverDeadlineButton());
+      this.header.appendChild(headerMenu);
+    }
+
+    /**
+     * セパレータを作成する。
+     * @returns ボタン
+     */
+    #createLine() {
+      const line = ElmUtils.createElm("svg-btn", "line");
+      line.iconPaths = SvgConst.linePaths;
+      line.size = "1.15rem";
+      return line;
+    }
+
+    /**
+     * ベースとなるボタンを作成する。
+     * @param {string} id - ボタンのID
+     * @param {Array} paths - アイコンのパス
+     * @returns ボタン
+     */
+    #createButton(id, paths) {
+      const btn = ElmUtils.createElm("svg-btn", id);
+      btn.iconPaths = paths;
+      btn.size = "1.15rem";
+      btn.color = "black";
+      btn.hover = true;
+      return btn;
+    }
+
+    /**
+     * トグルボタンを作成する。
+     * @param {string} id - ボタンのID
+     * @param {Array} paths - アイコンのパス
+     * @returns ボタン
+     */
+    #createToggleButton(id, paths) {
+      const btn = this.#createButton(id, paths);
+      btn.toggle = true;
+      btn.toggleOn();
+      return btn;
+    }
+
+    /**
+     * グループをすべて開くボタンを作成する。
+     * @returns ボタン
+     */
+    #createAllOpenButton() {
+      const btn = this.#createButton("all-open", SvgConst.treeOpenPaths);
+      btn.addEventListener("click", () => {
+        const details = this.root.querySelectorAll("details");
+        details.forEach((detail) => (detail.open = true));
+      });
+
+      return btn;
+    }
+
+    /**
+     * グループをすべて閉じるボタンを作成する。
+     * @returns ボタン
+     */
+    #createAllCloseButton() {
+      const btn = this.#createButton("all-close", SvgConst.treeClosePaths);
+      btn.addEventListener("click", () => {
+        const details = this.root.querySelectorAll("details");
+        details.forEach((detail) => (detail.open = false));
+      });
+
+      return btn;
+    }
+
+    /**
+     * 未開始タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterNotStartedButton() {
+      this.btnFilterNotStarted = this.#createToggleButton(
+        "filter-not-started",
+        SvgConst.squarePaths
+      );
+      this.btnFilterNotStarted.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterNotStarted;
+    }
+
+    /**
+     * 実行中タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterStartedButton() {
+      this.btnFilterStarted = this.#createToggleButton(
+        "filter-started",
+        SvgConst.squareDotPaths
+      );
+      this.btnFilterStarted.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterStarted;
+    }
+
+    /**
+     * 完了タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterCompletButton() {
+      this.btnFilterComplet = this.#createToggleButton(
+        "filter-completed",
+        SvgConst.squareCheckPaths
+      );
+      this.btnFilterComplet.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterComplet;
+    }
+
+    /**
+     * 遅延タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterOverDeadlineButton() {
+      this.btnFilterOverDeadline = this.#createToggleButton(
+        "filter-over-deadline",
+        SvgConst.squareAlertPaths
+      );
+      this.btnFilterOverDeadline.color = "red";
+      this.btnFilterOverDeadline.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterOverDeadline;
+    }
+
+    /**
+     * TreeViewのタスクに対するフィルタを設定する。
+     */
+    #filterTreeViewItem() {
+      const tasks = this.root.querySelectorAll("task-title");
+      const isNotStarted = this.btnFilterNotStarted.toggle;
+      const isStarted = this.btnFilterStarted.toggle;
+      const isComplete = this.btnFilterComplet.toggle;
+      const isOverDeadline = this.btnFilterOverDeadline.toggle;
+      tasks.forEach((task) => {
+        if (task.flag.isComplete) {
+          task.classList.toggle("enabled", !isComplete);
+        } else if (task.flag.isOverDeadline) {
+          task.classList.toggle("enabled", !isOverDeadline);
+        } else if (task.flag.isNotStarted) {
+          task.classList.toggle("enabled", !isNotStarted);
+        } else {
+          task.classList.toggle("enabled", !isStarted);
+        }
+      });
     }
 
     // *******************************************************

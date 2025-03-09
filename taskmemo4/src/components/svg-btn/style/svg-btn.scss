@@ -11,6 +11,7 @@ $circle-border-color-hover: #0a3981;
 $circle-shodow-color: rgba(0, 0, 0, 0.1);
 
 $hover-before-color: #6f6f6f;
+$hover-bg-color: #efefef;
 
 .circle {
   z-index: 99999;
@@ -35,10 +36,29 @@ $hover-before-color: #6f6f6f;
 
 .hover {
   color: $hover-before-color;
+  border-radius: 0.25rem;
 
   &.red {
     &:hover {
       color: #ff0000;
+      background-color: $hover-bg-color;
     }
+  }
+
+  &.black {
+    &:hover {
+      color: #000000;
+      background-color: $hover-bg-color;
+    }
+  }
+}
+
+.toggle-on {
+  &.red {
+    color: #ff0000;
+  }
+
+  &.black {
+    color: #000000;
   }
 }

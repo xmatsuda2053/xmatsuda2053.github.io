@@ -397,6 +397,11 @@ th {
   font-family: monospace;
 }
 
+#header-menu {
+  padding: 0.5rem;
+  padding-bottom: 0;
+}
+
 #root {
   width: 100%;
   height: 100%;
@@ -410,6 +415,9 @@ th {
 }
 #root .dragging {
   opacity: 0.5;
+}
+#root .enabled {
+  display: none;
 }
 
 /*# sourceMappingURL=tree-view.css.map */

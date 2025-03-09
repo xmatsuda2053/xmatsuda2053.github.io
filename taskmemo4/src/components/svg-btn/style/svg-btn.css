@@ -417,9 +417,22 @@ th {
 
 .hover {
   color: #6f6f6f;
+  border-radius: 0.25rem;
 }
 .hover.red:hover {
   color: #ff0000;
+  background-color: #efefef;
+}
+.hover.black:hover {
+  color: #000000;
+  background-color: #efefef;
+}
+
+.toggle-on.red {
+  color: #ff0000;
+}
+.toggle-on.black {
+  color: #000000;
 }
 
 /*# sourceMappingURL=svg-btn.css.map */

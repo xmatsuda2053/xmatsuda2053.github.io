@@ -531,6 +531,56 @@ __webpack_require__.r(__webpack_exports__);
  */
 class SvgConst {
   /**
+   * 縦の線SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static linePaths = {
+    name: "icon-line",
+    paths: [{ path: "M0 0h24v24H0z" }, { path: "M12 4v17" }],
+  };
+
+  /**
+   * すべて開くSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static treeOpenPaths = {
+    name: "icon-tree-open",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 18l3 3l3 -3" },
+      { path: "M15 6l3 -3l3 3" },
+    ],
+  };
+
+  /**
+   * すべて閉じるSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static treeClosePaths = {
+    name: "icon-tree-close",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 7l3 3l3 -3" },
+      { path: "M15 17l3 -3l3 3" },
+    ],
+  };
+
+  /**
    * 静的なフォルダパスを定義するオブジェクト
    * @type {Object}
    * @property {string} name - アイコンフォルダの名前
@@ -1455,11 +1505,17 @@ function SvgBtn() {
       // CSSを適用
       this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_svg_btn_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
+      // フラグ初期化
+      this.isToggle = false;
+
       // 空のボタンを作成
       this.button = document.createElement("button");
       this.button.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
+        if (this.isToggle) {
+          this.button.classList.toggle("toggle-on");
+        }
         this.shadowRoot.dispatchEvent(_utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("click"));
       });
       this.shadowRoot.appendChild(this.button);
@@ -1499,11 +1555,44 @@ function SvgBtn() {
     }
 
     /**
-     * ボタンのホバーカラーを設定するセッター
-     * @param {string} color - 設定するカラー
+     * ボタンのカラーを設定するセッター
+     * @param {string} value - 設定するカラー
      */
-    set hover(color) {
-      this.button.classList.add("hover", color);
+    set color(value) {
+      this.button.classList.remove("red", "black");
+      this.button.classList.add(value);
+    }
+
+    /**
+     * ボタンのホバーを設定するセッター
+     * @param {bool} flag - ホバーを設定する場合は true、しない場合は false
+     */
+    set hover(flag) {
+      this.button.classList.toggle("hover", flag);
+    }
+
+    /**
+     * トグルボタンの設定を行うセッター
+     * @param {bool} flag - トグルボタンにする場合は true、しない場合は false
+     */
+    set toggle(flag) {
+      this.isToggle = flag;
+    }
+
+    /**
+     * トグルボタンの状態を取得するゲッター
+     * @returns {bool} トグルボタンがオンの場合は true、オフの場合は false
+     */
+    get toggle() {
+      return this.button.classList.contains("toggle-on");
+    }
+
+    /**
+     * トグルボタンをオンにするメソッド
+     * @returns {void}
+     */
+    toggleOn() {
+      this.button.classList.add("toggle-on");
     }
   }
   customElements.define("svg-btn", SvgBtn);
@@ -2093,9 +2182,22 @@ th {
 
 .hover {
   color: #6f6f6f;
+  border-radius: 0.25rem;
 }
 .hover.red:hover {
   color: #ff0000;
+  background-color: #efefef;
+}
+.hover.black:hover {
+  color: #000000;
+  background-color: #efefef;
+}
+
+.toggle-on.red {
+  color: #ff0000;
+}
+.toggle-on.black {
+  color: #000000;
 }
 `, ""]);
 // Exports
@@ -2856,7 +2958,173 @@ function TreeView() {
       this.shadowRoot.appendChild(this.root);
 
       // コンテキストメニューを追加
+      this.#addHeaderMenu();
       this.#addContextMenu();
+    }
+
+    // *******************************************************
+    // * ヘッダーメニュー
+    // *******************************************************
+    #addHeaderMenu() {
+      const headerMenu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header-menu");
+      headerMenu.appendChild(this.#createAllOpenButton());
+      headerMenu.appendChild(this.#createAllCloseButton());
+      headerMenu.appendChild(this.#createLine());
+      headerMenu.appendChild(this.#createFilterNotStartedButton());
+      headerMenu.appendChild(this.#createFilterStartedButton());
+      headerMenu.appendChild(this.#createFilterCompletButton());
+      headerMenu.appendChild(this.#createFilterOverDeadlineButton());
+      this.header.appendChild(headerMenu);
+    }
+
+    /**
+     * セパレータを作成する。
+     * @returns ボタン
+     */
+    #createLine() {
+      const line = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "line");
+      line.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.linePaths;
+      line.size = "1.15rem";
+      return line;
+    }
+
+    /**
+     * ベースとなるボタンを作成する。
+     * @param {string} id - ボタンのID
+     * @param {Array} paths - アイコンのパス
+     * @returns ボタン
+     */
+    #createButton(id, paths) {
+      const btn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", id);
+      btn.iconPaths = paths;
+      btn.size = "1.15rem";
+      btn.color = "black";
+      btn.hover = true;
+      return btn;
+    }
+
+    /**
+     * トグルボタンを作成する。
+     * @param {string} id - ボタンのID
+     * @param {Array} paths - アイコンのパス
+     * @returns ボタン
+     */
+    #createToggleButton(id, paths) {
+      const btn = this.#createButton(id, paths);
+      btn.toggle = true;
+      btn.toggleOn();
+      return btn;
+    }
+
+    /**
+     * グループをすべて開くボタンを作成する。
+     * @returns ボタン
+     */
+    #createAllOpenButton() {
+      const btn = this.#createButton("all-open", _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.treeOpenPaths);
+      btn.addEventListener("click", () => {
+        const details = this.root.querySelectorAll("details");
+        details.forEach((detail) => (detail.open = true));
+      });
+
+      return btn;
+    }
+
+    /**
+     * グループをすべて閉じるボタンを作成する。
+     * @returns ボタン
+     */
+    #createAllCloseButton() {
+      const btn = this.#createButton("all-close", _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.treeClosePaths);
+      btn.addEventListener("click", () => {
+        const details = this.root.querySelectorAll("details");
+        details.forEach((detail) => (detail.open = false));
+      });
+
+      return btn;
+    }
+
+    /**
+     * 未開始タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterNotStartedButton() {
+      this.btnFilterNotStarted = this.#createToggleButton(
+        "filter-not-started",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.squarePaths
+      );
+      this.btnFilterNotStarted.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterNotStarted;
+    }
+
+    /**
+     * 実行中タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterStartedButton() {
+      this.btnFilterStarted = this.#createToggleButton(
+        "filter-started",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.squareDotPaths
+      );
+      this.btnFilterStarted.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterStarted;
+    }
+
+    /**
+     * 完了タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterCompletButton() {
+      this.btnFilterComplet = this.#createToggleButton(
+        "filter-completed",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.squareCheckPaths
+      );
+      this.btnFilterComplet.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterComplet;
+    }
+
+    /**
+     * 遅延タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterOverDeadlineButton() {
+      this.btnFilterOverDeadline = this.#createToggleButton(
+        "filter-over-deadline",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.squareAlertPaths
+      );
+      this.btnFilterOverDeadline.color = "red";
+      this.btnFilterOverDeadline.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterOverDeadline;
+    }
+
+    /**
+     * TreeViewのタスクに対するフィルタを設定する。
+     */
+    #filterTreeViewItem() {
+      const tasks = this.root.querySelectorAll("task-title");
+      const isNotStarted = this.btnFilterNotStarted.toggle;
+      const isStarted = this.btnFilterStarted.toggle;
+      const isComplete = this.btnFilterComplet.toggle;
+      const isOverDeadline = this.btnFilterOverDeadline.toggle;
+      tasks.forEach((task) => {
+        if (task.flag.isComplete) {
+          task.classList.toggle("enabled", !isComplete);
+        } else if (task.flag.isOverDeadline) {
+          task.classList.toggle("enabled", !isOverDeadline);
+        } else if (task.flag.isNotStarted) {
+          task.classList.toggle("enabled", !isNotStarted);
+        } else {
+          task.classList.toggle("enabled", !isStarted);
+        }
+      });
     }
 
     // *******************************************************
@@ -3719,6 +3987,11 @@ th {
   font-family: monospace;
 }
 
+#header-menu {
+  padding: 0.5rem;
+  padding-bottom: 0;
+}
+
 #root {
   width: 100%;
   height: 100%;
@@ -3732,6 +4005,9 @@ th {
 }
 #root .dragging {
   opacity: 0.5;
+}
+#root .enabled {
+  display: none;
 }
 `, ""]);
 // Exports

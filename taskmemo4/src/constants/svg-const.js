@@ -3,6 +3,56 @@
  */
 export class SvgConst {
   /**
+   * 縦の線SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static linePaths = {
+    name: "icon-line",
+    paths: [{ path: "M0 0h24v24H0z" }, { path: "M12 4v17" }],
+  };
+
+  /**
+   * すべて開くSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static treeOpenPaths = {
+    name: "icon-tree-open",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 18l3 3l3 -3" },
+      { path: "M15 6l3 -3l3 3" },
+    ],
+  };
+
+  /**
+   * すべて閉じるSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static treeClosePaths = {
+    name: "icon-tree-close",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 7l3 3l3 -3" },
+      { path: "M15 17l3 -3l3 3" },
+    ],
+  };
+
+  /**
    * 静的なフォルダパスを定義するオブジェクト
    * @type {Object}
    * @property {string} name - アイコンフォルダの名前
