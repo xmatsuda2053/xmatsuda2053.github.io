@@ -386,6 +386,7 @@ textarea {
   padding: 0.35rem 0.25rem;
   resize: none;
   overflow-y: hidden;
+  word-break: break-all;
 }
 textarea.borderless {
   border: none;
