@@ -343,6 +343,17 @@ function TaskMemo() {
           }
         );
 
+        // グループ内のグループのクリックを検知
+        this.contentsGroup.addEventListener(
+          _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
+          (e) => {
+            const id = e.detail.item.id;
+            const name = e.detail.item.name;
+            const group = this.treeViewRoot.getItemById(id);
+            this.#addContentsGroup(id, name, group);
+          }
+        );
+
         // グループ内のタスクのクリックを検知
         this.contentsGroup.addEventListener(
           _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
@@ -811,6 +822,39 @@ class SvgConst {
       { path: "M0 0h24v24H0z" },
       { path: "M12 5l0 14" },
       { path: "M5 12l14 0" },
+    ],
+  };
+
+  /**
+   * サーチSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static SearchPaths = {
+    name: "icon-search",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
+      },
+      {
+        path: "M21 21l-6 -6",
+      },
+    ],
+  };
+
+  /**
+   * フォルダSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static FolderhPaths = {
+    name: "icon-folder",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2",
+      },
     ],
   };
 }
@@ -2400,6 +2444,11 @@ class EventConst {
   static CHANGE_CONTENTS_GROUP_EVENT_NAME = "changeContentsGroup";
 
   /**
+   * グループ内グループのクリックイベント
+   */
+  static CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME = "clickContentsGroupGroup";
+
+  /**
    * グループ内タスクのクリックイベント
    */
   static CLICK_CONTENTS_GROUP_TASK_EVENT_NAME = "clickContentsGroupTask";
@@ -2967,6 +3016,7 @@ function TreeView() {
     // *******************************************************
     #addHeaderMenu() {
       const headerMenu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header-menu");
+      headerMenu.appendChild(this.#createSearchButton());
       headerMenu.appendChild(this.#createAllOpenButton());
       headerMenu.appendChild(this.#createAllCloseButton());
       headerMenu.appendChild(this.#createLine());
@@ -3125,6 +3175,17 @@ function TreeView() {
           task.classList.toggle("enabled", !isStarted);
         }
       });
+    }
+
+    /**
+     * 検索ボタンを作成する。
+     * @returns ボタン
+     */
+    #createSearchButton() {
+      const btn = this.#createButton("item-search", _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.SearchPaths);
+      btn.addEventListener("click", () => {});
+
+      return btn;
     }
 
     // *******************************************************
@@ -5615,6 +5676,7 @@ function ContentsGroup() {
 
       items.forEach((item) => {
         if (item.type === "task") {
+          // タスク
           const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(item.paths);
           const priority = _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__.PriorityConst.text(item.priority) || "?";
 
@@ -5668,6 +5730,53 @@ function ContentsGroup() {
           // 進捗率
           this.table.addTd();
           this.table.setTdElment(`${item.status}%`);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+        } else {
+          // グループ
+          this.table.appendTr();
+
+          // ID
+          this.table.addTd();
+          this.table.setTdElment(item.id);
+          this.table.setTdWidth("150px");
+
+          // ステータス
+          this.table.addTd();
+          this.table.setTdElment(_utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.FolderhPaths));
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // タスク名
+          this.table.addTd();
+          this.table.setTdElment(item.name);
+          this.table.setTdClickEvent(() => {
+            this.shadowRoot.dispatchEvent(
+              _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(
+                _constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
+                {
+                  id: item.id,
+                  name: item.name,
+                }
+              )
+            );
+          });
+
+          // 優先度
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 期日
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 進捗率
+          this.table.addTd();
+          this.table.setTdElment("-");
           this.table.setTdWidth("100px");
           this.table.setTdAlign("center");
         }

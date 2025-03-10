@@ -88,6 +88,7 @@ export function ContentsGroup() {
 
       items.forEach((item) => {
         if (item.type === "task") {
+          // タスク
           const icon = SvgUtils.createIcon(item.paths);
           const priority = PriorityConst.text(item.priority) || "?";
 
@@ -141,6 +142,53 @@ export function ContentsGroup() {
           // 進捗率
           this.table.addTd();
           this.table.setTdElment(`${item.status}%`);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+        } else {
+          // グループ
+          this.table.appendTr();
+
+          // ID
+          this.table.addTd();
+          this.table.setTdElment(item.id);
+          this.table.setTdWidth("150px");
+
+          // ステータス
+          this.table.addTd();
+          this.table.setTdElment(SvgUtils.createIcon(SvgConst.FolderhPaths));
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // タスク名
+          this.table.addTd();
+          this.table.setTdElment(item.name);
+          this.table.setTdClickEvent(() => {
+            this.shadowRoot.dispatchEvent(
+              EventUtils.createEvent(
+                EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
+                {
+                  id: item.id,
+                  name: item.name,
+                }
+              )
+            );
+          });
+
+          // 優先度
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 期日
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 進捗率
+          this.table.addTd();
+          this.table.setTdElment("-");
           this.table.setTdWidth("100px");
           this.table.setTdAlign("center");
         }

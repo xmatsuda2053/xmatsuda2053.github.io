@@ -312,6 +312,17 @@ export function TaskMemo() {
           }
         );
 
+        // グループ内のグループのクリックを検知
+        this.contentsGroup.addEventListener(
+          EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
+          (e) => {
+            const id = e.detail.item.id;
+            const name = e.detail.item.name;
+            const group = this.treeViewRoot.getItemById(id);
+            this.#addContentsGroup(id, name, group);
+          }
+        );
+
         // グループ内のタスクのクリックを検知
         this.contentsGroup.addEventListener(
           EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,

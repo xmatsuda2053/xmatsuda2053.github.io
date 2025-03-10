@@ -285,4 +285,37 @@ export class SvgConst {
       { path: "M5 12l14 0" },
     ],
   };
+
+  /**
+   * サーチSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static SearchPaths = {
+    name: "icon-search",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
+      },
+      {
+        path: "M21 21l-6 -6",
+      },
+    ],
+  };
+
+  /**
+   * フォルダSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static FolderhPaths = {
+    name: "icon-folder",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2",
+      },
+    ],
+  };
 }

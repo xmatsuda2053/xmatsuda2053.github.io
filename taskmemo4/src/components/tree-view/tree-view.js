@@ -62,6 +62,7 @@ export function TreeView() {
     // *******************************************************
     #addHeaderMenu() {
       const headerMenu = ElmUtils.createElm("div", "header-menu");
+      headerMenu.appendChild(this.#createSearchButton());
       headerMenu.appendChild(this.#createAllOpenButton());
       headerMenu.appendChild(this.#createAllCloseButton());
       headerMenu.appendChild(this.#createLine());
@@ -220,6 +221,17 @@ export function TreeView() {
           task.classList.toggle("enabled", !isStarted);
         }
       });
+    }
+
+    /**
+     * 検索ボタンを作成する。
+     * @returns ボタン
+     */
+    #createSearchButton() {
+      const btn = this.#createButton("item-search", SvgConst.SearchPaths);
+      btn.addEventListener("click", () => {});
+
+      return btn;
     }
 
     // *******************************************************
