@@ -4252,7 +4252,7 @@ function TaskTitle() {
       this.root.innerHTML = "";
       const isComplete = this.status === "100";
       const isNotStarted = this.status === "0";
-      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 0;
+      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 3;
 
       this._flag = {
         isComplete: isComplete,
