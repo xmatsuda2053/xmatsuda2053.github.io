@@ -154,8 +154,11 @@ export function ContentsGroup() {
           this.table.setTdWidth("150px");
 
           // ステータス
+          const icon = SvgUtils.createIcon(SvgConst.FolderhPaths);
+          icon.style = "color: #E9762B";
+
           this.table.addTd();
-          this.table.setTdElment(SvgUtils.createIcon(SvgConst.FolderhPaths));
+          this.table.setTdElment(icon);
           this.table.setTdWidth("100px");
           this.table.setTdAlign("center");
 

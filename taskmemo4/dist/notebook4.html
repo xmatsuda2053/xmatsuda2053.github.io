@@ -5758,8 +5758,11 @@ function ContentsGroup() {
           this.table.setTdWidth("150px");
 
           // ステータス
+          const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.FolderhPaths);
+          icon.style = "color: #E9762B";
+
           this.table.addTd();
-          this.table.setTdElment(_utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.FolderhPaths));
+          this.table.setTdElment(icon);
           this.table.setTdWidth("100px");
           this.table.setTdAlign("center");
 
