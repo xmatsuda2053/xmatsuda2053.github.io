@@ -9926,7 +9926,9 @@ function FormTextarea() {
      */
     set value(val) {
       this.textarea.value = val;
-      this.#adjustTextareaHeight();
+      requestAnimationFrame(() => {
+        this.#adjustTextareaHeight();
+      });
     }
 
     /**
