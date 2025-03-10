@@ -78,4 +78,33 @@ export class FileManager {
       }
     }
   }
+
+  /**
+   * 対象文字列を含むファイルを検索する。
+   * @param {string} text 検索文字列
+   * @returns {Promise<array|null>} 検索結果、ファイルが存在しない場合はnull
+   * @throws {Error} ディレクトリが開かれていない場合、またはファイル読み込みに失敗した場合
+   */
+  async search(text) {
+    if (!this.directoryHandler) {
+      throw new Error("ディレクトリがまだ開かれていません。");
+    }
+    try {
+      const result = [];
+      for await (const [name, handle] of this.directoryHandler.entries()) {
+        const file = await handle.getFile();
+        const fileStr = await file.text();
+        if (fileStr.indexOf(text) !== -1) {
+          result.push(name);
+        }
+      }
+      return result;
+    } catch (err) {
+      if (err.name === "NotFoundError") {
+        return null;
+      } else {
+        throw err;
+      }
+    }
+  }
 }

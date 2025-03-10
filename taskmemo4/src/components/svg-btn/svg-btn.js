@@ -113,10 +113,11 @@ export function SvgBtn() {
 
     /**
      * トグルボタンをオンにするメソッド
+     * @param {bool} flag - トグルをオンにする場合は true、しない場合は false
      * @returns {void}
      */
-    toggleOn() {
-      this.button.classList.add("toggle-on");
+    toggleOn(flag) {
+      this.button.classList.toggle("toggle-on", flag);
     }
   }
   customElements.define("svg-btn", SvgBtn);

@@ -57,12 +57,19 @@ export function TreeView() {
       this.#addContextMenu();
     }
 
+    /**
+     * 検索メソッドを設定する。
+     * @param {function} func - 検索メソッド
+     */
+    set searchHandler(func) {
+      this.searchFunction = func;
+    }
+
     // *******************************************************
     // * ヘッダーメニュー
     // *******************************************************
     #addHeaderMenu() {
       const headerMenu = ElmUtils.createElm("div", "header-menu");
-      headerMenu.appendChild(this.#createSearchButton());
       headerMenu.appendChild(this.#createAllOpenButton());
       headerMenu.appendChild(this.#createAllCloseButton());
       headerMenu.appendChild(this.#createLine());
@@ -70,6 +77,7 @@ export function TreeView() {
       headerMenu.appendChild(this.#createFilterStartedButton());
       headerMenu.appendChild(this.#createFilterCompletButton());
       headerMenu.appendChild(this.#createFilterOverDeadlineButton());
+      headerMenu.appendChild(this.#createFilterButton());
       this.header.appendChild(headerMenu);
     }
 
@@ -108,7 +116,7 @@ export function TreeView() {
     #createToggleButton(id, paths) {
       const btn = this.#createButton(id, paths);
       btn.toggle = true;
-      btn.toggleOn();
+      btn.toggleOn(true);
       return btn;
     }
 
@@ -202,6 +210,48 @@ export function TreeView() {
     }
 
     /**
+     * フィルタボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterButton() {
+      const btn = this.#createToggleButton("item-filter", SvgConst.FilterPaths);
+      btn.color = "green";
+      btn.toggleOn(false);
+
+      // 検索
+      btn.addEventListener("click", async () => {
+        // TODO: 他のフィルタと組み合わせる
+        /*
+        // フィルタ解除
+        const tasks = this.root.querySelectorAll("task-title");
+        tasks.forEach((task) => {
+          task.classList.toggle("enabled", false);
+        });
+
+        // フィルタ設定
+        if (btn.toggle) {
+          const text = prompt("検索条件を入力", "");
+          if (!text) {
+            btn.toggleOn(false);
+            return;
+          }
+
+          // 検索
+          const searchResult = await this.searchFunction(text);
+          tasks.forEach((task) => {
+            task.classList.toggle("enabled", true);
+            if (searchResult.indexOf(`${task.id}.json`) !== -1) {
+              task.classList.toggle("enabled", false);
+            }
+          });
+        }
+        */
+      });
+
+      return btn;
+    }
+
+    /**
      * TreeViewのタスクに対するフィルタを設定する。
      */
     #filterTreeViewItem() {
@@ -221,17 +271,6 @@ export function TreeView() {
           task.classList.toggle("enabled", !isStarted);
         }
       });
-    }
-
-    /**
-     * 検索ボタンを作成する。
-     * @returns ボタン
-     */
-    #createSearchButton() {
-      const btn = this.#createButton("item-search", SvgConst.SearchPaths);
-      btn.addEventListener("click", () => {});
-
-      return btn;
     }
 
     // *******************************************************

@@ -188,6 +188,10 @@ function TaskMemo() {
     #addEmptyTreeView() {
       this.treeViewRoot = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tree-view", "tree-view-root");
 
+      this.treeViewRoot.searchHandler = async (text) => {
+        return await this.fileManager.search(text);
+      };
+
       this.treeView.innerHTML = "";
       this.treeView.appendChild(this.treeViewRoot);
 
@@ -842,19 +846,16 @@ class SvgConst {
   };
 
   /**
-   * サーチSVGのパスデータを含むオブジェクトの配列を生成する。
+   * フィルタSVGのパスデータを含むオブジェクトの配列を生成する。
    * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
    * @returns {string} return.path - SVGのパス情報。
    */
-  static SearchPaths = {
-    name: "icon-search",
+  static FilterPaths = {
+    name: "icon-filter",
     paths: [
       { path: "M0 0h24v24H0z" },
       {
-        path: "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
-      },
-      {
-        path: "M21 21l-6 -6",
+        path: "M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z",
       },
     ],
   };
@@ -956,6 +957,35 @@ class FileManager {
         return null;
       }
       return await file.text();
+    } catch (err) {
+      if (err.name === "NotFoundError") {
+        return null;
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  /**
+   * 対象文字列を含むファイルを検索する。
+   * @param {string} text 検索文字列
+   * @returns {Promise<array|null>} 検索結果、ファイルが存在しない場合はnull
+   * @throws {Error} ディレクトリが開かれていない場合、またはファイル読み込みに失敗した場合
+   */
+  async search(text) {
+    if (!this.directoryHandler) {
+      throw new Error("ディレクトリがまだ開かれていません。");
+    }
+    try {
+      const result = [];
+      for await (const [name, handle] of this.directoryHandler.entries()) {
+        const file = await handle.getFile();
+        const fileStr = await file.text();
+        if (fileStr.indexOf(text) !== -1) {
+          result.push(name);
+        }
+      }
+      return result;
     } catch (err) {
       if (err.name === "NotFoundError") {
         return null;
@@ -1649,10 +1679,11 @@ function SvgBtn() {
 
     /**
      * トグルボタンをオンにするメソッド
+     * @param {bool} flag - トグルをオンにする場合は true、しない場合は false
      * @returns {void}
      */
-    toggleOn() {
-      this.button.classList.add("toggle-on");
+    toggleOn(flag) {
+      this.button.classList.toggle("toggle-on", flag);
     }
   }
   customElements.define("svg-btn", SvgBtn);
@@ -2241,20 +2272,34 @@ th {
 }
 
 .hover {
-  color: #6f6f6f;
+  color: #7f7f7f;
   border-radius: 0.25rem;
 }
 .hover.red:hover {
-  color: #ff0000;
-  background-color: #efefef;
+  color: #a31d1d;
+  background-color: #fff0bd;
+}
+.hover.green:hover {
+  color: #1f7d53;
+  background-color: #fff0bd;
+}
+.hover.blue:hover {
+  color: #003092;
+  background-color: #fff0bd;
 }
 .hover.black:hover {
   color: #000000;
-  background-color: #efefef;
+  background-color: #fff0bd;
 }
 
 .toggle-on.red {
-  color: #ff0000;
+  color: #a31d1d;
+}
+.toggle-on.green {
+  color: #1f7d53;
+}
+.toggle-on.blue {
+  color: #003092;
 }
 .toggle-on.black {
   color: #000000;
@@ -3027,12 +3072,19 @@ function TreeView() {
       this.#addContextMenu();
     }
 
+    /**
+     * 検索メソッドを設定する。
+     * @param {function} func - 検索メソッド
+     */
+    set searchHandler(func) {
+      this.searchFunction = func;
+    }
+
     // *******************************************************
     // * ヘッダーメニュー
     // *******************************************************
     #addHeaderMenu() {
       const headerMenu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header-menu");
-      headerMenu.appendChild(this.#createSearchButton());
       headerMenu.appendChild(this.#createAllOpenButton());
       headerMenu.appendChild(this.#createAllCloseButton());
       headerMenu.appendChild(this.#createLine());
@@ -3040,6 +3092,7 @@ function TreeView() {
       headerMenu.appendChild(this.#createFilterStartedButton());
       headerMenu.appendChild(this.#createFilterCompletButton());
       headerMenu.appendChild(this.#createFilterOverDeadlineButton());
+      headerMenu.appendChild(this.#createFilterButton());
       this.header.appendChild(headerMenu);
     }
 
@@ -3078,7 +3131,7 @@ function TreeView() {
     #createToggleButton(id, paths) {
       const btn = this.#createButton(id, paths);
       btn.toggle = true;
-      btn.toggleOn();
+      btn.toggleOn(true);
       return btn;
     }
 
@@ -3172,6 +3225,48 @@ function TreeView() {
     }
 
     /**
+     * フィルタボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterButton() {
+      const btn = this.#createToggleButton("item-filter", _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.FilterPaths);
+      btn.color = "green";
+      btn.toggleOn(false);
+
+      // 検索
+      btn.addEventListener("click", async () => {
+        // TODO: 他のフィルタと組み合わせる
+        /*
+        // フィルタ解除
+        const tasks = this.root.querySelectorAll("task-title");
+        tasks.forEach((task) => {
+          task.classList.toggle("enabled", false);
+        });
+
+        // フィルタ設定
+        if (btn.toggle) {
+          const text = prompt("検索条件を入力", "");
+          if (!text) {
+            btn.toggleOn(false);
+            return;
+          }
+
+          // 検索
+          const searchResult = await this.searchFunction(text);
+          tasks.forEach((task) => {
+            task.classList.toggle("enabled", true);
+            if (searchResult.indexOf(`${task.id}.json`) !== -1) {
+              task.classList.toggle("enabled", false);
+            }
+          });
+        }
+        */
+      });
+
+      return btn;
+    }
+
+    /**
      * TreeViewのタスクに対するフィルタを設定する。
      */
     #filterTreeViewItem() {
@@ -3191,17 +3286,6 @@ function TreeView() {
           task.classList.toggle("enabled", !isStarted);
         }
       });
-    }
-
-    /**
-     * 検索ボタンを作成する。
-     * @returns ボタン
-     */
-    #createSearchButton() {
-      const btn = this.#createButton("item-search", _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.SearchPaths);
-      btn.addEventListener("click", () => {});
-
-      return btn;
     }
 
     // *******************************************************

@@ -10,8 +10,8 @@ $circle-font-color-hover: #0a3981;
 $circle-border-color-hover: #0a3981;
 $circle-shodow-color: rgba(0, 0, 0, 0.1);
 
-$hover-before-color: #6f6f6f;
-$hover-bg-color: #efefef;
+$hover-before-color: #7f7f7f;
+$hover-bg-color: #fff0bd;
 
 .circle {
   z-index: 99999;
@@ -40,7 +40,21 @@ $hover-bg-color: #efefef;
 
   &.red {
     &:hover {
-      color: #ff0000;
+      color: #a31d1d;
+      background-color: $hover-bg-color;
+    }
+  }
+
+  &.green {
+    &:hover {
+      color: #1f7d53;
+      background-color: $hover-bg-color;
+    }
+  }
+
+  &.blue {
+    &:hover {
+      color: #003092;
       background-color: $hover-bg-color;
     }
   }
@@ -55,7 +69,15 @@ $hover-bg-color: #efefef;
 
 .toggle-on {
   &.red {
-    color: #ff0000;
+    color: #a31d1d;
+  }
+
+  &.green {
+    color: #1f7d53;
+  }
+
+  &.blue {
+    color: #003092;
   }
 
   &.black {

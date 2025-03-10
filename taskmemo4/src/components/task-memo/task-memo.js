@@ -141,6 +141,10 @@ export function TaskMemo() {
     #addEmptyTreeView() {
       this.treeViewRoot = ElmUtils.createElm("tree-view", "tree-view-root");
 
+      this.treeViewRoot.searchHandler = async (text) => {
+        return await this.fileManager.search(text);
+      };
+
       this.treeView.innerHTML = "";
       this.treeView.appendChild(this.treeViewRoot);
 

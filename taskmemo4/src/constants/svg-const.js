@@ -287,19 +287,16 @@ export class SvgConst {
   };
 
   /**
-   * サーチSVGのパスデータを含むオブジェクトの配列を生成する。
+   * フィルタSVGのパスデータを含むオブジェクトの配列を生成する。
    * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
    * @returns {string} return.path - SVGのパス情報。
    */
-  static SearchPaths = {
-    name: "icon-search",
+  static FilterPaths = {
+    name: "icon-filter",
     paths: [
       { path: "M0 0h24v24H0z" },
       {
-        path: "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
-      },
-      {
-        path: "M21 21l-6 -6",
+        path: "M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z",
       },
     ],
   };
