@@ -416,7 +416,7 @@ th {
 #root .dragging {
   opacity: 0.5;
 }
-#root .enabled {
+#root .disabled {
   display: none;
 }
 

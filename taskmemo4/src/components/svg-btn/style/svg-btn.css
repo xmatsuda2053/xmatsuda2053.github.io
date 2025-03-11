@@ -416,19 +416,23 @@ th {
 }
 
 .hover {
-  color: #7f7f7f;
+  color: #8f8f8f;
   border-radius: 0.25rem;
 }
 .hover.red:hover {
-  color: #a31d1d;
+  color: #d84040;
   background-color: #fff0bd;
 }
 .hover.green:hover {
-  color: #1f7d53;
+  color: #3d8d7a;
   background-color: #fff0bd;
 }
 .hover.blue:hover {
   color: #003092;
+  background-color: #fff0bd;
+}
+.hover.white:hover {
+  color: #fffffb;
   background-color: #fff0bd;
 }
 .hover.black:hover {
@@ -437,13 +441,16 @@ th {
 }
 
 .toggle-on.red {
-  color: #a31d1d;
+  color: #d84040;
 }
 .toggle-on.green {
-  color: #1f7d53;
+  color: #3d8d7a;
 }
 .toggle-on.blue {
   color: #003092;
+}
+.toggle-on.white {
+  color: #fffffb;
 }
 .toggle-on.black {
   color: #000000;

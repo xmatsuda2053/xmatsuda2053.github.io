@@ -1635,7 +1635,7 @@ function SvgBtn() {
      * @param {string} value - 設定するカラー
      */
     set color(value) {
-      this.button.classList.remove("red", "black");
+      this.button.classList.remove("red", "green", "blue", "white", "black");
       this.button.classList.add(value);
     }
 
@@ -2258,19 +2258,23 @@ th {
 }
 
 .hover {
-  color: #7f7f7f;
+  color: #8f8f8f;
   border-radius: 0.25rem;
 }
 .hover.red:hover {
-  color: #a31d1d;
+  color: #d84040;
   background-color: #fff0bd;
 }
 .hover.green:hover {
-  color: #1f7d53;
+  color: #3d8d7a;
   background-color: #fff0bd;
 }
 .hover.blue:hover {
   color: #003092;
+  background-color: #fff0bd;
+}
+.hover.white:hover {
+  color: #fffffb;
   background-color: #fff0bd;
 }
 .hover.black:hover {
@@ -2279,13 +2283,16 @@ th {
 }
 
 .toggle-on.red {
-  color: #a31d1d;
+  color: #d84040;
 }
 .toggle-on.green {
-  color: #1f7d53;
+  color: #3d8d7a;
 }
 .toggle-on.blue {
   color: #003092;
+}
+.toggle-on.white {
+  color: #fffffb;
 }
 .toggle-on.black {
   color: #000000;
@@ -3219,34 +3226,29 @@ function TreeView() {
       btn.color = "green";
       btn.toggleOn(false);
 
+      this.searchText = "";
+      this.searchResult = [];
+
       // 検索
       btn.addEventListener("click", async () => {
         // TODO: 他のフィルタと組み合わせる
-        /*
-        // フィルタ解除
-        const tasks = this.root.querySelectorAll("task-title");
-        tasks.forEach((task) => {
-          task.classList.toggle("enabled", false);
-        });
+        this.searchResult = [];
+        this.searchText = "";
 
-        // フィルタ設定
         if (btn.toggle) {
-          const text = prompt("検索条件を入力", "");
-          if (!text) {
+          this.searchText = prompt("検索条件を入力");
+
+          if (!this.searchText) {
             btn.toggleOn(false);
+            this.#filterTreeViewItem();
             return;
           }
 
-          // 検索
-          const searchResult = await this.searchFunction(text);
-          tasks.forEach((task) => {
-            task.classList.toggle("enabled", true);
-            if (searchResult.indexOf(`${task.id}.json`) !== -1) {
-              task.classList.toggle("enabled", false);
-            }
-          });
+          this.searchResult = await this.searchFunction(this.searchText);
+          this.#filterTreeViewItem();
+        } else {
+          this.#filterTreeViewItem();
         }
-        */
       });
 
       return btn;
@@ -3261,16 +3263,29 @@ function TreeView() {
       const isStarted = this.btnFilterStarted.toggle;
       const isComplete = this.btnFilterComplet.toggle;
       const isOverDeadline = this.btnFilterOverDeadline.toggle;
+
       tasks.forEach((task) => {
-        if (task.flag.isComplete) {
-          task.classList.toggle("enabled", !isComplete);
-        } else if (task.flag.isOverDeadline) {
-          task.classList.toggle("enabled", !isOverDeadline);
-        } else if (task.flag.isNotStarted) {
-          task.classList.toggle("enabled", !isNotStarted);
+        const flag = task.flag;
+        const fileName = `${task.id}.json`;
+        let isDisabled;
+
+        // ステータスフィルター
+        if (flag.isComplete) {
+          isDisabled = !isComplete;
+        } else if (flag.isOverDeadline) {
+          isDisabled = !isOverDeadline;
+        } else if (flag.isNotStarted) {
+          isDisabled = !isNotStarted;
         } else {
-          task.classList.toggle("enabled", !isStarted);
+          isDisabled = !isStarted;
         }
+
+        // 検索文字列フィルター
+        if (!isDisabled && this.searchText) {
+          isDisabled = this.searchResult.indexOf(fileName) === -1;
+        }
+
+        task.classList.toggle("disabled", isDisabled);
       });
     }
 
@@ -4168,7 +4183,7 @@ th {
 #root .dragging {
   opacity: 0.5;
 }
-#root .enabled {
+#root .disabled {
   display: none;
 }
 `, ""]);

@@ -218,34 +218,29 @@ export function TreeView() {
       btn.color = "green";
       btn.toggleOn(false);
 
+      this.searchText = "";
+      this.searchResult = [];
+
       // 検索
       btn.addEventListener("click", async () => {
         // TODO: 他のフィルタと組み合わせる
-        /*
-        // フィルタ解除
-        const tasks = this.root.querySelectorAll("task-title");
-        tasks.forEach((task) => {
-          task.classList.toggle("enabled", false);
-        });
+        this.searchResult = [];
+        this.searchText = "";
 
-        // フィルタ設定
         if (btn.toggle) {
-          const text = prompt("検索条件を入力", "");
-          if (!text) {
+          this.searchText = prompt("検索条件を入力");
+
+          if (!this.searchText) {
             btn.toggleOn(false);
+            this.#filterTreeViewItem();
             return;
           }
 
-          // 検索
-          const searchResult = await this.searchFunction(text);
-          tasks.forEach((task) => {
-            task.classList.toggle("enabled", true);
-            if (searchResult.indexOf(`${task.id}.json`) !== -1) {
-              task.classList.toggle("enabled", false);
-            }
-          });
+          this.searchResult = await this.searchFunction(this.searchText);
+          this.#filterTreeViewItem();
+        } else {
+          this.#filterTreeViewItem();
         }
-        */
       });
 
       return btn;
@@ -260,16 +255,29 @@ export function TreeView() {
       const isStarted = this.btnFilterStarted.toggle;
       const isComplete = this.btnFilterComplet.toggle;
       const isOverDeadline = this.btnFilterOverDeadline.toggle;
+
       tasks.forEach((task) => {
-        if (task.flag.isComplete) {
-          task.classList.toggle("enabled", !isComplete);
-        } else if (task.flag.isOverDeadline) {
-          task.classList.toggle("enabled", !isOverDeadline);
-        } else if (task.flag.isNotStarted) {
-          task.classList.toggle("enabled", !isNotStarted);
+        const flag = task.flag;
+        const fileName = `${task.id}.json`;
+        let isDisabled;
+
+        // ステータスフィルター
+        if (flag.isComplete) {
+          isDisabled = !isComplete;
+        } else if (flag.isOverDeadline) {
+          isDisabled = !isOverDeadline;
+        } else if (flag.isNotStarted) {
+          isDisabled = !isNotStarted;
         } else {
-          task.classList.toggle("enabled", !isStarted);
+          isDisabled = !isStarted;
         }
+
+        // 検索文字列フィルター
+        if (!isDisabled && this.searchText) {
+          isDisabled = this.searchResult.indexOf(fileName) === -1;
+        }
+
+        task.classList.toggle("disabled", isDisabled);
       });
     }
 

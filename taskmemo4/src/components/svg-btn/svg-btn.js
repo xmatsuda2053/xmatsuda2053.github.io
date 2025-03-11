@@ -83,7 +83,7 @@ export function SvgBtn() {
      * @param {string} value - 設定するカラー
      */
     set color(value) {
-      this.button.classList.remove("red", "black");
+      this.button.classList.remove("red", "green", "blue", "white", "black");
       this.button.classList.add(value);
     }
 
