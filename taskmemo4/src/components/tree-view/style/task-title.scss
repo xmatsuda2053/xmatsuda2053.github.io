@@ -17,7 +17,8 @@ $complete-color: #838383;
   padding: 0.15rem;
 
   &:hover,
-  &.menu-opened {
+  &.menu-opened,
+  &.selected {
     background-color: $active-color;
     color: $active-font-color;
   }
@@ -25,7 +26,8 @@ $complete-color: #838383;
   &.over-deadline {
     color: $alert-color;
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: $alert-color;
       color: $active-font-color;
     }
@@ -35,8 +37,10 @@ $complete-color: #838383;
     color: $complete-color;
     text-decoration: line-through;
 
-    &:hover {
-      background-color: $active-color;
+    &:hover,
+    &.selected {
+      background-color: $complete-color;
+      color: $active-font-color;
     }
   }
 

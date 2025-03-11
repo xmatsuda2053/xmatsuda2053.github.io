@@ -19,7 +19,8 @@ $active-font-color: #fffff8;
   }
 
   &:hover,
-  &.menu-opened {
+  &.menu-opened,
+  &.selected {
     background-color: $active-color;
     color: $active-font-color;
   }

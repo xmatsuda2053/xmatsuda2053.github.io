@@ -494,6 +494,21 @@ export function TreeView() {
     }
 
     /**
+     * 指定されたIDの要素を選択中の状態にします。
+     * @param {string} id - 取得する要素のID。
+     */
+    selectItemById(id) {
+      if (this.selectedItemId) {
+        const beforeItem = this.shadowRoot.getElementById(this.selectedItemId);
+        beforeItem.selected = false;
+      }
+      const item = this.getItemById(id);
+      item.selected = true;
+
+      this.selectedItemId = id;
+    }
+
+    /**
      * 指定されたIDに対応するグループの項目データを取得します。
      * @param {string} id - グループのID。
      * @returns {Array<Object>} - 項目データの配列。

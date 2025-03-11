@@ -405,14 +405,14 @@ th {
   border-radius: 0.15rem;
   padding: 0.15rem;
 }
-.task-title:hover, .task-title.menu-opened {
+.task-title:hover, .task-title.menu-opened, .task-title.selected {
   background-color: #0078d4;
   color: #fffff8;
 }
 .task-title.over-deadline {
   color: #f93827;
 }
-.task-title.over-deadline:hover {
+.task-title.over-deadline:hover, .task-title.over-deadline.selected {
   background-color: #f93827;
   color: #fffff8;
 }
@@ -420,8 +420,9 @@ th {
   color: #838383;
   text-decoration: line-through;
 }
-.task-title.complete:hover {
-  background-color: #0078d4;
+.task-title.complete:hover, .task-title.complete.selected {
+  background-color: #838383;
+  color: #fffff8;
 }
 .task-title .svg-icon {
   margin-right: 0.25rem;

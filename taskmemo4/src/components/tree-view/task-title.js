@@ -132,6 +132,14 @@ export function TaskTitle() {
     }
 
     /**
+     * 選択状態の切り替え
+     * @param {bool} value - 状態
+     */
+    set selected(value) {
+      this.root.classList.toggle("selected", value);
+    }
+
+    /**
      * タスクを初期化するメソッド
      * @param {Object} data - タスクデータのオブジェクト
      * @param {string} data.id - タスクのID

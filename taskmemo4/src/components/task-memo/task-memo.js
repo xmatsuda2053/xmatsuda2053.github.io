@@ -199,8 +199,7 @@ export function TaskMemo() {
         EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME,
         async (e) => {
           const item = e.detail.item;
-          const task = this.treeViewRoot.getItemById(item.id);
-          this.#addContentsTask(item.id, item.name, task);
+          this.#addContentsTask(item.id, item.name);
           await this.#saveTreeView();
         }
       );
@@ -214,7 +213,6 @@ export function TaskMemo() {
         EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME,
         async (e) => {
           const item = e.detail.item;
-          const group = this.treeViewRoot.getItemById(item.id);
           this.#addContentsGroup(item.id, item.name, group);
           await this.#saveTreeView();
         }
@@ -253,8 +251,7 @@ export function TaskMemo() {
         EventConst.CLICK_TASK_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
-          const task = this.treeViewRoot.getItemById(item.id);
-          this.#addContentsTask(item.id, item.name, task);
+          this.#addContentsTask(item.id, item.name);
         }
       );
     }
@@ -267,8 +264,7 @@ export function TaskMemo() {
         EventConst.CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
-          const group = this.treeViewRoot.getItemById(item.id);
-          this.#addContentsGroup(item.id, item.name, group);
+          this.#addContentsGroup(item.id, item.name);
         }
       );
     }
@@ -281,11 +277,16 @@ export function TaskMemo() {
      * 非同期でコンテンツグループを追加します。
      * @param {string} id - グループID。
      * @param {string} name - グループ名。
-     * @param {HTMLElement} group - グループ項目
      * @returns {Promise<null|void>} - 失敗した場合はnullを返します。
      */
-    async #addContentsGroup(id, name, group) {
+    async #addContentsGroup(id, name) {
       try {
+        // TreeViewのアイテムを取得
+        const group = this.treeViewRoot.getItemById(id);
+
+        // TreeViewのアイテムを選択中に変更
+        this.treeViewRoot.selectItemById(id);
+
         // データ取得
         let str = await this.fileManager.loadFile(`${id}.json`);
 
@@ -320,10 +321,8 @@ export function TaskMemo() {
         this.contentsGroup.addEventListener(
           EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
           (e) => {
-            const id = e.detail.item.id;
-            const name = e.detail.item.name;
-            const group = this.treeViewRoot.getItemById(id);
-            this.#addContentsGroup(id, name, group);
+            const item = e.detail.item;
+            this.#addContentsGroup(item.id, item.name);
           }
         );
 
@@ -331,10 +330,8 @@ export function TaskMemo() {
         this.contentsGroup.addEventListener(
           EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
           (e) => {
-            const id = e.detail.item.id;
-            const name = e.detail.item.name;
-            const task = this.treeViewRoot.getItemById(id);
-            this.#addContentsTask(id, name, task);
+            const item = e.detail.item;
+            this.#addContentsTask(item.id, item.name);
           }
         );
       } catch (error) {
@@ -366,11 +363,16 @@ export function TaskMemo() {
      * 非同期でタスクを追加します。
      * @param {string} id - タスクID。
      * @param {string} name - タスク名。
-     * @param {HTMLElement} task - タスク項目
      * @returns {Promise<null|void>} - 失敗した場合はnullを返します。
      */
-    async #addContentsTask(id, name, task) {
+    async #addContentsTask(id, name) {
       try {
+        // TreeViewのアイテムを取得
+        const task = this.treeViewRoot.getItemById(id);
+
+        // TreeViewのアイテムを選択中に変更
+        this.treeViewRoot.selectItemById(id);
+
         // データ取得
         let str = await this.fileManager.loadFile(`${id}.json`);
 

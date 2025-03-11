@@ -79,6 +79,14 @@ export function GroupTitle() {
     }
 
     /**
+     * 選択状態の切り替え
+     * @param {bool} value - 状態
+     */
+    set selected(value) {
+      this.root.classList.toggle("selected", value);
+    }
+
+    /**
      * グループを初期化するメソッド
      * @param {Object} data - グループデータのオブジェクト
      * @param {string} data.id - グループのID

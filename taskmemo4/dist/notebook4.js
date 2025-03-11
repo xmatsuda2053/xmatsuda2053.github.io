@@ -230,8 +230,7 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME,
         async (e) => {
           const item = e.detail.item;
-          const task = this.treeViewRoot.getItemById(item.id);
-          this.#addContentsTask(item.id, item.name, task);
+          this.#addContentsTask(item.id, item.name);
           await this.#saveTreeView();
         }
       );
@@ -245,7 +244,6 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME,
         async (e) => {
           const item = e.detail.item;
-          const group = this.treeViewRoot.getItemById(item.id);
           this.#addContentsGroup(item.id, item.name, group);
           await this.#saveTreeView();
         }
@@ -284,8 +282,7 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_TASK_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
-          const task = this.treeViewRoot.getItemById(item.id);
-          this.#addContentsTask(item.id, item.name, task);
+          this.#addContentsTask(item.id, item.name);
         }
       );
     }
@@ -298,8 +295,7 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
-          const group = this.treeViewRoot.getItemById(item.id);
-          this.#addContentsGroup(item.id, item.name, group);
+          this.#addContentsGroup(item.id, item.name);
         }
       );
     }
@@ -312,11 +308,16 @@ function TaskMemo() {
      * 非同期でコンテンツグループを追加します。
      * @param {string} id - グループID。
      * @param {string} name - グループ名。
-     * @param {HTMLElement} group - グループ項目
      * @returns {Promise<null|void>} - 失敗した場合はnullを返します。
      */
-    async #addContentsGroup(id, name, group) {
+    async #addContentsGroup(id, name) {
       try {
+        // TreeViewのアイテムを取得
+        const group = this.treeViewRoot.getItemById(id);
+
+        // TreeViewのアイテムを選択中に変更
+        this.treeViewRoot.selectItemById(id);
+
         // データ取得
         let str = await this.fileManager.loadFile(`${id}.json`);
 
@@ -351,10 +352,8 @@ function TaskMemo() {
         this.contentsGroup.addEventListener(
           _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
           (e) => {
-            const id = e.detail.item.id;
-            const name = e.detail.item.name;
-            const group = this.treeViewRoot.getItemById(id);
-            this.#addContentsGroup(id, name, group);
+            const item = e.detail.item;
+            this.#addContentsGroup(item.id, item.name);
           }
         );
 
@@ -362,10 +361,8 @@ function TaskMemo() {
         this.contentsGroup.addEventListener(
           _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
           (e) => {
-            const id = e.detail.item.id;
-            const name = e.detail.item.name;
-            const task = this.treeViewRoot.getItemById(id);
-            this.#addContentsTask(id, name, task);
+            const item = e.detail.item;
+            this.#addContentsTask(item.id, item.name);
           }
         );
       } catch (error) {
@@ -397,11 +394,16 @@ function TaskMemo() {
      * 非同期でタスクを追加します。
      * @param {string} id - タスクID。
      * @param {string} name - タスク名。
-     * @param {HTMLElement} task - タスク項目
      * @returns {Promise<null|void>} - 失敗した場合はnullを返します。
      */
-    async #addContentsTask(id, name, task) {
+    async #addContentsTask(id, name) {
       try {
+        // TreeViewのアイテムを取得
+        const task = this.treeViewRoot.getItemById(id);
+
+        // TreeViewのアイテムを選択中に変更
+        this.treeViewRoot.selectItemById(id);
+
         // データ取得
         let str = await this.fileManager.loadFile(`${id}.json`);
 
@@ -3493,6 +3495,21 @@ function TreeView() {
     }
 
     /**
+     * 指定されたIDの要素を選択中の状態にします。
+     * @param {string} id - 取得する要素のID。
+     */
+    selectItemById(id) {
+      if (this.selectedItemId) {
+        const beforeItem = this.shadowRoot.getElementById(this.selectedItemId);
+        beforeItem.selected = false;
+      }
+      const item = this.getItemById(id);
+      item.selected = true;
+
+      this.selectedItemId = id;
+    }
+
+    /**
      * 指定されたIDに対応するグループの項目データを取得します。
      * @param {string} id - グループのID。
      * @returns {Array<Object>} - 項目データの配列。
@@ -4309,6 +4326,14 @@ function TaskTitle() {
     }
 
     /**
+     * 選択状態の切り替え
+     * @param {bool} value - 状態
+     */
+    set selected(value) {
+      this.root.classList.toggle("selected", value);
+    }
+
+    /**
      * タスクを初期化するメソッド
      * @param {Object} data - タスクデータのオブジェクト
      * @param {string} data.id - タスクのID
@@ -4996,14 +5021,14 @@ th {
   border-radius: 0.15rem;
   padding: 0.15rem;
 }
-.task-title:hover, .task-title.menu-opened {
+.task-title:hover, .task-title.menu-opened, .task-title.selected {
   background-color: #0078d4;
   color: #fffff8;
 }
 .task-title.over-deadline {
   color: #f93827;
 }
-.task-title.over-deadline:hover {
+.task-title.over-deadline:hover, .task-title.over-deadline.selected {
   background-color: #f93827;
   color: #fffff8;
 }
@@ -5011,8 +5036,9 @@ th {
   color: #838383;
   text-decoration: line-through;
 }
-.task-title.complete:hover {
-  background-color: #0078d4;
+.task-title.complete:hover, .task-title.complete.selected {
+  background-color: #838383;
+  color: #fffff8;
 }
 .task-title .svg-icon {
   margin-right: 0.25rem;
@@ -5124,6 +5150,14 @@ function GroupTitle() {
      */
     set menuOpen(value) {
       this.root.classList.toggle("menu-opened", value);
+    }
+
+    /**
+     * 選択状態の切り替え
+     * @param {bool} value - 状態
+     */
+    set selected(value) {
+      this.root.classList.toggle("selected", value);
     }
 
     /**
@@ -5629,7 +5663,7 @@ th {
 .group-title::-webkit-details-marker {
   display: none;
 }
-.group-title:hover, .group-title.menu-opened {
+.group-title:hover, .group-title.menu-opened, .group-title.selected {
   background-color: #0078d4;
   color: #fffff8;
 }

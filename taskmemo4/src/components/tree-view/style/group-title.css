@@ -408,7 +408,7 @@ th {
 .group-title::-webkit-details-marker {
   display: none;
 }
-.group-title:hover, .group-title.menu-opened {
+.group-title:hover, .group-title.menu-opened, .group-title.selected {
   background-color: #0078d4;
   color: #fffff8;
 }
