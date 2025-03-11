@@ -3231,24 +3231,19 @@ function TreeView() {
 
       // 検索
       btn.addEventListener("click", async () => {
-        // TODO: 他のフィルタと組み合わせる
-        this.searchResult = [];
         this.searchText = "";
+        this.searchResult = [];
 
         if (btn.toggle) {
           this.searchText = prompt("検索条件を入力");
-
-          if (!this.searchText) {
+          if (this.searchText) {
+            this.searchResult = await this.searchFunction(this.searchText);
+          } else {
             btn.toggleOn(false);
-            this.#filterTreeViewItem();
-            return;
           }
-
-          this.searchResult = await this.searchFunction(this.searchText);
-          this.#filterTreeViewItem();
-        } else {
-          this.#filterTreeViewItem();
         }
+
+        this.#filterTreeViewItem();
       });
 
       return btn;
@@ -3258,31 +3253,24 @@ function TreeView() {
      * TreeViewのタスクに対するフィルタを設定する。
      */
     #filterTreeViewItem() {
-      const tasks = this.root.querySelectorAll("task-title");
-      const isNotStarted = this.btnFilterNotStarted.toggle;
-      const isStarted = this.btnFilterStarted.toggle;
-      const isComplete = this.btnFilterComplet.toggle;
-      const isOverDeadline = this.btnFilterOverDeadline.toggle;
-
-      tasks.forEach((task) => {
+      this.root.querySelectorAll("task-title").forEach((task) => {
         const flag = task.flag;
-        const fileName = `${task.id}.json`;
         let isDisabled;
 
         // ステータスフィルター
         if (flag.isComplete) {
-          isDisabled = !isComplete;
+          isDisabled = !this.btnFilterComplet.toggle;
         } else if (flag.isOverDeadline) {
-          isDisabled = !isOverDeadline;
+          isDisabled = !this.btnFilterOverDeadline.toggle;
         } else if (flag.isNotStarted) {
-          isDisabled = !isNotStarted;
+          isDisabled = !this.btnFilterNotStarted.toggle;
         } else {
-          isDisabled = !isStarted;
+          isDisabled = !this.btnFilterStarted.toggle;
         }
 
         // 検索文字列フィルター
         if (!isDisabled && this.searchText) {
-          isDisabled = this.searchResult.indexOf(fileName) === -1;
+          isDisabled = this.searchResult.indexOf(`${task.id}.json`) === -1;
         }
 
         task.classList.toggle("disabled", isDisabled);
