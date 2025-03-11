@@ -2263,30 +2263,30 @@ th {
 }
 .hover.red:hover {
   color: #d84040;
-  background-color: #fff0bd;
+  background-color: #fdfbee;
 }
 .hover.green:hover {
-  color: #3d8d7a;
-  background-color: #fff0bd;
+  color: #0e7405;
+  background-color: #fdfbee;
 }
 .hover.blue:hover {
   color: #003092;
-  background-color: #fff0bd;
+  background-color: #fdfbee;
 }
 .hover.white:hover {
   color: #fffffb;
-  background-color: #fff0bd;
+  background-color: #fdfbee;
 }
 .hover.black:hover {
   color: #000000;
-  background-color: #fff0bd;
+  background-color: #fdfbee;
 }
 
 .toggle-on.red {
   color: #d84040;
 }
 .toggle-on.green {
-  color: #3d8d7a;
+  color: #0e7405;
 }
 .toggle-on.blue {
   color: #003092;
@@ -8069,7 +8069,8 @@ function ContentsHistoryItem() {
       );
       deleteHistoryBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.trashPaths;
       deleteHistoryBtn.size = "1rem";
-      deleteHistoryBtn.hover = "red";
+      deleteHistoryBtn.hover = true;
+      deleteHistoryBtn.color = "red";
 
       this.footer.appendChild(deleteHistoryBtn);
 

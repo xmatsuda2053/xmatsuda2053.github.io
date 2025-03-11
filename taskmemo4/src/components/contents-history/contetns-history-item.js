@@ -113,7 +113,8 @@ export function ContentsHistoryItem() {
       );
       deleteHistoryBtn.iconPaths = SvgConst.trashPaths;
       deleteHistoryBtn.size = "1rem";
-      deleteHistoryBtn.hover = "red";
+      deleteHistoryBtn.hover = true;
+      deleteHistoryBtn.color = "red";
 
       this.footer.appendChild(deleteHistoryBtn);
 
