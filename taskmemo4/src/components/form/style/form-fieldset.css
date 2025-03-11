@@ -396,7 +396,7 @@ fieldset legend.isRequired:after {
   background-color: #fb4141;
   color: #fffffb;
   font-size: 0.6rem;
-  padding: 0.1rem 0.25rem;
+  padding: 0.15rem 0.25rem;
 }
 fieldset.nestedRoot {
   display: flex;
