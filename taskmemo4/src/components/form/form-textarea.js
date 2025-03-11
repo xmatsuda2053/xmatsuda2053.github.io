@@ -69,17 +69,16 @@ export function FormTextarea() {
       const paddingTop = parseFloat(style.paddingTop);
       const paddingBottom = parseFloat(style.paddingBottom);
       const paddingHeight = paddingTop + paddingBottom;
-      const contentHeight = this.textarea.scrollHeight - paddingHeight;
+      const contentHeight = this.textarea.scrollHeight;
 
       if (rows === 0) {
-        rows = Math.ceil(contentHeight / lineHeight);
-        if (rows < this.defaultRows) {
-          rows = this.defaultRows;
-        }
+        rows = Math.max(
+          this.defaultRows + 1,
+          Math.round(contentHeight / lineHeight)
+        );
       }
 
-      // テキストエリアの高さをピクセル単位で計算
-      const adjustHeight = lineHeight * rows + paddingHeight;
+      const adjustHeight = lineHeight * (rows - 1) + paddingHeight;
       this.textarea.style.height = `${adjustHeight}px`;
     }
 

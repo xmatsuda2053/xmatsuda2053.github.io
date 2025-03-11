@@ -389,6 +389,7 @@ textarea {
   word-break: break-all;
 }
 textarea.borderless {
+  padding: 0.15rem 0.25rem;
   border: none;
 }
 textarea.borderless:hover, textarea.borderless:focus {

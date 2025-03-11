@@ -17,7 +17,7 @@ textarea {
 
   &.borderless {
     $borderless-bg-color-hover: #efefef;
-
+    padding: 0.15rem 0.25rem;
     border: none;
 
     &:hover,
