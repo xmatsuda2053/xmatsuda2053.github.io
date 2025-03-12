@@ -73,12 +73,12 @@ export function FormTextarea() {
 
       if (rows === 0) {
         rows = Math.max(
-          this.defaultRows + 1,
+          this.defaultRows,
           Math.round(contentHeight / lineHeight)
         );
       }
 
-      const adjustHeight = lineHeight * (rows - 1) + paddingHeight;
+      const adjustHeight = lineHeight * rows + paddingHeight;
       this.textarea.style.height = `${adjustHeight}px`;
     }
 
