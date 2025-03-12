@@ -103,9 +103,24 @@ export function GroupTitle() {
       /**
        * クリックイベントを通知
        */
-      this.root.addEventListener("click", () => {
+      this.root.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         this.shadowRoot.dispatchEvent(
           EventUtils.createEvent(EventConst.CLICK_GROUP_EVENT_NAME, {
+            id: this.id,
+            name: this.name,
+          })
+        );
+      });
+
+      /**
+       * ダブルクリックイベントを追加
+       */
+      // TODO
+      this.root.addEventListener("dblclick", () => {
+        this.shadowRoot.dispatchEvent(
+          EventUtils.createEvent(EventConst.DBL_CLICK_GROUP_EVENT_NAME, {
             id: this.id,
             name: this.name,
           })

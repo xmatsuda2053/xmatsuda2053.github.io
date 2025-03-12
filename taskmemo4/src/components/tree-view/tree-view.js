@@ -65,6 +65,15 @@ export function TreeView() {
       this.searchFunction = func;
     }
 
+    /**
+     * 指定したIDのグループを開く／閉じる
+     * @param {string} id
+     */
+    toggleGroup(id) {
+      const details = this.shadowRoot.getElementById(id).closest("details");
+      details.open = !details.open;
+    }
+
     // *******************************************************
     // * ヘッダーメニュー
     // *******************************************************

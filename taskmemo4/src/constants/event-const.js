@@ -17,6 +17,10 @@ export class EventConst {
   static CLICK_GROUP_EVENT_NAME = "clickGruopItem";
 
   /**
+   * TreeViewのグループをダブルクリック
+   */
+  static DBL_CLICK_GROUP_EVENT_NAME = "dblClickGruopItem";
+  /**
    * 新規タスクを追加
    */
   static ADD_NEW_TASK_ITEM_EVENT_NAME = "addTaskItem";

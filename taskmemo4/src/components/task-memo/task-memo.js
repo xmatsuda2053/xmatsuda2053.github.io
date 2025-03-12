@@ -155,6 +155,7 @@ export function TaskMemo() {
       this.#attachChangeTreeViewEventListener();
       this.#attachClickTaskItemEventListener();
       this.#attachClickGroupItemEventListener();
+      this.#attachDblClickGroupItemEventListener();
     }
 
     /**
@@ -264,6 +265,21 @@ export function TaskMemo() {
         EventConst.CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
+          this.#addContentsGroup(item.id, item.name);
+        }
+      );
+    }
+
+    /**
+     * TreeViewのグループダブルクリックイベントを登録
+     */
+    //TODO
+    #attachDblClickGroupItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        EventConst.DBL_CLICK_GROUP_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.treeViewRoot.toggleGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
         }
       );

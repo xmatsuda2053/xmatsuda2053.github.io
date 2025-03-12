@@ -186,6 +186,7 @@ function TaskMemo() {
       this.#attachChangeTreeViewEventListener();
       this.#attachClickTaskItemEventListener();
       this.#attachClickGroupItemEventListener();
+      this.#attachDblClickGroupItemEventListener();
     }
 
     /**
@@ -295,6 +296,21 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
+          this.#addContentsGroup(item.id, item.name);
+        }
+      );
+    }
+
+    /**
+     * TreeViewのグループダブルクリックイベントを登録
+     */
+    //TODO
+    #attachDblClickGroupItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.DBL_CLICK_GROUP_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.treeViewRoot.toggleGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
         }
       );
@@ -2468,6 +2484,10 @@ class EventConst {
   static CLICK_GROUP_EVENT_NAME = "clickGruopItem";
 
   /**
+   * TreeViewのグループをダブルクリック
+   */
+  static DBL_CLICK_GROUP_EVENT_NAME = "dblClickGruopItem";
+  /**
    * 新規タスクを追加
    */
   static ADD_NEW_TASK_ITEM_EVENT_NAME = "addTaskItem";
@@ -3071,6 +3091,15 @@ function TreeView() {
      */
     set searchHandler(func) {
       this.searchFunction = func;
+    }
+
+    /**
+     * 指定したIDのグループを開く／閉じる
+     * @param {string} id
+     */
+    toggleGroup(id) {
+      const details = this.shadowRoot.getElementById(id).closest("details");
+      details.open = !details.open;
     }
 
     // *******************************************************
@@ -5181,9 +5210,24 @@ function GroupTitle() {
       /**
        * クリックイベントを通知
        */
-      this.root.addEventListener("click", () => {
+      this.root.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         this.shadowRoot.dispatchEvent(
           _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CLICK_GROUP_EVENT_NAME, {
+            id: this.id,
+            name: this.name,
+          })
+        );
+      });
+
+      /**
+       * ダブルクリックイベントを追加
+       */
+      // TODO
+      this.root.addEventListener("dblclick", () => {
+        this.shadowRoot.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.DBL_CLICK_GROUP_EVENT_NAME, {
             id: this.id,
             name: this.name,
           })
