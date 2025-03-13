@@ -417,5 +417,10 @@ th {
 .contents-history {
   padding-bottom: 5rem;
 }
+.contents-history #contents-title {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
 /*# sourceMappingURL=contents-history.css.map */

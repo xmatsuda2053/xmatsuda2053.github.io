@@ -7472,6 +7472,11 @@ function ContentsHistory() {
       // 空の要素を作成
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["contents-history"]);
 
+      // タイトル追加
+      const title = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "contents-title");
+      title.innerText = "履歴一覧";
+      this.root.appendChild(title);
+
       // ボタン追加
       const floatBtns = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createFloatArea();
       const addHistoryBtn = this.#createAddHisotryButton();
@@ -7996,6 +8001,11 @@ th {
 
 .contents-history {
   padding-bottom: 5rem;
+}
+.contents-history #contents-title {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 `, ""]);
 // Exports

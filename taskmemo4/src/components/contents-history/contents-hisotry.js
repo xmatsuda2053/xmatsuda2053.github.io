@@ -25,6 +25,11 @@ export function ContentsHistory() {
       // 空の要素を作成
       this.root = ElmUtils.createElm("div", "root", ["contents-history"]);
 
+      // タイトル追加
+      const title = ElmUtils.createElm("div", "contents-title");
+      title.innerText = "履歴一覧";
+      this.root.appendChild(title);
+
       // ボタン追加
       const floatBtns = ElmUtils.createFloatArea();
       const addHistoryBtn = this.#createAddHisotryButton();
