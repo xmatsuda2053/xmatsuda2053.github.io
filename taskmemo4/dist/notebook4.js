@@ -1444,10 +1444,12 @@ th {
 }
 #container #treeview {
   grid-area: treeview;
+  height: 100vh;
 }
 #container #contents {
   grid-area: contents;
   background-color: #d4f1ef;
+  height: 100vh;
 }
 `, ""]);
 // Exports
@@ -6531,6 +6533,23 @@ th {
   font-family: monospace;
 }
 
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
 #root {
   width: 100%;
   height: 100%;
@@ -11232,68 +11251,68 @@ th {
   pointer-events: none;
 }
 
-table {
+#root table {
   width: 100%;
 }
-table thead tr th {
+#root table thead tr th {
   background-color: #211c84;
   color: #fffffb;
   font-weight: bold;
   text-align: center;
   padding: 0.5rem;
 }
-table thead tr th:first-child {
+#root table thead tr th:first-child {
   border-top-left-radius: 0.25rem;
 }
-table thead tr th:last-child {
+#root table thead tr th:last-child {
   border-top-right-radius: 0.25rem;
 }
-table tbody tr:nth-child(even) td {
+#root table tbody tr:nth-child(even) td {
   background-color: #eeeeee;
 }
-table tbody tr td {
+#root table tbody tr td {
   background-color: #fffffb;
   color: #00000b;
   max-width: 300px;
   line-height: 2rem;
   padding: 0 0.5rem;
 }
-table tbody tr td.clickable {
+#root table tbody tr td.clickable {
   cursor: pointer;
 }
-table tbody tr td.clickable:hover {
+#root table tbody tr td.clickable:hover {
   text-decoration: underline;
   color: #003092;
 }
-table tbody tr td.center {
+#root table tbody tr td.center {
   text-align: center;
 }
-table tbody tr td.center .svg-icon {
+#root table tbody tr td.center .svg-icon {
   vertical-align: middle;
 }
-table tbody tr td.right {
+#root table tbody tr td.right {
   text-align: right;
 }
-table tbody tr td.right .svg-icon {
+#root table tbody tr td.right .svg-icon {
   vertical-align: right;
 }
-table tbody tr td.left {
+#root table tbody tr td.left {
   text-align: left;
 }
-table tbody tr td div {
+#root table tbody tr td div {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-table tbody tr td .svg-icon {
+#root table tbody tr td .svg-icon {
   display: inline-block;
   font-size: 1rem;
 }
-table tbody tr.complete td {
+#root table tbody tr.complete td {
   color: #838383;
   text-decoration: line-through;
 }
-table tbody tr.alert td {
+#root table tbody tr.alert td {
   color: #f93827;
 }
 `, ""]);

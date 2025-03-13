@@ -426,10 +426,12 @@ th {
 }
 #container #treeview {
   grid-area: treeview;
+  height: 100vh;
 }
 #container #contents {
   grid-area: contents;
   background-color: #d4f1ef;
+  height: 100vh;
 }
 
 /*# sourceMappingURL=task-memo.css.map */

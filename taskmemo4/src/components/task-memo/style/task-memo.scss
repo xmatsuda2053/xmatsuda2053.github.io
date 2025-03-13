@@ -15,10 +15,12 @@
 
   #treeview {
     grid-area: treeview;
+    height: 100vh;
   }
 
   #contents {
     grid-area: contents;
     background-color: #d4f1ef;
+    height: 100vh;
   }
 }

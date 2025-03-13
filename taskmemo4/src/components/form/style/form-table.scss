@@ -13,92 +13,94 @@ $d-font-color-link: #003092;
 $alert-color: #f93827;
 $complete-color: #838383;
 
-table {
-  width: 100%;
+#root {
+  table {
+    width: 100%;
 
-  thead {
-    tr {
-      th {
-        background-color: $h-bg-color;
-        color: $h-font-color;
+    thead {
+      tr {
+        th {
+          background-color: $h-bg-color;
+          color: $h-font-color;
 
-        font-weight: bold;
-        text-align: center;
-        padding: 0.5rem;
+          font-weight: bold;
+          text-align: center;
+          padding: 0.5rem;
 
-        &:first-child {
-          border-top-left-radius: 0.25rem;
-        }
+          &:first-child {
+            border-top-left-radius: 0.25rem;
+          }
 
-        &:last-child {
-          border-top-right-radius: 0.25rem;
+          &:last-child {
+            border-top-right-radius: 0.25rem;
+          }
         }
       }
     }
-  }
 
-  tbody {
-    tr {
-      &:nth-child(even) {
-        td {
-          background-color: $d-bg-color-even;
-        }
-      }
-
-      td {
-        background-color: $d-bg-color;
-        color: $d-font-color;
-        max-width: 300px;
-        line-height: 2rem;
-        padding: 0 0.5rem;
-
-        &.clickable {
-          cursor: pointer;
-
-          &:hover {
-            text-decoration: underline;
-            color: $d-font-color-link;
+    tbody {
+      tr {
+        &:nth-child(even) {
+          td {
+            background-color: $d-bg-color-even;
           }
         }
 
-        &.center {
-          text-align: center;
+        td {
+          background-color: $d-bg-color;
+          color: $d-font-color;
+          max-width: 300px;
+          line-height: 2rem;
+          padding: 0 0.5rem;
+
+          &.clickable {
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+              color: $d-font-color-link;
+            }
+          }
+
+          &.center {
+            text-align: center;
+            .svg-icon {
+              vertical-align: middle;
+            }
+          }
+          &.right {
+            text-align: right;
+            .svg-icon {
+              vertical-align: right;
+            }
+          }
+          &.left {
+            text-align: left;
+          }
+
+          div {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
           .svg-icon {
-            vertical-align: middle;
+            display: inline-block;
+            font-size: 1rem;
           }
         }
-        &.right {
-          text-align: right;
-          .svg-icon {
-            vertical-align: right;
+
+        &.complete {
+          td {
+            color: $complete-color;
+            text-decoration: line-through;
           }
         }
-        &.left {
-          text-align: left;
-        }
 
-        div {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .svg-icon {
-          display: inline-block;
-          font-size: 1rem;
-        }
-      }
-
-      &.complete {
-        td {
-          color: $complete-color;
-          text-decoration: line-through;
-        }
-      }
-
-      &.alert {
-        td {
-          color: $alert-color;
+        &.alert {
+          td {
+            color: $alert-color;
+          }
         }
       }
     }
