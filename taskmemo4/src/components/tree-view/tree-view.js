@@ -520,12 +520,11 @@ export function TreeView() {
      */
     getGroupItemsById(id) {
       const details = this.shadowRoot.getElementById(id).closest("details");
-      const treeItems = getItems(details).querySelectorAll(
-        "task-title,group-title"
-      );
+      const childElms = getItems(details).children;
 
       const items = [];
-      for (let item of treeItems) {
+      for (let elm of childElms) {
+        const item = elm.querySelectorAll("task-title,group-title")[0];
         const data = item.getData();
         data.id = item.id;
         if (data.type === "task") {
@@ -534,6 +533,7 @@ export function TreeView() {
         }
         items.push(data);
       }
+
       return items;
     }
 
