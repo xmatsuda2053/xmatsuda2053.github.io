@@ -415,6 +415,7 @@ textarea {
 textarea.borderless {
   padding: 0.15rem 0.25rem;
   border: none;
+  transition: 0.15s;
 }
 textarea.borderless:hover, textarea.borderless:focus {
   background-color: #efefef;
@@ -438,10 +439,15 @@ textarea.borderless:hover, textarea.borderless:focus {
   color: #000000;
   background-color: #fffdec;
   cursor: pointer;
+  transition: 0.15s;
 }
 #view-area ul li:hover {
   color: #fffff8;
   background-color: #0078d4;
+}
+#view-area ul li:active {
+  color: #0078d4;
+  background-color: #fffff8;
 }
 #view-area ul li .svg-icon {
   position: absolute;

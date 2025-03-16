@@ -425,6 +425,7 @@ th {
 }
 #root table tbody tr td.clickable {
   cursor: pointer;
+  transition: 0.15s;
 }
 #root table tbody tr td.clickable:hover {
   text-decoration: underline;

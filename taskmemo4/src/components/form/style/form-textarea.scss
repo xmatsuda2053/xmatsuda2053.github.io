@@ -25,6 +25,8 @@ textarea {
     padding: 0.15rem 0.25rem;
     border: none;
 
+    transition: 0.15s;
+
     &:hover,
     &:focus {
       background-color: $borderless-bg-color-hover;
@@ -36,7 +38,7 @@ textarea {
   $link-color: #000000;
   $link-color-hover: #fffff8;
   $link-bgcolor: #fffdec;
-  $linkg-bgcolor-hover: #0078d4;
+  $link-bgcolor-hover: #0078d4;
 
   padding-top: 0.2rem;
 
@@ -59,9 +61,16 @@ textarea {
       background-color: $link-bgcolor;
       cursor: pointer;
 
+      transition: 0.15s;
+
       &:hover {
         color: $link-color-hover;
-        background-color: $linkg-bgcolor-hover;
+        background-color: $link-bgcolor-hover;
+      }
+
+      &:active {
+        color: $link-bgcolor-hover;
+        background-color: $link-color-hover;
       }
 
       .svg-icon {

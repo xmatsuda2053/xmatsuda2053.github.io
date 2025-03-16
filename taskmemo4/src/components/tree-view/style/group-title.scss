@@ -14,6 +14,8 @@ $active-font-color: #fffff8;
   border-radius: 0.15rem;
   padding: 0.15rem;
 
+  transition: 0.15s;
+
   &::-webkit-details-marker {
     display: none;
   }

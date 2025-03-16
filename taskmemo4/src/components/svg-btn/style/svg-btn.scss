@@ -29,6 +29,8 @@ $black: #000000;
   padding: 0.5rem;
   border-radius: 50%;
 
+  transition: 0.15s;
+
   &:hover {
     color: $circle-font-color-hover;
     background-color: $circle-bg-color-hover;
@@ -43,6 +45,8 @@ $black: #000000;
 .hover {
   color: $hover-before-color;
   border-radius: 0.25rem;
+
+  transition: 0.15s;
 
   &.red {
     &:hover {
