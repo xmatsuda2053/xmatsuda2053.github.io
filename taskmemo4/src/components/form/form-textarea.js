@@ -3,6 +3,8 @@ import { EventUtils } from "../../utils/event-utils";
 import { EventConst } from "../../constants/event-const";
 
 import styles from "./style/form-textarea.css";
+import { SvgUtils } from "../../utils/svg-utils";
+import { SvgConst } from "../../constants/svg-const";
 
 /**
  * FormTextarea コンポーネント
@@ -38,6 +40,7 @@ export function FormTextarea() {
         e.preventDefault();
         e.stopPropagation();
         this.#adjustTextareaHeight();
+        this.#updateViewArea();
       });
 
       this.shadowRoot.appendChild(this.textarea);
@@ -55,6 +58,7 @@ export function FormTextarea() {
      */
     connectedCallback() {
       this.#adjustTextareaHeight(this.defaultRows);
+      this.#updateViewArea();
     }
 
     /**
@@ -83,6 +87,49 @@ export function FormTextarea() {
     }
 
     /**
+     * viewAreaを更新する。
+     */
+    #updateViewArea() {
+      if (!this._isViewArea) {
+        return;
+      }
+
+      // 既存要素を削除
+      this.viewArea.innerHTML = "";
+
+      // リスト出力
+      const itemList = ElmUtils.createElm("ul");
+      this.textarea.value.split("\n").forEach((item) => {
+        let icon;
+        const li = ElmUtils.createElm("li");
+
+        if (this._isURL) {
+          // 新しいタブ
+          icon = SvgUtils.createIcon(SvgConst.LinkPaths);
+          li.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            open(item, "_blank");
+          });
+        } else {
+          // クリップボードにコピー
+          icon = SvgUtils.createIcon(SvgConst.CopyPaths);
+          li.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigator.clipboard.writeText(item);
+          });
+        }
+
+        li.appendChild(icon);
+        li.appendChild(document.createTextNode(item));
+
+        itemList.appendChild(li);
+      });
+      this.viewArea.appendChild(itemList);
+    }
+
+    /**
      * Textareaに値を設定する
      * @param {string} val 設定値
      * @return {void}
@@ -91,6 +138,7 @@ export function FormTextarea() {
       this.textarea.value = val;
       requestAnimationFrame(() => {
         this.#adjustTextareaHeight();
+        this.#updateViewArea();
       });
     }
 
@@ -126,6 +174,62 @@ export function FormTextarea() {
     set rows(r) {
       this.defaultRows = r;
       this.#adjustTextareaHeight(r);
+      this.#updateViewArea();
+    }
+
+    /**
+     * 入力データがフォルダパスであるかを設定する。
+     * @param {bool} val - フラグ
+     */
+    set isFolderPath(val) {
+      this._isFolderPath = val;
+      this.#addViewArea(val);
+    }
+
+    /**
+     * 入力データがURLであるかを設定する。
+     * @param {bool} val - フラグ
+     */
+    set isURL(val) {
+      this._isURL = val;
+      this.#addViewArea(val);
+    }
+
+    /**
+     * ViewAreaを追加する。
+     * @param {bool} val - フラグ
+     */
+    #addViewArea(val) {
+      this._isViewArea = val;
+
+      // 表示エリア
+      this.viewArea = ElmUtils.createElm("div", "view-area");
+
+      // 編集エリア
+      this.editBtnArea = ElmUtils.createElm("div", "edit-btn-area");
+
+      const editBtn = ElmUtils.createElm("svg-btn", "edit");
+      editBtn.iconPaths = SvgConst.EditPaths;
+      editBtn.size = "1.15rem";
+      editBtn.color = "red";
+      editBtn.hover = true;
+      editBtn.toggle = true;
+      editBtn.toggleOn = false;
+
+      editBtn.addEventListener("click", () => {
+        this.textarea.classList.toggle("hidden", !editBtn.toggle);
+        this.viewArea.classList.toggle("hidden", editBtn.toggle);
+        this.#adjustTextareaHeight();
+      });
+
+      this.editBtnArea.appendChild(editBtn);
+
+      // 入力エリアを非表示
+      this.textarea.classList.add("hidden");
+
+      // 要素追加
+      this.shadowRoot.appendChild(this.viewArea);
+      this.shadowRoot.appendChild(this.editBtnArea);
     }
 
     /**

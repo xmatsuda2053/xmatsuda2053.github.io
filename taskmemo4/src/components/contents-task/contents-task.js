@@ -311,6 +311,7 @@ export function ContentsTask() {
       this._folderpath = ElmUtils.createElm("form-textarea", "folderpath");
       this._folderpath.rows = 3;
       this._folderpath.placeholder = "作業フォルダパス(E:\workspace)";
+      this._folderpath.isFolderPath = true;
 
       filedset.addItem(this._folderpath);
       this.property.appendChild(filedset);
@@ -331,6 +332,7 @@ export function ContentsTask() {
       this._url = ElmUtils.createElm("form-textarea", "url");
       this._url.rows = 3;
       this._url.placeholder = "https://example.com";
+      this._url.isURL = true;
 
       filedset.addItem(this._url);
       this.property.appendChild(filedset);

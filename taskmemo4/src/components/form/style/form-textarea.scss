@@ -1,8 +1,13 @@
 @use "../../_style/destyle";
 @use "../../_style/font";
+@use "../../_style/svg";
 
 $bg-color: #fffff8;
 $border-color: #6f6f6f;
+
+.hidden {
+  display: none;
+}
 
 textarea {
   outline: none;
@@ -25,4 +30,53 @@ textarea {
       background-color: $borderless-bg-color-hover;
     }
   }
+}
+
+#view-area {
+  $link-color: #000000;
+  $link-color-hover: #fffff8;
+  $link-bgcolor: #fffdec;
+  $linkg-bgcolor-hover: #0078d4;
+
+  padding-top: 0.2rem;
+
+  ul {
+    width: 100%;
+
+    li {
+      position: relative;
+
+      width: 100%;
+      word-break: break-all;
+
+      line-height: 1.3rem;
+      padding-left: 1.5rem;
+      padding-right: 0.25rem;
+      margin-bottom: 0.25rem;
+
+      border-radius: 0.25rem;
+      color: $link-color;
+      background-color: $link-bgcolor;
+      cursor: pointer;
+
+      &:hover {
+        color: $link-color-hover;
+        background-color: $linkg-bgcolor-hover;
+      }
+
+      .svg-icon {
+        position: absolute;
+        left: 0.25rem;
+        top: 0.15rem;
+
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+}
+
+#edit-btn-area {
+  text-align: right;
+  margin-top: 0.15rem;
 }

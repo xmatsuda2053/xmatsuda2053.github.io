@@ -377,6 +377,30 @@ th {
   font-family: monospace;
 }
 
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
 textarea {
   outline: none;
   background-color: #fffff8;
@@ -394,6 +418,42 @@ textarea.borderless {
 }
 textarea.borderless:hover, textarea.borderless:focus {
   background-color: #efefef;
+}
+
+#view-area {
+  padding-top: 0.2rem;
+}
+#view-area ul {
+  width: 100%;
+}
+#view-area ul li {
+  position: relative;
+  width: 100%;
+  word-break: break-all;
+  line-height: 1.3rem;
+  padding-left: 1.5rem;
+  padding-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.25rem;
+  color: #000000;
+  background-color: #fffdec;
+  cursor: pointer;
+}
+#view-area ul li:hover {
+  color: #fffff8;
+  background-color: #0078d4;
+}
+#view-area ul li .svg-icon {
+  position: absolute;
+  left: 0.25rem;
+  top: 0.15rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+#edit-btn-area {
+  text-align: right;
+  margin-top: 0.15rem;
 }
 
 /*# sourceMappingURL=form-textarea.css.map */
