@@ -380,7 +380,11 @@ export function TreeView() {
         const root = this.#getMenuTarget(this.menu.clickTarget);
         const task = this.#createNewTaskItem({ name: name });
 
+        task.classList.add("fade-in");
         root.appendChild(task);
+        setTimeout(() => {
+          task.classList.add("show");
+        }, 100);
 
         this.#openGroup(root);
         const data = task.querySelector("task-title").getData();
@@ -413,7 +417,11 @@ export function TreeView() {
         const root = this.#getMenuTarget(this.menu.clickTarget);
         const group = this.#createNewGroupItem({ name: name });
 
+        group.classList.add("fade-in");
         root.appendChild(group);
+        setTimeout(() => {
+          group.classList.add("show");
+        }, 100);
 
         this.#openGroup(root);
         const data = group.querySelector("group-title").getData();

@@ -403,6 +403,15 @@ th {
   border-bottom: 1px solid #8f8f8f;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
+
 #root {
   width: 100%;
   height: 100%;
