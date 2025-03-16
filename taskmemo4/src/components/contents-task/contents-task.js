@@ -308,7 +308,7 @@ export function ContentsTask() {
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.title = "作業フォルダパス";
 
-      this._folderpath = ElmUtils.createElm("form-textarea", "folderpath ");
+      this._folderpath = ElmUtils.createElm("form-textarea", "folderpath");
       this._folderpath.rows = 3;
       this._folderpath.placeholder = "作業フォルダパス(E:\workspace)";
 
@@ -328,7 +328,7 @@ export function ContentsTask() {
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.title = "URL";
 
-      this._url = ElmUtils.createElm("form-textarea", "url ");
+      this._url = ElmUtils.createElm("form-textarea", "url");
       this._url.rows = 3;
       this._url.placeholder = "https://example.com";
 
