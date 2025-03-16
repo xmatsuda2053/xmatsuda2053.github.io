@@ -1,5 +1,6 @@
 @use "../../_style/destyle";
 @use "../../_style/font";
+@use "../../_style/svg";
 
 $requied-bg-color: #fb4141;
 $requied-color: #fffffb;
@@ -14,6 +15,17 @@ fieldset {
     letter-spacing: 1px;
     display: flex;
     align-items: center;
+    line-height: 1rem;
+
+    .svg-icon {
+      height: 1rem;
+      width: 1rem;
+      margin-right: 0.35rem;
+    }
+
+    p {
+      padding-top: 0.05rem;
+    }
 
     &.isRequired {
       &:after {
@@ -24,6 +36,7 @@ fieldset {
         color: $requied-color;
         font-size: 0.6rem;
         padding: 0.15rem 0.25rem;
+        line-height: 0.75rem;
       }
     }
   }

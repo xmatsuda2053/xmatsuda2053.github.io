@@ -222,6 +222,7 @@ export function ContentsGroup() {
      */
     #addGroupId() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.TagPaths);
       filedset.title = "ID";
 
       this._groupId = ElmUtils.createElm("form-input", "id");
@@ -252,6 +253,7 @@ export function ContentsGroup() {
      */
     #addGroupTitle() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.BookPaths);
       filedset.title = "グループ名";
       filedset.required = true;
 
@@ -282,6 +284,7 @@ export function ContentsGroup() {
      */
     #addGroupOverview() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.WitingPaths);
       filedset.title = "概要";
 
       this._groupOverview = ElmUtils.createElm("form-textarea", "overview");
@@ -303,6 +306,7 @@ export function ContentsGroup() {
      */
     #addEmptyGroupItems() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.TablePaths);
       filedset.title = "タスク一覧";
 
       this.table = ElmUtils.createElm("form-table");

@@ -375,4 +375,218 @@ export class SvgConst {
       },
     ],
   };
+
+  /**
+   * TagSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static TagPaths = {
+    name: "icon-tag",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",
+      },
+      {
+        path: "M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z",
+      },
+    ],
+  };
+
+  /**
+   * ブックSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static BookPaths = {
+    name: "icon-book",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0",
+      },
+      {
+        path: "M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0",
+      },
+      {
+        path: "M3 6l0 13",
+      },
+      {
+        path: "M12 6l0 13",
+      },
+      {
+        path: "M21 6l0 13",
+      },
+    ],
+  };
+
+  /**
+   * ユーザーSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static UserPaths = {
+    name: "icon-user",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0",
+      },
+      {
+        path: "M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2",
+      },
+    ],
+  };
+
+  /**
+   * 期限日SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static DueDatePaths = {
+    name: "icon-deu-date",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z",
+      },
+      {
+        path: "M16 3v4",
+      },
+      {
+        path: "M8 3v4",
+      },
+      {
+        path: "M4 11h16",
+      },
+      {
+        path: "M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",
+      },
+    ],
+  };
+
+  /**
+   * アンテナSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static AntennaPaths = {
+    name: "icon-antenna",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M6 18l0 -3",
+      },
+      {
+        path: "M10 18l0 -6",
+      },
+      {
+        path: "M14 18l0 -9",
+      },
+      {
+        path: "M18 18l0 -12",
+      },
+    ],
+  };
+
+  /**
+   * パーセンテージSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static PercentagePaths = {
+    name: "icon-percentage",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 3a9 9 0 0 1 7.794 13.5l-7.79 -4.497z",
+        isFill: true,
+      },
+      {
+        path: "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0",
+      },
+    ],
+  };
+
+  /**
+   * ライティングSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static WitingPaths = {
+    name: "icon-writing",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z",
+      },
+      {
+        path: "M16 7h4",
+      },
+      {
+        path: "M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3",
+      },
+    ],
+  };
+
+  /**
+   * WebhookSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static WebhookPaths = {
+    name: "icon-webhook",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M4.876 13.61a4 4 0 1 0 6.124 3.39h6",
+      },
+      {
+        path: "M15.066 20.502a4 4 0 1 0 1.934 -7.502c-.706 0 -1.424 .179 -2 .5l-3 -5.5",
+      },
+      {
+        path: "M16 8a4 4 0 1 0 -8 0c0 1.506 .77 2.818 2 3.5l-3 5.5",
+      },
+    ],
+  };
+
+  /**
+   * テーブルSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static TablePaths = {
+    name: "icon-table",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z",
+      },
+      {
+        path: "M3 10h18",
+      },
+      {
+        path: "M10 3v18",
+      },
+    ],
+  };
+
+  /**
+   * 履歴SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static HistoryPaths = {
+    name: "icon-history",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 8l0 4l2 2",
+      },
+      {
+        path: "M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5",
+      },
+    ],
+  };
 }

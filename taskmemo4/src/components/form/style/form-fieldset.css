@@ -378,6 +378,26 @@ th {
   font-family: monospace;
 }
 
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
 fieldset {
   position: relative;
   padding-bottom: 1.25rem;
@@ -388,6 +408,15 @@ fieldset legend {
   letter-spacing: 1px;
   display: flex;
   align-items: center;
+  line-height: 1rem;
+}
+fieldset legend .svg-icon {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.35rem;
+}
+fieldset legend p {
+  padding-top: 0.05rem;
 }
 fieldset legend.isRequired:after {
   content: "必須";
@@ -397,6 +426,7 @@ fieldset legend.isRequired:after {
   color: #fffffb;
   font-size: 0.6rem;
   padding: 0.15rem 0.25rem;
+  line-height: 0.75rem;
 }
 fieldset.nestedRoot {
   display: flex;

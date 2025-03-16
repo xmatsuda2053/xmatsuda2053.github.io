@@ -118,6 +118,7 @@ export function ContentsTask() {
      */
     #addTaskId() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.TagPaths);
       filedset.title = "ID";
 
       this._taskId = ElmUtils.createElm("form-input", "id");
@@ -146,6 +147,7 @@ export function ContentsTask() {
      */
     #addTaskTitle() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.BookPaths);
       filedset.title = "タスク名";
       filedset.required = true;
 
@@ -174,6 +176,7 @@ export function ContentsTask() {
      */
     #addTaskDueDate() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.DueDatePaths);
       filedset.title = "期限日";
       filedset.required = true;
 
@@ -191,6 +194,7 @@ export function ContentsTask() {
      */
     #addStaff() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.UserPaths);
       filedset.title = "担当者";
       filedset.required = true;
 
@@ -235,6 +239,7 @@ export function ContentsTask() {
      */
     #addPriority() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.AntennaPaths);
       filedset.title = "優先度";
       filedset.required = true;
 
@@ -253,6 +258,7 @@ export function ContentsTask() {
      */
     #addStatus() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.PercentagePaths);
       filedset.title = "進捗率";
 
       this._status = ElmUtils.createElm("form-radio", "status");
@@ -286,6 +292,7 @@ export function ContentsTask() {
      */
     #addMemo() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.WitingPaths);
       filedset.title = "作業概要";
 
       this._memo = ElmUtils.createElm("form-textarea", "memo");
@@ -306,6 +313,7 @@ export function ContentsTask() {
      */
     #addFolderpath() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.folderPaths);
       filedset.title = "作業フォルダパス";
 
       this._folderpath = ElmUtils.createElm("form-textarea", "folderpath");
@@ -327,6 +335,7 @@ export function ContentsTask() {
      */
     #addUrl() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.WebhookPaths);
       filedset.title = "URL";
 
       this._url = ElmUtils.createElm("form-textarea", "url");
@@ -348,6 +357,7 @@ export function ContentsTask() {
      */
     #addFreenotes() {
       const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.WitingPaths);
       filedset.title = "自由記述欄";
 
       this._freenotes = ElmUtils.createElm("form-textarea", "freenotes");

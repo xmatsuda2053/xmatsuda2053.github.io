@@ -26,9 +26,20 @@ export function FormFieldset() {
       // 空の要素を作成
       this.fieldset = ElmUtils.createElm("fieldset", "root");
       this.legend = ElmUtils.createElm("legend");
+      this.titleText = ElmUtils.createElm("p");
 
+      this.legend.appendChild(this.titleText);
       this.fieldset.appendChild(this.legend);
       this.shadowRoot.appendChild(this.fieldset);
+    }
+
+    /**
+     * Legendにiconを設定する
+     * @param {string} val アイコン
+     * @return {void}
+     */
+    set icon(val) {
+      this.legend.prepend(val);
     }
 
     /**
@@ -37,7 +48,7 @@ export function FormFieldset() {
      * @return {void}
      */
     set title(val) {
-      this.legend.innerText = val;
+      this.titleText.innerText = val;
     }
 
     /**

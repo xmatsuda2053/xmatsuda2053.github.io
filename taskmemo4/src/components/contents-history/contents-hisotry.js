@@ -27,7 +27,8 @@ export function ContentsHistory() {
 
       // タイトル追加
       const title = ElmUtils.createElm("div", "contents-title");
-      title.innerText = "履歴一覧";
+      title.appendChild(SvgUtils.createIcon(SvgConst.HistoryPaths));
+      title.appendChild(document.createTextNode("履歴一覧"));
       this.root.appendChild(title);
 
       // ボタン追加
