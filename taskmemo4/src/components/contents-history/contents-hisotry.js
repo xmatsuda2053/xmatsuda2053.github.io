@@ -111,8 +111,21 @@ export function ContentsHistory() {
      */
     #addHistoryItem(data) {
       const historyItem = ElmUtils.createElm("contents-history-item");
+
+      const isNewItem = !data.id;
+
+      if (isNewItem) {
+        historyItem.classList.add("fade-in");
+      }
+
       historyItem.init(data);
       this.root.appendChild(historyItem);
+
+      if (isNewItem) {
+        setTimeout(() => {
+          historyItem.classList.add("show");
+        }, 100);
+      }
     }
   }
   customElements.define("contents-history", ContentsHistory);

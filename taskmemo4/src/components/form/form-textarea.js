@@ -222,8 +222,20 @@ export function FormTextarea() {
       editBtn.toggleOn = false;
 
       editBtn.addEventListener("click", () => {
-        this.textarea.classList.toggle("hidden", !editBtn.toggle);
-        this.viewArea.classList.toggle("hidden", editBtn.toggle);
+        this.textarea.classList.remove("fade-in", "show");
+        this.viewArea.classList.remove("fade-in", "show");
+
+        const isEditMode = editBtn.toggle;
+        const showItem = isEditMode ? this.textarea : this.viewArea;
+        const hideItem = isEditMode ? this.viewArea : this.textarea;
+
+        showItem.classList.remove("hidden");
+        hideItem.classList.add("hidden");
+
+        showItem.classList.add("fade-in");
+        setTimeout(() => {
+          showItem.classList.add("show");
+        }, 100);
         this.#adjustTextareaHeight();
       });
 

@@ -9,6 +9,15 @@ $border-color: #6f6f6f;
   display: none;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
+
 textarea {
   outline: none;
   background-color: $bg-color;
@@ -25,7 +34,7 @@ textarea {
     padding: 0.15rem 0.25rem;
     border: none;
 
-    transition: 0.15s;
+    transition: 0.2s;
 
     &:hover,
     &:focus {
@@ -61,7 +70,7 @@ textarea {
       background-color: $link-bgcolor;
       cursor: pointer;
 
-      transition: 0.15s;
+      transition: 0.2s;
 
       &:hover {
         color: $link-color-hover;

@@ -404,7 +404,7 @@ th {
   text-decoration-skip-ink: none;
   border-radius: 0.15rem;
   padding: 0.15rem;
-  transition: 0.15s;
+  transition: 0.2s;
 }
 .group-title::-webkit-details-marker {
   display: none;

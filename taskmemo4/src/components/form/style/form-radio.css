@@ -392,7 +392,7 @@ input[type=radio] {
   background-color: #fffff8;
   border: 1px solid #6f6f6f;
   border-right: none;
-  transition: 0.15s;
+  transition: 0.2s;
 }
 #root label.first {
   border-top-left-radius: 0.25rem;

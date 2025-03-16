@@ -422,5 +422,12 @@ th {
   font-weight: bold;
   letter-spacing: 1px;
 }
+.contents-history .fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.contents-history .fade-in.show {
+  opacity: 1;
+}
 
 /*# sourceMappingURL=contents-history.css.map */

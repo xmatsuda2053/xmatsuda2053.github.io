@@ -401,6 +401,15 @@ th {
   display: none;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
+
 textarea {
   outline: none;
   background-color: #fffff8;
@@ -415,7 +424,7 @@ textarea {
 textarea.borderless {
   padding: 0.15rem 0.25rem;
   border: none;
-  transition: 0.15s;
+  transition: 0.2s;
 }
 textarea.borderless:hover, textarea.borderless:focus {
   background-color: #efefef;
@@ -439,7 +448,7 @@ textarea.borderless:hover, textarea.borderless:focus {
   color: #000000;
   background-color: #fffdec;
   cursor: pointer;
-  transition: 0.15s;
+  transition: 0.2s;
 }
 #view-area ul li:hover {
   color: #fffff8;
