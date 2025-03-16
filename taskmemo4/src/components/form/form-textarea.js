@@ -97,6 +97,11 @@ export function FormTextarea() {
       // 既存要素を削除
       this.viewArea.innerHTML = "";
 
+      // 出力判定
+      if (!this.textarea.value) {
+        return;
+      }
+
       // リスト出力
       const itemList = ElmUtils.createElm("ul");
       this.textarea.value.split("\n").forEach((item) => {
