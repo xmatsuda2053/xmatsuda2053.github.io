@@ -273,7 +273,6 @@ export function TaskMemo() {
     /**
      * TreeViewのグループダブルクリックイベントを登録
      */
-    //TODO
     #attachDblClickGroupItemEventListener() {
       this.treeViewRoot.addEventListener(
         EventConst.DBL_CLICK_GROUP_EVENT_NAME,

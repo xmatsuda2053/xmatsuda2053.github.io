@@ -117,7 +117,6 @@ export function GroupTitle() {
       /**
        * ダブルクリックイベントを追加
        */
-      // TODO
       this.root.addEventListener("dblclick", () => {
         this.shadowRoot.dispatchEvent(
           EventUtils.createEvent(EventConst.DBL_CLICK_GROUP_EVENT_NAME, {
