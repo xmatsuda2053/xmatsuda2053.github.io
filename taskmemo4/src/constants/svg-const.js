@@ -302,21 +302,6 @@ export class SvgConst {
   };
 
   /**
-   * フォルダSVGのパスデータを含むオブジェクトの配列を生成する。
-   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
-   * @returns {string} return.path - SVGのパス情報。
-   */
-  static FolderhPaths = {
-    name: "icon-folder",
-    paths: [
-      { path: "M0 0h24v24H0z" },
-      {
-        path: "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2",
-      },
-    ],
-  };
-
-  /**
    * コピーSVGのパスデータを含むオブジェクトの配列を生成する。
    * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
    * @returns {string} return.path - SVGのパス情報。

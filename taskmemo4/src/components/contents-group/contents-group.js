@@ -154,7 +154,7 @@ export function ContentsGroup() {
           this.table.setTdWidth("150px");
 
           // ステータス
-          const icon = SvgUtils.createIcon(SvgConst.FolderhPaths);
+          const icon = SvgUtils.createIcon(SvgConst.folderPaths);
           icon.style = "color: #E9762B";
 
           this.table.addTd();
