@@ -3,8 +3,7 @@
 @use "../../_style/svg";
 
 $legend-color: #4f4f4f;
-$requied-bg-color: #fb4141;
-$requied-color: #fffffb;
+$requied-color: #fb4141;
 
 fieldset {
   position: relative;
@@ -27,7 +26,7 @@ fieldset {
     .svg-icon {
       height: 1rem;
       width: 1rem;
-      margin-right: 0.35rem;
+      margin-right: 0.2rem;
     }
 
     p {
@@ -36,13 +35,11 @@ fieldset {
 
     &.isRequired {
       &:after {
-        content: "必須";
-        margin-left: 0.25rem;
-        border-radius: 0.25rem;
-        background-color: $requied-bg-color;
+        content: "*";
+        margin-left: 0.05rem;
         color: $requied-color;
-        font-size: 0.6rem;
-        padding: 0.15rem 0.25rem;
+        font-size: 0.85rem;
+        padding: 0.15rem 0.15rem;
         line-height: 0.75rem;
       }
     }

@@ -194,7 +194,7 @@ export function ContentsTask() {
      */
     #addStaff() {
       const filedset = ElmUtils.createElm("form-fieldset");
-      filedset.icon = SvgUtils.createIcon(SvgConst.UserPaths);
+      filedset.icon = SvgUtils.createIcon(SvgConst.CirclesPaths);
       filedset.title = "担当者";
       filedset.required = true;
 
@@ -203,11 +203,13 @@ export function ContentsTask() {
       this._staffDiv = ElmUtils.createElm("form-input", "staff-div");
 
       fildsetStaffDiv.addItem(this._staffDiv);
+      fildsetStaffDiv.icon = SvgUtils.createIcon(SvgConst.WallpaperPaths);
       fildsetStaffDiv.title = "所属";
       this._staffDiv.placeholder = "情報システム課";
 
       // 担当者の氏名
       const fildsetStaffName = ElmUtils.createElm("form-fieldset");
+      fildsetStaffName.icon = SvgUtils.createIcon(SvgConst.UserPaths);
       this._staffName = ElmUtils.createElm("form-input", "staff-name");
 
       fildsetStaffName.addItem(this._staffName);
@@ -216,6 +218,7 @@ export function ContentsTask() {
 
       // 担当者の電話番号
       const fildsetStaffTel = ElmUtils.createElm("form-fieldset");
+      fildsetStaffTel.icon = SvgUtils.createIcon(SvgConst.PhoneCallPaths);
       this._staffTel = ElmUtils.createElm("form-input", "staff-tel");
 
       fildsetStaffTel.addItem(this._staffTel);

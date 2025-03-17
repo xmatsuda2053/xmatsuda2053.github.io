@@ -574,4 +574,67 @@ export class SvgConst {
       },
     ],
   };
+
+  /**
+   * 壁紙SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static WallpaperPaths = {
+    name: "icon-wallpaper",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M8 6h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12",
+      },
+      {
+        path: "M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",
+      },
+      {
+        path: "M8 18v-12a2 2 0 1 0 -4 0v12",
+      },
+    ],
+  };
+
+  /**
+   * 三重円SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static CirclesPaths = {
+    name: "icon-circles",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+      },
+      {
+        path: "M6.5 17m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+      },
+      {
+        path: "M17.5 17m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+      },
+    ],
+  };
+
+  /**
+   * 電話コールSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static PhoneCallPaths = {
+    name: "icon-phone-call",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2",
+      },
+      {
+        path: "M15 7a2 2 0 0 1 2 2",
+      },
+      {
+        path: "M15 3a6 6 0 0 1 6 6",
+      },
+    ],
+  };
 }
