@@ -9,6 +9,10 @@ fieldset {
   position: relative;
   padding-bottom: 1.25rem;
 
+  &.item-less {
+    padding-bottom: 0;
+  }
+
   legend {
     margin-bottom: 0.3rem;
     font-weight: bold;

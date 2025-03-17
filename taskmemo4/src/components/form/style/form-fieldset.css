@@ -402,6 +402,9 @@ fieldset {
   position: relative;
   padding-bottom: 1.25rem;
 }
+fieldset.item-less {
+  padding-bottom: 0;
+}
 fieldset legend {
   margin-bottom: 0.3rem;
   font-weight: bold;

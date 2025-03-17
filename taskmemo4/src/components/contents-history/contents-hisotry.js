@@ -26,10 +26,11 @@ export function ContentsHistory() {
       this.root = ElmUtils.createElm("div", "root", ["contents-history"]);
 
       // タイトル追加
-      const title = ElmUtils.createElm("div", "contents-title");
-      title.appendChild(SvgUtils.createIcon(SvgConst.HistoryPaths));
-      title.appendChild(document.createTextNode("履歴一覧"));
-      this.root.appendChild(title);
+      const fieldset = ElmUtils.createElm("form-fieldset");
+      fieldset.icon = SvgUtils.createIcon(SvgConst.HistoryPaths);
+      fieldset.title = "履歴一覧";
+      fieldset.itemLess = true;
+      this.root.appendChild(fieldset);
 
       // ボタン追加
       const floatBtns = ElmUtils.createFloatArea();

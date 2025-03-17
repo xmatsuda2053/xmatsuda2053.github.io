@@ -53,7 +53,7 @@ export function FormFieldset() {
 
     /**
      * フィールドセットのlegendに必須クラスを設定します。
-     * @param {boolean} val - クラスを追加するかどうかのブール値。
+     * @param {bool} val - クラスを追加するかどうかのブール値。
      */
     set required(val) {
       this.legend.classList.toggle("isRequired", val);
@@ -61,11 +61,20 @@ export function FormFieldset() {
 
     /**
      * ネスト項目であるか否かを設定
-     * @param {string} val 設定値
+     * @param {bool} val 設定値
      * @return {void}
      */
     set nested(val) {
       this.fieldset.classList.toggle("nested", val);
+    }
+
+    /**
+     * アイテムを持たないフィールドであることを設定
+     * @param {bool} val 設定値
+     * @return {void}
+     */
+    set itemLess(val) {
+      this.fieldset.classList.toggle("item-less", val);
     }
 
     /**
