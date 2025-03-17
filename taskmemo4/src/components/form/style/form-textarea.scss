@@ -30,10 +30,10 @@ textarea {
   word-break: break-all;
 
   &.borderless {
-    $borderless-bg-color-hover: #efefef;
+    $borderless-bg-color-hover: #fff6da;
+
     padding: 0.15rem 0.25rem;
     border: none;
-
     transition: 0.2s;
 
     &:hover,

@@ -427,7 +427,7 @@ textarea.borderless {
   transition: 0.2s;
 }
 textarea.borderless:hover, textarea.borderless:focus {
-  background-color: #efefef;
+  background-color: #fff6da;
 }
 
 #view-area {
