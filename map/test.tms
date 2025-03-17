@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<maps>
+  <map version="1.0" name="GeoServer TMS">
+    <description>GeoServer Tile Map Service</description>
+    <maxzoom>16</maxzoom>
+    <minzoom>0</minzoom>
+    <tilesize>256</tilesize>
+    <url>
+      <![CDATA[
+      http://localhost:8080/geoserver/gwc/service/tms/1.0.0/tableau_gis%3Atest@Test_6674@png/{z}/{x}/{y}.png
+      ]]>
+    </url>
+    <parameters>
+      <parameter name="x">x</parameter>
+      <parameter name="y">y</parameter>
+      <parameter name="z">z</parameter>
+    </parameters>
+  </map>
+</maps>
