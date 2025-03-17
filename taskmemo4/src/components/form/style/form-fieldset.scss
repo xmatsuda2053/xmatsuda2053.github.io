@@ -2,6 +2,7 @@
 @use "../../_style/font";
 @use "../../_style/svg";
 
+$legend-color: #4f4f4f;
 $requied-bg-color: #fb4141;
 $requied-color: #fffffb;
 
@@ -21,6 +22,8 @@ fieldset {
     align-items: center;
     line-height: 1rem;
 
+    color: $legend-color;
+
     .svg-icon {
       height: 1rem;
       width: 1rem;
@@ -28,7 +31,7 @@ fieldset {
     }
 
     p {
-      padding-top: 0.05rem;
+      padding-top: 0.1rem;
     }
 
     &.isRequired {

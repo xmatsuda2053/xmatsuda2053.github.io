@@ -412,6 +412,7 @@ fieldset legend {
   display: flex;
   align-items: center;
   line-height: 1rem;
+  color: #4f4f4f;
 }
 fieldset legend .svg-icon {
   height: 1rem;
@@ -419,7 +420,7 @@ fieldset legend .svg-icon {
   margin-right: 0.35rem;
 }
 fieldset legend p {
-  padding-top: 0.05rem;
+  padding-top: 0.1rem;
 }
 fieldset legend.isRequired:after {
   content: "必須";
