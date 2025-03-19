@@ -1,5 +1,6 @@
 // CSS
 import { ElmUtils } from "../../utils/elm-utils";
+import { IdUtils } from "../../utils/id-utils";
 import { EventUtils } from "../../utils/event-utils";
 import { EventConst } from "../../constants/event-const";
 import { SvgConst } from "../../constants/svg-const";
@@ -294,6 +295,7 @@ export function TreeView() {
       // ボタンを追加
       this.#insertAddTaskButton();
       this.#insertAddGroupButton();
+      this.#insertSeparatorItemButton();
       this.menu.addBorder();
       this.#insertDeleteItemButton();
 
@@ -308,6 +310,7 @@ export function TreeView() {
 
         const isTask = e.target.tagName.toLowerCase() === "task-title";
         const isGroup = e.target.tagName.toLowerCase() === "group-title";
+        const isSeparator = e.target.dataset.type === "separator";
 
         // ターゲットがタスクの場合、追加ボタンを無効
         if (isTask) {
@@ -316,7 +319,7 @@ export function TreeView() {
         }
 
         // ターゲットがアイテム以外の場合、削除ボタンを無効
-        if (!isTask && !isGroup) {
+        if (!isTask && !isGroup && !isSeparator) {
           this.menu.setDisabled("delete-item");
         }
 
@@ -432,6 +435,34 @@ export function TreeView() {
     }
 
     /**
+     * アイテムのセパレーターを設置するためのボタンを作成し、メニューに追加します。
+     */
+    #insertSeparatorItemButton() {
+      const id = "separator-item";
+      const title = "セパレーター";
+      this.menu.addButton(id, title, SvgConst.LinePaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const root = this.#getMenuTarget(this.menu.clickTarget);
+        const item = this.#createNewSeparatorItem();
+
+        item.classList.add("fade-in");
+        root.appendChild(item);
+        setTimeout(() => {
+          item.classList.add("show");
+        }, 100);
+
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
      * アイテムを削除するためのボタンを作成し、メニューに追加します。
      * ボタンがクリックされたときのイベントリスナーを設定します。
      * @private
@@ -475,6 +506,7 @@ export function TreeView() {
         nodes.forEach((node) => {
           const isTask = node.dataset.type === "task";
           const isGroup = node.dataset.type === "group";
+          const isSeparator = node.dataset.type === "separator";
 
           if (isTask) {
             const task = node.querySelector("task-title");
@@ -486,6 +518,11 @@ export function TreeView() {
             const data = group.getData();
             data.children = getAllElement(items.childNodes);
             elements.push(data);
+          } else if (isSeparator) {
+            elements.push({
+              id: node.id,
+              type: "separator",
+            });
           } else {
             // 何もしない
           }
@@ -565,11 +602,15 @@ export function TreeView() {
        * @private
        */
       const addTreeViewItem = (root, data) => {
-        if (data.type === "task") {
+        const isTask = data.type === "task";
+        const isGroup = data.type === "group";
+        const isSeparator = data.type === "separator";
+
+        if (isTask) {
           // タスクを追加
           const task = this.#createNewTaskItem(data);
           root.appendChild(task);
-        } else {
+        } else if (isGroup) {
           // グループを追加
           const group = this.#createNewGroupItem(data);
           root.appendChild(group);
@@ -580,6 +621,12 @@ export function TreeView() {
           (children || []).forEach((child) => {
             addTreeViewItem(items, child);
           });
+        } else if (isSeparator) {
+          // セパレーターを追加
+          const separator = this.#createNewSeparatorItem(data);
+          root.appendChild(separator);
+        } else {
+          // 何もしない
         }
       };
 
@@ -591,6 +638,30 @@ export function TreeView() {
     // *******************************************************
     // * TreeView要素の作成／削除
     // *******************************************************
+
+    /**
+     * セパレータを作成する作成する
+     * * @param {Object} [data={}] - アイテムの初期データ
+     * @returns {HTMLElement} item - 作成されたセパレータアイテム要素
+     */
+    #createNewSeparatorItem(data = {}) {
+      const separator = ElmUtils.createElm("div", null, [
+        "tree-item",
+        "separator",
+      ]);
+      this.#addDragEventListeners(separator);
+
+      separator.setAttribute("draggable", true);
+      separator.dataset.type = "separator";
+
+      if (data.id) {
+        separator.id = data.id;
+      } else {
+        separator.id = IdUtils.getUniqueId();
+      }
+
+      return separator;
+    }
 
     /**
      * 指定されたデータを元に新しいタスクアイテムを作成し、クリックイベントを設定します。
@@ -721,7 +792,6 @@ export function TreeView() {
             // 子要素に追加
             const items = target.querySelector(".group-items");
             items.insertAdjacentElement("beforeend", draggedElement);
-            console.log(nowPosition);
           }
         } else {
           target.insertAdjacentElement("beforebegin", draggedElement);

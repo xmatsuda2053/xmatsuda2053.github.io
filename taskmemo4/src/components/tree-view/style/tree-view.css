@@ -423,6 +423,25 @@ th {
 #root details .group-items {
   margin-left: 1.1rem;
 }
+#root .separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  position: relative;
+  border-radius: 0.15rem;
+  cursor: pointer;
+}
+#root .separator::after {
+  content: "";
+  position: absolute;
+  width: 85%;
+  height: 1px;
+  background-color: #8f8f8f;
+}
+#root .separator:hover, #root .separator.selected {
+  background-color: #fff0bd;
+}
 #root .dragging {
   opacity: 0.5;
 }

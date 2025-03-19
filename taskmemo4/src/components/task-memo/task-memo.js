@@ -214,7 +214,7 @@ export function TaskMemo() {
         EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME,
         async (e) => {
           const item = e.detail.item;
-          this.#addContentsGroup(item.id, item.name, group);
+          this.#addContentsGroup(item.id, item.name);
           await this.#saveTreeView();
         }
       );

@@ -637,4 +637,25 @@ export class SvgConst {
       },
     ],
   };
+
+  /**
+   * 線SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static LinePaths = {
+    name: "icon-line",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",
+      },
+      {
+        path: "M18 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",
+      },
+      {
+        path: "M7.5 16.5l9 -9",
+      },
+    ],
+  };
 }
