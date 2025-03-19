@@ -7916,7 +7916,6 @@ th {
   gap: 0em 0em;
   grid-template-areas: "task-property task-history";
   height: 100vh;
-  padding-bottom: 5rem;
 }
 #root #task-property {
   grid-area: task-property;
