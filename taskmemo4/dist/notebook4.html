@@ -7376,7 +7376,7 @@ function ContentsTask() {
       filedset.title = "作業概要";
 
       this._memo = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "memo");
-      this._memo.rows = 10;
+      this._memo.rows = 8;
       this._memo.placeholder = "タスクの概要説明";
 
       filedset.addItem(this._memo);
@@ -7441,7 +7441,7 @@ function ContentsTask() {
       filedset.title = "自由記述欄";
 
       this._freenotes = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "freenotes");
-      this._freenotes.rows = 10;
+      this._freenotes.rows = 8;
       this._freenotes.placeholder = "etc";
 
       filedset.addItem(this._freenotes);
@@ -7932,6 +7932,7 @@ th {
   gap: 0em 0em;
   grid-template-areas: "task-property task-history";
   height: 100vh;
+  padding-bottom: 5rem;
 }
 #root #task-property {
   grid-area: task-property;
@@ -10992,7 +10993,7 @@ function FormTextarea() {
       const editBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "edit");
       editBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_5__.SvgConst.EditPaths;
       editBtn.size = "1.5rem";
-      editBtn.color = "red";
+      editBtn.color = "blue";
       editBtn.hover = true;
       editBtn.toggle = true;
       editBtn.toggleOn = false;

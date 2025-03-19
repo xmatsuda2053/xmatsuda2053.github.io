@@ -216,7 +216,7 @@ export function FormTextarea() {
       const editBtn = ElmUtils.createElm("svg-btn", "edit");
       editBtn.iconPaths = SvgConst.EditPaths;
       editBtn.size = "1.5rem";
-      editBtn.color = "red";
+      editBtn.color = "blue";
       editBtn.hover = true;
       editBtn.toggle = true;
       editBtn.toggleOn = false;

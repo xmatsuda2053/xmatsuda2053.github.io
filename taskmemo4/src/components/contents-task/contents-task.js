@@ -299,7 +299,7 @@ export function ContentsTask() {
       filedset.title = "作業概要";
 
       this._memo = ElmUtils.createElm("form-textarea", "memo");
-      this._memo.rows = 10;
+      this._memo.rows = 8;
       this._memo.placeholder = "タスクの概要説明";
 
       filedset.addItem(this._memo);
@@ -364,7 +364,7 @@ export function ContentsTask() {
       filedset.title = "自由記述欄";
 
       this._freenotes = ElmUtils.createElm("form-textarea", "freenotes");
-      this._freenotes.rows = 10;
+      this._freenotes.rows = 8;
       this._freenotes.placeholder = "etc";
 
       filedset.addItem(this._freenotes);
