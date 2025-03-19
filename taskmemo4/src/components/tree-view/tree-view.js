@@ -715,12 +715,13 @@ export function TreeView() {
         }
       } else {
         if (nowPosition > 0.5) {
-          if (nowPosition >= 0.75) {
+          if (nowPosition >= 0.85) {
             target.insertAdjacentElement("afterend", draggedElement);
           } else {
             // 子要素に追加
             const items = target.querySelector(".group-items");
-            items.appendChild(draggedElement);
+            items.insertAdjacentElement("beforeend", draggedElement);
+            console.log(nowPosition);
           }
         } else {
           target.insertAdjacentElement("beforebegin", draggedElement);
