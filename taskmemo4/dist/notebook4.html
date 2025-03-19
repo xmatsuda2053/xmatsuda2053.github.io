@@ -1028,6 +1028,33 @@ class SvgConst {
   };
 
   /**
+   * カレンダー無効SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static CalendarOff = {
+    name: "icon-calendar-off",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M9 5h9a2 2 0 0 1 2 2v9m-.184 3.839a2 2 0 0 1 -1.816 1.161h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 1.158 -1.815",
+      },
+      {
+        path: "M16 3v4",
+      },
+      {
+        path: "M8 3v1",
+      },
+      {
+        path: "M4 11h7m4 0h5",
+      },
+      {
+        path: "M3 3l18 18",
+      },
+    ],
+  };
+
+  /**
    * アンテナSVGのパスデータを含むオブジェクトの配列を生成する。
    * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
    * @returns {string} return.path - SVGのパス情報。
@@ -4183,7 +4210,6 @@ function TreeView() {
             // 子要素に追加
             const items = target.querySelector(".group-items");
             items.insertAdjacentElement("beforeend", draggedElement);
-            console.log(nowPosition);
           }
         } else {
           target.insertAdjacentElement("beforebegin", draggedElement);
@@ -10228,6 +10254,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
 /* harmony import */ var _style_form_date_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(37);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+
 
 
 
@@ -10240,6 +10268,8 @@ __webpack_require__.r(__webpack_exports__);
  * @extends {HTMLElement}
  */
 function FormDate() {
+  const OFF_DATE = "3000-12-31";
+
   class FormDate extends HTMLElement {
     /**
      * コンストラクタ
@@ -10259,7 +10289,26 @@ function FormDate() {
       this.input = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("input");
       this.input.type = "date";
 
+      // 無効ボタンを作成
+      this.offButton = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "calendar-off");
+      this.offButton.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.CalendarOff;
+      this.offButton.size = "1rem";
+      this.offButton.color = "red";
+      this.offButton.hover = true;
+      this.offButton.toggle = true;
+      this.offButton.toggleOn(false);
+
+      this.offButton.addEventListener("click", () => {
+        this.value = this.offButton.toggle ? OFF_DATE : "";
+        this.input.classList.toggle("off", this.offButton.toggle);
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+
+      // 要素追加
       this.shadowRoot.appendChild(this.input);
+      this.shadowRoot.appendChild(this.offButton);
 
       // 変更イベントを伝播
       this.input.addEventListener("change", () => {
@@ -10276,6 +10325,10 @@ function FormDate() {
      */
     set value(val) {
       this.input.value = val;
+      if (val === OFF_DATE) {
+        this.offButton.toggleOn(true);
+        this.input.classList.add("off");
+      }
     }
 
     /**
@@ -10693,6 +10746,14 @@ input[type=date] {
   border-radius: 0.25rem;
   line-height: 1.5rem;
   padding: 0.1rem 0.25rem;
+}
+input[type=date].off {
+  pointer-events: none;
+  color: #ffffff;
+}
+
+#calendar-off {
+  margin-left: 0.25rem;
 }
 `, ""]);
 // Exports

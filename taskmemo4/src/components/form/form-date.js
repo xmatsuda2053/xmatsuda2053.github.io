@@ -3,6 +3,7 @@ import { EventUtils } from "../../utils/event-utils";
 import { EventConst } from "../../constants/event-const";
 
 import styles from "./style/form-date.css";
+import { SvgConst } from "../../constants/svg-const";
 
 /**
  * FormDate コンポーネント
@@ -10,6 +11,8 @@ import styles from "./style/form-date.css";
  * @extends {HTMLElement}
  */
 export function FormDate() {
+  const OFF_DATE = "3000-12-31";
+
   class FormDate extends HTMLElement {
     /**
      * コンストラクタ
@@ -29,7 +32,26 @@ export function FormDate() {
       this.input = ElmUtils.createElm("input");
       this.input.type = "date";
 
+      // 無効ボタンを作成
+      this.offButton = ElmUtils.createElm("svg-btn", "calendar-off");
+      this.offButton.iconPaths = SvgConst.CalendarOff;
+      this.offButton.size = "1rem";
+      this.offButton.color = "red";
+      this.offButton.hover = true;
+      this.offButton.toggle = true;
+      this.offButton.toggleOn(false);
+
+      this.offButton.addEventListener("click", () => {
+        this.value = this.offButton.toggle ? OFF_DATE : "";
+        this.input.classList.toggle("off", this.offButton.toggle);
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+
+      // 要素追加
       this.shadowRoot.appendChild(this.input);
+      this.shadowRoot.appendChild(this.offButton);
 
       // 変更イベントを伝播
       this.input.addEventListener("change", () => {
@@ -46,6 +68,10 @@ export function FormDate() {
      */
     set value(val) {
       this.input.value = val;
+      if (val === OFF_DATE) {
+        this.offButton.toggleOn(true);
+        this.input.classList.add("off");
+      }
     }
 
     /**
