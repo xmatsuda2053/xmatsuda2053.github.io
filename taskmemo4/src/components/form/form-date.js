@@ -37,7 +37,6 @@ export function FormDate() {
       this.offButton.iconPaths = SvgConst.CalendarOff;
       this.offButton.size = "1rem";
       this.offButton.color = "red";
-      this.offButton.hover = true;
       this.offButton.toggle = true;
       this.offButton.toggleOn(false);
       this.#setToolTip();

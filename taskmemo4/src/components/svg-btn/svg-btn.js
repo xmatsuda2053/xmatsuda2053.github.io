@@ -101,6 +101,7 @@ export function SvgBtn() {
      */
     set toggle(flag) {
       this.isToggle = flag;
+      this.button.classList.toggle("toggle", flag);
     }
 
     /**

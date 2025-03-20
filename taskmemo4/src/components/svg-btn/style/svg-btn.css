@@ -443,19 +443,22 @@ button.hover.black:hover {
   color: #000000;
   background-color: #fdfbee;
 }
-button.toggle-on.red {
+button.toggle {
+  color: #8f8f8f;
+}
+button.toggle.toggle-on.red {
   color: #d84040;
 }
-button.toggle-on.green {
+button.toggle.toggle-on.green {
   color: #0e7405;
 }
-button.toggle-on.blue {
+button.toggle.toggle-on.blue {
   color: #003092;
 }
-button.toggle-on.white {
+button.toggle.toggle-on.white {
   color: #fffffb;
 }
-button.toggle-on.black {
+button.toggle.toggle-on.black {
   color: #000000;
 }
 button #tooltip {

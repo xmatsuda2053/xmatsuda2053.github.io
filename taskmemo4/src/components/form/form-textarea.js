@@ -217,7 +217,6 @@ export function FormTextarea() {
       editBtn.iconPaths = SvgConst.EditPaths;
       editBtn.size = "1.5rem";
       editBtn.color = "blue";
-      editBtn.hover = true;
       editBtn.toggle = true;
       editBtn.toggleOn = false;
 

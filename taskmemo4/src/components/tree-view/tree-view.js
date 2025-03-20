@@ -113,7 +113,6 @@ export function TreeView() {
       btn.iconPaths = paths;
       btn.size = "1.15rem";
       btn.color = "black";
-      btn.hover = true;
       return btn;
     }
 
@@ -136,6 +135,7 @@ export function TreeView() {
      */
     #createAllOpenButton() {
       const btn = this.#createButton("all-open", SvgConst.treeOpenPaths);
+      btn.hover = true;
       btn.tooltip = "すべて開く";
       btn.addEventListener("click", () => {
         const details = this.root.querySelectorAll("details");
@@ -151,6 +151,7 @@ export function TreeView() {
      */
     #createAllCloseButton() {
       const btn = this.#createButton("all-close", SvgConst.treeClosePaths);
+      btn.hover = true;
       btn.tooltip = "すべて閉じる";
       btn.addEventListener("click", () => {
         const details = this.root.querySelectorAll("details");
