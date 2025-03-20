@@ -45,7 +45,7 @@ textarea {
 #view-area {
   $link-color: #000000;
   $link-color-hover: #fffff8;
-  $link-bgcolor: #fffdec;
+  $link-bgcolor: #fffff8;
   $link-bgcolor-hover: #0078d4;
 
   padding-top: 0.2rem;
@@ -64,6 +64,7 @@ textarea {
       padding-right: 0.25rem;
       margin-bottom: 0.25rem;
 
+      border: 1px solid $border-color;
       border-radius: 0.25rem;
       color: $link-color;
       background-color: $link-bgcolor;

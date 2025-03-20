@@ -444,9 +444,10 @@ textarea.borderless {
   padding-left: 1.5rem;
   padding-right: 0.25rem;
   margin-bottom: 0.25rem;
+  border: 1px solid #6f6f6f;
   border-radius: 0.25rem;
   color: #000000;
-  background-color: #fffdec;
+  background-color: #fffff8;
   cursor: pointer;
   transition: 0.2s;
 }
