@@ -385,6 +385,9 @@ input[type=date] {
   line-height: 1.5rem;
   padding: 0.1rem 0.25rem;
 }
+input[type=date]:hover, input[type=date]:focus {
+  background-color: #fff6da;
+}
 input[type=date].off {
   pointer-events: none;
   color: #ffffff;

@@ -3,6 +3,7 @@
 
 $bg-color: #fffff8;
 $bg-color-readonly: #dfdfdf;
+$bg-color-hover: #fff6da;
 $border-color: #6f6f6f;
 $off-color: #ffffff;
 
@@ -13,6 +14,11 @@ input[type="date"] {
   border-radius: 0.25rem;
   line-height: 1.5rem;
   padding: 0.1rem 0.25rem;
+
+  &:hover,
+  &:focus {
+    background-color: $bg-color-hover;
+  }
 
   &.off {
     pointer-events: none;
