@@ -135,7 +135,9 @@ export function ContentsGroup() {
 
           // 期日
           this.table.addTd();
-          this.table.setTdElment(item.duedate);
+          this.table.setTdElment(
+            item.duedate !== "3000-12-31" ? item.duedate : "-"
+          );
           this.table.setTdWidth("100px");
           this.table.setTdAlign("center");
 
