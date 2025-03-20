@@ -29,6 +29,7 @@ export function FormInput() {
       this.input = ElmUtils.createElm("input");
       this.input.type = "text";
       this.input.style = "width:100%";
+      this.input.spellcheck = false;
 
       this.shadowRoot.appendChild(this.input);
 
