@@ -421,13 +421,13 @@ textarea {
   overflow-y: hidden;
   word-break: break-all;
 }
+textarea:hover, textarea:focus {
+  background-color: #fff6da;
+}
 textarea.borderless {
   padding: 0.15rem 0.25rem;
   border: none;
   transition: 0.2s;
-}
-textarea.borderless:hover, textarea.borderless:focus {
-  background-color: #fff6da;
 }
 
 #view-area {
