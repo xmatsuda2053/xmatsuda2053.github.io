@@ -577,14 +577,16 @@ export function TreeView() {
 
       const items = [];
       for (let elm of childElms) {
-        const item = elm.querySelectorAll("task-title,group-title")[0];
-        const data = item.getData();
-        data.id = item.id;
-        if (data.type === "task") {
-          data.paths = item.paths;
-          data.flag = item.flag;
+        const item = elm.querySelector("task-title,group-title");
+        if (item) {
+          const data = item.getData();
+          data.id = item.id;
+          if (data.type === "task") {
+            data.paths = item.paths;
+            data.flag = item.flag;
+          }
+          items.push(data);
         }
-        items.push(data);
       }
 
       return items;
