@@ -469,6 +469,7 @@ button #tooltip {
   border-radius: 0.25rem;
   padding: 0.25rem 0;
   text-align: center;
+  font-size: 0.65rem;
   opacity: 0;
   transition: 0.25s;
 }
