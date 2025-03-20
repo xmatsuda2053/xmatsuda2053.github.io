@@ -3,7 +3,7 @@
 @use "../../_style/font";
 
 $separator-bg-color: #fff0bd;
-$border-color: #8f8f8f;
+$border-color: #afafaf;
 
 #header-menu {
   padding: 0.5rem 0;
@@ -40,7 +40,6 @@ $border-color: #8f8f8f;
     justify-content: center;
     height: 1.25rem;
     position: relative;
-
     border-radius: 0.15rem;
 
     cursor: pointer;
