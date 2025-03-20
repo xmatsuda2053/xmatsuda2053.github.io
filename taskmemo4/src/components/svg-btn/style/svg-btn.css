@@ -397,7 +397,10 @@ th {
   font-family: monospace;
 }
 
-.circle {
+button {
+  position: relative;
+}
+button.circle {
   z-index: 99999;
   color: #fffffb;
   background-color: #0a3981;
@@ -407,55 +410,68 @@ th {
   border-radius: 50%;
   transition: 0.2s;
 }
-.circle:hover {
+button.circle:hover {
   color: #0a3981;
   background-color: #fffff8;
   border-color: #0a3981;
 }
-.circle .svg-icon {
+button.circle .svg-icon {
   font-size: 1.8rem;
 }
-
-.hover {
+button.hover {
   color: #8f8f8f;
   border-radius: 0.25rem;
   transition: 0.2s;
 }
-.hover.red:hover {
+button.hover.red:hover {
   color: #d84040;
   background-color: #fdfbee;
 }
-.hover.green:hover {
+button.hover.green:hover {
   color: #0e7405;
   background-color: #fdfbee;
 }
-.hover.blue:hover {
+button.hover.blue:hover {
   color: #003092;
   background-color: #fdfbee;
 }
-.hover.white:hover {
+button.hover.white:hover {
   color: #fffffb;
   background-color: #fdfbee;
 }
-.hover.black:hover {
+button.hover.black:hover {
   color: #000000;
   background-color: #fdfbee;
 }
-
-.toggle-on.red {
+button.toggle-on.red {
   color: #d84040;
 }
-.toggle-on.green {
+button.toggle-on.green {
   color: #0e7405;
 }
-.toggle-on.blue {
+button.toggle-on.blue {
   color: #003092;
 }
-.toggle-on.white {
+button.toggle-on.white {
   color: #fffffb;
 }
-.toggle-on.black {
+button.toggle-on.black {
   color: #000000;
+}
+button #tooltip {
+  position: absolute;
+  top: 1.25rem;
+  left: 0.5rem;
+  color: #fffffb;
+  background-color: #2f2f2f;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0;
+  text-align: center;
+  opacity: 0;
+  transition: 0.25s;
+}
+button:hover > #tooltip {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=svg-btn.css.map */

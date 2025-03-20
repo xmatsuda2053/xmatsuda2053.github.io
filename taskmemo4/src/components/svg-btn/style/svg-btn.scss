@@ -19,89 +19,116 @@ $blue: #003092;
 $white: #fffffb;
 $black: #000000;
 
-.circle {
-  z-index: 99999;
-  color: $circle-font-color;
-  background-color: $circle-bg-color;
-  border: 1px solid $circle-border-color;
-  box-shadow: 0px 3px 3px 0px $circle-shodow-color;
+$tooltip-color: #fffffb;
+$tooltip-bg-color: #2f2f2f;
 
-  padding: 0.5rem;
-  border-radius: 50%;
+button {
+  position: relative;
 
-  transition: 0.2s;
+  &.circle {
+    z-index: 99999;
+    color: $circle-font-color;
+    background-color: $circle-bg-color;
+    border: 1px solid $circle-border-color;
+    box-shadow: 0px 3px 3px 0px $circle-shodow-color;
 
-  &:hover {
-    color: $circle-font-color-hover;
-    background-color: $circle-bg-color-hover;
-    border-color: $circle-border-color-hover;
-  }
+    padding: 0.5rem;
+    border-radius: 50%;
 
-  .svg-icon {
-    font-size: 1.8rem;
-  }
-}
+    transition: 0.2s;
 
-.hover {
-  color: $hover-before-color;
-  border-radius: 0.25rem;
-
-  transition: 0.2s;
-
-  &.red {
     &:hover {
+      color: $circle-font-color-hover;
+      background-color: $circle-bg-color-hover;
+      border-color: $circle-border-color-hover;
+    }
+
+    .svg-icon {
+      font-size: 1.8rem;
+    }
+  }
+
+  &.hover {
+    color: $hover-before-color;
+    border-radius: 0.25rem;
+
+    transition: 0.2s;
+
+    &.red {
+      &:hover {
+        color: $red;
+        background-color: $hover-bg-color;
+      }
+    }
+
+    &.green {
+      &:hover {
+        color: $green;
+        background-color: $hover-bg-color;
+      }
+    }
+
+    &.blue {
+      &:hover {
+        color: $blue;
+        background-color: $hover-bg-color;
+      }
+    }
+
+    &.white {
+      &:hover {
+        color: $white;
+        background-color: $hover-bg-color;
+      }
+    }
+
+    &.black {
+      &:hover {
+        color: $black;
+        background-color: $hover-bg-color;
+      }
+    }
+  }
+
+  &.toggle-on {
+    &.red {
       color: $red;
-      background-color: $hover-bg-color;
     }
-  }
 
-  &.green {
-    &:hover {
+    &.green {
       color: $green;
-      background-color: $hover-bg-color;
     }
-  }
 
-  &.blue {
-    &:hover {
+    &.blue {
       color: $blue;
-      background-color: $hover-bg-color;
     }
-  }
 
-  &.white {
-    &:hover {
+    &.white {
       color: $white;
-      background-color: $hover-bg-color;
     }
-  }
 
-  &.black {
-    &:hover {
+    &.black {
       color: $black;
-      background-color: $hover-bg-color;
     }
   }
-}
 
-.toggle-on {
-  &.red {
-    color: $red;
+  #tooltip {
+    position: absolute;
+    top: 1.25rem;
+    left: 0.5rem;
+
+    color: $tooltip-color;
+    background-color: $tooltip-bg-color;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0;
+
+    text-align: center;
+
+    opacity: 0;
+    transition: 0.25s;
   }
 
-  &.green {
-    color: $green;
-  }
-
-  &.blue {
-    color: $blue;
-  }
-
-  &.white {
-    color: $white;
-  }
-
-  &.black {
-    color: $black;
+  &:hover > #tooltip {
+    opacity: 1;
   }
 }

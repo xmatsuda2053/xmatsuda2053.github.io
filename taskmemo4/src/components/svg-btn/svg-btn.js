@@ -33,7 +33,7 @@ export function SvgBtn() {
       this.isToggle = false;
 
       // 空のボタンを作成
-      this.button = document.createElement("button");
+      this.button = ElmUtils.createElm("button");
       this.button.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -118,6 +118,22 @@ export function SvgBtn() {
      */
     toggleOn(flag) {
       this.button.classList.toggle("toggle-on", flag);
+    }
+
+    /**
+     * ツールチップメッセージの設定を行うセッター
+     * @param {string} text - ヒントメッセージ
+     */
+    set tooltip(text) {
+      if (!this._tooltip) {
+        this._tooltip = ElmUtils.createElm("div", "tooltip");
+        this.button.appendChild(this._tooltip);
+      }
+      this._tooltip.innerHTML = "&emsp;";
+      this._tooltip.style = `width: ${text.length * 1.05}rem`;
+      setTimeout(() => {
+        this._tooltip.innerText = text;
+      }, 250);
     }
   }
   customElements.define("svg-btn", SvgBtn);

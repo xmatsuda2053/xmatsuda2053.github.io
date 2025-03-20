@@ -136,6 +136,7 @@ export function TreeView() {
      */
     #createAllOpenButton() {
       const btn = this.#createButton("all-open", SvgConst.treeOpenPaths);
+      btn.tooltip = "すべて開く";
       btn.addEventListener("click", () => {
         const details = this.root.querySelectorAll("details");
         details.forEach((detail) => (detail.open = true));
@@ -150,6 +151,7 @@ export function TreeView() {
      */
     #createAllCloseButton() {
       const btn = this.#createButton("all-close", SvgConst.treeClosePaths);
+      btn.tooltip = "すべて閉じる";
       btn.addEventListener("click", () => {
         const details = this.root.querySelectorAll("details");
         details.forEach((detail) => (detail.open = false));
@@ -167,6 +169,7 @@ export function TreeView() {
         "filter-not-started",
         SvgConst.squarePaths
       );
+      this.btnFilterNotStarted.tooltip = "未着手";
       this.btnFilterNotStarted.addEventListener("click", () => {
         this.#filterTreeViewItem();
       });
@@ -182,6 +185,7 @@ export function TreeView() {
         "filter-started",
         SvgConst.squareDotPaths
       );
+      this.btnFilterStarted.tooltip = "対応中";
       this.btnFilterStarted.addEventListener("click", () => {
         this.#filterTreeViewItem();
       });
@@ -197,6 +201,7 @@ export function TreeView() {
         "filter-completed",
         SvgConst.squareCheckPaths
       );
+      this.btnFilterComplet.tooltip = "完了";
       this.btnFilterComplet.addEventListener("click", () => {
         this.#filterTreeViewItem();
       });
@@ -212,6 +217,7 @@ export function TreeView() {
         "filter-over-deadline",
         SvgConst.squareAlertPaths
       );
+      this.btnFilterOverDeadline.tooltip = "遅延";
       this.btnFilterOverDeadline.color = "red";
       this.btnFilterOverDeadline.addEventListener("click", () => {
         this.#filterTreeViewItem();
@@ -227,6 +233,7 @@ export function TreeView() {
       const btn = this.#createToggleButton("item-filter", SvgConst.FilterPaths);
       btn.color = "green";
       btn.toggleOn(false);
+      btn.tooltip = "フィルタ";
 
       this.searchText = "";
       this.searchResult = [];

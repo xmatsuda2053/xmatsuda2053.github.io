@@ -40,10 +40,12 @@ export function FormDate() {
       this.offButton.hover = true;
       this.offButton.toggle = true;
       this.offButton.toggleOn(false);
+      this.#setToolTip();
 
       this.offButton.addEventListener("click", () => {
         this.value = this.offButton.toggle ? OFF_DATE : "";
         this.input.classList.toggle("off", this.offButton.toggle);
+        this.#setToolTip();
         this.dispatchEvent(
           EventUtils.createEvent(EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
         );
@@ -62,6 +64,17 @@ export function FormDate() {
     }
 
     /**
+     * ツールチップメッセージを設定する
+     */
+    #setToolTip() {
+      if (this.offButton.toggle) {
+        this.offButton.tooltip = "無効解除";
+      } else {
+        this.offButton.tooltip = "無効";
+      }
+    }
+
+    /**
      * Inputに値を設定する
      * @param {string} val 設定値
      * @return {void}
@@ -71,6 +84,7 @@ export function FormDate() {
       if (val === OFF_DATE) {
         this.offButton.toggleOn(true);
         this.input.classList.add("off");
+        this.#setToolTip();
       }
     }
 
