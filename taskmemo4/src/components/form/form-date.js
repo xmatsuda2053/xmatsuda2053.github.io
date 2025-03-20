@@ -67,9 +67,9 @@ export function FormDate() {
      */
     #setToolTip() {
       if (this.offButton.toggle) {
-        this.offButton.tooltip = "無効解除";
+        this.offButton.tooltip = "無効を解除";
       } else {
-        this.offButton.tooltip = "無効";
+        this.offButton.tooltip = "無効にする";
       }
     }
 
