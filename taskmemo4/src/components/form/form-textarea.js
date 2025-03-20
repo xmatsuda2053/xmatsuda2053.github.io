@@ -215,10 +215,12 @@ export function FormTextarea() {
 
       const editBtn = ElmUtils.createElm("svg-btn", "edit");
       editBtn.iconPaths = SvgConst.EditPaths;
-      editBtn.size = "1.5rem";
+      editBtn.size = "1.15rem";
       editBtn.color = "blue";
       editBtn.toggle = true;
       editBtn.toggleOn = false;
+      editBtn.tooltip = "編集";
+      editBtn.tooltipAlign = "right";
 
       editBtn.addEventListener("click", () => {
         this.textarea.classList.remove("fade-in", "show");
@@ -227,6 +229,8 @@ export function FormTextarea() {
         const isEditMode = editBtn.toggle;
         const showItem = isEditMode ? this.textarea : this.viewArea;
         const hideItem = isEditMode ? this.viewArea : this.textarea;
+
+        editBtn.tooltip = editBtn.toggle ? "完了" : "編集";
 
         showItem.classList.remove("hidden");
         hideItem.classList.add("hidden");

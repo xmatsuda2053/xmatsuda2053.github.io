@@ -464,7 +464,6 @@ button.toggle.toggle-on.black {
 button #tooltip {
   position: absolute;
   top: 1.25rem;
-  left: 0.5rem;
   color: #fffffb;
   background-color: #2f2f2f;
   border-radius: 0.25rem;
@@ -472,6 +471,12 @@ button #tooltip {
   text-align: center;
   opacity: 0;
   transition: 0.25s;
+}
+button #tooltip.left {
+  left: 0.5rem;
+}
+button #tooltip.right {
+  right: 0.5rem;
 }
 button:hover > #tooltip {
   opacity: 1;
