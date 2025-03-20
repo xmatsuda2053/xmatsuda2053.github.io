@@ -25,6 +25,10 @@ $border-color: #afafaf;
   height: 100%;
   padding: 0.5rem;
 
+  .tree-item {
+    margin: 1px 0;
+  }
+
   details {
     summary {
       list-style: none;
