@@ -30,7 +30,7 @@ export function ContentsGroup() {
 
       // 空の要素を作成
       this.root = ElmUtils.createElm("div", "root", ["contents-group"]);
-      this.property = ElmUtils.createElm("div", "group-property");
+      this.property = ElmUtils.createElm("div", "group-property", ["scroll"]);
       this.memo = ElmUtils.createElm("div", "group-memo", ["scroll"]);
       this.list = ElmUtils.createElm("div", "group-list", ["scroll"]);
 

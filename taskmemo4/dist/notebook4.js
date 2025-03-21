@@ -6312,7 +6312,7 @@ function ContentsGroup() {
 
       // 空の要素を作成
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["contents-group"]);
-      this.property = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-property");
+      this.property = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-property", ["scroll"]);
       this.memo = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-memo", ["scroll"]);
       this.list = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-list", ["scroll"]);
 
@@ -7113,7 +7113,7 @@ th {
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 250px 1fr;
+  grid-template-rows: 300px 1fr;
   gap: 0em 0em;
   grid-template-areas: "group-property group-memo" "group-list group-list";
   height: 100vh;
@@ -11586,7 +11586,9 @@ textarea.borderless {
   position: relative;
   width: 100%;
   word-break: break-all;
-  line-height: 1.3rem;
+  line-height: 1.1em;
+  padding-top: 0.4rem;
+  padding-bottom: 0.35rem;
   padding-left: 1.5rem;
   padding-right: 0.25rem;
   margin-bottom: 0.25rem;
@@ -11608,7 +11610,7 @@ textarea.borderless {
 #view-area ul li .svg-icon {
   position: absolute;
   left: 0.25rem;
-  top: 0.15rem;
+  top: 0.35rem;
   width: 1rem;
   height: 1rem;
 }
