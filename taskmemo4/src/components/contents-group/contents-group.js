@@ -29,10 +29,14 @@ export function ContentsGroup() {
       this.shadowRoot.adoptedStyleSheets = ElmUtils.createStylesheet(styles);
 
       // 空の要素を作成
-      this.root = ElmUtils.createElm("div", "root", [
-        "contents-group",
-        "scroll",
-      ]);
+      this.root = ElmUtils.createElm("div", "root", ["contents-group"]);
+      this.property = ElmUtils.createElm("div", "group-property");
+      this.memo = ElmUtils.createElm("div", "group-memo", ["scroll"]);
+      this.list = ElmUtils.createElm("div", "group-list", ["scroll"]);
+
+      this.root.appendChild(this.property);
+      this.root.appendChild(this.memo);
+      this.root.appendChild(this.list);
 
       this.#addGroupId();
       this.#addGroupTitle();
@@ -233,10 +237,9 @@ export function ContentsGroup() {
       this._groupId = ElmUtils.createElm("form-input", "id");
       this._groupId.title = "ID";
       this._groupId.readOnly = true;
-      this._groupId.width = "600px";
 
       filedset.addItem(this._groupId);
-      this.root.appendChild(filedset);
+      this.property.appendChild(filedset);
     }
 
     /**
@@ -263,10 +266,9 @@ export function ContentsGroup() {
       filedset.required = true;
 
       this._groupTitle = ElmUtils.createElm("form-input", "title");
-      this._groupTitle.width = "600px";
 
       filedset.addItem(this._groupTitle);
-      this.root.appendChild(filedset);
+      this.property.appendChild(filedset);
     }
 
     /**
@@ -293,13 +295,12 @@ export function ContentsGroup() {
       filedset.title = "作業フォルダパス";
 
       this._folderpath = ElmUtils.createElm("form-textarea", "folderpath");
-      this._folderpath.width = "600px";
       this._folderpath.rows = 3;
       this._folderpath.placeholder = "作業フォルダパス(E:\workspace)";
       this._folderpath.isFolderPath = true;
 
       filedset.addItem(this._folderpath);
-      this.root.appendChild(filedset);
+      this.property.appendChild(filedset);
     }
 
     // **************************************************
@@ -316,12 +317,11 @@ export function ContentsGroup() {
       filedset.title = "概要";
 
       this._groupOverview = ElmUtils.createElm("form-textarea", "overview");
-      this._groupOverview.width = "600px";
-      this._groupOverview.rows = 5;
+      this._groupOverview.rows = 9;
       this._groupOverview.placeholder = "グループの概要説明";
 
       filedset.addItem(this._groupOverview);
-      this.root.appendChild(filedset);
+      this.memo.appendChild(filedset);
     }
 
     // **************************************************
@@ -340,7 +340,7 @@ export function ContentsGroup() {
       this.table = ElmUtils.createElm("form-table");
 
       filedset.addItem(this.table);
-      this.root.appendChild(filedset);
+      this.list.appendChild(filedset);
     }
   }
   customElements.define("contents-group", ContentsGroup);

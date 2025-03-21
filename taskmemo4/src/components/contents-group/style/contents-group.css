@@ -415,9 +415,26 @@ th {
 }
 
 #root {
-  width: 100%;
-  height: 100%;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 250px 1fr;
+  gap: 0em 0em;
+  grid-template-areas: "group-property group-memo" "group-list group-list";
+  height: 100vh;
+}
+#root #group-property {
+  grid-area: group-property;
   padding: 0.75rem;
+}
+#root #group-memo {
+  grid-area: group-memo;
+  padding: 0.75rem;
+}
+#root #group-list {
+  grid-area: group-list;
+  padding: 0 0.75rem;
 }
 
 /*# sourceMappingURL=contents-group.css.map */

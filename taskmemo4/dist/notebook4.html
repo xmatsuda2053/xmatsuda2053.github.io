@@ -6327,10 +6327,14 @@ function ContentsGroup() {
       this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_contents_group_css__WEBPACK_IMPORTED_MODULE_6__["default"]);
 
       // 空の要素を作成
-      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", [
-        "contents-group",
-        "scroll",
-      ]);
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["contents-group"]);
+      this.property = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-property");
+      this.memo = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-memo", ["scroll"]);
+      this.list = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "group-list", ["scroll"]);
+
+      this.root.appendChild(this.property);
+      this.root.appendChild(this.memo);
+      this.root.appendChild(this.list);
 
       this.#addGroupId();
       this.#addGroupTitle();
@@ -6531,10 +6535,9 @@ function ContentsGroup() {
       this._groupId = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "id");
       this._groupId.title = "ID";
       this._groupId.readOnly = true;
-      this._groupId.width = "600px";
 
       filedset.addItem(this._groupId);
-      this.root.appendChild(filedset);
+      this.property.appendChild(filedset);
     }
 
     /**
@@ -6561,10 +6564,9 @@ function ContentsGroup() {
       filedset.required = true;
 
       this._groupTitle = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "title");
-      this._groupTitle.width = "600px";
 
       filedset.addItem(this._groupTitle);
-      this.root.appendChild(filedset);
+      this.property.appendChild(filedset);
     }
 
     /**
@@ -6591,13 +6593,12 @@ function ContentsGroup() {
       filedset.title = "作業フォルダパス";
 
       this._folderpath = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "folderpath");
-      this._folderpath.width = "600px";
       this._folderpath.rows = 3;
       this._folderpath.placeholder = "作業フォルダパス(E:\workspace)";
       this._folderpath.isFolderPath = true;
 
       filedset.addItem(this._folderpath);
-      this.root.appendChild(filedset);
+      this.property.appendChild(filedset);
     }
 
     // **************************************************
@@ -6614,12 +6615,11 @@ function ContentsGroup() {
       filedset.title = "概要";
 
       this._groupOverview = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "overview");
-      this._groupOverview.width = "600px";
-      this._groupOverview.rows = 5;
+      this._groupOverview.rows = 9;
       this._groupOverview.placeholder = "グループの概要説明";
 
       filedset.addItem(this._groupOverview);
-      this.root.appendChild(filedset);
+      this.memo.appendChild(filedset);
     }
 
     // **************************************************
@@ -6638,7 +6638,7 @@ function ContentsGroup() {
       this.table = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-table");
 
       filedset.addItem(this.table);
-      this.root.appendChild(filedset);
+      this.list.appendChild(filedset);
     }
   }
   customElements.define("contents-group", ContentsGroup);
@@ -7125,9 +7125,26 @@ th {
 }
 
 #root {
-  width: 100%;
-  height: 100%;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 250px 1fr;
+  gap: 0em 0em;
+  grid-template-areas: "group-property group-memo" "group-list group-list";
+  height: 100vh;
+}
+#root #group-property {
+  grid-area: group-property;
   padding: 0.75rem;
+}
+#root #group-memo {
+  grid-area: group-memo;
+  padding: 0.75rem;
+}
+#root #group-list {
+  grid-area: group-list;
+  padding: 0 0.75rem;
 }
 `, ""]);
 // Exports
