@@ -200,7 +200,6 @@ export function FormTextarea() {
 
       // 表示エリア
       this.viewArea = ElmUtils.createElm("div", "view-area");
-      console.log(this.textarea.style);
       this.viewArea.style = `width:${this._width}`;
 
       // 編集ボタン

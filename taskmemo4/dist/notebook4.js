@@ -11054,7 +11054,6 @@ function FormTextarea() {
 
       // 表示エリア
       this.viewArea = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "view-area");
-      console.log(this.textarea.style);
       this.viewArea.style = `width:${this._width}`;
 
       // 編集ボタン
