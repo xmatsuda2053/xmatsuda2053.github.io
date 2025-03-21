@@ -210,7 +210,6 @@ export function FormTextarea() {
       editBtn.toggle = true;
       editBtn.toggleOn = false;
       editBtn.tooltip = "編集";
-      editBtn.tooltipAlign = "right";
 
       editBtn.addEventListener("click", () => {
         this.textarea.classList.remove("fade-in", "show");

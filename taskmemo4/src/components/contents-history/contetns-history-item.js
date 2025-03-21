@@ -115,6 +115,7 @@ export function ContentsHistoryItem() {
       deleteHistoryBtn.size = "1rem";
       deleteHistoryBtn.hover = true;
       deleteHistoryBtn.color = "red";
+      deleteHistoryBtn.tooltip = "削除";
 
       this.footer.appendChild(deleteHistoryBtn);
 

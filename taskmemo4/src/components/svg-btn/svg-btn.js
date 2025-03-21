@@ -126,24 +126,7 @@ export function SvgBtn() {
      * @param {string} text - ヒントメッセージ
      */
     set tooltip(text) {
-      if (!this._tooltip) {
-        this._tooltip = ElmUtils.createElm("div", "tooltip", ["left"]);
-        this.button.appendChild(this._tooltip);
-      }
-      this._tooltip.innerHTML = "&emsp;";
-      this._tooltip.style = `width: ${text.length * 1.05}rem`;
-      setTimeout(() => {
-        this._tooltip.innerText = text;
-      }, 250);
-    }
-
-    /**
-     * ツールチップの表示位置を設定
-     * @param {string} val - right or left
-     */
-    set tooltipAlign(val) {
-      this._tooltip.classList.remove("left", "right");
-      this._tooltip.classList.add(val);
+      this.button.title = text;
     }
   }
   customElements.define("svg-btn", SvgBtn);
