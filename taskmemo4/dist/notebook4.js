@@ -8098,6 +8098,7 @@ function ContentsHistory() {
       const addHistoryBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "add-hisory");
       addHistoryBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.plusPaths;
       addHistoryBtn.isCircle = true;
+      addHistoryBtn.tooltip = "履歴を追加";
 
       // クリックイベント
       addHistoryBtn.addEventListener("click", () => {

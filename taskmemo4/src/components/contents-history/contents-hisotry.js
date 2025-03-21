@@ -62,6 +62,7 @@ export function ContentsHistory() {
       const addHistoryBtn = ElmUtils.createElm("svg-btn", "add-hisory");
       addHistoryBtn.iconPaths = SvgConst.plusPaths;
       addHistoryBtn.isCircle = true;
+      addHistoryBtn.tooltip = "履歴を追加";
 
       // クリックイベント
       addHistoryBtn.addEventListener("click", () => {
