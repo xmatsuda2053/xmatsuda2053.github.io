@@ -37,6 +37,7 @@ export function ContentsGroup() {
       this.#addGroupId();
       this.#addGroupTitle();
       this.#addGroupOverview();
+      this.#addFolderpath();
 
       this.shadowRoot.appendChild(this.root);
 
@@ -62,7 +63,8 @@ export function ContentsGroup() {
       }
       const data = JSON.parse(jsonStr);
       this._groupTitle.value = data.title;
-      this._groupOverview.value = data.overview;
+      this._folderpath.value = data.folderpath || "";
+      this._groupOverview.value = data.overview || "";
     }
 
     /**
@@ -209,6 +211,7 @@ export function ContentsGroup() {
     getData() {
       const dataItem = {};
       dataItem.title = this._groupTitle.value;
+      dataItem.folderpath = this._folderpath.value || "";
       dataItem.overview = this._groupOverview.value || "";
 
       return dataItem;
@@ -274,6 +277,29 @@ export function ContentsGroup() {
      */
     set groupTitle(val) {
       this._groupTitle.value = val;
+    }
+
+    // **************************************************
+    // * 作業フォルダパス
+    // **************************************************
+
+    /**
+     * 作業フォルダパスを追加します。
+     * @private
+     */
+    #addFolderpath() {
+      const filedset = ElmUtils.createElm("form-fieldset");
+      filedset.icon = SvgUtils.createIcon(SvgConst.folderPaths);
+      filedset.title = "作業フォルダパス";
+
+      this._folderpath = ElmUtils.createElm("form-textarea", "folderpath");
+      this._folderpath.width = "600px";
+      this._folderpath.rows = 3;
+      this._folderpath.placeholder = "作業フォルダパス(E:\workspace)";
+      this._folderpath.isFolderPath = true;
+
+      filedset.addItem(this._folderpath);
+      this.root.appendChild(filedset);
     }
 
     // **************************************************

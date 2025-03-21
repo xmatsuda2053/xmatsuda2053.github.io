@@ -5689,6 +5689,8 @@ function GroupTitle() {
      */
     set name(value) {
       this._name = value;
+      this.root.title = value;
+
       this.#refreshView();
       this.dispatchEvent(
         _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CHANGE_TREEVIEW_EVENT_NAME)
@@ -6333,6 +6335,7 @@ function ContentsGroup() {
       this.#addGroupId();
       this.#addGroupTitle();
       this.#addGroupOverview();
+      this.#addFolderpath();
 
       this.shadowRoot.appendChild(this.root);
 
@@ -6358,7 +6361,8 @@ function ContentsGroup() {
       }
       const data = JSON.parse(jsonStr);
       this._groupTitle.value = data.title;
-      this._groupOverview.value = data.overview;
+      this._folderpath.value = data.folderpath || "";
+      this._groupOverview.value = data.overview || "";
     }
 
     /**
@@ -6505,6 +6509,7 @@ function ContentsGroup() {
     getData() {
       const dataItem = {};
       dataItem.title = this._groupTitle.value;
+      dataItem.folderpath = this._folderpath.value || "";
       dataItem.overview = this._groupOverview.value || "";
 
       return dataItem;
@@ -6570,6 +6575,29 @@ function ContentsGroup() {
      */
     set groupTitle(val) {
       this._groupTitle.value = val;
+    }
+
+    // **************************************************
+    // * 作業フォルダパス
+    // **************************************************
+
+    /**
+     * 作業フォルダパスを追加します。
+     * @private
+     */
+    #addFolderpath() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.folderPaths);
+      filedset.title = "作業フォルダパス";
+
+      this._folderpath = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "folderpath");
+      this._folderpath.width = "600px";
+      this._folderpath.rows = 3;
+      this._folderpath.placeholder = "作業フォルダパス(E:\workspace)";
+      this._folderpath.isFolderPath = true;
+
+      filedset.addItem(this._folderpath);
+      this.root.appendChild(filedset);
     }
 
     // **************************************************
@@ -11001,7 +11029,8 @@ function FormTextarea() {
      * @param {string} w - 設定する幅の値（例：'100px'）。
      */
     set width(w) {
-      this.textarea.style = `width:${w}`;
+      this._width = w;
+      this.textarea.style = `width:${this._width}`;
     }
 
     /**
@@ -11041,9 +11070,12 @@ function FormTextarea() {
 
       // 表示エリア
       this.viewArea = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "view-area");
+      console.log(this.textarea.style);
+      this.viewArea.style = `width:${this._width}`;
 
-      // 編集エリア
+      // 編集ボタン
       this.editBtnArea = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "edit-btn-area");
+      this.editBtnArea.style = `width:${this._width}`;
 
       const editBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "edit");
       editBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_5__.SvgConst.EditPaths;

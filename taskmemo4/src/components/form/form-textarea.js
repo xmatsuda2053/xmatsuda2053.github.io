@@ -159,7 +159,8 @@ export function FormTextarea() {
      * @param {string} w - 設定する幅の値（例：'100px'）。
      */
     set width(w) {
-      this.textarea.style = `width:${w}`;
+      this._width = w;
+      this.textarea.style = `width:${this._width}`;
     }
 
     /**
@@ -199,9 +200,12 @@ export function FormTextarea() {
 
       // 表示エリア
       this.viewArea = ElmUtils.createElm("div", "view-area");
+      console.log(this.textarea.style);
+      this.viewArea.style = `width:${this._width}`;
 
-      // 編集エリア
+      // 編集ボタン
       this.editBtnArea = ElmUtils.createElm("div", "edit-btn-area");
+      this.editBtnArea.style = `width:${this._width}`;
 
       const editBtn = ElmUtils.createElm("svg-btn", "edit");
       editBtn.iconPaths = SvgConst.EditPaths;
