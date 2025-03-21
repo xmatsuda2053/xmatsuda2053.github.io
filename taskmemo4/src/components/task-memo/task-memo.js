@@ -228,6 +228,7 @@ export function TaskMemo() {
         EventConst.DELETE_TREEVIEW_ITEM_EVENT_NAME,
         async (e) => {
           await this.#saveTreeView();
+          this.contents.innerHTML = "";
         }
       );
     }

@@ -485,7 +485,7 @@ export function TreeView() {
        * @param {Event} event - クリックイベントオブジェクト
        */
       this.menu.addEventListener(`click-${id}`, (e) => {
-        this.#deleteItem(this.menu.clickTarget.id);
+        this.#deleteItem(this.menu.clickTarget);
         this.dispatchEvent(
           EventUtils.createEvent(EventConst.DELETE_TREEVIEW_ITEM_EVENT_NAME)
         );
@@ -558,7 +558,9 @@ export function TreeView() {
     selectItemById(id) {
       if (this.selectedItemId) {
         const beforeItem = this.shadowRoot.getElementById(this.selectedItemId);
-        beforeItem.selected = false;
+        if (beforeItem) {
+          beforeItem.selected = false;
+        }
       }
       const item = this.getItemById(id);
       item.selected = true;
@@ -733,8 +735,22 @@ export function TreeView() {
       if (details) details.open = true;
     }
 
-    #deleteItem(id) {
-      this.shadowRoot.getElementById(id).closest(".tree-item").remove();
+    /**
+     * 指定したアイテムを削除する。
+     * @param {string} item - 削除対象アイテム
+     */
+    #deleteItem(item) {
+      const id = item.id;
+      let name;
+      if (item.dataset.type === "separator") {
+        name = "セパレータ";
+      } else {
+        name = item.name;
+      }
+
+      if (window.confirm(`${name} を削除しますか？`)) {
+        this.shadowRoot.getElementById(id).closest(".tree-item").remove();
+      }
     }
 
     // *******************************************************

@@ -1,1 +1,12837 @@
-(()=>{"use strict";var n={362:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n.scroll {\n  overflow-y: scroll;\n}\n.scroll::-webkit-scrollbar {\n  display: none;\n}\n\n.float-area {\n  position: absolute;\n  right: 1rem;\n  bottom: 1rem;\n}\n.float-area * {\n  display: block;\n  margin-top: 0.25rem;\n}\n\n#root {\n  width: 100%;\n  height: 100%;\n  padding: 0.75rem;\n}\n",""]);const s=a},778:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n.scroll {\n  overflow-y: scroll;\n}\n.scroll::-webkit-scrollbar {\n  display: none;\n}\n\n.float-area {\n  position: absolute;\n  right: 1rem;\n  bottom: 1rem;\n}\n.float-area * {\n  display: block;\n  margin-top: 0.25rem;\n}\n\n.history-item {\n  background-color: #fffff8;\n  border: 1px solid #6f6f6f;\n  border-radius: 0.25rem;\n  padding: 0.35rem;\n  margin-bottom: 0.6rem;\n}\n.history-item #footer {\n  position: relative;\n  margin-top: 0.25rem;\n  height: 1rem;\n}\n.history-item #footer #history-date {\n  position: absolute;\n  right: 1.5rem;\n  outline: none;\n}\n.history-item #footer #delete-history-item {\n  position: absolute;\n  right: 0.25rem;\n}\n",""]);const s=a},940:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n.scroll {\n  overflow-y: scroll;\n}\n.scroll::-webkit-scrollbar {\n  display: none;\n}\n\n.float-area {\n  position: absolute;\n  right: 1rem;\n  bottom: 1rem;\n}\n.float-area * {\n  display: block;\n  margin-top: 0.25rem;\n}\n\n.contents-history {\n  padding-bottom: 5rem;\n}\n.contents-history #contents-title {\n  display: flex;\n  margin-bottom: 0.3rem;\n  font-weight: bold;\n  letter-spacing: 1px;\n  line-height: 1rem;\n}\n.contents-history #contents-title .svg-icon {\n  height: 1rem;\n  width: 1rem;\n  margin-right: 0.35rem;\n}\n.contents-history .fade-in {\n  opacity: 0;\n  transition: opacity 0.5s ease-in-out;\n}\n.contents-history .fade-in.show {\n  opacity: 1;\n}\n",""]);const s=a},888:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,'/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.scroll {\n  overflow-y: scroll;\n}\n.scroll::-webkit-scrollbar {\n  display: none;\n}\n\n.float-area {\n  position: absolute;\n  right: 1rem;\n  bottom: 1rem;\n}\n.float-area * {\n  display: block;\n  margin-top: 0.25rem;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n#root {\n  display: grid;\n  grid-auto-columns: 1fr;\n  grid-auto-rows: 1fr;\n  grid-template-columns: 1fr 1fr;\n  grid-template-rows: 1fr;\n  gap: 0em 0em;\n  grid-template-areas: "task-property task-history";\n  height: 100vh;\n}\n#root #task-property {\n  grid-area: task-property;\n  padding: 0.75rem;\n}\n#root #task-history {\n  grid-area: task-history;\n  padding: 0.75rem;\n}\n',""]);const s=a},936:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n#context-area {\n  display: none;\n  position: absolute;\n  z-index: 10000;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: transparent;\n}\n#context-area.open {\n  display: block;\n}\n#context-area #context-menu {\n  position: absolute;\n  z-index: 100000;\n  background-color: #fffff8;\n  border: 1px solid #8f8f8f;\n  border-radius: 0.25rem;\n  padding: 0.25rem;\n}\n#context-area #context-menu .button-area {\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  padding: 0.2rem 0.5rem;\n}\n#context-area #context-menu .button-area:hover {\n  border-radius: 0.25rem;\n  background-color: #0078d4;\n  color: #fffffb;\n}\n#context-area #context-menu .button-area .svg-icon {\n  margin-right: 0.25rem;\n  height: 1rem;\n  width: 1rem;\n}\n#context-area #context-menu .button-area .button-text {\n  padding-top: 1px;\n}\n#context-area #context-menu .button-area.disabled {\n  color: #cccccc;\n}\n#context-area #context-menu .button-area.disabled:hover {\n  color: #cccccc;\n  background-color: transparent;\n}\n#context-area #context-menu hr {\n  margin: 0.25rem 0;\n  height: 1px;\n  background-color: #5f5f5f;\n  border: none;\n}\n",""]);const s=a},837:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n* {\n  font-family: monospace;\n}\n\ninput[type=date] {\n  outline: none;\n  background-color: #fffff8;\n  border: 1px solid #6f6f6f;\n  border-radius: 0.25rem;\n  line-height: 1.5rem;\n  padding: 0.1rem 0.25rem;\n}\ninput[type=date]:hover, input[type=date]:focus {\n  background-color: #fff6da;\n}\ninput[type=date].off {\n  pointer-events: none;\n  color: #ffffff;\n}\n\n#calendar-off {\n  margin-left: 0.25rem;\n}\n",""]);const s=a},77:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,'/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n* {\n  font-family: monospace;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\nfieldset {\n  position: relative;\n  padding-bottom: 1.25rem;\n}\nfieldset.item-less {\n  padding-bottom: 0;\n}\nfieldset legend {\n  margin-bottom: 0.3rem;\n  font-weight: bold;\n  letter-spacing: 1px;\n  display: flex;\n  align-items: center;\n  line-height: 1rem;\n  color: #4f4f4f;\n}\nfieldset legend .svg-icon {\n  height: 1rem;\n  width: 1rem;\n  margin-right: 0.2rem;\n}\nfieldset legend p {\n  padding-top: 0.1rem;\n}\nfieldset legend.isRequired:after {\n  content: "*";\n  margin-left: 0.05rem;\n  color: #fb4141;\n  font-size: 0.85rem;\n  padding: 0.15rem 0.15rem;\n  line-height: 0.75rem;\n}\nfieldset.nestedRoot {\n  display: flex;\n}\nfieldset.nested {\n  margin-top: 0.25rem;\n  margin-right: 0.35rem;\n  padding-bottom: 0;\n}\n',""]);const s=a},13:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n* {\n  font-family: monospace;\n}\n\ninput[type=text] {\n  outline: none;\n  background-color: #fffff8;\n  border: 1px solid #6f6f6f;\n  border-radius: 0.25rem;\n  line-height: 1.5rem;\n  padding: 0.1rem 0.25rem;\n}\ninput[type=text]:hover, input[type=text]:focus {\n  background-color: #fff6da;\n}\ninput[type=text]:read-only {\n  background-color: #dfdfdf;\n}\n",""]);const s=a},360:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n* {\n  font-family: monospace;\n}\n\ninput[type=radio] {\n  display: none;\n}\n\n#root {\n  display: flex;\n  justify-content: space-between;\n}\n#root label {\n  flex: 1;\n  line-height: 1.9rem;\n  text-align: center;\n  background-color: #fffff8;\n  border: 1px solid #6f6f6f;\n  border-right: none;\n  transition: 0.2s;\n}\n#root label.first {\n  border-top-left-radius: 0.25rem;\n  border-bottom-left-radius: 0.25rem;\n}\n#root label.last {\n  border-right: 1px solid #6f6f6f;\n  border-top-right-radius: 0.25rem;\n  border-bottom-right-radius: 0.25rem;\n}\n#root label:has(+ input:checked) {\n  background-color: #0a5eb0;\n  color: #fffff8;\n}\n#root label:hover {\n  background-color: #0a5eb0;\n  color: #fffff8;\n}\n",""]);const s=a},797:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n* {\n  font-family: monospace;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n#root table {\n  width: 100%;\n}\n#root table thead tr th {\n  background-color: #211c84;\n  color: #fffffb;\n  font-weight: bold;\n  text-align: center;\n  padding: 0.5rem;\n}\n#root table thead tr th:first-child {\n  border-top-left-radius: 0.25rem;\n}\n#root table thead tr th:last-child {\n  border-top-right-radius: 0.25rem;\n}\n#root table tbody tr:nth-child(even) td {\n  background-color: #eeeeee;\n}\n#root table tbody tr td {\n  background-color: #fffffb;\n  color: #00000b;\n  max-width: 300px;\n  line-height: 2rem;\n  padding: 0 0.5rem;\n}\n#root table tbody tr td.clickable {\n  cursor: pointer;\n  transition: 0.2s;\n}\n#root table tbody tr td.clickable:hover {\n  text-decoration: underline;\n  color: #003092;\n}\n#root table tbody tr td.center {\n  text-align: center;\n}\n#root table tbody tr td.center .svg-icon {\n  vertical-align: middle;\n}\n#root table tbody tr td.right {\n  text-align: right;\n}\n#root table tbody tr td.right .svg-icon {\n  vertical-align: right;\n}\n#root table tbody tr td.left {\n  text-align: left;\n}\n#root table tbody tr td div {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n#root table tbody tr td .svg-icon {\n  display: inline-block;\n  font-size: 1rem;\n}\n#root table tbody tr.complete td {\n  color: #838383;\n  text-decoration: line-through;\n}\n#root table tbody tr.alert td {\n  color: #f93827;\n}\n",""]);const s=a},803:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n* {\n  font-family: monospace;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n.hidden {\n  display: none;\n}\n\n.fade-in {\n  opacity: 0;\n  transition: opacity 0.5s ease-in-out;\n}\n\n.fade-in.show {\n  opacity: 1;\n}\n\ntextarea {\n  outline: none;\n  background-color: #fffff8;\n  border: 1px solid #6f6f6f;\n  border-radius: 0.25rem;\n  line-height: 1.1rem;\n  padding: 0.35rem 0.25rem;\n  resize: none;\n  overflow-y: hidden;\n  word-break: break-all;\n}\ntextarea:hover, textarea:focus {\n  background-color: #fff6da;\n}\ntextarea.borderless {\n  padding: 0.15rem 0.25rem;\n  border: none;\n  transition: 0.2s;\n}\n\n#view-area {\n  padding-top: 0.2rem;\n}\n#view-area ul {\n  width: 100%;\n}\n#view-area ul li {\n  position: relative;\n  width: 100%;\n  word-break: break-all;\n  line-height: 1.3rem;\n  padding-left: 1.5rem;\n  padding-right: 0.25rem;\n  margin-bottom: 0.25rem;\n  border: 1px solid #6f6f6f;\n  border-radius: 0.25rem;\n  color: #1f1f1f;\n  background-color: #a1e3f9;\n  cursor: pointer;\n  transition: 0.2s;\n}\n#view-area ul li:hover {\n  color: #fffff8;\n  background-color: #0078d4;\n}\n#view-area ul li:active {\n  color: #0078d4;\n  background-color: #fffff8;\n}\n#view-area ul li .svg-icon {\n  position: absolute;\n  left: 0.25rem;\n  top: 0.15rem;\n  width: 1rem;\n  height: 1rem;\n}\n\n#edit-btn-area {\n  text-align: right;\n  margin-top: 0.15rem;\n}\n",""]);const s=a},676:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\nbutton {\n  position: relative;\n}\nbutton.circle {\n  z-index: 99999;\n  color: #fffffb;\n  background-color: #0a3981;\n  border: 1px solid #0a3981;\n  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);\n  padding: 0.5rem;\n  border-radius: 50%;\n  transition: 0.2s;\n}\nbutton.circle:hover {\n  color: #0a3981;\n  background-color: #fffff8;\n  border-color: #0a3981;\n}\nbutton.circle .svg-icon {\n  font-size: 1.8rem;\n}\nbutton.hover {\n  color: #8f8f8f;\n  border-radius: 0.25rem;\n  transition: 0.2s;\n}\nbutton.hover.red:hover {\n  color: #d84040;\n  background-color: #fdfbee;\n}\nbutton.hover.green:hover {\n  color: #0e7405;\n  background-color: #fdfbee;\n}\nbutton.hover.blue:hover {\n  color: #003092;\n  background-color: #fdfbee;\n}\nbutton.hover.white:hover {\n  color: #fffffb;\n  background-color: #fdfbee;\n}\nbutton.hover.black:hover {\n  color: #000000;\n  background-color: #fdfbee;\n}\nbutton.toggle {\n  color: #8f8f8f;\n}\nbutton.toggle.toggle-on.red {\n  color: #d84040;\n}\nbutton.toggle.toggle-on.green {\n  color: #0e7405;\n}\nbutton.toggle.toggle-on.blue {\n  color: #003092;\n}\nbutton.toggle.toggle-on.white {\n  color: #fffffb;\n}\nbutton.toggle.toggle-on.black {\n  color: #000000;\n}\n",""]);const s=a},236:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,'/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n.scroll {\n  overflow-y: scroll;\n}\n.scroll::-webkit-scrollbar {\n  display: none;\n}\n\n.float-area {\n  position: absolute;\n  right: 1rem;\n  bottom: 1rem;\n}\n.float-area * {\n  display: block;\n  margin-top: 0.25rem;\n}\n\n#container {\n  display: grid;\n  grid-auto-columns: 1fr;\n  grid-auto-rows: 1fr;\n  grid-template-columns: 300px 1fr;\n  grid-template-rows: 1fr;\n  gap: 0em 0em;\n  grid-template-areas: "treeview contents";\n  height: 100vh;\n}\n#container #treeview {\n  grid-area: treeview;\n  height: 100vh;\n}\n#container #contents {\n  grid-area: contents;\n  background-color: #d4f1ef;\n  height: 100vh;\n}\n',""]);const s=a},158:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n.group-title {\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  text-decoration-skip-ink: none;\n  border-radius: 0.15rem;\n  padding: 0.15rem;\n  transition: 0.2s;\n}\n.group-title::-webkit-details-marker {\n  display: none;\n}\n.group-title:hover, .group-title.menu-opened, .group-title.selected {\n  background-color: #0078d4;\n  color: #fffff8;\n}\n.group-title .svg-icon {\n  margin-right: 0.25rem;\n  height: 1rem;\n  width: 1rem;\n  transition: transform 0.25s;\n}\n.group-title.group-opened .svg-icon {\n  transform: rotate(90deg);\n  top: 0.22rem;\n  left: 0.18rem;\n}\n.group-title .group-text {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  padding-top: 1px;\n}\n",""]);const s=a},462:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,"/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n.task-title {\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  text-decoration-skip-ink: none;\n  border-radius: 0.15rem;\n  padding: 0.15rem;\n  transition: 0.2s;\n}\n.task-title:hover, .task-title.menu-opened, .task-title.selected {\n  background-color: #0078d4;\n  color: #fffff8;\n}\n.task-title.over-deadline {\n  color: #f93827;\n}\n.task-title.over-deadline:hover, .task-title.over-deadline.selected {\n  background-color: #f93827;\n  color: #fffff8;\n}\n.task-title.complete {\n  color: #838383;\n  text-decoration: line-through;\n}\n.task-title.complete:hover, .task-title.complete.selected {\n  background-color: #838383;\n  color: #fffff8;\n}\n.task-title .svg-icon {\n  margin-right: 0.25rem;\n  height: 1rem;\n  width: 1rem;\n}\n.task-title .task-text {\n  width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  padding-top: 1px;\n}\n",""]);const s=a},168:(n,e,t)=>{t.d(e,{A:()=>s});var i=t(601),o=t.n(i),r=t(314),a=t.n(r)()(o());a.push([n.id,'/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */\n/* Reset box-model and set borders */\n/* ============================================ */\n*,\n::before,\n::after {\n  box-sizing: border-box;\n  border-style: solid;\n  border-width: 0;\n  min-width: 0;\n}\n\n/* Document */\n/* ============================================ */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in iOS.\n * 3. Remove gray overlay on links for iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -webkit-tap-highlight-color: transparent; /* 3*/\n}\n\n/* Sections */\n/* ============================================ */\n/**\n * Remove the margin in all browsers.\n */\nbody {\n  margin: 0;\n}\n\n/**\n * Render the `main` element consistently in IE.\n */\nmain {\n  display: block;\n}\n\n/* Vertical rhythm */\n/* ============================================ */\np,\ntable,\nblockquote,\naddress,\npre,\niframe,\nform,\nfigure,\ndl {\n  margin: 0;\n}\n\n/* Headings */\n/* ============================================ */\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n  margin: 0;\n}\n\n/* Lists (enumeration) */\n/* ============================================ */\nul,\nol {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\n\n/* Lists (definition) */\n/* ============================================ */\ndt {\n  font-weight: bold;\n}\n\ndd {\n  margin-left: 0;\n}\n\n/* Grouping content */\n/* ============================================ */\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n  border-top-width: 1px;\n  margin: 0;\n  clear: both;\n  color: inherit;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\naddress {\n  font-style: inherit;\n}\n\n/* Text-level semantics */\n/* ============================================ */\n/**\n * Remove the gray background on active links in IE 10.\n */\na {\n  background-color: transparent;\n  text-decoration: none;\n  color: inherit;\n}\n\n/**\n * 1. Remove the bottom border in Chrome 57-\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  text-decoration: underline dotted; /* 2 */\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode,\nkbd,\nsamp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: inherit; /* 2 */\n}\n\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Replaced content */\n/* ============================================ */\n/**\n * Prevent vertical alignment issues.\n */\nsvg,\nimg,\nembed,\nobject,\niframe {\n  vertical-align: bottom;\n}\n\n/* Forms */\n/* ============================================ */\n/**\n * Reset form fields to make them styleable.\n * 1. Make form elements stylable across systems iOS especially.\n * 2. Inherit text-transform from parent.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  -webkit-appearance: none; /* 1 */\n  appearance: none;\n  vertical-align: middle;\n  color: inherit;\n  font: inherit;\n  background: transparent;\n  padding: 0;\n  margin: 0;\n  border-radius: 0;\n  text-align: inherit;\n  text-transform: inherit; /* 2 */\n}\n\n/**\n * Correct cursors for clickable elements.\n */\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  cursor: pointer;\n}\n\nbutton:disabled,\n[type=button]:disabled,\n[type=reset]:disabled,\n[type=submit]:disabled {\n  cursor: default;\n}\n\n/**\n * Improve outlines for Firefox and unify style with input elements & buttons.\n */\n:-moz-focusring {\n  outline: auto;\n}\n\nselect:disabled {\n  opacity: inherit;\n}\n\n/**\n * Remove padding\n */\noption {\n  padding: 0;\n}\n\n/**\n * Reset to invisible\n */\nfieldset {\n  margin: 0;\n  padding: 0;\n  min-width: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Remove the default vertical scrollbar in IE 10+.\n */\ntextarea {\n  overflow: auto;\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=number]::-webkit-inner-spin-button,\n[type=number]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * Correct the outline style in Safari.\n */\n[type=search] {\n  outline-offset: -2px; /* 1 */\n}\n\n/**\n * Remove the inner padding in Chrome and Safari on macOS.\n */\n[type=search]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Fix font inheritance.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/**\n * Fix appearance for Firefox\n */\n[type=number] {\n  -moz-appearance: textfield;\n  appearance: textfiled;\n}\n\n/**\n * Clickable labels\n */\nlabel[for] {\n  cursor: pointer;\n}\n\n/* Interactive */\n/* ============================================ */\n/*\n * Add the correct display in Edge, IE 10+, and Firefox.\n */\ndetails {\n  display: block;\n}\n\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n\n/*\n * Remove outline for editable content.\n */\n[contenteditable]:focus {\n  outline: auto;\n}\n\n/* Tables */\n/* ============================================ */\n/**\n1. Correct table border color inheritance in all Chrome and Safari.\n*/\ntable {\n  border-color: inherit; /* 1 */\n  border-collapse: collapse;\n}\n\ncaption {\n  text-align: left;\n}\n\ntd,\nth {\n  vertical-align: top;\n  padding: 0;\n}\n\nth {\n  text-align: left;\n  font-weight: bold;\n}\n\n.svg {\n  position: absolute;\n  width: 0;\n  height: 0;\n  overflow: hidden;\n}\n\n.svg-icon {\n  display: block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  stroke: currentColor;\n  fill: currentColor;\n  pointer-events: none;\n}\n.svg-icon use {\n  pointer-events: none;\n}\n\n* {\n  font-family: monospace;\n}\n\n#header-menu {\n  padding: 0.5rem 0;\n  margin: 0 0.5rem;\n  border-bottom: 1px solid #afafaf;\n}\n\n.fade-in {\n  opacity: 0;\n  transition: opacity 0.5s ease-in-out;\n}\n\n.fade-in.show {\n  opacity: 1;\n}\n\n#root {\n  width: 100%;\n  height: 100%;\n  padding: 0.5rem;\n}\n#root .tree-item {\n  margin: 1px 0;\n}\n#root details summary {\n  list-style: none;\n}\n#root details .group-items {\n  margin-left: 1.1rem;\n}\n#root .separator {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 1.25rem;\n  position: relative;\n  border-radius: 0.15rem;\n  cursor: pointer;\n}\n#root .separator::after {\n  content: "";\n  position: absolute;\n  width: 85%;\n  height: 1px;\n  background-color: #afafaf;\n}\n#root .separator:hover, #root .separator.selected {\n  background-color: #fff0bd;\n}\n#root .dragging {\n  opacity: 0.5;\n}\n#root .disabled {\n  display: none;\n}\n',""]);const s=a},314:n=>{n.exports=function(n){var e=[];return e.toString=function(){return this.map((function(e){var t="",i=void 0!==e[5];return e[4]&&(t+="@supports (".concat(e[4],") {")),e[2]&&(t+="@media ".concat(e[2]," {")),i&&(t+="@layer".concat(e[5].length>0?" ".concat(e[5]):""," {")),t+=n(e),i&&(t+="}"),e[2]&&(t+="}"),e[4]&&(t+="}"),t})).join("")},e.i=function(n,t,i,o,r){"string"==typeof n&&(n=[[null,n,void 0]]);var a={};if(i)for(var s=0;s<this.length;s++){var l=this[s][0];null!=l&&(a[l]=!0)}for(var d=0;d<n.length;d++){var h=[].concat(n[d]);i&&a[h[0]]||(void 0!==r&&(void 0===h[5]||(h[1]="@layer".concat(h[5].length>0?" ".concat(h[5]):""," {").concat(h[1],"}")),h[5]=r),t&&(h[2]?(h[1]="@media ".concat(h[2]," {").concat(h[1],"}"),h[2]=t):h[2]=t),o&&(h[4]?(h[1]="@supports (".concat(h[4],") {").concat(h[1],"}"),h[4]=o):h[4]="".concat(o)),e.push(h))}},e}},601:n=>{n.exports=function(n){return n[1]}}},e={};function t(i){var o=e[i];if(void 0!==o)return o.exports;var r=e[i]={id:i,exports:{}};return n[i](r,r.exports,t),r.exports}t.n=n=>{var e=n&&n.__esModule?()=>n.default:()=>n;return t.d(e,{a:e}),e},t.d=(n,e)=>{for(var i in e)t.o(e,i)&&!t.o(n,i)&&Object.defineProperty(n,i,{enumerable:!0,get:e[i]})},t.o=(n,e)=>Object.prototype.hasOwnProperty.call(n,e);class i{static createStylesheet=n=>{const e=new CSSStyleSheet;return e.replaceSync(n),[e]};static createElm=(n,e=null,t=[])=>{const i=document.createElement(n);return e&&(i.id=e),t.length&&i.classList.add(...t),i};static createFloatArea=()=>this.createElm("div",null,["float-area"]);static tagEq=(n,e)=>n.tagName.toLowerCase()===e}class o{static linePaths={name:"icon-line",paths:[{path:"M0 0h24v24H0z"},{path:"M12 4v17"}]};static treeOpenPaths={name:"icon-tree-open",paths:[{path:"M0 0h24v24H0z"},{path:"M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6"},{path:"M18 14v7"},{path:"M18 3v7"},{path:"M15 18l3 3l3 -3"},{path:"M15 6l3 -3l3 3"}]};static treeClosePaths={name:"icon-tree-close",paths:[{path:"M0 0h24v24H0z"},{path:"M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6"},{path:"M18 14v7"},{path:"M18 3v7"},{path:"M15 7l3 3l3 -3"},{path:"M15 17l3 -3l3 3"}]};static folderPaths={name:"icon-folder",paths:[{path:"M0 0h24v24H0z"},{path:"M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"}]};static squarePlusPaths={name:"icon-square-plus",paths:[{path:"M0 0h24v24H0z"},{path:"M9 12h6"},{path:"M12 9v6"},{path:"M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z"}]};static squarePaths={name:"icon-square",paths:[{path:"M0 0h24v24H0z"},{path:"M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"}]};static squareCheckPaths={name:"icon-square-check",paths:[{path:"M0 0h24v24H0z"},{path:"M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"},{path:"M9 12l2 2l4 -4"}]};static squareDotPaths={name:"icon-square-dot",paths:[{path:"M0 0h24v24H0z"},{path:"M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"},{path:"M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"}]};static squareAlertPaths={name:"icon-square-alert",paths:[{path:"M0 0h24v24H0z"},{path:"M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z"},{path:"M12 8v4"},{path:"M12 16h.01"}]};static squareXPaths={name:"icon-square-x",paths:[{path:"M0 0h24v24H0z"},{path:"M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z"},{path:"M9 9l6 6m0 -6l-6 6"}]};static folderPlusPaths={name:"icon-folder-plus",paths:[{path:"M0 0h24v24H0z"},{path:"M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5"},{path:"M16 19h6"},{path:"M19 16v6"}]};static chevronRightPaths={name:"icon-chevron-right",paths:[{path:"M0 0h24v24H0z"},{path:"M9 6l6 6l-6 6"}]};static trashPaths={name:"icon-trash",paths:[{path:"M0 0h24v24H0z"},{path:"M4 7l16 0"},{path:"M10 11l0 6"},{path:"M14 11l0 6"},{path:"M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"},{path:"M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"}]};static plusPaths={name:"icon-plus",paths:[{path:"M0 0h24v24H0z"},{path:"M12 5l0 14"},{path:"M5 12l14 0"}]};static FilterPaths={name:"icon-filter",paths:[{path:"M0 0h24v24H0z"},{path:"M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z"}]};static CopyPaths={name:"icon-copy",paths:[{path:"M0 0h24v24H0z"},{path:"M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z"},{path:"M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"}]};static LinkPaths={name:"icon-copy",paths:[{path:"M0 0h24v24H0z"},{path:"M9 15l6 -6"},{path:"M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"},{path:"M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"}]};static EditPaths={name:"icon-edit",paths:[{path:"M0 0h24v24H0z"},{path:"M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"},{path:"M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"},{path:"M16 5l3 3"}]};static TagPaths={name:"icon-tag",paths:[{path:"M0 0h24v24H0z"},{path:"M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"},{path:"M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z"}]};static BookPaths={name:"icon-book",paths:[{path:"M0 0h24v24H0z"},{path:"M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"},{path:"M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"},{path:"M3 6l0 13"},{path:"M12 6l0 13"},{path:"M21 6l0 13"}]};static UserPaths={name:"icon-user",paths:[{path:"M0 0h24v24H0z"},{path:"M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"},{path:"M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"}]};static DueDatePaths={name:"icon-deu-date",paths:[{path:"M0 0h24v24H0z"},{path:"M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"},{path:"M16 3v4"},{path:"M8 3v4"},{path:"M4 11h16"},{path:"M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"}]};static CalendarOff={name:"icon-calendar-off",paths:[{path:"M0 0h24v24H0z"},{path:"M9 5h9a2 2 0 0 1 2 2v9m-.184 3.839a2 2 0 0 1 -1.816 1.161h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 1.158 -1.815"},{path:"M16 3v4"},{path:"M8 3v1"},{path:"M4 11h7m4 0h5"},{path:"M3 3l18 18"}]};static AntennaPaths={name:"icon-antenna",paths:[{path:"M0 0h24v24H0z"},{path:"M6 18l0 -3"},{path:"M10 18l0 -6"},{path:"M14 18l0 -9"},{path:"M18 18l0 -12"}]};static PercentagePaths={name:"icon-percentage",paths:[{path:"M0 0h24v24H0z"},{path:"M12 3a9 9 0 0 1 7.794 13.5l-7.79 -4.497z",isFill:!0},{path:"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"}]};static WitingPaths={name:"icon-writing",paths:[{path:"M0 0h24v24H0z"},{path:"M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"},{path:"M16 7h4"},{path:"M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"}]};static WebhookPaths={name:"icon-webhook",paths:[{path:"M0 0h24v24H0z"},{path:"M4.876 13.61a4 4 0 1 0 6.124 3.39h6"},{path:"M15.066 20.502a4 4 0 1 0 1.934 -7.502c-.706 0 -1.424 .179 -2 .5l-3 -5.5"},{path:"M16 8a4 4 0 1 0 -8 0c0 1.506 .77 2.818 2 3.5l-3 5.5"}]};static TablePaths={name:"icon-table",paths:[{path:"M0 0h24v24H0z"},{path:"M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z"},{path:"M3 10h18"},{path:"M10 3v18"}]};static HistoryPaths={name:"icon-history",paths:[{path:"M0 0h24v24H0z"},{path:"M12 8l0 4l2 2"},{path:"M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"}]};static WallpaperPaths={name:"icon-wallpaper",paths:[{path:"M0 0h24v24H0z"},{path:"M8 6h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12"},{path:"M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"},{path:"M8 18v-12a2 2 0 1 0 -4 0v12"}]};static CirclesPaths={name:"icon-circles",paths:[{path:"M0 0h24v24H0z"},{path:"M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"},{path:"M6.5 17m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"},{path:"M17.5 17m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"}]};static PhoneCallPaths={name:"icon-phone-call",paths:[{path:"M0 0h24v24H0z"},{path:"M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"},{path:"M15 7a2 2 0 0 1 2 2"},{path:"M15 3a6 6 0 0 1 6 6"}]};static LinePaths={name:"icon-line",paths:[{path:"M0 0h24v24H0z"},{path:"M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"},{path:"M18 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"},{path:"M7.5 16.5l9 -9"}]}}class r{constructor(){this.directoryHandler=null,this.writeLock=Promise.resolve()}async selectDirectory(){try{return this.directoryHandler=await window.showDirectoryPicker({mode:"readwrite"}),!0}catch(n){throw n}}async writeFile(n,e){if(!this.directoryHandler)throw new Error("ディレクトリがまだ開かれていません。");return this.writeLock=this.writeLock.then((async()=>{try{const t=await this.directoryHandler.getFileHandle(n,{create:!0}),i=await t.createWritable();await i.write(e),await i.close()}catch(n){throw n}})),this.writeLock}async loadFile(n){if(!this.directoryHandler)throw new Error("ディレクトリがまだ開かれていません。");try{const e=await this.directoryHandler.getFileHandle(n),t=await e.getFile();return t.size<=0?null:await t.text()}catch(n){if("NotFoundError"===n.name)return null;throw n}}async search(n){if(!this.directoryHandler)throw new Error("ディレクトリがまだ開かれていません。");try{const e=[];for await(const[t,i]of this.directoryHandler.entries()){const o=await i.getFile();-1!==(await o.text()).indexOf(n)&&e.push(t)}return e}catch(n){if("NotFoundError"===n.name)return null;throw n}}}var a=t(236);class s{static createEvent=(n,e={})=>new CustomEvent(n,{detail:{item:e},bubbles:!0,composed:!0})}class l{static createSvg=n=>{const{name:e,paths:t}=n,i="http://www.w3.org/2000/svg",o=document.createElementNS(i,"svg");o.setAttribute("aria-hidden","true"),o.setAttribute("version","1.1"),o.setAttribute("xmlns",i),o.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink"),o.classList.add("svg");const r=document.createElementNS(i,"defs"),a=document.createElementNS(i,"symbol");return a.setAttribute("id",e),a.setAttribute("viewBox","0 0 24 24"),a.setAttribute("fill","none"),a.setAttribute("stroke","currentColor"),a.setAttribute("stroke-width","2"),a.setAttribute("stroke-linecap","round"),a.setAttribute("stroke-linejoin","round"),t.forEach(((n,e)=>{const t=document.createElementNS(i,"path");0===e?(t.setAttribute("stroke","none"),t.setAttribute("fill","none")):n.isFill&&(t.setAttribute("stroke","none"),t.setAttribute("fill","currentColor")),t.setAttribute("d",n.path),a.appendChild(t)})),r.appendChild(a),o.appendChild(r),o};static createSvgUse(n){const e="http://www.w3.org/2000/svg",t=document.createElementNS(e,"svg");t.classList.add("svg-icon");const i=n.getElementsByTagName("symbol")[0].id,o=document.createElementNS(e,"use");return o.setAttributeNS("http://www.w3.org/1999/xlink","xlink:href",`#${i}`),t.appendChild(o),t}static createIcon(n){const e=this.createSvg(n),t=this.createSvgUse(e),o=i.createElm("div");return o.appendChild(e),o.appendChild(t),o}}var d=t(676);class h{static CLOSE_CONTEXT_MENU="closeContextMenu";static CLICK_TASK_EVENT_NAME="clickTaskItem";static CLICK_GROUP_EVENT_NAME="clickGruopItem";static DBL_CLICK_GROUP_EVENT_NAME="dblClickGruopItem";static ADD_NEW_TASK_ITEM_EVENT_NAME="addTaskItem";static ADD_NEW_GROUP_ITEM_EVENT_NAME="addGroupItem";static DELETE_TREEVIEW_ITEM_EVENT_NAME="deleteTreeViewItem";static CHANGE_TREEVIEW_EVENT_NAME="changeTreeView";static CHANGE_FORM_ITEM_EVENT_NAME="changeFormItem";static CHANGE_CONTENTS_GROUP_EVENT_NAME="changeContentsGroup";static CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME="clickContentsGroupGroup";static CLICK_CONTENTS_GROUP_TASK_EVENT_NAME="clickContentsGroupTask";static CHANGE_CONTENTS_TASK_EVENT_NAME="changeContentsTask";static ADD_HISTORY_CONTENTS_EVENT_NAME="addHistoryContents"}var c=t(936);class p{static getUniqueId=()=>{const n=Math.floor(1e4*Math.random()).toString(16),e=new Date,t={yyyy:e.getFullYear(),MM:String(e.getMonth()+1).padStart(2,"0"),dd:String(e.getDate()).padStart(2,"0"),HH:String(e.getHours()).padStart(2,"0"),mm:String(e.getMinutes()).padStart(2,"0"),ss:String(e.getSeconds()).padStart(2,"0"),SSS:String(e.getMilliseconds()).padStart(3,"0")};return`${"{yyyy}{MM}{dd}{HH}{mm}{ss}{SSS}".replace(/{(yyyy|MM|dd|HH|mm|ss|SSS)}/g,(n=>t[n.slice(1,-1)]))}_${n}`}}var m=t(168);class b{static formatDate=(n,e="{yyyy}{MM}{dd}{HH}{mm}{ss}{SSS}")=>{const t={yyyy:n.getFullYear(),MM:String(n.getMonth()+1).padStart(2,"0"),dd:String(n.getDate()).padStart(2,"0"),HH:String(n.getHours()).padStart(2,"0"),mm:String(n.getMinutes()).padStart(2,"0"),ss:String(n.getSeconds()).padStart(2,"0"),SSS:String(n.getMilliseconds()).padStart(3,"0")};return e.replace(/{(yyyy|MM|dd|HH|mm|ss|SSS)}/g,(n=>t[n.slice(1,-1)]))};static parseDate=n=>{if(!this.isValidDate(n))throw new Error("日付文字列の形式が正しくありません。");const e=n.split("-"),t=parseInt(e[0],10),i=parseInt(e[1],10)-1,o=parseInt(e[2],10);return new Date(t,i,o)};static isValidDate=n=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(n))return!1;const e=new Date(n),t=e.getTime();return"number"==typeof t&&!Number.isNaN(t)&&e.toISOString().startsWith(n)};static calcDateDiffToday(n){if(!this.isValidDate(n))return 0;const e=this.parseDate(n),t=this.parseDate(this.formatDate(new Date,"{yyyy}-{MM}-{dd}"));return Math.floor((e-t)/864e5)}}var f=t(462),u=t(158);class g{static PARAM=[{value:5,text:"最低"},{value:4,text:"低"},{value:3,text:"中"},{value:2,text:"高"},{value:1,text:"最高"}];static text(n){const e=this.PARAM.find((e=>e.value==n));return e?e.text:null}static value(n){const e=this.PARAM.find((e=>e.text==n));return e?e.value:null}}var v=t(362),y=t(888),w=t(940),E=t(778),x=t(77),k=t(13),C=t(837),T=t(803),S=t(797),R=t(360);window.addEventListener("load",(()=>{!function(){const n="tree.json";class e extends HTMLElement{constructor(){super(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(d.A),this.isToggle=!1,this.button=i.createElm("button"),this.button.addEventListener("click",(n=>{n.preventDefault(),n.stopPropagation(),this.isToggle&&this.button.classList.toggle("toggle-on"),this.shadowRoot.dispatchEvent(s.createEvent("click"))})),this.shadowRoot.appendChild(this.button)}set iconPaths(n){this._svgIcon=l.createSvg(n),this._svgUse=l.createSvgUse(this._svgIcon),this.button.appendChild(this._svgIcon),this.button.appendChild(this._svgUse)}set isCircle(n){n?this.button.classList.add("circle"):this.button.classList.remove("circle")}set size(n){this._svgUse.style=`font-size: ${n}`}set color(n){this.button.classList.remove("red","green","blue","white","black"),this.button.classList.add(n)}set hover(n){this.button.classList.toggle("hover",n)}set toggle(n){this.isToggle=n,this.button.classList.toggle("toggle",n)}get toggle(){return this.button.classList.contains("toggle-on")}toggleOn(n){this.button.classList.toggle("toggle-on",n)}set tooltip(n){this.button.title=n}}customElements.define("svg-btn",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(c.A),this.area=i.createElm("div","context-area"),this.area.addEventListener("click",(()=>{this.area.classList.remove("open");const n=this.menu.querySelectorAll(".disabled");for(let e of n)e.classList.remove("disabled");this.shadowRoot.dispatchEvent(s.createEvent(h.CLOSE_CONTEXT_MENU))})),this.menu=i.createElm("div","context-menu"),this.area.appendChild(this.menu),this.shadowRoot.appendChild(this.area)}openMenu(n){this.area.classList.add("open"),this.menu.style.left=`${n.pageX+10}px`,this.menu.style.top=n.pageY-20+"px"}get clickTarget(){return this._clickTarget}set clickTarget(n){this._clickTarget=n}addButton(n,e,t){const o=l.createIcon(t),r=i.createElm("p");r.classList.add("button-text"),r.innerText=e;const a=i.createElm("div",n,["button-area"]);a.appendChild(o),a.appendChild(r),a.addEventListener("click",(()=>{a.classList.contains("disabled")||this.shadowRoot.dispatchEvent(s.createEvent(`click-${n}`))})),this.menu.appendChild(a)}setDisabled(n){this.shadowRoot.getElementById(n).classList.add("disabled")}addBorder(){this.menu.appendChild(i.createElm("hr"))}}customElements.define("context-menu",n)}(),function(){let n;const e=n=>n.querySelector(".group-items");class t extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(m.A),this.header=i.createElm("div","header"),this.root=i.createElm("div","root"),this.shadowRoot.appendChild(this.header),this.shadowRoot.appendChild(this.root),this.#n(),this.#e()}set searchHandler(n){this.searchFunction=n}toggleGroup(n){const e=this.shadowRoot.getElementById(n).closest("details");e.open=!e.open}#n(){const n=i.createElm("div","header-menu");n.appendChild(this.#t()),n.appendChild(this.#i()),n.appendChild(this.#o()),n.appendChild(this.#r()),n.appendChild(this.#a()),n.appendChild(this.#s()),n.appendChild(this.#l()),n.appendChild(this.#d()),this.header.appendChild(n)}#o(){const n=i.createElm("svg-btn","line");return n.iconPaths=o.linePaths,n.size="1.15rem",n}#h(n,e){const t=i.createElm("svg-btn",n);return t.iconPaths=e,t.size="1.15rem",t.color="black",t}#c(n,e){const t=this.#h(n,e);return t.toggle=!0,t.toggleOn(!0),t}#t(){const n=this.#h("all-open",o.treeOpenPaths);return n.hover=!0,n.tooltip="すべて開く",n.addEventListener("click",(()=>{this.root.querySelectorAll("details").forEach((n=>n.open=!0))})),n}#i(){const n=this.#h("all-close",o.treeClosePaths);return n.hover=!0,n.tooltip="すべて閉じる",n.addEventListener("click",(()=>{this.root.querySelectorAll("details").forEach((n=>n.open=!1))})),n}#r(){return this.btnFilterNotStarted=this.#c("filter-not-started",o.squarePaths),this.btnFilterNotStarted.tooltip="未着手",this.btnFilterNotStarted.addEventListener("click",(()=>{this.#p()})),this.btnFilterNotStarted}#a(){return this.btnFilterStarted=this.#c("filter-started",o.squareDotPaths),this.btnFilterStarted.tooltip="対応中",this.btnFilterStarted.addEventListener("click",(()=>{this.#p()})),this.btnFilterStarted}#s(){return this.btnFilterComplet=this.#c("filter-completed",o.squareCheckPaths),this.btnFilterComplet.tooltip="完了",this.btnFilterComplet.addEventListener("click",(()=>{this.#p()})),this.btnFilterComplet}#l(){return this.btnFilterOverDeadline=this.#c("filter-over-deadline",o.squareAlertPaths),this.btnFilterOverDeadline.tooltip="遅延",this.btnFilterOverDeadline.color="red",this.btnFilterOverDeadline.addEventListener("click",(()=>{this.#p()})),this.btnFilterOverDeadline}#d(){const n=this.#c("item-filter",o.FilterPaths);return n.color="green",n.toggleOn(!1),n.tooltip="フィルタ",this.searchText="",this.searchResult=[],n.addEventListener("click",(async()=>{this.searchText="",this.searchResult=[],n.toggle&&(this.searchText=prompt("検索条件を入力"),this.searchText?this.searchResult=await this.searchFunction(this.searchText):n.toggleOn(!1)),this.#p()})),n}#p(){this.root.querySelectorAll("task-title").forEach((n=>{const e=n.flag;let t;t=e.isComplete?!this.btnFilterComplet.toggle:e.isOverDeadline?!this.btnFilterOverDeadline.toggle:e.isNotStarted?!this.btnFilterNotStarted.toggle:!this.btnFilterStarted.toggle,!t&&this.searchText&&(t=-1===this.searchResult.indexOf(`${n.id}.json`)),n.classList.toggle("disabled",t)}))}#e(){this.menu=i.createElm("context-menu","menu"),this.shadowRoot.appendChild(this.menu),this.#m(),this.#b(),this.#f(),this.menu.addBorder(),this.#u(),this.shadowRoot.addEventListener("contextmenu",(n=>{n.preventDefault(),n.stopPropagation(),this.menu.openMenu(n);const e="task-title"===n.target.tagName.toLowerCase(),t="group-title"===n.target.tagName.toLowerCase(),i="separator"===n.target.dataset.type;e&&(this.menu.setDisabled("add-new-task"),this.menu.setDisabled("add-new-group")),e||t||i||this.menu.setDisabled("delete-item"),this.menu.clickTarget=n.target,(e||t)&&(this.menu.clickTarget.menuOpen=!0)})),this.menu.addEventListener(h.CLOSE_CONTEXT_MENU,(()=>{this.menu.clickTarget.menuOpen=!1,this.menu.clickTarget=null}))}#g(n){if(n&&"group-title"===n.tagName.toLowerCase()){const t=n.closest("details");return e(t)||this.root}return this.root}#m(){const n="add-new-task";this.menu.addButton(n,"新しいタスク",o.squarePlusPaths),this.menu.addEventListener(`click-${n}`,(n=>{const e=prompt("新しいタスクを作成","新規タスク");if(!e)return;const t=this.#g(this.menu.clickTarget),i=this.#v({name:e});i.classList.add("fade-in"),t.appendChild(i),setTimeout((()=>{i.classList.add("show")}),100),this.#y(t);const o=i.querySelector("task-title").getData();this.dispatchEvent(s.createEvent(h.ADD_NEW_TASK_ITEM_EVENT_NAME,o))}))}#b(){const n="add-new-group";this.menu.addButton(n,"新しいグループ",o.folderPlusPaths),this.menu.addEventListener(`click-${n}`,(n=>{const e=prompt("新しいグループを作成","新規グループ");if(!e)return;const t=this.#g(this.menu.clickTarget),i=this.#w({name:e});i.classList.add("fade-in"),t.appendChild(i),setTimeout((()=>{i.classList.add("show")}),100),this.#y(t);const o=i.querySelector("group-title").getData();this.dispatchEvent(s.createEvent(h.ADD_NEW_GROUP_ITEM_EVENT_NAME,o))}))}#f(){const n="separator-item";this.menu.addButton(n,"セパレーター",o.LinePaths),this.menu.addEventListener(`click-${n}`,(n=>{const e=this.#g(this.menu.clickTarget),t=this.#E();t.classList.add("fade-in"),e.appendChild(t),setTimeout((()=>{t.classList.add("show")}),100),this.dispatchEvent(s.createEvent(h.CHANGE_TREEVIEW_EVENT_NAME))}))}#u(){const n="delete-item";this.menu.addButton(n,"削除",o.trashPaths),this.menu.addEventListener(`click-${n}`,(n=>{this.#x(this.menu.clickTarget.id),this.dispatchEvent(s.createEvent(h.DELETE_TREEVIEW_ITEM_EVENT_NAME))}))}getData(){const n=t=>{const i=[];return t.forEach((t=>{const o="task"===t.dataset.type,r="group"===t.dataset.type,a="separator"===t.dataset.type;if(o){const n=t.querySelector("task-title").getData();i.push(n)}else if(r){const o=t.querySelector("group-title"),r=e(t),a=o.getData();a.children=n(r.childNodes),i.push(a)}else a&&i.push({id:t.id,type:"separator"})})),i};return n(this.root.childNodes)}getItemById(n){return this.shadowRoot.getElementById(n)}selectItemById(n){this.selectedItemId&&(this.shadowRoot.getElementById(this.selectedItemId).selected=!1),this.getItemById(n).selected=!0,this.selectedItemId=n}getGroupItemsById(n){const t=this.shadowRoot.getElementById(n).closest("details"),i=e(t).children,o=[];for(let n of i){const e=n.querySelector("task-title,group-title");if(e){const n=e.getData();n.id=e.id,"task"===n.type&&(n.paths=e.paths,n.flag=e.flag),o.push(n)}}return o}renderTreeView(n){if(!n)return;const t=(n,i)=>{const o="task"===i.type,r="group"===i.type,a="separator"===i.type;if(o){const e=this.#v(i);n.appendChild(e)}else if(r){const o=this.#w(i);n.appendChild(o);const r=e(o);(i.children||i.childlen||[]||[]).forEach((n=>{t(r,n)}))}else if(a){const e=this.#E(i);n.appendChild(e)}};JSON.parse(n).forEach((n=>{t(this.root,n)}))}#E(n={}){const e=i.createElm("div",null,["tree-item","separator"]);return this.#k(e),e.setAttribute("draggable",!0),e.dataset.type="separator",n.id?e.id=n.id:e.id=p.getUniqueId(),e}#v(n={}){const e=i.createElm("task-title");e.init(n);const t=i.createElm("div",null,["tree-item"]);return t.appendChild(e),t.setAttribute("draggable",!0),t.dataset.type="task",this.#k(t),t}#w(n={}){const e=i.createElm("group-title");e.init(n);const t=i.createElm("details",null,["tree-item"]),o=i.createElm("summary",null),r=i.createElm("div",null,["group-items"]);return t.setAttribute("draggable",!0),t.dataset.type="group",t.addEventListener("toggle",(()=>{e.open=t.open})),o.appendChild(e),t.appendChild(o),t.appendChild(r),this.#k(t),t}#y(n){const e=n.closest("details");e&&(e.open=!0)}#x(n){this.shadowRoot.getElementById(n).closest(".tree-item").remove()}#k(n){n.addEventListener("dragstart",this.#C),n.addEventListener("dragover",this.#T,!0),n.addEventListener("dragend",this.#S)}#C(e){n=e.target,n.classList.add("dragging"),e.dataTransfer.effectAllowed="move"}#T(e){e.preventDefault(),e.dataTransfer.dropEffect="move";const t=e.target.closest(".tree-item");if(!t||t===n)return;if(n.contains(t))return;const i=t.getBoundingClientRect(),o=(e.clientY-i.top)/(i.bottom-i.top);"task-title"===e.target.tagName.toLowerCase()?o>.5?t.insertAdjacentElement("afterend",n):t.insertAdjacentElement("beforebegin",n):o>.5?o>=.85?t.insertAdjacentElement("afterend",n):t.querySelector(".group-items").insertAdjacentElement("beforeend",n):t.insertAdjacentElement("beforebegin",n)}#S(e){n&&(n.classList.remove("dragging"),n=null,this.dispatchEvent(s.createEvent(h.CHANGE_TREEVIEW_EVENT_NAME)))}}customElements.define("tree-view",t)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(f.A),this.root=i.createElm("div","root",["task-title"]),this.shadowRoot.appendChild(this.root)}get name(){return this._name}set name(n){this._name=n}get duedate(){return this._duedate}set duedate(n){this._duedate=n}get priority(){return this._priority}set priority(n){this._priority=n}get status(){return this._status}set status(n){this._status=n}get type(){return"task"}get paths(){return this._paths}get flag(){return this._flag}set menuOpen(n){this.root.classList.toggle("menu-opened",n)}set selected(n){this.root.classList.toggle("selected",n)}init(n){this.id=n.id||p.getUniqueId(),this.name=n.name||"新規タスク",this.duedate=n.duedate||"",this.priority=n.priority||"",this.status=n.status||"0",this.#R(),this.root.addEventListener("click",(()=>{this.shadowRoot.dispatchEvent(s.createEvent(h.CLICK_TASK_EVENT_NAME,{id:this.id}))}))}getData(){const n={};return n.id=this.id,n.name=this.name||"新規タスク",n.type=this.type,n.duedate=this.duedate||"",n.priority=this.priority||"",n.status=this.status||0,n}refreshView(){this.#R(),this.dispatchEvent(s.createEvent(h.CHANGE_TREEVIEW_EVENT_NAME))}#R(){this.root.innerHTML="";const n="100"===this.status,e="0"===this.status,t=b.calcDateDiffToday(this.duedate)<3;let r;this._flag={isComplete:n,isNotStarted:e,isOverDeadline:t},this.root.classList.toggle("complete",n),this.root.classList.toggle("over-deadline",t),r=n?o.squareCheckPaths:t?o.squareAlertPaths:e?o.squarePaths:o.squareDotPaths,this._paths=r;const a=l.createIcon(r);this.root.appendChild(a);const s=i.createElm("p",null,["task-text"]);s.innerText=this.name,this.root.appendChild(s)}}customElements.define("task-title",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(u.A),this.root=i.createElm("div","root",["group-title"]),this.shadowRoot.appendChild(this.root)}set name(n){this._name=n,this.#R(),this.dispatchEvent(s.createEvent(h.CHANGE_TREEVIEW_EVENT_NAME))}get name(){return this._name}set open(n){this.root.classList.toggle("group-opened",n)}get type(){return"group"}set menuOpen(n){this.root.classList.toggle("menu-opened",n)}set selected(n){this.root.classList.toggle("selected",n)}init(n){const e=p.getUniqueId();this.id=n.id||`g${e}`,this.name=n.name||"新規グループ",this.#R(),this.root.addEventListener("click",(n=>{n.preventDefault(),n.stopPropagation(),this.shadowRoot.dispatchEvent(s.createEvent(h.CLICK_GROUP_EVENT_NAME,{id:this.id,name:this.name}))})),this.root.addEventListener("dblclick",(()=>{this.shadowRoot.dispatchEvent(s.createEvent(h.DBL_CLICK_GROUP_EVENT_NAME,{id:this.id,name:this.name}))}))}getData(){const n={};return n.id=this.id||null,n.name=this.name||"新規グループ",n.type=this.type,n}refreshView(){this.#R(),this.dispatchEvent(s.createEvent(h.CHANGE_TREEVIEW_EVENT_NAME))}#R(){this.root.innerHTML="";const n=l.createIcon(o.chevronRightPaths);this.root.appendChild(n);const e=i.createElm("span",null,["group-text"]);e.innerText=this.name,this.root.appendChild(e)}}customElements.define("group-title",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(x.A),this.fieldset=i.createElm("fieldset","root"),this.legend=i.createElm("legend"),this.titleText=i.createElm("p"),this.legend.appendChild(this.titleText),this.fieldset.appendChild(this.legend),this.shadowRoot.appendChild(this.fieldset)}set icon(n){this.legend.prepend(n)}set title(n){this.titleText.innerText=n}set required(n){this.legend.classList.toggle("isRequired",n)}set nested(n){this.fieldset.classList.toggle("nested",n)}set itemLess(n){this.fieldset.classList.toggle("item-less",n)}addItem(n){"FORM-FIELDSET"===n.tagName&&(this.fieldset.classList.add("nestedRoot"),n.nested=!0),this.fieldset.appendChild(n)}}customElements.define("form-fieldset",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(k.A),this.input=i.createElm("input"),this.input.type="text",this.input.style="width:100%",this.input.spellcheck=!1,this.shadowRoot.appendChild(this.input),this.input.addEventListener("change",(()=>{this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))}))}set value(n){this.input.value=n}get value(){return this.input.value}set placeholder(n){this.input.placeholder=n}set readOnly(n){this.input.readOnly=n}set width(n){this.input.style=`width:${n}`}}customElements.define("form-input",n)}(),function(){const n="3000-12-31";class e extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(C.A),this.input=i.createElm("input"),this.input.type="date",this.offButton=i.createElm("svg-btn","calendar-off"),this.offButton.iconPaths=o.CalendarOff,this.offButton.size="1rem",this.offButton.color="red",this.offButton.toggle=!0,this.offButton.toggleOn(!1),this.#I(),this.offButton.addEventListener("click",(()=>{this.value=this.offButton.toggle?n:"",this.input.classList.toggle("off",this.offButton.toggle),this.#I(),this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))})),this.shadowRoot.appendChild(this.input),this.shadowRoot.appendChild(this.offButton),this.input.addEventListener("change",(()=>{this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))}))}#I(){this.offButton.toggle?this.offButton.tooltip="無効を解除":this.offButton.tooltip="無効にする"}set value(e){this.input.value=e,e===n&&(this.offButton.toggleOn(!0),this.input.classList.add("off"),this.#I())}get value(){return this.input.value}}customElements.define("form-date",e)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(T.A),this.textarea=i.createElm("textarea"),this.textarea.style="width:100%",this.textarea.spellcheck=!1,this.defaultRows=3,this.textarea.addEventListener("input",(n=>{n.preventDefault(),n.stopPropagation(),this.#_(),this.#M()})),this.shadowRoot.appendChild(this.textarea),this.textarea.addEventListener("change",(()=>{this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))}))}connectedCallback(){this.#_(this.defaultRows),this.#M()}#_(n=0){this.textarea.style.height="auto";const e=window.getComputedStyle(this.textarea),t=parseFloat(e.lineHeight),i=parseFloat(e.paddingTop)+parseFloat(e.paddingBottom),o=this.textarea.scrollHeight;0===n&&(n=Math.max(this.defaultRows,Math.round(o/t)));const r=t*n+i;this.textarea.style.height=`${r}px`}#M(){if(!this._isViewArea)return;if(this.viewArea.innerHTML="",!this.textarea.value)return;const n=i.createElm("ul");this.textarea.value.split("\n").forEach((e=>{let t;const r=i.createElm("li");t=l.createIcon(o.CopyPaths),r.addEventListener("click",(n=>{n.preventDefault(),n.stopPropagation(),navigator.clipboard.writeText(e)})),r.appendChild(t),r.appendChild(document.createTextNode(e)),n.appendChild(r)})),this.viewArea.appendChild(n)}set value(n){this.textarea.value=n,requestAnimationFrame((()=>{this.#_(),this.#M()}))}get value(){return this.textarea.value}set placeholder(n){this.textarea.placeholder=n}set width(n){this.textarea.style=`width:${n}`}set rows(n){this.defaultRows=n,this.#_(n),this.#M()}set isFolderPath(n){this._isFolderPath=n,this.#A(n)}set isURL(n){this._isURL=n,this.#A(n)}#A(n){this._isViewArea=n,this.viewArea=i.createElm("div","view-area"),this.editBtnArea=i.createElm("div","edit-btn-area");const e=i.createElm("svg-btn","edit");e.iconPaths=o.EditPaths,e.size="1.15rem",e.color="blue",e.toggle=!0,e.toggleOn=!1,e.tooltip="編集",e.addEventListener("click",(()=>{this.textarea.classList.remove("fade-in","show"),this.viewArea.classList.remove("fade-in","show");const n=e.toggle,t=n?this.textarea:this.viewArea,i=n?this.viewArea:this.textarea;e.tooltip=e.toggle?"完了":"編集",t.classList.remove("hidden"),i.classList.add("hidden"),t.classList.add("fade-in"),setTimeout((()=>{t.classList.add("show")}),100),this.#_()})),this.editBtnArea.appendChild(e),this.textarea.classList.add("hidden"),this.shadowRoot.appendChild(this.viewArea),this.shadowRoot.appendChild(this.editBtnArea)}set borderless(n){this.textarea.classList.toggle("borderless",n)}}customElements.define("form-textarea",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(S.A),this.root=i.createElm("div","root"),this.table=i.createElm("table"),this.thead=i.createElm("thead"),this.tbody=i.createElm("tbody"),this.table.appendChild(this.thead),this.table.appendChild(this.tbody),this.root.appendChild(this.table),this.shadowRoot.appendChild(this.root)}set width(n){this.table.style=`width:${n}`}set header(n=[]){this.thead.innerHTML="";const e=i.createElm("tr");n.forEach((n=>{const t=i.createElm("th");t.innerText=n,e.appendChild(t)})),this.thead.appendChild(e)}appendTr(){this.tr=i.createElm("tr"),this.tbody.appendChild(this.tr)}setTrClass(n){this.tr.classList.add(n)}addTd(){this.td=i.createElm("td"),this.tr.appendChild(this.td)}setTdElment(n){if("string"==typeof n){const e=i.createElm("div");e.innerText=n,this.td.appendChild(e)}else this.td.appendChild(n)}setTdWidth(n){this.td.style=`width:${n}`}setTdAlign(n){this.td.classList.add(n)}setTdClickEvent(n){this.td.classList.add("clickable"),this.td.addEventListener("click",n)}}customElements.define("form-table",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(R.A),this.root=i.createElm("div","root"),this.shadowRoot.appendChild(this.root),this.root.addEventListener("change",(()=>{this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))}))}set items(n){n.forEach(((e,t)=>{const i=`item${e.value}`,o=document.createElement("label");o.htmlFor=i,o.textContent=e.text;const r=document.createElement("input");r.type="radio",r.name="radio",r.id=i,r.value=e.value,0===t?o.classList.add("first"):t===n.length-1&&o.classList.add("last"),this.root.appendChild(o),this.root.appendChild(r)}))}get value(){const n=this.shadowRoot.querySelector('input[name="radio"]:checked');return n?n.value:null}set value(n){if(n){if(""===n)return;this.shadowRoot.getElementById(`item${n}`).checked=!0}}}customElements.define("form-radio",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(v.A),this.root=i.createElm("div","root",["contents-group","scroll"]),this.#z(),this.#L(),this.#N(),this.shadowRoot.appendChild(this.root),this.root.addEventListener(h.CHANGE_FORM_ITEM_EVENT_NAME,(()=>{this.dispatchEvent(s.createEvent(h.CHANGE_CONTENTS_GROUP_EVENT_NAME))}))}render(n){if(!n)return;const e=JSON.parse(n);this._groupTitle.value=e.title,this._groupOverview.value=e.overview}renderItems(n=[]){0!==n.length&&(this.#O(),this.table.header=["ID","ステータス","名称","優先度","期日","進捗率"],n.forEach((n=>{if("task"===n.type){const e=l.createIcon(n.paths),t=g.text(n.priority)||"?";this.table.appendTr(),n.flag.isComplete?this.table.setTrClass("complete"):n.flag.isOverDeadline&&this.table.setTrClass("alert"),this.table.addTd(),this.table.setTdElment(n.id),this.table.setTdWidth("150px"),this.table.addTd(),this.table.setTdElment(e),this.table.setTdWidth("100px"),this.table.setTdAlign("center"),this.table.addTd(),this.table.setTdElment(n.name),this.table.setTdClickEvent((()=>{this.shadowRoot.dispatchEvent(s.createEvent(h.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,{id:n.id,name:n.name}))})),this.table.addTd(),this.table.setTdElment(t),this.table.setTdWidth("100px"),this.table.setTdAlign("center"),this.table.addTd(),this.table.setTdElment("3000-12-31"!==n.duedate?n.duedate:"-"),this.table.setTdWidth("100px"),this.table.setTdAlign("center"),this.table.addTd(),this.table.setTdElment(`${n.status}%`),this.table.setTdWidth("100px"),this.table.setTdAlign("center")}else{this.table.appendTr(),this.table.addTd(),this.table.setTdElment(n.id),this.table.setTdWidth("150px");const e=l.createIcon(o.folderPaths);e.style="color: #E9762B",this.table.addTd(),this.table.setTdElment(e),this.table.setTdWidth("100px"),this.table.setTdAlign("center"),this.table.addTd(),this.table.setTdElment(n.name),this.table.setTdClickEvent((()=>{this.shadowRoot.dispatchEvent(s.createEvent(h.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,{id:n.id,name:n.name}))})),this.table.addTd(),this.table.setTdElment("-"),this.table.setTdWidth("100px"),this.table.setTdAlign("center"),this.table.addTd(),this.table.setTdElment("-"),this.table.setTdWidth("100px"),this.table.setTdAlign("center"),this.table.addTd(),this.table.setTdElment("-"),this.table.setTdWidth("100px"),this.table.setTdAlign("center")}})))}getData(){const n={};return n.title=this._groupTitle.value,n.overview=this._groupOverview.value||"",n}#z(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.TagPaths),n.title="ID",this._groupId=i.createElm("form-input","id"),this._groupId.title="ID",this._groupId.readOnly=!0,this._groupId.width="600px",n.addItem(this._groupId),this.root.appendChild(n)}set groupId(n){this._groupId.value=n}#L(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.BookPaths),n.title="グループ名",n.required=!0,this._groupTitle=i.createElm("form-input","title"),this._groupTitle.width="600px",n.addItem(this._groupTitle),this.root.appendChild(n)}set groupTitle(n){this._groupTitle.value=n}#N(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.WitingPaths),n.title="概要",this._groupOverview=i.createElm("form-textarea","overview"),this._groupOverview.width="600px",this._groupOverview.rows=5,this._groupOverview.placeholder="グループの概要説明",n.addItem(this._groupOverview),this.root.appendChild(n)}#O(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.TablePaths),n.title="タスク一覧",this.table=i.createElm("form-table"),n.addItem(this.table),this.root.appendChild(n)}}customElements.define("contents-group",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(y.A),this.root=i.createElm("div","root",["contents-task"]),this.property=i.createElm("div","task-property",["scroll"]),this.history=i.createElm("div","task-history",["scroll"]),this.root.appendChild(this.property),this.root.appendChild(this.history),this.#F(),this.#D(),this.#P(),this.#H(),this.#V(),this.#G(),this.#B(),this.#j(),this.#q(),this.#U(),this.#W(),this.shadowRoot.appendChild(this.root),this.root.addEventListener(h.CHANGE_FORM_ITEM_EVENT_NAME,(()=>{this.dispatchEvent(s.createEvent(h.CHANGE_CONTENTS_TASK_EVENT_NAME))}))}render(n){if(!n)return;const e=JSON.parse(n);this._taskTitle.value=e.taskData.title,this._taskDueDate.value=e.taskData.dueDate,this._staffDiv.value=e.taskData.staffDiv,this._staffName.value=e.taskData.staffName,this._staffTel.value=e.taskData.staffTel,this._priority.value=e.taskData.priority,this._status.value=e.taskData.status,this._memo.value=e.taskData.memo,this._folderpath.value=e.taskData.folderpath,this._url.value=e.taskData.url,this._freenotes.value=e.taskData.freenotes,this._historyContents.render(e.historyData)}getData(){return{taskData:{title:this._taskTitle.value,dueDate:this._taskDueDate.value,staffDiv:this._staffDiv.value,staffName:this._staffName.value,staffTel:this._staffTel.value,priority:this._priority.value,status:this._status.value,memo:this._memo.value,folderpath:this._folderpath.value,url:this._url.value,freenotes:this._freenotes.value},historyData:this._historyContents.getData()}}#F(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.TagPaths),n.title="ID",this._taskId=i.createElm("form-input","id"),this._taskId.title="ID",this._taskId.readOnly=!0,n.addItem(this._taskId),this.property.appendChild(n)}set taskId(n){this._taskId.value=n}#D(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.BookPaths),n.title="タスク名",n.required=!0,this._taskTitle=i.createElm("form-input","title"),this._taskTitle.placeholder="XXXXXの作成",n.addItem(this._taskTitle),this.property.appendChild(n)}set taskTitle(n){this._taskTitle.value=n}#P(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.DueDatePaths),n.title="期限日",n.required=!0,this._taskDueDate=i.createElm("form-date","due-date"),n.addItem(this._taskDueDate),this.property.appendChild(n)}#H(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.CirclesPaths),n.title="担当者",n.required=!0;const e=i.createElm("form-fieldset");this._staffDiv=i.createElm("form-input","staff-div"),e.addItem(this._staffDiv),e.icon=l.createIcon(o.WallpaperPaths),e.title="所属",this._staffDiv.placeholder="情報システム課";const t=i.createElm("form-fieldset");t.icon=l.createIcon(o.UserPaths),this._staffName=i.createElm("form-input","staff-name"),t.addItem(this._staffName),t.title="氏名",this._staffName.placeholder="日本 太郎";const r=i.createElm("form-fieldset");r.icon=l.createIcon(o.PhoneCallPaths),this._staffTel=i.createElm("form-input","staff-tel"),r.addItem(this._staffTel),r.title="電話番号",this._staffTel.placeholder="0123-45-6789",n.addItem(e),n.addItem(t),n.addItem(r),this.property.appendChild(n)}#V(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.AntennaPaths),n.title="優先度",n.required=!0,this._priority=i.createElm("form-radio","priority"),this._priority.items=g.PARAM,n.addItem(this._priority),this.property.appendChild(n)}#G(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.PercentagePaths),n.title="進捗率",this._status=i.createElm("form-radio","status"),this._status.items=[{value:"0",text:"0%"},{value:"10",text:"10%"},{value:"20",text:"20%"},{value:"30",text:"30%"},{value:"40",text:"40%"},{value:"50",text:"50%"},{value:"60",text:"60%"},{value:"70",text:"70%"},{value:"80",text:"80%"},{value:"90",text:"90%"},{value:"100",text:"100%"}],this._status.value="0",n.addItem(this._status),this.property.appendChild(n)}#B(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.WitingPaths),n.title="作業概要",this._memo=i.createElm("form-textarea","memo"),this._memo.rows=8,this._memo.placeholder="タスクの概要説明",n.addItem(this._memo),this.property.appendChild(n)}#j(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.folderPaths),n.title="作業フォルダパス",this._folderpath=i.createElm("form-textarea","folderpath"),this._folderpath.rows=3,this._folderpath.placeholder="作業フォルダパス(E:workspace)",this._folderpath.isFolderPath=!0,n.addItem(this._folderpath),this.property.appendChild(n)}#q(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.WebhookPaths),n.title="URL",this._url=i.createElm("form-textarea","url"),this._url.rows=3,this._url.placeholder="https://example.com",this._url.isURL=!0,n.addItem(this._url),this.property.appendChild(n)}#U(){const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.WitingPaths),n.title="自由記述欄",this._freenotes=i.createElm("form-textarea","freenotes"),this._freenotes.rows=8,this._freenotes.placeholder="etc",n.addItem(this._freenotes),this.property.appendChild(n)}#W(){this._historyContents=i.createElm("contents-history"),this.history.appendChild(this._historyContents),this._historyContents.addEventListener(h.CHANGE_FORM_ITEM_EVENT_NAME,(n=>{this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))})),this._historyContents.addEventListener(h.ADD_HISTORY_CONTENTS_EVENT_NAME,(n=>{this.#K()}))}#K(){const n=this.history.scrollHeight-this.history.clientHeight;this.history.scrollTo({top:n,behavior:"smooth"})}}customElements.define("contents-task",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(w.A),this.root=i.createElm("div","root",["contents-history"]);const n=i.createElm("form-fieldset");n.icon=l.createIcon(o.HistoryPaths),n.title="履歴一覧",n.itemLess=!0,this.root.appendChild(n);const e=i.createFloatArea(),t=this.#$();e.appendChild(t),this.root.appendChild(e),this.shadowRoot.innerHTML="",this.shadowRoot.appendChild(this.root),this.root.addEventListener(h.CHANGE_FORM_ITEM_EVENT_NAME,(n=>{this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))}))}#$(){const n=i.createElm("svg-btn","add-hisory");return n.iconPaths=o.plusPaths,n.isCircle=!0,n.addEventListener("click",(()=>{this.#X({}),this.dispatchEvent(s.createEvent(h.ADD_HISTORY_CONTENTS_EVENT_NAME))})),n}getData(){const n=this.root.querySelectorAll("contents-history-item"),e=[];return n.forEach((n=>{e.push(n.getData())})),e}render(n){n.forEach((n=>{this.#X(n)})),requestAnimationFrame((()=>{this.dispatchEvent(s.createEvent(h.ADD_HISTORY_CONTENTS_EVENT_NAME))}))}#X(n){const e=i.createElm("contents-history-item"),t=!n.id;t&&e.classList.add("fade-in"),e.init(n),this.root.appendChild(e),t&&setTimeout((()=>{e.classList.add("show")}),100)}}customElements.define("contents-history",n)}(),function(){class n extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.innerHTML="",this.shadowRoot.adoptedStyleSheets=i.createStylesheet(E.A),this.root=i.createElm("div","root",["history-item"]),this.footer=i.createElm("div","footer"),this.#Y(),this.#J(),this.#Q(),this.root.appendChild(this.footer),this.shadowRoot.innerHTML="",this.shadowRoot.appendChild(this.root)}init(n={}){this.id=n.id||p.getUniqueId(),this._text.value=n.text||"",this._date.value=n.date||b.formatDate(new Date,"{yyyy}-{MM}-{dd}T{HH}:{mm}")}getData(){return{id:this.id,text:this._text.value,date:this._date.value}}#Y(){this._text=i.createElm("form-textarea","history-text"),this._text.borderless=!0,this.root.appendChild(this._text)}#J(){this._date=i.createElm("input","history-date"),this._date.type="datetime-local",this.footer.appendChild(this._date),this._date.addEventListener("change",(()=>{this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))}))}#Q(){const n=i.createElm("svg-btn","delete-history-item");n.iconPaths=o.trashPaths,n.size="1rem",n.hover=!0,n.color="red",n.tooltip="削除",this.footer.appendChild(n),n.addEventListener("click",(()=>{this.remove(),this.dispatchEvent(s.createEvent(h.CHANGE_FORM_ITEM_EVENT_NAME))}))}}customElements.define("contents-history-item",n)}(),this.fileManager=new r,this.attachShadow({mode:"open"}),this.shadowRoot.adoptedStyleSheets=i.createStylesheet(a.A),this.container=i.createElm("div","container"),this.treeView=i.createElm("div","treeview",["scroll"]),this.contents=i.createElm("div","contents"),this.contents.appendChild(this.#Z()),this.container.appendChild(this.treeView),this.container.appendChild(this.contents),this.shadowRoot.innerHTML="",this.shadowRoot.appendChild(this.container)}#Z(){const n=i.createElm("svg-btn","folder-open");n.iconPaths=o.folderPaths,n.isCircle=!0,n.addEventListener("click",(async()=>{try{await this.fileManager.selectDirectory()&&(this.#nn(),this.#en(),n.remove())}catch(n){console.error("ディレクトリの選択に失敗しました",n)}}));const e=i.createFloatArea();return e.appendChild(n),e}#nn(){this.treeViewRoot=i.createElm("tree-view","tree-view-root"),this.treeViewRoot.searchHandler=async n=>await this.fileManager.search(n),this.treeView.innerHTML="",this.treeView.appendChild(this.treeViewRoot),this.#tn(),this.#in(),this.#on(),this.#rn(),this.#an(),this.#sn(),this.#ln()}async#en(){try{const e=await this.fileManager.loadFile(n);this.treeViewRoot.renderTreeView(e)}catch(n){return console.error("ツリーデータの読み込みに失敗しました:",n),null}}async#dn(){try{const e=this.treeViewRoot.getData();await this.fileManager.writeFile(n,JSON.stringify(e))}catch(n){console.error("ツリーデータの保存に失敗しました:",n)}}#tn(){this.treeViewRoot.addEventListener(h.ADD_NEW_TASK_ITEM_EVENT_NAME,(async n=>{const e=n.detail.item;this.#hn(e.id,e.name),await this.#dn()}))}#in(){this.treeViewRoot.addEventListener(h.ADD_NEW_GROUP_ITEM_EVENT_NAME,(async n=>{const e=n.detail.item;this.#cn(e.id,e.name),await this.#dn()}))}#on(){this.treeViewRoot.addEventListener(h.DELETE_TREEVIEW_ITEM_EVENT_NAME,(async n=>{await this.#dn()}))}#rn(){this.treeViewRoot.addEventListener(h.CHANGE_TREEVIEW_EVENT_NAME,(async n=>{await this.#dn()}))}#an(){this.treeViewRoot.addEventListener(h.CLICK_TASK_EVENT_NAME,(n=>{const e=n.detail.item;this.#hn(e.id,e.name)}))}#sn(){this.treeViewRoot.addEventListener(h.CLICK_GROUP_EVENT_NAME,(n=>{const e=n.detail.item;this.#cn(e.id,e.name)}))}#ln(){this.treeViewRoot.addEventListener(h.DBL_CLICK_GROUP_EVENT_NAME,(n=>{const e=n.detail.item;this.treeViewRoot.toggleGroup(e.id),this.#cn(e.id,e.name)}))}async#cn(n,e){try{const t=this.treeViewRoot.getItemById(n);this.treeViewRoot.selectItemById(n);let o=await this.fileManager.loadFile(`${n}.json`);if(this.contentsGroup=i.createElm("contents-group"),this.contentsGroup.groupId=n,!o){this.contentsGroup.groupTitle=e;const t=this.contentsGroup.getData();await this.#pn(n,t),o=await this.fileManager.loadFile(`${n}.json`)}this.contentsGroup.render(o),this.contentsGroup.renderItems(this.treeViewRoot.getGroupItemsById(n)),this.contents.innerHTML="",this.contents.appendChild(this.contentsGroup),this.contentsGroup.addEventListener(h.CHANGE_CONTENTS_GROUP_EVENT_NAME,(async e=>{const i=this.contentsGroup.getData();await this.#pn(n,i),t.name=i.title,t.refreshView()})),this.contentsGroup.addEventListener(h.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,(n=>{const e=n.detail.item;this.#cn(e.id,e.name)})),this.contentsGroup.addEventListener(h.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,(n=>{const e=n.detail.item;this.#hn(e.id,e.name)}))}catch(n){return console.error("グループデータの読み込みに失敗しました:",n),null}}async#pn(n,e){try{const t=`${n}.json`;await this.fileManager.writeFile(t,JSON.stringify(e))}catch(n){console.error("グループコンテンツの保存に失敗しました:",n)}}async#hn(n,e){try{const t=this.treeViewRoot.getItemById(n);this.treeViewRoot.selectItemById(n);let o=await this.fileManager.loadFile(`${n}.json`);if(this.contentsTask=i.createElm("contents-task"),this.contentsTask.taskId=n,!o){this.contentsTask.taskTitle=e;const t=this.contentsTask.getData();await this.#mn(n,t),o=await this.fileManager.loadFile(`${n}.json`)}this.contentsTask.render(o),this.contents.innerHTML="",this.contents.appendChild(this.contentsTask),this.contentsTask.addEventListener(h.CHANGE_CONTENTS_TASK_EVENT_NAME,(async e=>{const i=this.contentsTask.getData();await this.#mn(n,i),t.name=i.taskData.title,t.duedate=i.taskData.dueDate,t.priority=i.taskData.priority,t.status=i.taskData.status,t.refreshView()}))}catch(n){return console.error("タスクデータの読み込みに失敗しました:",n),null}}#mn(n,e){try{const t=`${n}.json`;this.fileManager.writeFile(t,JSON.stringify(e))}catch(n){console.error("タスクコンテンツの保存に失敗しました:",n)}}}customElements.define("task-memo",e)}()}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ([
+/* 0 */,
+/* 1 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TaskMemo: () => (/* binding */ TaskMemo)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var _style_task_memo_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var _svg_btn_svg_btn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
+/* harmony import */ var _context_menu_context_menu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(12);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(13);
+/* harmony import */ var _tree_view_tree_view__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15);
+/* harmony import */ var _tree_view_task_title__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(18);
+/* harmony import */ var _tree_view_group_title__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(21);
+/* harmony import */ var _contents_group_contents_group__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(23);
+/* harmony import */ var _contents_task_contents_task__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(26);
+/* harmony import */ var _contents_history_contents_hisotry__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(28);
+/* harmony import */ var _contents_history_contetns_history_item__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(30);
+/* harmony import */ var _form_form_fieldset__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(32);
+/* harmony import */ var _form_form_input__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(34);
+/* harmony import */ var _form_form_date__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(36);
+/* harmony import */ var _form_form_textarea__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(38);
+/* harmony import */ var _form_form_table__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(40);
+/* harmony import */ var _form_form_radio__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(42);
+// CSS
+
+
+
+
+
+
+// Componets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * TaskMemo コンポーネント
+ * @class TaskMemo
+ * @extends {HTMLElement}
+ */
+function TaskMemo() {
+  // *******************************************************
+  // * 定数
+  // *******************************************************
+  /**
+   * TreeViewの内容を保存するJSONファイル名
+   */
+  const TREE_VIEW_FILE_NAME = "tree.json";
+
+  class TaskMemo extends HTMLElement {
+    // *******************************************************
+    // * 初期処理
+    // *******************************************************
+
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      (0,_svg_btn_svg_btn__WEBPACK_IMPORTED_MODULE_4__.SvgBtn)();
+      (0,_context_menu_context_menu__WEBPACK_IMPORTED_MODULE_5__.ContextMenu)();
+
+      (0,_tree_view_tree_view__WEBPACK_IMPORTED_MODULE_7__.TreeView)();
+      (0,_tree_view_task_title__WEBPACK_IMPORTED_MODULE_8__.TaskTitle)();
+      (0,_tree_view_group_title__WEBPACK_IMPORTED_MODULE_9__.GroupTitle)();
+
+      (0,_form_form_fieldset__WEBPACK_IMPORTED_MODULE_14__.FormFieldset)();
+      (0,_form_form_input__WEBPACK_IMPORTED_MODULE_15__.FormInput)();
+      (0,_form_form_date__WEBPACK_IMPORTED_MODULE_16__.FormDate)();
+      (0,_form_form_textarea__WEBPACK_IMPORTED_MODULE_17__.FormTextarea)();
+      (0,_form_form_table__WEBPACK_IMPORTED_MODULE_18__.FormTable)();
+      (0,_form_form_radio__WEBPACK_IMPORTED_MODULE_19__.FormRadio)();
+
+      (0,_contents_group_contents_group__WEBPACK_IMPORTED_MODULE_10__.ContentsGroup)();
+      (0,_contents_task_contents_task__WEBPACK_IMPORTED_MODULE_11__.ContentsTask)();
+      (0,_contents_history_contents_hisotry__WEBPACK_IMPORTED_MODULE_12__.ContentsHistory)();
+      (0,_contents_history_contetns_history_item__WEBPACK_IMPORTED_MODULE_13__.ContentsHistoryItem)();
+
+      this.fileManager = new _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__.FileManager();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_memo_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+      // オブジェクトを配置
+      this.container = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "container");
+      this.treeView = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "treeview", ["scroll"]);
+      this.contents = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "contents");
+
+      this.contents.appendChild(this.#createFolderOpenBtnInFloatArea());
+
+      this.container.appendChild(this.treeView);
+      this.container.appendChild(this.contents);
+
+      this.shadowRoot.innerHTML = "";
+      this.shadowRoot.appendChild(this.container);
+    }
+
+    /**
+     * フォルダを開くボタンを作成するメソッド
+     * @private
+     * @description
+     * フォルダを開くためのボタンを作成し、そのアイコンを設定し、円形にする。
+     * ボタンがクリックされると、"folderOpen" をコンソールにログ出力する。
+     * @returns {HTMLElement} - 作成されたfolderOpenBtn要素
+     */
+    #createFolderOpenBtnInFloatArea() {
+      const folderOpenBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "folder-open");
+      folderOpenBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_1__.SvgConst.folderPaths;
+      folderOpenBtn.isCircle = true;
+
+      /**
+       * ボタンクリック
+       */
+      folderOpenBtn.addEventListener("click", async () => {
+        try {
+          if (await this.fileManager.selectDirectory()) {
+            this.#addEmptyTreeView();
+            this.#loadTreeViewData();
+            folderOpenBtn.remove();
+          }
+        } catch (error) {
+          console.error("ディレクトリの選択に失敗しました", error);
+        }
+      });
+
+      /**
+       * Floatボタン用の領域でラップ
+       */
+      const floatBtns = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createFloatArea();
+      floatBtns.appendChild(folderOpenBtn);
+
+      return floatBtns;
+    }
+
+    // *******************************************************
+    // * TreeView制御処理
+    // *******************************************************
+
+    /**
+     * 空のTreeViewを作成し、各種イベントリスナーを登録する。
+     * @return {void}
+     */
+    #addEmptyTreeView() {
+      this.treeViewRoot = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tree-view", "tree-view-root");
+
+      this.treeViewRoot.searchHandler = async (text) => {
+        return await this.fileManager.search(text);
+      };
+
+      this.treeView.innerHTML = "";
+      this.treeView.appendChild(this.treeViewRoot);
+
+      // 各イベントを登録
+      this.#attachAddTaskEventListener();
+      this.#attachAddGroupEventListener();
+      this.#attachDeleteTreeViewItemEventListener();
+      this.#attachChangeTreeViewEventListener();
+      this.#attachClickTaskItemEventListener();
+      this.#attachClickGroupItemEventListener();
+      this.#attachDblClickGroupItemEventListener();
+    }
+
+    /**
+     * ツリービューデータを非同期に読み込み、ツリービューにレンダリングするメソッド。
+     * ファイル読み込みに失敗した場合、エラーメッセージをコンソールに表示し、nullを返します。
+     *
+     * @returns {Promise<string|null>} - 非同期処理の完了を表すPromise。成功時はツリーデータの文字列、失敗時はnullを返す。
+     */
+    async #loadTreeViewData() {
+      try {
+        const str = await this.fileManager.loadFile(TREE_VIEW_FILE_NAME);
+        this.treeViewRoot.renderTreeView(str);
+      } catch (error) {
+        console.error("ツリーデータの読み込みに失敗しました:", error);
+        return null;
+      }
+    }
+
+    /**
+     * ツリービューデータを保存するメソッド。
+     * 指定されたデータをJSON形式にシリアライズし、ファイルに書き込みます。
+     *
+     * @returns {Promise<void>} - 非同期処理の完了を表すPromise。
+     */
+    async #saveTreeView() {
+      try {
+        const data = this.treeViewRoot.getData();
+        await this.fileManager.writeFile(
+          TREE_VIEW_FILE_NAME,
+          JSON.stringify(data)
+        );
+      } catch (writeError) {
+        console.error("ツリーデータの保存に失敗しました:", writeError);
+      }
+    }
+
+    /**
+     * 新規タスクの追加イベントを登録
+     */
+    #attachAddTaskEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME,
+        async (e) => {
+          const item = e.detail.item;
+          this.#addContentsTask(item.id, item.name);
+          await this.#saveTreeView();
+        }
+      );
+    }
+
+    /**
+     * 新規グループの追加イベントを登録
+     */
+    #attachAddGroupEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME,
+        async (e) => {
+          const item = e.detail.item;
+          this.#addContentsGroup(item.id, item.name);
+          await this.#saveTreeView();
+        }
+      );
+    }
+
+    /**
+     * TreeViewアイテムの削除イベントを登録
+     */
+    #attachDeleteTreeViewItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.DELETE_TREEVIEW_ITEM_EVENT_NAME,
+        async (e) => {
+          await this.#saveTreeView();
+          this.contents.innerHTML = "";
+        }
+      );
+    }
+
+    /**
+     * TreeViewの変更イベントを登録
+     */
+    #attachChangeTreeViewEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CHANGE_TREEVIEW_EVENT_NAME,
+        async (e) => {
+          await this.#saveTreeView();
+        }
+      );
+    }
+
+    /**
+     * TreeViewのタスククリックイベントを登録
+     */
+    #attachClickTaskItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_TASK_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.#addContentsTask(item.id, item.name);
+        }
+      );
+    }
+
+    /**
+     * TreeViewのグループクリックイベントを登録
+     */
+    #attachClickGroupItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_GROUP_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.#addContentsGroup(item.id, item.name);
+        }
+      );
+    }
+
+    /**
+     * TreeViewのグループダブルクリックイベントを登録
+     */
+    #attachDblClickGroupItemEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.DBL_CLICK_GROUP_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.treeViewRoot.toggleGroup(item.id);
+          this.#addContentsGroup(item.id, item.name);
+        }
+      );
+    }
+
+    // *******************************************************
+    // * グループアイテム
+    // *******************************************************
+
+    /**
+     * 非同期でコンテンツグループを追加します。
+     * @param {string} id - グループID。
+     * @param {string} name - グループ名。
+     * @returns {Promise<null|void>} - 失敗した場合はnullを返します。
+     */
+    async #addContentsGroup(id, name) {
+      try {
+        // TreeViewのアイテムを取得
+        const group = this.treeViewRoot.getItemById(id);
+
+        // TreeViewのアイテムを選択中に変更
+        this.treeViewRoot.selectItemById(id);
+
+        // データ取得
+        let str = await this.fileManager.loadFile(`${id}.json`);
+
+        // グループコンテンツ作成
+        this.contentsGroup = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("contents-group");
+        this.contentsGroup.groupId = id;
+        if (!str) {
+          this.contentsGroup.groupTitle = name;
+          const newData = this.contentsGroup.getData();
+          await this.#saveContentsGroup(id, newData);
+          str = await this.fileManager.loadFile(`${id}.json`);
+        }
+        this.contentsGroup.render(str);
+        this.contentsGroup.renderItems(this.treeViewRoot.getGroupItemsById(id));
+
+        // グループコンテンツを登録
+        this.contents.innerHTML = "";
+        this.contents.appendChild(this.contentsGroup);
+
+        // グループの変更を検知し反映
+        this.contentsGroup.addEventListener(
+          _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CHANGE_CONTENTS_GROUP_EVENT_NAME,
+          async (e) => {
+            const data = this.contentsGroup.getData();
+            await this.#saveContentsGroup(id, data);
+            group.name = data.title;
+            group.refreshView();
+          }
+        );
+
+        // グループ内のグループのクリックを検知
+        this.contentsGroup.addEventListener(
+          _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
+          (e) => {
+            const item = e.detail.item;
+            this.#addContentsGroup(item.id, item.name);
+          }
+        );
+
+        // グループ内のタスクのクリックを検知
+        this.contentsGroup.addEventListener(
+          _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+          (e) => {
+            const item = e.detail.item;
+            this.#addContentsTask(item.id, item.name);
+          }
+        );
+      } catch (error) {
+        console.error("グループデータの読み込みに失敗しました:", error);
+        return null;
+      }
+    }
+
+    /**
+     * 非同期でグループコンテンツを保存します。
+     * @param {string} id - グループID。
+     * @param {object} data - 保存するデータ。
+     * @returns {Promise<void>}
+     */
+    async #saveContentsGroup(id, data) {
+      try {
+        const finename = `${id}.json`;
+        await this.fileManager.writeFile(finename, JSON.stringify(data));
+      } catch (writeError) {
+        console.error("グループコンテンツの保存に失敗しました:", writeError);
+      }
+    }
+
+    // *******************************************************
+    // * タスクアイテム
+    // *******************************************************
+
+    /**
+     * 非同期でタスクを追加します。
+     * @param {string} id - タスクID。
+     * @param {string} name - タスク名。
+     * @returns {Promise<null|void>} - 失敗した場合はnullを返します。
+     */
+    async #addContentsTask(id, name) {
+      try {
+        // TreeViewのアイテムを取得
+        const task = this.treeViewRoot.getItemById(id);
+
+        // TreeViewのアイテムを選択中に変更
+        this.treeViewRoot.selectItemById(id);
+
+        // データ取得
+        let str = await this.fileManager.loadFile(`${id}.json`);
+
+        // タスクコンテンツ作成
+        this.contentsTask = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("contents-task");
+        this.contentsTask.taskId = id;
+        if (!str) {
+          this.contentsTask.taskTitle = name;
+          const newData = this.contentsTask.getData();
+          await this.#saveContentsTask(id, newData);
+          str = await this.fileManager.loadFile(`${id}.json`);
+        }
+        this.contentsTask.render(str);
+
+        // タスクコンテンツを登録
+        this.contents.innerHTML = "";
+        this.contents.appendChild(this.contentsTask);
+
+        // タスクの変更を検知し反映
+        this.contentsTask.addEventListener(
+          _constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CHANGE_CONTENTS_TASK_EVENT_NAME,
+          async (e) => {
+            const data = this.contentsTask.getData();
+            await this.#saveContentsTask(id, data);
+
+            task.name = data.taskData.title;
+            task.duedate = data.taskData.dueDate;
+            task.priority = data.taskData.priority;
+            task.status = data.taskData.status;
+
+            task.refreshView();
+          }
+        );
+      } catch (error) {
+        console.error("タスクデータの読み込みに失敗しました:", error);
+        return null;
+      }
+    }
+
+    /**
+     * 非同期でタスクコンテンツを保存します。
+     * @param {string} id - タスクID。
+     * @param {object} data - 保存するデータ。
+     * @returns {Promise<void>}
+     */
+    #saveContentsTask(id, data) {
+      try {
+        const finename = `${id}.json`;
+        this.fileManager.writeFile(finename, JSON.stringify(data));
+      } catch (writeError) {
+        console.error("タスクコンテンツの保存に失敗しました:", writeError);
+      }
+    }
+  }
+  customElements.define("task-memo", TaskMemo);
+}
+
+
+/***/ }),
+/* 2 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ElmUtils: () => (/* binding */ ElmUtils)
+/* harmony export */ });
+/**
+ * 要素作成ユーティリティクラス
+ */
+class ElmUtils {
+  /**
+   * CSSスタイルシートを作成するメソッド
+   *
+   * @method createStylesheet
+   * @param {string} style - スタイルの文字列
+   * @returns {CSSStyleSheet[]} - 作成されたスタイルシートの配列
+   * @description
+   * 与えられたスタイルの文字列を元に、新しいCSSStyleSheetを作成して返す。
+   */
+  static createStylesheet = (style) => {
+    const styleSheet = new CSSStyleSheet();
+    styleSheet.replaceSync(style);
+    return [styleSheet];
+  };
+
+  /**
+   * 指定されたタグ名、ID、およびクラスリストを持つ要素を作成するメソッド
+   *
+   * @method createElm
+   * @param {string} tag - 作成する要素のタグ名
+   * @param {string|null} [id=null] - 作成する要素のID。デフォルトはnull。
+   * @param {Array} [classList=[]] - 追加するクラスのリスト。デフォルトは空の配列。
+   * @returns {HTMLElement} - 作成されたHTML要素
+   * @description
+   * 指定されたタグ名、ID、およびクラスリストを持つHTML要素を作成して返す。
+   */
+  static createElm = (tag, id = null, classList = []) => {
+    const div = document.createElement(tag);
+
+    if (id) div.id = id;
+    if (classList.length) div.classList.add(...classList);
+
+    return div;
+  };
+
+  /**
+   * フロートエリアを作成するメソッド
+   *
+   * @method createFloatArea
+   * @returns {HTMLElement} - 作成されたフロートエリアのHTML要素
+   * @description
+   * 指定されたクラスリストを持つフロートエリアのdiv要素を作成して返す。
+   */
+  static createFloatArea = () => {
+    return this.createElm("div", null, ["float-area"]);
+  };
+
+  /**
+   * 指定されたターゲット要素のタグ名が指定されたタグ名と一致するかどうかを確認します。
+   *
+   * @static
+   * @param {HTMLElement} target - ターゲット要素
+   * @param {string} tagName - 一致を確認するタグ名
+   * @returns {boolean} ターゲットのタグ名が指定されたタグ名と一致する場合は true、それ以外の場合は false
+   */
+  static tagEq = (target, tagName) => {
+    return target.tagName.toLowerCase() === tagName;
+  };
+}
+
+
+/***/ }),
+/* 3 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SvgConst: () => (/* binding */ SvgConst)
+/* harmony export */ });
+/**
+ * SVG定数クラス
+ */
+class SvgConst {
+  /**
+   * 縦の線SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static linePaths = {
+    name: "icon-line",
+    paths: [{ path: "M0 0h24v24H0z" }, { path: "M12 4v17" }],
+  };
+
+  /**
+   * すべて開くSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static treeOpenPaths = {
+    name: "icon-tree-open",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 18l3 3l3 -3" },
+      { path: "M15 6l3 -3l3 3" },
+    ],
+  };
+
+  /**
+   * すべて閉じるSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static treeClosePaths = {
+    name: "icon-tree-close",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" },
+      { path: "M18 14v7" },
+      { path: "M18 3v7" },
+      { path: "M15 7l3 3l3 -3" },
+      { path: "M15 17l3 -3l3 3" },
+    ],
+  };
+
+  /**
+   * 静的なフォルダパスを定義するオブジェクト
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static folderPaths = {
+    name: "icon-folder",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2",
+      },
+    ],
+  };
+
+  /**
+   * 四角形に十字SVGのパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squarePlusPaths = {
+    name: "icon-square-plus",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M9 12h6",
+      },
+      {
+        path: "M12 9v6",
+      },
+      {
+        path: "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z",
+      },
+    ],
+  };
+
+  /**
+   * 四角形のパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squarePaths = {
+    name: "icon-square",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",
+      },
+    ],
+  };
+
+  /**
+   * 四角形とチェックのパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squareCheckPaths = {
+    name: "icon-square-check",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",
+      },
+      {
+        path: "M9 12l2 2l4 -4",
+      },
+    ],
+  };
+
+  /**
+   * 四角形と点のパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squareDotPaths = {
+    name: "icon-square-dot",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",
+      },
+      {
+        path: "M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",
+      },
+    ],
+  };
+
+  /**
+   * 四角形とアラートのパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squareAlertPaths = {
+    name: "icon-square-alert",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z",
+      },
+      {
+        path: "M12 8v4",
+      },
+      {
+        path: "M12 16h.01",
+      },
+    ],
+  };
+
+  /**
+   * 四角形とバツ印のパスデータを含むオブジェクトの配列
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static squareXPaths = {
+    name: "icon-square-x",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z",
+      },
+      {
+        path: "M9 9l6 6m0 -6l-6 6",
+      },
+    ],
+  };
+
+  /**
+   * フォルダ追加SVGのパスデータを含むオブジェクトの配列を生成する。
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static folderPlusPaths = {
+    name: "icon-folder-plus",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5",
+      },
+      {
+        path: "M16 19h6",
+      },
+      { path: "M19 16v6" },
+    ],
+  };
+
+  /**
+   * 右向き山形SVGのパスデータを含むオブジェクトの配列を生成する。
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static chevronRightPaths = {
+    name: "icon-chevron-right",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M9 6l6 6l-6 6",
+      },
+    ],
+  };
+
+  /**
+   * ゴミ箱SVGのパスデータを含むオブジェクトの配列を生成する。
+   *
+   * @type {Object}
+   * @property {string} name - アイコンフォルダの名前
+   * @property {Array<Object>} paths - 各パスオブジェクトの配列
+   * @property {string} paths.path - インラインSVGパスの定義
+   */
+  static trashPaths = {
+    name: "icon-trash",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M4 7l16 0" },
+      { path: "M10 11l0 6" },
+      { path: "M14 11l0 6" },
+      { path: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" },
+      { path: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" },
+    ],
+  };
+
+  /**
+   * プラスSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static plusPaths = {
+    name: "icon-plus",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M12 5l0 14" },
+      { path: "M5 12l14 0" },
+    ],
+  };
+
+  /**
+   * フィルタSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static FilterPaths = {
+    name: "icon-filter",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z",
+      },
+    ],
+  };
+
+  /**
+   * コピーSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static CopyPaths = {
+    name: "icon-copy",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z",
+      },
+      {
+        path: "M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1",
+      },
+    ],
+  };
+
+  /**
+   * リンクSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static LinkPaths = {
+    name: "icon-copy",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M9 15l6 -6",
+      },
+      {
+        path: "M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464",
+      },
+      {
+        path: "M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463",
+      },
+    ],
+  };
+
+  /**
+   * 編集SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static EditPaths = {
+    name: "icon-edit",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1",
+      },
+      {
+        path: "M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z",
+      },
+      {
+        path: "M16 5l3 3",
+      },
+    ],
+  };
+
+  /**
+   * TagSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static TagPaths = {
+    name: "icon-tag",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",
+      },
+      {
+        path: "M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z",
+      },
+    ],
+  };
+
+  /**
+   * ブックSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static BookPaths = {
+    name: "icon-book",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0",
+      },
+      {
+        path: "M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0",
+      },
+      {
+        path: "M3 6l0 13",
+      },
+      {
+        path: "M12 6l0 13",
+      },
+      {
+        path: "M21 6l0 13",
+      },
+    ],
+  };
+
+  /**
+   * ユーザーSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static UserPaths = {
+    name: "icon-user",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0",
+      },
+      {
+        path: "M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2",
+      },
+    ],
+  };
+
+  /**
+   * 期限日SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static DueDatePaths = {
+    name: "icon-deu-date",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z",
+      },
+      {
+        path: "M16 3v4",
+      },
+      {
+        path: "M8 3v4",
+      },
+      {
+        path: "M4 11h16",
+      },
+      {
+        path: "M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0",
+      },
+    ],
+  };
+
+  /**
+   * カレンダー無効SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static CalendarOff = {
+    name: "icon-calendar-off",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M9 5h9a2 2 0 0 1 2 2v9m-.184 3.839a2 2 0 0 1 -1.816 1.161h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 1.158 -1.815",
+      },
+      {
+        path: "M16 3v4",
+      },
+      {
+        path: "M8 3v1",
+      },
+      {
+        path: "M4 11h7m4 0h5",
+      },
+      {
+        path: "M3 3l18 18",
+      },
+    ],
+  };
+
+  /**
+   * アンテナSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static AntennaPaths = {
+    name: "icon-antenna",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M6 18l0 -3",
+      },
+      {
+        path: "M10 18l0 -6",
+      },
+      {
+        path: "M14 18l0 -9",
+      },
+      {
+        path: "M18 18l0 -12",
+      },
+    ],
+  };
+
+  /**
+   * パーセンテージSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static PercentagePaths = {
+    name: "icon-percentage",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 3a9 9 0 0 1 7.794 13.5l-7.79 -4.497z",
+        isFill: true,
+      },
+      {
+        path: "M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0",
+      },
+    ],
+  };
+
+  /**
+   * ライティングSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static WitingPaths = {
+    name: "icon-writing",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z",
+      },
+      {
+        path: "M16 7h4",
+      },
+      {
+        path: "M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3",
+      },
+    ],
+  };
+
+  /**
+   * WebhookSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static WebhookPaths = {
+    name: "icon-webhook",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M4.876 13.61a4 4 0 1 0 6.124 3.39h6",
+      },
+      {
+        path: "M15.066 20.502a4 4 0 1 0 1.934 -7.502c-.706 0 -1.424 .179 -2 .5l-3 -5.5",
+      },
+      {
+        path: "M16 8a4 4 0 1 0 -8 0c0 1.506 .77 2.818 2 3.5l-3 5.5",
+      },
+    ],
+  };
+
+  /**
+   * テーブルSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static TablePaths = {
+    name: "icon-table",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z",
+      },
+      {
+        path: "M3 10h18",
+      },
+      {
+        path: "M10 3v18",
+      },
+    ],
+  };
+
+  /**
+   * 履歴SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static HistoryPaths = {
+    name: "icon-history",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 8l0 4l2 2",
+      },
+      {
+        path: "M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5",
+      },
+    ],
+  };
+
+  /**
+   * 壁紙SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static WallpaperPaths = {
+    name: "icon-wallpaper",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M8 6h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12",
+      },
+      {
+        path: "M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",
+      },
+      {
+        path: "M8 18v-12a2 2 0 1 0 -4 0v12",
+      },
+    ],
+  };
+
+  /**
+   * 三重円SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static CirclesPaths = {
+    name: "icon-circles",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+      },
+      {
+        path: "M6.5 17m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+      },
+      {
+        path: "M17.5 17m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0",
+      },
+    ],
+  };
+
+  /**
+   * 電話コールSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static PhoneCallPaths = {
+    name: "icon-phone-call",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2",
+      },
+      {
+        path: "M15 7a2 2 0 0 1 2 2",
+      },
+      {
+        path: "M15 3a6 6 0 0 1 6 6",
+      },
+    ],
+  };
+
+  /**
+   * 線SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static LinePaths = {
+    name: "icon-line",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M6 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",
+      },
+      {
+        path: "M18 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0",
+      },
+      {
+        path: "M7.5 16.5l9 -9",
+      },
+    ],
+  };
+}
+
+
+/***/ }),
+/* 4 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FileManager: () => (/* binding */ FileManager)
+/* harmony export */ });
+/**
+ * ファイル操作を行うためのマネージャークラス
+ */
+class FileManager {
+  /**
+   * コンストラクタ
+   */
+  constructor() {
+    this.directoryHandler = null;
+    this.writeLock = Promise.resolve(); // 初期化時のロック
+  }
+
+  /**
+   * ディレクトリを選択する
+   * @returns {Promise<boolean>} ディレクトリを正常に開けたかどうか
+   */
+  async selectDirectory() {
+    try {
+      this.directoryHandler = await window.showDirectoryPicker({
+        mode: "readwrite",
+      });
+      return true;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  /**
+   * ファイルを書き込む
+   * @param {string} fileName 書き込むファイルの名前
+   * @returns {Promise<string|null>} ファイルの内容。ファイルが存在しない場合はnull
+   * @throws {Error} ディレクトリが開かれていない場合、またはファイル書き込みに失敗した場合
+   */
+  async writeFile(fileName, content) {
+    if (!this.directoryHandler) {
+      throw new Error("ディレクトリがまだ開かれていません。");
+    }
+    // ロック取得とリリースの処理（書き込みの一貫性を担保）
+    this.writeLock = this.writeLock.then(async () => {
+      try {
+        const fileHandle = await this.directoryHandler.getFileHandle(fileName, {
+          create: true,
+        });
+        const writable = await fileHandle.createWritable();
+        await writable.write(content);
+        await writable.close();
+      } catch (err) {
+        throw err;
+      }
+    });
+
+    return this.writeLock; // プロミスを返す
+  }
+
+  /**
+   * ファイルを読み込む
+   * @param {string} fileName 読み込むファイルの名前
+   * @returns {Promise<string|null>} ファイルの内容、ファイルが存在しない場合はnull
+   * @throws {Error} ディレクトリが開かれていない場合、またはファイル読み込みに失敗した場合
+   */
+  async loadFile(fileName) {
+    if (!this.directoryHandler) {
+      throw new Error("ディレクトリがまだ開かれていません。");
+    }
+    try {
+      // ファイルハンドルを取得してファイルを読み込む
+      const fileHandle = await this.directoryHandler.getFileHandle(fileName);
+      const file = await fileHandle.getFile();
+      if (file.size <= 0) {
+        return null;
+      }
+      return await file.text();
+    } catch (err) {
+      if (err.name === "NotFoundError") {
+        return null;
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  /**
+   * 対象文字列を含むファイルを検索する。
+   * @param {string} text 検索文字列
+   * @returns {Promise<array|null>} 検索結果、ファイルが存在しない場合はnull
+   * @throws {Error} ディレクトリが開かれていない場合、またはファイル読み込みに失敗した場合
+   */
+  async search(text) {
+    if (!this.directoryHandler) {
+      throw new Error("ディレクトリがまだ開かれていません。");
+    }
+    try {
+      const result = [];
+      for await (const [name, handle] of this.directoryHandler.entries()) {
+        const file = await handle.getFile();
+        const fileStr = await file.text();
+        if (fileStr.indexOf(text) !== -1) {
+          result.push(name);
+        }
+      }
+      return result;
+    } catch (err) {
+      if (err.name === "NotFoundError") {
+        return null;
+      } else {
+        throw err;
+      }
+    }
+  }
+}
+
+
+/***/ }),
+/* 5 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+#container {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+  gap: 0em 0em;
+  grid-template-areas: "treeview contents";
+  height: 100vh;
+}
+#container #treeview {
+  grid-area: treeview;
+  height: 100vh;
+}
+#container #contents {
+  grid-area: contents;
+  background-color: #d4f1ef;
+  height: 100vh;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 6 */
+/***/ ((module) => {
+
+
+
+module.exports = function (i) {
+  return i[1];
+};
+
+/***/ }),
+/* 7 */
+/***/ ((module) => {
+
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = [];
+
+  // return the list of modules as css string
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+      content += cssWithMappingToString(item);
+      if (needLayer) {
+        content += "}";
+      }
+      if (item[2]) {
+        content += "}";
+      }
+      if (item[4]) {
+        content += "}";
+      }
+      return content;
+    }).join("");
+  };
+
+  // import a list of modules into the list
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+    var alreadyImportedModules = {};
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+      list.push(item);
+    }
+  };
+  return list;
+};
+
+/***/ }),
+/* 8 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SvgBtn: () => (/* binding */ SvgBtn)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _style_svg_btn_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
+
+
+
+
+
+
+/**
+ * SvgBtn コンポーネント
+ * @class SvgBtn
+ * @extends {HTMLElement}
+ */
+function SvgBtn() {
+  class SvgBtn extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @constructor
+     * @returns {void}
+     * @description
+     * SvgBtn コンポーネントのインスタンスを初期化するコンストラクタ。
+     * Shadow DOM をオープンモードでアタッチし、CSSを適用し、ボタン要素を作成します。
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_svg_btn_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+      // フラグ初期化
+      this.isToggle = false;
+
+      // 空のボタンを作成
+      this.button = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("button");
+      this.button.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (this.isToggle) {
+          this.button.classList.toggle("toggle-on");
+        }
+        this.shadowRoot.dispatchEvent(_utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent("click"));
+      });
+      this.shadowRoot.appendChild(this.button);
+    }
+
+    /**
+     * アイコンを設定するセッター
+     * @param {HTMLElement} paths - 設定するアイコン要素
+     * @returns {void}
+     */
+    set iconPaths(paths) {
+      this._svgIcon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createSvg(paths);
+      this._svgUse = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createSvgUse(this._svgIcon);
+      this.button.appendChild(this._svgIcon);
+      this.button.appendChild(this._svgUse);
+    }
+
+    /**
+     * ボタンを円形にするかどうかを設定するプロパティ
+     * @param {boolean} flg - 円形にする場合は true、しない場合は false
+     * @description 指定された値に応じて、ボタンに "circle" クラスを追加または削除する。
+     */
+    set isCircle(flg) {
+      if (flg) {
+        this.button.classList.add("circle");
+      } else {
+        this.button.classList.remove("circle");
+      }
+    }
+
+    /**
+     * ボタンのサイズを設定するセッター
+     * @param {string} value - 設定するサイズ
+     */
+    set size(value) {
+      this._svgUse.style = `font-size: ${value}`;
+    }
+
+    /**
+     * ボタンのカラーを設定するセッター
+     * @param {string} value - 設定するカラー
+     */
+    set color(value) {
+      this.button.classList.remove("red", "green", "blue", "white", "black");
+      this.button.classList.add(value);
+    }
+
+    /**
+     * ボタンのホバーを設定するセッター
+     * @param {bool} flag - ホバーを設定する場合は true、しない場合は false
+     */
+    set hover(flag) {
+      this.button.classList.toggle("hover", flag);
+    }
+
+    /**
+     * トグルボタンの設定を行うセッター
+     * @param {bool} flag - トグルボタンにする場合は true、しない場合は false
+     */
+    set toggle(flag) {
+      this.isToggle = flag;
+      this.button.classList.toggle("toggle", flag);
+    }
+
+    /**
+     * トグルボタンの状態を取得するゲッター
+     * @returns {bool} トグルボタンがオンの場合は true、オフの場合は false
+     */
+    get toggle() {
+      return this.button.classList.contains("toggle-on");
+    }
+
+    /**
+     * トグルボタンをオンにするメソッド
+     * @param {bool} flag - トグルをオンにする場合は true、しない場合は false
+     * @returns {void}
+     */
+    toggleOn(flag) {
+      this.button.classList.toggle("toggle-on", flag);
+    }
+
+    /**
+     * ツールチップメッセージの設定を行うセッター
+     * @param {string} text - ヒントメッセージ
+     */
+    set tooltip(text) {
+      this.button.title = text;
+    }
+  }
+  customElements.define("svg-btn", SvgBtn);
+}
+
+
+/***/ }),
+/* 9 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EventUtils: () => (/* binding */ EventUtils)
+/* harmony export */ });
+/**
+ * イベント作成ユーティリティクラス
+ */
+class EventUtils {
+  /**
+   * カスタムイベントを作成する静的メソッド
+   * @param {string} eventName - イベントの名前
+   * @param {Object} [item={}] - イベントに関連するオブジェクト
+   * @return {CustomEvent} - 作成されたカスタムイベント
+   */
+  static createEvent = (eventName, item = {}) => {
+    return new CustomEvent(eventName, {
+      detail: { item: item },
+      bubbles: true,
+      composed: true,
+    });
+  };
+}
+
+
+/***/ }),
+/* 10 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SvgUtils: () => (/* binding */ SvgUtils)
+/* harmony export */ });
+/* harmony import */ var _elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+
+
+/**
+ * SVG要素作成ユーティリティクラス
+ */
+class SvgUtils {
+  /**
+   * SVG要素を作成するメソッド
+   *
+   * @method createSvg
+   * @param {string} name - シンボルの名前
+   * @param {Array<Object>} paths - SVGのパス情報の配列。各オブジェクトは `path` と `isFill` プロパティを持つ。
+   * @returns {SVGSVGElement} - 作成されたSVG要素
+   * @description
+   * 指定された名前とパス情報でSVG要素を作成し、返す。
+   * パスはシンボルとして `defs` に定義される。
+   */
+  static createSvg = (iconData) => {
+    const { name, paths } = iconData;
+    const svgNS = "http://www.w3.org/2000/svg";
+    const xlinkNS = "http://www.w3.org/1999/xlink";
+
+    // SVGタグを作成する
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("version", "1.1");
+    svg.setAttribute("xmlns", svgNS);
+    svg.setAttribute("xmlns:xlink", xlinkNS);
+    svg.classList.add("svg");
+
+    // Defsタグを作成する
+    const defs = document.createElementNS(svgNS, "defs");
+
+    // symbolタグを作成する
+    const symbol = document.createElementNS(svgNS, "symbol");
+    symbol.setAttribute("id", name);
+    symbol.setAttribute("viewBox", "0 0 24 24");
+    symbol.setAttribute("fill", "none");
+    symbol.setAttribute("stroke", "currentColor");
+    symbol.setAttribute("stroke-width", "2");
+    symbol.setAttribute("stroke-linecap", "round");
+    symbol.setAttribute("stroke-linejoin", "round");
+
+    // SVGのPathを作成し、symbolタグに追加する
+    paths.forEach((elm, index) => {
+      const path = document.createElementNS(svgNS, "path");
+      if (index === 0) {
+        path.setAttribute("stroke", "none");
+        path.setAttribute("fill", "none");
+      } else if (elm.isFill) {
+        path.setAttribute("stroke", "none");
+        path.setAttribute("fill", "currentColor");
+      }
+      path.setAttribute("d", elm.path);
+      symbol.appendChild(path);
+    });
+
+    // defsタグにsymbolタグを追加する
+    defs.appendChild(symbol);
+
+    // svgタグにdefsタグを追加する。
+    svg.appendChild(defs);
+
+    return svg;
+  };
+
+  /**
+   * SVG use 要素を作成するプライベートメソッド
+   * @param {HTMLElement} svgIcon - 設定するアイコン要素
+   * @returns {SVGElement} 作成されたSVG要素
+   * @description
+   * 指定されたSVGアイコン要素を元に、SVG use 要素を作成して返します。
+   */
+  static createSvgUse(svgIcon) {
+    const svgNS = "http://www.w3.org/2000/svg";
+    const xlinkNS = "http://www.w3.org/1999/xlink";
+
+    // SVG要素を作成し、クラスを追加する
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.classList.add("svg-icon");
+
+    // アイコンのIDを取得
+    const iconName = svgIcon.getElementsByTagName("symbol")[0].id;
+
+    // use要素を作成し、SVG要素に追加する
+    const use = document.createElementNS(svgNS, "use");
+    use.setAttributeNS(xlinkNS, "xlink:href", `#${iconName}`);
+    svg.appendChild(use);
+
+    return svg;
+  }
+
+  /**
+   * アイコンを作成する静的メソッド
+   * @param {Object} iconData - アイコンデータのオブジェクト
+   * @return {HTMLElement} - 作成されたSVG要素
+   */
+  static createIcon(iconData) {
+    const icon = this.createSvg(iconData);
+    const use = this.createSvgUse(icon);
+    const div = _elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
+
+    div.appendChild(icon);
+    div.appendChild(use);
+
+    return div;
+  }
+}
+
+
+/***/ }),
+/* 11 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+button {
+  position: relative;
+}
+button.circle {
+  z-index: 99999;
+  color: #fffffb;
+  background-color: #0a3981;
+  border: 1px solid #0a3981;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+button.circle:hover {
+  color: #0a3981;
+  background-color: #fffff8;
+  border-color: #0a3981;
+}
+button.circle .svg-icon {
+  font-size: 1.8rem;
+}
+button.hover {
+  color: #8f8f8f;
+  border-radius: 0.25rem;
+  transition: 0.2s;
+}
+button.hover.red:hover {
+  color: #d84040;
+  background-color: #fdfbee;
+}
+button.hover.green:hover {
+  color: #0e7405;
+  background-color: #fdfbee;
+}
+button.hover.blue:hover {
+  color: #003092;
+  background-color: #fdfbee;
+}
+button.hover.white:hover {
+  color: #fffffb;
+  background-color: #fdfbee;
+}
+button.hover.black:hover {
+  color: #000000;
+  background-color: #fdfbee;
+}
+button.toggle {
+  color: #8f8f8f;
+}
+button.toggle.toggle-on.red {
+  color: #d84040;
+}
+button.toggle.toggle-on.green {
+  color: #0e7405;
+}
+button.toggle.toggle-on.blue {
+  color: #003092;
+}
+button.toggle.toggle-on.white {
+  color: #fffffb;
+}
+button.toggle.toggle-on.black {
+  color: #000000;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 12 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ContextMenu: () => (/* binding */ ContextMenu)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _style_context_menu_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(14);
+
+
+
+
+
+
+
+/**
+ * ContextMenu コンポーネント
+ * @class ContextMenu
+ * @extends {HTMLElement}
+ */
+function ContextMenu() {
+  class ContextMenu extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_context_menu_css__WEBPACK_IMPORTED_MODULE_4__["default"]);
+
+      // 空のコンテンツを作成
+      this.area = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "context-area");
+      this.area.addEventListener("click", () => {
+        this.area.classList.remove("open");
+
+        const disabledItems = this.menu.querySelectorAll(".disabled");
+        for (let item of disabledItems) {
+          item.classList.remove("disabled");
+        }
+
+        this.shadowRoot.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.CLOSE_CONTEXT_MENU)
+        );
+      });
+
+      this.menu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "context-menu");
+
+      this.area.appendChild(this.menu);
+      this.shadowRoot.appendChild(this.area);
+    }
+
+    /**
+     * コンテキストメニューを指定された位置に開きます。
+     * @param {MouseEvent} e - コンテキストメニューを開く際のマウスイベント
+     */
+    openMenu(e) {
+      this.area.classList.add("open");
+      this.menu.style.left = `${e.pageX + 10}px`;
+      this.menu.style.top = `${e.pageY - 20}px`;
+    }
+
+    /**
+     * クリックターゲットを取得します。
+     * @returns {Element} _clickTarget - 現在のクリックターゲット要素
+     */
+    get clickTarget() {
+      return this._clickTarget;
+    }
+
+    /**
+     * クリックターゲットを設定します。
+     * @param {Element} value - 新しいクリックターゲット要素
+     */
+    set clickTarget(value) {
+      this._clickTarget = value;
+    }
+
+    /**
+     * ボタンを追加するメソッド
+     * @param {string} id - ボタンのID
+     * @param {string} title - ボタンのタイトル
+     * @param {object} iconData - アイコン設定情報
+     * @return {void}
+     */
+    addButton(id, title, iconData) {
+      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(iconData);
+
+      const text = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
+      text.classList.add("button-text");
+      text.innerText = title;
+
+      const btn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", id, ["button-area"]);
+      btn.appendChild(icon);
+      btn.appendChild(text);
+
+      /**
+       * クリックイベント
+       */
+      btn.addEventListener("click", () => {
+        if (btn.classList.contains("disabled")) {
+          return;
+        }
+        this.shadowRoot.dispatchEvent(_utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(`click-${id}`));
+      });
+
+      this.menu.appendChild(btn);
+    }
+
+    /**
+     * 指定されたIDを持つボタン要素を無効化します。
+     * @param {string} id - 無効化するボタン要素のID
+     */
+    setDisabled(id) {
+      const btn = this.shadowRoot.getElementById(id);
+      btn.classList.add("disabled");
+    }
+
+    /**
+     * 罫線を引く
+     */
+    addBorder() {
+      this.menu.appendChild(_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("hr"));
+    }
+  }
+  customElements.define("context-menu", ContextMenu);
+}
+
+
+/***/ }),
+/* 13 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EventConst: () => (/* binding */ EventConst)
+/* harmony export */ });
+/**
+ * イベント定数クラス
+ */
+class EventConst {
+  /**
+   * コンテキストメニューを閉じる
+   */
+  static CLOSE_CONTEXT_MENU = "closeContextMenu";
+  /**
+   * TreeViewのタスクをクリック
+   */
+  static CLICK_TASK_EVENT_NAME = "clickTaskItem";
+
+  /**
+   * TreeViewのグループをクリック
+   */
+  static CLICK_GROUP_EVENT_NAME = "clickGruopItem";
+
+  /**
+   * TreeViewのグループをダブルクリック
+   */
+  static DBL_CLICK_GROUP_EVENT_NAME = "dblClickGruopItem";
+  /**
+   * 新規タスクを追加
+   */
+  static ADD_NEW_TASK_ITEM_EVENT_NAME = "addTaskItem";
+
+  /**
+   * 新規グループを追加
+   */
+  static ADD_NEW_GROUP_ITEM_EVENT_NAME = "addGroupItem";
+
+  /**
+   * TreeViewのアイテムを削除を追加
+   */
+  static DELETE_TREEVIEW_ITEM_EVENT_NAME = "deleteTreeViewItem";
+
+  /**
+   * TreeView変更イベント
+   */
+  static CHANGE_TREEVIEW_EVENT_NAME = "changeTreeView";
+
+  /**
+   * フォームアイテム変更イベント
+   */
+  static CHANGE_FORM_ITEM_EVENT_NAME = "changeFormItem";
+
+  /**
+   * コンテンツグループ変更イベント
+   */
+  static CHANGE_CONTENTS_GROUP_EVENT_NAME = "changeContentsGroup";
+
+  /**
+   * グループ内グループのクリックイベント
+   */
+  static CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME = "clickContentsGroupGroup";
+
+  /**
+   * グループ内タスクのクリックイベント
+   */
+  static CLICK_CONTENTS_GROUP_TASK_EVENT_NAME = "clickContentsGroupTask";
+
+  /**
+   * コンテンツタスク変更イベント
+   */
+  static CHANGE_CONTENTS_TASK_EVENT_NAME = "changeContentsTask";
+
+  /**
+   * 履歴コンテンツ追加イベント
+   */
+  static ADD_HISTORY_CONTENTS_EVENT_NAME = "addHistoryContents";
+}
+
+
+/***/ }),
+/* 14 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+#context-area {
+  display: none;
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+}
+#context-area.open {
+  display: block;
+}
+#context-area #context-menu {
+  position: absolute;
+  z-index: 100000;
+  background-color: #fffff8;
+  border: 1px solid #8f8f8f;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+}
+#context-area #context-menu .button-area {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+}
+#context-area #context-menu .button-area:hover {
+  border-radius: 0.25rem;
+  background-color: #0078d4;
+  color: #fffffb;
+}
+#context-area #context-menu .button-area .svg-icon {
+  margin-right: 0.25rem;
+  height: 1rem;
+  width: 1rem;
+}
+#context-area #context-menu .button-area .button-text {
+  padding-top: 1px;
+}
+#context-area #context-menu .button-area.disabled {
+  color: #cccccc;
+}
+#context-area #context-menu .button-area.disabled:hover {
+  color: #cccccc;
+  background-color: transparent;
+}
+#context-area #context-menu hr {
+  margin: 0.25rem 0;
+  height: 1px;
+  background-color: #5f5f5f;
+  border: none;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 15 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeView: () => (/* binding */ TreeView)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+/* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(17);
+// CSS
+
+
+
+
+
+
+
+
+/**
+ * TreeView コンポーネント
+ * @class TreeView
+ * @extends {HTMLElement}
+ */
+function TreeView() {
+  /**
+   * ドラッグ中の要素
+   */
+  let draggedElement;
+
+  /**
+   * 指定されたエレメント内のグループアイテムを取得する関数。
+   * 与えられたエレメント内の`.group-items`クラスを持つ要素を見つけ、返します。
+   *
+   * @param {Element} element - グループアイテムを取得するエレメント。
+   * @returns {Element} - グループアイテムを含むエレメント。
+   */
+  const getItems = (element) => element.querySelector(".group-items");
+
+  class TreeView extends HTMLElement {
+    // *******************************************************
+    // * 初期処理
+    // *******************************************************
+
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+      // コンテンツの初期設定
+      this.header = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header");
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
+
+      this.shadowRoot.appendChild(this.header);
+      this.shadowRoot.appendChild(this.root);
+
+      // コンテキストメニューを追加
+      this.#addHeaderMenu();
+      this.#addContextMenu();
+    }
+
+    /**
+     * 検索メソッドを設定する。
+     * @param {function} func - 検索メソッド
+     */
+    set searchHandler(func) {
+      this.searchFunction = func;
+    }
+
+    /**
+     * 指定したIDのグループを開く／閉じる
+     * @param {string} id
+     */
+    toggleGroup(id) {
+      const details = this.shadowRoot.getElementById(id).closest("details");
+      details.open = !details.open;
+    }
+
+    // *******************************************************
+    // * ヘッダーメニュー
+    // *******************************************************
+    #addHeaderMenu() {
+      const headerMenu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header-menu");
+      headerMenu.appendChild(this.#createAllOpenButton());
+      headerMenu.appendChild(this.#createAllCloseButton());
+      headerMenu.appendChild(this.#createLine());
+      headerMenu.appendChild(this.#createFilterNotStartedButton());
+      headerMenu.appendChild(this.#createFilterStartedButton());
+      headerMenu.appendChild(this.#createFilterCompletButton());
+      headerMenu.appendChild(this.#createFilterOverDeadlineButton());
+      headerMenu.appendChild(this.#createFilterButton());
+      this.header.appendChild(headerMenu);
+    }
+
+    /**
+     * セパレータを作成する。
+     * @returns ボタン
+     */
+    #createLine() {
+      const line = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "line");
+      line.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.linePaths;
+      line.size = "1.15rem";
+      return line;
+    }
+
+    /**
+     * ベースとなるボタンを作成する。
+     * @param {string} id - ボタンのID
+     * @param {Array} paths - アイコンのパス
+     * @returns ボタン
+     */
+    #createButton(id, paths) {
+      const btn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", id);
+      btn.iconPaths = paths;
+      btn.size = "1.15rem";
+      btn.color = "black";
+      return btn;
+    }
+
+    /**
+     * トグルボタンを作成する。
+     * @param {string} id - ボタンのID
+     * @param {Array} paths - アイコンのパス
+     * @returns ボタン
+     */
+    #createToggleButton(id, paths) {
+      const btn = this.#createButton(id, paths);
+      btn.toggle = true;
+      btn.toggleOn(true);
+      return btn;
+    }
+
+    /**
+     * グループをすべて開くボタンを作成する。
+     * @returns ボタン
+     */
+    #createAllOpenButton() {
+      const btn = this.#createButton("all-open", _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.treeOpenPaths);
+      btn.hover = true;
+      btn.tooltip = "すべて開く";
+      btn.addEventListener("click", () => {
+        const details = this.root.querySelectorAll("details");
+        details.forEach((detail) => (detail.open = true));
+      });
+
+      return btn;
+    }
+
+    /**
+     * グループをすべて閉じるボタンを作成する。
+     * @returns ボタン
+     */
+    #createAllCloseButton() {
+      const btn = this.#createButton("all-close", _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.treeClosePaths);
+      btn.hover = true;
+      btn.tooltip = "すべて閉じる";
+      btn.addEventListener("click", () => {
+        const details = this.root.querySelectorAll("details");
+        details.forEach((detail) => (detail.open = false));
+      });
+
+      return btn;
+    }
+
+    /**
+     * 未開始タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterNotStartedButton() {
+      this.btnFilterNotStarted = this.#createToggleButton(
+        "filter-not-started",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.squarePaths
+      );
+      this.btnFilterNotStarted.tooltip = "未着手";
+      this.btnFilterNotStarted.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterNotStarted;
+    }
+
+    /**
+     * 実行中タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterStartedButton() {
+      this.btnFilterStarted = this.#createToggleButton(
+        "filter-started",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.squareDotPaths
+      );
+      this.btnFilterStarted.tooltip = "対応中";
+      this.btnFilterStarted.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterStarted;
+    }
+
+    /**
+     * 完了タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterCompletButton() {
+      this.btnFilterComplet = this.#createToggleButton(
+        "filter-completed",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.squareCheckPaths
+      );
+      this.btnFilterComplet.tooltip = "完了";
+      this.btnFilterComplet.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterComplet;
+    }
+
+    /**
+     * 遅延タスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterOverDeadlineButton() {
+      this.btnFilterOverDeadline = this.#createToggleButton(
+        "filter-over-deadline",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.squareAlertPaths
+      );
+      this.btnFilterOverDeadline.tooltip = "遅延";
+      this.btnFilterOverDeadline.color = "red";
+      this.btnFilterOverDeadline.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterOverDeadline;
+    }
+
+    /**
+     * フィルタボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterButton() {
+      const btn = this.#createToggleButton("item-filter", _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.FilterPaths);
+      btn.color = "green";
+      btn.toggleOn(false);
+      btn.tooltip = "フィルタ";
+
+      this.searchText = "";
+      this.searchResult = [];
+
+      // 検索
+      btn.addEventListener("click", async () => {
+        this.searchText = "";
+        this.searchResult = [];
+
+        if (btn.toggle) {
+          this.searchText = prompt("検索条件を入力");
+          if (this.searchText) {
+            this.searchResult = await this.searchFunction(this.searchText);
+          } else {
+            btn.toggleOn(false);
+          }
+        }
+
+        this.#filterTreeViewItem();
+      });
+
+      return btn;
+    }
+
+    /**
+     * TreeViewのタスクに対するフィルタを設定する。
+     */
+    #filterTreeViewItem() {
+      this.root.querySelectorAll("task-title").forEach((task) => {
+        const flag = task.flag;
+        let isDisabled;
+
+        // ステータスフィルター
+        if (flag.isComplete) {
+          isDisabled = !this.btnFilterComplet.toggle;
+        } else if (flag.isOverDeadline) {
+          isDisabled = !this.btnFilterOverDeadline.toggle;
+        } else if (flag.isNotStarted) {
+          isDisabled = !this.btnFilterNotStarted.toggle;
+        } else {
+          isDisabled = !this.btnFilterStarted.toggle;
+        }
+
+        // 検索文字列フィルター
+        if (!isDisabled && this.searchText) {
+          isDisabled = this.searchResult.indexOf(`${task.id}.json`) === -1;
+        }
+
+        task.classList.toggle("disabled", isDisabled);
+      });
+    }
+
+    // *******************************************************
+    // * コンテキストメニュー
+    // *******************************************************
+
+    /**
+     * コンテキストメニューを初期化し、Shadow DOMに追加します。
+     * また、右クリック（コンテキストメニュー）のイベントリスナーを設定します。
+     * @private
+     */
+    #addContextMenu() {
+      this.menu = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("context-menu", "menu");
+      this.shadowRoot.appendChild(this.menu);
+
+      // ボタンを追加
+      this.#insertAddTaskButton();
+      this.#insertAddGroupButton();
+      this.#insertSeparatorItemButton();
+      this.menu.addBorder();
+      this.#insertDeleteItemButton();
+
+      /**
+       * メニューを開く
+       * @param {MouseEvent} e - コンテキストメニューのイベントオブジェクト
+       */
+      this.shadowRoot.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.menu.openMenu(e);
+
+        const isTask = e.target.tagName.toLowerCase() === "task-title";
+        const isGroup = e.target.tagName.toLowerCase() === "group-title";
+        const isSeparator = e.target.dataset.type === "separator";
+
+        // ターゲットがタスクの場合、追加ボタンを無効
+        if (isTask) {
+          this.menu.setDisabled("add-new-task");
+          this.menu.setDisabled("add-new-group");
+        }
+
+        // ターゲットがアイテム以外の場合、削除ボタンを無効
+        if (!isTask && !isGroup && !isSeparator) {
+          this.menu.setDisabled("delete-item");
+        }
+
+        // メニューのターゲットを設定する
+        this.menu.clickTarget = e.target;
+
+        // メニューを開いている状態を設定
+        if (isTask || isGroup) {
+          this.menu.clickTarget.menuOpen = true;
+        }
+      });
+
+      /**
+       * メニューの「closeMenu」イベントをリッスンし、メニューのクリックターゲットを更新します。
+       * @event closeMenu - メニューが閉じられたときに発生するイベント
+       */
+      this.menu.addEventListener(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.CLOSE_CONTEXT_MENU, () => {
+        this.menu.clickTarget.menuOpen = false;
+        this.menu.clickTarget = null;
+      });
+    }
+
+    /**
+     * コンテキストメニューのターゲット要素を取得します。
+     * クリックされた要素が特定の条件を満たす場合、その要素に対応するターゲットを返します。
+     * デフォルトではルート要素を返します。
+     * @param {HtmlElement} target - 対象
+     * @returns {Element} - メニューを適用するターゲット要素
+     * @private
+     */
+    #getMenuTarget(target) {
+      if (target && target.tagName.toLowerCase() === "group-title") {
+        const details = target.closest("details");
+        const items = getItems(details);
+        return items || this.root;
+      }
+
+      return this.root;
+    }
+
+    /**
+     * 新しいタスクを追加するためのボタンを作成し、メニューに追加します。
+     * ボタンがクリックされたときのイベントリスナーを設定します。
+     * @private
+     */
+    #insertAddTaskButton() {
+      const id = "add-new-task";
+      const title = "新しいタスク";
+      this.menu.addButton(id, title, _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.squarePlusPaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const name = prompt("新しいタスクを作成", "新規タスク");
+        if (!name) {
+          return;
+        }
+
+        const root = this.#getMenuTarget(this.menu.clickTarget);
+        const task = this.#createNewTaskItem({ name: name });
+
+        task.classList.add("fade-in");
+        root.appendChild(task);
+        setTimeout(() => {
+          task.classList.add("show");
+        }, 100);
+
+        this.#openGroup(root);
+        const data = task.querySelector("task-title").getData();
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.ADD_NEW_TASK_ITEM_EVENT_NAME, data)
+        );
+      });
+    }
+
+    /**
+     * 新しいグループを追加するためのボタンを作成し、メニューに追加します。
+     * ボタンがクリックされたときのイベントリスナーを設定します。
+     * @private
+     */
+    #insertAddGroupButton() {
+      const id = "add-new-group";
+      const title = "新しいグループ";
+      this.menu.addButton(id, title, _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.folderPlusPaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const name = prompt("新しいグループを作成", "新規グループ");
+        if (!name) {
+          return;
+        }
+
+        const root = this.#getMenuTarget(this.menu.clickTarget);
+        const group = this.#createNewGroupItem({ name: name });
+
+        group.classList.add("fade-in");
+        root.appendChild(group);
+        setTimeout(() => {
+          group.classList.add("show");
+        }, 100);
+
+        this.#openGroup(root);
+        const data = group.querySelector("group-title").getData();
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.ADD_NEW_GROUP_ITEM_EVENT_NAME, data)
+        );
+      });
+    }
+
+    /**
+     * アイテムのセパレーターを設置するためのボタンを作成し、メニューに追加します。
+     */
+    #insertSeparatorItemButton() {
+      const id = "separator-item";
+      const title = "セパレーター";
+      this.menu.addButton(id, title, _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.LinePaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const root = this.#getMenuTarget(this.menu.clickTarget);
+        const item = this.#createNewSeparatorItem();
+
+        item.classList.add("fade-in");
+        root.appendChild(item);
+        setTimeout(() => {
+          item.classList.add("show");
+        }, 100);
+
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
+     * アイテムを削除するためのボタンを作成し、メニューに追加します。
+     * ボタンがクリックされたときのイベントリスナーを設定します。
+     * @private
+     */
+    #insertDeleteItemButton() {
+      const id = "delete-item";
+      const title = "削除";
+      this.menu.addButton(id, title, _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.trashPaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        this.#deleteItem(this.menu.clickTarget);
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.DELETE_TREEVIEW_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    // *******************************************************
+    // * TreeViewのデータ取得
+    // *******************************************************
+
+    /**
+     * ツリービューのデータを取得する
+     *
+     * @returns {string} ツリーデータを返す。
+     */
+    getData() {
+      /**
+       * ノードリストから全ての要素を再帰的に取得する。
+       *
+       * @param {NodeList} nodes - 処理するノードリスト。
+       * @returns {Array} 処理結果の要素リストを返す。
+       */
+      const getAllElement = (nodes) => {
+        const elements = [];
+
+        nodes.forEach((node) => {
+          const isTask = node.dataset.type === "task";
+          const isGroup = node.dataset.type === "group";
+          const isSeparator = node.dataset.type === "separator";
+
+          if (isTask) {
+            const task = node.querySelector("task-title");
+            const data = task.getData();
+            elements.push(data);
+          } else if (isGroup) {
+            const group = node.querySelector("group-title");
+            const items = getItems(node);
+            const data = group.getData();
+            data.children = getAllElement(items.childNodes);
+            elements.push(data);
+          } else if (isSeparator) {
+            elements.push({
+              id: node.id,
+              type: "separator",
+            });
+          } else {
+            // 何もしない
+          }
+        });
+
+        return elements;
+      };
+
+      return getAllElement(this.root.childNodes);
+    }
+
+    /**
+     * 指定されたIDに対応する要素を取得します。
+     * @param {string} id - 取得する要素のID。
+     * @returns {HTMLElement|null} - 指定されたIDに対応する要素。存在しない場合はnullを返します。
+     */
+    getItemById(id) {
+      return this.shadowRoot.getElementById(id);
+    }
+
+    /**
+     * 指定されたIDの要素を選択中の状態にします。
+     * @param {string} id - 取得する要素のID。
+     */
+    selectItemById(id) {
+      if (this.selectedItemId) {
+        const beforeItem = this.shadowRoot.getElementById(this.selectedItemId);
+        if (beforeItem) {
+          beforeItem.selected = false;
+        }
+      }
+      const item = this.getItemById(id);
+      item.selected = true;
+
+      this.selectedItemId = id;
+    }
+
+    /**
+     * 指定されたIDに対応するグループの項目データを取得します。
+     * @param {string} id - グループのID。
+     * @returns {Array<Object>} - 項目データの配列。
+     */
+    getGroupItemsById(id) {
+      const details = this.shadowRoot.getElementById(id).closest("details");
+      const childElms = getItems(details).children;
+
+      const items = [];
+      for (let elm of childElms) {
+        const item = elm.querySelector("task-title,group-title");
+        if (item) {
+          const data = item.getData();
+          data.id = item.id;
+          if (data.type === "task") {
+            data.paths = item.paths;
+            data.flag = item.flag;
+          }
+          items.push(data);
+        }
+      }
+
+      return items;
+    }
+
+    // *******************************************************
+    // * TreeViewの作成
+    // *******************************************************
+    /**
+     * JSON文字列を元にツリービューをレンダリングします。
+     * @param {string} jsonStr - JSON形式の文字列データ。
+     */
+    renderTreeView(jsonStr) {
+      if (!jsonStr) {
+        return;
+      }
+
+      /**
+       * Jsonデータを元にTreeViewに項目を追加する（再帰処理）
+       * @param {HTMLElement} currentRoot 追加先のルート要素
+       * @param {object} data 追加するデータ
+       * @returns {void}
+       * @private
+       */
+      const addTreeViewItem = (root, data) => {
+        const isTask = data.type === "task";
+        const isGroup = data.type === "group";
+        const isSeparator = data.type === "separator";
+
+        if (isTask) {
+          // タスクを追加
+          const task = this.#createNewTaskItem(data);
+          root.appendChild(task);
+        } else if (isGroup) {
+          // グループを追加
+          const group = this.#createNewGroupItem(data);
+          root.appendChild(group);
+
+          // グループの子要素を追加
+          const items = getItems(group);
+          const children = data.children || data.childlen || [];
+          (children || []).forEach((child) => {
+            addTreeViewItem(items, child);
+          });
+        } else if (isSeparator) {
+          // セパレーターを追加
+          const separator = this.#createNewSeparatorItem(data);
+          root.appendChild(separator);
+        } else {
+          // 何もしない
+        }
+      };
+
+      JSON.parse(jsonStr).forEach((data) => {
+        addTreeViewItem(this.root, data);
+      });
+    }
+
+    // *******************************************************
+    // * TreeView要素の作成／削除
+    // *******************************************************
+
+    /**
+     * セパレータを作成する作成する
+     * * @param {Object} [data={}] - アイテムの初期データ
+     * @returns {HTMLElement} item - 作成されたセパレータアイテム要素
+     */
+    #createNewSeparatorItem(data = {}) {
+      const separator = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, [
+        "tree-item",
+        "separator",
+      ]);
+      this.#addDragEventListeners(separator);
+
+      separator.setAttribute("draggable", true);
+      separator.dataset.type = "separator";
+
+      if (data.id) {
+        separator.id = data.id;
+      } else {
+        separator.id = _utils_id_utils__WEBPACK_IMPORTED_MODULE_1__.IdUtils.getUniqueId();
+      }
+
+      return separator;
+    }
+
+    /**
+     * 指定されたデータを元に新しいタスクアイテムを作成し、クリックイベントを設定します。
+     * @param {Object} [data={}] - タスクアイテムの初期データ
+     * @returns {HTMLElement} item - 作成されたタスクアイテム要素
+     */
+    #createNewTaskItem(data = {}) {
+      const title = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("task-title");
+      title.init(data);
+
+      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, ["tree-item"]);
+      item.appendChild(title);
+      item.setAttribute("draggable", true);
+      item.dataset.type = "task";
+
+      this.#addDragEventListeners(item);
+
+      return item;
+    }
+
+    /**
+     * 指定されたデータを元に新しいグループアイテムを作成します。
+     * グループアイテムには、タイトル、詳細、および子アイテムのコンテナが含まれます。
+     * @param {Object} [data={}] - グループアイテムの初期データ
+     * @returns {HTMLElement} details - 作成されたグループアイテム要素
+     * @private
+     */
+    #createNewGroupItem(data = {}) {
+      const title = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("group-title");
+      title.init(data);
+
+      const details = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("details", null, ["tree-item"]);
+      const summary = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("summary", null);
+      const items = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, ["group-items"]);
+
+      details.setAttribute("draggable", true);
+      details.dataset.type = "group";
+      details.addEventListener("toggle", () => {
+        title.open = details.open;
+      });
+
+      summary.appendChild(title);
+
+      details.appendChild(summary);
+      details.appendChild(items);
+
+      this.#addDragEventListeners(details);
+
+      return details;
+    }
+
+    /**
+     * 指定された要素の最も近い`<details>`要素を開きます。
+     * @param {Element} element - `<details>`要素を検索する基点となる要素
+     * @private
+     */
+    #openGroup(element) {
+      const details = element.closest("details");
+      if (details) details.open = true;
+    }
+
+    /**
+     * 指定したアイテムを削除する。
+     * @param {string} item - 削除対象アイテム
+     */
+    #deleteItem(item) {
+      const id = item.id;
+      let name;
+      if (item.dataset.type === "separator") {
+        name = "セパレータ";
+      } else {
+        name = item.name;
+      }
+
+      if (window.confirm(`${name} を削除しますか？`)) {
+        this.shadowRoot.getElementById(id).closest(".tree-item").remove();
+      }
+    }
+
+    // *******************************************************
+    // * TreeViewのドラッグ＆ドロップ
+    // *******************************************************
+    /**
+     * ドラッグイベントリスナーを追加
+     * @param {HTMLElement} element ドラッグイベントリスナーを追加する要素
+     */
+    #addDragEventListeners(element) {
+      element.addEventListener("dragstart", this.#handleDragStart);
+      element.addEventListener("dragover", this.#handleDragOver, true);
+      element.addEventListener("dragend", this.#handleDragEnd);
+    }
+
+    /**
+     * ドラッグ操作開始
+     * @param {Event} e
+     */
+    #handleDragStart(e) {
+      draggedElement = e.target;
+      draggedElement.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+    }
+
+    /**
+     * ドラッグ中
+     * @param {Event} e
+     */
+    #handleDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+
+      // タスクまたはグループのルート要素を取得
+      const target = e.target.closest(".tree-item");
+
+      // 自分自身と被っている場合
+      if (!target || target === draggedElement) {
+        return;
+      }
+
+      // draggedElement が target の中に含まれている場合
+      if (draggedElement.contains(target)) {
+        return;
+      }
+
+      // マウス位置が位置に来ているかを計算
+      const rect = target.getBoundingClientRect();
+      const nowPosition = (e.clientY - rect.top) / (rect.bottom - rect.top);
+
+      // 要素の挿入位置を決定
+      const targetIsTask = e.target.tagName.toLowerCase() === "task-title";
+
+      if (targetIsTask) {
+        if (nowPosition > 0.5) {
+          target.insertAdjacentElement("afterend", draggedElement);
+        } else {
+          target.insertAdjacentElement("beforebegin", draggedElement);
+        }
+      } else {
+        if (nowPosition > 0.5) {
+          if (nowPosition >= 0.85) {
+            target.insertAdjacentElement("afterend", draggedElement);
+          } else {
+            // 子要素に追加
+            const items = target.querySelector(".group-items");
+            items.insertAdjacentElement("beforeend", draggedElement);
+          }
+        } else {
+          target.insertAdjacentElement("beforebegin", draggedElement);
+        }
+      }
+    }
+
+    /**
+     * ドラッグ終了
+     * @param {Event} e
+     */
+    #handleDragEnd(e) {
+      if (!draggedElement) return;
+      draggedElement.classList.remove("dragging");
+      draggedElement = null;
+      this.dispatchEvent(
+        _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
+    }
+  }
+  customElements.define("tree-view", TreeView);
+}
+
+
+/***/ }),
+/* 16 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   IdUtils: () => (/* binding */ IdUtils)
+/* harmony export */ });
+/**
+ * IDユーティリティクラス
+ */
+class IdUtils {
+  /**
+   * 一意のIDを生成する
+   * @returns {string} 一意のID
+   */
+  static getUniqueId = () => {
+    // ランダム文字列を生成する
+    const randomStr = Math.floor(10000 * Math.random()).toString(16);
+
+    // 日付文字列を生成
+    const date = new Date();
+    const parts = {
+      yyyy: date.getFullYear(),
+      MM: String(date.getMonth() + 1).padStart(2, "0"),
+      dd: String(date.getDate()).padStart(2, "0"),
+      HH: String(date.getHours()).padStart(2, "0"),
+      mm: String(date.getMinutes()).padStart(2, "0"),
+      ss: String(date.getSeconds()).padStart(2, "0"),
+      SSS: String(date.getMilliseconds()).padStart(3, "0"),
+    };
+
+    const format = "{yyyy}{MM}{dd}{HH}{mm}{ss}{SSS}";
+    const systemDate = format.replace(
+      /{(yyyy|MM|dd|HH|mm|ss|SSS)}/g,
+      (matched) => parts[matched.slice(1, -1)]
+    );
+
+    return `${systemDate}_${randomStr}`;
+  };
+}
+
+
+/***/ }),
+/* 17 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+#header-menu {
+  padding: 0.5rem 0;
+  margin: 0 0.5rem;
+  border-bottom: 1px solid #afafaf;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+}
+#root .tree-item {
+  margin: 1px 0;
+}
+#root details summary {
+  list-style: none;
+}
+#root details .group-items {
+  margin-left: 1.1rem;
+}
+#root .separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  position: relative;
+  border-radius: 0.15rem;
+  cursor: pointer;
+}
+#root .separator::after {
+  content: "";
+  position: absolute;
+  width: 85%;
+  height: 1px;
+  background-color: #afafaf;
+}
+#root .separator:hover, #root .separator.selected {
+  background-color: #fff0bd;
+}
+#root .dragging {
+  opacity: 0.5;
+}
+#root .disabled {
+  display: none;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 18 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TaskTitle: () => (/* binding */ TaskTitle)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(19);
+/* harmony import */ var _style_task_title_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(20);
+
+
+
+
+
+
+
+
+
+
+/**
+ * TaskTitle コンポーネント
+ * @class TaskTitle
+ * @extends {HTMLElement}
+ */
+function TaskTitle() {
+  class TaskTitle extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_task_title_css__WEBPACK_IMPORTED_MODULE_7__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["task-title"]);
+
+      this.shadowRoot.appendChild(this.root);
+    }
+
+    /**
+     * タスクの名前ゲッター
+     * @returns {string} - タスクの名前
+     */
+    get name() {
+      return this._name;
+    }
+
+    /**
+     * タスクの名前セッター
+     * @param {string} value - 新しい名前
+     */
+    set name(value) {
+      this._name = value;
+    }
+
+    /**
+     * タスクの期限日ゲッター
+     * @returns {string} - 期限日
+     */
+    get duedate() {
+      return this._duedate;
+    }
+
+    /**
+     * タスクの期限日セッター
+     * @param {string} value - 新しい期限日
+     */
+    set duedate(value) {
+      this._duedate = value;
+    }
+
+    /**
+     * タスクの優先度ゲッター
+     * @returns {string} - 優先度
+     */
+    get priority() {
+      return this._priority;
+    }
+
+    /**
+     * タスクの優先度セッター
+     * @param {string} value - 新しい優先度
+     */
+    set priority(value) {
+      this._priority = value;
+    }
+
+    /**
+     * タスクの状態ゲッター
+     * @returns {string} - 状態
+     */
+    get status() {
+      return this._status;
+    }
+
+    /**
+     * タスクの状態セッター
+     * @param {string} value - 新しい状態
+     */
+    set status(value) {
+      this._status = value;
+    }
+
+    /**
+     * 種類
+     * @returns {string} - 種類
+     */
+    get type() {
+      return "task";
+    }
+
+    /**
+     * アイコンパス
+     * @returns {string} - アイコンパス
+     */
+    get paths() {
+      return this._paths;
+    }
+
+    /**
+     * フラグ
+     * @returns {Object} - フラグ
+     */
+    get flag() {
+      return this._flag;
+    }
+
+    /**
+     * メニューを開いている状態
+     * @param {bool} value - 状態
+     */
+    set menuOpen(value) {
+      this.root.classList.toggle("menu-opened", value);
+    }
+
+    /**
+     * 選択状態の切り替え
+     * @param {bool} value - 状態
+     */
+    set selected(value) {
+      this.root.classList.toggle("selected", value);
+    }
+
+    /**
+     * タスクを初期化するメソッド
+     * @param {Object} data - タスクデータのオブジェクト
+     * @param {string} data.id - タスクのID
+     * @param {string} data.name - タスクの名前
+     * @param {string} data.duedate - タスクの期限日
+     * @param {string} data.priority - タスクの優先度
+     * @param {string} data.status - タスクの状態
+     * @return {void} - なし
+     */
+    init(data) {
+      this.id = data.id || _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__.IdUtils.getUniqueId();
+      this.name = data.name || "新規タスク";
+      this.duedate = data.duedate || "";
+      this.priority = data.priority || "";
+      this.status = data.status || "0";
+
+      this.#refreshView();
+
+      /**
+       * クリックイベントを通知
+       */
+      this.root.addEventListener("click", () => {
+        this.shadowRoot.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CLICK_TASK_EVENT_NAME, {
+            id: this.id,
+          })
+        );
+      });
+    }
+
+    /**
+     * 現在のオブジェクトのデータを収集し、データアイテムとして返します。
+     * @returns {Object} dataItem - データアイテムオブジェクト
+     * @returns {string} dataItem.id - タスクのID
+     * @returns {string} dataItem.name - タスクの名前（デフォルトは "新規タスク"）
+     * @returns {string} dataItem.type - タスクのタイプ
+     * @returns {string} dataItem.duedate - タスクの期限日
+     * @returns {string} dataItem.priority - タスクの優先度
+     * @returns {number} dataItem.status - タスクのステータス（デフォルトは 0）
+     */
+    getData() {
+      const dataItem = {};
+      dataItem.id = this.id;
+      dataItem.name = this.name || "新規タスク";
+      dataItem.type = this.type;
+      dataItem.duedate = this.duedate || "";
+      dataItem.priority = this.priority || "";
+      dataItem.status = this.status || 0;
+
+      return dataItem;
+    }
+
+    /**
+     * タスクの表示内容を更新するメソッド
+     * @return {void} - なし
+     */
+    refreshView() {
+      this.#refreshView();
+      this.dispatchEvent(
+        _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
+    }
+
+    /**
+     * タスクの表示内容を更新するメソッド
+     * @private
+     * @return {void} - なし
+     */
+    #refreshView() {
+      this.root.innerHTML = "";
+      const isComplete = this.status === "100";
+      const isNotStarted = this.status === "0";
+      const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 3;
+
+      this._flag = {
+        isComplete: isComplete,
+        isNotStarted: isNotStarted,
+        isOverDeadline: isOverDeadline,
+      };
+
+      // アイコン設定
+      this.root.classList.toggle("complete", isComplete);
+      this.root.classList.toggle("over-deadline", isOverDeadline);
+
+      let paths;
+      if (isComplete) {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squareCheckPaths; // 完了
+      } else if (isOverDeadline) {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squareAlertPaths; // 注意
+      } else if (isNotStarted) {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squarePaths; // 未着手
+      } else {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squareDotPaths; // 進行中
+      }
+
+      this._paths = paths;
+
+      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(paths);
+      this.root.appendChild(icon);
+
+      // タスク名設定
+      const text = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p", null, ["task-text"]);
+      text.innerText = this.name;
+      this.root.appendChild(text);
+    }
+  }
+  customElements.define("task-title", TaskTitle);
+}
+
+
+/***/ }),
+/* 19 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DateUtils: () => (/* binding */ DateUtils)
+/* harmony export */ });
+/**
+ * 日付ユーティリティクラス
+ */
+class DateUtils {
+  /**
+   * 日付オブジェクトからフォーマットされた文字列を生成するヘルパー関数
+   * @param {Date} date 日付オブジェクト
+   * @param {string} format 日付フォーマット
+   * @returns {string} フォーマットされた日付文字列
+   */
+  static formatDate = (date, format = "{yyyy}{MM}{dd}{HH}{mm}{ss}{SSS}") => {
+    const parts = {
+      yyyy: date.getFullYear(),
+      MM: String(date.getMonth() + 1).padStart(2, "0"),
+      dd: String(date.getDate()).padStart(2, "0"),
+      HH: String(date.getHours()).padStart(2, "0"),
+      mm: String(date.getMinutes()).padStart(2, "0"),
+      ss: String(date.getSeconds()).padStart(2, "0"),
+      SSS: String(date.getMilliseconds()).padStart(3, "0"),
+    };
+
+    return format.replace(
+      /{(yyyy|MM|dd|HH|mm|ss|SSS)}/g,
+      (matched) => parts[matched.slice(1, -1)]
+    );
+  };
+
+  /**
+   * 日付文字列をDateオブジェクトに変換する。
+   * @param {string} dateString - "yyyy-mm-dd"形式の日付文字列。
+   * @returns {Date} - 変換されたDateオブジェクト。
+   */
+  static parseDate = (dateString) => {
+    // 日付であるか判定
+    if (!this.isValidDate(dateString)) {
+      throw new Error("日付文字列の形式が正しくありません。");
+    }
+    // "-"で日付を分割し、配列として取得
+    const parts = dateString.split("-");
+
+    // 配列の要素を数値に変換
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // 月は0-11で表現されるため-1
+    const day = parseInt(parts[2], 10);
+
+    // Dateオブジェクトを作成して返す
+    return new Date(year, month, day);
+  };
+
+  /**
+   * 与えられた文字列がyyyy-mm-dd形式の日付かどうかを判定する
+   *
+   * @param {string} dateString - 判定する文字列。
+   * @returns {boolean} - 有効な日付形式かどうか。
+   */
+  static isValidDate = (dateString) => {
+    // 正規表現によるフォーマットのチェック
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(dateString)) {
+      return false;
+    }
+
+    // Dateオブジェクトを使用して実際の有効性を確認
+    const date = new Date(dateString);
+    const timestamp = date.getTime();
+    if (typeof timestamp !== "number" || Number.isNaN(timestamp)) {
+      return false;
+    }
+
+    // 入力された文字列が有効な日付か確認
+    return date.toISOString().startsWith(dateString);
+  };
+
+  /**
+   * 与えられた日付文字列と当日の日付との差を日数で計算する。
+   * @param {string} dataString - yyyy-mm-dd形式の日付文字列。
+   * @returns {number} - 当日からの残り日数。
+   */
+  static calcDateDiffToday(dataString) {
+    /**
+     * ミリ秒を1日単位に変換する定数
+     */
+    const MS_PER_DAY = 86400000;
+
+    // 空の場合は処理対象外
+    if (!this.isValidDate(dataString)) {
+      return 0;
+    }
+    // 入力された日付をパース
+    const data = this.parseDate(dataString);
+    // 本日の日付を取得してフォーマット
+    const today = this.parseDate(
+      this.formatDate(new Date(), "{yyyy}-{MM}-{dd}")
+    );
+    // 残り日数を計算
+    const dayCount = Math.floor((data - today) / MS_PER_DAY);
+
+    return dayCount;
+  }
+}
+
+
+/***/ }),
+/* 20 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.task-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration-skip-ink: none;
+  border-radius: 0.15rem;
+  padding: 0.15rem;
+  transition: 0.2s;
+}
+.task-title:hover, .task-title.menu-opened, .task-title.selected {
+  background-color: #0078d4;
+  color: #fffff8;
+}
+.task-title.over-deadline {
+  color: #f93827;
+}
+.task-title.over-deadline:hover, .task-title.over-deadline.selected {
+  background-color: #f93827;
+  color: #fffff8;
+}
+.task-title.complete {
+  color: #838383;
+  text-decoration: line-through;
+}
+.task-title.complete:hover, .task-title.complete.selected {
+  background-color: #838383;
+  color: #fffff8;
+}
+.task-title .svg-icon {
+  margin-right: 0.25rem;
+  height: 1rem;
+  width: 1rem;
+}
+.task-title .task-text {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 21 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GroupTitle: () => (/* binding */ GroupTitle)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var _style_group_title_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(22);
+
+
+
+
+
+
+
+
+
+/**
+ * GroupTitle コンポーネント
+ * @class GroupTitle
+ * @extends {HTMLElement}
+ */
+function GroupTitle() {
+  class GroupTitle extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_group_title_css__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["group-title"]);
+
+      this.shadowRoot.appendChild(this.root);
+    }
+
+    /**
+     * グループの名前セッター
+     * @param {string} value - 新しい名前
+     */
+    set name(value) {
+      this._name = value;
+      this.#refreshView();
+      this.dispatchEvent(
+        _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
+    }
+
+    /**
+     * グループの名前ゲッター
+     * @returns {string} - グループの名前
+     */
+    get name() {
+      return this._name;
+    }
+
+    /**
+     * グループの開閉状態を設定します。
+     * @param {boolean} value - グループを開く場合はtrue、閉じる場合はfalse
+     */
+    set open(value) {
+      this.root.classList.toggle("group-opened", value);
+    }
+
+    /**
+     * 種類
+     * @returns {string} - 種類
+     */
+    get type() {
+      return "group";
+    }
+
+    /**
+     * メニューを開いている状態
+     * @param {bool} value - 状態
+     */
+    set menuOpen(value) {
+      this.root.classList.toggle("menu-opened", value);
+    }
+
+    /**
+     * 選択状態の切り替え
+     * @param {bool} value - 状態
+     */
+    set selected(value) {
+      this.root.classList.toggle("selected", value);
+    }
+
+    /**
+     * グループを初期化するメソッド
+     * @param {Object} data - グループデータのオブジェクト
+     * @param {string} data.id - グループのID
+     * @param {string} data.name - グループの名前
+     * @return {void} - なし
+     */
+    init(data) {
+      const id = _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__.IdUtils.getUniqueId();
+      this.id = data.id || `g${id}`;
+      this.name = data.name || "新規グループ";
+
+      this.#refreshView();
+
+      /**
+       * クリックイベントを通知
+       */
+      this.root.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.shadowRoot.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CLICK_GROUP_EVENT_NAME, {
+            id: this.id,
+            name: this.name,
+          })
+        );
+      });
+
+      /**
+       * ダブルクリックイベントを追加
+       */
+      this.root.addEventListener("dblclick", () => {
+        this.shadowRoot.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.DBL_CLICK_GROUP_EVENT_NAME, {
+            id: this.id,
+            name: this.name,
+          })
+        );
+      });
+    }
+
+    /**
+     * 現在のオブジェクトのデータを収集し、データアイテムとして返します。
+     * @returns {Object} dataItem - データアイテムオブジェクト
+     * @returns {string|null} dataItem.id - グループのID（存在しない場合はnull）
+     * @returns {string} dataItem.name - グループの名前（デフォルトは "新規グループ"）
+     */
+    getData() {
+      const dataItem = {};
+      dataItem.id = this.id || null;
+      dataItem.name = this.name || "新規グループ";
+      dataItem.type = this.type;
+
+      return dataItem;
+    }
+
+    /**
+     * タスクの表示内容を更新するメソッド
+     * @return {void} - なし
+     */
+    refreshView() {
+      this.#refreshView();
+      this.dispatchEvent(
+        _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_5__.EventConst.CHANGE_TREEVIEW_EVENT_NAME)
+      );
+    }
+
+    /**
+     * グループの表示状態を更新するメソッド
+     * @private
+     * @return {void} - なし
+     */
+    #refreshView() {
+      // 初期化
+      this.root.innerHTML = "";
+
+      // アイコン設定
+      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.chevronRightPaths);
+      this.root.appendChild(icon);
+
+      // タイトル設定
+      const text = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("span", null, ["group-text"]);
+      text.innerText = this.name;
+      this.root.appendChild(text);
+    }
+  }
+  customElements.define("group-title", GroupTitle);
+}
+
+
+/***/ }),
+/* 22 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.group-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration-skip-ink: none;
+  border-radius: 0.15rem;
+  padding: 0.15rem;
+  transition: 0.2s;
+}
+.group-title::-webkit-details-marker {
+  display: none;
+}
+.group-title:hover, .group-title.menu-opened, .group-title.selected {
+  background-color: #0078d4;
+  color: #fffff8;
+}
+.group-title .svg-icon {
+  margin-right: 0.25rem;
+  height: 1rem;
+  width: 1rem;
+  transition: transform 0.25s;
+}
+.group-title.group-opened .svg-icon {
+  transform: rotate(90deg);
+  top: 0.22rem;
+  left: 0.18rem;
+}
+.group-title .group-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 23 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ContentsGroup: () => (/* binding */ ContentsGroup)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(24);
+/* harmony import */ var _style_contents_group_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(25);
+
+
+
+
+
+
+
+
+
+/**
+ * ContentsGroup コンポーネント
+ * @class ContentsGroup
+ * @extends {HTMLElement}
+ */
+function ContentsGroup() {
+  class ContentsGroup extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_contents_group_css__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", [
+        "contents-group",
+        "scroll",
+      ]);
+
+      this.#addGroupId();
+      this.#addGroupTitle();
+      this.#addGroupOverview();
+
+      this.shadowRoot.appendChild(this.root);
+
+      // 変更イベントを伝播
+      this.root.addEventListener(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME, () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_CONTENTS_GROUP_EVENT_NAME)
+        );
+      });
+    }
+
+    // **************************************************
+    // * グループデータの入出力
+    // **************************************************
+    /**
+     * グループのプロパティ情報を画面出力する
+     * @param {string} jsonStr
+     * @returns {void}
+     */
+    render(jsonStr) {
+      if (!jsonStr) {
+        return;
+      }
+      const data = JSON.parse(jsonStr);
+      this._groupTitle.value = data.title;
+      this._groupOverview.value = data.overview;
+    }
+
+    /**
+     * グループ内のコンテンツデータを出力する。
+     * @param {array} items
+     * @returns {void}
+     */
+    renderItems(items = []) {
+      if (items.length === 0) {
+        return;
+      }
+
+      this.#addEmptyGroupItems();
+
+      this.table.header = [
+        "ID",
+        "ステータス",
+        "名称",
+        "優先度",
+        "期日",
+        "進捗率",
+      ];
+
+      items.forEach((item) => {
+        if (item.type === "task") {
+          // タスク
+          const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(item.paths);
+          const priority = _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__.PriorityConst.text(item.priority) || "?";
+
+          this.table.appendTr();
+
+          // タスクの状態クラスを設定
+          if (item.flag.isComplete) {
+            this.table.setTrClass("complete");
+          } else if (item.flag.isOverDeadline) {
+            this.table.setTrClass("alert");
+          }
+
+          // ID
+          this.table.addTd();
+          this.table.setTdElment(item.id);
+          this.table.setTdWidth("150px");
+
+          // ステータス
+          this.table.addTd();
+          this.table.setTdElment(icon);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // タスク名
+          this.table.addTd();
+          this.table.setTdElment(item.name);
+          this.table.setTdClickEvent(() => {
+            this.shadowRoot.dispatchEvent(
+              _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(
+                _constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+                {
+                  id: item.id,
+                  name: item.name,
+                }
+              )
+            );
+          });
+
+          // 優先度
+          this.table.addTd();
+          this.table.setTdElment(priority);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 期日
+          this.table.addTd();
+          this.table.setTdElment(
+            item.duedate !== "3000-12-31" ? item.duedate : "-"
+          );
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 進捗率
+          this.table.addTd();
+          this.table.setTdElment(`${item.status}%`);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+        } else {
+          // グループ
+          this.table.appendTr();
+
+          // ID
+          this.table.addTd();
+          this.table.setTdElment(item.id);
+          this.table.setTdWidth("150px");
+
+          // ステータス
+          const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.folderPaths);
+          icon.style = "color: #E9762B";
+
+          this.table.addTd();
+          this.table.setTdElment(icon);
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // タスク名
+          this.table.addTd();
+          this.table.setTdElment(item.name);
+          this.table.setTdClickEvent(() => {
+            this.shadowRoot.dispatchEvent(
+              _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(
+                _constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
+                {
+                  id: item.id,
+                  name: item.name,
+                }
+              )
+            );
+          });
+
+          // 優先度
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 期日
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+
+          // 進捗率
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdWidth("100px");
+          this.table.setTdAlign("center");
+        }
+      });
+    }
+
+    /**
+     * データアイテムを取得します。
+     * @returns {Object} dataItem - 取得したデータアイテム。
+     * @property {string} dataItem.title - グループタイトルの値。
+     * @property {string} dataItem.overview - グループ概要の値。空の場合は空文字列を返します。
+     */
+    getData() {
+      const dataItem = {};
+      dataItem.title = this._groupTitle.value;
+      dataItem.overview = this._groupOverview.value || "";
+
+      return dataItem;
+    }
+
+    // **************************************************
+    // * グループID
+    // **************************************************
+
+    /**
+     * 新しい入力IDを作成し、ルートエレメントに追加するメソッド。
+     * `form-input-item`というタグを持つ新しいエレメントを作成し、そのタイトルを「ID」に設定して、ルートエレメントに追加します。
+     */
+    #addGroupId() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.TagPaths);
+      filedset.title = "ID";
+
+      this._groupId = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "id");
+      this._groupId.title = "ID";
+      this._groupId.readOnly = true;
+      this._groupId.width = "600px";
+
+      filedset.addItem(this._groupId);
+      this.root.appendChild(filedset);
+    }
+
+    /**
+     * グループIDを設定するセッターメソッド。
+     * このメソッドは、指定された値を`groupId`エレメントの値として設定します。
+     *
+     * @param {string} val - 設定するグループIDの値。
+     */
+    set groupId(val) {
+      this._groupId.value = val;
+    }
+
+    // **************************************************
+    // * グループ名
+    // **************************************************
+    /**
+     * 新しい入力タイトルを作成し、ルートエレメントに追加するメソッド。
+     * `form-input-item`というタグを持つ新しいエレメントを作成し、そのタイトルを「グループ名」に設定して、ルートエレメントに追加します。
+     */
+    #addGroupTitle() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.BookPaths);
+      filedset.title = "グループ名";
+      filedset.required = true;
+
+      this._groupTitle = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "title");
+      this._groupTitle.width = "600px";
+
+      filedset.addItem(this._groupTitle);
+      this.root.appendChild(filedset);
+    }
+
+    /**
+     * グループタイトルを設定するセッターメソッド。
+     * このメソッドは、指定された値を`groupTitle`エレメントの値として設定します。
+     *
+     * @param {string} val - 設定するグループタイトルの値。
+     */
+    set groupTitle(val) {
+      this._groupTitle.value = val;
+    }
+
+    // **************************************************
+    // * 概要
+    // **************************************************
+
+    /**
+     * グループの概要を追加します。
+     * @private
+     */
+    #addGroupOverview() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.WitingPaths);
+      filedset.title = "概要";
+
+      this._groupOverview = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "overview");
+      this._groupOverview.width = "600px";
+      this._groupOverview.rows = 5;
+      this._groupOverview.placeholder = "グループの概要説明";
+
+      filedset.addItem(this._groupOverview);
+      this.root.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * アイテム
+    // **************************************************
+
+    /**
+     * 空のアイテム一覧を追加します。
+     * @private
+     */
+    #addEmptyGroupItems() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.TablePaths);
+      filedset.title = "タスク一覧";
+
+      this.table = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-table");
+
+      filedset.addItem(this.table);
+      this.root.appendChild(filedset);
+    }
+  }
+  customElements.define("contents-group", ContentsGroup);
+}
+
+
+/***/ }),
+/* 24 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   PriorityConst: () => (/* binding */ PriorityConst)
+/* harmony export */ });
+/**
+ * 優先度定数クラス
+ */
+class PriorityConst {
+  /**
+   * 優先度のパラメータ配列。
+   * @type {Array<{value: number, text: string}>}
+   */
+  static PARAM = [
+    { value: 5, text: "最低" },
+    { value: 4, text: "低" },
+    { value: 3, text: "中" },
+    { value: 2, text: "高" },
+    { value: 1, text: "最高" },
+  ];
+
+  /**
+   * 指定された値に対応するテキストを取得します。
+   * @param {number} value - 検索する値。
+   * @returns {string} - 対応するテキスト。見つからない場合はnullを返します。
+   */
+  static text(value) {
+    const priority = this.PARAM.find((p) => p.value == value);
+    return priority ? priority.text : null;
+  }
+
+  /**
+   * 指定されたテキストに対応する値を取得します。
+   * @param {string} text - 検索するテキスト。
+   * @returns {number} - 対応する値。見つからない場合はnullを返します。
+   */
+  static value(text) {
+    const priority = this.PARAM.find((p) => p.text == text);
+    return priority ? priority.value : null;
+  }
+}
+
+
+/***/ }),
+/* 25 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 26 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ContentsTask: () => (/* binding */ ContentsTask)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(24);
+/* harmony import */ var _style_contents_task_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(27);
+
+
+
+
+
+
+
+
+
+/**
+ * ContentsTask コンポーネント
+ * @class ContentsTask
+ * @extends {HTMLElement}
+ */
+function ContentsTask() {
+  class ContentsTask extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_contents_task_css__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["contents-task"]);
+      this.property = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "task-property", ["scroll"]);
+      this.history = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "task-history", ["scroll"]);
+
+      this.root.appendChild(this.property);
+      this.root.appendChild(this.history);
+
+      this.#addTaskId();
+      this.#addTaskTitle();
+      this.#addTaskDueDate();
+      this.#addStaff();
+      this.#addPriority();
+      this.#addStatus();
+      this.#addMemo();
+      this.#addFolderpath();
+      this.#addUrl();
+      this.#addFreenotes();
+      this.#addHistory();
+
+      this.shadowRoot.appendChild(this.root);
+
+      // 変更イベントを伝播
+      this.root.addEventListener(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME, () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_CONTENTS_TASK_EVENT_NAME)
+        );
+      });
+    }
+
+    // **************************************************
+    // * タスクデータの入出力
+    // **************************************************
+    /**
+     * タスクのプロパティ情報を画面出力する
+     * @param {string} jsonStr
+     * @returns {void}
+     */
+    render(jsonStr) {
+      if (!jsonStr) {
+        return;
+      }
+      const data = JSON.parse(jsonStr);
+      this._taskTitle.value = data.taskData.title;
+      this._taskDueDate.value = data.taskData.dueDate;
+      this._staffDiv.value = data.taskData.staffDiv;
+      this._staffName.value = data.taskData.staffName;
+      this._staffTel.value = data.taskData.staffTel;
+      this._priority.value = data.taskData.priority;
+      this._status.value = data.taskData.status;
+      this._memo.value = data.taskData.memo;
+      this._folderpath.value = data.taskData.folderpath;
+      this._url.value = data.taskData.url;
+      this._freenotes.value = data.taskData.freenotes;
+
+      this._historyContents.render(data.historyData);
+    }
+
+    /**
+     * タスクのプロパティデータを取得する。
+     * @returns {object} - タスクデータ
+     */
+    getData() {
+      return {
+        taskData: {
+          title: this._taskTitle.value,
+          dueDate: this._taskDueDate.value,
+          staffDiv: this._staffDiv.value,
+          staffName: this._staffName.value,
+          staffTel: this._staffTel.value,
+          priority: this._priority.value,
+          status: this._status.value,
+          memo: this._memo.value,
+          folderpath: this._folderpath.value,
+          url: this._url.value,
+          freenotes: this._freenotes.value,
+        },
+        historyData: this._historyContents.getData(),
+      };
+    }
+
+    // **************************************************
+    // * タスクID
+    // **************************************************
+
+    /**
+     * 新しい入力IDを作成し、ルートエレメントに追加するメソッド。
+     */
+    #addTaskId() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.TagPaths);
+      filedset.title = "ID";
+
+      this._taskId = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "id");
+      this._taskId.title = "ID";
+      this._taskId.readOnly = true;
+
+      filedset.addItem(this._taskId);
+      this.property.appendChild(filedset);
+    }
+
+    /**
+     * タスクIDを設定するセッターメソッド。
+     * このメソッドは、指定された値を`taskId`エレメントの値として設定します。
+     *
+     * @param {string} val - 設定するタスクIDの値。
+     */
+    set taskId(val) {
+      this._taskId.value = val;
+    }
+
+    // **************************************************
+    // * タスク名
+    // **************************************************
+    /**
+     * 新しい入力タイトルを作成し、ルートエレメントに追加するメソッド。
+     */
+    #addTaskTitle() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.BookPaths);
+      filedset.title = "タスク名";
+      filedset.required = true;
+
+      this._taskTitle = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "title");
+      this._taskTitle.placeholder = "XXXXXの作成";
+
+      filedset.addItem(this._taskTitle);
+      this.property.appendChild(filedset);
+    }
+
+    /**
+     * タスクタイトルを設定するセッターメソッド。
+     * このメソッドは、指定された値を`taskTitle`エレメントの値として設定します。
+     *
+     * @param {string} val - 設定するタスクタイトルの値。
+     */
+    set taskTitle(val) {
+      this._taskTitle.value = val;
+    }
+
+    // **************************************************
+    // * 期限日
+    // **************************************************
+    /**
+     * 新しい期限日を作成し、ルートエレメントに追加するメソッド。
+     */
+    #addTaskDueDate() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.DueDatePaths);
+      filedset.title = "期限日";
+      filedset.required = true;
+
+      this._taskDueDate = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-date", "due-date");
+
+      filedset.addItem(this._taskDueDate);
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * 担当者
+    // **************************************************
+    /**
+     * 新しい担当者を作成し、ルートエレメントに追加するメソッド。
+     */
+    #addStaff() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.CirclesPaths);
+      filedset.title = "担当者";
+      filedset.required = true;
+
+      // 担当者の所属
+      const fildsetStaffDiv = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      this._staffDiv = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "staff-div");
+
+      fildsetStaffDiv.addItem(this._staffDiv);
+      fildsetStaffDiv.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.WallpaperPaths);
+      fildsetStaffDiv.title = "所属";
+      this._staffDiv.placeholder = "情報システム課";
+
+      // 担当者の氏名
+      const fildsetStaffName = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      fildsetStaffName.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.UserPaths);
+      this._staffName = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "staff-name");
+
+      fildsetStaffName.addItem(this._staffName);
+      fildsetStaffName.title = "氏名";
+      this._staffName.placeholder = "日本 太郎";
+
+      // 担当者の電話番号
+      const fildsetStaffTel = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      fildsetStaffTel.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.PhoneCallPaths);
+      this._staffTel = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "staff-tel");
+
+      fildsetStaffTel.addItem(this._staffTel);
+      fildsetStaffTel.title = "電話番号";
+      this._staffTel.placeholder = "0123-45-6789";
+
+      // プロパティ画面に追加
+      filedset.addItem(fildsetStaffDiv);
+      filedset.addItem(fildsetStaffName);
+      filedset.addItem(fildsetStaffTel);
+
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * 優先度
+    // **************************************************
+
+    /**
+     * 新しい優先度を作成し、ルートエレメントに追加するメソッド。
+     */
+    #addPriority() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.AntennaPaths);
+      filedset.title = "優先度";
+      filedset.required = true;
+
+      this._priority = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-radio", "priority");
+      this._priority.items = _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__.PriorityConst.PARAM;
+
+      filedset.addItem(this._priority);
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * 進捗率
+    // **************************************************
+    /**
+     * 新しい進捗率を作成し、ルートエレメントに追加するメソッド。
+     */
+    #addStatus() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.PercentagePaths);
+      filedset.title = "進捗率";
+
+      this._status = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-radio", "status");
+      this._status.items = [
+        { value: "0", text: "0%" },
+        { value: "10", text: "10%" },
+        { value: "20", text: "20%" },
+        { value: "30", text: "30%" },
+        { value: "40", text: "40%" },
+        { value: "50", text: "50%" },
+        { value: "60", text: "60%" },
+        { value: "70", text: "70%" },
+        { value: "80", text: "80%" },
+        { value: "90", text: "90%" },
+        { value: "100", text: "100%" },
+      ];
+
+      this._status.value = "0";
+
+      filedset.addItem(this._status);
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * 概要
+    // **************************************************
+
+    /**
+     * タスクの概要を追加します。
+     * @private
+     */
+    #addMemo() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.WitingPaths);
+      filedset.title = "作業概要";
+
+      this._memo = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "memo");
+      this._memo.rows = 8;
+      this._memo.placeholder = "タスクの概要説明";
+
+      filedset.addItem(this._memo);
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * 作業フォルダパス
+    // **************************************************
+
+    /**
+     * 作業フォルダパスを追加します。
+     * @private
+     */
+    #addFolderpath() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.folderPaths);
+      filedset.title = "作業フォルダパス";
+
+      this._folderpath = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "folderpath");
+      this._folderpath.rows = 3;
+      this._folderpath.placeholder = "作業フォルダパス(E:\workspace)";
+      this._folderpath.isFolderPath = true;
+
+      filedset.addItem(this._folderpath);
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * URL
+    // **************************************************
+
+    /**
+     * URLを追加します。
+     * @private
+     */
+    #addUrl() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.WebhookPaths);
+      filedset.title = "URL";
+
+      this._url = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "url");
+      this._url.rows = 3;
+      this._url.placeholder = "https://example.com";
+      this._url.isURL = true;
+
+      filedset.addItem(this._url);
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * 自由記述欄
+    // **************************************************
+
+    /**
+     * 自由記述欄を追加します。
+     * @private
+     */
+    #addFreenotes() {
+      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.WitingPaths);
+      filedset.title = "自由記述欄";
+
+      this._freenotes = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "freenotes");
+      this._freenotes.rows = 8;
+      this._freenotes.placeholder = "etc";
+
+      filedset.addItem(this._freenotes);
+      this.property.appendChild(filedset);
+    }
+
+    // **************************************************
+    // * 作業履歴
+    // **************************************************
+    /**
+     * 作業履歴を追加します。
+     * @private
+     */
+    #addHistory() {
+      this._historyContents = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("contents-history");
+      this.history.appendChild(this._historyContents);
+
+      // 更新イベントを連携
+      this._historyContents.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME,
+        (e) => {
+          this.dispatchEvent(
+            _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+          );
+        }
+      );
+
+      // 履歴追加イベントを連携
+      this._historyContents.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.ADD_HISTORY_CONTENTS_EVENT_NAME,
+        (e) => {
+          this.#scrollBottomHistory();
+        }
+      );
+    }
+
+    /**
+     * 履歴を末尾までスクロールする。
+     */
+    #scrollBottomHistory() {
+      const bottom = this.history.scrollHeight - this.history.clientHeight;
+      this.history.scrollTo({ top: bottom, behavior: "smooth" });
+    }
+  }
+  customElements.define("contents-task", ContentsTask);
+}
+
+
+/***/ }),
+/* 27 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+#root {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0em 0em;
+  grid-template-areas: "task-property task-history";
+  height: 100vh;
+}
+#root #task-property {
+  grid-area: task-property;
+  padding: 0.75rem;
+}
+#root #task-history {
+  grid-area: task-history;
+  padding: 0.75rem;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 28 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ContentsHistory: () => (/* binding */ ContentsHistory)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _style_contents_history_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(29);
+
+
+
+
+
+
+
+
+function ContentsHistory() {
+  class ContentsHistory extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_contents_history_css__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["contents-history"]);
+
+      // タイトル追加
+      const fieldset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
+      fieldset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.HistoryPaths);
+      fieldset.title = "履歴一覧";
+      fieldset.itemLess = true;
+      this.root.appendChild(fieldset);
+
+      // ボタン追加
+      const floatBtns = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createFloatArea();
+      const addHistoryBtn = this.#createAddHisotryButton();
+      floatBtns.appendChild(addHistoryBtn);
+
+      this.root.appendChild(floatBtns);
+
+      // Shado Domにrootを追加
+      this.shadowRoot.innerHTML = "";
+      this.shadowRoot.appendChild(this.root);
+
+      // イベント検知
+      this.root.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME,
+        (e) => {
+          this.dispatchEvent(
+            _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+          );
+        }
+      );
+    }
+
+    /**
+     * 履歴追加ボタンを作成する。
+     * @returns HTMLElement
+     */
+    #createAddHisotryButton() {
+      const addHistoryBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "add-hisory");
+      addHistoryBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.plusPaths;
+      addHistoryBtn.isCircle = true;
+
+      // クリックイベント
+      addHistoryBtn.addEventListener("click", () => {
+        this.#addHistoryItem({});
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.ADD_HISTORY_CONTENTS_EVENT_NAME)
+        );
+      });
+
+      return addHistoryBtn;
+    }
+
+    /**
+     * 履歴内容を取得する。
+     * @returns {array} - 履歴データ
+     */
+    getData() {
+      const items = this.root.querySelectorAll("contents-history-item");
+      const data = [];
+      items.forEach((item) => {
+        data.push(item.getData());
+      });
+      return data;
+    }
+
+    /**
+     * 履歴アイテムを描画する。
+     * @param {object} data
+     */
+    render(data) {
+      data.forEach((item) => {
+        this.#addHistoryItem(item);
+      });
+
+      requestAnimationFrame(() => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_4__.EventConst.ADD_HISTORY_CONTENTS_EVENT_NAME)
+        );
+      });
+    }
+
+    // **************************************************
+    // * 履歴アイテム操作
+    // **************************************************
+
+    /**
+     * 履歴アイテムを画面に追加する。
+     * @param {object} data
+     */
+    #addHistoryItem(data) {
+      const historyItem = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("contents-history-item");
+
+      const isNewItem = !data.id;
+
+      if (isNewItem) {
+        historyItem.classList.add("fade-in");
+      }
+
+      historyItem.init(data);
+      this.root.appendChild(historyItem);
+
+      if (isNewItem) {
+        setTimeout(() => {
+          historyItem.classList.add("show");
+        }, 100);
+      }
+    }
+  }
+  customElements.define("contents-history", ContentsHistory);
+}
+
+
+/***/ }),
+/* 29 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.contents-history {
+  padding-bottom: 5rem;
+}
+.contents-history #contents-title {
+  display: flex;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1rem;
+}
+.contents-history #contents-title .svg-icon {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.35rem;
+}
+.contents-history .fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.contents-history .fade-in.show {
+  opacity: 1;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 30 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ContentsHistoryItem: () => (/* binding */ ContentsHistoryItem)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(13);
+/* harmony import */ var _style_contents_history_item_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(31);
+
+
+
+
+
+
+
+
+
+
+function ContentsHistoryItem() {
+  class ContentsHistoryItem extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_contents_history_item_css__WEBPACK_IMPORTED_MODULE_7__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["history-item"]);
+      this.footer = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "footer");
+
+      this.#addText();
+      this.#addDate();
+      this.#addDeleteButton();
+
+      this.root.appendChild(this.footer);
+
+      // Shado Domにrootを追加
+      this.shadowRoot.innerHTML = "";
+      this.shadowRoot.appendChild(this.root);
+    }
+
+    /**
+     * 履歴内容を初期化する。
+     * @param {*} data - 履歴データ
+     * @returns {void}
+     */
+    init(data = {}) {
+      this.id = data.id || _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__.IdUtils.getUniqueId();
+      this._text.value = data.text || "";
+      this._date.value =
+        data.date ||
+        _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__.DateUtils.formatDate(new Date(), "{yyyy}-{MM}-{dd}T{HH}:{mm}");
+    }
+
+    /**
+     * 履歴データを取得する。
+     * @returns {object} - 履歴データ
+     */
+    getData() {
+      return {
+        id: this.id,
+        text: this._text.value,
+        date: this._date.value,
+      };
+    }
+
+    // **************************************************
+    // * 履歴
+    // **************************************************
+
+    /**
+     * 履歴入力欄を追加する。
+     * @returns {void}
+     */
+    #addText() {
+      this._text = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "history-text");
+      this._text.borderless = true;
+      this.root.appendChild(this._text);
+    }
+
+    // **************************************************
+    // * 日付
+    // **************************************************
+
+    /**
+     * 日付入力欄を追加する。
+     * @returns {void}
+     */
+    #addDate() {
+      this._date = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("input", "history-date");
+      this._date.type = "datetime-local";
+      this.footer.appendChild(this._date);
+
+      this._date.addEventListener("change", () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_5__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    // **************************************************
+    // * 削除ボタン
+    // **************************************************
+
+    /**
+     * 削除ボタンを追加する。
+     * @returns {void}
+     */
+    #addDeleteButton() {
+      const deleteHistoryBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm(
+        "svg-btn",
+        "delete-history-item"
+      );
+      deleteHistoryBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.trashPaths;
+      deleteHistoryBtn.size = "1rem";
+      deleteHistoryBtn.hover = true;
+      deleteHistoryBtn.color = "red";
+      deleteHistoryBtn.tooltip = "削除";
+
+      this.footer.appendChild(deleteHistoryBtn);
+
+      deleteHistoryBtn.addEventListener("click", () => {
+        this.remove();
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_5__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+    }
+  }
+  customElements.define("contents-history-item", ContentsHistoryItem);
+}
+
+
+/***/ }),
+/* 31 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.history-item {
+  background-color: #fffff8;
+  border: 1px solid #6f6f6f;
+  border-radius: 0.25rem;
+  padding: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+.history-item #footer {
+  position: relative;
+  margin-top: 0.25rem;
+  height: 1rem;
+}
+.history-item #footer #history-date {
+  position: absolute;
+  right: 1.5rem;
+  outline: none;
+}
+.history-item #footer #delete-history-item {
+  position: absolute;
+  right: 0.25rem;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 32 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FormFieldset: () => (/* binding */ FormFieldset)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _style_form_fieldset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(33);
+
+
+
+
+/**
+ * FormFieldset コンポーネント
+ * @class FormFieldset
+ * @extends {HTMLElement}
+ */
+function FormFieldset() {
+  class FormFieldset extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_form_fieldset_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+      // 空の要素を作成
+      this.fieldset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("fieldset", "root");
+      this.legend = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("legend");
+      this.titleText = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
+
+      this.legend.appendChild(this.titleText);
+      this.fieldset.appendChild(this.legend);
+      this.shadowRoot.appendChild(this.fieldset);
+    }
+
+    /**
+     * Legendにiconを設定する
+     * @param {string} val アイコン
+     * @return {void}
+     */
+    set icon(val) {
+      this.legend.prepend(val);
+    }
+
+    /**
+     * Legendに値を設定する
+     * @param {string} val 設定値
+     * @return {void}
+     */
+    set title(val) {
+      this.titleText.innerText = val;
+    }
+
+    /**
+     * フィールドセットのlegendに必須クラスを設定します。
+     * @param {bool} val - クラスを追加するかどうかのブール値。
+     */
+    set required(val) {
+      this.legend.classList.toggle("isRequired", val);
+    }
+
+    /**
+     * ネスト項目であるか否かを設定
+     * @param {bool} val 設定値
+     * @return {void}
+     */
+    set nested(val) {
+      this.fieldset.classList.toggle("nested", val);
+    }
+
+    /**
+     * アイテムを持たないフィールドであることを設定
+     * @param {bool} val 設定値
+     * @return {void}
+     */
+    set itemLess(val) {
+      this.fieldset.classList.toggle("item-less", val);
+    }
+
+    /**
+     * 指定されたアイテムをフィールドセットに追加します。
+     * @param {HTMLElement} item - 追加するアイテム。
+     */
+    addItem(item) {
+      if (item.tagName === "FORM-FIELDSET") {
+        this.fieldset.classList.add("nestedRoot");
+        item.nested = true;
+      }
+      this.fieldset.appendChild(item);
+    }
+  }
+  customElements.define("form-fieldset", FormFieldset);
+}
+
+
+/***/ }),
+/* 33 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+* {
+  font-family: monospace;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+fieldset {
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+fieldset.item-less {
+  padding-bottom: 0;
+}
+fieldset legend {
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  line-height: 1rem;
+  color: #4f4f4f;
+}
+fieldset legend .svg-icon {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.2rem;
+}
+fieldset legend p {
+  padding-top: 0.1rem;
+}
+fieldset legend.isRequired:after {
+  content: "*";
+  margin-left: 0.05rem;
+  color: #fb4141;
+  font-size: 0.85rem;
+  padding: 0.15rem 0.15rem;
+  line-height: 0.75rem;
+}
+fieldset.nestedRoot {
+  display: flex;
+}
+fieldset.nested {
+  margin-top: 0.25rem;
+  margin-right: 0.35rem;
+  padding-bottom: 0;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 34 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FormInput: () => (/* binding */ FormInput)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _style_form_input_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(35);
+
+
+
+
+
+
+/**
+ * FormInput コンポーネント
+ * @class FormInput
+ * @extends {HTMLElement}
+ */
+function FormInput() {
+  class FormInput extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_form_input_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+      // 空の要素を作成
+      this.input = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("input");
+      this.input.type = "text";
+      this.input.style = "width:100%";
+      this.input.spellcheck = false;
+
+      this.shadowRoot.appendChild(this.input);
+
+      // 変更イベントを伝播
+      this.input.addEventListener("change", () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
+     * Inputに値を設定する
+     * @param {string} val 設定値
+     * @return {void}
+     */
+    set value(val) {
+      this.input.value = val;
+    }
+
+    /**
+     *  Inputの値を取得する
+     * @return {string} 設定値
+     */
+    get value() {
+      return this.input.value;
+    }
+
+    /**
+     * Inputにプレースホルダーを設定する
+     * @param {string} val 設定値
+     * @return {void}
+     */
+    set placeholder(val) {
+      this.input.placeholder = val;
+    }
+
+    /**
+     * 入力フィールドに「read-only」クラスを設定または解除します。
+     * @param {boolean} val - クラスを追加するかどうかのブール値。
+     */
+    set readOnly(val) {
+      this.input.readOnly = val;
+    }
+
+    /**
+     * 幅を設定します。
+     * @param {string} w - 設定する幅の値（例：'100px'）。
+     */
+    set width(w) {
+      this.input.style = `width:${w}`;
+    }
+  }
+  customElements.define("form-input", FormInput);
+}
+
+
+/***/ }),
+/* 35 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+* {
+  font-family: monospace;
+}
+
+input[type=text] {
+  outline: none;
+  background-color: #fffff8;
+  border: 1px solid #6f6f6f;
+  border-radius: 0.25rem;
+  line-height: 1.5rem;
+  padding: 0.1rem 0.25rem;
+}
+input[type=text]:hover, input[type=text]:focus {
+  background-color: #fff6da;
+}
+input[type=text]:read-only {
+  background-color: #dfdfdf;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 36 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FormDate: () => (/* binding */ FormDate)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _style_form_date_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(37);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+
+
+
+
+
+
+
+/**
+ * FormDate コンポーネント
+ * @class FormDate
+ * @extends {HTMLElement}
+ */
+function FormDate() {
+  const OFF_DATE = "3000-12-31";
+
+  class FormDate extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_form_date_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+      // 空の要素を作成
+      this.input = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("input");
+      this.input.type = "date";
+
+      // 無効ボタンを作成
+      this.offButton = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "calendar-off");
+      this.offButton.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.CalendarOff;
+      this.offButton.size = "1rem";
+      this.offButton.color = "red";
+      this.offButton.toggle = true;
+      this.offButton.toggleOn(false);
+      this.#setToolTip();
+
+      this.offButton.addEventListener("click", () => {
+        this.value = this.offButton.toggle ? OFF_DATE : "";
+        this.input.classList.toggle("off", this.offButton.toggle);
+        this.#setToolTip();
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+
+      // 要素追加
+      this.shadowRoot.appendChild(this.input);
+      this.shadowRoot.appendChild(this.offButton);
+
+      // 変更イベントを伝播
+      this.input.addEventListener("change", () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
+     * ツールチップメッセージを設定する
+     */
+    #setToolTip() {
+      if (this.offButton.toggle) {
+        this.offButton.tooltip = "無効を解除";
+      } else {
+        this.offButton.tooltip = "無効にする";
+      }
+    }
+
+    /**
+     * Inputに値を設定する
+     * @param {string} val 設定値
+     * @return {void}
+     */
+    set value(val) {
+      this.input.value = val;
+      if (val === OFF_DATE) {
+        this.offButton.toggleOn(true);
+        this.input.classList.add("off");
+        this.#setToolTip();
+      }
+    }
+
+    /**
+     *  Inputの値を取得する
+     * @return {string} 設定値
+     */
+    get value() {
+      return this.input.value;
+    }
+  }
+  customElements.define("form-date", FormDate);
+}
+
+
+/***/ }),
+/* 37 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+* {
+  font-family: monospace;
+}
+
+input[type=date] {
+  outline: none;
+  background-color: #fffff8;
+  border: 1px solid #6f6f6f;
+  border-radius: 0.25rem;
+  line-height: 1.5rem;
+  padding: 0.1rem 0.25rem;
+}
+input[type=date]:hover, input[type=date]:focus {
+  background-color: #fff6da;
+}
+input[type=date].off {
+  pointer-events: none;
+  color: #ffffff;
+}
+
+#calendar-off {
+  margin-left: 0.25rem;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 38 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FormTextarea: () => (/* binding */ FormTextarea)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _style_form_textarea_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(39);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3);
+
+
+
+
+
+
+
+
+/**
+ * FormTextarea コンポーネント
+ * @class FormTextarea
+ * @extends {HTMLElement}
+ */
+function FormTextarea() {
+  class FormTextarea extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_form_textarea_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+      // 空の要素を作成
+      this.textarea = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("textarea");
+      this.textarea.style = "width:100%";
+      this.textarea.spellcheck = false;
+
+      /**
+       * 入力内容に連動して高さを変更する
+       */
+      this.defaultRows = 3;
+      this.textarea.addEventListener("input", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.#adjustTextareaHeight();
+        this.#updateViewArea();
+      });
+
+      this.shadowRoot.appendChild(this.textarea);
+
+      // 変更イベントを伝播
+      this.textarea.addEventListener("change", () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
+     * 要素がDOMに追加された後の処理
+     */
+    connectedCallback() {
+      this.#adjustTextareaHeight(this.defaultRows);
+      this.#updateViewArea();
+    }
+
+    /**
+     * テキストエリアの高さを調整します。
+     * @param {number} [rows=0] - 設定する行数。0の場合は内容に基づいて行数を自動的に設定します。
+     */
+    #adjustTextareaHeight(rows = 0) {
+      this.textarea.style.height = "auto";
+
+      const style = window.getComputedStyle(this.textarea);
+      const lineHeight = parseFloat(style.lineHeight);
+      const paddingTop = parseFloat(style.paddingTop);
+      const paddingBottom = parseFloat(style.paddingBottom);
+      const paddingHeight = paddingTop + paddingBottom;
+      const contentHeight = this.textarea.scrollHeight;
+
+      if (rows === 0) {
+        rows = Math.max(
+          this.defaultRows,
+          Math.round(contentHeight / lineHeight)
+        );
+      }
+
+      const adjustHeight = lineHeight * rows + paddingHeight;
+      this.textarea.style.height = `${adjustHeight}px`;
+    }
+
+    /**
+     * viewAreaを更新する。
+     */
+    #updateViewArea() {
+      if (!this._isViewArea) {
+        return;
+      }
+
+      // 既存要素を削除
+      this.viewArea.innerHTML = "";
+
+      // 出力判定
+      if (!this.textarea.value) {
+        return;
+      }
+
+      // リスト出力
+      const itemList = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("ul");
+      this.textarea.value.split("\n").forEach((item) => {
+        let icon;
+        const li = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("li");
+
+        // クリップボードにコピー
+        icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_4__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_5__.SvgConst.CopyPaths);
+        li.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigator.clipboard.writeText(item);
+        });
+
+        li.appendChild(icon);
+        li.appendChild(document.createTextNode(item));
+
+        itemList.appendChild(li);
+      });
+      this.viewArea.appendChild(itemList);
+    }
+
+    /**
+     * Textareaに値を設定する
+     * @param {string} val 設定値
+     * @return {void}
+     */
+    set value(val) {
+      this.textarea.value = val;
+      requestAnimationFrame(() => {
+        this.#adjustTextareaHeight();
+        this.#updateViewArea();
+      });
+    }
+
+    /**
+     *  Textareaの値を取得する
+     * @return {string} 設定値
+     */
+    get value() {
+      return this.textarea.value;
+    }
+
+    /**
+     * Textareaにプレースホルダーを設定する
+     * @param {string} val 設定値
+     * @return {void}
+     */
+    set placeholder(val) {
+      this.textarea.placeholder = val;
+    }
+
+    /**
+     * 幅を設定します。
+     * @param {string} w - 設定する幅の値（例：'100px'）。
+     */
+    set width(w) {
+      this.textarea.style = `width:${w}`;
+    }
+
+    /**
+     * テキストエリアの行数を設定します。
+     * @param {number} r - 設定する行数
+     */
+    set rows(r) {
+      this.defaultRows = r;
+      this.#adjustTextareaHeight(r);
+      this.#updateViewArea();
+    }
+
+    /**
+     * 入力データがフォルダパスであるかを設定する。
+     * @param {bool} val - フラグ
+     */
+    set isFolderPath(val) {
+      this._isFolderPath = val;
+      this.#addViewArea(val);
+    }
+
+    /**
+     * 入力データがURLであるかを設定する。
+     * @param {bool} val - フラグ
+     */
+    set isURL(val) {
+      this._isURL = val;
+      this.#addViewArea(val);
+    }
+
+    /**
+     * ViewAreaを追加する。
+     * @param {bool} val - フラグ
+     */
+    #addViewArea(val) {
+      this._isViewArea = val;
+
+      // 表示エリア
+      this.viewArea = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "view-area");
+
+      // 編集エリア
+      this.editBtnArea = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "edit-btn-area");
+
+      const editBtn = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("svg-btn", "edit");
+      editBtn.iconPaths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_5__.SvgConst.EditPaths;
+      editBtn.size = "1.15rem";
+      editBtn.color = "blue";
+      editBtn.toggle = true;
+      editBtn.toggleOn = false;
+      editBtn.tooltip = "編集";
+
+      editBtn.addEventListener("click", () => {
+        this.textarea.classList.remove("fade-in", "show");
+        this.viewArea.classList.remove("fade-in", "show");
+
+        const isEditMode = editBtn.toggle;
+        const showItem = isEditMode ? this.textarea : this.viewArea;
+        const hideItem = isEditMode ? this.viewArea : this.textarea;
+
+        editBtn.tooltip = editBtn.toggle ? "完了" : "編集";
+
+        showItem.classList.remove("hidden");
+        hideItem.classList.add("hidden");
+
+        showItem.classList.add("fade-in");
+        setTimeout(() => {
+          showItem.classList.add("show");
+        }, 100);
+        this.#adjustTextareaHeight();
+      });
+
+      this.editBtnArea.appendChild(editBtn);
+
+      // 入力エリアを非表示
+      this.textarea.classList.add("hidden");
+
+      // 要素追加
+      this.shadowRoot.appendChild(this.viewArea);
+      this.shadowRoot.appendChild(this.editBtnArea);
+    }
+
+    /**
+     * ボーダーの有無を設定します。
+     * @param {boolean} isBorderLess - ボーダーを表示しない場合はtrueを指定します。
+     */
+    set borderless(isBorderLess) {
+      this.textarea.classList.toggle("borderless", isBorderLess);
+    }
+  }
+  customElements.define("form-textarea", FormTextarea);
+}
+
+
+/***/ }),
+/* 39 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+* {
+  font-family: monospace;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
+
+textarea {
+  outline: none;
+  background-color: #fffff8;
+  border: 1px solid #6f6f6f;
+  border-radius: 0.25rem;
+  line-height: 1.1rem;
+  padding: 0.35rem 0.25rem;
+  resize: none;
+  overflow-y: hidden;
+  word-break: break-all;
+}
+textarea:hover, textarea:focus {
+  background-color: #fff6da;
+}
+textarea.borderless {
+  padding: 0.15rem 0.25rem;
+  border: none;
+  transition: 0.2s;
+}
+
+#view-area {
+  padding-top: 0.2rem;
+}
+#view-area ul {
+  width: 100%;
+}
+#view-area ul li {
+  position: relative;
+  width: 100%;
+  word-break: break-all;
+  line-height: 1.3rem;
+  padding-left: 1.5rem;
+  padding-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  border: 1px solid #6f6f6f;
+  border-radius: 0.25rem;
+  color: #1f1f1f;
+  background-color: #a1e3f9;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#view-area ul li:hover {
+  color: #fffff8;
+  background-color: #0078d4;
+}
+#view-area ul li:active {
+  color: #0078d4;
+  background-color: #fffff8;
+}
+#view-area ul li .svg-icon {
+  position: absolute;
+  left: 0.25rem;
+  top: 0.15rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+#edit-btn-area {
+  text-align: right;
+  margin-top: 0.15rem;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 40 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FormTable: () => (/* binding */ FormTable)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _style_form_table_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41);
+
+
+
+
+
+
+/**
+ * FormTable コンポーネント
+ * @class FormTable
+ * @extends {HTMLElement}
+ */
+function FormTable() {
+  class FormTable extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_form_table_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
+      this.table = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("table");
+      this.thead = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("thead");
+      this.tbody = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tbody");
+
+      this.table.appendChild(this.thead);
+      this.table.appendChild(this.tbody);
+      this.root.appendChild(this.table);
+
+      this.shadowRoot.appendChild(this.root);
+    }
+
+    /**
+     * 幅を設定します。
+     * @param {string} w - 設定する幅の値（例：'100px'）。
+     */
+    set width(w) {
+      this.table.style = `width:${w}`;
+    }
+
+    /**
+     * ヘッダーを設定します。
+     * @param {Array<string>} texts - ヘッダーに表示するテキストの配列。
+     */
+    set header(texts = []) {
+      this.thead.innerHTML = "";
+      const tr = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tr");
+      texts.forEach((text) => {
+        const th = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("th");
+        th.innerText = text;
+        tr.appendChild(th);
+      });
+      this.thead.appendChild(tr);
+    }
+
+    /**
+     * 新しいtr要素を作成してtbodyに追加します。
+     */
+    appendTr() {
+      this.tr = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tr");
+      this.tbody.appendChild(this.tr);
+    }
+
+    /**
+     * Tr要素にクラスを設定します。
+     * @param {string} className
+     */
+    setTrClass(className) {
+      this.tr.classList.add(className);
+    }
+
+    /**
+     * 新しいtd要素を作成してtrに追加します。
+     */
+    addTd() {
+      this.td = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("td");
+      this.tr.appendChild(this.td);
+    }
+
+    /**
+     * Td要素にエレメントを追加します。
+     * @param {element} elm
+     */
+    setTdElment(elm) {
+      if (typeof elm === "string") {
+        const div = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
+        div.innerText = elm;
+        this.td.appendChild(div);
+      } else {
+        this.td.appendChild(elm);
+      }
+    }
+
+    /**
+     * Td要素の横幅を設定します。
+     * @param {string} width
+     */
+    setTdWidth(width) {
+      this.td.style = `width:${width}`;
+    }
+
+    /**
+     * Td要素の文字の位置を設定します。
+     * @param {string} align
+     */
+    setTdAlign(align) {
+      this.td.classList.add(align);
+    }
+
+    /**
+     * セルクリック時の処理を設定する。
+     * @param {function} func
+     */
+    setTdClickEvent(func) {
+      this.td.classList.add("clickable");
+      this.td.addEventListener("click", func);
+    }
+  }
+  customElements.define("form-table", FormTable);
+}
+
+
+/***/ }),
+/* 41 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+* {
+  font-family: monospace;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+#root table {
+  width: 100%;
+}
+#root table thead tr th {
+  background-color: #211c84;
+  color: #fffffb;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem;
+}
+#root table thead tr th:first-child {
+  border-top-left-radius: 0.25rem;
+}
+#root table thead tr th:last-child {
+  border-top-right-radius: 0.25rem;
+}
+#root table tbody tr:nth-child(even) td {
+  background-color: #eeeeee;
+}
+#root table tbody tr td {
+  background-color: #fffffb;
+  color: #00000b;
+  max-width: 300px;
+  line-height: 2rem;
+  padding: 0 0.5rem;
+}
+#root table tbody tr td.clickable {
+  cursor: pointer;
+  transition: 0.2s;
+}
+#root table tbody tr td.clickable:hover {
+  text-decoration: underline;
+  color: #003092;
+}
+#root table tbody tr td.center {
+  text-align: center;
+}
+#root table tbody tr td.center .svg-icon {
+  vertical-align: middle;
+}
+#root table tbody tr td.right {
+  text-align: right;
+}
+#root table tbody tr td.right .svg-icon {
+  vertical-align: right;
+}
+#root table tbody tr td.left {
+  text-align: left;
+}
+#root table tbody tr td div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#root table tbody tr td .svg-icon {
+  display: inline-block;
+  font-size: 1rem;
+}
+#root table tbody tr.complete td {
+  color: #838383;
+  text-decoration: line-through;
+}
+#root table tbody tr.alert td {
+  color: #f93827;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 42 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FormRadio: () => (/* binding */ FormRadio)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _style_form_radio_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(43);
+
+
+
+
+
+
+/**
+ * FormRadio コンポーネント
+ * @class FormRadio
+ * @extends {HTMLElement}
+ */
+function FormRadio() {
+  class FormRadio extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_form_radio_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+      // 空の要素を作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
+      this.shadowRoot.appendChild(this.root);
+
+      // 変更イベントを伝播
+      this.root.addEventListener("change", () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_2__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    /**
+     * 選択肢を設定する
+     * @param {map} param 設定値
+     * @return {void}
+     */
+    set items(param) {
+      param.forEach((p, index) => {
+        const itemName = `item${p.value}`;
+
+        // ラベルとラジオボタンを作成
+        const lbl = document.createElement("label");
+        lbl.htmlFor = itemName;
+        lbl.textContent = p.text;
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "radio";
+        radio.id = itemName;
+        radio.value = p.value;
+
+        // 最初と最後の要素にクラスを追加
+        if (index === 0) {
+          lbl.classList.add("first");
+        } else if (index === param.length - 1) {
+          lbl.classList.add("last");
+        }
+
+        this.root.appendChild(lbl);
+        this.root.appendChild(radio);
+      });
+    }
+
+    /**
+     * 選択したラジオボタンのvalueを返す
+     * @return {string} value
+     */
+    get value() {
+      const checked = this.shadowRoot.querySelector(
+        'input[name="radio"]:checked'
+      );
+      if (!checked) {
+        return null;
+      }
+      return checked.value;
+    }
+
+    /**
+     * ラジオボタンを選択する
+     * @param {string} v
+     */
+    set value(v) {
+      if (v) {
+        if (v === "") {
+          return;
+        }
+        const rb = this.shadowRoot.getElementById(`item${v}`);
+        rb.checked = true;
+      }
+    }
+  }
+  customElements.define("form-radio", FormRadio);
+}
+
+
+/***/ }),
+/* 43 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+* {
+  font-family: monospace;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+#root {
+  display: flex;
+  justify-content: space-between;
+}
+#root label {
+  flex: 1;
+  line-height: 1.9rem;
+  text-align: center;
+  background-color: #fffff8;
+  border: 1px solid #6f6f6f;
+  border-right: none;
+  transition: 0.2s;
+}
+#root label.first {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+#root label.last {
+  border-right: 1px solid #6f6f6f;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+#root label:has(+ input:checked) {
+  background-color: #0a5eb0;
+  color: #fffff8;
+}
+#root label:hover {
+  background-color: #0a5eb0;
+  color: #fffff8;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ })
+/******/ 	]);
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			id: moduleId,
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+
+
+window.addEventListener("load", () => {
+  (0,_components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_0__.TaskMemo)();
+});
+
+})();
+
+/******/ })()
+;
