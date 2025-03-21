@@ -4843,6 +4843,7 @@ function TaskTitle() {
      */
     set name(value) {
       this._name = value;
+      this.root.title = value;
     }
 
     /**

@@ -40,6 +40,8 @@ export function GroupTitle() {
      */
     set name(value) {
       this._name = value;
+      this.root.title = value;
+
       this.#refreshView();
       this.dispatchEvent(
         EventUtils.createEvent(EventConst.CHANGE_TREEVIEW_EVENT_NAME)
