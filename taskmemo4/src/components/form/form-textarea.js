@@ -108,23 +108,13 @@ export function FormTextarea() {
         let icon;
         const li = ElmUtils.createElm("li");
 
-        if (this._isURL) {
-          // 新しいタブ
-          icon = SvgUtils.createIcon(SvgConst.LinkPaths);
-          li.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            open(item, "_blank");
-          });
-        } else {
-          // クリップボードにコピー
-          icon = SvgUtils.createIcon(SvgConst.CopyPaths);
-          li.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            navigator.clipboard.writeText(item);
-          });
-        }
+        // クリップボードにコピー
+        icon = SvgUtils.createIcon(SvgConst.CopyPaths);
+        li.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigator.clipboard.writeText(item);
+        });
 
         li.appendChild(icon);
         li.appendChild(document.createTextNode(item));
