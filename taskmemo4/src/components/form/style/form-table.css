@@ -397,20 +397,51 @@ th {
   pointer-events: none;
 }
 
+#root {
+  height: 100%;
+}
 #root table {
   width: 100%;
 }
-#root table thead tr th {
+#root table thead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+#root table thead tr#caption {
+  background-color: #d4f1ef;
+  height: 1.5rem;
+}
+#root table thead tr#caption th {
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  color: #4f4f4f;
+  position: relative;
+}
+#root table thead tr#caption th .svg-icon {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.2rem;
+}
+#root table thead tr#caption th p {
+  position: absolute;
+  left: 1.15rem;
+  padding-top: 0.1rem;
+}
+#root table thead tr#header-items th {
   background-color: #211c84;
   color: #fffffb;
   font-weight: bold;
   text-align: center;
   padding: 0.5rem;
 }
-#root table thead tr th:first-child {
+#root table thead tr#header-items th:first-child {
   border-top-left-radius: 0.25rem;
 }
-#root table thead tr th:last-child {
+#root table thead tr#header-items th:last-child {
   border-top-right-radius: 0.25rem;
 }
 #root table tbody tr:nth-child(even) td {

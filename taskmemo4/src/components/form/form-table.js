@@ -47,17 +47,52 @@ export function FormTable() {
     }
 
     /**
+     * キャプションを設定します。
+     * @param {HTMLElement} icon - アイコン
+     * @param {string} val - キャプション
+     */
+    setCaption(icon, val) {
+      this._icon = icon;
+      this._caption = val;
+    }
+
+    /**
      * ヘッダーを設定します。
      * @param {Array<string>} texts - ヘッダーに表示するテキストの配列。
      */
     set header(texts = []) {
       this.thead.innerHTML = "";
-      const tr = ElmUtils.createElm("tr");
+
+      const tr = ElmUtils.createElm("tr", "header-items");
       texts.forEach((text) => {
         const th = ElmUtils.createElm("th");
         th.innerText = text;
         tr.appendChild(th);
       });
+
+      this.#addCaption(texts.length);
+      this.thead.appendChild(tr);
+    }
+
+    /**
+     * キャプションをテーブルに追加する。
+     * @param {integer} col - 列数
+     */
+    #addCaption(col) {
+      if (!this._caption) {
+        return;
+      }
+      const tr = ElmUtils.createElm("tr", "caption");
+      const th = ElmUtils.createElm("th");
+      const p = ElmUtils.createElm("p");
+      p.textContent = this._caption;
+
+      th.setAttribute("colSpan", col);
+      th.appendChild(this._icon);
+      th.appendChild(p);
+
+      tr.appendChild(th);
+
       this.thead.appendChild(tr);
     }
 

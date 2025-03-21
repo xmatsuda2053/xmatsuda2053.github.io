@@ -2,6 +2,9 @@
 @use "../../_style/font";
 @use "../../_style/svg";
 
+$caption-color: #4f4f4f;
+$caption-bg-color: #d4f1ef;
+
 $h-bg-color: #211c84;
 $h-font-color: #fffffb;
 
@@ -14,25 +17,60 @@ $alert-color: #f93827;
 $complete-color: #838383;
 
 #root {
+  height: 100%;
+
   table {
     width: 100%;
 
     thead {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+
       tr {
-        th {
-          background-color: $h-bg-color;
-          color: $h-font-color;
+        &#caption {
+          background-color: $caption-bg-color;
+          height: 1.5rem;
+          th {
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 1rem;
+            color: $caption-color;
 
-          font-weight: bold;
-          text-align: center;
-          padding: 0.5rem;
+            position: relative;
 
-          &:first-child {
-            border-top-left-radius: 0.25rem;
+            .svg-icon {
+              position: absolute;
+              height: 1rem;
+              width: 1rem;
+              margin-right: 0.2rem;
+            }
+
+            p {
+              position: absolute;
+              left: 1.15rem;
+              padding-top: 0.1rem;
+            }
           }
+        }
 
-          &:last-child {
-            border-top-right-radius: 0.25rem;
+        &#header-items {
+          th {
+            background-color: $h-bg-color;
+            color: $h-font-color;
+
+            font-weight: bold;
+            text-align: center;
+            padding: 0.5rem;
+
+            &:first-child {
+              border-top-left-radius: 0.25rem;
+            }
+
+            &:last-child {
+              border-top-right-radius: 0.25rem;
+            }
           }
         }
       }

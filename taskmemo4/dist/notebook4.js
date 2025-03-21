@@ -6365,6 +6365,11 @@ function ContentsGroup() {
 
       this.#addEmptyGroupItems();
 
+      this.table.setCaption(
+        _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.TablePaths),
+        "タスク一覧"
+      );
+
       this.table.header = [
         "ID",
         "ステータス",
@@ -6615,14 +6620,8 @@ function ContentsGroup() {
      * @private
      */
     #addEmptyGroupItems() {
-      const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
-      filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.TablePaths);
-      filedset.title = "タスク一覧";
-
       this.table = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-table");
-
-      filedset.addItem(this.table);
-      this.list.appendChild(filedset);
+      this.list.appendChild(this.table);
     }
   }
   customElements.define("contents-group", ContentsGroup);
@@ -7113,7 +7112,7 @@ th {
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 300px 1fr;
+  grid-template-rows: 350px 1fr;
   gap: 0em 0em;
   grid-template-areas: "group-property group-memo" "group-list group-list";
   height: 100vh;
@@ -11685,17 +11684,52 @@ function FormTable() {
     }
 
     /**
+     * キャプションを設定します。
+     * @param {HTMLElement} icon - アイコン
+     * @param {string} val - キャプション
+     */
+    setCaption(icon, val) {
+      this._icon = icon;
+      this._caption = val;
+    }
+
+    /**
      * ヘッダーを設定します。
      * @param {Array<string>} texts - ヘッダーに表示するテキストの配列。
      */
     set header(texts = []) {
       this.thead.innerHTML = "";
-      const tr = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tr");
+
+      const tr = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tr", "header-items");
       texts.forEach((text) => {
         const th = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("th");
         th.innerText = text;
         tr.appendChild(th);
       });
+
+      this.#addCaption(texts.length);
+      this.thead.appendChild(tr);
+    }
+
+    /**
+     * キャプションをテーブルに追加する。
+     * @param {integer} col - 列数
+     */
+    #addCaption(col) {
+      if (!this._caption) {
+        return;
+      }
+      const tr = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tr", "caption");
+      const th = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("th");
+      const p = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
+      p.textContent = this._caption;
+
+      th.setAttribute("colSpan", col);
+      th.appendChild(this._icon);
+      th.appendChild(p);
+
+      tr.appendChild(th);
+
       this.thead.appendChild(tr);
     }
 
@@ -12182,20 +12216,51 @@ th {
   pointer-events: none;
 }
 
+#root {
+  height: 100%;
+}
 #root table {
   width: 100%;
 }
-#root table thead tr th {
+#root table thead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+#root table thead tr#caption {
+  background-color: #d4f1ef;
+  height: 1.5rem;
+}
+#root table thead tr#caption th {
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  color: #4f4f4f;
+  position: relative;
+}
+#root table thead tr#caption th .svg-icon {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.2rem;
+}
+#root table thead tr#caption th p {
+  position: absolute;
+  left: 1.15rem;
+  padding-top: 0.1rem;
+}
+#root table thead tr#header-items th {
   background-color: #211c84;
   color: #fffffb;
   font-weight: bold;
   text-align: center;
   padding: 0.5rem;
 }
-#root table thead tr th:first-child {
+#root table thead tr#header-items th:first-child {
   border-top-left-radius: 0.25rem;
 }
-#root table thead tr th:last-child {
+#root table thead tr#header-items th:last-child {
   border-top-right-radius: 0.25rem;
 }
 #root table tbody tr:nth-child(even) td {

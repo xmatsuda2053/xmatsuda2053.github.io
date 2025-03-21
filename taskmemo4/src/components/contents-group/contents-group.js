@@ -83,6 +83,11 @@ export function ContentsGroup() {
 
       this.#addEmptyGroupItems();
 
+      this.table.setCaption(
+        SvgUtils.createIcon(SvgConst.TablePaths),
+        "タスク一覧"
+      );
+
       this.table.header = [
         "ID",
         "ステータス",
@@ -333,14 +338,8 @@ export function ContentsGroup() {
      * @private
      */
     #addEmptyGroupItems() {
-      const filedset = ElmUtils.createElm("form-fieldset");
-      filedset.icon = SvgUtils.createIcon(SvgConst.TablePaths);
-      filedset.title = "タスク一覧";
-
       this.table = ElmUtils.createElm("form-table");
-
-      filedset.addItem(this.table);
-      this.list.appendChild(filedset);
+      this.list.appendChild(this.table);
     }
   }
   customElements.define("contents-group", ContentsGroup);
