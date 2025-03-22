@@ -3503,6 +3503,7 @@ function TreeView() {
       headerMenu.appendChild(this.#createFilterStartedButton());
       headerMenu.appendChild(this.#createFilterCompletButton());
       headerMenu.appendChild(this.#createFilterOverDeadlineButton());
+      headerMenu.appendChild(this.#createLine());
       headerMenu.appendChild(this.#createFilterButton());
       this.header.appendChild(headerMenu);
     }
