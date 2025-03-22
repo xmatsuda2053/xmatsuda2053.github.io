@@ -139,8 +139,7 @@ export function TreeView() {
       btn.hover = true;
       btn.tooltip = "すべて開く";
       btn.addEventListener("click", () => {
-        const details = this.root.querySelectorAll("details");
-        details.forEach((detail) => (detail.open = true));
+        this.root.querySelectorAll("details").forEach((d) => (d.open = true));
       });
 
       return btn;
@@ -155,8 +154,7 @@ export function TreeView() {
       btn.hover = true;
       btn.tooltip = "すべて閉じる";
       btn.addEventListener("click", () => {
-        const details = this.root.querySelectorAll("details");
-        details.forEach((detail) => (detail.open = false));
+        this.root.querySelectorAll("details").forEach((d) => (d.open = false));
       });
 
       return btn;
@@ -347,6 +345,9 @@ export function TreeView() {
       this.#insertAddGroupButton();
       this.#insertSeparatorItemButton();
       this.menu.addBorder();
+      this.#insertAllOpenButton();
+      this.#insertAllCloseButton();
+      this.menu.addBorder();
       this.#insertDeleteItemButton();
 
       /**
@@ -362,14 +363,19 @@ export function TreeView() {
         const isGroup = e.target.tagName.toLowerCase() === "group-title";
         const isSeparator = e.target.dataset.type === "separator";
 
-        // ターゲットがタスクの場合、追加ボタンを無効
+        // ターゲットがタスクの場合、追加・セパレータ・すべて開く・すべて閉じるボタンを無効
         if (isTask) {
           this.menu.setDisabled("add-new-task");
           this.menu.setDisabled("add-new-group");
+          this.menu.setDisabled("separator-item");
+          this.menu.setDisabled("all-open");
+          this.menu.setDisabled("all-close");
         }
 
-        // ターゲットがアイテム以外の場合、削除ボタンを無効
+        // ターゲットがアイテム以外の場合、すべて開く・すべて閉じる・削除ボタンを無効
         if (!isTask && !isGroup && !isSeparator) {
+          this.menu.setDisabled("all-open");
+          this.menu.setDisabled("all-close");
           this.menu.setDisabled("delete-item");
         }
 
@@ -509,6 +515,44 @@ export function TreeView() {
         this.dispatchEvent(
           EventUtils.createEvent(EventConst.CHANGE_TREEVIEW_EVENT_NAME)
         );
+      });
+    }
+
+    /**
+     * 指定したグループをすべて開くボタンを追加する
+     */
+    #insertAllOpenButton() {
+      const id = "all-open";
+      const title = "すべて開く";
+      this.menu.addButton(id, title, SvgConst.treeOpenPaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const details = this.menu.clickTarget.closest(".group");
+        details.querySelectorAll("details").forEach((d) => (d.open = true));
+        details.open = true;
+      });
+    }
+
+    /**
+     * 指定したグループをすべて閉じるボタンを追加する
+     */
+    #insertAllCloseButton() {
+      const id = "all-close";
+      const title = "すべて閉じる";
+      this.menu.addButton(id, title, SvgConst.treeClosePaths);
+
+      /**
+       * クリックイベント
+       * @param {Event} event - クリックイベントオブジェクト
+       */
+      this.menu.addEventListener(`click-${id}`, (e) => {
+        const details = this.menu.clickTarget.closest(".group");
+        details.querySelectorAll("details").forEach((d) => (d.open = false));
+        details.open = false;
       });
     }
 
