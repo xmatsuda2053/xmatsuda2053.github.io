@@ -6,6 +6,7 @@ import { FileManager } from "../../classes/file-manager";
 import styles from "./style/task-memo.css";
 
 // Componets
+import { TopPage } from "../toppage/top-page";
 import { SvgBtn } from "../svg-btn/svg-btn";
 import { ContextMenu } from "../context-menu/context-menu";
 import { EventConst } from "../../constants/event-const";
@@ -52,6 +53,7 @@ export function TaskMemo() {
     constructor() {
       super();
 
+      TopPage();
       SvgBtn();
       ContextMenu();
 
@@ -84,6 +86,7 @@ export function TaskMemo() {
       this.treeView = ElmUtils.createElm("div", "treeview", ["scroll"]);
       this.contents = ElmUtils.createElm("div", "contents");
 
+      this.contents.appendChild(ElmUtils.createElm("top-page"));
       this.contents.appendChild(this.#createFolderOpenBtnInFloatArea());
 
       this.container.appendChild(this.treeView);
@@ -115,6 +118,7 @@ export function TaskMemo() {
             this.#addEmptyTreeView();
             this.#loadTreeViewData();
             folderOpenBtn.remove();
+            this.contents.innerHTML = "";
           }
         } catch (error) {
           console.error("ディレクトリの選択に失敗しました", error);

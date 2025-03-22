@@ -1,0 +1,10 @@
+@use "../../_style/destyle";
+@use "../../_style/svg";
+@use "../../_style/font";
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
