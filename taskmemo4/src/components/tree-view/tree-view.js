@@ -235,7 +235,7 @@ export function TreeView() {
       const btn = this.#createToggleButton("item-filter", SvgConst.FilterPaths);
       btn.color = "green";
       btn.toggleOn(false);
-      btn.tooltip = "フィルタ";
+      btn.tooltip = "タスクフィルタ";
 
       this.searchText = "";
       this.searchResult = [];
@@ -246,7 +246,7 @@ export function TreeView() {
         this.searchResult = [];
 
         if (btn.toggle) {
-          this.searchText = prompt("検索条件を入力");
+          this.searchText = prompt("タスクのフィルタ条件を入力");
           if (this.searchText) {
             this.searchResult = await this.searchFunction(this.searchText);
           } else {
@@ -288,6 +288,45 @@ export function TreeView() {
         // 表示／非表示設定
         task.closest(".tree-item").classList.toggle("disabled", isDisabled);
       });
+
+      // グループ絞り込み（タスクが０のグループは非表示）
+      /**
+       * グループに対して再帰的にフィルタをかける
+       * @param {HTMLElement} parent
+       */
+      const filterGroup = (parent) => {
+        // 親要素内のグループ要素を取得
+        const details = Array.from(parent.children).filter(
+          (c) => c.tagName.toLowerCase() === "details"
+        );
+
+        // グループの数だけ繰り返す。
+        details.forEach((d) => {
+          // いったん、非表示クラスを削除しグループを開く
+          d.classList.remove("disabled");
+          d.open = true;
+
+          // グループにネストされている要素を取得
+          const items = d.querySelector(".group-items");
+
+          // ネスト要素のうち、非表示になっていないタスクの数をカウント
+          const cnt = Array.from(items.querySelectorAll(".task")).filter(
+            (t) => !t.classList.contains("disabled")
+          ).length;
+
+          if (cnt === 0) {
+            // 有効タスクなしの場合、対象グループを閉じて非表示にする
+            d.open = false;
+            d.classList.add("disabled");
+          } else {
+            // 有効タスクがある場合、ネスト要素に対してさらにフィルタをかける
+            filterGroup(items);
+          }
+        });
+      };
+
+      // ルート要素を起点にグループフィルタを実行
+      filterGroup(this.root);
     }
 
     // *******************************************************
@@ -687,7 +726,7 @@ export function TreeView() {
       const title = ElmUtils.createElm("task-title");
       title.init(data);
 
-      const item = ElmUtils.createElm("div", null, ["tree-item"]);
+      const item = ElmUtils.createElm("div", null, ["tree-item", "task"]);
       item.appendChild(title);
       item.setAttribute("draggable", true);
       item.dataset.type = "task";
@@ -708,7 +747,10 @@ export function TreeView() {
       const title = ElmUtils.createElm("group-title");
       title.init(data);
 
-      const details = ElmUtils.createElm("details", null, ["tree-item"]);
+      const details = ElmUtils.createElm("details", null, [
+        "tree-item",
+        "group",
+      ]);
       const summary = ElmUtils.createElm("summary", null);
       const items = ElmUtils.createElm("div", null, ["group-items"]);
 
