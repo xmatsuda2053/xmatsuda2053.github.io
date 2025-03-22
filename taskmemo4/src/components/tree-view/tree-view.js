@@ -261,9 +261,10 @@ export function TreeView() {
     }
 
     /**
-     * TreeViewのタスクに対するフィルタを設定する。
+     * TreeViewに対するフィルタを設定する。
      */
     #filterTreeViewItem() {
+      // タスクフィルタ
       this.root.querySelectorAll("task-title").forEach((task) => {
         const flag = task.flag;
         let isDisabled;
@@ -284,7 +285,8 @@ export function TreeView() {
           isDisabled = this.searchResult.indexOf(`${task.id}.json`) === -1;
         }
 
-        task.classList.toggle("disabled", isDisabled);
+        // 表示／非表示設定
+        task.closest(".tree-item").classList.toggle("disabled", isDisabled);
       });
     }
 

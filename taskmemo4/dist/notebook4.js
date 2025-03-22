@@ -3700,7 +3700,7 @@ function TreeView() {
           isDisabled = this.searchResult.indexOf(`${task.id}.json`) === -1;
         }
 
-        task.classList.toggle("disabled", isDisabled);
+        task.closest(".tree-item").classList.toggle("disabled", isDisabled);
       });
     }
 
