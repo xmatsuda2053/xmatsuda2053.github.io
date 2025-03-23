@@ -118,7 +118,6 @@ export function TaskMemo() {
             this.#addEmptyTreeView();
             this.#loadTreeViewData();
             folderOpenBtn.remove();
-            this.contents.innerHTML = "";
           }
         } catch (error) {
           console.error("ディレクトリの選択に失敗しました", error);
