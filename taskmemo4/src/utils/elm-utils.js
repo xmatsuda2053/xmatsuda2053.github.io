@@ -60,4 +60,29 @@ export class ElmUtils {
   static tagEq = (target, tagName) => {
     return target.tagName.toLowerCase() === tagName;
   };
+
+  /**
+   * 空のHTMLを作成する。
+   * @param {string} title
+   * @returns
+   */
+  static createEmptyHTML = (title) => {
+    return `
+      <!doctype html>
+      <html lang="ja">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>${title}</title>
+          <style>
+            body {
+              -webkit-print-color-adjust: exact;
+              margin: 0;
+            }
+          </style>
+        </head>
+        <body>
+        </body>
+      </html>`;
+  };
 }

@@ -97,4 +97,16 @@ export class DateUtils {
 
     return dayCount;
   }
+
+  /**
+   * 日付を曜日に変換する
+   * @param {string} strDate
+   * @returns 曜日
+   */
+  static getDaysOfWeek(strDate) {
+    const date = new Date(strDate);
+    const dayOfWeekNumber = date.getDay();
+    const daysOfWeek = ["日", "月", "火", "水", "木", "金", "土"];
+    return daysOfWeek[dayOfWeekNumber];
+  }
 }

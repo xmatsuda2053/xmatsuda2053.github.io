@@ -685,4 +685,25 @@ export class SvgConst {
       },
     ],
   };
+
+  /**
+   * プリンタSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static PrinterPath = {
+    name: "icon-printer",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2",
+      },
+      {
+        path: "M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4",
+      },
+      {
+        path: "M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z",
+      },
+    ],
+  };
 }

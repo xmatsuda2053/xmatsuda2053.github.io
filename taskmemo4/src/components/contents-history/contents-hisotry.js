@@ -34,8 +34,8 @@ export function ContentsHistory() {
 
       // ボタン追加
       const floatBtns = ElmUtils.createFloatArea();
-      const addHistoryBtn = this.#createAddHisotryButton();
-      floatBtns.appendChild(addHistoryBtn);
+      floatBtns.appendChild(this.#createAddPrintButton());
+      floatBtns.appendChild(this.#createAddHisotryButton());
 
       this.root.appendChild(floatBtns);
 
@@ -76,6 +76,35 @@ export function ContentsHistory() {
     }
 
     /**
+     * 履歴印刷ボタンを作成する。
+     * @returns HTMLElement
+     */
+    #createAddPrintButton() {
+      const addPrintBtn = ElmUtils.createElm("svg-btn", "print-hisory");
+      addPrintBtn.iconPaths = SvgConst.PrinterPath;
+      addPrintBtn.isCircle = true;
+      addPrintBtn.tooltip = "履歴を印刷";
+
+      // クリックイベント
+      addPrintBtn.addEventListener("click", () => {
+        const newTab = window.open("", "_blank");
+        const historyData = this.getData();
+        if (newTab) {
+          newTab.document.body.innerHTML = ElmUtils.createEmptyHTML(
+            this.taskData.title
+          );
+          const printArea = ElmUtils.createElm("print-viewer");
+          printArea.render(this.taskData, historyData);
+          newTab.document.body.appendChild(printArea);
+          newTab.print();
+          newTab.close();
+        }
+      });
+
+      return addPrintBtn;
+    }
+
+    /**
      * 履歴内容を取得する。
      * @returns {array} - 履歴データ
      */
@@ -93,7 +122,9 @@ export function ContentsHistory() {
      * @param {object} data
      */
     render(data) {
-      data.forEach((item) => {
+      this.taskData = data.taskData;
+
+      data.historyData.forEach((item) => {
         this.#addHistoryItem(item);
       });
 
@@ -102,6 +133,14 @@ export function ContentsHistory() {
           EventUtils.createEvent(EventConst.ADD_HISTORY_CONTENTS_EVENT_NAME)
         );
       });
+    }
+
+    /**
+     * 履歴データを再設定する。
+     * @param {object} data
+     */
+    setTaskData(data) {
+      this.taskData = data.taskData;
     }
 
     // **************************************************
