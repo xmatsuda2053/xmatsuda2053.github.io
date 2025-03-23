@@ -30,6 +30,7 @@ export function ContextMenu() {
       this.area = ElmUtils.createElm("div", "context-area");
       this.area.addEventListener("click", () => {
         this.area.classList.remove("open");
+        this.menu.classList.remove("show");
 
         const disabledItems = this.menu.querySelectorAll(".disabled");
         for (let item of disabledItems) {
@@ -55,6 +56,10 @@ export function ContextMenu() {
       this.area.classList.add("open");
       this.menu.style.left = `${e.pageX + 10}px`;
       this.menu.style.top = `${e.pageY - 20}px`;
+
+      setTimeout(() => {
+        this.menu.classList.add("show");
+      }, 100);
     }
 
     /**

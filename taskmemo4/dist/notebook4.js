@@ -3291,6 +3291,7 @@ function ContextMenu() {
       this.area = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "context-area");
       this.area.addEventListener("click", () => {
         this.area.classList.remove("open");
+        this.menu.classList.remove("show");
 
         const disabledItems = this.menu.querySelectorAll(".disabled");
         for (let item of disabledItems) {
@@ -3316,6 +3317,10 @@ function ContextMenu() {
       this.area.classList.add("open");
       this.menu.style.left = `${e.pageX + 10}px`;
       this.menu.style.top = `${e.pageY - 20}px`;
+
+      setTimeout(() => {
+        this.menu.classList.add("show");
+      }, 100);
     }
 
     /**
@@ -3899,16 +3904,22 @@ th {
 #context-area #context-menu {
   position: absolute;
   z-index: 100000;
-  background-color: #fffff8;
+  background-color: #2b2b2b;
   border: 1px solid #8f8f8f;
   border-radius: 0.25rem;
   padding: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+#context-area #context-menu.show {
+  opacity: 1;
 }
 #context-area #context-menu .button-area {
   cursor: pointer;
   display: flex;
   align-items: center;
   padding: 0.2rem 0.5rem;
+  color: #fffffb;
   transition: 0.2s;
 }
 #context-area #context-menu .button-area:hover {
@@ -3925,10 +3936,9 @@ th {
   padding-top: 1px;
 }
 #context-area #context-menu .button-area.disabled {
-  color: #cccccc;
+  color: #8f8f8f;
 }
 #context-area #context-menu .button-area.disabled:hover {
-  color: #cccccc;
   background-color: transparent;
 }
 #context-area #context-menu hr {
