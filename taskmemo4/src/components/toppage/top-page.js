@@ -32,6 +32,9 @@ export function TopPage() {
       this.root = ElmUtils.createElm("div", "root");
       this.box = ElmUtils.createElm("div", "box");
       this.box.appendChild(this.#logomark());
+      this.box.appendChild(
+        ElmUtils.createElm("div", null, ["border", "gradient"])
+      );
       this.box.appendChild(this.#appName());
 
       this.root.appendChild(this.box);
@@ -56,8 +59,8 @@ export function TopPage() {
      * @returns {HTMLElement} name
      */
     #appName() {
-      const name = ElmUtils.createElm("p");
-      name.innerHTML = "TASK<span>ify</span>.js";
+      const name = ElmUtils.createElm("p", null, ["gradient"]);
+      name.innerHTML = "TASKify.js";
       return name;
     }
   }

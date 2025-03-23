@@ -1992,6 +1992,9 @@ function TopPage() {
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
       this.box = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "box");
       this.box.appendChild(this.#logomark());
+      this.box.appendChild(
+        _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", null, ["border", "gradient"])
+      );
       this.box.appendChild(this.#appName());
 
       this.root.appendChild(this.box);
@@ -2016,8 +2019,8 @@ function TopPage() {
      * @returns {HTMLElement} name
      */
     #appName() {
-      const name = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
-      name.innerHTML = "TASK<span>ify</span>.js";
+      const name = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p", null, ["gradient"]);
+      name.innerHTML = "TASKify.js";
       return name;
     }
   }
@@ -2573,20 +2576,26 @@ th {
   text-align: center;
 }
 #root #box img {
-  width: 190px;
-  height: 155px;
+  width: 135px;
+  height: 110px;
 }
-#root #box p,
-#root #box span {
+#root #box .border {
+  margin-top: 0.35rem;
+  height: 3px;
+  border-radius: 50%;
+}
+#root #box p {
   width: 100%;
   font-family: Verdana, Helvetica, Arial, sans-serif;
   font-size: 5rem;
   font-weight: bold;
+  display: inline-block;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-#root #box p span,
-#root #box span span {
-  -webkit-text-stroke: 2px #8c54a1;
-  color: #fffff8;
+#root .gradient {
+  background: linear-gradient(270deg, rgb(243, 196, 170), rgb(228, 81, 154) 50%, rgb(77, 84, 224));
 }
 `, ""]);
 // Exports
