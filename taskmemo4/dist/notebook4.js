@@ -12906,8 +12906,14 @@ th {
 #root table thead tr#header-items th:last-child {
   border-top-right-radius: 0.25rem;
 }
+#root table tbody tr {
+  transition: 0.1s;
+}
 #root table tbody tr:nth-child(even) td {
   background-color: #eeeeee;
+}
+#root table tbody tr:hover td {
+  background-color: #fcb87a;
 }
 #root table tbody tr td {
   background-color: #fffffb;
@@ -12918,7 +12924,6 @@ th {
 }
 #root table tbody tr td.clickable {
   cursor: pointer;
-  transition: 0.2s;
 }
 #root table tbody tr td.clickable:hover {
   text-decoration: underline;

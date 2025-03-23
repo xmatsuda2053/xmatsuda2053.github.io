@@ -13,6 +13,8 @@ $d-bg-color-even: #eeeeee;
 $d-font-color: #00000b;
 $d-font-color-link: #003092;
 
+$tr-hover-bg-color: #fcb87a;
+
 $alert-color: #f93827;
 $complete-color: #838383;
 
@@ -78,9 +80,17 @@ $complete-color: #838383;
 
     tbody {
       tr {
+        transition: 0.1s;
+
         &:nth-child(even) {
           td {
             background-color: $d-bg-color-even;
+          }
+        }
+
+        &:hover {
+          td {
+            background-color: $tr-hover-bg-color;
           }
         }
 
@@ -93,7 +103,6 @@ $complete-color: #838383;
 
           &.clickable {
             cursor: pointer;
-            transition: 0.2s;
 
             &:hover {
               text-decoration: underline;
