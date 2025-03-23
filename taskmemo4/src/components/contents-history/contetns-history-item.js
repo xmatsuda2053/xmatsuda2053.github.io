@@ -75,6 +75,7 @@ export function ContentsHistoryItem() {
     #addText() {
       this._text = ElmUtils.createElm("form-textarea", "history-text");
       this._text.borderless = true;
+      this._text.placeholder = "履歴内容";
       this.root.appendChild(this._text);
     }
 

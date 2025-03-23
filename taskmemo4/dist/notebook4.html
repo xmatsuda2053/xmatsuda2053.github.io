@@ -7940,7 +7940,7 @@ function ContentsTask() {
       filedset.required = true;
 
       this._taskTitle = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "title");
-      this._taskTitle.placeholder = "XXXXXの作成";
+      this._taskTitle.placeholder = "任意のタスク名";
 
       filedset.addItem(this._taskTitle);
       this.property.appendChild(filedset);
@@ -9361,6 +9361,7 @@ function ContentsHistoryItem() {
     #addText() {
       this._text = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-textarea", "history-text");
       this._text.borderless = true;
+      this._text.placeholder = "履歴内容";
       this.root.appendChild(this._text);
     }
 

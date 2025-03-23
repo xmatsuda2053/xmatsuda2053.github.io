@@ -152,7 +152,7 @@ export function ContentsTask() {
       filedset.required = true;
 
       this._taskTitle = ElmUtils.createElm("form-input", "title");
-      this._taskTitle.placeholder = "XXXXXの作成";
+      this._taskTitle.placeholder = "任意のタスク名";
 
       filedset.addItem(this._taskTitle);
       this.property.appendChild(filedset);
