@@ -107,6 +107,7 @@ export function FormTextarea() {
       this.textarea.value.split("\n").forEach((item) => {
         let icon;
         const li = ElmUtils.createElm("li");
+        li.title = "Click to Copy";
 
         // クリップボードにコピー
         icon = SvgUtils.createIcon(SvgConst.CopyPaths);

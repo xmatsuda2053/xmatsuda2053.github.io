@@ -11616,6 +11616,7 @@ function FormTextarea() {
       this.textarea.value.split("\n").forEach((item) => {
         let icon;
         const li = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("li");
+        li.title = "Click to Copy";
 
         // クリップボードにコピー
         icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_4__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_5__.SvgConst.CopyPaths);
