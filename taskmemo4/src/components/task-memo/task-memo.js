@@ -342,6 +342,7 @@ export function TaskMemo() {
           EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
           (e) => {
             const item = e.detail.item;
+            this.treeViewRoot.openGroup(item.id);
             this.#addContentsGroup(item.id, item.name);
           }
         );

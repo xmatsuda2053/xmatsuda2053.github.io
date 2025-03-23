@@ -390,6 +390,7 @@ function TaskMemo() {
           _constants_event_const__WEBPACK_IMPORTED_MODULE_7__.EventConst.CLICK_CONTENTS_GROUP_GROUP_EVENT_NAME,
           (e) => {
             const item = e.detail.item;
+            this.treeViewRoot.openGroup(item.id);
             this.#addContentsGroup(item.id, item.name);
           }
         );
@@ -7130,7 +7131,7 @@ function ContentsGroup() {
           this.table.setTdWidth("100px");
           this.table.setTdAlign("center");
 
-          // タスク名
+          // グループ名
           this.table.addTd();
           this.table.setTdElment(item.name);
           this.table.setTdClickEvent(() => {

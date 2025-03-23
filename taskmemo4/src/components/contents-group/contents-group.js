@@ -175,7 +175,7 @@ export function ContentsGroup() {
           this.table.setTdWidth("100px");
           this.table.setTdAlign("center");
 
-          // タスク名
+          // グループ名
           this.table.addTd();
           this.table.setTdElment(item.name);
           this.table.setTdClickEvent(() => {
