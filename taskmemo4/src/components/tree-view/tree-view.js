@@ -75,6 +75,22 @@ export function TreeView() {
       details.open = !details.open;
     }
 
+    /**
+     * 指定したIDのグループを開く
+     * @param {string} id
+     */
+    openGroup(id) {
+      this.shadowRoot.getElementById(id).closest("details").open = true;
+    }
+
+    /**
+     * 指定したIDのグループを閉じる
+     * @param {string} id
+     */
+    closeGroup(id) {
+      this.shadowRoot.getElementById(id).closest("details").open = false;
+    }
+
     // *******************************************************
     // * ヘッダーメニュー
     // *******************************************************

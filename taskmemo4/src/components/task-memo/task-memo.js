@@ -269,6 +269,7 @@ export function TaskMemo() {
         EventConst.CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
+          this.treeViewRoot.openGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
         }
       );
@@ -282,7 +283,7 @@ export function TaskMemo() {
         EventConst.DBL_CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
-          this.treeViewRoot.toggleGroup(item.id);
+          this.treeViewRoot.closeGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
         }
       );

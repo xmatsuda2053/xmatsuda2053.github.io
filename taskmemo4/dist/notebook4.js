@@ -301,6 +301,7 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_7__.EventConst.CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
+          this.treeViewRoot.openGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
         }
       );
@@ -314,7 +315,7 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_7__.EventConst.DBL_CLICK_GROUP_EVENT_NAME,
         (e) => {
           const item = e.detail.item;
-          this.treeViewRoot.toggleGroup(item.id);
+          this.treeViewRoot.closeGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
         }
       );
@@ -4040,6 +4041,22 @@ function TreeView() {
     toggleGroup(id) {
       const details = this.shadowRoot.getElementById(id).closest("details");
       details.open = !details.open;
+    }
+
+    /**
+     * 指定したIDのグループを開く
+     * @param {string} id
+     */
+    openGroup(id) {
+      this.shadowRoot.getElementById(id).closest("details").open = true;
+    }
+
+    /**
+     * 指定したIDのグループを閉じる
+     * @param {string} id
+     */
+    closeGroup(id) {
+      this.shadowRoot.getElementById(id).closest("details").open = false;
     }
 
     // *******************************************************
