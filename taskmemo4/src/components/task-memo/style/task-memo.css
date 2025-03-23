@@ -406,12 +406,13 @@ th {
 
 .float-area {
   position: absolute;
+  display: flex;
   right: 1rem;
   bottom: 1rem;
 }
 .float-area * {
   display: block;
-  margin-top: 0.25rem;
+  padding-left: 0.25rem;
 }
 
 #container {
