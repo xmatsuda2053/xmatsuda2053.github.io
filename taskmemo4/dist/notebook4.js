@@ -4359,7 +4359,9 @@ function TreeView() {
       };
 
       // ルート要素を起点にグループフィルタを実行
-      filterGroup(this.root);
+      if (this.searchText) {
+        filterGroup(this.root);
+      }
     }
 
     // *******************************************************
