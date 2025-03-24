@@ -5,7 +5,7 @@
   "scripts": {
     "sass": "sass src/components:src/components",
     "build": "npx webpack",
-    "inline-js": "node inline-js-in-html.js notebook4.html",
+    "inline-js": "node inline-js-in-html.js taskify.html",
     "build-all": "npm run sass && npm run build && npm run inline-js"
   },
   "keywords": [],
