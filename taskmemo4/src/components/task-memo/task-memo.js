@@ -19,7 +19,6 @@ import { ContentsGroup } from "../contents-group/contents-group";
 import { ContentsTask } from "../contents-task/contents-task";
 import { ContentsHistory } from "../contents-history/contents-hisotry";
 import { ContentsHistoryItem } from "../contents-history/contetns-history-item";
-import { PrintViewer } from "../print-viewer/print-viewer";
 
 import { FormFieldset } from "../form/form-fieldset";
 import { FormInput } from "../form/form-input";
@@ -73,7 +72,6 @@ export function TaskMemo() {
       ContentsTask();
       ContentsHistory();
       ContentsHistoryItem();
-      PrintViewer();
 
       this.fileManager = new FileManager();
 
@@ -427,6 +425,18 @@ export function TaskMemo() {
             task.status = data.taskData.status;
 
             task.refreshView();
+          }
+        );
+
+        /**
+         * タスク内容を印刷する
+         */
+        this.contentsTask.addEventListener(
+          EventConst.PRINT_TASK_EVENT_NAME,
+          () => {
+            const data = this.contentsTask.getData();
+            sessionStorage.setItem("print", JSON.stringify(data));
+            window.open(`./taskify.html?type=print`, "_blank");
           }
         );
       } catch (error) {

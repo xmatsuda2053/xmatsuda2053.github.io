@@ -83,22 +83,13 @@ export function ContentsHistory() {
       const addPrintBtn = ElmUtils.createElm("svg-btn", "print-hisory");
       addPrintBtn.iconPaths = SvgConst.PrinterPath;
       addPrintBtn.isCircle = true;
-      addPrintBtn.tooltip = "履歴を印刷";
+      addPrintBtn.tooltip = "印刷";
 
       // クリックイベント
       addPrintBtn.addEventListener("click", () => {
-        const newTab = window.open("", "_blank");
-        const historyData = this.getData();
-        if (newTab) {
-          newTab.document.body.innerHTML = ElmUtils.createEmptyHTML(
-            this.taskData.title
-          );
-          const printArea = ElmUtils.createElm("print-viewer");
-          printArea.render(this.taskData, historyData);
-          newTab.document.body.appendChild(printArea);
-          newTab.print();
-          newTab.close();
-        }
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.PRINT_TASK_EVENT_NAME)
+        );
       });
 
       return addPrintBtn;
@@ -121,8 +112,8 @@ export function ContentsHistory() {
      * 履歴アイテムを描画する。
      * @param {object} data
      */
-    render(data) {
-      this.taskData = data.taskData;
+    render(id, data) {
+      this.taskId = id;
 
       data.historyData.forEach((item) => {
         this.#addHistoryItem(item);
@@ -133,14 +124,6 @@ export function ContentsHistory() {
           EventUtils.createEvent(EventConst.ADD_HISTORY_CONTENTS_EVENT_NAME)
         );
       });
-    }
-
-    /**
-     * 履歴データを再設定する。
-     * @param {object} data
-     */
-    setTaskData(data) {
-      this.taskData = data.taskData;
     }
 
     // **************************************************

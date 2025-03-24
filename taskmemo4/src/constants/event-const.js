@@ -69,4 +69,9 @@ export class EventConst {
    * 履歴コンテンツ追加イベント
    */
   static ADD_HISTORY_CONTENTS_EVENT_NAME = "addHistoryContents";
+
+  /**
+   * タスク印刷イベント
+   */
+  static PRINT_TASK_EVENT_NAME = "printTask";
 }

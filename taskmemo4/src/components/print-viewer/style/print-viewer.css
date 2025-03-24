@@ -397,6 +397,10 @@ th {
   font-family: monospace;
 }
 
+#root {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
 #root #viewer {
   padding: 5mm 0;
   width: 210mm;

@@ -26,9 +26,7 @@ export function PrintViewer() {
       this.shadowRoot.innerHTML = "";
 
       // CSSを適用
-      const style = document.createElement("style");
-      style.innerText = styles;
-      this.shadowRoot.appendChild(style);
+      this.shadowRoot.adoptedStyleSheets = ElmUtils.createStylesheet(styles);
 
       // 要素作成
       this.root = ElmUtils.createElm("div", "root");
@@ -37,14 +35,18 @@ export function PrintViewer() {
       this.root.appendChild(this.viewer);
 
       this.shadowRoot.appendChild(this.root);
+
+      const tab = window;
+      tab.print();
     }
 
     /**
      * 印刷領域を描画する。
-     * @param {object} taskData
-     * @param {object} historyData
+     * @param {object} data
      */
-    render(taskData, historyData) {
+    render(data) {
+      const taskData = data.taskData;
+      const historyData = data.historyData;
       this.viewer.appendChild(this.#createHeader(1, taskData.title));
       this.viewer.appendChild(this.#createHeader(2, "1.概要説明"));
       this.viewer.appendChild(this.#createMemo(taskData.memo));

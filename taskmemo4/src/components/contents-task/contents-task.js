@@ -52,7 +52,6 @@ export function ContentsTask() {
 
       // 変更イベントを伝播
       this.root.addEventListener(EventConst.CHANGE_FORM_ITEM_EVENT_NAME, () => {
-        this._historyContents.setTaskData(this.getData());
         this.dispatchEvent(
           EventUtils.createEvent(EventConst.CHANGE_CONTENTS_TASK_EVENT_NAME)
         );
@@ -84,7 +83,7 @@ export function ContentsTask() {
       this._url.value = data.taskData.url;
       this._freenotes.value = data.taskData.freenotes;
 
-      this._historyContents.render(data);
+      this._historyContents.render(this._taskId.value, data);
     }
 
     /**
