@@ -316,9 +316,8 @@ export function TreeView() {
 
         // グループの数だけ繰り返す。
         details.forEach((d) => {
-          // いったん、非表示クラスを削除しグループを開く
+          // いったん、非表示クラスを削除
           d.classList.remove("disabled");
-          d.open = true;
 
           // グループにネストされている要素を取得
           const items = d.querySelector(".group-items");
@@ -329,20 +328,22 @@ export function TreeView() {
           ).length;
 
           if (cnt === 0) {
-            // 有効タスクなしの場合、対象グループを閉じて非表示にする
-            d.open = false;
-            d.classList.add("disabled");
+            // 有効タスクなしの場合、対象グループ非表示にする
+            if (this.searchText) {
+              d.classList.add("disabled");
+            }
           } else {
-            // 有効タスクがある場合、ネスト要素に対してさらにフィルタをかける
+            // 有効タスクがある場合、グループを開きネスト要素に対してさらにフィルタをかける
+            if (this.searchText) {
+              d.open = true;
+            }
             filterGroup(items);
           }
         });
       };
 
       // ルート要素を起点にグループフィルタを実行
-      if (this.searchText) {
-        filterGroup(this.root);
-      }
+      filterGroup(this.root);
     }
 
     // *******************************************************
