@@ -436,7 +436,14 @@ export function TaskMemo() {
           () => {
             const data = this.contentsTask.getData();
             sessionStorage.setItem("print", JSON.stringify(data));
-            window.open(`./taskify.html?type=print`, "_blank");
+
+            const tab = window.open(
+              `./taskify.html?type=print&id=${id}`,
+              "_blank"
+            );
+            setTimeout(() => {
+              tab.close();
+            }, "500");
           }
         );
       } catch (error) {

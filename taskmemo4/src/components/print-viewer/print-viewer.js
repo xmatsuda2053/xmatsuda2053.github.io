@@ -33,32 +33,29 @@ export function PrintViewer() {
       this.viewer = ElmUtils.createElm("div", "viewer");
 
       this.root.appendChild(this.viewer);
-
       this.shadowRoot.appendChild(this.root);
 
-      const tab = window;
-      tab.print();
+      window.print();
     }
 
     /**
      * 印刷領域を描画する。
      * @param {object} data
+     * @param {string} id
      */
-    render(data) {
+    render(data, id) {
       const taskData = data.taskData;
       const historyData = data.historyData;
       this.viewer.appendChild(this.#createHeader(1, taskData.title));
-      this.viewer.appendChild(this.#createHeader(2, "1.概要説明"));
-      this.viewer.appendChild(this.#createMemo(taskData.memo));
-      this.viewer.appendChild(this.#createHeader(2, "2.履歴一覧"));
 
-      const ul = ElmUtils.createElm("ul");
-      historyData.forEach((item) => {
-        const li = ElmUtils.createElm("li");
-        li.appendChild(this.#createHistoryContents(item));
-        ul.appendChild(li);
-      });
-      this.viewer.appendChild(ul);
+      this.viewer.appendChild(this.#createHeader(2, "1.説明"));
+      this.viewer.appendChild(this.#createMemo(taskData.memo));
+
+      this.viewer.appendChild(this.#createHeader(2, "2.タスク情報"));
+      this.viewer.appendChild(this.#createProperty(id, taskData));
+
+      this.viewer.appendChild(this.#createHeader(2, "3.履歴一覧"));
+      this.viewer.appendChild(this.#createHistoryContents(historyData));
     }
 
     /**
@@ -85,29 +82,98 @@ export function PrintViewer() {
     }
 
     /**
-     * 履歴アイテムを作成する
-     * @param {object} item
-     * @returns
+     * リストコンテンツを作成する
+     * @param {string} index
+     * @param {string} text
      */
-    #createHistoryContents(item) {
-      const contents = ElmUtils.createElm("div", null, ["history"]);
-      const historyText = ElmUtils.createElm("div", null, ["text"]);
-      const historyDate = ElmUtils.createElm("div", null, ["date"]);
+    #createItem(index, text) {
+      const contents = ElmUtils.createElm("tr", null, ["item"]);
+      const indexItem = ElmUtils.createElm("td", null, ["index"]);
+      const contentItem = ElmUtils.createElm("td", null, ["content"]);
 
-      const text = item.text;
-      const dates = item.date.split("T");
+      indexItem.innerText = index;
+      contentItem.innerText = text;
 
-      const date = dates[0];
-      const dayOfWeek = DateUtils.getDaysOfWeek(date);
-      const time = dates[1];
-
-      historyText.innerText = text;
-      historyDate.innerText = `${date}(${dayOfWeek}) ${time}`;
-
-      contents.appendChild(historyDate);
-      contents.appendChild(historyText);
+      contents.appendChild(indexItem);
+      contents.appendChild(contentItem);
 
       return contents;
+    }
+
+    /**
+     * タスク情報を作成する
+     * @param {string} id
+     * @param {object} taskData
+     */
+    #createProperty(id, taskData) {
+      /**
+       * 開始日
+       * @returns {object}
+       * */
+      const startDate = () => {
+        const str = DateUtils.formatDateStr(id.substring(0, 8));
+        const date = DateUtils.parseDate(str);
+        const dispDate = DateUtils.formatDate(date, "{yyyy}-{MM}-{dd}");
+        const weekday = DateUtils.getDaysOfWeek(date);
+
+        return this.#createItem("作成日", `${dispDate}(${weekday})`);
+      };
+
+      /**
+       * 期限日
+       * @returns {object}
+       */
+      const dueDate = () => {
+        const dispDate = taskData.dueDate;
+        const weekday = DateUtils.getDaysOfWeek(dispDate);
+
+        return this.#createItem("期限日", `${dispDate}(${weekday})`);
+      };
+
+      /**
+       * 担当者
+       * @returns {object}
+       */
+      const staff = () => {
+        const div = taskData.staffDiv;
+        const name = taskData.staffName;
+        const tel = taskData.staffTel;
+
+        return this.#createItem("担当者", `[${div}] ${name} (${tel})`);
+      };
+
+      const table = ElmUtils.createElm("table");
+      const tbody = ElmUtils.createElm("tbody");
+
+      tbody.appendChild(startDate());
+      tbody.appendChild(dueDate());
+      tbody.appendChild(staff());
+
+      table.appendChild(tbody);
+      return table;
+    }
+
+    /**
+     * 履歴アイテムを作成する
+     * @param {object} historyData
+     * @returns
+     */
+    #createHistoryContents(historyData) {
+      const table = ElmUtils.createElm("table");
+      const tbody = ElmUtils.createElm("tbody");
+
+      historyData.forEach((item) => {
+        const date = item.date.split("T");
+        const datetime = `${date[0]}(${DateUtils.getDaysOfWeek(date[0])}) ${date[1]}`;
+
+        const tr = this.#createItem(datetime, item.text);
+        tr.classList.add("list");
+
+        tbody.appendChild(tr);
+      });
+
+      table.appendChild(tbody);
+      return table;
     }
   }
   customElements.define("print-viewer", PrintViewer);

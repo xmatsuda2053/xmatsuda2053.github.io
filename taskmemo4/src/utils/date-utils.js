@@ -26,6 +26,23 @@ export class DateUtils {
   };
 
   /**
+   * 文字列を「yyyy-mm-dd」形式の文字列にフォーマットする
+   * @param {string} target
+   * @returns {string} - "yyyy-mm-dd"形式の日付文字列。
+   */
+  static formatDateStr = (target) => {
+    if (!target || target.length != 8) {
+      return "";
+    }
+
+    const y = target.slice(0, 4);
+    const m = target.slice(4, 6);
+    const d = target.slice(6, 8);
+
+    return `${y}-${m}-${d}`;
+  };
+
+  /**
    * 日付文字列をDateオブジェクトに変換する。
    * @param {string} dateString - "yyyy-mm-dd"形式の日付文字列。
    * @returns {Date} - 変換されたDateオブジェクト。

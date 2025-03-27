@@ -28,14 +28,15 @@ const getSessionData = (key) => {
 };
 
 /**
- * URLからtypeパラメータを取得する
+ * URLから指定したパラメータを取得する
+ * @param {string} name
  * @returns
  */
-const getTypeFromURL = () => {
+const getParamFromURL = (name) => {
   const url = new URL(window.location.href);
   const params = url.searchParams;
-  if (params.get("type")) {
-    return params.get("type");
+  if (params.get(name)) {
+    return params.get(name);
   } else {
     return null;
   }
@@ -45,9 +46,12 @@ const getTypeFromURL = () => {
  * 画面ロード処理
  */
 window.addEventListener("load", () => {
-  switch (getTypeFromURL()) {
+  const type = getParamFromURL("type");
+
+  switch (type) {
     case "print":
-      createElm("print-viewer").render(getSessionData("print")); // 印刷
+      const id = getParamFromURL("id");
+      createElm("print-viewer").render(getSessionData("print"), id); // 印刷
       break;
 
     default:
