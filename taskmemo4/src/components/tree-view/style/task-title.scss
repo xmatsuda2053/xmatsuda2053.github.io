@@ -5,6 +5,7 @@
 $active-color: #0078d4;
 $active-font-color: #fffff8;
 $alert-color: #f93827;
+$todo-color: #0e7405;
 $complete-color: #838383;
 
 .task-title {
@@ -58,5 +59,16 @@ $complete-color: #838383;
     text-overflow: ellipsis;
     white-space: nowrap;
     padding-top: 1px;
+  }
+
+  .todo-flag {
+    color: $todo-color;
+  }
+
+  &:hover,
+  &.selected {
+    .todo-flag {
+      color: $active-font-color;
+    }
   }
 }

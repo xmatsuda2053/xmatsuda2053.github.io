@@ -427,6 +427,11 @@ th {
   margin-top: 0.25rem;
   height: 1rem;
 }
+.history-item #footer #todo-item {
+  position: absolute;
+  left: 0.1rem;
+  outline: none;
+}
 .history-item #footer #history-date {
   position: absolute;
   right: 1.5rem;

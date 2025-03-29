@@ -29,6 +29,7 @@ export function ContentsHistoryItem() {
       this.footer = ElmUtils.createElm("div", "footer");
 
       this.#addText();
+      this.#addToDoButton();
       this.#addDate();
       this.#addDeleteButton();
 
@@ -50,6 +51,7 @@ export function ContentsHistoryItem() {
       this._date.value =
         data.date ||
         DateUtils.formatDate(new Date(), "{yyyy}-{MM}-{dd}T{HH}:{mm}");
+      this._todoBtn.toggleOn(data.todo || false);
     }
 
     /**
@@ -61,6 +63,7 @@ export function ContentsHistoryItem() {
         id: this.id,
         text: this._text.value,
         date: this._date.value,
+        todo: this._todoBtn.toggle,
       };
     }
 
@@ -122,6 +125,27 @@ export function ContentsHistoryItem() {
 
       deleteHistoryBtn.addEventListener("click", () => {
         this.remove();
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
+        );
+      });
+    }
+
+    // **************************************************
+    // * TODOフラグボタン
+    // **************************************************
+    #addToDoButton() {
+      const todoBtn = ElmUtils.createElm("svg-btn", "todo-item");
+      todoBtn.iconPaths = SvgConst.FlagPath;
+      todoBtn.size = "1rem";
+      todoBtn.toggle = true;
+      todoBtn.color = "green";
+      todoBtn.tooltip = "TODO";
+
+      this.footer.appendChild(todoBtn);
+      this._todoBtn = todoBtn;
+
+      todoBtn.addEventListener("click", () => {
         this.dispatchEvent(
           EventUtils.createEvent(EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
         );

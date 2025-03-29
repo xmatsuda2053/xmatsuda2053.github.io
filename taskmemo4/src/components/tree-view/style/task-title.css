@@ -437,5 +437,11 @@ th {
   white-space: nowrap;
   padding-top: 1px;
 }
+.task-title .todo-flag {
+  color: #0e7405;
+}
+.task-title:hover .todo-flag, .task-title.selected .todo-flag {
+  color: #fffff8;
+}
 
 /*# sourceMappingURL=task-title.css.map */

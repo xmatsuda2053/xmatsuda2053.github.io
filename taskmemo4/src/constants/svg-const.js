@@ -706,4 +706,20 @@ export class SvgConst {
       },
     ],
   };
+
+  /**
+   * フラグSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static FlagPath = {
+    name: "icon-flag",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M19 4a1 1 0 0 1 .993 .883l.007 .117v9a1 1 0 0 1 -.883 .993l-.117 .007h-13v6a1 1 0 0 1 -.883 .993l-.117 .007a1 1 0 0 1 -.993 -.883l-.007 -.117v-16a1 1 0 0 1 .883 -.993l.117 -.007h14z",
+        isFill: true,
+      },
+    ],
+  };
 }

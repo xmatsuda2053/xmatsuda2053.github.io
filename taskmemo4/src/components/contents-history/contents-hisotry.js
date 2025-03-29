@@ -43,16 +43,6 @@ export function ContentsHistory() {
       // Shado Domにrootを追加
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(this.root);
-
-      // イベント検知
-      this.root.addEventListener(
-        EventConst.CHANGE_FORM_ITEM_EVENT_NAME,
-        (e) => {
-          this.dispatchEvent(
-            EventUtils.createEvent(EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
-          );
-        }
-      );
     }
 
     /**

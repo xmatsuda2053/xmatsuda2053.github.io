@@ -101,6 +101,22 @@ export function TaskTitle() {
     }
 
     /**
+     * TODOフラグの状態ゲッター
+     * @returns {string} - TODOフラグ
+     */
+    get hasTodo() {
+      return this._hasTodo;
+    }
+
+    /**
+     * TODOフラグの状態セッター
+     * @param {string} value - 新しいTODOフラグ
+     */
+    set hasTodo(value) {
+      this._hasTodo = value;
+    }
+
+    /**
      * 種類
      * @returns {string} - 種類
      */
@@ -148,6 +164,7 @@ export function TaskTitle() {
      * @param {string} data.duedate - タスクの期限日
      * @param {string} data.priority - タスクの優先度
      * @param {string} data.status - タスクの状態
+     * @param {bool} data.hasTodo - タスクのTODO有無
      * @return {void} - なし
      */
     init(data) {
@@ -156,6 +173,7 @@ export function TaskTitle() {
       this.duedate = data.duedate || "";
       this.priority = data.priority || "";
       this.status = data.status || "0";
+      this.hasTodo = data.hasTodo || false;
 
       this.#refreshView();
 
@@ -180,6 +198,7 @@ export function TaskTitle() {
      * @returns {string} dataItem.duedate - タスクの期限日
      * @returns {string} dataItem.priority - タスクの優先度
      * @returns {number} dataItem.status - タスクのステータス（デフォルトは 0）
+     * @returns {bool} dataItem.hasTodo - タスクのTODO有無（デフォルトは false）
      */
     getData() {
       const dataItem = {};
@@ -189,6 +208,7 @@ export function TaskTitle() {
       dataItem.duedate = this.duedate || "";
       dataItem.priority = this.priority || "";
       dataItem.status = this.status || 0;
+      dataItem.hasTodo = this.hasTodo || false;
 
       return dataItem;
     }
@@ -237,9 +257,14 @@ export function TaskTitle() {
       }
 
       this._paths = paths;
+      this.root.appendChild(SvgUtils.createIcon(paths));
 
-      const icon = SvgUtils.createIcon(paths);
-      this.root.appendChild(icon);
+      // TO.DOフラグ設定
+      if (this.hasTodo) {
+        const icon = SvgUtils.createIcon(SvgConst.FlagPath);
+        icon.classList.add("todo-flag");
+        this.root.appendChild(icon);
+      }
 
       // タスク名設定
       const text = ElmUtils.createElm("p", null, ["task-text"]);

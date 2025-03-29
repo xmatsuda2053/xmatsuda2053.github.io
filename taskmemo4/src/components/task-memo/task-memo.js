@@ -423,6 +423,7 @@ export function TaskMemo() {
             task.duedate = data.taskData.dueDate;
             task.priority = data.taskData.priority;
             task.status = data.taskData.status;
+            task.hasTodo = data.historyData.find((f) => f.todo) !== undefined;
 
             task.refreshView();
           }
