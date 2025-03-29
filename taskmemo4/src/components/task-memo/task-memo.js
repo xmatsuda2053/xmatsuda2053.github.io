@@ -443,7 +443,7 @@ export function TaskMemo() {
             );
             setTimeout(() => {
               tab.close();
-            }, "500");
+            }, "100");
           }
         );
       } catch (error) {
