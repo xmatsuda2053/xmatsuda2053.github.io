@@ -7,17 +7,49 @@ $border-color: #8f8f8f;
 $even-bg-color: #fff5e4 !important;
 
 #root {
-  display: none;
+  position: relative;
+  background-color: #d4f1ef;
+  height: 100vh;
+  width: 100%;
+
+  #border {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    height: 3px;
+    width: 90%;
+    border-radius: 50%;
+    background: linear-gradient(
+      270deg,
+      rgba(243, 196, 170, 1),
+      rgba(228, 81, 154, 1) 50%,
+      rgba(77, 84, 224, 1)
+    );
+  }
+
+  #viewer {
+    display: none;
+  }
 }
 
 @media print {
   #root {
-    display: block;
+    background-color: #ffffff;
 
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    #border {
+      display: none;
+    }
 
     #viewer {
+      display: block;
+
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+
       width: 210mm;
       margin: 0 auto;
 

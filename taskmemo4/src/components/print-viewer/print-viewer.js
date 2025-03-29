@@ -33,6 +33,7 @@ export function PrintViewer() {
       this.root = ElmUtils.createElm("div", "root");
       this.viewer = ElmUtils.createElm("div", "viewer");
 
+      this.root.appendChild(ElmUtils.createElm("div", "border"));
       this.root.appendChild(this.viewer);
       this.shadowRoot.appendChild(this.root);
 
