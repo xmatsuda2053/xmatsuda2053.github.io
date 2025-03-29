@@ -104,6 +104,7 @@ export function TreeView() {
       headerMenu.appendChild(this.#createFilterCompletButton());
       headerMenu.appendChild(this.#createFilterOverDeadlineButton());
       headerMenu.appendChild(this.#createLine());
+      headerMenu.appendChild(this.#createFilterTodoButton());
       headerMenu.appendChild(this.#createFilterButton());
       this.header.appendChild(headerMenu);
     }
@@ -242,6 +243,24 @@ export function TreeView() {
     }
 
     /**
+     * TODOのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterTodoButton() {
+      this.btnFilterTODO = this.#createToggleButton(
+        "filter-todo",
+        SvgConst.FlagPath
+      );
+      this.btnFilterTODO.tooltip = "TODO only";
+      this.btnFilterTODO.color = "green";
+      this.btnFilterTODO.toggleOn(false);
+      this.btnFilterTODO.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterTODO;
+    }
+
+    /**
      * フィルタボタンを作成する。
      * @returns ボタン
      */
@@ -249,7 +268,7 @@ export function TreeView() {
       const btn = this.#createToggleButton("item-filter", SvgConst.FilterPaths);
       btn.color = "green";
       btn.toggleOn(false);
-      btn.tooltip = "タスクフィルタ";
+      btn.tooltip = "テキストフィルタ";
 
       this.searchText = "";
       this.searchResult = [];
@@ -292,6 +311,11 @@ export function TreeView() {
           isDisabled = !this.btnFilterNotStarted.toggle;
         } else {
           isDisabled = !this.btnFilterStarted.toggle;
+        }
+
+        // TO.DOフィルター
+        if (!isDisabled && this.btnFilterTODO.toggle) {
+          isDisabled = !task.hasTodo;
         }
 
         // 検索文字列フィルター
