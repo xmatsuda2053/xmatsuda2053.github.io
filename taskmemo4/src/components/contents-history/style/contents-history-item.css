@@ -434,6 +434,7 @@ th {
 }
 .history-item #footer #history-date {
   position: absolute;
+  top: 0.05;
   right: 1.5rem;
   outline: none;
 }
