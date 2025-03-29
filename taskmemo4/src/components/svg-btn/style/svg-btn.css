@@ -432,7 +432,7 @@ button.square:hover {
 }
 button.square .svg-icon {
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 button.hover {
