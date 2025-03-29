@@ -71,6 +71,27 @@ export function SvgBtn() {
     }
 
     /**
+     * ボタンを四角形にするかどうかを設定するプロパティ
+     * @param {boolean} flg - 四角形にする場合は true、しない場合は false
+     * @description 指定された値に応じて、ボタンに "square" クラスを追加または削除する。
+     */
+    set isSquare(flg) {
+      if (flg) {
+        this.button.classList.add("square");
+      } else {
+        this.button.classList.remove("square");
+      }
+    }
+
+    /**
+     * ボタンの高さを設定するセッター
+     * @param {string} value - 設定する高さ
+     */
+    set height(value) {
+      this.button.style = `height: ${value}`;
+    }
+
+    /**
      * ボタンのサイズを設定するセッター
      * @param {string} value - 設定するサイズ
      */

@@ -10,6 +10,12 @@ $circle-font-color-hover: #0a3981;
 $circle-border-color-hover: #0a3981;
 $circle-shodow-color: rgba(0, 0, 0, 0.1);
 
+$square-font-color: #0a3981;
+$square-bg-color: #fffff8;
+$square-border-color: #0a3981;
+$square-font-color-hover: #fffff8;
+$square-bg-color-hover: #0a3981;
+
 $hover-before-color: #8f8f8f;
 $hover-bg-color: #fdfbee;
 
@@ -45,6 +51,27 @@ button {
 
     .svg-icon {
       font-size: 1.8rem;
+    }
+  }
+
+  &.square {
+    width: 100%;
+    border-radius: 0.25rem;
+    border: 2px dashed $square-border-color;
+    color: $square-font-color;
+    background-color: $square-bg-color;
+    padding: 0.5rem;
+
+    transition: 0.2s;
+
+    &:hover {
+      border-style: solid;
+    }
+
+    .svg-icon {
+      margin: 0 auto;
+      font-size: 2rem;
+      font-weight: bold;
     }
   }
 

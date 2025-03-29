@@ -35,7 +35,8 @@ export function ContentsHistory() {
       // ボタン追加
       const floatBtns = ElmUtils.createFloatArea();
       floatBtns.appendChild(this.#createAddPrintButton());
-      floatBtns.appendChild(this.#createAddHisotryButton());
+
+      this.root.appendChild(this.#createAddHisotryButton());
 
       this.root.appendChild(floatBtns);
 
@@ -61,7 +62,8 @@ export function ContentsHistory() {
     #createAddHisotryButton() {
       const addHistoryBtn = ElmUtils.createElm("svg-btn", "add-hisory");
       addHistoryBtn.iconPaths = SvgConst.plusPaths;
-      addHistoryBtn.isCircle = true;
+      addHistoryBtn.isSquare = true;
+      addHistoryBtn.height = "5rem";
       addHistoryBtn.tooltip = "履歴を追加";
 
       // クリックイベント
@@ -71,6 +73,8 @@ export function ContentsHistory() {
           EventUtils.createEvent(EventConst.ADD_HISTORY_CONTENTS_EVENT_NAME)
         );
       });
+
+      this.addHistoryBtn = addHistoryBtn;
 
       return addHistoryBtn;
     }
@@ -144,7 +148,7 @@ export function ContentsHistory() {
       }
 
       historyItem.init(data);
-      this.root.appendChild(historyItem);
+      this.addHistoryBtn.before(historyItem);
 
       if (isNewItem) {
         setTimeout(() => {

@@ -418,6 +418,23 @@ button.circle:hover {
 button.circle .svg-icon {
   font-size: 1.8rem;
 }
+button.square {
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 2px dashed #0a3981;
+  color: #0a3981;
+  background-color: #fffff8;
+  padding: 0.5rem;
+  transition: 0.2s;
+}
+button.square:hover {
+  border-style: solid;
+}
+button.square .svg-icon {
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: bold;
+}
 button.hover {
   color: #8f8f8f;
   border-radius: 0.25rem;
