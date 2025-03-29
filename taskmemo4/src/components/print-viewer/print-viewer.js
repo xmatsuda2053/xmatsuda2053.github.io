@@ -1,5 +1,6 @@
 import { ElmUtils } from "../../utils/elm-utils";
 import { DateUtils } from "../../utils/date-utils";
+import { PriorityConst } from "../../constants/priority-const";
 
 import styles from "./style/print-viewer.css";
 
@@ -54,7 +55,7 @@ export function PrintViewer() {
       this.viewer.appendChild(this.#createHeader(2, "2.タスク情報"));
       this.viewer.appendChild(this.#createProperty(id, taskData));
 
-      this.viewer.appendChild(this.#createHeader(2, "3.履歴一覧"));
+      this.viewer.appendChild(this.#createHeader(2, "3.履歴"));
       this.viewer.appendChild(this.#createHistoryContents(historyData));
     }
 
@@ -135,11 +136,45 @@ export function PrintViewer() {
        * @returns {object}
        */
       const staff = () => {
-        const div = taskData.staffDiv;
-        const name = taskData.staffName;
-        const tel = taskData.staffTel;
+        return this.#createItem(
+          "担当者",
+          `[${taskData.staffDiv}] ${taskData.staffName} (${taskData.staffTel})`
+        );
+      };
 
-        return this.#createItem("担当者", `[${div}] ${name} (${tel})`);
+      /**
+       * 優先度
+       * @returns {object}
+       */
+      const priority = () => {
+        return this.#createItem(
+          "優先度",
+          PriorityConst.text(taskData.priority) || "?"
+        );
+      };
+
+      /**
+       * 進捗率
+       * @returns {object}
+       */
+      const status = () => {
+        return this.#createItem("進捗率", `${taskData.status}%`);
+      };
+
+      /**
+       * フォルダパス
+       * @returns {object}
+       */
+      const folderpath = () => {
+        return this.#createItem("作業フォルダ", taskData.folderpath);
+      };
+
+      /**
+       * URL
+       * @returns {object}
+       */
+      const url = () => {
+        return this.#createItem("関連URL", taskData.url);
       };
 
       const table = ElmUtils.createElm("table");
@@ -148,6 +183,10 @@ export function PrintViewer() {
       tbody.appendChild(startDate());
       tbody.appendChild(dueDate());
       tbody.appendChild(staff());
+      tbody.appendChild(priority());
+      tbody.appendChild(status());
+      tbody.appendChild(folderpath());
+      tbody.appendChild(url());
 
       table.appendChild(tbody);
       return table;

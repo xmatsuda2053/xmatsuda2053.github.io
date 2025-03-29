@@ -62,12 +62,13 @@ $even-bg-color: #fff5e4 !important;
             padding: 0.5rem;
 
             &.index {
-              width: 45mm;
+              width: 50mm;
             }
 
             &.content {
               word-break: break-all;
-              width: 165mm;
+              width: 170mm;
+              line-height: 1rem;
             }
           }
         }

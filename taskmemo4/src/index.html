@@ -14,8 +14,16 @@
         margin: 0;
       }
       @page {
-        margin: 5mm 5mm;
+        margin: 10mm;
         size: A4 portrait;
+
+        @top-center {
+          content: "";
+        }
+        @bottom-center {
+          font-size: 0.8rem;
+          content: counter(page) "/" counter(pages);
+        }
       }
     </style>
   </head>
