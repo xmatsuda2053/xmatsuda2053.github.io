@@ -373,6 +373,24 @@ th {
   font-weight: bold;
 }
 
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  display: flex;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  padding-left: 0.25rem;
+}
+
 .svg {
   position: absolute;
   width: 0;
@@ -398,6 +416,7 @@ th {
 }
 
 #header-menu {
+  height: 35px;
   padding: 0.5rem 0;
   margin: 0 0.5rem;
   border-bottom: 1px solid #afafaf;
@@ -414,7 +433,7 @@ th {
 
 #root {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 35px);
   padding: 0.5rem;
 }
 #root .tree-item {

@@ -48,7 +48,7 @@ export function TreeView() {
 
       // コンテンツの初期設定
       this.header = ElmUtils.createElm("div", "header");
-      this.root = ElmUtils.createElm("div", "root");
+      this.root = ElmUtils.createElm("div", "root", ["scroll"]);
 
       this.shadowRoot.appendChild(this.header);
       this.shadowRoot.appendChild(this.root);

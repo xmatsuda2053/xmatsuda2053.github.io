@@ -83,7 +83,7 @@ export function TaskMemo() {
 
       // オブジェクトを配置
       this.container = ElmUtils.createElm("div", "container");
-      this.treeView = ElmUtils.createElm("div", "treeview", ["scroll"]);
+      this.treeView = ElmUtils.createElm("div", "treeview");
       this.contents = ElmUtils.createElm("div", "contents");
 
       this.contents.appendChild(ElmUtils.createElm("top-page"));
