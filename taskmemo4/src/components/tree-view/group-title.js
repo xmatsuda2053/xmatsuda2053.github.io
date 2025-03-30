@@ -40,7 +40,6 @@ export function GroupTitle() {
      */
     set name(value) {
       this._name = value;
-      this.root.title = value;
 
       this.#refreshView();
       this.dispatchEvent(
@@ -172,6 +171,8 @@ export function GroupTitle() {
       const text = ElmUtils.createElm("span", null, ["group-text"]);
       text.innerText = this.name;
       this.root.appendChild(text);
+
+      this.root.title = this.name;
     }
   }
   customElements.define("group-title", GroupTitle);

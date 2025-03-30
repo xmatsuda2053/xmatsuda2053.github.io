@@ -5,6 +5,7 @@ import { IdUtils } from "../../utils/id-utils";
 import { EventUtils } from "../../utils/event-utils";
 import { EventConst } from "../../constants/event-const";
 import { DateUtils } from "../../utils/date-utils";
+import { PriorityConst } from "../../constants/priority-const";
 
 import styles from "./style/task-title.css";
 
@@ -49,7 +50,6 @@ export function TaskTitle() {
      */
     set name(value) {
       this._name = value;
-      this.root.title = value;
     }
 
     /**
@@ -270,6 +270,18 @@ export function TaskTitle() {
       const text = ElmUtils.createElm("p", null, ["task-text"]);
       text.innerText = this.name;
       this.root.appendChild(text);
+
+      // ツールチップ設定
+      const tooltip = [];
+      const dispDueDate = this.duedate === "3000-12-31" ? "なし" : this.duedate;
+      const dispPriority = PriorityConst.text(this.priority) || "?";
+
+      tooltip.push(`${this.name}`);
+      tooltip.push(`* 期限日：${dispDueDate}`);
+      tooltip.push(`* 優先度：${dispPriority}`);
+      tooltip.push(`* 進捗率：${this.status}%`);
+
+      this.root.title = tooltip.join("\n");
     }
   }
   customElements.define("task-title", TaskTitle);
