@@ -10,9 +10,10 @@ $circle-font-color-hover: #0a3981;
 $circle-border-color-hover: #0a3981;
 $circle-shodow-color: rgba(0, 0, 0, 0.1);
 
-$square-font-color: #0a3981;
+$square-font-color: #afafaf;
 $square-bg-color: #fffff8;
 $square-border-color: #afafaf;
+$square-font-color-hover: #0a3981;
 $square-border-color-hover: #0a3981;
 
 $hover-before-color: #8f8f8f;
@@ -68,9 +69,9 @@ button {
       font-size: 1.8rem;
       font-weight: bold;
 
-      color: $circle-font-color;
-      background-color: $circle-bg-color;
-      border: 1px solid $circle-border-color;
+      color: $square-font-color;
+      background-color: $square-bg-color;
+      border: 2px dashed $square-border-color;
 
       height: 2.5rem;
       width: 2.5rem;
@@ -84,9 +85,8 @@ button {
       border-color: $square-border-color-hover;
 
       .svg-icon {
-        color: $circle-font-color-hover;
-        background-color: $circle-bg-color-hover;
-        border-color: $circle-border-color-hover;
+        color: $square-font-color-hover;
+        border-color: $square-border-color-hover;
       }
     }
   }
