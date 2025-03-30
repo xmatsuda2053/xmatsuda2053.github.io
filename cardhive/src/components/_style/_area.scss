@@ -1,0 +1,19 @@
+.scroll {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.float-area {
+  position: absolute;
+  display: flex;
+  right: 1rem;
+  bottom: 1rem;
+
+  * {
+    display: block;
+    padding-left: 0.25rem;
+  }
+}

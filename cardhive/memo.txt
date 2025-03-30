@@ -1,0 +1,2 @@
+npm init -y
+npm install --save-dev html-webpack-plugin prettier sass style-loader webpack-cli webpack css-loader
