@@ -92,6 +92,7 @@ export function ContentsGroup() {
         "ID",
         "ステータス",
         "名称",
+        "TODO",
         "優先度",
         "期日",
         "進捗率",
@@ -102,6 +103,9 @@ export function ContentsGroup() {
           // タスク
           const icon = SvgUtils.createIcon(item.paths);
           const priority = PriorityConst.text(item.priority) || "?";
+          const todo = item.hasTodo
+            ? SvgUtils.createIcon(SvgConst.FlagPath)
+            : "";
 
           this.table.appendTr();
 
@@ -115,12 +119,12 @@ export function ContentsGroup() {
           // ID
           this.table.addTd();
           this.table.setTdElment(item.id);
-          this.table.setTdWidth("150px");
+          this.table.setTdStyle("width: 150px");
 
           // ステータス
           this.table.addTd();
           this.table.setTdElment(icon);
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // タスク名
@@ -138,10 +142,16 @@ export function ContentsGroup() {
             );
           });
 
+          // TO.DO
+          this.table.addTd();
+          this.table.setTdElment(todo);
+          this.table.setTdStyle("width: 80px; color: #0e7405");
+          this.table.setTdAlign("center");
+
           // 優先度
           this.table.addTd();
           this.table.setTdElment(priority);
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 期日
@@ -149,13 +159,13 @@ export function ContentsGroup() {
           this.table.setTdElment(
             item.duedate !== "3000-12-31" ? item.duedate : "-"
           );
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 進捗率
           this.table.addTd();
           this.table.setTdElment(`${item.status}%`);
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
         } else {
           // グループ
@@ -164,7 +174,7 @@ export function ContentsGroup() {
           // ID
           this.table.addTd();
           this.table.setTdElment(item.id);
-          this.table.setTdWidth("150px");
+          this.table.setTdStyle("width: 150px");
 
           // ステータス
           const icon = SvgUtils.createIcon(SvgConst.folderPaths);
@@ -172,7 +182,7 @@ export function ContentsGroup() {
 
           this.table.addTd();
           this.table.setTdElment(icon);
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // グループ名
@@ -190,22 +200,28 @@ export function ContentsGroup() {
             );
           });
 
+          // TO.DO
+          this.table.addTd();
+          this.table.setTdElment("-");
+          this.table.setTdStyle("width: 80px");
+          this.table.setTdAlign("center");
+
           // 優先度
           this.table.addTd();
           this.table.setTdElment("-");
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 期日
           this.table.addTd();
           this.table.setTdElment("-");
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 進捗率
           this.table.addTd();
           this.table.setTdElment("-");
-          this.table.setTdWidth("100px");
+          this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
         }
       });

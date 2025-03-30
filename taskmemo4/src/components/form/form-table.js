@@ -135,11 +135,11 @@ export function FormTable() {
     }
 
     /**
-     * Td要素の横幅を設定します。
-     * @param {string} width
+     * Td要素のスタイルを設定します。
+     * @param {string} style
      */
-    setTdWidth(width) {
-      this.td.style = `width:${width}`;
+    setTdStyle(style) {
+      this.td.style = style;
     }
 
     /**
