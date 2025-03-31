@@ -5,13 +5,22 @@
 
 $bg-color: #fffff8;
 $border-color: #6f6f6f;
+$font-color-todo: #0e7405;
 
 .history-item {
   background-color: $bg-color;
-  border: 1px solid $border-color;
+
   border-radius: 0.25rem;
+  border: 1px solid $border-color;
+  border-left: 0.4rem solid $border-color;
+
   padding: 0.35rem;
   margin-bottom: 0.6rem;
+
+  &.todo-flag {
+    color: $font-color-todo;
+    border-color: $font-color-todo;
+  }
 
   #footer {
     position: relative;

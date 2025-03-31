@@ -52,6 +52,8 @@ export function ContentsHistoryItem() {
         data.date ||
         DateUtils.formatDate(new Date(), "{yyyy}-{MM}-{dd}T{HH}:{mm}");
       this._todoBtn.toggleOn(data.todo || false);
+
+      this.root.classList.toggle("todo-flag", this._todoBtn.toggle);
     }
 
     /**
@@ -146,6 +148,7 @@ export function ContentsHistoryItem() {
       this._todoBtn = todoBtn;
 
       todoBtn.addEventListener("click", () => {
+        this.root.classList.toggle("todo-flag", todoBtn.toggle);
         this.dispatchEvent(
           EventUtils.createEvent(EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
         );

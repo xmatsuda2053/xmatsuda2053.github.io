@@ -9680,6 +9680,8 @@ function ContentsHistoryItem() {
         data.date ||
         _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__.DateUtils.formatDate(new Date(), "{yyyy}-{MM}-{dd}T{HH}:{mm}");
       this._todoBtn.toggleOn(data.todo || false);
+
+      this.root.classList.toggle("todo-flag", this._todoBtn.toggle);
     }
 
     /**
@@ -9774,6 +9776,7 @@ function ContentsHistoryItem() {
       this._todoBtn = todoBtn;
 
       todoBtn.addEventListener("click", () => {
+        this.root.classList.toggle("todo-flag", todoBtn.toggle);
         this.dispatchEvent(
           _utils_event_utils__WEBPACK_IMPORTED_MODULE_5__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_6__.EventConst.CHANGE_FORM_ITEM_EVENT_NAME)
         );
@@ -10220,10 +10223,15 @@ th {
 
 .history-item {
   background-color: #fffff8;
-  border: 1px solid #6f6f6f;
   border-radius: 0.25rem;
+  border: 1px solid #6f6f6f;
+  border-left: 0.4rem solid #6f6f6f;
   padding: 0.35rem;
   margin-bottom: 0.6rem;
+}
+.history-item.todo-flag {
+  color: #0e7405;
+  border-color: #0e7405;
 }
 .history-item #footer {
   position: relative;
