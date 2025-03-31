@@ -373,24 +373,6 @@ th {
   font-weight: bold;
 }
 
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  display: flex;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  padding-left: 0.25rem;
-}
-
 .svg {
   position: absolute;
   width: 0;
@@ -415,86 +397,67 @@ th {
   font-family: monospace;
 }
 
-#header-menu {
-  height: 35px;
-  padding: 0.5rem 0;
-  margin: 0 0.5rem;
-  border-bottom: 1px solid #afafaf;
+.scroll {
+  overflow-y: scroll;
 }
-
-.fade-in {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade-in.show {
-  opacity: 1;
-}
-
-#biz-card {
-  height: 35px;
-  margin: 0 0.5rem;
-  border-bottom: 1px solid #afafaf;
-}
-#biz-card div {
-  display: flex;
-  align-items: center;
-  height: 35px;
-  margin-left: 0.1rem;
-  transition: 0.2s;
-}
-#biz-card div .svg-icon {
-  width: 1rem;
-  height: 1rem;
-}
-#biz-card div p {
-  margin-left: 0.1rem;
-}
-#biz-card div:hover {
-  cursor: pointer;
-  text-decoration: underline;
-  color: #0078d4;
-}
-
-#root {
-  width: 100%;
-  height: calc(100% - 35px - 35px);
-  padding: 0.5rem;
-  padding-top: 0.15rem;
-}
-#root .tree-item {
-  margin: 1px 0;
-}
-#root details summary {
-  list-style: none;
-}
-#root details .group-items {
-  margin-left: 1.1rem;
-}
-#root .separator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.25rem;
-  position: relative;
-  border-radius: 0.15rem;
-  cursor: pointer;
-}
-#root .separator::after {
-  content: "";
-  position: absolute;
-  width: 85%;
-  height: 1px;
-  background-color: #afafaf;
-}
-#root .separator:hover, #root .separator.selected {
-  background-color: #fff0bd;
-}
-#root .dragging {
-  opacity: 0.5;
-}
-#root .disabled {
+.scroll::-webkit-scrollbar {
   display: none;
 }
 
-/*# sourceMappingURL=tree-view.css.map */
+.float-area {
+  position: absolute;
+  display: flex;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  padding-left: 0.25rem;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 35px 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0em 0em;
+  grid-auto-flow: row;
+  grid-template-areas: "bc-head bc-head" "bc-list bc-main";
+  height: 100vh;
+  transform: 0.2s;
+}
+#root #bc-header {
+  grid-area: bc-head;
+  background-color: #3c3c3c;
+}
+#root #bc-list {
+  grid-area: bc-list;
+  background-color: #cfcfcf;
+}
+#root #bc-list .item {
+  padding: 0.5rem 0.5rem;
+  padding-bottom: 1rem;
+  border-left: 0.5rem solid transparent;
+  color: #8f8f8f;
+  cursor: pointer;
+}
+#root #bc-list .item.selected, #root #bc-list .item:hover {
+  border-color: #ffb200;
+  background-color: #fffff8;
+  color: #1f1f1f;
+}
+#root #bc-list .item .name {
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+#root #bc-list .item .company {
+  font-size: 0.7rem;
+  padding-top: 0.25rem;
+}
+#root #bc-main {
+  grid-area: bc-main;
+  background-color: #fffff8;
+}
+
+/*# sourceMappingURL=biz-card.css.map */

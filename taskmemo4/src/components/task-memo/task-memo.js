@@ -19,6 +19,7 @@ import { ContentsGroup } from "../contents-group/contents-group";
 import { ContentsTask } from "../contents-task/contents-task";
 import { ContentsHistory } from "../contents-history/contents-hisotry";
 import { ContentsHistoryItem } from "../contents-history/contetns-history-item";
+import { BizCard } from "../biz-card/biz-card";
 
 import { FormFieldset } from "../form/form-fieldset";
 import { FormInput } from "../form/form-input";
@@ -72,6 +73,8 @@ export function TaskMemo() {
       ContentsTask();
       ContentsHistory();
       ContentsHistoryItem();
+
+      BizCard();
 
       this.fileManager = new FileManager();
 
@@ -159,6 +162,7 @@ export function TaskMemo() {
       this.#attachClickTaskItemEventListener();
       this.#attachClickGroupItemEventListener();
       this.#attachDblClickGroupItemEventListener();
+      this.#attachChangeBizCardEventListener();
     }
 
     /**
@@ -285,6 +289,18 @@ export function TaskMemo() {
           const item = e.detail.item;
           this.treeViewRoot.closeGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
+        }
+      );
+    }
+
+    /**
+     * Treeviewの名刺管理表示イベントを登録
+     */
+    #attachChangeBizCardEventListener() {
+      this.treeViewRoot.addEventListener(
+        EventConst.CHANGE_BIZ_CARD_EVENT_NAME,
+        () => {
+          this.#changeBizCard();
         }
       );
     }
@@ -466,6 +482,15 @@ export function TaskMemo() {
       } catch (writeError) {
         console.error("タスクコンテンツの保存に失敗しました:", writeError);
       }
+    }
+
+    // *******************************************************
+    // * 名刺管理
+    // *******************************************************
+    #changeBizCard() {
+      const bizCard = ElmUtils.createElm("biz-card");
+      this.contents.innerHTML = "";
+      this.contents.appendChild(bizCard);
     }
   }
   customElements.define("task-memo", TaskMemo);

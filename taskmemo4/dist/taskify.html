@@ -150,12 +150,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _contents_task_contents_task__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(28);
 /* harmony import */ var _contents_history_contents_hisotry__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(30);
 /* harmony import */ var _contents_history_contetns_history_item__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(32);
-/* harmony import */ var _form_form_fieldset__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(34);
-/* harmony import */ var _form_form_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(36);
-/* harmony import */ var _form_form_date__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(38);
-/* harmony import */ var _form_form_textarea__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(40);
-/* harmony import */ var _form_form_table__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(42);
-/* harmony import */ var _form_form_radio__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(44);
+/* harmony import */ var _biz_card_biz_card__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(34);
+/* harmony import */ var _form_form_fieldset__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(36);
+/* harmony import */ var _form_form_input__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(38);
+/* harmony import */ var _form_form_date__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(40);
+/* harmony import */ var _form_form_textarea__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(42);
+/* harmony import */ var _form_form_table__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(44);
+/* harmony import */ var _form_form_radio__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(46);
 // CSS
 
 
@@ -164,6 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Componets
+
 
 
 
@@ -219,17 +221,19 @@ function TaskMemo() {
       (0,_tree_view_task_title__WEBPACK_IMPORTED_MODULE_9__.TaskTitle)();
       (0,_tree_view_group_title__WEBPACK_IMPORTED_MODULE_10__.GroupTitle)();
 
-      (0,_form_form_fieldset__WEBPACK_IMPORTED_MODULE_15__.FormFieldset)();
-      (0,_form_form_input__WEBPACK_IMPORTED_MODULE_16__.FormInput)();
-      (0,_form_form_date__WEBPACK_IMPORTED_MODULE_17__.FormDate)();
-      (0,_form_form_textarea__WEBPACK_IMPORTED_MODULE_18__.FormTextarea)();
-      (0,_form_form_table__WEBPACK_IMPORTED_MODULE_19__.FormTable)();
-      (0,_form_form_radio__WEBPACK_IMPORTED_MODULE_20__.FormRadio)();
+      (0,_form_form_fieldset__WEBPACK_IMPORTED_MODULE_16__.FormFieldset)();
+      (0,_form_form_input__WEBPACK_IMPORTED_MODULE_17__.FormInput)();
+      (0,_form_form_date__WEBPACK_IMPORTED_MODULE_18__.FormDate)();
+      (0,_form_form_textarea__WEBPACK_IMPORTED_MODULE_19__.FormTextarea)();
+      (0,_form_form_table__WEBPACK_IMPORTED_MODULE_20__.FormTable)();
+      (0,_form_form_radio__WEBPACK_IMPORTED_MODULE_21__.FormRadio)();
 
       (0,_contents_group_contents_group__WEBPACK_IMPORTED_MODULE_11__.ContentsGroup)();
       (0,_contents_task_contents_task__WEBPACK_IMPORTED_MODULE_12__.ContentsTask)();
       (0,_contents_history_contents_hisotry__WEBPACK_IMPORTED_MODULE_13__.ContentsHistory)();
       (0,_contents_history_contetns_history_item__WEBPACK_IMPORTED_MODULE_14__.ContentsHistoryItem)();
+
+      (0,_biz_card_biz_card__WEBPACK_IMPORTED_MODULE_15__.BizCard)();
 
       this.fileManager = new _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__.FileManager();
 
@@ -317,6 +321,7 @@ function TaskMemo() {
       this.#attachClickTaskItemEventListener();
       this.#attachClickGroupItemEventListener();
       this.#attachDblClickGroupItemEventListener();
+      this.#attachChangeBizCardEventListener();
     }
 
     /**
@@ -443,6 +448,18 @@ function TaskMemo() {
           const item = e.detail.item;
           this.treeViewRoot.closeGroup(item.id);
           this.#addContentsGroup(item.id, item.name);
+        }
+      );
+    }
+
+    /**
+     * Treeviewの名刺管理表示イベントを登録
+     */
+    #attachChangeBizCardEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_7__.EventConst.CHANGE_BIZ_CARD_EVENT_NAME,
+        () => {
+          this.#changeBizCard();
         }
       );
     }
@@ -624,6 +641,15 @@ function TaskMemo() {
       } catch (writeError) {
         console.error("タスクコンテンツの保存に失敗しました:", writeError);
       }
+    }
+
+    // *******************************************************
+    // * 名刺管理
+    // *******************************************************
+    #changeBizCard() {
+      const bizCard = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("biz-card");
+      this.contents.innerHTML = "";
+      this.contents.appendChild(bizCard);
     }
   }
   customElements.define("task-memo", TaskMemo);
@@ -1359,6 +1385,27 @@ class SvgConst {
       {
         path: "M19 4a1 1 0 0 1 .993 .883l.007 .117v9a1 1 0 0 1 -.883 .993l-.117 .007h-13v6a1 1 0 0 1 -.883 .993l-.117 .007a1 1 0 0 1 -.993 -.883l-.007 -.117v-16a1 1 0 0 1 .883 -.993l.117 -.007h14z",
         isFill: true,
+      },
+    ],
+  };
+
+  /**
+   * カードSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static CardsPath = {
+    name: "icon-cards",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3.604 7.197l7.138 -3.109a.96 .96 0 0 1 1.27 .527l4.924 11.902a1 1 0 0 1 -.514 1.304l-7.137 3.109a.96 .96 0 0 1 -1.271 -.527l-4.924 -11.903a1 1 0 0 1 .514 -1.304z",
+      },
+      {
+        path: "M15 4h1a1 1 0 0 1 1 1v3.5",
+      },
+      {
+        path: "M20 6c.264 .112 .52 .217 .768 .315a1 1 0 0 1 .53 1.311l-2.298 5.374",
       },
     ],
   };
@@ -3636,6 +3683,11 @@ class EventConst {
    * タスク印刷イベント
    */
   static PRINT_TASK_EVENT_NAME = "printTask";
+
+  /**
+   * 名刺管理表示イベント
+   */
+  static CHANGE_BIZ_CARD_EVENT_NAME = "changeBizCard";
 }
 
 
@@ -4133,7 +4185,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15);
 /* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
 /* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(19);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
 // CSS
+
 
 
 
@@ -4183,13 +4237,16 @@ function TreeView() {
 
       // コンテンツの初期設定
       this.header = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header");
+      this.bizCard = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "biz-card");
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["scroll"]);
 
       this.shadowRoot.appendChild(this.header);
+      this.shadowRoot.appendChild(this.bizCard);
       this.shadowRoot.appendChild(this.root);
 
-      // コンテキストメニューを追加
+      // 画面機能を追加
       this.#addHeaderMenu();
+      this.#addBizCard();
       this.#addContextMenu();
     }
 
@@ -4503,6 +4560,31 @@ function TreeView() {
 
       // ルート要素を起点にグループフィルタを実行
       filterGroup(this.root);
+    }
+
+    // *******************************************************
+    // * 名刺管理
+    // *******************************************************
+    /**
+     * 名刺管理を初期化し、Shadow DOMに追加します。
+     * @private
+     */
+    #addBizCard() {
+      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_6__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.CardsPath);
+      const area = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
+      const p = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
+
+      p.innerText = "名刺管理";
+      area.appendChild(icon);
+      area.appendChild(p);
+
+      this.bizCard.appendChild(area);
+
+      area.addEventListener("click", () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.CHANGE_BIZ_CARD_EVENT_NAME)
+        );
+      });
     }
 
     // *******************************************************
@@ -5602,10 +5684,36 @@ th {
   opacity: 1;
 }
 
+#biz-card {
+  height: 35px;
+  margin: 0 0.5rem;
+  border-bottom: 1px solid #afafaf;
+}
+#biz-card div {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  margin-left: 0.1rem;
+  transition: 0.2s;
+}
+#biz-card div .svg-icon {
+  width: 1rem;
+  height: 1rem;
+}
+#biz-card div p {
+  margin-left: 0.1rem;
+}
+#biz-card div:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0078d4;
+}
+
 #root {
   width: 100%;
-  height: calc(100% - 35px);
+  height: calc(100% - 35px - 35px);
   padding: 0.5rem;
+  padding-top: 0.15rem;
 }
 #root .tree-item {
   margin: 1px 0;
@@ -10256,10 +10364,608 @@ th {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BizCard: () => (/* binding */ BizCard)
+/* harmony export */ });
+/* harmony import */ var _style_biz_card_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(35);
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+
+
+
+
+/**
+ * BizCard コンポーネント
+ * @class BizCard
+ * @extends {HTMLElement}
+ */
+function BizCard() {
+  class BizCard extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @return {void}
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createStylesheet(_style_biz_card_css__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+      // grid作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("div", "root");
+      this.bcHead = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("div", "bc-header");
+      this.bcList = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("div", "bc-list", ["scroll"]);
+      this.bcMain = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("div", "bc-main");
+
+      this.root.appendChild(this.bcHead);
+      this.root.appendChild(this.bcList);
+      this.root.appendChild(this.bcMain);
+
+      this.shadowRoot.innerHTML = "";
+      this.shadowRoot.appendChild(this.root);
+
+      this.#test();
+    }
+
+    #test() {
+      this.#addListItem("list-item-1", {
+        name: "テスト １郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-2", {
+        name: "テスト ２郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-3", {
+        name: "テスト ３郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-4", {
+        name: "テスト ４郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-5", {
+        name: "テスト ５郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-6", {
+        name: "テスト ６郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-7", {
+        name: "テスト ７郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-8", {
+        name: "テスト ８郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-9", {
+        name: "テスト ９郎",
+        company: "日本システムズ",
+      });
+      this.#addListItem("list-item-10", {
+        name: "テスト １０郎",
+        company: "日本システムズ",
+      });
+
+      const listItem = this.shadowRoot.getElementById("list-item-1");
+      listItem.classList.add("selected");
+    }
+
+    #addListItem(id, data = {}) {
+      const item = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("div", null, ["item"]);
+      const name = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("p", null, ["name"]);
+      const comp = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("p", null, ["company"]);
+
+      item.id = id;
+      item.appendChild(name);
+      item.appendChild(comp);
+
+      name.innerText = data.name;
+      comp.innerText = data.company;
+
+      this.bcList.appendChild(item);
+    }
+  }
+  customElements.define("biz-card", BizCard);
+}
+
+
+/***/ }),
+/* 35 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+
+* {
+  font-family: monospace;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  display: flex;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  padding-left: 0.25rem;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 35px 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0em 0em;
+  grid-auto-flow: row;
+  grid-template-areas: "bc-head bc-head" "bc-list bc-main";
+  height: 100vh;
+  transform: 0.2s;
+}
+#root #bc-header {
+  grid-area: bc-head;
+  background-color: #3c3c3c;
+}
+#root #bc-list {
+  grid-area: bc-list;
+  background-color: #cfcfcf;
+}
+#root #bc-list .item {
+  padding: 0.5rem 0.5rem;
+  padding-bottom: 1rem;
+  border-left: 0.5rem solid transparent;
+  color: #8f8f8f;
+  cursor: pointer;
+}
+#root #bc-list .item.selected, #root #bc-list .item:hover {
+  border-color: #ffb200;
+  background-color: #fffff8;
+  color: #1f1f1f;
+}
+#root #bc-list .item .name {
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+#root #bc-list .item .company {
+  font-size: 0.7rem;
+  padding-top: 0.25rem;
+}
+#root #bc-main {
+  grid-area: bc-main;
+  background-color: #fffff8;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 36 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   FormFieldset: () => (/* binding */ FormFieldset)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_form_fieldset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(35);
+/* harmony import */ var _style_form_fieldset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(37);
 
 
 
@@ -10356,7 +11062,7 @@ function FormFieldset() {
 
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -10817,7 +11523,7 @@ fieldset.nested {
 
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -10827,7 +11533,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
 /* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_input_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(37);
+/* harmony import */ var _style_form_input_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(39);
 
 
 
@@ -10918,7 +11624,7 @@ function FormInput() {
 
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -11333,7 +12039,7 @@ input[type=text]:read-only {
 
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -11343,7 +12049,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
 /* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_date_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(39);
+/* harmony import */ var _style_form_date_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41);
 /* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
 
 
@@ -11447,7 +12153,7 @@ function FormDate() {
 
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -11867,7 +12573,7 @@ input[type=date].off {
 
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -11877,7 +12583,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
 /* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_textarea_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41);
+/* harmony import */ var _style_form_textarea_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(43);
 /* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
 /* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3);
 
@@ -12140,7 +12846,7 @@ function FormTextarea() {
 
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -12637,7 +13343,7 @@ textarea.borderless {
 
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -12647,7 +13353,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _style_form_table_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(43);
+/* harmony import */ var _style_form_table_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(45);
 
 
 
@@ -12814,7 +13520,7 @@ function FormTable() {
 
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -13336,7 +14042,7 @@ th {
 
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -13346,7 +14052,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
 /* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_radio_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(45);
+/* harmony import */ var _style_form_radio_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(47);
 
 
 
@@ -13451,7 +14157,7 @@ function FormRadio() {
 
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -13886,7 +14592,7 @@ input[type=radio] {
 
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -13896,7 +14602,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
 /* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(22);
-/* harmony import */ var _style_print_viewer_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(47);
+/* harmony import */ var _style_print_viewer_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(49);
 
 
 
@@ -14120,7 +14826,7 @@ function PrintViewer() {
 
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -14690,7 +15396,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var _components_print_viewer_print_viewer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(46);
+/* harmony import */ var _components_print_viewer_print_viewer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(48);
 
 
 

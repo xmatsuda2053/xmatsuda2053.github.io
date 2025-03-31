@@ -1,0 +1,60 @@
+@use "../../_style/destyle";
+@use "../../_style/svg";
+@use "../../_style/font";
+@use "../../_style/area";
+
+#root {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 35px 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0em 0em;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "bc-head bc-head"
+    "bc-list bc-main";
+  height: 100vh;
+
+  transform: 0.2s;
+
+  #bc-header {
+    grid-area: bc-head;
+    background-color: #3c3c3c;
+  }
+
+  #bc-list {
+    grid-area: bc-list;
+    background-color: #cfcfcf;
+
+    .item {
+      padding: 0.5rem 0.5rem;
+      padding-bottom: 1rem;
+      border-left: 0.5rem solid transparent;
+      color: #8f8f8f;
+      cursor: pointer;
+
+      &.selected,
+      &:hover {
+        border-color: #ffb200;
+        background-color: #fffff8;
+        color: #1f1f1f;
+      }
+
+      .name {
+        font-size: 1.05rem;
+        font-weight: bold;
+      }
+
+      .company {
+        font-size: 0.7rem;
+        padding-top: 0.25rem;
+      }
+    }
+  }
+
+  #bc-main {
+    grid-area: bc-main;
+    background-color: #fffff8;
+  }
+}
