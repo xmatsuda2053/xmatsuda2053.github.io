@@ -10210,9 +10210,10 @@ th {
 
 .history-item {
   background-color: #fffff8;
-  border-radius: 0.25rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   border: 1px solid #6f6f6f;
-  border-left: 0.4rem solid #6f6f6f;
+  border-left: 0.35rem solid #6f6f6f;
   padding: 0.35rem;
   margin-bottom: 0.6rem;
 }

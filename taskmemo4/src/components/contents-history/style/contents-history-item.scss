@@ -10,9 +10,10 @@ $font-color-todo: #0e7405;
 .history-item {
   background-color: $bg-color;
 
-  border-radius: 0.25rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   border: 1px solid $border-color;
-  border-left: 0.4rem solid $border-color;
+  border-left: 0.35rem solid $border-color;
 
   padding: 0.35rem;
   margin-bottom: 0.6rem;
