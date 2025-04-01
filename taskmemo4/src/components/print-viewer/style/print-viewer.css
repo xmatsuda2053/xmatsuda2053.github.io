@@ -471,6 +471,12 @@ th {
     width: 170mm;
     line-height: 1rem;
   }
+  #root #viewer tbody tr td ul {
+    margin-left: 1rem;
+  }
+  #root #viewer tbody tr td ul li {
+    list-style-type: circle;
+  }
 }
 
 /*# sourceMappingURL=print-viewer.css.map */

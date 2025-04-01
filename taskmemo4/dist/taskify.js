@@ -13981,7 +13981,7 @@ function PrintViewer() {
     /**
      * リストコンテンツを作成する
      * @param {string} index
-     * @param {string} text
+     * @param {object} text
      */
     #createItem(index, text) {
       const contents = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("tr", null, ["item"]);
@@ -13989,7 +13989,12 @@ function PrintViewer() {
       const contentItem = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("td", null, ["content"]);
 
       indexItem.innerText = index;
-      contentItem.innerText = text;
+
+      if (typeof text === "string") {
+        contentItem.innerText = text;
+      } else {
+        contentItem.appendChild(text);
+      }
 
       contents.appendChild(indexItem);
       contents.appendChild(contentItem);
@@ -14058,11 +14063,29 @@ function PrintViewer() {
       };
 
       /**
+       * 配列を箇条書きアイテムに変換する
+       * @param {*} items
+       * @returns
+       */
+      const convertUL = (items) => {
+        const ul = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("ul");
+        items.forEach((item) => {
+          const li = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("li");
+          li.innerText = item;
+          ul.appendChild(li);
+        });
+        return ul;
+      };
+
+      /**
        * フォルダパス
        * @returns {object}
        */
       const folderpath = () => {
-        return this.#createItem("作業フォルダ", taskData.folderpath);
+        return this.#createItem(
+          "作業フォルダ",
+          convertUL(taskData.folderpath.split("\n"))
+        );
       };
 
       /**
@@ -14070,7 +14093,7 @@ function PrintViewer() {
        * @returns {object}
        */
       const url = () => {
-        return this.#createItem("関連URL", taskData.url);
+        return this.#createItem("関連URL", convertUL(taskData.url.split("\n")));
       };
 
       const table = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("table");
@@ -14604,6 +14627,12 @@ th {
     word-break: break-all;
     width: 170mm;
     line-height: 1rem;
+  }
+  #root #viewer tbody tr td ul {
+    margin-left: 1rem;
+  }
+  #root #viewer tbody tr td ul li {
+    list-style-type: circle;
   }
 }
 `, ""]);

@@ -86,7 +86,7 @@ export function PrintViewer() {
     /**
      * リストコンテンツを作成する
      * @param {string} index
-     * @param {string} text
+     * @param {object} text
      */
     #createItem(index, text) {
       const contents = ElmUtils.createElm("tr", null, ["item"]);
@@ -94,7 +94,12 @@ export function PrintViewer() {
       const contentItem = ElmUtils.createElm("td", null, ["content"]);
 
       indexItem.innerText = index;
-      contentItem.innerText = text;
+
+      if (typeof text === "string") {
+        contentItem.innerText = text;
+      } else {
+        contentItem.appendChild(text);
+      }
 
       contents.appendChild(indexItem);
       contents.appendChild(contentItem);
@@ -163,11 +168,29 @@ export function PrintViewer() {
       };
 
       /**
+       * 配列を箇条書きアイテムに変換する
+       * @param {*} items
+       * @returns
+       */
+      const convertUL = (items) => {
+        const ul = ElmUtils.createElm("ul");
+        items.forEach((item) => {
+          const li = ElmUtils.createElm("li");
+          li.innerText = item;
+          ul.appendChild(li);
+        });
+        return ul;
+      };
+
+      /**
        * フォルダパス
        * @returns {object}
        */
       const folderpath = () => {
-        return this.#createItem("作業フォルダ", taskData.folderpath);
+        return this.#createItem(
+          "作業フォルダ",
+          convertUL(taskData.folderpath.split("\n"))
+        );
       };
 
       /**
@@ -175,7 +198,7 @@ export function PrintViewer() {
        * @returns {object}
        */
       const url = () => {
-        return this.#createItem("関連URL", taskData.url);
+        return this.#createItem("関連URL", convertUL(taskData.url.split("\n")));
       };
 
       const table = ElmUtils.createElm("table");
