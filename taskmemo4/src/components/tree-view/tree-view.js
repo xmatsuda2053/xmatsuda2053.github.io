@@ -700,23 +700,28 @@ export function TreeView() {
     /**
      * 指定されたIDに対応するグループの項目データを取得します。
      * @param {string} id - グループのID。
+     * @param {number} level - 階層レベル
      * @returns {Array<Object>} - 項目データの配列。
      */
-    getGroupItemsById(id) {
+    getGroupItemsById(id, level = 0) {
       const details = this.shadowRoot.getElementById(id).closest("details");
       const childElms = getItems(details).children;
 
-      const items = [];
+      let items = [];
       for (let elm of childElms) {
         const item = elm.querySelector("task-title,group-title");
         if (item) {
           const data = item.getData();
           data.id = item.id;
+          data.level = level;
           if (data.type === "task") {
             data.paths = item.paths;
             data.flag = item.flag;
+            items.push(data);
+          } else {
+            items.push(data);
+            items = items.concat(this.getGroupItemsById(item.id, level + 1));
           }
-          items.push(data);
         }
       }
 

@@ -98,6 +98,14 @@ export function ContentsGroup() {
         "進捗率",
       ];
 
+      const editName = (name, level) => {
+        return level == 0 ? name : `+ ${name}`;
+      };
+
+      const getNameStyle = (level) => {
+        return level == 0 ? "" : `padding-left: ${level}rem`;
+      };
+
       items.forEach((item) => {
         if (item.type === "task") {
           // タスク
@@ -129,7 +137,8 @@ export function ContentsGroup() {
 
           // タスク名
           this.table.addTd();
-          this.table.setTdElment(item.name);
+          this.table.setTdElment(editName(item.name, item.level));
+          this.table.setTdStyle(getNameStyle(item.level));
           this.table.setTdClickEvent(() => {
             this.shadowRoot.dispatchEvent(
               EventUtils.createEvent(
@@ -187,7 +196,8 @@ export function ContentsGroup() {
 
           // グループ名
           this.table.addTd();
-          this.table.setTdElment(item.name);
+          this.table.setTdElment(editName(item.name, item.level));
+          this.table.setTdStyle(getNameStyle(item.level));
           this.table.setTdClickEvent(() => {
             this.shadowRoot.dispatchEvent(
               EventUtils.createEvent(
