@@ -425,19 +425,23 @@ th {
   grid-auto-flow: row;
   grid-template-areas: "bc-head bc-head" "bc-list bc-main";
   height: 100vh;
+  padding: 2rem;
   transform: 0.2s;
 }
 #root #bc-header {
   grid-area: bc-head;
   background-color: #3c3c3c;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 #root #bc-list {
   grid-area: bc-list;
   background-color: #cfcfcf;
+  border-bottom-left-radius: 0.5rem;
 }
 #root #bc-list .item {
   padding: 0.5rem 0.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.85rem;
   border-left: 0.5rem solid transparent;
   color: #8f8f8f;
   cursor: pointer;
@@ -448,16 +452,17 @@ th {
   color: #1f1f1f;
 }
 #root #bc-list .item .name {
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 #root #bc-list .item .company {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   padding-top: 0.25rem;
 }
 #root #bc-main {
   grid-area: bc-main;
   background-color: #fffff8;
+  border-bottom-right-radius: 0.5rem;
 }
 
 /*# sourceMappingURL=biz-card.css.map */

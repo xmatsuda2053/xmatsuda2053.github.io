@@ -84,6 +84,12 @@ export function BizCard() {
       listItem.classList.add("selected");
     }
 
+    /**
+     * 名刺リストアイテムを追加する
+     * @param {string} id - 名刺リストアイテムのID
+     * @param {object} data - 名刺リストアイテムのデータ
+     * @return {void}
+     */
     #addListItem(id, data = {}) {
       const item = ElmUtils.createElm("div", null, ["item"]);
       const name = ElmUtils.createElm("p", null, ["name"]);
