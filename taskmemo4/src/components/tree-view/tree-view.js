@@ -6,6 +6,7 @@ import { EventConst } from "../../constants/event-const";
 import { SvgConst } from "../../constants/svg-const";
 
 import styles from "./style/tree-view.css";
+import { SvgUtils } from "../../utils/svg-utils";
 
 /**
  * TreeView コンポーネント
@@ -48,13 +49,16 @@ export function TreeView() {
 
       // コンテンツの初期設定
       this.header = ElmUtils.createElm("div", "header");
+      this.bizCard = ElmUtils.createElm("div", "biz-card");
       this.root = ElmUtils.createElm("div", "root", ["scroll"]);
 
       this.shadowRoot.appendChild(this.header);
+      this.shadowRoot.appendChild(this.bizCard);
       this.shadowRoot.appendChild(this.root);
 
-      // コンテキストメニューを追加
+      // 画面機能を追加
       this.#addHeaderMenu();
+      this.#addBizCard();
       this.#addContextMenu();
     }
 
@@ -368,6 +372,31 @@ export function TreeView() {
 
       // ルート要素を起点にグループフィルタを実行
       filterGroup(this.root);
+    }
+
+    // *******************************************************
+    // * 名刺管理
+    // *******************************************************
+    /**
+     * 名刺管理を初期化し、Shadow DOMに追加します。
+     * @private
+     */
+    #addBizCard() {
+      const icon = SvgUtils.createIcon(SvgConst.CardsPath);
+      const area = ElmUtils.createElm("div");
+      const p = ElmUtils.createElm("p");
+
+      p.innerText = "名刺管理";
+      area.appendChild(icon);
+      area.appendChild(p);
+
+      this.bizCard.appendChild(area);
+
+      area.addEventListener("click", () => {
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.CHANGE_BIZ_CARD_EVENT_NAME)
+        );
+      });
     }
 
     // *******************************************************

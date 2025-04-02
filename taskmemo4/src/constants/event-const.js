@@ -74,4 +74,9 @@ export class EventConst {
    * タスク印刷イベント
    */
   static PRINT_TASK_EVENT_NAME = "printTask";
+
+  /**
+   * 名刺管理表示イベント
+   */
+  static CHANGE_BIZ_CARD_EVENT_NAME = "changeBizCard";
 }
