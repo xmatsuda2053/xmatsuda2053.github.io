@@ -384,6 +384,7 @@ input[type=text] {
   border-radius: 0.25rem;
   line-height: 1.5rem;
   padding: 0.1rem 0.25rem;
+  width: 100%;
 }
 input[type=text]:hover, input[type=text]:focus {
   background-color: #fff6da;

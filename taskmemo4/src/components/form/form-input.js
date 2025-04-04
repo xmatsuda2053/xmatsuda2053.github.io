@@ -28,7 +28,6 @@ export function FormInput() {
       // 空の要素を作成
       this.input = ElmUtils.createElm("input");
       this.input.type = "text";
-      this.input.style = "width:100%";
       this.input.spellcheck = false;
 
       this.shadowRoot.appendChild(this.input);
@@ -73,14 +72,6 @@ export function FormInput() {
      */
     set readOnly(val) {
       this.input.readOnly = val;
-    }
-
-    /**
-     * 幅を設定します。
-     * @param {string} w - 設定する幅の値（例：'100px'）。
-     */
-    set width(w) {
-      this.input.style = `width:${w}`;
     }
   }
   customElements.define("form-input", FormInput);

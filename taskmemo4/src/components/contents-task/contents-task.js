@@ -195,8 +195,7 @@ export function ContentsTask() {
     #addStaff() {
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.icon = SvgUtils.createIcon(SvgConst.CirclesPaths);
-      filedset.title = "担当者";
-      filedset.required = true;
+      filedset.headLess = true;
 
       // 担当者の所属
       const fildsetStaffDiv = ElmUtils.createElm("form-fieldset");
@@ -205,6 +204,7 @@ export function ContentsTask() {
       fildsetStaffDiv.addItem(this._staffDiv);
       fildsetStaffDiv.icon = SvgUtils.createIcon(SvgConst.WallpaperPaths);
       fildsetStaffDiv.title = "所属";
+      fildsetStaffDiv.required = true;
       this._staffDiv.placeholder = "情報システム課";
 
       // 担当者の氏名
@@ -214,6 +214,7 @@ export function ContentsTask() {
 
       fildsetStaffName.addItem(this._staffName);
       fildsetStaffName.title = "氏名";
+      fildsetStaffName.required = true;
       this._staffName.placeholder = "日本 太郎";
 
       // 担当者の電話番号
@@ -223,6 +224,7 @@ export function ContentsTask() {
 
       fildsetStaffTel.addItem(this._staffTel);
       fildsetStaffTel.title = "電話番号";
+      fildsetStaffTel.required = true;
       this._staffTel.placeholder = "0123-45-6789";
 
       // プロパティ画面に追加

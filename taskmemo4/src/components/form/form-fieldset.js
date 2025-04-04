@@ -34,6 +34,15 @@ export function FormFieldset() {
     }
 
     /**
+     * フィールドセットのlegendにheadlessクラスを設定します。
+     * @param {bool} val - クラスを追加するかどうかのブール値。
+     * @return {void}
+     */
+    set headLess(val) {
+      this.legend.classList.toggle("head-less", val);
+    }
+
+    /**
      * Legendにiconを設定する
      * @param {string} val アイコン
      * @return {void}
@@ -75,6 +84,15 @@ export function FormFieldset() {
      */
     set itemLess(val) {
       this.fieldset.classList.toggle("item-less", val);
+    }
+
+    /**
+     * フィールドセットの幅を設定します。
+     * @param {string} val - 幅の値（例: "100px", "50%"など）。
+     * @return {void}
+     */
+    set width(val) {
+      this.fieldset.style.width = val;
     }
 
     /**

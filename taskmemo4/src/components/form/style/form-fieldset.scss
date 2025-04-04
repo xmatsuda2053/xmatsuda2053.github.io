@@ -43,6 +43,10 @@ fieldset {
         line-height: 0.75rem;
       }
     }
+
+    &.head-less {
+      display: none;
+    }
   }
 
   &.nestedRoot {

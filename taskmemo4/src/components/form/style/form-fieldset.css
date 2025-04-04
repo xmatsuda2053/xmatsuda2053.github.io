@@ -429,6 +429,9 @@ fieldset legend.isRequired:after {
   padding: 0.15rem 0.15rem;
   line-height: 0.75rem;
 }
+fieldset legend.head-less {
+  display: none;
+}
 fieldset.nestedRoot {
   display: flex;
 }

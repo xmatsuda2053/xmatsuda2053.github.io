@@ -743,4 +743,133 @@ export class SvgConst {
       },
     ],
   };
+
+  /**
+   * ビルディングSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static BuildingsPath = {
+    name: "icon-buildings",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      { path: "M4 21v-15c0 -1 1 -2 2 -2h5c1 0 2 1 2 2v15" },
+      { path: "M16 8h2c1 0 2 1 2 2v11" },
+      { path: "M3 21h18" },
+      { path: "M10 12v0" },
+      { path: "M10 16v0" },
+      { path: "M10 8v0" },
+      { path: "M7 12v0" },
+      { path: "M7 16v0" },
+      { path: "M7 8v0" },
+      { path: "M17 12v0" },
+      { path: "M17 16v0" },
+    ],
+  };
+
+  /**
+   * アドレス帳SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static AddressBookPath = {
+    name: "icon-address-book",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z",
+      },
+      { path: "M10 16h6" },
+      { path: "M13 11m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" },
+      { path: "M4 8h3" },
+      { path: "M4 12h3" },
+      { path: "M4 16h3" },
+    ],
+  };
+
+  /**
+   * モバイルデバイスSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static DeviceMobilePath = {
+    name: "icon-device-mobile",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z",
+      },
+      { path: "M11 4h2" },
+      { path: "M12 17v.01" },
+    ],
+  };
+
+  /**
+   * プリンターSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static PrinterPath = {
+    name: "icon-printer",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2",
+      },
+      { path: "M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" },
+      {
+        path: "M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z",
+      },
+    ],
+  };
+
+  /**
+   * メールSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static MailPath = {
+    name: "icon-mail",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z",
+      },
+      { path: "M3 7l9 6l9 -6" },
+    ],
+  };
+
+  /**
+   * 郵便番号SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static PostCodePath = {
+    name: "icon-post-code",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M7 7h10",
+      },
+      { path: "M7 10h10" },
+      { path: "M12 10v7" },
+    ],
+  };
+
+  /**
+   * 郵便受けSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static MailBoxPath = {
+    name: "icon-mail-box",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M10 21v-6.5a3.5 3.5 0 0 0 -7 0v6.5h18v-6a4 4 0 0 0 -4 -4h-10.5",
+      },
+      { path: "M12 11v-8h4l2 2l-2 2h-4" },
+      { path: "M6 15h1" },
+    ],
+  };
 }
