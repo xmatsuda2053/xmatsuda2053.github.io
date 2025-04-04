@@ -452,11 +452,11 @@ th {
   color: #1f1f1f;
 }
 #root #bc-list .item .name {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 #root #bc-list .item .company {
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   padding-top: 0.25rem;
 }
 #root #bc-main {

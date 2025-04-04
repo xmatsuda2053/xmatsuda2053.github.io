@@ -448,7 +448,7 @@ th {
   height: 1rem;
 }
 #biz-card div p {
-  margin-left: 0.1rem;
+  margin-left: 0.2em;
 }
 #biz-card div:hover {
   cursor: pointer;
