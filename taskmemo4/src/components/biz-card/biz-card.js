@@ -249,7 +249,7 @@ export function BizCard() {
         const filedset = ElmUtils.createElm("form-fieldset");
         filedset.icon = SvgUtils.createIcon(SvgConst.PostCodePath);
         filedset.title = "郵便番号";
-        filedset.width = "80px";
+        filedset.width = "100px";
 
         this._postCode = ElmUtils.createElm("form-input", "post-code");
         this._postCode.placeholder = "123-4567";

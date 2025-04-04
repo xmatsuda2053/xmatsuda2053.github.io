@@ -10774,7 +10774,7 @@ function BizCard() {
         const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
         filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.PostCodePath);
         filedset.title = "郵便番号";
-        filedset.width = "80px";
+        filedset.width = "100px";
 
         this._postCode = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-input", "post-code");
         this._postCode.placeholder = "123-4567";
@@ -11368,9 +11368,14 @@ th {
   color: #8f8f8f;
   cursor: pointer;
 }
-#root #bc-list .item.selected, #root #bc-list .item:hover {
+#root #bc-list .item.selected {
   border-color: #ffb200;
   background-color: #fffff8;
+  color: #1f1f1f;
+}
+#root #bc-list .item:hover {
+  border-color: #ffb200;
+  background-color: #dfdfdf;
   color: #1f1f1f;
 }
 #root #bc-list .item .name {

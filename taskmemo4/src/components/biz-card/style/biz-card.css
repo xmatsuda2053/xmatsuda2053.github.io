@@ -446,9 +446,14 @@ th {
   color: #8f8f8f;
   cursor: pointer;
 }
-#root #bc-list .item.selected, #root #bc-list .item:hover {
+#root #bc-list .item.selected {
   border-color: #ffb200;
   background-color: #fffff8;
+  color: #1f1f1f;
+}
+#root #bc-list .item:hover {
+  border-color: #ffb200;
+  background-color: #dfdfdf;
   color: #1f1f1f;
 }
 #root #bc-list .item .name {

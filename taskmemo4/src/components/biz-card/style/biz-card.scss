@@ -39,10 +39,15 @@
       color: #8f8f8f;
       cursor: pointer;
 
-      &.selected,
-      &:hover {
+      &.selected {
         border-color: #ffb200;
         background-color: #fffff8;
+        color: #1f1f1f;
+      }
+
+      &:hover {
+        border-color: #ffb200;
+        background-color: #dfdfdf;
         color: #1f1f1f;
       }
 
