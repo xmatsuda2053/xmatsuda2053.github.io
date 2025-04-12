@@ -240,6 +240,7 @@ export function TaskTitle() {
         isComplete: isComplete,
         isNotStarted: isNotStarted,
         isOverDeadline: isOverDeadline,
+        isNotDueDate: isNotDueDate,
       };
 
       // アイコン設定

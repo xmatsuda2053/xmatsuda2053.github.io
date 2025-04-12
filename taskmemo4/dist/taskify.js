@@ -3242,6 +3242,7 @@ function TreeView() {
       headerMenu.appendChild(this.#createFilterStartedButton());
       headerMenu.appendChild(this.#createFilterCompletButton());
       headerMenu.appendChild(this.#createFilterOverDeadlineButton());
+      headerMenu.appendChild(this.#createFilterMemo());
       headerMenu.appendChild(this.#createLine());
       headerMenu.appendChild(this.#createFilterTodoButton());
       headerMenu.appendChild(this.#createFilterButton());
@@ -3382,6 +3383,22 @@ function TreeView() {
     }
 
     /**
+     * メモタスクのフィルタ設定ボタンを作成する。
+     * @returns ボタン
+     */
+    #createFilterMemo() {
+      this.btnFilterMemo = this.#createToggleButton(
+        "filter-memo",
+        _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.SquareMPath
+      );
+      this.btnFilterMemo.tooltip = "メモ";
+      this.btnFilterMemo.addEventListener("click", () => {
+        this.#filterTreeViewItem();
+      });
+      return this.btnFilterMemo;
+    }
+
+    /**
      * TODOのフィルタ設定ボタンを作成する。
      * @returns ボタン
      */
@@ -3448,6 +3465,8 @@ function TreeView() {
           isDisabled = !this.btnFilterOverDeadline.toggle;
         } else if (flag.isNotStarted) {
           isDisabled = !this.btnFilterNotStarted.toggle;
+        } else if (flag.isNotDueDate) {
+          isDisabled = !this.btnFilterMemo.toggle;
         } else {
           isDisabled = !this.btnFilterStarted.toggle;
         }
@@ -4965,6 +4984,7 @@ function TaskTitle() {
         isComplete: isComplete,
         isNotStarted: isNotStarted,
         isOverDeadline: isOverDeadline,
+        isNotDueDate: isNotDueDate,
       };
 
       // アイコン設定
