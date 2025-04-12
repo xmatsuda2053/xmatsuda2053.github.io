@@ -104,6 +104,7 @@ export function BizCard() {
         const filedset = ElmUtils.createElm("form-fieldset");
         filedset.icon = SvgUtils.createIcon(SvgConst.UserPaths);
         filedset.title = "役職";
+        filedset.islastNested = true;
 
         this._memberPosition = ElmUtils.createElm(
           "form-input",
@@ -119,9 +120,9 @@ export function BizCard() {
       // フィールドセットに登録
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.headLess = true;
-      filedset.addItem(kanjiName());
-      filedset.addItem(kanaName());
-      filedset.addItem(position());
+      filedset.addItem(kanjiName(), true);
+      filedset.addItem(kanaName(), true);
+      filedset.addItem(position(), true);
 
       this.bcMain.appendChild(filedset);
     }
@@ -199,6 +200,7 @@ export function BizCard() {
         const filedsetFaxNumber = ElmUtils.createElm("form-fieldset");
         filedsetFaxNumber.icon = SvgUtils.createIcon(SvgConst.PrinterPath);
         filedsetFaxNumber.title = "FAX";
+        filedset.islastNested = true;
 
         this._faxNumber = ElmUtils.createElm("form-input", "fax-number");
         this._faxNumber.placeholder = "0123-45-6789";
@@ -211,9 +213,9 @@ export function BizCard() {
       // フィールドセットに登録
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.headLess = true;
-      filedset.addItem(phoneNumber());
-      filedset.addItem(mobilePhoneNumber());
-      filedset.addItem(faxNumber());
+      filedset.addItem(phoneNumber(), true);
+      filedset.addItem(mobilePhoneNumber(), true);
+      filedset.addItem(faxNumber(), true);
 
       this.bcMain.appendChild(filedset);
     }
@@ -267,7 +269,7 @@ export function BizCard() {
         const filedset = ElmUtils.createElm("form-fieldset");
         filedset.icon = SvgUtils.createIcon(SvgConst.MailBoxPath);
         filedset.title = "住所";
-        filedset.width = "450px";
+        filedset.islastNested = true;
 
         this._address = ElmUtils.createElm("form-input", "address");
         this._address.placeholder = "東京都千代田区丸の内1-1-1";
@@ -281,7 +283,7 @@ export function BizCard() {
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.headLess = true;
       filedset.addItem(postCode());
-      filedset.addItem(address());
+      filedset.addItem(address(), true);
 
       this.bcMain.appendChild(filedset);
     }

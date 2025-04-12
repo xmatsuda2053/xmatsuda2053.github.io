@@ -41,5 +41,8 @@ fieldset.nested {
   margin-right: 0.35rem;
   padding-bottom: 0;
 }
+fieldset.nested.is-last-nested {
+  margin-right: 0;
+}
 
 /*# sourceMappingURL=form-fieldset.css.map */

@@ -6616,12 +6616,13 @@ function ContentsTask() {
       fildsetStaffTel.addItem(this._staffTel);
       fildsetStaffTel.title = "電話番号";
       fildsetStaffTel.required = true;
+      fildsetStaffTel.isLastNested = true;
       this._staffTel.placeholder = "0123-45-6789";
 
       // プロパティ画面に追加
-      filedset.addItem(fildsetStaffDiv);
-      filedset.addItem(fildsetStaffName);
-      filedset.addItem(fildsetStaffTel);
+      filedset.addItem(fildsetStaffDiv, true);
+      filedset.addItem(fildsetStaffName, true);
+      filedset.addItem(fildsetStaffTel, true);
 
       this.property.appendChild(filedset);
     }
@@ -7405,6 +7406,7 @@ function BizCard() {
         const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
         filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.UserPaths);
         filedset.title = "役職";
+        filedset.islastNested = true;
 
         this._memberPosition = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm(
           "form-input",
@@ -7420,9 +7422,9 @@ function BizCard() {
       // フィールドセットに登録
       const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
       filedset.headLess = true;
-      filedset.addItem(kanjiName());
-      filedset.addItem(kanaName());
-      filedset.addItem(position());
+      filedset.addItem(kanjiName(), true);
+      filedset.addItem(kanaName(), true);
+      filedset.addItem(position(), true);
 
       this.bcMain.appendChild(filedset);
     }
@@ -7500,6 +7502,7 @@ function BizCard() {
         const filedsetFaxNumber = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
         filedsetFaxNumber.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.PrinterPath);
         filedsetFaxNumber.title = "FAX";
+        filedset.islastNested = true;
 
         this._faxNumber = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-input", "fax-number");
         this._faxNumber.placeholder = "0123-45-6789";
@@ -7512,9 +7515,9 @@ function BizCard() {
       // フィールドセットに登録
       const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
       filedset.headLess = true;
-      filedset.addItem(phoneNumber());
-      filedset.addItem(mobilePhoneNumber());
-      filedset.addItem(faxNumber());
+      filedset.addItem(phoneNumber(), true);
+      filedset.addItem(mobilePhoneNumber(), true);
+      filedset.addItem(faxNumber(), true);
 
       this.bcMain.appendChild(filedset);
     }
@@ -7568,7 +7571,7 @@ function BizCard() {
         const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
         filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.MailBoxPath);
         filedset.title = "住所";
-        filedset.width = "450px";
+        filedset.islastNested = true;
 
         this._address = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-input", "address");
         this._address.placeholder = "東京都千代田区丸の内1-1-1";
@@ -7582,7 +7585,7 @@ function BizCard() {
       const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
       filedset.headLess = true;
       filedset.addItem(postCode());
-      filedset.addItem(address());
+      filedset.addItem(address(), true);
 
       this.bcMain.appendChild(filedset);
     }
@@ -7846,6 +7849,14 @@ function FormFieldset() {
     }
 
     /**
+     * ネスト項目の最終項目であるか否かを設定
+     * @param {bool} val 設定値
+     */
+    set isLastNested(val) {
+      this.fieldset.classList.toggle("is-last-nested", val);
+    }
+
+    /**
      * アイテムを持たないフィールドであることを設定
      * @param {bool} val 設定値
      * @return {void}
@@ -7866,11 +7877,15 @@ function FormFieldset() {
     /**
      * 指定されたアイテムをフィールドセットに追加します。
      * @param {HTMLElement} item - 追加するアイテム。
+     * @param {boolean} isFlex1 - アイテムをflex1として追加するかどうか。
      */
-    addItem(item) {
+    addItem(item, isFlex1 = false) {
       if (item.tagName === "FORM-FIELDSET") {
         this.fieldset.classList.add("nestedRoot");
         item.nested = true;
+        if (isFlex1) {
+          item.style = "flex: 1;";
+        }
       }
       this.fieldset.appendChild(item);
     }
@@ -7938,6 +7953,9 @@ fieldset.nested {
   margin-top: 0.25rem;
   margin-right: 0.35rem;
   padding-bottom: 0;
+}
+fieldset.nested.is-last-nested {
+  margin-right: 0;
 }
 `, ""]);
 // Exports

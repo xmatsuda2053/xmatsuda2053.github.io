@@ -53,5 +53,9 @@ fieldset {
     margin-top: 0.25rem;
     margin-right: 0.35rem;
     padding-bottom: 0;
+
+    &.is-last-nested {
+      margin-right: 0;
+    }
   }
 }

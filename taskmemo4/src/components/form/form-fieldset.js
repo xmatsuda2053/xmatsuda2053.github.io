@@ -78,6 +78,14 @@ export function FormFieldset() {
     }
 
     /**
+     * ネスト項目の最終項目であるか否かを設定
+     * @param {bool} val 設定値
+     */
+    set isLastNested(val) {
+      this.fieldset.classList.toggle("is-last-nested", val);
+    }
+
+    /**
      * アイテムを持たないフィールドであることを設定
      * @param {bool} val 設定値
      * @return {void}
@@ -98,11 +106,15 @@ export function FormFieldset() {
     /**
      * 指定されたアイテムをフィールドセットに追加します。
      * @param {HTMLElement} item - 追加するアイテム。
+     * @param {boolean} isFlex1 - アイテムをflex1として追加するかどうか。
      */
-    addItem(item) {
+    addItem(item, isFlex1 = false) {
       if (item.tagName === "FORM-FIELDSET") {
         this.fieldset.classList.add("nestedRoot");
         item.nested = true;
+        if (isFlex1) {
+          item.style = "flex: 1;";
+        }
       }
       this.fieldset.appendChild(item);
     }

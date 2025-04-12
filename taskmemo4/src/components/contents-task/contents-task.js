@@ -225,12 +225,13 @@ export function ContentsTask() {
       fildsetStaffTel.addItem(this._staffTel);
       fildsetStaffTel.title = "電話番号";
       fildsetStaffTel.required = true;
+      fildsetStaffTel.isLastNested = true;
       this._staffTel.placeholder = "0123-45-6789";
 
       // プロパティ画面に追加
-      filedset.addItem(fildsetStaffDiv);
-      filedset.addItem(fildsetStaffName);
-      filedset.addItem(fildsetStaffTel);
+      filedset.addItem(fildsetStaffDiv, true);
+      filedset.addItem(fildsetStaffName, true);
+      filedset.addItem(fildsetStaffTel, true);
 
       this.property.appendChild(filedset);
     }
