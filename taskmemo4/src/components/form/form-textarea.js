@@ -109,17 +109,30 @@ export function FormTextarea() {
         const li = ElmUtils.createElm("li");
         li.title = "Click to Copy";
 
+        const regex = /\(([^)]+)\)\[([^\]]+)\]/;
+        const match = item.match(regex);
+        let dispStr;
+        let codeStr;
+
+        // 正規表現にマッチした場合、表示文字列とコードを取得
+        if (match) {
+          dispStr = match[1].trim();
+          codeStr = match[2].trim();
+        } else {
+          codeStr = item.trim();
+          dispStr = item.trim();
+        }
+
         // クリップボードにコピー
         icon = SvgUtils.createIcon(SvgConst.CopyPaths);
         li.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
-          navigator.clipboard.writeText(item);
+          navigator.clipboard.writeText(codeStr);
         });
 
         li.appendChild(icon);
-        li.appendChild(document.createTextNode(item));
-
+        li.appendChild(document.createTextNode(dispStr));
         itemList.appendChild(li);
       });
       this.viewArea.appendChild(itemList);
