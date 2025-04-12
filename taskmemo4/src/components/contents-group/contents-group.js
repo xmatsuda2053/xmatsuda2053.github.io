@@ -157,23 +157,23 @@ export function ContentsGroup() {
           this.table.setTdStyle("width: 80px; color: #0e7405");
           this.table.setTdAlign("center");
 
+          const isNotDueDate = item.duedate !== "3000-12-31" ? false : true;
+
           // 優先度
           this.table.addTd();
-          this.table.setTdElment(priority);
+          this.table.setTdElment(isNotDueDate ? "-" : priority);
           this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 期日
           this.table.addTd();
-          this.table.setTdElment(
-            item.duedate !== "3000-12-31" ? item.duedate : "-"
-          );
+          this.table.setTdElment(isNotDueDate ? "-" : item.duedate);
           this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 進捗率
           this.table.addTd();
-          this.table.setTdElment(`${item.status}%`);
+          this.table.setTdElment(isNotDueDate ? "-" : `${item.status}%`);
           this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
         } else {

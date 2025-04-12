@@ -234,6 +234,7 @@ export function TaskTitle() {
       const isComplete = this.status === "100";
       const isNotStarted = this.status === "0";
       const isOverDeadline = DateUtils.calcDateDiffToday(this.duedate) < 3;
+      const isNotDueDate = this.duedate === "3000-12-31";
 
       this._flag = {
         isComplete: isComplete,
@@ -256,6 +257,10 @@ export function TaskTitle() {
         paths = SvgConst.squareDotPaths; // 進行中
       }
 
+      if (isNotDueDate) {
+        paths = SvgConst.SquareMPath; // メモ
+      }
+
       this._paths = paths;
       this.root.appendChild(SvgUtils.createIcon(paths));
 
@@ -273,7 +278,7 @@ export function TaskTitle() {
 
       // ツールチップ設定
       const tooltip = [];
-      const dispDueDate = this.duedate === "3000-12-31" ? "なし" : this.duedate;
+      const dispDueDate = isNotDueDate ? "なし" : this.duedate;
       const dispPriority = PriorityConst.text(this.priority) || "?";
 
       tooltip.push(`${this.name}`);

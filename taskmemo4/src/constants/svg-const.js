@@ -872,4 +872,20 @@ export class SvgConst {
       { path: "M6 15h1" },
     ],
   };
+
+  /**
+   * Mに四角SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static SquareMPath = {
+    name: "icon-square-letter-m",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",
+      },
+      { path: "M9 16v-8l3 5l3 -5v8" },
+    ],
+  };
 }

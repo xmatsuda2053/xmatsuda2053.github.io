@@ -2054,6 +2054,22 @@ class SvgConst {
       { path: "M6 15h1" },
     ],
   };
+
+  /**
+   * Mに四角SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static SquareMPath = {
+    name: "icon-square-letter-m",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z",
+      },
+      { path: "M9 16v-8l3 5l3 -5v8" },
+    ],
+  };
 }
 
 
@@ -4943,6 +4959,7 @@ function TaskTitle() {
       const isComplete = this.status === "100";
       const isNotStarted = this.status === "0";
       const isOverDeadline = _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__.DateUtils.calcDateDiffToday(this.duedate) < 3;
+      const isNotDueDate = this.duedate === "3000-12-31";
 
       this._flag = {
         isComplete: isComplete,
@@ -4965,6 +4982,10 @@ function TaskTitle() {
         paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.squareDotPaths; // 進行中
       }
 
+      if (isNotDueDate) {
+        paths = _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.SquareMPath; // メモ
+      }
+
       this._paths = paths;
       this.root.appendChild(_utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(paths));
 
@@ -4982,7 +5003,7 @@ function TaskTitle() {
 
       // ツールチップ設定
       const tooltip = [];
-      const dispDueDate = this.duedate === "3000-12-31" ? "なし" : this.duedate;
+      const dispDueDate = isNotDueDate ? "なし" : this.duedate;
       const dispPriority = _constants_priority_const__WEBPACK_IMPORTED_MODULE_7__.PriorityConst.text(this.priority) || "?";
 
       tooltip.push(`${this.name}`);
@@ -6074,23 +6095,23 @@ function ContentsGroup() {
           this.table.setTdStyle("width: 80px; color: #0e7405");
           this.table.setTdAlign("center");
 
+          const isNotDueDate = item.duedate !== "3000-12-31" ? false : true;
+
           // 優先度
           this.table.addTd();
-          this.table.setTdElment(priority);
+          this.table.setTdElment(isNotDueDate ? "-" : priority);
           this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 期日
           this.table.addTd();
-          this.table.setTdElment(
-            item.duedate !== "3000-12-31" ? item.duedate : "-"
-          );
+          this.table.setTdElment(isNotDueDate ? "-" : item.duedate);
           this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
 
           // 進捗率
           this.table.addTd();
-          this.table.setTdElment(`${item.status}%`);
+          this.table.setTdElment(isNotDueDate ? "-" : `${item.status}%`);
           this.table.setTdStyle("width: 100px");
           this.table.setTdAlign("center");
         } else {
