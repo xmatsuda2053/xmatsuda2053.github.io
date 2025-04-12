@@ -888,4 +888,20 @@ export class SvgConst {
       { path: "M9 16v-8l3 5l3 -5v8" },
     ],
   };
+
+  /**
+   * ネクタイSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static TiePaths = {
+    name: "icon-tie",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 22l4 -4l-2.5 -11l.993 -2.649a1 1 0 0 0 -.936 -1.351h-3.114a1 1 0 0 0 -.936 1.351l.993 2.649l-2.5 11l4 4z",
+      },
+      { path: "M10.5 7h3l5 5.5" },
+    ],
+  };
 }

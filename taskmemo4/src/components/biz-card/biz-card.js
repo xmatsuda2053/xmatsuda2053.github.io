@@ -102,9 +102,9 @@ export function BizCard() {
        */
       const position = () => {
         const filedset = ElmUtils.createElm("form-fieldset");
-        filedset.icon = SvgUtils.createIcon(SvgConst.UserPaths);
+        filedset.icon = SvgUtils.createIcon(SvgConst.TiePaths);
         filedset.title = "役職";
-        filedset.islastNested = true;
+        filedset.isLastNested = true;
 
         this._memberPosition = ElmUtils.createElm(
           "form-input",
@@ -197,17 +197,17 @@ export function BizCard() {
        * @returns {HTMLElement} - FAXのフィールドセット
        */
       const faxNumber = () => {
-        const filedsetFaxNumber = ElmUtils.createElm("form-fieldset");
-        filedsetFaxNumber.icon = SvgUtils.createIcon(SvgConst.PrinterPath);
-        filedsetFaxNumber.title = "FAX";
-        filedset.islastNested = true;
+        const filedset = ElmUtils.createElm("form-fieldset");
+        filedset.icon = SvgUtils.createIcon(SvgConst.PrinterPath);
+        filedset.title = "FAX";
+        filedset.isLastNested = true;
 
         this._faxNumber = ElmUtils.createElm("form-input", "fax-number");
         this._faxNumber.placeholder = "0123-45-6789";
 
-        filedsetFaxNumber.addItem(this._faxNumber);
+        filedset.addItem(this._faxNumber);
 
-        return filedsetFaxNumber;
+        return filedset;
       };
 
       // フィールドセットに登録
@@ -269,7 +269,7 @@ export function BizCard() {
         const filedset = ElmUtils.createElm("form-fieldset");
         filedset.icon = SvgUtils.createIcon(SvgConst.MailBoxPath);
         filedset.title = "住所";
-        filedset.islastNested = true;
+        filedset.isLastNested = true;
 
         this._address = ElmUtils.createElm("form-input", "address");
         this._address.placeholder = "東京都千代田区丸の内1-1-1";

@@ -2098,6 +2098,22 @@ class SvgConst {
       { path: "M9 16v-8l3 5l3 -5v8" },
     ],
   };
+
+  /**
+   * ネクタイSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static TiePaths = {
+    name: "icon-tie",
+    paths: [
+      { path: "M0 0h24v24H0z" },
+      {
+        path: "M12 22l4 -4l-2.5 -11l.993 -2.649a1 1 0 0 0 -.936 -1.351h-3.114a1 1 0 0 0 -.936 1.351l.993 2.649l-2.5 11l4 4z",
+      },
+      { path: "M10.5 7h3l5 5.5" },
+    ],
+  };
 }
 
 
@@ -7432,9 +7448,9 @@ function BizCard() {
        */
       const position = () => {
         const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
-        filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.UserPaths);
+        filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.TiePaths);
         filedset.title = "役職";
-        filedset.islastNested = true;
+        filedset.isLastNested = true;
 
         this._memberPosition = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm(
           "form-input",
@@ -7527,17 +7543,17 @@ function BizCard() {
        * @returns {HTMLElement} - FAXのフィールドセット
        */
       const faxNumber = () => {
-        const filedsetFaxNumber = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
-        filedsetFaxNumber.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.PrinterPath);
-        filedsetFaxNumber.title = "FAX";
-        filedset.islastNested = true;
+        const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
+        filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.PrinterPath);
+        filedset.title = "FAX";
+        filedset.isLastNested = true;
 
         this._faxNumber = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-input", "fax-number");
         this._faxNumber.placeholder = "0123-45-6789";
 
-        filedsetFaxNumber.addItem(this._faxNumber);
+        filedset.addItem(this._faxNumber);
 
-        return filedsetFaxNumber;
+        return filedset;
       };
 
       // フィールドセットに登録
@@ -7599,7 +7615,7 @@ function BizCard() {
         const filedset = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-fieldset");
         filedset.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_3__.SvgConst.MailBoxPath);
         filedset.title = "住所";
-        filedset.islastNested = true;
+        filedset.isLastNested = true;
 
         this._address = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__.ElmUtils.createElm("form-input", "address");
         this._address.placeholder = "東京都千代田区丸の内1-1-1";
