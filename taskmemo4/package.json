@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "sass": "sass src/components:src/components",
+    "sass": "sass src/components:src/components src/utils:src/utils",
     "build": "npx webpack",
     "inline-js": "node inline-js-in-html.js taskify.html",
     "build-all": "npm run sass && npm run build && npm run inline-js"

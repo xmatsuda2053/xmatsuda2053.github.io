@@ -1,3 +1,5 @@
+import commonStyle from "./style/common.css";
+
 /**
  * 要素作成ユーティリティクラス
  */
@@ -12,9 +14,12 @@ export class ElmUtils {
    * 与えられたスタイルの文字列を元に、新しいCSSStyleSheetを作成して返す。
    */
   static createStylesheet = (style) => {
+    const comStyleSheet = new CSSStyleSheet();
+    comStyleSheet.replaceSync(commonStyle);
+
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(style);
-    return [styleSheet];
+    return [comStyleSheet, styleSheet];
   };
 
   /**

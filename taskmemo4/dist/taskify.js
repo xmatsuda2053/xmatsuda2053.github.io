@@ -9,6 +9,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ElmUtils: () => (/* binding */ ElmUtils)
 /* harmony export */ });
+/* harmony import */ var _style_common_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+
+
 /**
  * 要素作成ユーティリティクラス
  */
@@ -23,9 +26,12 @@ class ElmUtils {
    * 与えられたスタイルの文字列を元に、新しいCSSStyleSheetを作成して返す。
    */
   static createStylesheet = (style) => {
+    const comStyleSheet = new CSSStyleSheet();
+    comStyleSheet.replaceSync(_style_common_css__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(style);
-    return [styleSheet];
+    return [comStyleSheet, styleSheet];
   };
 
   /**
@@ -101,6 +107,544 @@ class ElmUtils {
 
 /***/ }),
 /* 2 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
+/* Reset box-model and set borders */
+/* ============================================ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the \`main\` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd \`em\` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent \`sub\` and \`sup\` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Replaced content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+svg,
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable.
+ * 1. Make form elements stylable across systems iOS especially.
+ * 2. Inherit text-transform from parent.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: inherit;
+  text-transform: inherit; /* 2 */
+}
+
+/**
+ * Correct cursors for clickable elements.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+}
+
+button:disabled,
+[type=button]:disabled,
+[type=reset]:disabled,
+[type=submit]:disabled {
+  cursor: default;
+}
+
+/**
+ * Improve outlines for Firefox and unify style with input elements & buttons.
+ */
+:-moz-focusring {
+  outline: auto;
+}
+
+select:disabled {
+  opacity: inherit;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Fix font inheritance.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Fix appearance for Firefox
+ */
+[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfiled;
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable]:focus {
+  outline: auto;
+}
+
+/* Tables */
+/* ============================================ */
+/**
+1. Correct table border color inheritance in all Chrome and Safari.
+*/
+table {
+  border-color: inherit; /* 1 */
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+* {
+  font-family: monospace;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.float-area {
+  position: absolute;
+  display: flex;
+  right: 1rem;
+  bottom: 1rem;
+}
+.float-area * {
+  display: block;
+  padding-left: 0.25rem;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.svg-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  pointer-events: none;
+}
+.svg-icon use {
+  pointer-events: none;
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 3 */
+/***/ ((module) => {
+
+
+
+module.exports = function (i) {
+  return i[1];
+};
+
+/***/ }),
+/* 4 */
+/***/ ((module) => {
+
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = [];
+
+  // return the list of modules as css string
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+      content += cssWithMappingToString(item);
+      if (needLayer) {
+        content += "}";
+      }
+      if (item[2]) {
+        content += "}";
+      }
+      if (item[4]) {
+        content += "}";
+      }
+      return content;
+    }).join("");
+  };
+
+  // import a list of modules into the list
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+    var alreadyImportedModules = {};
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+      list.push(item);
+    }
+  };
+  return list;
+};
+
+/***/ }),
+/* 5 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -108,27 +652,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TaskMemo: () => (/* binding */ TaskMemo)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
-/* harmony import */ var _style_task_memo_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
-/* harmony import */ var _toppage_top_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
-/* harmony import */ var _svg_btn_svg_btn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(11);
-/* harmony import */ var _context_menu_context_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(14);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(15);
-/* harmony import */ var _tree_view_tree_view__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(17);
-/* harmony import */ var _tree_view_task_title__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(20);
-/* harmony import */ var _tree_view_group_title__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(24);
-/* harmony import */ var _contents_group_contents_group__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(26);
-/* harmony import */ var _contents_task_contents_task__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(28);
-/* harmony import */ var _contents_history_contents_hisotry__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(30);
-/* harmony import */ var _contents_history_contetns_history_item__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(32);
-/* harmony import */ var _biz_card_biz_card__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(34);
-/* harmony import */ var _form_form_fieldset__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(36);
-/* harmony import */ var _form_form_input__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(38);
-/* harmony import */ var _form_form_date__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(40);
-/* harmony import */ var _form_form_textarea__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(42);
-/* harmony import */ var _form_form_table__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(44);
-/* harmony import */ var _form_form_radio__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(46);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
+/* harmony import */ var _style_task_memo_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8);
+/* harmony import */ var _toppage_top_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+/* harmony import */ var _svg_btn_svg_btn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(12);
+/* harmony import */ var _context_menu_context_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(16);
+/* harmony import */ var _tree_view_tree_view__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(18);
+/* harmony import */ var _tree_view_task_title__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(21);
+/* harmony import */ var _tree_view_group_title__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(25);
+/* harmony import */ var _contents_group_contents_group__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(27);
+/* harmony import */ var _contents_task_contents_task__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(29);
+/* harmony import */ var _contents_history_contents_hisotry__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(31);
+/* harmony import */ var _contents_history_contetns_history_item__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(33);
+/* harmony import */ var _biz_card_biz_card__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(35);
+/* harmony import */ var _form_form_fieldset__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(37);
+/* harmony import */ var _form_form_input__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(39);
+/* harmony import */ var _form_form_date__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(41);
+/* harmony import */ var _form_form_textarea__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(43);
+/* harmony import */ var _form_form_table__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(45);
+/* harmony import */ var _form_form_radio__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(47);
 // CSS
 
 
@@ -629,7 +1173,7 @@ function TaskMemo() {
 
 
 /***/ }),
-/* 3 */
+/* 6 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1514,7 +2058,7 @@ class SvgConst {
 
 
 /***/ }),
-/* 4 */
+/* 7 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1634,440 +2178,23 @@ class FileManager {
 
 
 /***/ }),
-/* 5 */
+/* 8 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  display: flex;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  padding-left: 0.25rem;
-}
-
-#container {
+___CSS_LOADER_EXPORT___.push([module.id, `#container {
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -2092,107 +2219,7 @@ th {
 
 
 /***/ }),
-/* 6 */
-/***/ ((module) => {
-
-
-
-module.exports = function (i) {
-  return i[1];
-};
-
-/***/ }),
-/* 7 */
-/***/ ((module) => {
-
-
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-*/
-module.exports = function (cssWithMappingToString) {
-  var list = [];
-
-  // return the list of modules as css string
-  list.toString = function toString() {
-    return this.map(function (item) {
-      var content = "";
-      var needLayer = typeof item[5] !== "undefined";
-      if (item[4]) {
-        content += "@supports (".concat(item[4], ") {");
-      }
-      if (item[2]) {
-        content += "@media ".concat(item[2], " {");
-      }
-      if (needLayer) {
-        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
-      }
-      content += cssWithMappingToString(item);
-      if (needLayer) {
-        content += "}";
-      }
-      if (item[2]) {
-        content += "}";
-      }
-      if (item[4]) {
-        content += "}";
-      }
-      return content;
-    }).join("");
-  };
-
-  // import a list of modules into the list
-  list.i = function i(modules, media, dedupe, supports, layer) {
-    if (typeof modules === "string") {
-      modules = [[null, modules, undefined]];
-    }
-    var alreadyImportedModules = {};
-    if (dedupe) {
-      for (var k = 0; k < this.length; k++) {
-        var id = this[k][0];
-        if (id != null) {
-          alreadyImportedModules[id] = true;
-        }
-      }
-    }
-    for (var _k = 0; _k < modules.length; _k++) {
-      var item = [].concat(modules[_k]);
-      if (dedupe && alreadyImportedModules[item[0]]) {
-        continue;
-      }
-      if (typeof layer !== "undefined") {
-        if (typeof item[5] === "undefined") {
-          item[5] = layer;
-        } else {
-          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
-          item[5] = layer;
-        }
-      }
-      if (media) {
-        if (!item[2]) {
-          item[2] = media;
-        } else {
-          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
-          item[2] = media;
-        }
-      }
-      if (supports) {
-        if (!item[4]) {
-          item[4] = "".concat(supports);
-        } else {
-          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
-          item[4] = supports;
-        }
-      }
-      list.push(item);
-    }
-  };
-  return list;
-};
-
-/***/ }),
-/* 8 */
+/* 9 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2200,8 +2227,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TopPage: () => (/* binding */ TopPage)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _style_top_page_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _style_top_page_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
 
 
 
@@ -2273,7 +2300,7 @@ function TopPage() {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2392,422 +2419,23 @@ class SvgUtils {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-#root {
+___CSS_LOADER_EXPORT___.push([module.id, `#root {
   position: relative;
   width: 100%;
   height: 100%;
@@ -2847,7 +2475,7 @@ th {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2855,9 +2483,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SvgBtn: () => (/* binding */ SvgBtn)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
-/* harmony import */ var _style_svg_btn_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _style_svg_btn_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(14);
 
 
 
@@ -3015,7 +2643,7 @@ function SvgBtn() {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3043,422 +2671,23 @@ class EventUtils {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-button {
+___CSS_LOADER_EXPORT___.push([module.id, `button {
   position: relative;
 }
 button.circle {
@@ -3557,7 +2786,7 @@ button.toggle.toggle-on.black {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3565,10 +2794,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ContextMenu: () => (/* binding */ ContextMenu)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15);
-/* harmony import */ var _style_context_menu_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16);
+/* harmony import */ var _style_context_menu_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(17);
 
 
 
@@ -3701,7 +2930,7 @@ function ContextMenu() {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3793,422 +3022,23 @@ class EventConst {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-#context-area {
+___CSS_LOADER_EXPORT___.push([module.id, `#context-area {
   display: none;
   position: absolute;
   z-index: 10000;
@@ -4273,7 +3103,7 @@ th {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -4281,12 +3111,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TreeView: () => (/* binding */ TreeView)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
-/* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(19);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(16);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var _style_tree_view_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(20);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10);
 // CSS
 
 
@@ -5298,7 +4128,7 @@ function TreeView() {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -5341,16 +4171,16 @@ class IdUtils {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -5861,7 +4691,7 @@ th {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -5869,14 +4699,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TaskTitle: () => (/* binding */ TaskTitle)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15);
-/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(21);
-/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(22);
-/* harmony import */ var _style_task_title_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(23);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
+/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(22);
+/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(23);
+/* harmony import */ var _style_task_title_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(24);
 
 
 
@@ -6168,7 +4998,7 @@ function TaskTitle() {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6307,7 +5137,7 @@ class DateUtils {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6353,16 +5183,16 @@ class PriorityConst {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
@@ -6820,7 +5650,7 @@ th {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6828,12 +5658,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GroupTitle: () => (/* binding */ GroupTitle)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15);
-/* harmony import */ var _style_group_title_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(25);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
+/* harmony import */ var _style_group_title_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(26);
 
 
 
@@ -7016,422 +5846,23 @@ function GroupTitle() {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-.group-title {
+___CSS_LOADER_EXPORT___.push([module.id, `.group-title {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -7470,7 +5901,7 @@ th {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -7478,12 +5909,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ContentsGroup: () => (/* binding */ ContentsGroup)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
-/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(22);
-/* harmony import */ var _style_contents_group_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(27);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
+/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23);
+/* harmony import */ var _style_contents_group_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(28);
 
 
 
@@ -7859,440 +6290,23 @@ function ContentsGroup() {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  display: flex;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  padding-left: 0.25rem;
-}
-
-#root {
+___CSS_LOADER_EXPORT___.push([module.id, `#root {
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -8320,7 +6334,7 @@ th {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -8328,12 +6342,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ContentsTask: () => (/* binding */ ContentsTask)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
-/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(22);
-/* harmony import */ var _style_contents_task_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(29);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
+/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23);
+/* harmony import */ var _style_contents_task_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(30);
 
 
 
@@ -8752,440 +6766,23 @@ function ContentsTask() {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  display: flex;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  padding-left: 0.25rem;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-#root {
+___CSS_LOADER_EXPORT___.push([module.id, `#root {
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -9209,7 +6806,7 @@ th {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -9217,11 +6814,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ContentsHistory: () => (/* binding */ ContentsHistory)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
-/* harmony import */ var _style_contents_history_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(31);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(16);
+/* harmony import */ var _style_contents_history_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(32);
 
 
 
@@ -9376,440 +6973,23 @@ function ContentsHistory() {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  display: flex;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  padding-left: 0.25rem;
-}
-
-.contents-history {
+___CSS_LOADER_EXPORT___.push([module.id, `.contents-history {
   padding-bottom: 5rem;
 }
 .contents-history #contents-title {
@@ -9837,7 +7017,7 @@ th {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -9845,13 +7025,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ContentsHistoryItem: () => (/* binding */ ContentsHistoryItem)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
-/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(18);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(15);
-/* harmony import */ var _style_contents_history_item_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(33);
+/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(22);
+/* harmony import */ var _utils_id_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16);
+/* harmony import */ var _style_contents_history_item_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(34);
 
 
 
@@ -10014,440 +7194,23 @@ function ContentsHistoryItem() {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  display: flex;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  padding-left: 0.25rem;
-}
-
-.history-item {
+___CSS_LOADER_EXPORT___.push([module.id, `.history-item {
   background-color: #fffff8;
   border-radius: 0.35rem;
   border: 1px solid #6f6f6f;
@@ -10484,17 +7247,17 @@ th {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   BizCard: () => (/* binding */ BizCard)
 /* harmony export */ });
-/* harmony import */ var _style_biz_card_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(35);
+/* harmony import */ var _style_biz_card_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
 
 
 
@@ -10876,440 +7639,23 @@ function BizCard() {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-.scroll {
-  overflow-y: scroll;
-}
-.scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.float-area {
-  position: absolute;
-  display: flex;
-  right: 1rem;
-  bottom: 1rem;
-}
-.float-area * {
-  display: block;
-  padding-left: 0.25rem;
-}
-
-#root {
+___CSS_LOADER_EXPORT___.push([module.id, `#root {
   display: grid;
   grid-template-columns: 250px 1fr;
   grid-template-rows: 35px 1fr;
@@ -11370,7 +7716,7 @@ th {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -11378,7 +7724,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormFieldset: () => (/* binding */ FormFieldset)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_form_fieldset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(37);
+/* harmony import */ var _style_form_fieldset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(38);
 
 
 
@@ -11493,422 +7839,23 @@ function FormFieldset() {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-* {
-  font-family: monospace;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-fieldset {
+___CSS_LOADER_EXPORT___.push([module.id, `fieldset {
   position: relative;
   padding-bottom: 1.25rem;
 }
@@ -11957,7 +7904,7 @@ fieldset.nested {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -11965,9 +7912,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormInput: () => (/* binding */ FormInput)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_input_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(39);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _style_form_input_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(40);
 
 
 
@@ -12049,402 +7996,23 @@ function FormInput() {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-* {
-  font-family: monospace;
-}
-
-input[type=text] {
+___CSS_LOADER_EXPORT___.push([module.id, `input[type=text] {
   outline: none;
   background-color: #fffff8;
   border: 1px solid #6f6f6f;
@@ -12465,7 +8033,7 @@ input[type=text]:read-only {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -12473,10 +8041,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormDate: () => (/* binding */ FormDate)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_date_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(41);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _style_form_date_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(42);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
 
 
 
@@ -12579,402 +8147,23 @@ function FormDate() {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-* {
-  font-family: monospace;
-}
-
-input[type=date] {
+___CSS_LOADER_EXPORT___.push([module.id, `input[type=date] {
   outline: none;
   background-color: #fffff8;
   border: 1px solid #6f6f6f;
@@ -12999,7 +8188,7 @@ input[type=date].off {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -13007,11 +8196,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormTextarea: () => (/* binding */ FormTextarea)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_textarea_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(43);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _style_form_textarea_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(44);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6);
 
 
 
@@ -13272,422 +8461,23 @@ function FormTextarea() {
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-* {
-  font-family: monospace;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-.hidden {
+___CSS_LOADER_EXPORT___.push([module.id, `.hidden {
   display: none;
 }
 
@@ -13769,7 +8559,7 @@ textarea.borderless {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -13777,9 +8567,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormTable: () => (/* binding */ FormTable)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _style_form_table_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(45);
+/* harmony import */ var _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _constants_svg_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _style_form_table_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(46);
 
 
 
@@ -13946,422 +8736,23 @@ function FormTable() {
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-* {
-  font-family: monospace;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-#root {
+___CSS_LOADER_EXPORT___.push([module.id, `#root {
   height: 100%;
 }
 #root table {
@@ -14468,7 +8859,7 @@ th {
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -14476,9 +8867,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormRadio: () => (/* binding */ FormRadio)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
-/* harmony import */ var _style_form_radio_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(47);
+/* harmony import */ var _utils_event_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _constants_event_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _style_form_radio_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(48);
 
 
 
@@ -14583,402 +8974,23 @@ function FormRadio() {
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-* {
-  font-family: monospace;
-}
-
-input[type=radio] {
+___CSS_LOADER_EXPORT___.push([module.id, `input[type=radio] {
   display: none;
 }
 
@@ -15018,7 +9030,7 @@ input[type=radio] {
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -15026,9 +9038,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PrintViewer: () => (/* binding */ PrintViewer)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
-/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(22);
-/* harmony import */ var _style_print_viewer_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(49);
+/* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(22);
+/* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23);
+/* harmony import */ var _style_print_viewer_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50);
 
 
 
@@ -15275,422 +9287,23 @@ function PrintViewer() {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
 // Imports
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `/*! destyle.css v4.0.1 | MIT License | https://github.com/nicolas-cusan/destyle.css */
-/* Reset box-model and set borders */
-/* ============================================ */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  border-style: solid;
-  border-width: 0;
-  min-width: 0;
-}
-
-/* Document */
-/* ============================================ */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- * 3. Remove gray overlay on links for iOS.
- */
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -webkit-tap-highlight-color: transparent; /* 3*/
-}
-
-/* Sections */
-/* ============================================ */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the \`main\` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/* Vertical rhythm */
-/* ============================================ */
-p,
-table,
-blockquote,
-address,
-pre,
-iframe,
-form,
-figure,
-dl {
-  margin: 0;
-}
-
-/* Headings */
-/* ============================================ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-}
-
-/* Lists (enumeration) */
-/* ============================================ */
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Lists (definition) */
-/* ============================================ */
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
-}
-
-/* Grouping content */
-/* ============================================ */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-  border-top-width: 1px;
-  margin: 0;
-  clear: both;
-  color: inherit;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-address {
-  font-style: inherit;
-}
-
-/* Text-level semantics */
-/* ============================================ */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd \`em\` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: inherit; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent \`sub\` and \`sup\` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Replaced content */
-/* ============================================ */
-/**
- * Prevent vertical alignment issues.
- */
-svg,
-img,
-embed,
-object,
-iframe {
-  vertical-align: bottom;
-}
-
-/* Forms */
-/* ============================================ */
-/**
- * Reset form fields to make them styleable.
- * 1. Make form elements stylable across systems iOS especially.
- * 2. Inherit text-transform from parent.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  -webkit-appearance: none; /* 1 */
-  appearance: none;
-  vertical-align: middle;
-  color: inherit;
-  font: inherit;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  text-align: inherit;
-  text-transform: inherit; /* 2 */
-}
-
-/**
- * Correct cursors for clickable elements.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  cursor: pointer;
-}
-
-button:disabled,
-[type=button]:disabled,
-[type=reset]:disabled,
-[type=submit]:disabled {
-  cursor: default;
-}
-
-/**
- * Improve outlines for Firefox and unify style with input elements & buttons.
- */
-:-moz-focusring {
-  outline: auto;
-}
-
-select:disabled {
-  opacity: inherit;
-}
-
-/**
- * Remove padding
- */
-option {
-  padding: 0;
-}
-
-/**
- * Reset to invisible
- */
-fieldset {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the outline style in Safari.
- */
-[type=search] {
-  outline-offset: -2px; /* 1 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Fix font inheritance.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/**
- * Fix appearance for Firefox
- */
-[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfiled;
-}
-
-/**
- * Clickable labels
- */
-label[for] {
-  cursor: pointer;
-}
-
-/* Interactive */
-/* ============================================ */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/*
- * Remove outline for editable content.
- */
-[contenteditable]:focus {
-  outline: auto;
-}
-
-/* Tables */
-/* ============================================ */
-/**
-1. Correct table border color inheritance in all Chrome and Safari.
-*/
-table {
-  border-color: inherit; /* 1 */
-  border-collapse: collapse;
-}
-
-caption {
-  text-align: left;
-}
-
-td,
-th {
-  vertical-align: top;
-  padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
-}
-
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.svg-icon {
-  display: block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  pointer-events: none;
-}
-.svg-icon use {
-  pointer-events: none;
-}
-
-* {
-  font-family: monospace;
-}
-
-#root {
+___CSS_LOADER_EXPORT___.push([module.id, `#root {
   position: relative;
   background-color: #d4f1ef;
   height: 100vh;
@@ -15850,8 +9463,8 @@ var __webpack_exports__ = {};
 (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var _components_print_viewer_print_viewer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(48);
+/* harmony import */ var _components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
+/* harmony import */ var _components_print_viewer_print_viewer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(49);
 
 
 
