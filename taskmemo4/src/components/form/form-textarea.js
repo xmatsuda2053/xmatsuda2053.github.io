@@ -107,7 +107,7 @@ export function FormTextarea() {
       this.textarea.value.split("\n").forEach((item) => {
         let icon;
         const li = ElmUtils.createElm("li");
-        li.title = "Click to Copy";
+        li.title = "copy to clipboard";
 
         const regex = /\(([^)]+)\)\[([^\]]+)\]/;
         const match = item.match(regex);
@@ -129,6 +129,10 @@ export function FormTextarea() {
           e.preventDefault();
           e.stopPropagation();
           navigator.clipboard.writeText(codeStr);
+
+          const toast = document.createElement("toast-item");
+          this.shadowRoot.appendChild(toast);
+          toast.show("Copied to Clipboard");
         });
 
         li.appendChild(icon);

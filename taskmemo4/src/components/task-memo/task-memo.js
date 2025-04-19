@@ -28,6 +28,8 @@ import { FormTextarea } from "../form/form-textarea";
 import { FormTable } from "../form/form-table";
 import { FormRadio } from "../form/form-radio";
 
+import { ToastItem } from "../toast-item/toast-item";
+
 /**
  * TaskMemo コンポーネント
  * @class TaskMemo
@@ -75,6 +77,8 @@ export function TaskMemo() {
       ContentsHistoryItem();
 
       BizCard();
+
+      ToastItem();
 
       this.fileManager = new FileManager();
 

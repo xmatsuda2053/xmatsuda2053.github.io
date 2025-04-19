@@ -673,6 +673,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_form_textarea__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(43);
 /* harmony import */ var _form_form_table__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(45);
 /* harmony import */ var _form_form_radio__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(47);
+/* harmony import */ var _toast_item_toast_item__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(49);
 // CSS
 
 
@@ -681,6 +682,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Componets
+
+
 
 
 
@@ -750,6 +753,8 @@ function TaskMemo() {
       (0,_contents_history_contetns_history_item__WEBPACK_IMPORTED_MODULE_14__.ContentsHistoryItem)();
 
       (0,_biz_card_biz_card__WEBPACK_IMPORTED_MODULE_15__.BizCard)();
+
+      (0,_toast_item_toast_item__WEBPACK_IMPORTED_MODULE_22__.ToastItem)();
 
       this.fileManager = new _classes_file_manager__WEBPACK_IMPORTED_MODULE_2__.FileManager();
 
@@ -8385,7 +8390,7 @@ function FormTextarea() {
       this.textarea.value.split("\n").forEach((item) => {
         let icon;
         const li = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("li");
-        li.title = "Click to Copy";
+        li.title = "copy to clipboard";
 
         const regex = /\(([^)]+)\)\[([^\]]+)\]/;
         const match = item.match(regex);
@@ -8407,6 +8412,10 @@ function FormTextarea() {
           e.preventDefault();
           e.stopPropagation();
           navigator.clipboard.writeText(codeStr);
+
+          const toast = document.createElement("toast-item");
+          this.shadowRoot.appendChild(toast);
+          toast.show("Copied to Clipboard");
         });
 
         li.appendChild(icon);
@@ -9123,12 +9132,125 @@ ___CSS_LOADER_EXPORT___.push([module.id, `input[type=radio] {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ToastItem: () => (/* binding */ ToastItem)
+/* harmony export */ });
+/* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _style_toast_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(50);
+
+
+
+
+/**
+ * TopPage コンポーネント
+ * @class TopPage
+ * @extends {HTMLElement}
+ */
+function ToastItem() {
+  class ToastItem extends HTMLElement {
+    /**
+     * コンストラクタ
+     * @constructor
+     * @returns {void}
+     * @description
+     * Shadow DOM をオープンモードでアタッチし、CSSを適用し、要素を作成します。
+     */
+    constructor() {
+      super();
+
+      // Shadow DOMをオープンモードでアタッチ
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.innerHTML = "";
+
+      // CSSを適用
+      this.shadowRoot.adoptedStyleSheets = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createStylesheet(_style_toast_item_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+      // 要素作成
+      this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
+      this.msg = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "msg");
+
+      this.root.appendChild(this.msg);
+
+      this.shadowRoot.appendChild(this.root);
+    }
+
+    /**
+     * トーストを表示する
+     * @param {string} messageText - 表示するメッセージ
+     */
+    show(messageText) {
+      this.msg.innerText = messageText;
+
+      // クラスを付与してアニメーションを開始
+      requestAnimationFrame(() => {
+        this.root.classList.add("show");
+      });
+
+      // 一定時間後にクラスを削除して非表示にする
+      setTimeout(() => {
+        this.root.classList.remove("show");
+        setTimeout(() => {
+          this.remove();
+        }, 300); // CSSのtransition時間と一致させる
+      }, 2000); // 表示時間
+    }
+  }
+  customElements.define("toast-item", ToastItem);
+}
+
+
+/***/ }),
+/* 50 */
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `#root {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: calc(infinity);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  pointer-events: none;
+  background-color: #333;
+  color: #fffffb;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+}
+#root.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+/* 51 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   PrintViewer: () => (/* binding */ PrintViewer)
 /* harmony export */ });
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _utils_date_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(22);
 /* harmony import */ var _constants_priority_const__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23);
-/* harmony import */ var _style_print_viewer_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50);
+/* harmony import */ var _style_print_viewer_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(52);
 
 
 
@@ -9375,7 +9497,7 @@ function PrintViewer() {
 
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -9552,7 +9674,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _components_task_memo_task_memo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
-/* harmony import */ var _components_print_viewer_print_viewer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(49);
+/* harmony import */ var _components_print_viewer_print_viewer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(51);
 
 
 
