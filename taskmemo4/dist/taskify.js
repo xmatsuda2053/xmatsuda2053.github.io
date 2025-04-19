@@ -9286,7 +9286,6 @@ function PrintViewer() {
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root");
       this.viewer = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "viewer");
 
-      this.root.appendChild(_utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "border"));
       this.root.appendChild(this.viewer);
       this.shadowRoot.appendChild(this.root);
 
@@ -9518,18 +9517,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#root {
   background-color: #d4f1ef;
   height: 100vh;
   width: 100%;
-}
-#root #border {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  height: 3px;
-  width: 90%;
-  border-radius: 50%;
-  background: linear-gradient(270deg, rgb(243, 196, 170), rgb(228, 81, 154) 50%, rgb(77, 84, 224));
 }
 #root #viewer {
   display: none;
