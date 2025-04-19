@@ -6657,13 +6657,13 @@ function ContentsTask() {
       fildsetStaffName.required = true;
       this._staffName.placeholder = "日本 太郎";
 
-      // 担当者の電話番号
+      // 担当者の連絡先
       const fildsetStaffTel = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-fieldset");
       fildsetStaffTel.icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.PhoneCallPaths);
       this._staffTel = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("form-input", "staff-tel");
 
       fildsetStaffTel.addItem(this._staffTel);
-      fildsetStaffTel.title = "電話番号";
+      fildsetStaffTel.title = "連絡先";
       fildsetStaffTel.required = true;
       fildsetStaffTel.isLastNested = true;
       this._staffTel.placeholder = "0123-45-6789";

@@ -217,13 +217,13 @@ export function ContentsTask() {
       fildsetStaffName.required = true;
       this._staffName.placeholder = "日本 太郎";
 
-      // 担当者の電話番号
+      // 担当者の連絡先
       const fildsetStaffTel = ElmUtils.createElm("form-fieldset");
       fildsetStaffTel.icon = SvgUtils.createIcon(SvgConst.PhoneCallPaths);
       this._staffTel = ElmUtils.createElm("form-input", "staff-tel");
 
       fildsetStaffTel.addItem(this._staffTel);
-      fildsetStaffTel.title = "電話番号";
+      fildsetStaffTel.title = "連絡先";
       fildsetStaffTel.required = true;
       fildsetStaffTel.isLastNested = true;
       this._staffTel.placeholder = "0123-45-6789";
