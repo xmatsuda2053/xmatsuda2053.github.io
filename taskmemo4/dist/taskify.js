@@ -4008,7 +4008,7 @@ function TreeView() {
 
       let items = [];
       for (let task of tasks) {
-        if (task.flag.isOverDeadline) {
+        if (!task.flag.isComplete && task.flag.isOverDeadline) {
           const data = task.getData();
           data.id = task.id;
           data.level = 0;
