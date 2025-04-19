@@ -53,6 +53,14 @@ export function ContentsGroup() {
       });
     }
 
+    /**
+     * リスト表示のみとするか設定します。
+     * @param {boolean} val - true: リスト表示のみ, false: プロパティとメモを表示
+     */
+    set isListOnly(val) {
+      this.root.classList.toggle("list-only", val);
+    }
+
     // **************************************************
     // * グループデータの入出力
     // **************************************************
@@ -74,19 +82,17 @@ export function ContentsGroup() {
     /**
      * グループ内のコンテンツデータを出力する。
      * @param {array} items
+     * @param {string} caption - タイトル
      * @returns {void}
      */
-    renderItems(items = []) {
+    renderItems(items = [], caption = "タスク一覧") {
       if (items.length === 0) {
         return;
       }
 
       this.#addEmptyGroupItems();
 
-      this.table.setCaption(
-        SvgUtils.createIcon(SvgConst.TablePaths),
-        "タスク一覧"
-      );
+      this.table.setCaption(SvgUtils.createIcon(SvgConst.TablePaths), caption);
 
       this.table.header = [
         "ID",

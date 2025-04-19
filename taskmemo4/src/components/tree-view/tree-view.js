@@ -50,15 +50,18 @@ export function TreeView() {
       // コンテンツの初期設定
       this.header = ElmUtils.createElm("div", "header");
       this.bizCard = ElmUtils.createElm("div", "biz-card", ["sub-item"]);
+      this.delayTask = ElmUtils.createElm("div", "delay-task", ["sub-item"]);
       this.root = ElmUtils.createElm("div", "root", ["scroll"]);
 
       this.shadowRoot.appendChild(this.header);
       this.shadowRoot.appendChild(this.bizCard);
+      this.shadowRoot.appendChild(this.delayTask);
       this.shadowRoot.appendChild(this.root);
 
       // 画面機能を追加
       this.#addHeaderMenu();
       this.#addBizCard();
+      this.#adddelayTask();
       this.#addContextMenu();
     }
 
@@ -419,6 +422,27 @@ export function TreeView() {
     }
 
     // *******************************************************
+    // * 遅延タスク一覧
+    // *******************************************************
+    #adddelayTask() {
+      const icon = SvgUtils.createIcon(SvgConst.squareAlertPaths);
+      const area = ElmUtils.createElm("div");
+      const p = ElmUtils.createElm("p");
+
+      p.innerText = "遅延タスク一覧";
+      area.appendChild(icon);
+      area.appendChild(p);
+
+      this.delayTask.appendChild(area);
+
+      area.addEventListener("click", () => {
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.SHOW_DELAY_TASK_EVENT_NAME)
+        );
+      });
+    }
+
+    // *******************************************************
     // * コンテキストメニュー
     // *******************************************************
 
@@ -770,6 +794,28 @@ export function TreeView() {
             items.push(data);
             items = items.concat(this.getGroupItemsById(item.id, level + 1));
           }
+        }
+      }
+
+      return items;
+    }
+
+    /**
+     * 遅延タスクの一覧を返却する。
+     * @returns {Array<Object>} - 項目データの配列。
+     */
+    getDelayTaskItems() {
+      const tasks = this.root.querySelectorAll("task-title");
+
+      let items = [];
+      for (let task of tasks) {
+        if (task.flag.isOverDeadline) {
+          const data = task.getData();
+          data.id = task.id;
+          data.level = 0;
+          data.paths = task.paths;
+          data.flag = task.flag;
+          items.push(data);
         }
       }
 

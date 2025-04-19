@@ -20,5 +20,20 @@
   grid-area: group-list;
   padding: 0 0.75rem;
 }
+#root.list-only {
+  grid-template-areas: "group-list group-list" "group-list group-list";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+#root.list-only #group-property {
+  display: none;
+}
+#root.list-only #group-memo {
+  display: none;
+}
+#root.list-only #group-list {
+  grid-area: group-list;
+  margin: 0.75rem;
+}
 
 /*# sourceMappingURL=contents-group.css.map */

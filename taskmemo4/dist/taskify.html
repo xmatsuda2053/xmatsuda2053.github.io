@@ -871,6 +871,7 @@ function TaskMemo() {
       this.#attachClickGroupItemEventListener();
       this.#attachDblClickGroupItemEventListener();
       this.#attachChangeBizCardEventListener();
+      this.#attachShowDelayTaskEventListener();
     }
 
     /**
@@ -1009,6 +1010,18 @@ function TaskMemo() {
         _constants_event_const__WEBPACK_IMPORTED_MODULE_7__.EventConst.CHANGE_BIZ_CARD_EVENT_NAME,
         () => {
           this.#changeBizCard();
+        }
+      );
+    }
+
+    /**
+     * Treeviewの遅延タスク表示イベントを登録
+     */
+    #attachShowDelayTaskEventListener() {
+      this.treeViewRoot.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_7__.EventConst.SHOW_DELAY_TASK_EVENT_NAME,
+        () => {
+          this.#showDelayTask();
         }
       );
     }
@@ -1199,6 +1212,31 @@ function TaskMemo() {
       const bizCard = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("biz-card");
       this.contents.innerHTML = "";
       this.contents.appendChild(bizCard);
+    }
+
+    // *******************************************************
+    // * 遅延タスク表示
+    // *******************************************************
+    #showDelayTask() {
+      const delayTask = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("contents-group");
+
+      delayTask.isListOnly = true;
+      delayTask.renderItems(
+        this.treeViewRoot.getDelayTaskItems(),
+        "遅延タスク一覧"
+      );
+
+      this.contents.innerHTML = "";
+      this.contents.appendChild(delayTask);
+
+      // グループ内のタスクのクリックを検知
+      delayTask.addEventListener(
+        _constants_event_const__WEBPACK_IMPORTED_MODULE_7__.EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.#addContentsTask(item.id, item.name);
+        }
+      );
     }
   }
   customElements.define("task-memo", TaskMemo);
@@ -3083,6 +3121,11 @@ class EventConst {
    * 名刺管理表示イベント
    */
   static CHANGE_BIZ_CARD_EVENT_NAME = "changeBizCard";
+
+  /**
+   * 遅延タスク表示イベント
+   */
+  static SHOW_DELAY_TASK_EVENT_NAME = "showDelayTask";
 }
 
 
@@ -3234,15 +3277,18 @@ function TreeView() {
       // コンテンツの初期設定
       this.header = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "header");
       this.bizCard = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "biz-card", ["sub-item"]);
+      this.delayTask = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "delay-task", ["sub-item"]);
       this.root = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div", "root", ["scroll"]);
 
       this.shadowRoot.appendChild(this.header);
       this.shadowRoot.appendChild(this.bizCard);
+      this.shadowRoot.appendChild(this.delayTask);
       this.shadowRoot.appendChild(this.root);
 
       // 画面機能を追加
       this.#addHeaderMenu();
       this.#addBizCard();
+      this.#adddelayTask();
       this.#addContextMenu();
     }
 
@@ -3603,6 +3649,27 @@ function TreeView() {
     }
 
     // *******************************************************
+    // * 遅延タスク一覧
+    // *******************************************************
+    #adddelayTask() {
+      const icon = _utils_svg_utils__WEBPACK_IMPORTED_MODULE_6__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_4__.SvgConst.squareAlertPaths);
+      const area = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("div");
+      const p = _utils_elm_utils__WEBPACK_IMPORTED_MODULE_0__.ElmUtils.createElm("p");
+
+      p.innerText = "遅延タスク一覧";
+      area.appendChild(icon);
+      area.appendChild(p);
+
+      this.delayTask.appendChild(area);
+
+      area.addEventListener("click", () => {
+        this.dispatchEvent(
+          _utils_event_utils__WEBPACK_IMPORTED_MODULE_2__.EventUtils.createEvent(_constants_event_const__WEBPACK_IMPORTED_MODULE_3__.EventConst.SHOW_DELAY_TASK_EVENT_NAME)
+        );
+      });
+    }
+
+    // *******************************************************
     // * コンテキストメニュー
     // *******************************************************
 
@@ -3954,6 +4021,28 @@ function TreeView() {
             items.push(data);
             items = items.concat(this.getGroupItemsById(item.id, level + 1));
           }
+        }
+      }
+
+      return items;
+    }
+
+    /**
+     * 遅延タスクの一覧を返却する。
+     * @returns {Array<Object>} - 項目データの配列。
+     */
+    getDelayTaskItems() {
+      const tasks = this.root.querySelectorAll("task-title");
+
+      let items = [];
+      for (let task of tasks) {
+        if (task.flag.isOverDeadline) {
+          const data = task.getData();
+          data.id = task.id;
+          data.level = 0;
+          data.paths = task.paths;
+          data.flag = task.flag;
+          items.push(data);
         }
       }
 
@@ -4705,14 +4794,14 @@ th {
 }
 
 .sub-item {
-  height: 35px;
+  height: 1.75rem;
   margin: 0 0.5rem;
-  border-bottom: 1px solid #afafaf;
+  font-weight: bold;
 }
 .sub-item div {
   display: flex;
   align-items: center;
-  height: 35px;
+  height: 1.75rem;
   margin-left: 0.1rem;
   transition: 0.2s;
 }
@@ -4725,13 +4814,13 @@ th {
 }
 .sub-item div:hover {
   cursor: pointer;
+  color: #1f7d53;
   text-decoration: underline;
-  color: #0078d4;
 }
 
 #root {
   width: 100%;
-  height: calc(100% - 35px - 35px);
+  height: calc(100% - 35px - 3.5rem);
   padding: 0.5rem;
   padding-top: 0.15rem;
 }
@@ -6060,6 +6149,14 @@ function ContentsGroup() {
       });
     }
 
+    /**
+     * リスト表示のみとするか設定します。
+     * @param {boolean} val - true: リスト表示のみ, false: プロパティとメモを表示
+     */
+    set isListOnly(val) {
+      this.root.classList.toggle("list-only", val);
+    }
+
     // **************************************************
     // * グループデータの入出力
     // **************************************************
@@ -6081,19 +6178,17 @@ function ContentsGroup() {
     /**
      * グループ内のコンテンツデータを出力する。
      * @param {array} items
+     * @param {string} caption - タイトル
      * @returns {void}
      */
-    renderItems(items = []) {
+    renderItems(items = [], caption = "タスク一覧") {
       if (items.length === 0) {
         return;
       }
 
       this.#addEmptyGroupItems();
 
-      this.table.setCaption(
-        _utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.TablePaths),
-        "タスク一覧"
-      );
+      this.table.setCaption(_utils_svg_utils__WEBPACK_IMPORTED_MODULE_1__.SvgUtils.createIcon(_constants_svg_const__WEBPACK_IMPORTED_MODULE_2__.SvgConst.TablePaths), caption);
 
       this.table.header = [
         "ID",
@@ -6417,6 +6512,21 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#root {
 #root #group-list {
   grid-area: group-list;
   padding: 0 0.75rem;
+}
+#root.list-only {
+  grid-template-areas: "group-list group-list" "group-list group-list";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+#root.list-only #group-property {
+  display: none;
+}
+#root.list-only #group-memo {
+  display: none;
+}
+#root.list-only #group-list {
+  grid-area: group-list;
+  margin: 0.75rem;
 }
 `, ""]);
 // Exports

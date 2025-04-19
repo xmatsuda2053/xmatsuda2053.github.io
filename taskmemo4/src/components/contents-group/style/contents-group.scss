@@ -25,4 +25,25 @@
     grid-area: group-list;
     padding: 0 0.75rem;
   }
+
+  &.list-only {
+    grid-template-areas:
+      "group-list group-list"
+      "group-list group-list";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    #group-property {
+      display: none;
+    }
+
+    #group-memo {
+      display: none;
+    }
+
+    #group-list {
+      grid-area: group-list;
+      margin: 0.75rem;
+    }
+  }
 }

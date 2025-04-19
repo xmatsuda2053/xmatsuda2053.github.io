@@ -4,11 +4,11 @@
 @use "../../_style/font";
 
 $header-height: 35px;
-$biz-card-height: 35px;
+$sub-item-height: 1.75rem;
 $separator-bg-color: #fff0bd;
 $border-color: #afafaf;
 
-$link-color-hover: #0078d4;
+$sub-item-color-hover: #1f7d53;
 
 #header-menu {
   height: $header-height;
@@ -27,14 +27,14 @@ $link-color-hover: #0078d4;
 }
 
 .sub-item {
-  height: $biz-card-height;
+  height: $sub-item-height;
   margin: 0 0.5rem;
-  border-bottom: 1px solid $border-color;
+  font-weight: bold;
 
   div {
     display: flex;
     align-items: center;
-    height: $biz-card-height;
+    height: $sub-item-height;
     margin-left: 0.1rem;
 
     transition: 0.2s;
@@ -50,15 +50,15 @@ $link-color-hover: #0078d4;
 
     &:hover {
       cursor: pointer;
+      color: $sub-item-color-hover;
       text-decoration: underline;
-      color: $link-color-hover;
     }
   }
 }
 
 #root {
   width: 100%;
-  height: calc(100% - $header-height - $biz-card-height);
+  height: calc(100% - $header-height - ($sub-item-height * 2));
   padding: 0.5rem;
   padding-top: 0.15rem;
 

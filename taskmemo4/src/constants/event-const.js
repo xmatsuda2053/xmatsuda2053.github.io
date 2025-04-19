@@ -79,4 +79,9 @@ export class EventConst {
    * 名刺管理表示イベント
    */
   static CHANGE_BIZ_CARD_EVENT_NAME = "changeBizCard";
+
+  /**
+   * 遅延タスク表示イベント
+   */
+  static SHOW_DELAY_TASK_EVENT_NAME = "showDelayTask";
 }

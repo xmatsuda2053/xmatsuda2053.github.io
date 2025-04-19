@@ -167,6 +167,7 @@ export function TaskMemo() {
       this.#attachClickGroupItemEventListener();
       this.#attachDblClickGroupItemEventListener();
       this.#attachChangeBizCardEventListener();
+      this.#attachShowDelayTaskEventListener();
     }
 
     /**
@@ -305,6 +306,18 @@ export function TaskMemo() {
         EventConst.CHANGE_BIZ_CARD_EVENT_NAME,
         () => {
           this.#changeBizCard();
+        }
+      );
+    }
+
+    /**
+     * Treeviewの遅延タスク表示イベントを登録
+     */
+    #attachShowDelayTaskEventListener() {
+      this.treeViewRoot.addEventListener(
+        EventConst.SHOW_DELAY_TASK_EVENT_NAME,
+        () => {
+          this.#showDelayTask();
         }
       );
     }
@@ -495,6 +508,31 @@ export function TaskMemo() {
       const bizCard = ElmUtils.createElm("biz-card");
       this.contents.innerHTML = "";
       this.contents.appendChild(bizCard);
+    }
+
+    // *******************************************************
+    // * 遅延タスク表示
+    // *******************************************************
+    #showDelayTask() {
+      const delayTask = ElmUtils.createElm("contents-group");
+
+      delayTask.isListOnly = true;
+      delayTask.renderItems(
+        this.treeViewRoot.getDelayTaskItems(),
+        "遅延タスク一覧"
+      );
+
+      this.contents.innerHTML = "";
+      this.contents.appendChild(delayTask);
+
+      // グループ内のタスクのクリックを検知
+      delayTask.addEventListener(
+        EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.#addContentsTask(item.id, item.name);
+        }
+      );
     }
   }
   customElements.define("task-memo", TaskMemo);
