@@ -87,6 +87,28 @@ button {
     }
   }
 
+  &.static {
+    &.red {
+      color: $red;
+    }
+
+    &.green {
+      color: $green;
+    }
+
+    &.blue {
+      color: $blue;
+    }
+
+    &.white {
+      color: $white;
+    }
+
+    &.black {
+      color: $black;
+    }
+  }
+
   &.hover {
     color: $hover-before-color;
     border-radius: 0.25rem;

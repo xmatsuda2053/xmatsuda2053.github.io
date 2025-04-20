@@ -48,6 +48,21 @@ button.square:hover .svg-icon {
   color: #0a3981;
   border-color: #0a3981;
 }
+button.static.red {
+  color: #d84040;
+}
+button.static.green {
+  color: #0e7405;
+}
+button.static.blue {
+  color: #003092;
+}
+button.static.white {
+  color: #fffffb;
+}
+button.static.black {
+  color: #000000;
+}
 button.hover {
   color: #8f8f8f;
   border-radius: 0.25rem;

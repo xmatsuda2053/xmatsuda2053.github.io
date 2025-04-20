@@ -60,8 +60,6 @@ export function TreeView() {
 
       // 画面機能を追加
       this.#addHeaderMenu();
-      this.#addBizCard();
-      this.#adddelayTask();
       this.#addContextMenu();
     }
 
@@ -106,14 +104,12 @@ export function TreeView() {
       headerMenu.appendChild(this.#createAllOpenButton());
       headerMenu.appendChild(this.#createAllCloseButton());
       headerMenu.appendChild(this.#createLine());
-      headerMenu.appendChild(this.#createFilterNotStartedButton());
-      headerMenu.appendChild(this.#createFilterStartedButton());
       headerMenu.appendChild(this.#createFilterCompletButton());
-      headerMenu.appendChild(this.#createFilterOverDeadlineButton());
-      headerMenu.appendChild(this.#createFilterMemo());
-      headerMenu.appendChild(this.#createLine());
-      headerMenu.appendChild(this.#createFilterTodoButton());
       headerMenu.appendChild(this.#createFilterButton());
+      headerMenu.appendChild(this.#createLine());
+      headerMenu.appendChild(this.#createViewDelayTaskButton());
+      headerMenu.appendChild(this.#createViewBizCardButton());
+
       this.header.appendChild(headerMenu);
     }
 
@@ -186,38 +182,6 @@ export function TreeView() {
     }
 
     /**
-     * 未開始タスクのフィルタ設定ボタンを作成する。
-     * @returns ボタン
-     */
-    #createFilterNotStartedButton() {
-      this.btnFilterNotStarted = this.#createToggleButton(
-        "filter-not-started",
-        SvgConst.squarePaths
-      );
-      this.btnFilterNotStarted.tooltip = "未着手";
-      this.btnFilterNotStarted.addEventListener("click", () => {
-        this.#filterTreeViewItem();
-      });
-      return this.btnFilterNotStarted;
-    }
-
-    /**
-     * 実行中タスクのフィルタ設定ボタンを作成する。
-     * @returns ボタン
-     */
-    #createFilterStartedButton() {
-      this.btnFilterStarted = this.#createToggleButton(
-        "filter-started",
-        SvgConst.squareDotPaths
-      );
-      this.btnFilterStarted.tooltip = "対応中";
-      this.btnFilterStarted.addEventListener("click", () => {
-        this.#filterTreeViewItem();
-      });
-      return this.btnFilterStarted;
-    }
-
-    /**
      * 完了タスクのフィルタ設定ボタンを作成する。
      * @returns ボタン
      */
@@ -234,54 +198,43 @@ export function TreeView() {
     }
 
     /**
-     * 遅延タスクのフィルタ設定ボタンを作成する。
+     * 遅延タスク一覧の表示ボタンを作成する。
      * @returns ボタン
      */
-    #createFilterOverDeadlineButton() {
-      this.btnFilterOverDeadline = this.#createToggleButton(
-        "filter-over-deadline",
+    #createViewDelayTaskButton() {
+      this.btnViewDelayTask = this.#createButton(
+        "view-delay-task",
         SvgConst.squareAlertPaths
       );
-      this.btnFilterOverDeadline.tooltip = "遅延";
-      this.btnFilterOverDeadline.color = "red";
-      this.btnFilterOverDeadline.addEventListener("click", () => {
-        this.#filterTreeViewItem();
+      this.btnViewDelayTask.color = "red";
+      this.btnViewDelayTask.static = true;
+      this.btnViewDelayTask.tooltip = "遅延タスク一覧";
+      this.btnViewDelayTask.addEventListener("click", () => {
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.SHOW_DELAY_TASK_EVENT_NAME)
+        );
       });
-      return this.btnFilterOverDeadline;
+      return this.btnViewDelayTask;
     }
 
     /**
-     * メモタスクのフィルタ設定ボタンを作成する。
+     * 名刺管理の表示ボタンを作成する。
      * @returns ボタン
      */
-    #createFilterMemo() {
-      this.btnFilterMemo = this.#createToggleButton(
-        "filter-memo",
-        SvgConst.SquareMPath
+    #createViewBizCardButton() {
+      this.btnViewBizCard = this.#createButton(
+        "view-biz-card",
+        SvgConst.IdPath
       );
-      this.btnFilterMemo.tooltip = "メモ";
-      this.btnFilterMemo.addEventListener("click", () => {
-        this.#filterTreeViewItem();
+      this.btnViewBizCard.color = "blue";
+      this.btnViewBizCard.static = true;
+      this.btnViewBizCard.tooltip = "名刺管理";
+      this.btnViewBizCard.addEventListener("click", () => {
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.CHANGE_BIZ_CARD_EVENT_NAME)
+        );
       });
-      return this.btnFilterMemo;
-    }
-
-    /**
-     * TODOのフィルタ設定ボタンを作成する。
-     * @returns ボタン
-     */
-    #createFilterTodoButton() {
-      this.btnFilterTODO = this.#createToggleButton(
-        "filter-todo",
-        SvgConst.FlagPath
-      );
-      this.btnFilterTODO.tooltip = "TODO only";
-      this.btnFilterTODO.color = "green";
-      this.btnFilterTODO.toggleOn(false);
-      this.btnFilterTODO.addEventListener("click", () => {
-        this.#filterTreeViewItem();
-      });
-      return this.btnFilterTODO;
+      return this.btnViewBizCard;
     }
 
     /**
@@ -324,24 +277,11 @@ export function TreeView() {
       // タスクフィルタ
       this.root.querySelectorAll("task-title").forEach((task) => {
         const flag = task.flag;
-        let isDisabled;
+        let isDisabled = false;
 
         // ステータスフィルター
         if (flag.isComplete) {
           isDisabled = !this.btnFilterComplet.toggle;
-        } else if (flag.isOverDeadline) {
-          isDisabled = !this.btnFilterOverDeadline.toggle;
-        } else if (flag.isNotStarted) {
-          isDisabled = !this.btnFilterNotStarted.toggle;
-        } else if (flag.isNotDueDate) {
-          isDisabled = !this.btnFilterMemo.toggle;
-        } else {
-          isDisabled = !this.btnFilterStarted.toggle;
-        }
-
-        // TO.DOフィルター
-        if (!isDisabled && this.btnFilterTODO.toggle) {
-          isDisabled = !task.hasTodo;
         }
 
         // 検索文字列フィルター

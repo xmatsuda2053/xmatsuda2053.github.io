@@ -117,6 +117,14 @@ export function SvgBtn() {
     }
 
     /**
+     * ボタンの静的状態を設定するセッター
+     * @param {bool} flag - 静的状態にする場合は true、しない場合は false
+     */
+    set static(flag) {
+      this.button.classList.toggle("static", flag);
+    }
+
+    /**
      * トグルボタンの設定を行うセッター
      * @param {bool} flag - トグルボタンにする場合は true、しない場合は false
      */
