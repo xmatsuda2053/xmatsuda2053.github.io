@@ -8,19 +8,15 @@
   grid-auto-flow: row;
   grid-template-areas: "bc-head bc-head" "bc-list bc-main";
   height: 100vh;
-  padding: 1.5rem 2rem;
   transform: 0.2s;
 }
 #root #bc-header {
   grid-area: bc-head;
-  background-color: #3c3c3c;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  background-color: #3a59d1;
 }
 #root #bc-list {
   grid-area: bc-list;
   background-color: #cfcfcf;
-  border-bottom-left-radius: 0.5rem;
 }
 #root #bc-list .item {
   padding: 0.5rem 0.5rem;
@@ -50,7 +46,6 @@
 #root #bc-main {
   grid-area: bc-main;
   background-color: #fffff8;
-  border-bottom-right-radius: 0.5rem;
   padding: 1rem 2rem;
 }
 
