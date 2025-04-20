@@ -84,4 +84,9 @@ export class EventConst {
    * 遅延タスク表示イベント
    */
   static SHOW_DELAY_TASK_EVENT_NAME = "showDelayTask";
+
+  /**
+   * TODOタスク表示イベント
+   */
+  static SHOW_TODO_TASK_EVENT_NAME = "showTodoTask";
 }

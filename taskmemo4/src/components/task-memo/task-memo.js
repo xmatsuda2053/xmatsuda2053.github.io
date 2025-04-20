@@ -168,6 +168,7 @@ export function TaskMemo() {
       this.#attachDblClickGroupItemEventListener();
       this.#attachChangeBizCardEventListener();
       this.#attachShowDelayTaskEventListener();
+      this.#attachShowTodoTaskEventListener();
     }
 
     /**
@@ -318,6 +319,18 @@ export function TaskMemo() {
         EventConst.SHOW_DELAY_TASK_EVENT_NAME,
         () => {
           this.#showDelayTask();
+        }
+      );
+    }
+
+    /**
+     * TreeviewのTODOタスク表示イベントを登録
+     */
+    #attachShowTodoTaskEventListener() {
+      this.treeViewRoot.addEventListener(
+        EventConst.SHOW_TODO_TASK_EVENT_NAME,
+        () => {
+          this.#showTodoTask();
         }
       );
     }
@@ -502,17 +515,20 @@ export function TaskMemo() {
     }
 
     // *******************************************************
-    // * 名刺管理
+    // * サブ機能
     // *******************************************************
+    /**
+     * 名刺管理を表示する
+     */
     #changeBizCard() {
       const bizCard = ElmUtils.createElm("biz-card");
       this.contents.innerHTML = "";
       this.contents.appendChild(bizCard);
     }
 
-    // *******************************************************
-    // * 遅延タスク表示
-    // *******************************************************
+    /**
+     * 遅延タスクを表示する
+     */
     #showDelayTask() {
       const delayTask = ElmUtils.createElm("contents-group");
 
@@ -527,6 +543,31 @@ export function TaskMemo() {
 
       // グループ内のタスクのクリックを検知
       delayTask.addEventListener(
+        EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
+        (e) => {
+          const item = e.detail.item;
+          this.#addContentsTask(item.id, item.name);
+        }
+      );
+    }
+
+    /**
+     * TODOタスクを表示する
+     */
+    #showTodoTask() {
+      const todoTask = ElmUtils.createElm("contents-group");
+
+      todoTask.isListOnly = true;
+      todoTask.renderItems(
+        this.treeViewRoot.getTodoTaskItems(),
+        "TODOタスク一覧"
+      );
+
+      this.contents.innerHTML = "";
+      this.contents.appendChild(todoTask);
+
+      // グループ内のタスクのクリックを検知
+      todoTask.addEventListener(
         EventConst.CLICK_CONTENTS_GROUP_TASK_EVENT_NAME,
         (e) => {
           const item = e.detail.item;

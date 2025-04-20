@@ -108,6 +108,7 @@ export function TreeView() {
       headerMenu.appendChild(this.#createFilterButton());
       headerMenu.appendChild(this.#createLine());
       headerMenu.appendChild(this.#createViewDelayTaskButton());
+      headerMenu.appendChild(this.#craeteViewTodoListButton());
       headerMenu.appendChild(this.#createViewBizCardButton());
 
       this.header.appendChild(headerMenu);
@@ -215,6 +216,26 @@ export function TreeView() {
         );
       });
       return this.btnViewDelayTask;
+    }
+
+    /**
+     * TODOタスク一覧の表示ボタンを作成する。
+     * @returns ボタン
+     */
+    #craeteViewTodoListButton() {
+      this.btnViewTodoList = this.#createButton(
+        "view-todo-list",
+        SvgConst.FlagPath
+      );
+      this.btnViewTodoList.color = "green";
+      this.btnViewTodoList.static = true;
+      this.btnViewTodoList.tooltip = "TODOタスク一覧";
+      this.btnViewTodoList.addEventListener("click", () => {
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.SHOW_TODO_TASK_EVENT_NAME)
+        );
+      });
+      return this.btnViewTodoList;
     }
 
     /**
@@ -759,6 +780,27 @@ export function TreeView() {
         }
       }
 
+      return items;
+    }
+
+    /**
+     * TODOタスクの一覧を返却する。
+     * @returns {Array<Object>} - 項目データの配列。
+     */
+    getTodoTaskItems() {
+      const tasks = this.root.querySelectorAll("task-title");
+
+      let items = [];
+      for (let task of tasks) {
+        if (task.hasTodo) {
+          const data = task.getData();
+          data.id = task.id;
+          data.level = 0;
+          data.paths = task.paths;
+          data.flag = task.flag;
+          items.push(data);
+        }
+      }
       return items;
     }
 
