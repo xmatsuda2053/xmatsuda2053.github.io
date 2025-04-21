@@ -21,3 +21,24 @@ input[type="text"] {
     background-color: $bg-color-readonly;
   }
 }
+
+.search-root {
+  position: relative;
+
+  input[type="text"] {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  #search-btn {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+  }
+
+  #cancel-btn {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+}

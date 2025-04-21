@@ -19,6 +19,15 @@ button.circle:hover {
 button.circle .svg-icon {
   font-size: 1.8rem;
 }
+button.circle.red {
+  background-color: #d84040;
+  border-color: #d84040;
+}
+button.circle.red:hover {
+  color: #d84040;
+  background-color: #fffff8;
+  border-color: #d84040;
+}
 button.square {
   width: 100%;
   border-radius: 0.25rem;
@@ -70,23 +79,23 @@ button.hover {
 }
 button.hover.red:hover {
   color: #d84040;
-  background-color: #fdfbee;
+  background-color: transparent;
 }
 button.hover.green:hover {
   color: #0e7405;
-  background-color: #fdfbee;
+  background-color: transparent;
 }
 button.hover.blue:hover {
   color: #003092;
-  background-color: #fdfbee;
+  background-color: transparent;
 }
 button.hover.white:hover {
   color: #fffffb;
-  background-color: #fdfbee;
+  background-color: transparent;
 }
 button.hover.black:hover {
   color: #000000;
-  background-color: #fdfbee;
+  background-color: transparent;
 }
 button.toggle {
   color: #8f8f8f;

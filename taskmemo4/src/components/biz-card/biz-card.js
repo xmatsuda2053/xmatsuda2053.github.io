@@ -26,25 +26,110 @@ export function BizCard() {
 
       // grid作成
       this.root = ElmUtils.createElm("div", "root");
-      this.bcHead = ElmUtils.createElm("div", "bc-header");
+      this.bcHeadL = ElmUtils.createElm("div", "bc-head-l", ["head-outer"]);
+      this.bcHeadC = ElmUtils.createElm("div", "bc-head-c", ["head-outer"]);
+      this.bcHeadR = ElmUtils.createElm("div", "bc-head-r", ["head-outer"]);
       this.bcList = ElmUtils.createElm("div", "bc-list", ["scroll"]);
       this.bcMain = ElmUtils.createElm("div", "bc-main", ["scroll"]);
 
-      this.root.appendChild(this.bcHead);
+      this.root.appendChild(this.bcHeadL);
+      this.root.appendChild(this.bcHeadC);
+      this.root.appendChild(this.bcHeadR);
       this.root.appendChild(this.bcList);
       this.root.appendChild(this.bcMain);
 
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(this.root);
 
-      this.#addMember();
-      this.#addContact();
-      this.#addMailAddress();
-      this.#addCompanyName();
-      this.#addAddress();
-      this.#addMemo();
+      this.#addHeaderSearchInput();
+      this.#addMenuRight();
+
+      // Mainの初期化
+      this.#addMainMember();
+      this.#addMainContact();
+      this.#addMainMailAddress();
+      this.#addMainCompanyName();
+      this.#addMainAddress();
+      this.#addMainMemo();
 
       this.#test();
+    }
+
+    // **************************************************
+    // * ヘッダー
+    // **************************************************
+    /**
+     * 名刺リストの検索入力欄を作成し、ルートエレメントに追加するメソッド。
+     */
+    #addHeaderSearchInput() {
+      const inner = ElmUtils.createElm("div", null, ["head-inner"]);
+
+      this._searchInput = ElmUtils.createElm("form-input", "search-input");
+      this._searchInput.placeholder = "search...";
+      this._searchInput.isSearch = true;
+
+      inner.appendChild(this._searchInput);
+
+      this.bcHeadC.appendChild(inner);
+    }
+
+    /**
+     * ヘッダー右側のメニューボタンを追加する。
+     */
+    #addMenuRight() {
+      const inner = ElmUtils.createElm("div", null, ["head-inner"]);
+
+      /**
+       * ボタンの基本設定を行う関数
+       * @param {string} id
+       * @param {string} path - アイコンのパス
+       * @returns {HTMLElement} - ボタンの要素
+       */
+      const baseBtn = (id, path) => {
+        const btn = ElmUtils.createElm("svg-btn", id, ["menu-btn"]);
+        btn.iconPaths = path;
+        btn.size = "1rem";
+        btn.isCircle = true;
+        return btn;
+      };
+
+      /**
+       * 新規追加ボタン
+       * @returns {HTMLElement} - 新規追加ボタンの要素
+       */
+      const addBtn = () => {
+        const btn = baseBtn("add-btn", SvgConst.plusPaths);
+        btn.tooltip = "新規追加";
+
+        return btn;
+      };
+
+      /**
+       * コピーボタン
+       * @returns {HTMLElement} - コピー用ボタンの要素
+       */
+      const copyBtn = () => {
+        const btn = baseBtn("copy-btn", SvgConst.CopyPaths);
+        btn.tooltip = "コピー";
+
+        return btn;
+      };
+
+      /**
+       * 削除ボタン
+       * @returns {HTMLElement} - 削除ボタンの要素
+       */
+      const deleteBtn = () => {
+        const btn = baseBtn("delete-btn", SvgConst.trashPaths);
+        btn.tooltip = "削除";
+        btn.color = "red";
+        return btn;
+      };
+
+      inner.appendChild(addBtn());
+      inner.appendChild(copyBtn());
+      inner.appendChild(deleteBtn());
+      this.bcHeadR.appendChild(inner);
     }
 
     // **************************************************
@@ -53,7 +138,7 @@ export function BizCard() {
     /**
      * 新しい担当者を作成し、ルートエレメントに追加するメソッド。
      */
-    #addMember() {
+    #addMainMember() {
       /**
        * 担当者の漢字氏名
        * @returns {HTMLElement} - 漢字氏名のフィールドセット
@@ -134,7 +219,7 @@ export function BizCard() {
      * 新しい会社名を作成し、ルートエレメントに追加するメソッド。
      * @return {void}
      */
-    #addCompanyName() {
+    #addMainCompanyName() {
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.icon = SvgUtils.createIcon(SvgConst.BuildingsPath);
       filedset.title = "会社名";
@@ -153,7 +238,7 @@ export function BizCard() {
     /**
      * 新しい連絡先を作成し、ルートエレメントに追加するメソッド。
      */
-    #addContact() {
+    #addMainContact() {
       /**
        * 固定電話
        * @returns {HTMLElement} - 固定電話のフィールドセット
@@ -226,7 +311,7 @@ export function BizCard() {
     /**
      * 新しいメールアドレス入力欄を作成し、ルートエレメントに追加するメソッド。
      */
-    #addMailAddress() {
+    #addMainMailAddress() {
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.icon = SvgUtils.createIcon(SvgConst.MailPath);
       filedset.title = "メールアドレス";
@@ -242,7 +327,7 @@ export function BizCard() {
     // **************************************************
     // * 住所
     // **************************************************
-    #addAddress() {
+    #addMainAddress() {
       /**
        * 郵便番号
        * @returns {HTMLElement} - 郵便番号のフィールドセット
@@ -296,7 +381,7 @@ export function BizCard() {
      * メモを追加します。
      * @private
      */
-    #addMemo() {
+    #addMainMemo() {
       const filedset = ElmUtils.createElm("form-fieldset");
       filedset.icon = SvgUtils.createIcon(SvgConst.WitingPaths);
       filedset.title = "メモ";

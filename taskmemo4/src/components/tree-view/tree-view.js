@@ -134,7 +134,7 @@ export function TreeView() {
     #createButton(id, paths) {
       const btn = ElmUtils.createElm("svg-btn", id);
       btn.iconPaths = paths;
-      btn.size = "1.15rem";
+      btn.size = "1.35rem";
       btn.color = "black";
       return btn;
     }

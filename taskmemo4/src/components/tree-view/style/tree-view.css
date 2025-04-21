@@ -415,9 +415,9 @@ th {
   font-family: monospace;
 }
 
-#header-menu {
-  height: 35px;
-  padding: 0.5rem 0;
+#header #header-menu {
+  height: 50px;
+  padding: 0.75rem 0;
   margin: 0 0.5rem;
   border-bottom: 1px solid #afafaf;
 }
@@ -433,7 +433,7 @@ th {
 
 #root {
   width: 100%;
-  height: calc(100% - 35px);
+  height: calc(100% - 50px);
   padding: 0.5rem;
   padding-top: 0.15rem;
 }

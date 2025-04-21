@@ -14,4 +14,22 @@ input[type=text]:read-only {
   background-color: #dfdfdf;
 }
 
+.search-root {
+  position: relative;
+}
+.search-root input[type=text] {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+.search-root #search-btn {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+}
+.search-root #cancel-btn {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+}
+
 /*# sourceMappingURL=form-input.css.map */

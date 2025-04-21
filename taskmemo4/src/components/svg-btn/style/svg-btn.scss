@@ -13,7 +13,7 @@ $square-font-color-hover: #0a3981;
 $square-border-color-hover: #0a3981;
 
 $hover-before-color: #8f8f8f;
-$hover-bg-color: #fdfbee;
+$hover-bg-color: transparent;
 
 $red: #d84040;
 $green: #0e7405;
@@ -47,6 +47,17 @@ button {
 
     .svg-icon {
       font-size: 1.8rem;
+    }
+
+    &.red {
+      background-color: $red;
+      border-color: $red;
+
+      &:hover {
+        color: $red;
+        background-color: $circle-bg-color-hover;
+        border-color: $red;
+      }
     }
   }
 

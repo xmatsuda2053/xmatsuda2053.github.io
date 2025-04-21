@@ -910,4 +910,44 @@ export class SvgConst {
       { path: "M10.5 7h3l5 5.5" },
     ],
   };
+
+  /**
+   * 検索SVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static SearchPaths = {
+    name: "icon-search",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0",
+      },
+      {
+        path: "M21 21l-6 -6",
+      },
+    ],
+  };
+
+  /**
+   * 円とXのSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static CircleXPaths = {
+    name: "icon-circle-x",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0",
+      },
+      {
+        path: "M10 10l4 4m0 -4l-4 4",
+      },
+    ],
+  };
 }

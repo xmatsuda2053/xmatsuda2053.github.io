@@ -1,31 +1,60 @@
+$bg-color: #fffff8;
+
 #root {
   display: grid;
-  grid-template-columns: 250px 1fr;
-  grid-template-rows: 40px 1fr;
+  grid-template-columns: 250px 1fr 250px;
+  grid-template-rows: 50px 1fr;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
   gap: 0em 0em;
   grid-auto-flow: row;
   grid-template-areas:
-    "bc-head bc-head"
-    "bc-list bc-main";
+    "bc-head-l bc-head-c bc-head-r"
+    "bc-list bc-main bc-main";
   height: 100vh;
-
-  //padding: 1.5rem 2rem;
-
   transform: 0.2s;
 
-  #bc-header {
-    grid-area: bc-head;
-    background-color: #3a59d1;
-    //border-top-left-radius: 0.5rem;
-    //border-top-right-radius: 0.5rem;
+  .head-outer {
+    position: relative;
+
+    .head-inner {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+
+      width: 100%;
+    }
+  }
+
+  #bc-head-l {
+    grid-area: bc-head-l;
+  }
+
+  #bc-head-c {
+    grid-area: bc-head-c;
+
+    .head-inner {
+      padding: 0 2rem;
+    }
+  }
+
+  #bc-head-r {
+    grid-area: bc-head-r;
+
+    .head-inner {
+      padding: 0 2rem;
+      text-align: right;
+
+      .menu-btn {
+        margin-left: 0.25rem;
+      }
+    }
   }
 
   #bc-list {
     grid-area: bc-list;
     background-color: #cfcfcf;
-    //border-bottom-left-radius: 0.5rem;
 
     .item {
       padding: 0.5rem 0.5rem;
@@ -36,7 +65,7 @@
 
       &.selected {
         border-color: #ffb200;
-        background-color: #fffff8;
+        background-color: $bg-color;
         color: #1f1f1f;
       }
 
@@ -60,8 +89,7 @@
 
   #bc-main {
     grid-area: bc-main;
-    background-color: #fffff8;
-    //border-bottom-right-radius: 0.5rem;
+    background-color: $bg-color;
     padding: 1rem 2rem;
   }
 }
