@@ -195,6 +195,7 @@ export function TreeView() {
       this.btnFilterComplet.addEventListener("click", () => {
         this.#filterTreeViewItem();
       });
+      this.btnFilterComplet.toggleOn(false);
       return this.btnFilterComplet;
     }
 
@@ -355,52 +356,6 @@ export function TreeView() {
 
       // ルート要素を起点にグループフィルタを実行
       filterGroup(this.root);
-    }
-
-    // *******************************************************
-    // * 名刺管理
-    // *******************************************************
-    /**
-     * 名刺管理を初期化し、Shadow DOMに追加します。
-     * @private
-     */
-    #addBizCard() {
-      const icon = SvgUtils.createIcon(SvgConst.CardsPath);
-      const area = ElmUtils.createElm("div");
-      const p = ElmUtils.createElm("p");
-
-      p.innerText = "名刺管理";
-      area.appendChild(icon);
-      area.appendChild(p);
-
-      this.bizCard.appendChild(area);
-
-      area.addEventListener("click", () => {
-        this.dispatchEvent(
-          EventUtils.createEvent(EventConst.CHANGE_BIZ_CARD_EVENT_NAME)
-        );
-      });
-    }
-
-    // *******************************************************
-    // * 遅延タスク一覧
-    // *******************************************************
-    #adddelayTask() {
-      const icon = SvgUtils.createIcon(SvgConst.squareAlertPaths);
-      const area = ElmUtils.createElm("div");
-      const p = ElmUtils.createElm("p");
-
-      p.innerText = "遅延タスク一覧";
-      area.appendChild(icon);
-      area.appendChild(p);
-
-      this.delayTask.appendChild(area);
-
-      area.addEventListener("click", () => {
-        this.dispatchEvent(
-          EventUtils.createEvent(EventConst.SHOW_DELAY_TASK_EVENT_NAME)
-        );
-      });
     }
 
     // *******************************************************
@@ -855,6 +810,7 @@ export function TreeView() {
       JSON.parse(jsonStr).forEach((data) => {
         addTreeViewItem(this.root, data);
       });
+      this.#filterTreeViewItem();
     }
 
     // *******************************************************
