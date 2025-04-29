@@ -3,6 +3,8 @@ import styles from "./style/biz-card.css";
 import { ElmUtils } from "../../utils/elm-utils";
 import { SvgUtils } from "../../utils/svg-utils";
 import { SvgConst } from "../../constants/svg-const";
+import { IdUtils } from "../../utils/id-utils";
+import { EventConst } from "../../constants/event-const";
 
 /**
  * BizCard コンポーネント
@@ -44,7 +46,25 @@ export function BizCard() {
       this.#addHeaderSearchInput();
       this.#addMenuRight();
 
-      // Mainの初期化
+      /**
+       * 入力内容変更時
+       */
+      this.bcMain.addEventListener(
+        EventConst.CHANGE_FORM_ITEM_EVENT_NAME,
+        () => {
+          this.#refreshListItem();
+          console.log("hoge");
+        }
+      );
+    }
+
+    /**
+     * 名刺領域を初期化
+     * @param {object} data
+     */
+    #initBcMain(data) {
+      this.bcMain.innerHTML = "";
+
       this.#addMainMember();
       this.#addMainContact();
       this.#addMainMailAddress();
@@ -52,7 +72,38 @@ export function BizCard() {
       this.#addMainAddress();
       this.#addMainMemo();
 
-      this.#test();
+      this._memberNameKanji.value = data.kanjiName || "";
+      this._memberNameKane.value = data.kanaName || "";
+      this._memberPosition.value = data.position || "";
+      this._companyName.value = data.company || "";
+      this._phoneNumber.value = data.phoneNumber || "";
+      this._mobilephoneNumber.value = data.mobilePhoneNumber || "";
+      this._faxNumber.value = data.faxNumber || "";
+      this._mailAddress.value = data.mailAddress || "";
+      this._postCode.value = data.postCode || "";
+      this._address.value = data.address || "";
+      this._memo.value = data.memo || "";
+    }
+
+    /**
+     * 画面入力内容を取得する
+     * @return {object} - 入力内容
+     */
+    #getData() {
+      const data = {
+        kanjiName: this._memberNameKanji.value,
+        kanaName: this._memberNameKane.value,
+        position: this._memberPosition.value,
+        company: this._companyName.value,
+        phoneNumber: this._phoneNumber.value,
+        mobilePhoneNumber: this._mobilephoneNumber.value,
+        faxNumber: this._faxNumber.value,
+        mailAddress: this._mailAddress.value,
+        postCode: this._postCode.value,
+        address: this._address.value,
+        memo: this._memo.value,
+      };
+      return data;
     }
 
     // **************************************************
@@ -101,16 +152,25 @@ export function BizCard() {
         const btn = baseBtn("add-btn", SvgConst.plusPaths);
         btn.tooltip = "新規追加";
 
+        /**
+         * 名刺アイテムの新規追加
+         */
+        btn.addEventListener("click", () => {
+          const id = "bz" + IdUtils.getUniqueId();
+          const listItem = this.#addListItem(id);
+          listItem.click();
+        });
+
         return btn;
       };
 
       /**
-       * コピーボタン
-       * @returns {HTMLElement} - コピー用ボタンの要素
+       * ソートボタン
+       * @returns {HTMLElement} - ソート用ボタンの要素
        */
       const copyBtn = () => {
-        const btn = baseBtn("copy-btn", SvgConst.CopyPaths);
-        btn.tooltip = "コピー";
+        const btn = baseBtn("sort-btn", SvgConst.SortAscendingLettersPaths);
+        btn.tooltip = "ソート";
 
         return btn;
       };
@@ -130,6 +190,50 @@ export function BizCard() {
       inner.appendChild(copyBtn());
       inner.appendChild(deleteBtn());
       this.bcHeadR.appendChild(inner);
+    }
+
+    // **************************************************
+    // * 名刺リスト
+    // **************************************************
+    /**
+     * 名刺リストアイテムを追加する
+     * @param {string} id - 名刺リストアイテムのID
+     * @param {object} data - 名刺リストアイテムのデータ
+     * @return {HTMLElement} - 名刺リストアイテムの要素
+     */
+    #addListItem(id, data = {}) {
+      const item = ElmUtils.createElm("biz-card-list-item", id);
+      item.rendar(data);
+
+      this.bcList.appendChild(item);
+      item.addEventListener("click", () => {
+        this.#selectListItem(id);
+        this.#initBcMain(this._selectedListItem.data);
+      });
+
+      return item;
+    }
+
+    /**
+     * リストアイテムを選択中にする。
+     * @param {String} id
+     */
+    #selectListItem(id) {
+      const before = this._selectedListItem;
+      if (before) {
+        before.isSelected = false;
+      }
+
+      const target = this.shadowRoot.getElementById(id);
+      this._selectedListItem = target;
+      target.isSelected = true;
+    }
+
+    /**
+     * リストアイテムの内容を更新する
+     */
+    #refreshListItem() {
+      this._selectedListItem.rendar(this.#getData());
     }
 
     // **************************************************
@@ -392,73 +496,6 @@ export function BizCard() {
 
       filedset.addItem(this._memo);
       this.bcMain.appendChild(filedset);
-    }
-
-    #test() {
-      this.#addListItem("list-item-1", {
-        name: "テスト １郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-2", {
-        name: "テスト ２郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-3", {
-        name: "テスト ３郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-4", {
-        name: "テスト ４郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-5", {
-        name: "テスト ５郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-6", {
-        name: "テスト ６郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-7", {
-        name: "テスト ７郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-8", {
-        name: "テスト ８郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-9", {
-        name: "テスト ９郎",
-        company: "日本システムズ",
-      });
-      this.#addListItem("list-item-10", {
-        name: "テスト １０郎",
-        company: "日本システムズ",
-      });
-
-      const listItem = this.shadowRoot.getElementById("list-item-1");
-      listItem.classList.add("selected");
-    }
-
-    /**
-     * 名刺リストアイテムを追加する
-     * @param {string} id - 名刺リストアイテムのID
-     * @param {object} data - 名刺リストアイテムのデータ
-     * @return {void}
-     */
-    #addListItem(id, data = {}) {
-      const item = ElmUtils.createElm("div", null, ["item"]);
-      const name = ElmUtils.createElm("p", null, ["name"]);
-      const comp = ElmUtils.createElm("p", null, ["company"]);
-
-      item.id = id;
-      item.appendChild(name);
-      item.appendChild(comp);
-
-      name.innerText = data.name;
-      comp.innerText = data.company;
-
-      this.bcList.appendChild(item);
     }
   }
   customElements.define("biz-card", BizCard);

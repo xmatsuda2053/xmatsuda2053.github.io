@@ -950,4 +950,30 @@ export class SvgConst {
       },
     ],
   };
+
+  /**
+   * 文字列照準ソートのSVGのパスデータを含むオブジェクトの配列を生成する。
+   * @returns {Object[]} SVGのパスデータを含むオブジェクトの配列。
+   * @returns {string} return.path - SVGのパス情報。
+   */
+  static SortAscendingLettersPaths = {
+    name: "icon-sort-ascending-letters",
+    paths: [
+      {
+        path: "M0 0h24v24H0z",
+      },
+      {
+        path: "M15 10v-5c0 -1.38 .62 -2 2 -2s2 .62 2 2v5m0 -3h-4",
+      },
+      {
+        path: "M19 21h-4l4 -7h-4",
+      },
+      {
+        path: "M4 15l3 3l3 -3",
+      },
+      {
+        path: "M7 6v12",
+      },
+    ],
+  };
 }

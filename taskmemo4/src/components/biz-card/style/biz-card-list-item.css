@@ -1,0 +1,27 @@
+#root {
+  padding: 0.5rem 0.5rem;
+  padding-bottom: 0.85rem;
+  border-left: 0.5rem solid transparent;
+  color: #8f8f8f;
+  cursor: pointer;
+}
+#root:hover {
+  border-color: #ffb200;
+  background-color: #dfdfdf;
+  color: #1f1f1f;
+}
+#root.selected, #root:focus {
+  border-color: #ffb200;
+  background-color: #fffff8;
+  color: #1f1f1f;
+}
+#root #name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+#root #company {
+  font-size: 0.85rem;
+  padding-top: 0.25rem;
+}
+
+/*# sourceMappingURL=biz-card-list-item.css.map */

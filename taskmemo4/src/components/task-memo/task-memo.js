@@ -19,7 +19,9 @@ import { ContentsGroup } from "../contents-group/contents-group";
 import { ContentsTask } from "../contents-task/contents-task";
 import { ContentsHistory } from "../contents-history/contents-hisotry";
 import { ContentsHistoryItem } from "../contents-history/contetns-history-item";
+
 import { BizCard } from "../biz-card/biz-card";
+import { BizCardListItem } from "../biz-card/biz-card-list-item";
 
 import { FormFieldset } from "../form/form-fieldset";
 import { FormInput } from "../form/form-input";
@@ -77,6 +79,7 @@ export function TaskMemo() {
       ContentsHistoryItem();
 
       BizCard();
+      BizCardListItem();
 
       ToastItem();
 

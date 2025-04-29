@@ -1,0 +1,30 @@
+#root {
+  padding: 0.5rem 0.5rem;
+  padding-bottom: 0.85rem;
+  border-left: 0.5rem solid transparent;
+  color: #8f8f8f;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #ffb200;
+    background-color: #dfdfdf;
+    color: #1f1f1f;
+  }
+
+  &.selected,
+  &:focus {
+    border-color: #ffb200;
+    background-color: #fffff8;
+    color: #1f1f1f;
+  }
+
+  #name {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  #company {
+    font-size: 0.85rem;
+    padding-top: 0.25rem;
+  }
+}

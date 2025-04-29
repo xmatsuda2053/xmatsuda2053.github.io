@@ -43,31 +43,6 @@
   grid-area: bc-list;
   background-color: #cfcfcf;
 }
-#root #bc-list .item {
-  padding: 0.5rem 0.5rem;
-  padding-bottom: 0.85rem;
-  border-left: 0.5rem solid transparent;
-  color: #8f8f8f;
-  cursor: pointer;
-}
-#root #bc-list .item.selected {
-  border-color: #ffb200;
-  background-color: #fffff8;
-  color: #1f1f1f;
-}
-#root #bc-list .item:hover {
-  border-color: #ffb200;
-  background-color: #dfdfdf;
-  color: #1f1f1f;
-}
-#root #bc-list .item .name {
-  font-size: 1rem;
-  font-weight: bold;
-}
-#root #bc-list .item .company {
-  font-size: 0.85rem;
-  padding-top: 0.25rem;
-}
 #root #bc-main {
   grid-area: bc-main;
   background-color: #fffff8;
