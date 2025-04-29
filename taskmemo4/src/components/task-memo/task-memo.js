@@ -523,8 +523,12 @@ export function TaskMemo() {
     /**
      * 名刺管理を表示する
      */
-    #changeBizCard() {
+    async #changeBizCard() {
       const bizCard = ElmUtils.createElm("biz-card");
+
+      bizCard.fileManager = this.fileManager;
+      await bizCard.init();
+
       this.contents.innerHTML = "";
       this.contents.appendChild(bizCard);
     }

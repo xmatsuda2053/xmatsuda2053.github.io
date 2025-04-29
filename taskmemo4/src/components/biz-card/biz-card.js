@@ -6,6 +6,8 @@ import { SvgConst } from "../../constants/svg-const";
 import { IdUtils } from "../../utils/id-utils";
 import { EventConst } from "../../constants/event-const";
 
+const FILE_NAME = "biz_card.json";
+
 /**
  * BizCard コンポーネント
  * @class BizCard
@@ -53,22 +55,54 @@ export function BizCard() {
         EventConst.CHANGE_FORM_ITEM_EVENT_NAME,
         () => {
           this.#refreshListItem();
-          console.log("hoge");
+          this.save();
         }
       );
     }
 
     /**
-     * 名刺領域を初期化
+     * ファイルマネージャーを追加
+     * @param {object} obj
+     */
+    set fileManager(obj) {
+      this._fileManager = obj;
+    }
+
+    /**
+     * 初期表示設定
+     */
+    async init() {
+      const str = await this._fileManager.loadFile(FILE_NAME);
+      if (!str) {
+        return;
+      }
+
+      this.#rendarListItem(JSON.parse(str));
+    }
+
+    /**
+     * 名刺データを保存
+     */
+    async save() {
+      const dataArray = Array.from(
+        this.shadowRoot.querySelectorAll("biz-card-list-item")
+      ).map((item) => item.data);
+
+      await this._fileManager.writeFile(FILE_NAME, JSON.stringify(dataArray));
+    }
+
+    /**
+     * 名刺カード領域を初期化
      * @param {object} data
      */
-    #initBcMain(data) {
+    #initBcMain(data = {}) {
       this.bcMain.innerHTML = "";
+      this.bcMain.dataset.id = data.id;
 
       this.#addMainMember();
+      this.#addMainCompanyName();
       this.#addMainContact();
       this.#addMainMailAddress();
-      this.#addMainCompanyName();
       this.#addMainAddress();
       this.#addMainMemo();
 
@@ -91,6 +125,7 @@ export function BizCard() {
      */
     #getData() {
       const data = {
+        id: this.bcMain.dataset.id,
         kanjiName: this._memberNameKanji.value,
         kanaName: this._memberNameKane.value,
         position: this._memberPosition.value,
@@ -104,6 +139,32 @@ export function BizCard() {
         memo: this._memo.value,
       };
       return data;
+    }
+
+    /**
+     * 名刺データを削除する
+     */
+    #deleteBizCard() {
+      const id = this.bcMain.dataset.id;
+      const item = this.shadowRoot.getElementById(id);
+      const data = this.#getData();
+      const msg = `${data.company}) ${data.kanjiName}\nを削除します。よろしいですか？`;
+
+      if (!window.confirm(msg)) {
+        return;
+      }
+
+      this.bcList.removeChild(item);
+      this._selectedListItem = null;
+      this.bcMain.innerHTML = "";
+      this.bcMain.dataset.id = "";
+
+      const firstListItem = this.shadowRoot.querySelector("biz-card-list-item");
+      if (firstListItem) {
+        firstListItem.click();
+      }
+
+      this.save();
     }
 
     // **************************************************
@@ -157,7 +218,8 @@ export function BizCard() {
          */
         btn.addEventListener("click", () => {
           const id = "bz" + IdUtils.getUniqueId();
-          const listItem = this.#addListItem(id);
+          const data = { id: id };
+          const listItem = this.#addListItem(data);
           listItem.click();
         });
 
@@ -183,6 +245,13 @@ export function BizCard() {
         const btn = baseBtn("delete-btn", SvgConst.trashPaths);
         btn.tooltip = "削除";
         btn.color = "red";
+
+        /**
+         * データ削除
+         */
+        btn.addEventListener("click", () => {
+          this.#deleteBizCard();
+        });
         return btn;
       };
 
@@ -196,18 +265,32 @@ export function BizCard() {
     // * 名刺リスト
     // **************************************************
     /**
+     * 名刺リストを作成する
+     * @param {array} datas
+     */
+    #rendarListItem(datas) {
+      this.bcList.innerHTML = "";
+      this._selectedListItem = null;
+
+      datas.forEach((data) => {
+        this.#addListItem(data);
+      });
+
+      this.shadowRoot.getElementById(datas[0].id).click();
+    }
+
+    /**
      * 名刺リストアイテムを追加する
-     * @param {string} id - 名刺リストアイテムのID
      * @param {object} data - 名刺リストアイテムのデータ
      * @return {HTMLElement} - 名刺リストアイテムの要素
      */
-    #addListItem(id, data = {}) {
-      const item = ElmUtils.createElm("biz-card-list-item", id);
+    #addListItem(data) {
+      const item = ElmUtils.createElm("biz-card-list-item", data.id);
       item.rendar(data);
 
       this.bcList.appendChild(item);
       item.addEventListener("click", () => {
-        this.#selectListItem(id);
+        this.#selectListItem(data.id);
         this.#initBcMain(this._selectedListItem.data);
       });
 
