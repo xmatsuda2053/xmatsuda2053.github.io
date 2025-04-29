@@ -23,11 +23,11 @@ export function BizCardListItem() {
       this.shadowRoot.adoptedStyleSheets = ElmUtils.createStylesheet(styles);
 
       this.root = ElmUtils.createElm("div", "root");
-      this._name = ElmUtils.createElm("p", "name");
       this._company = ElmUtils.createElm("p", "company");
+      this._name = ElmUtils.createElm("p", "name");
 
-      this.root.appendChild(this._name);
       this.root.appendChild(this._company);
+      this.root.appendChild(this._name);
 
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(this.root);
@@ -35,12 +35,36 @@ export function BizCardListItem() {
 
     /**
      * リストアイテムの内容を設定する
-     * @param {object} data
+     * @param {object} newData
      */
-    rendar(data = {}) {
-      this._name.innerText = data.kanjiName || "No Name";
-      this._company.innerText = data.company || "No Company";
-      this._data = data;
+    rendar(newData = {}) {
+      const compareResult = this.#hasDiffSortKey(newData);
+
+      this._name.innerText = newData.kanjiName || "No Name";
+      this._company.innerText = newData.company || "No Company";
+      this._data = newData;
+
+      return compareResult;
+    }
+
+    /**
+     * ソート比較用のキーが一致しているか検証する。
+     * @param {object} newData
+     * @returns 不一致の場合、True
+     */
+    #hasDiffSortKey(newData) {
+      if (!this._data || !newData) {
+        return false;
+      }
+      const oldKanaName = this._data.kanaName || "";
+      const oldCompany = this._data.company || "";
+      const newKanaName = newData.kanaName || "";
+      const newCompany = newData.company || "";
+
+      const kanaNameComp = oldKanaName === newKanaName;
+      const companyComp = oldCompany === newCompany;
+
+      return !(kanaNameComp && companyComp);
     }
 
     /**
@@ -54,6 +78,33 @@ export function BizCardListItem() {
 
       // 配列内のすべての文字列がdataStrに含まれているかをチェック
       return strs.every((s) => dataStr.includes(s));
+    }
+
+    /**
+     * 会社名・カナ氏名の順でソート
+     */
+    compareAsc(dataB) {
+      const companyA = this.data.company || "";
+      const kanaNameA = this.data.kanaName || "";
+
+      const companyB = dataB.company || "";
+      const kanaNameB = dataB.kanaName || "";
+
+      if (companyA < companyB) {
+        return -1;
+      }
+      if (companyA > companyB) {
+        return 1;
+      }
+
+      if (kanaNameA < kanaNameB) {
+        return -1;
+      }
+      if (kanaNameA > kanaNameB) {
+        return 1;
+      }
+
+      return 0;
     }
 
     /**

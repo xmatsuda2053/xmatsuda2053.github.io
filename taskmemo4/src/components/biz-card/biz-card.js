@@ -7,6 +7,7 @@ import { IdUtils } from "../../utils/id-utils";
 import { EventConst } from "../../constants/event-const";
 
 const FILE_NAME = "biz_card.json";
+const ID_PREFIX = "bz";
 
 /**
  * BizCard コンポーネント
@@ -99,8 +100,8 @@ export function BizCard() {
       this.bcMain.innerHTML = "";
       this.bcMain.dataset.id = data.id;
 
-      this.#addMainMember();
       this.#addMainCompanyName();
+      this.#addMainMember();
       this.#addMainContact();
       this.#addMainMailAddress();
       this.#addMainAddress();
@@ -249,7 +250,7 @@ export function BizCard() {
          * 名刺アイテムの新規追加
          */
         btn.addEventListener("click", () => {
-          const id = "bz" + IdUtils.getUniqueId();
+          const id = ID_PREFIX + IdUtils.getUniqueId();
           const data = { id: id };
           const listItem = this.#addListItem(data);
           listItem.click();
@@ -259,12 +260,22 @@ export function BizCard() {
       };
 
       /**
-       * ソートボタン
-       * @returns {HTMLElement} - ソート用ボタンの要素
+       * コピーボタン
+       * @returns {HTMLElement} - コピー用ボタンの要素
        */
       const copyBtn = () => {
-        const btn = baseBtn("sort-btn", SvgConst.SortAscendingLettersPaths);
-        btn.tooltip = "ソート";
+        const btn = baseBtn("copy-btn", SvgConst.CopyPaths);
+        btn.tooltip = "コピー";
+
+        /**
+         * コピー実行
+         */
+        btn.addEventListener("click", () => {
+          const data = this.#getData();
+          data.id = ID_PREFIX + IdUtils.getUniqueId();
+          const listItem = this.#addListItem(data);
+          listItem.click();
+        });
 
         return btn;
       };
@@ -298,17 +309,21 @@ export function BizCard() {
     // **************************************************
     /**
      * 名刺リストを作成する
-     * @param {array} datas
+     * @param {array} dataList
      */
-    #rendarListItem(datas) {
+    #rendarListItem(dataList) {
       this.bcList.innerHTML = "";
       this._selectedListItem = null;
 
-      datas.forEach((data) => {
+      dataList.forEach((data) => {
         this.#addListItem(data);
       });
 
-      this.shadowRoot.getElementById(datas[0].id).click();
+      if (dataList.length > 0) {
+        this.shadowRoot.getElementById(dataList[0].id).click();
+      }
+
+      this.bcList.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     /**
@@ -325,6 +340,9 @@ export function BizCard() {
         this.#selectListItem(data.id);
         this.#initBcMain(this._selectedListItem.data);
       });
+
+      const bottom = this.bcList.scrollHeight - this.bcList.clientHeight;
+      this.bcList.scrollTo({ top: bottom, behavior: "smooth" });
 
       return item;
     }
@@ -348,7 +366,36 @@ export function BizCard() {
      * リストアイテムの内容を更新する
      */
     #refreshListItem() {
-      this._selectedListItem.rendar(this.#getData());
+      const hasDiff = this._selectedListItem.rendar(this.#getData());
+      if (hasDiff) {
+        this.#sortListItem();
+      }
+    }
+
+    /**
+     * リストアイテムを会社名・氏名の順にソートする
+     */
+    #sortListItem() {
+      const dataArray = Array.from(
+        this.shadowRoot.querySelectorAll("biz-card-list-item")
+      ).map((item) => item.data);
+
+      dataArray.sort((a, b) => {
+        const companyA = a.company || "";
+        const kanaNameA = a.kanaName || "";
+        const companyB = b.company || "";
+        const kanaNameB = b.kanaName || "";
+
+        if (companyA < companyB) return -1;
+        if (companyA > companyB) return 1;
+        if (kanaNameA < kanaNameB) return -1;
+        if (kanaNameA > kanaNameB) return 1;
+        return 0;
+      });
+
+      const tmpSelectedListItem = this._selectedListItem;
+      this.#rendarListItem(dataArray);
+      tmpSelectedListItem.click();
     }
 
     // **************************************************
