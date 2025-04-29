@@ -46,6 +46,11 @@ export class EventConst {
   static CHANGE_FORM_ITEM_EVENT_NAME = "changeFormItem";
 
   /**
+   * 検索キャンセルボタンクリックイベント
+   */
+  static CLICK_SEARCH_CANCEL_EVENT_NAME = "clickSearchCancel";
+
+  /**
    * コンテンツグループ変更イベント
    */
   static CHANGE_CONTENTS_GROUP_EVENT_NAME = "changeContentsGroup";

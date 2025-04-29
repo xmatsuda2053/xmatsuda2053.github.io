@@ -55,6 +55,10 @@ $bg-color: #fffff8;
   #bc-list {
     grid-area: bc-list;
     background-color: #cfcfcf;
+
+    .hidden {
+      display: none;
+    }
   }
 
   #bc-main {

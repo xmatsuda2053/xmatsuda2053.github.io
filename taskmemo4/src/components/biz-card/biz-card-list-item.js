@@ -44,6 +44,19 @@ export function BizCardListItem() {
     }
 
     /**
+     * 検索条件にすべて合致するか否か判定する
+     * @param {string} str
+     * @returns true/false
+     */
+    isMatch(str) {
+      const strs = str.split(" ");
+      const dataStr = JSON.stringify(this._data);
+
+      // 配列内のすべての文字列がdataStrに含まれているかをチェック
+      return strs.every((s) => dataStr.includes(s));
+    }
+
+    /**
      * 名刺アイテムの内容を取得する
      * @return {object} 名刺アイテムの内容
      */

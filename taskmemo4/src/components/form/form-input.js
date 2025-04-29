@@ -94,6 +94,15 @@ export function FormInput() {
       this.root.classList.add("search-root");
       this.root.appendChild(searchBtn);
       this.root.appendChild(cancelBtn);
+
+      /**
+       * 検索キャンセル
+       */
+      cancelBtn.addEventListener("click", () => {
+        this.dispatchEvent(
+          EventUtils.createEvent(EventConst.CLICK_SEARCH_CANCEL_EVENT_NAME)
+        );
+      });
     }
 
     /**

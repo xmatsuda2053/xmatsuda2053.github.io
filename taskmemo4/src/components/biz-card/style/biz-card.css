@@ -43,6 +43,9 @@
   grid-area: bc-list;
   background-color: #cfcfcf;
 }
+#root #bc-list .hidden {
+  display: none;
+}
 #root #bc-main {
   grid-area: bc-main;
   background-color: #fffff8;

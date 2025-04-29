@@ -183,6 +183,38 @@ export function BizCard() {
       inner.appendChild(this._searchInput);
 
       this.bcHeadC.appendChild(inner);
+
+      /**
+       * 名刺データを検索
+       */
+      this._searchInput.addEventListener(
+        EventConst.CHANGE_FORM_ITEM_EVENT_NAME,
+        () => {
+          const str = this._searchInput.value;
+          const listItems =
+            this.shadowRoot.querySelectorAll("biz-card-list-item");
+
+          for (let item of listItems) {
+            item.classList.toggle("hidden", !item.isMatch(str));
+          }
+        }
+      );
+
+      /**
+       * 検索キャンセル
+       */
+      this._searchInput.addEventListener(
+        EventConst.CLICK_SEARCH_CANCEL_EVENT_NAME,
+        () => {
+          this._searchInput.value = "";
+          const listItems =
+            this.shadowRoot.querySelectorAll("biz-card-list-item");
+
+          for (let item of listItems) {
+            item.classList.toggle("hidden", false);
+          }
+        }
+      );
     }
 
     /**
